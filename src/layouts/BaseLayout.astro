@@ -22,16 +22,73 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/png" href={path('/logo.png')} />
+
+    <!-- Anti-FOUC & Global Theme Initialization -->
+    <script is:inline>
+      (function() {
+        function getSavedTheme() {
+          try {
+            return localStorage.getItem('ahkh_theme') || 'system';
+          } catch (e) {
+            return 'system';
+          }
+        }
+
+        function resolveEffectiveDark(theme) {
+          if (theme === 'dark') return true;
+          if (theme === 'light') return false;
+          return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+
+        function applyTheme(theme) {
+          const isDark = resolveEffectiveDark(theme);
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+          document.documentElement.setAttribute('data-theme-setting', theme);
+        }
+
+        const initialTheme = getSavedTheme();
+        applyTheme(initialTheme);
+
+        window.__getTheme = getSavedTheme;
+        window.__applyTheme = applyTheme;
+        window.__setTheme = function(theme) {
+          try {
+            localStorage.setItem('ahkh_theme', theme);
+          } catch (e) {}
+          applyTheme(theme);
+          window.dispatchEvent(new CustomEvent('ahkh-theme-change', { detail: { theme: theme } }));
+        };
+
+        if (window.matchMedia) {
+          const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+          const handleChange = function() {
+            if (getSavedTheme() === 'system') {
+              applyTheme('system');
+              window.dispatchEvent(new CustomEvent('ahkh-theme-change', { detail: { theme: 'system' } }));
+            }
+          };
+          if (mediaQuery.addEventListener) {
+            mediaQuery.addEventListener('change', handleChange);
+          } else if (mediaQuery.addListener) {
+            mediaQuery.addListener(handleChange);
+          }
+        }
+
+        window.addEventListener('storage', function(e) {
+          if (e.key === 'ahkh_theme') {
+            const next = e.newValue || 'system';
+            applyTheme(next);
+            window.dispatchEvent(new CustomEvent('ahkh-theme-change', { detail: { theme: next } }));
+          }
+        });
+      })();
+    </script>
   </head>
   <body class="bg-paper-50 dark:bg-dark-bg text-ink dark:text-dark-ink min-h-screen flex flex-col selection:bg-paper-200 dark:selection:bg-dark-border selection:text-ink dark:selection:text-dark-ink transition-colors duration-150">
     <slot />
-
-    <script is:inline>
-      // Global theme preference initializer
-      const savedTheme = localStorage.getItem('ahkh_theme');
-      if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      }
-    </script>
   </body>
 </html>

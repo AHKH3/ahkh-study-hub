@@ -7,19 +7,19 @@ import { path } from '../utils/paths';
 const STATUS_CONFIG: Record<CourseStatus, { label: string; classes: string }> = {
   active: {
     label: 'Active',
-    classes: 'text-emerald-700 bg-emerald-50 border-emerald-200',
+    classes: 'text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800',
   },
   new: {
     label: 'New',
-    classes: 'text-blue-700 bg-blue-50 border-blue-200',
+    classes: 'text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800',
   },
   explored: {
     label: 'Explored',
-    classes: 'text-purple-700 bg-purple-50 border-purple-200',
+    classes: 'text-purple-700 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 border-purple-200 dark:border-purple-800',
   },
   completed: {
     label: 'Completed',
-    classes: 'text-pink-700 bg-pink-50 border-pink-200',
+    classes: 'text-pink-700 dark:text-pink-400 bg-pink-50 dark:bg-pink-950/40 border-pink-200 dark:border-pink-800',
   },
 };
 ---
@@ -30,32 +30,32 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; classes: string }> = 
   <main class="flex-1 max-w-hub w-full mx-auto px-6 py-12">
     <!-- Header Section -->
     <div class="mb-8 flex items-baseline justify-between gap-4">
-      <h1 class="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-ink">
+      <h1 class="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-ink dark:text-dark-ink">
         Index of Curricula
       </h1>
-      <div class="font-mono text-xs text-ink-muted shrink-0">
+      <div class="font-mono text-xs text-ink-muted dark:text-dark-muted shrink-0">
         Total Courses: 0{COURSES.length}
       </div>
     </div>
 
     <!-- The Editorial Monograph List -->
-    <div class="divide-y divide-ink-border/80 border-t border-b border-ink-border mb-16">
+    <div class="divide-y divide-ink-border/80 dark:divide-dark-border border-t border-b border-ink-border dark:border-dark-border mb-16">
       {COURSES.map((course, index) => {
         const num = String(index + 1).padStart(2, '0');
         const statusMeta = STATUS_CONFIG[course.status];
         return (
-          <article class="group py-5 sm:py-6 transition-colors hover:bg-paper-200/40 px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-xs">
+          <article class="group py-5 sm:py-6 transition-colors hover:bg-paper-200/40 dark:hover:bg-dark-card/60 px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-xs">
             <a href={path(`/courses/${course.slug}`)} class="block focus:outline-hidden">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 
                 <!-- Left: Number & Course Info -->
                 <div class="flex items-start sm:items-center gap-4 sm:gap-6 min-w-0">
-                  <span class="font-mono text-xs sm:text-sm text-ink-muted font-medium shrink-0 pt-0.5 sm:pt-0">
+                  <span class="font-mono text-xs sm:text-sm text-ink-muted dark:text-dark-muted font-medium shrink-0 pt-0.5 sm:pt-0">
                     {num}
                   </span>
                   <div>
                     <div class="flex flex-wrap items-center gap-2.5">
-                      <h2 class="font-serif text-xl sm:text-2xl font-medium text-ink group-hover:text-black group-hover:underline transition-colors">
+                      <h2 class="font-serif text-xl sm:text-2xl font-medium text-ink dark:text-dark-ink group-hover:text-black dark:group-hover:text-white group-hover:underline transition-colors">
                         {course.title}
                       </h2>
                       {statusMeta && (
@@ -65,7 +65,7 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; classes: string }> = 
                       )}
                     </div>
                     <!-- Metadata metrics: Module count, Source count, Duration -->
-                    <div class="flex items-center gap-3 text-xs font-mono text-ink-muted/80 mt-1.5">
+                    <div class="flex items-center gap-3 text-xs font-mono text-ink-muted/80 dark:text-dark-muted/80 mt-1.5">
                       <span>{course.totalModules} Modules</span>
                       <span>·</span>
                       <span>{course.totalSources} Sources</span>
@@ -83,10 +83,10 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; classes: string }> = 
 
                 <!-- Right: Progress Indicator -->
                 <div class="flex items-center shrink-0 pl-8 sm:pl-0">
-                  <div class="flex items-center gap-2 font-mono text-xs text-ink">
-                    <div class="w-24 sm:w-28 h-1.5 bg-paper-300 rounded-full overflow-hidden">
+                  <div class="flex items-center gap-2 font-mono text-xs text-ink dark:text-dark-ink">
+                    <div class="w-24 sm:w-28 h-1.5 bg-paper-300 dark:bg-dark-border rounded-full overflow-hidden">
                       <div 
-                        class="h-full bg-ink transition-all"
+                        class="h-full bg-ink dark:bg-dark-ink transition-all"
                         style={`width: ${course.progressPercent}%`}
                       ></div>
                     </div>
@@ -102,12 +102,12 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; classes: string }> = 
     </div>
 
     <!-- Quiet Editorial Philosophy Footnote -->
-    <div class="p-6 rounded-xs bg-paper-200/50 border border-ink-border text-xs text-ink-muted leading-relaxed font-sans flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div class="p-6 rounded-xs bg-paper-200/50 dark:bg-dark-card/50 border border-ink-border dark:border-dark-border text-xs text-ink-muted dark:text-dark-muted leading-relaxed font-sans flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div>
-        <p class="font-medium text-ink mb-0.5">The Sanctuary Standard</p>
+        <p class="font-medium text-ink dark:text-dark-ink mb-0.5">The Sanctuary Standard</p>
         <p>Zero distractions, zero advertisements, zero algorithmic feeds. Every lesson is formatted for reading longevity.</p>
       </div>
-      <a href={path('/manifesto')} class="underline text-ink hover:text-black shrink-0 font-medium">
+      <a href={path('/manifesto')} class="underline text-ink dark:text-dark-ink hover:text-black dark:hover:text-white shrink-0 font-medium">
         Read the Manifesto &rarr;
       </a>
     </div>

@@ -1,0 +1,133 @@
+---
+interface Props {
+  class?: string;
+  size?: 'sm' | 'md';
+}
+
+const { class: className = '', size = 'sm' } = Astro.props;
+---
+
+<div 
+  class:list={[
+    "theme-switcher inline-flex items-center p-0.5 rounded-sm bg-paper-200/60 dark:bg-dark-card border border-ink-border/60 dark:border-dark-border text-ink-muted dark:text-dark-muted transition-colors",
+    size === 'sm' ? "text-xs" : "text-sm",
+    className
+  ]}
+  role="group"
+  aria-label="Theme selection"
+>
+  <!-- Light Mode Button -->
+  <button
+    type="button"
+    data-theme-value="light"
+    class="theme-btn p-1.5 rounded-xs transition-all hover:text-ink dark:hover:text-dark-ink cursor-pointer focus:outline-hidden"
+    title="Light mode"
+    aria-label="Switch to Light mode"
+  >
+    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2"/>
+      <path d="M12 20v2"/>
+      <path d="m4.93 4.93 1.41 1.41"/>
+      <path d="m17.66 17.66 1.41 1.41"/>
+      <path d="M2 12h2"/>
+      <path d="M20 12h2"/>
+      <path d="m6.34 17.66-1.41 1.41"/>
+      <path d="m19.07 4.93-1.41 1.41"/>
+    </svg>
+  </button>
+
+  <!-- System Mode Button -->
+  <button
+    type="button"
+    data-theme-value="system"
+    class="theme-btn p-1.5 rounded-xs transition-all hover:text-ink dark:hover:text-dark-ink cursor-pointer focus:outline-hidden"
+    title="System preference"
+    aria-label="Switch to System preference"
+  >
+    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect width="20" height="14" x="2" y="3" rx="2"/>
+      <line x1="8" x2="16" y1="21" y2="21"/>
+      <line x1="12" x2="12" y1="17" y2="21"/>
+    </svg>
+  </button>
+
+  <!-- Dark Mode Button -->
+  <button
+    type="button"
+    data-theme-value="dark"
+    class="theme-btn p-1.5 rounded-xs transition-all hover:text-ink dark:hover:text-dark-ink cursor-pointer focus:outline-hidden"
+    title="Dark mode"
+    aria-label="Switch to Dark mode"
+  >
+    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+    </svg>
+  </button>
+</div>
+
+<script>
+  function initThemeSwitchers() {
+    const switchers = document.querySelectorAll('.theme-switcher');
+    if (!switchers.length) return;
+
+    function updateActiveStyles(theme: string) {
+      switchers.forEach((switcher) => {
+        const buttons = switcher.querySelectorAll<HTMLButtonElement>('.theme-btn');
+        buttons.forEach((btn) => {
+          const val = btn.getAttribute('data-theme-value');
+          const isActive = val === theme;
+          btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+          if (isActive) {
+            btn.classList.add(
+              'bg-paper-50',
+              'dark:bg-dark-border',
+              'text-ink',
+              'dark:text-dark-ink',
+              'shadow-2xs'
+            );
+            btn.classList.remove('text-ink-muted', 'dark:text-dark-muted');
+          } else {
+            btn.classList.remove(
+              'bg-paper-50',
+              'dark:bg-dark-border',
+              'text-ink',
+              'dark:text-dark-ink',
+              'shadow-2xs'
+            );
+            btn.classList.add('text-ink-muted', 'dark:text-dark-muted');
+          }
+        });
+      });
+    }
+
+    const currentTheme = (window as any).__getTheme ? (window as any).__getTheme() : (localStorage.getItem('ahkh_theme') || 'system');
+    updateActiveStyles(currentTheme);
+
+    switchers.forEach((switcher) => {
+      const buttons = switcher.querySelectorAll<HTMLButtonElement>('.theme-btn');
+      buttons.forEach((btn) => {
+        btn.onclick = () => {
+          const target = btn.getAttribute('data-theme-value');
+          if (target && (window as any).__setTheme) {
+            (window as any).__setTheme(target);
+          }
+        };
+      });
+    });
+
+    window.addEventListener('ahkh-theme-change', ((e: CustomEvent) => {
+      if (e.detail && e.detail.theme) {
+        updateActiveStyles(e.detail.theme);
+      }
+    }) as EventListener);
+  }
+
+  // Initialize on load and Astro page transitions
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initThemeSwitchers);
+  } else {
+    initThemeSwitchers();
+  }
+  document.addEventListener('astro:page-load', initThemeSwitchers);
+</script>

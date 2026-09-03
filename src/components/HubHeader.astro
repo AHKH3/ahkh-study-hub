@@ -1,5 +1,6 @@
 ---
 import { path } from '../utils/paths';
+import ThemeSwitcher from './ThemeSwitcher.astro';
 
 interface Props {
   activeTab?: 'library' | 'manifesto' | 'commonplace';
@@ -9,7 +10,7 @@ const { activeTab = 'library' } = Astro.props;
 ---
 
 <header class="w-full border-b border-ink-border/60 dark:border-dark-border bg-paper-100/90 dark:bg-dark-bg/90 backdrop-blur-sm sticky top-0 z-30 transition-colors">
-  <div class="max-w-hub mx-auto px-6 h-16 flex items-center justify-between">
+  <div class="max-w-hub mx-auto px-6 h-16 flex items-center justify-between gap-4">
     <!-- Brand -->
     <a href={path('/')} class="group flex items-center gap-2.5 py-1">
       <img 
@@ -20,45 +21,51 @@ const { activeTab = 'library' } = Astro.props;
       <span class="font-serif text-lg sm:text-xl font-medium tracking-tight text-ink dark:text-dark-ink">study hub</span>
     </a>
 
-    <!-- Navigation Links -->
-    <nav class="flex items-center gap-1 sm:gap-2 text-sm font-sans">
-      <a 
-        href={path('/')} 
-        class:list={[
-          "px-3 py-1.5 rounded-sm transition-colors",
-          activeTab === 'library' 
-            ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border border-ink-border/60 dark:border-dark-border" 
-            : "text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
-        ]}
-      >
-        Library
-      </a>
-      <a 
-        href={path('/manifesto')} 
-        class:list={[
-          "px-3 py-1.5 rounded-sm transition-colors",
-          activeTab === 'manifesto' 
-            ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border border-ink-border/60 dark:border-dark-border" 
-            : "text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
-        ]}
-      >
-        Manifesto
-      </a>
-      <a 
-        href={path('/commonplace')} 
-        class:list={[
-          "px-3 py-1.5 rounded-sm transition-colors flex items-center gap-1.5",
-          activeTab === 'commonplace' 
-            ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border border-ink-border/60 dark:border-dark-border" 
-            : "text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
-        ]}
-      >
-        Commonplace
-        <span id="global-highlight-badge" class="hidden font-mono text-[11px] px-1.5 py-0.2 rounded-full bg-ink/10 dark:bg-dark-border text-ink dark:text-dark-ink">
-          0
-        </span>
-      </a>
-    </nav>
+    <!-- Navigation Links & Theme Controls -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <nav class="flex items-center gap-1 sm:gap-2 text-sm font-sans">
+        <a 
+          href={path('/')} 
+          class:list={[
+            "px-3 py-1.5 rounded-sm transition-colors",
+            activeTab === 'library' 
+              ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border border-ink-border/60 dark:border-dark-border" 
+              : "text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
+          ]}
+        >
+          Library
+        </a>
+        <a 
+          href={path('/manifesto')} 
+          class:list={[
+            "px-3 py-1.5 rounded-sm transition-colors",
+            activeTab === 'manifesto' 
+              ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border border-ink-border/60 dark:border-dark-border" 
+              : "text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
+          ]}
+        >
+          Manifesto
+        </a>
+        <a 
+          href={path('/commonplace')} 
+          class:list={[
+            "px-3 py-1.5 rounded-sm transition-colors flex items-center gap-1.5",
+            activeTab === 'commonplace' 
+              ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border border-ink-border/60 dark:border-dark-border" 
+              : "text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
+          ]}
+        >
+          Commonplace
+          <span id="global-highlight-badge" class="hidden font-mono text-[11px] px-1.5 py-0.2 rounded-full bg-ink/10 dark:bg-dark-border text-ink dark:text-dark-ink">
+            0
+          </span>
+        </a>
+      </nav>
+
+      <div class="h-4 w-px bg-ink-border/60 dark:bg-dark-border" aria-hidden="true"></div>
+
+      <ThemeSwitcher />
+    </div>
   </div>
 </header>
 
