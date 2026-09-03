@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HubHeader from '../components/HubHeader.astro';
+import { path } from '../utils/paths';
 ---
 
 <BaseLayout 
@@ -116,14 +117,14 @@ import HubHeader from '../components/HubHeader.astro';
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
         <a 
-          href="/courses/springboard-ux/the-art-of-ethical-ux" 
+          href={path('/courses/springboard-ux/the-art-of-ethical-ux')} 
           class="inline-flex items-center gap-2 text-xs font-sans font-medium px-4 py-2.5 rounded-xs bg-ink dark:bg-dark-ink text-paper-50 dark:text-dark-bg hover:bg-ink/90 dark:hover:bg-dark-ink/90 transition-colors"
         >
           <span>Explore Springboard UX</span>
           <span aria-hidden="true">&rarr;</span>
         </a>
         <a 
-          href="/manifesto" 
+          href={path('/manifesto')} 
           class="inline-flex items-center gap-2 text-xs font-sans font-medium px-4 py-2.5 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card text-ink dark:text-dark-ink hover:bg-paper-200 dark:hover:bg-dark-border/40 transition-colors"
         >
           <span>Highlight The Manifesto</span>

@@ -1,4 +1,6 @@
 ---
+import { path } from '../utils/paths';
+
 interface Props {
   activeTab?: 'library' | 'manifesto' | 'commonplace';
 }
@@ -9,9 +11,9 @@ const { activeTab = 'library' } = Astro.props;
 <header class="w-full border-b border-ink-border/60 dark:border-dark-border bg-paper-100/90 dark:bg-dark-bg/90 backdrop-blur-sm sticky top-0 z-30 transition-colors">
   <div class="max-w-hub mx-auto px-6 h-16 flex items-center justify-between">
     <!-- Brand -->
-    <a href="/" class="group flex items-center gap-2.5 py-1">
+    <a href={path('/')} class="group flex items-center gap-2.5 py-1">
       <img 
-        src="/logo.png" 
+        src={path('/logo.png')} 
         alt="AHKH" 
         class="h-6 sm:h-7 w-auto object-contain shrink-0" 
       />
@@ -21,7 +23,7 @@ const { activeTab = 'library' } = Astro.props;
     <!-- Navigation Links -->
     <nav class="flex items-center gap-1 sm:gap-2 text-sm font-sans">
       <a 
-        href="/" 
+        href={path('/')} 
         class:list={[
           "px-3 py-1.5 rounded-sm transition-colors",
           activeTab === 'library' 
@@ -32,7 +34,7 @@ const { activeTab = 'library' } = Astro.props;
         Library
       </a>
       <a 
-        href="/manifesto" 
+        href={path('/manifesto')} 
         class:list={[
           "px-3 py-1.5 rounded-sm transition-colors",
           activeTab === 'manifesto' 
@@ -43,7 +45,7 @@ const { activeTab = 'library' } = Astro.props;
         Manifesto
       </a>
       <a 
-        href="/commonplace" 
+        href={path('/commonplace')} 
         class:list={[
           "px-3 py-1.5 rounded-sm transition-colors flex items-center gap-1.5",
           activeTab === 'commonplace' 

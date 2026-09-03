@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { COURSES } from '../../../data/courses';
+import { COURSES, getCourseBySlug } from '../../../data/courses';
+import { path } from '../../../utils/paths';
 
 export function getStaticPaths() {
   return COURSES.map((course) => ({
@@ -16,7 +17,7 @@ const { course } = Astro.props;
   <!-- Minimal Top Header for Course -->
   <header class="w-full border-b border-ink-border bg-paper-100/90 backdrop-blur-sm sticky top-0 z-30">
     <div class="max-w-hub mx-auto px-6 h-14 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2 text-xs font-sans font-medium text-ink-muted hover:text-ink transition-colors group">
+      <a href={path('/')} class="flex items-center gap-2 text-xs font-sans font-medium text-ink-muted hover:text-ink transition-colors group">
         <svg class="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="m15 18-6-6 6-6"/>
         </svg>
@@ -92,7 +93,7 @@ const { course } = Astro.props;
               <div class="space-y-3.5 pl-3 sm:pl-4">
                 {mod.lessons.map((lesson) => (
                   <article class="group relative rounded-xs border border-ink-border/80 bg-paper-50 hover:border-ink hover:shadow-xs transition-all p-4">
-                    <a href={`/courses/${course.slug}/${lesson.slug}`} class="block focus:outline-hidden">
+                    <a href={path(`/courses/${course.slug}/${lesson.slug}`)} class="block focus:outline-hidden">
                       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                         
                         <!-- Title & Meta -->
