@@ -346,13 +346,18 @@ import HubHeader from '../components/HubHeader.astro';
         const courseName = item.courseName || item.courseTitle || 'Curriculum';
         const lessonTitle = item.lessonTitle || 'Lesson';
         
-        // Dynamic course badge color:
-        // Terracotta for Springboard UX; Emerald/Blue for Canon/Manifesto; Purple for others.
-        let badgeColorClass = 'text-purple-700 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 border-purple-200 dark:border-purple-800';
-        if (courseName.toLowerCase().includes('springboard')) {
-          badgeColorClass = 'text-course-terracotta bg-paper-200/60 dark:bg-dark-border/40 border-course-terracotta/30';
-        } else if (courseName.toLowerCase().includes('canon') || courseName.toLowerCase().includes('manifesto')) {
-          badgeColorClass = 'text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800';
+        let dotColor = 'bg-ink-muted dark:bg-dark-muted';
+        const cn = courseName.toLowerCase();
+        if (cn.includes('springboard')) {
+          dotColor = 'bg-course-terracotta';
+        } else if (cn.includes('canon') || cn.includes('manifesto')) {
+          dotColor = 'bg-emerald-500';
+        } else if (cn.includes('systems') || cn.includes('architecture')) {
+          dotColor = 'bg-blue-500';
+        } else if (cn.includes('typography') || cn.includes('swiss')) {
+          dotColor = 'bg-pink-500';
+        } else {
+          dotColor = 'bg-purple-500';
         }
 
         // Direct anchor link to the highlighted text inside the lesson
@@ -362,13 +367,14 @@ import HubHeader from '../components/HubHeader.astro';
           <article class="py-7 border-b border-ink-border/60 dark:border-dark-border/60 first:pt-4 last:border-b-0 space-y-3 transition-colors" data-id="${escapeAttr(item.id)}">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
               <div class="flex items-center flex-wrap gap-2 text-xs font-mono">
-                <span class="px-2 py-0.5 rounded-2xs border text-[11px] font-medium ${badgeColorClass}">
-                  ${escapeHtml(courseName)}
+                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-2xs border border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-card text-[11px] font-medium text-ink dark:text-dark-ink">
+                  <span class="w-1.5 h-1.5 rounded-full ${dotColor}" aria-hidden="true"></span>
+                  <span>${escapeHtml(courseName)}</span>
                 </span>
                 <span class="text-ink-faint dark:text-dark-muted" aria-hidden="true">/</span>
                 <a 
                   href="${escapeHtml(targetUrl)}" 
-                  class="text-ink dark:text-dark-ink font-medium hover:underline hover:text-purple-700 dark:hover:text-purple-400 transition-colors"
+                  class="text-ink dark:text-dark-ink font-medium hover:underline transition-colors"
                   title="Jump to highlighted passage in lesson"
                 >
                   ${escapeHtml(lessonTitle)}
@@ -383,7 +389,7 @@ import HubHeader from '../components/HubHeader.astro';
                 <button 
                   onclick="copyPassageText(this)"
                   data-quote="${escapeAttr(item.text)}"
-                  class="p-1.5 rounded-xs text-ink-muted dark:text-dark-muted hover:text-purple-700 dark:hover:text-purple-400 hover:bg-paper-200/60 dark:hover:bg-dark-border/60 transition-colors cursor-pointer flex items-center justify-center min-w-[28px] min-h-[28px]"
+                  class="p-1.5 rounded-xs text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/60 dark:hover:bg-dark-border/60 transition-colors cursor-pointer flex items-center justify-center min-w-[28px] min-h-[28px]"
                   title="Copy quote text"
                   aria-label="Copy quote text"
                 >
@@ -405,19 +411,19 @@ import HubHeader from '../components/HubHeader.astro';
               </div>
             </div>
 
-            <blockquote class="font-serif text-lg sm:text-xl leading-relaxed text-ink dark:text-dark-ink italic pl-5 border-l-2 border-purple-600/80 dark:border-purple-400/80 my-2.5 max-w-reading">
+            <blockquote class="font-serif text-lg sm:text-xl leading-relaxed text-ink dark:text-dark-ink italic pl-5 border-l-2 border-ink-border dark:border-dark-border my-2.5 max-w-reading">
               ${escapeHtml(item.text)}
             </blockquote>
 
             ${item.note && item.note.trim() ? `
-              <div class="p-3.5 rounded-xs bg-purple-50/60 dark:bg-purple-950/20 border border-purple-200/70 dark:border-purple-800/40 flex items-start gap-3 max-w-reading transition-colors">
-                <div class="text-purple-600 dark:text-purple-400 shrink-0 mt-0.5" aria-hidden="true">
+              <div class="p-3.5 rounded-xs bg-paper-100/70 dark:bg-dark-card border border-ink-border/80 dark:border-dark-border flex items-start gap-3 max-w-reading transition-colors">
+                <div class="text-ink-muted dark:text-dark-muted shrink-0 mt-0.5" aria-hidden="true">
                   <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
                   </svg>
                 </div>
                 <div class="space-y-0.5">
-                  <div class="font-mono text-[11px] uppercase tracking-wider text-purple-700 dark:text-purple-400 font-medium">
+                  <div class="font-mono text-[11px] uppercase tracking-wider text-ink-muted dark:text-dark-muted font-medium">
                     Marginalia
                   </div>
                   <p class="font-sans text-sm text-ink dark:text-dark-ink leading-relaxed">
@@ -666,7 +672,7 @@ import HubHeader from '../components/HubHeader.astro';
           const isSelected = t.getAttribute('data-filter') === filter;
           t.className = `filter-tab px-3 py-1.5 rounded-xs font-medium border transition-colors cursor-pointer whitespace-nowrap ${
             isSelected 
-              ? 'border-purple-600 dark:border-purple-400 bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-400' 
+              ? 'border-ink dark:border-dark-ink bg-ink dark:bg-dark-ink text-paper-50 dark:text-dark-bg' 
               : 'border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink'
           }`;
         });
