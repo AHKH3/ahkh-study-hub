@@ -193,9 +193,9 @@ const { course, lesson } = Astro.props;
     <!-- LEFT SIDEBAR: Outline / TOC Only -->
     <aside 
       id="left-sidebar"
-      class="w-64 shrink-0 border-r border-ink-border/80 bg-paper-100/60 h-[calc(100vh-4rem)] sticky top-16 overflow-y-auto p-6 hidden md:block transition-all duration-200"
+      class="w-64 shrink-0 border-r border-ink-border/80 dark:border-dark-border bg-paper-100/60 dark:bg-dark-bg/60 h-[calc(100vh-4rem)] sticky top-16 overflow-y-auto p-6 hidden md:block transition-all duration-200"
     >
-      <div class="font-mono text-[11px] uppercase tracking-widest text-ink-muted mb-4 pb-2 border-b border-ink-border/60">
+      <div class="font-mono text-[11px] uppercase tracking-widest text-ink-muted dark:text-dark-muted mb-4 pb-2 border-b border-ink-border/60 dark:border-dark-border">
         Document Outline
       </div>
       <nav class="space-y-2 text-xs font-sans">
@@ -203,7 +203,7 @@ const { course, lesson } = Astro.props;
           <a 
             href={`#${item.id}`}
             class:list={[
-              "block text-ink-muted hover:text-ink transition-colors line-clamp-1 py-1 px-1.5 rounded-xs hover:bg-paper-200/60",
+              "block text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink transition-colors line-clamp-1 py-1 px-1.5 rounded-xs hover:bg-paper-200/60 dark:hover:bg-dark-card/60",
               item.level === 3 ? "pl-4 text-[11px]" : "font-medium"
             ]}
           >
@@ -212,8 +212,8 @@ const { course, lesson } = Astro.props;
         ))}
       </nav>
 
-      <div class="mt-8 pt-4 border-t border-ink-border/60">
-        <div class="font-mono text-[10px] text-ink-muted mb-1">Source Information</div>
+      <div class="mt-8 pt-4 border-t border-ink-border/60 dark:border-dark-border">
+        <div class="font-mono text-[10px] text-ink-muted dark:text-dark-muted mb-1">Source Information</div>
         <a 
           href={lesson.originalSourceUrl || "#"} 
           target="_blank" 
@@ -229,8 +229,8 @@ const { course, lesson } = Astro.props;
     <main id="center-reading-column" class="flex-1 px-6 sm:px-12 py-10 max-w-reading mx-auto transition-all duration-200 relative">
       
       <!-- Article Heading Block -->
-      <div class="mb-10 pb-6 border-b border-ink-border/80">
-        <div class="flex items-center gap-2 font-mono text-xs text-ink-muted mb-2">
+      <div class="mb-10 pb-6 border-b border-ink-border/80 dark:border-dark-border">
+        <div class="flex items-center gap-2 font-mono text-xs text-ink-muted dark:text-dark-muted mb-2">
           <span>Unit {lesson.unitNumber}</span>
           <span>·</span>
           <span>Lesson {lesson.lessonNumber}</span>
@@ -238,18 +238,18 @@ const { course, lesson } = Astro.props;
           <span>{lesson.readTime} read</span>
         </div>
 
-        <h1 class="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-ink mb-4 leading-tight">
+        <h1 class="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-ink dark:text-dark-ink mb-4 leading-tight">
           {lesson.title}
         </h1>
 
-        <p class="font-serif text-base sm:text-lg text-ink-muted italic leading-relaxed border-l-2 border-course-terracotta pl-4 py-1">
+        <p class="font-serif text-base sm:text-lg text-ink-muted dark:text-dark-muted italic leading-relaxed border-l-2 border-course-terracotta pl-4 py-1">
           "{lesson.summaryQuote}"
         </p>
       </div>
 
       <!-- VIDEO PLAYER IF TYPE == VIDEO -->
       {lesson.type === 'video' && lesson.youtubeId && (
-        <div class="mb-10 rounded-xs overflow-hidden border border-ink-border bg-ink shadow-sm">
+        <div class="mb-10 rounded-xs overflow-hidden border border-ink-border dark:border-dark-border bg-ink dark:bg-dark-card shadow-sm">
           <div class="aspect-video w-full">
             <iframe 
               id="youtube-player"
@@ -260,13 +260,13 @@ const { course, lesson } = Astro.props;
               allowfullscreen
             ></iframe>
           </div>
-          <div class="p-3 bg-paper-200/90 border-t border-ink-border flex items-center justify-between text-xs font-sans">
-            <span class="text-ink-muted flex items-center gap-1.5">
+          <div class="p-3 bg-paper-200/90 dark:bg-dark-card border-t border-ink-border dark:border-dark-border flex items-center justify-between text-xs font-sans">
+            <span class="text-ink-muted dark:text-dark-muted flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
               Video Lecture & Synced Transcript
             </span>
-            <label class="flex items-center gap-2 cursor-pointer text-ink font-medium">
-              <input type="checkbox" id="auto-scroll-sync" checked class="rounded-xs text-ink" />
+            <label class="flex items-center gap-2 cursor-pointer text-ink dark:text-dark-ink font-medium">
+              <input type="checkbox" id="auto-scroll-sync" checked class="rounded-xs text-ink dark:text-dark-ink" />
               Auto-Scroll Transcript
             </label>
           </div>
@@ -279,17 +279,17 @@ const { course, lesson } = Astro.props;
       </div>
 
       <!-- BOTTOM NAVIGATION (Next / Previous Lesson) -->
-      <div class="mt-16 pt-8 border-t border-ink-border flex items-center justify-between gap-4 font-sans text-xs">
+      <div class="mt-16 pt-8 border-t border-ink-border dark:border-dark-border flex items-center justify-between gap-4 font-sans text-xs">
         <a 
           href={path(`/courses/${course.slug}`)}
-          class="text-ink-muted hover:text-ink flex items-center gap-1 font-medium"
+          class="text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink flex items-center gap-1 font-medium"
         >
           &larr; Back to Journey
         </a>
 
         <button 
           onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-          class="text-ink-muted hover:text-ink font-mono"
+          class="text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink font-mono cursor-pointer"
         >
           Top ↑
         </button>
@@ -300,16 +300,16 @@ const { course, lesson } = Astro.props;
     <!-- RIGHT SIDEBAR: Highlights & Notes Only -->
     <aside 
       id="right-sidebar"
-      class="w-72 shrink-0 border-l border-ink-border/80 bg-paper-100/60 h-[calc(100vh-4rem)] sticky top-16 overflow-y-auto p-6 hidden lg:block transition-all duration-200"
+      class="w-72 shrink-0 border-l border-ink-border/80 dark:border-dark-border bg-paper-100/60 dark:bg-dark-bg/60 h-[calc(100vh-4rem)] sticky top-16 overflow-y-auto p-6 hidden lg:block transition-all duration-200"
     >
-      <div class="flex items-center justify-between mb-4 pb-2 border-b border-ink-border/60">
-        <div class="font-mono text-[11px] uppercase tracking-widest text-ink-muted">
+      <div class="flex items-center justify-between mb-4 pb-2 border-b border-ink-border/60 dark:border-dark-border">
+        <div class="font-mono text-[11px] uppercase tracking-widest text-ink-muted dark:text-dark-muted">
           Highlights & Marginalia
         </div>
-        <span id="sidebar-count" class="font-mono text-xs text-ink-muted">0</span>
+        <span id="sidebar-count" class="font-mono text-xs text-ink-muted dark:text-dark-muted">0</span>
       </div>
 
-      <p class="text-xs font-sans text-ink-muted mb-4">
+      <p class="text-xs font-sans text-ink-muted dark:text-dark-muted mb-4">
         Select any passage in the article to highlight it instantly and record marginalia.
       </p>
 
@@ -324,11 +324,11 @@ const { course, lesson } = Astro.props;
   <!-- 4. FLOATING ACTION POPOVER (Appears over selected text or clicked highlight) -->
   <div 
     id="selection-popover"
-    class="hidden fixed z-50 bg-paper-50 border border-ink shadow-md rounded-xs py-1 px-1.5 flex items-center gap-1 text-xs font-sans animate-in fade-in"
+    class="hidden fixed z-50 bg-paper-50 dark:bg-dark-card border border-ink dark:border-dark-border shadow-md rounded-xs py-1 px-1.5 flex items-center gap-1 text-xs font-sans animate-in fade-in"
   >
     <button 
       id="popover-hl-btn"
-      class="px-2.5 py-1 rounded-xs bg-ink text-paper-50 hover:bg-ink/90 font-medium flex items-center gap-1.5 transition-colors cursor-pointer"
+      class="px-2.5 py-1 rounded-xs bg-ink dark:bg-dark-ink text-paper-50 dark:text-dark-bg hover:bg-ink/90 dark:hover:bg-dark-ink/90 font-medium flex items-center gap-1.5 transition-colors cursor-pointer"
     >
       <span id="popover-hl-icon" class="flex items-center">
         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -340,10 +340,10 @@ const { course, lesson } = Astro.props;
     </button>
     <button 
       id="popover-note-btn"
-      class="px-2 py-1 rounded-xs hover:bg-paper-200 text-ink flex items-center gap-1.5 transition-colors cursor-pointer"
+      class="px-2 py-1 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center gap-1.5 transition-colors cursor-pointer"
       title="Add or Edit Sidenote"
     >
-      <svg class="w-3.5 h-3.5 text-ink-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg class="w-3.5 h-3.5 text-ink-muted dark:text-dark-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 20h9"/>
         <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
       </svg>
@@ -351,11 +351,11 @@ const { course, lesson } = Astro.props;
     </button>
     <button 
       id="popover-copy-btn"
-      class="px-2 py-1 rounded-xs hover:bg-paper-200 text-ink flex items-center gap-1.5 transition-colors cursor-pointer"
+      class="px-2 py-1 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center gap-1.5 transition-colors cursor-pointer"
       title="Copy Quote with Citation"
     >
       <span id="popover-copy-icon" class="flex items-center">
-        <svg class="w-3.5 h-3.5 text-ink-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="w-3.5 h-3.5 text-ink-muted dark:text-dark-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
           <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
         </svg>
@@ -367,34 +367,34 @@ const { course, lesson } = Astro.props;
   <!-- 5. INLINE NOTE MODAL INPUT -->
   <div 
     id="note-dialog"
-    class="hidden fixed inset-0 z-50 bg-ink/20 backdrop-blur-xs flex items-center justify-center p-4"
+    class="hidden fixed inset-0 z-50 bg-ink/20 dark:bg-black/60 backdrop-blur-xs flex items-center justify-center p-4"
   >
-    <div class="w-full max-w-md bg-paper-50 border border-ink p-5 rounded-xs shadow-xl space-y-3">
+    <div class="w-full max-w-md bg-paper-50 dark:bg-dark-card border border-ink dark:border-dark-border p-5 rounded-xs shadow-xl space-y-3">
       <div class="flex items-center justify-between">
-        <div class="font-serif text-base font-medium text-ink flex items-center gap-2">
+        <div class="font-serif text-base font-medium text-ink dark:text-dark-ink flex items-center gap-2">
           <svg class="w-4 h-4 text-course-terracotta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
           </svg>
           Record Sidenote / Marginalia
         </div>
-        <button id="close-note-dialog-btn" class="p-1 rounded-xs text-ink-faint hover:text-ink transition-colors cursor-pointer" aria-label="Close dialog">
+        <button id="close-note-dialog-btn" class="p-1 rounded-xs text-ink-faint dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink transition-colors cursor-pointer" aria-label="Close dialog">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 6 6 18M6 6l12 12"/>
           </svg>
         </button>
       </div>
-      <p id="note-quote-preview" class="font-serif text-xs text-ink-muted italic line-clamp-2 border-l border-course-terracotta pl-2"></p>
+      <p id="note-quote-preview" class="font-serif text-xs text-ink-muted dark:text-dark-muted italic line-clamp-2 border-l border-course-terracotta pl-2"></p>
       <textarea 
         id="note-input-text"
         rows="3"
         placeholder="Write your observation, question, or synthesis..."
-        class="w-full p-2.5 text-xs font-sans rounded-xs border border-ink-border bg-paper-100 placeholder:text-ink-faint focus:outline-hidden focus:border-ink resize-none"
+        class="w-full p-2.5 text-xs font-sans rounded-xs border border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-bg text-ink dark:text-dark-ink placeholder:text-ink-faint dark:placeholder:text-dark-muted focus:outline-hidden focus:border-ink dark:focus:border-dark-ink resize-none"
       ></textarea>
       <div class="flex items-center justify-between gap-2 pt-1">
-        <span class="text-[10px] font-mono text-ink-faint">Esc to cancel · Ctrl+Enter to save</span>
+        <span class="text-[10px] font-mono text-ink-faint dark:text-dark-muted">Esc to cancel · Ctrl+Enter to save</span>
         <div class="flex items-center gap-2">
-          <button id="cancel-note-btn" class="px-3 py-1.5 text-xs font-sans text-ink-muted hover:text-ink cursor-pointer">Cancel</button>
-          <button id="save-note-btn" class="px-3.5 py-1.5 text-xs font-sans font-medium rounded-xs bg-ink text-paper-50 hover:bg-ink/90 cursor-pointer">Save Sidenote</button>
+          <button id="cancel-note-btn" class="px-3 py-1.5 text-xs font-sans text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink cursor-pointer">Cancel</button>
+          <button id="save-note-btn" class="px-3.5 py-1.5 text-xs font-sans font-medium rounded-xs bg-ink dark:bg-dark-ink text-paper-50 dark:text-dark-bg hover:bg-ink/90 dark:hover:bg-dark-ink/90 cursor-pointer">Save Sidenote</button>
         </div>
       </div>
     </div>
@@ -503,8 +503,8 @@ const { course, lesson } = Astro.props;
       rightSidebar?.removeAttribute('data-expanded');
       document.body.removeAttribute('data-zen-mode');
       document.body.removeAttribute('data-right-collapsed');
-      toggleZenBtn?.classList.remove('bg-ink', 'text-paper-50');
-      toggleZenBtn?.classList.add('bg-paper-50', 'text-ink-muted');
+      toggleZenBtn?.classList.remove('bg-ink', 'dark:bg-dark-ink', 'text-paper-50', 'dark:text-dark-bg');
+      toggleZenBtn?.classList.add('bg-paper-50', 'dark:bg-dark-card', 'text-ink-muted', 'dark:text-dark-muted');
     } else {
       // Collapse both sidebars -> centers reading canvas
       leftSidebar?.setAttribute('data-collapsed', 'true');
@@ -513,8 +513,8 @@ const { course, lesson } = Astro.props;
       rightSidebar?.removeAttribute('data-expanded');
       document.body.setAttribute('data-zen-mode', 'true');
       document.body.setAttribute('data-right-collapsed', 'true');
-      toggleZenBtn?.classList.add('bg-ink', 'text-paper-50');
-      toggleZenBtn?.classList.remove('bg-paper-50', 'text-ink-muted');
+      toggleZenBtn?.classList.add('bg-ink', 'dark:bg-dark-ink', 'text-paper-50', 'dark:text-dark-bg');
+      toggleZenBtn?.classList.remove('bg-paper-50', 'dark:bg-dark-card', 'text-ink-muted', 'dark:text-dark-muted');
     }
   }
 
@@ -560,11 +560,44 @@ const { course, lesson } = Astro.props;
     if (readingContent) readingContent.style.fontFamily = "'Geist', 'Inter', sans-serif";
   });
 
-  // Theme Dark toggle
-  document.getElementById('theme-toggle-btn')?.addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark');
-    const isDark = document.documentElement.classList.contains('dark');
-    localStorage.setItem('ahkh_theme', isDark ? 'dark' : 'light');
+  // Theme Controls (Light / System / Dark)
+  const readerThemeBtns = document.querySelectorAll('.reader-theme-btn');
+  const readerThemeLabel = document.getElementById('theme-mode-label');
+
+  function updateReaderThemeUI(theme) {
+    if (readerThemeLabel) {
+      readerThemeLabel.textContent = theme === 'system' ? 'AUTO' : theme.toUpperCase();
+    }
+    readerThemeBtns.forEach(btn => {
+      const val = btn.getAttribute('data-reader-theme');
+      const isActive = val === theme;
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      if (isActive) {
+        btn.classList.add('bg-paper-200', 'dark:bg-dark-border', 'border-ink', 'dark:border-dark-ink', 'font-medium');
+        btn.classList.remove('border-ink-border', 'dark:border-dark-border');
+      } else {
+        btn.classList.remove('bg-paper-200', 'dark:bg-dark-border', 'border-ink', 'dark:border-dark-ink', 'font-medium');
+        btn.classList.add('border-ink-border', 'dark:border-dark-border');
+      }
+    });
+  }
+
+  const currentTheme = (window.__getTheme ? window.__getTheme() : (localStorage.getItem('ahkh_theme') || 'system'));
+  updateReaderThemeUI(currentTheme);
+
+  readerThemeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const mode = btn.getAttribute('data-reader-theme');
+      if (mode && window.__setTheme) {
+        window.__setTheme(mode);
+      }
+    });
+  });
+
+  window.addEventListener('ahkh-theme-change', (e) => {
+    if (e.detail && e.detail.theme) {
+      updateReaderThemeUI(e.detail.theme);
+    }
   });
 
   // D. HIGHLIGHTING & MARGINALIA ENGINE
