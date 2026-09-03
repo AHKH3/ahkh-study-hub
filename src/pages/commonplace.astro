@@ -13,18 +13,9 @@ import HubHeader from '../components/HubHeader.astro';
     <!-- Header with Action Buttons & Canonical Rubric -->
     <header class="mb-10 pb-6 border-b border-ink-border dark:border-dark-border flex flex-col sm:flex-row sm:items-end justify-between gap-6 transition-colors">
       <div>
-        <div class="flex items-center gap-2 mb-2">
-          <span class="w-2 h-2 rounded-full bg-purple-600 dark:bg-purple-500" aria-hidden="true"></span>
-          <span class="font-mono text-xs uppercase tracking-widest text-purple-700 dark:text-purple-400 font-medium">
-            Canon // The Commonplace Book · دفتر الشواهد والمقتطفات
-          </span>
-        </div>
         <h1 class="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-ink dark:text-dark-ink">
-          Treasury of Scholarly Passages
+          The Commonplace Book
         </h1>
-        <p class="font-serif text-sm sm:text-base text-ink-muted dark:text-dark-muted mt-1.5 max-w-xl leading-relaxed">
-          A sovereign, local-first repository of extracted wisdom, personal marginalia, and architectural axioms gathered across your study journeys.
-        </p>
       </div>
 
       <!-- Sovereign Export Actions -->
@@ -34,7 +25,7 @@ import HubHeader from '../components/HubHeader.astro';
           class="px-3.5 py-2 text-xs font-sans font-medium rounded-xs border border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink transition-colors flex items-center gap-2 cursor-pointer shadow-2xs disabled:opacity-40 disabled:cursor-not-allowed"
           title="Export all highlights to universal Markdown format"
         >
-          <svg class="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <svg class="w-3.5 h-3.5 text-ink dark:text-dark-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <rect x="3" y="3" width="18" height="18" rx="2"/><path d="m7 15 3-6 3 6M14 13h4M14 9h4"/>
           </svg>
           <span>Export Markdown</span>
@@ -59,7 +50,7 @@ import HubHeader from '../components/HubHeader.astro';
       <div id="filter-tabs-container" class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs font-sans">
         <button 
           data-filter="all" 
-          class="filter-tab px-3 py-1.5 rounded-xs font-medium border border-purple-600 dark:border-purple-400 bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-400 transition-colors cursor-pointer"
+          class="filter-tab px-3 py-1.5 rounded-xs font-medium border border-ink dark:border-dark-ink bg-ink dark:bg-dark-ink text-paper-50 dark:text-dark-bg transition-colors cursor-pointer"
         >
           All Passages (<span id="tab-count-all">0</span>)
         </button>
@@ -86,7 +77,7 @@ import HubHeader from '../components/HubHeader.astro';
             id="commonplace-search"
             aria-label="Filter highlights or notes"
             placeholder="Search by keyword, lesson title, or marginal thoughts... (Press / to focus)"
-            class="w-full pl-10 pr-20 py-2.5 text-sm font-sans rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card text-ink dark:text-dark-ink placeholder:text-ink-faint dark:placeholder:text-dark-muted focus:outline-hidden focus:ring-1 focus:ring-purple-600/50 dark:focus:ring-purple-400/50 focus:border-purple-600 dark:focus:border-purple-400 transition-colors"
+            class="w-full pl-10 pr-20 py-2.5 text-sm font-sans rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card text-ink dark:text-dark-ink placeholder:text-ink-faint dark:placeholder:text-dark-muted focus:outline-hidden focus:ring-1 focus:ring-ink/20 dark:focus:ring-dark-ink/30 focus:border-ink dark:focus:border-dark-ink transition-colors"
           />
           <div class="absolute inset-y-0 right-0 pr-3 flex items-center gap-1.5">
             <button 
@@ -112,7 +103,7 @@ import HubHeader from '../components/HubHeader.astro';
 
     <!-- State 1: Global Empty State (Pristine Notebook) -->
     <div id="empty-state" class="hidden text-center py-20 px-6 border border-ink-border/60 dark:border-dark-border/60 rounded-xs bg-paper-100/40 dark:bg-dark-card/40 transition-colors">
-      <div class="w-10 h-10 mx-auto mb-4 rounded-full bg-purple-100/60 dark:bg-purple-950/40 text-purple-700 dark:text-purple-400 flex items-center justify-center">
+      <div class="w-10 h-10 mx-auto mb-4 rounded-full bg-paper-200 dark:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/>
         </svg>
@@ -171,14 +162,14 @@ import HubHeader from '../components/HubHeader.astro';
     aria-live="polite"
   >
     <div class="flex items-center gap-2">
-      <svg class="w-3.5 h-3.5 text-purple-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <svg class="w-3.5 h-3.5 text-paper-200 dark:text-dark-muted shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path d="M3 6h18m-2 0v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6m3 0V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
       </svg>
       <span id="undo-toast-message">Passage archived.</span>
     </div>
     <button 
       id="undo-btn" 
-      class="font-mono text-purple-300 dark:text-purple-400 hover:underline cursor-pointer ml-1 font-semibold"
+      class="font-mono text-paper-100 dark:text-dark-ink underline font-medium hover:text-white cursor-pointer ml-1"
     >
       Undo (Ctrl+Z)
     </button>
@@ -271,7 +262,7 @@ import HubHeader from '../components/HubHeader.astro';
             data-filter="${escapeAttr(courseName)}" 
             class="filter-tab px-3 py-1.5 rounded-xs font-medium border transition-colors cursor-pointer whitespace-nowrap ${
               isActive 
-                ? 'border-purple-600 dark:border-purple-400 bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-400' 
+                ? 'border-ink dark:border-dark-ink bg-ink dark:bg-dark-ink text-paper-50 dark:text-dark-bg' 
                 : 'border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink'
             }"
           >

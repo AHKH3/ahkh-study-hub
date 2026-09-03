@@ -15,14 +15,18 @@
 - `text-muted`: `#73716C`
 - `text-faint`: `#A8A6A1`
 
-### Canonical Four-Color Palette (Library & Platform Status Pillars)
-The only approved accent colors for the platform and general sanctuary interfaces are the four foundational library colors:
-- **Emerald (الأخضر):** `text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800` — يمثل النشاط والتأسيس (Active / Foundational).
-- **Blue (الأزرق):** `text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800` — يمثل المعمارية والتجديد (New / Architectural).
-- **Purple (البنفسجي):** `text-purple-700 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 border-purple-200 dark:border-purple-800` — يمثل الاستكشاف والعمق (Explored / Philosophical).
-- **Pink (الوردي):** `text-pink-700 dark:text-pink-400 bg-pink-50 dark:bg-pink-950/40 border-pink-200 dark:border-pink-800` — يمثل الإتمام والرصانة (Completed / Mastery).
+### The Four Ornamental Accent Colors (Decorative Badges & Status Only)
+The site's primary aesthetic is strictly **Soft Monochrome & Swiss Editorial** (carbon ink, warm paper, subtle rules). The four colors below are **strictly ornamental and decorative accents** (small status chips, indicator dots, or discrete metadata badges) and MUST NEVER dominate or be used as whole-page theme colors, heading colors, or large background fills:
+- **Emerald (الأخضر):** `text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800` — زينة للشارات النشطة (Active / Foundational).
+- **Blue (الأزرق):** `text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800` — زينة للشارات الجديدة (New / Architectural).
+- **Purple (البنفسجي):** `text-purple-700 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 border-purple-200 dark:border-purple-800` — زينة لشارات الاستكشاف (Explored / Marginalia).
+- **Pink (الوردي):** `text-pink-700 dark:text-pink-400 bg-pink-50 dark:bg-pink-950/40 border-pink-200 dark:border-pink-800` — زينة لشارات الإتمام (Completed / Mastery).
 
-> **قاعدة قطعية (Absolute Rule):** يُحظر تماماً استخدام اللون البرتقالي (Terracotta `#B35334`) كلون رئيسي أو تمييزي للموقع العام أو صفحات المانيفستو. اللون البرتقالي محصور حصراً كـ DNA خاص بمساق Springboard UX فقط، ولا يمثل هوية المنصة بأي حال من الأحوال. أي تلوين عام في المنصة يعتمد حصراً على الألوان الأربعة أعلاه.
+> **قاعدة الانضباط والوقار التحريري (Restraint & Anti-Slop Rule):**
+> 1. الموقع بالكامل مبني على السكينة والهدوء الأحادي (Soft Monochrome: حبر وورق فقط).
+> 2. يُمنع منعاً باتاً تلوين العناوين أو الأزرار أو الإطارات أو خلفيات التبويبات بالبنفسجي أو بأي لون فاقع (تجنب الـ AI Slop).
+> 3. الألوان الأربعة مجرد لمسات زينة طفيفة (نقاط 6px أو رقاقات وسوم صغيرة جداً).
+> 4. يُحظر استخدام اللون البرتقالي (Terracotta) في أي مكان خارج مساق Springboard UX.
 
 ### Course DNA (Single Highlight Color per Course)
 - **Springboard UX Curriculum:**
