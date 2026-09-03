@@ -23,7 +23,7 @@ const { course, lesson } = Astro.props;
 
 <BaseLayout title={`${lesson.title} — ${course.title}`} description={lesson.summaryQuote}>
   <!-- 1. PERMANENT TOP PROGRESS BAR (top: 0, 3px, never disappears) -->
-  <div id="top-progress-track" class="fixed top-0 left-0 w-full h-[3px] bg-paper-300 z-50">
+  <div id="top-progress-track" class="fixed top-0 left-0 w-full h-[3px] bg-paper-300 dark:bg-dark-border z-50">
     <div 
       id="top-progress-fill" 
       class="h-full transition-all duration-100 ease-out"
@@ -34,7 +34,7 @@ const { course, lesson } = Astro.props;
   <!-- 2. SMART AUTO-HIDING HEADER -->
   <header 
     id="smart-header" 
-    class="fixed top-[3px] left-0 w-full z-40 bg-paper-100/95 backdrop-blur-md border-b border-ink-border transition-transform duration-300 ease-in-out"
+    class="fixed top-[3px] left-0 w-full z-40 bg-paper-100/95 dark:bg-dark-bg/95 backdrop-blur-md border-b border-ink-border/60 dark:border-dark-border transition-transform duration-300 ease-in-out"
   >
     <div class="w-full px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
       
@@ -42,7 +42,7 @@ const { course, lesson } = Astro.props;
       <div class="flex items-center gap-2 shrink-0">
         <a 
           href={path(`/courses/${course.slug}`)} 
-          class="w-8 h-8 rounded-xs border border-ink-border bg-paper-50 hover:bg-paper-200 flex items-center justify-center text-ink transition-colors cursor-pointer"
+          class="w-8 h-8 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 flex items-center justify-center text-ink dark:text-dark-ink transition-colors cursor-pointer"
           title="Return to Course Journey"
         >
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -52,10 +52,10 @@ const { course, lesson } = Astro.props;
 
         <button 
           id="toggle-left-sidebar"
-          class="px-2.5 h-8 rounded-xs border border-ink-border bg-paper-50 hover:bg-paper-200 text-xs font-sans font-medium text-ink flex items-center gap-1.5 transition-colors cursor-pointer"
+          class="px-2.5 h-8 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-xs font-sans font-medium text-ink dark:text-dark-ink flex items-center gap-1.5 transition-colors cursor-pointer"
           title="Toggle Table of Contents Outline"
         >
-          <svg class="w-3.5 h-3.5 text-ink-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg class="w-3.5 h-3.5 text-ink-muted dark:text-dark-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="15" y1="12" y2="12"/><line x1="3" x2="18" y1="18" y2="18"/>
           </svg>
           <span class="hidden sm:inline">Outline</span>
@@ -65,8 +65,8 @@ const { course, lesson } = Astro.props;
       <!-- Center Title -->
       <div class="flex-1 text-center min-w-0 px-2">
         <div class="flex items-center justify-center gap-2">
-          <span class="font-mono text-xs text-ink-muted shrink-0">{lesson.lessonNumber}</span>
-          <h1 class="font-serif text-sm sm:text-base font-medium text-ink truncate">
+          <span class="font-mono text-xs text-ink-muted dark:text-dark-muted shrink-0">{lesson.lessonNumber}</span>
+          <h1 class="font-serif text-sm sm:text-base font-medium text-ink dark:text-dark-ink truncate">
             {lesson.title}
           </h1>
         </div>
@@ -77,8 +77,8 @@ const { course, lesson } = Astro.props;
         <!-- Display Settings Button (Aa) -->
         <button 
           id="toggle-display-settings"
-          class="w-8 h-8 rounded-xs border border-ink-border bg-paper-50 hover:bg-paper-200 text-ink text-xs font-serif font-semibold flex items-center justify-center transition-colors cursor-pointer"
-          title="Reading Typography Settings"
+          class="w-8 h-8 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink text-xs font-serif font-semibold flex items-center justify-center transition-colors cursor-pointer"
+          title="Reading Typography & Theme Settings"
         >
           Aa
         </button>
@@ -86,14 +86,14 @@ const { course, lesson } = Astro.props;
         <!-- Right Highlights Sidebar Toggle -->
         <button 
           id="toggle-right-sidebar"
-          class="px-2.5 h-8 rounded-xs border border-ink-border bg-paper-50 hover:bg-paper-200 text-xs font-sans font-medium text-ink flex items-center gap-1.5 transition-colors cursor-pointer"
+          class="px-2.5 h-8 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-xs font-sans font-medium text-ink dark:text-dark-ink flex items-center gap-1.5 transition-colors cursor-pointer"
           title="Toggle Highlights & Notes Drawer"
         >
           <svg class="w-3.5 h-3.5 text-course-terracotta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
           </svg>
           <span class="hidden sm:inline">Highlights</span>
-          <span id="header-highlights-count" class="font-mono text-[10px] px-1.5 rounded-full bg-ink/10 text-ink">
+          <span id="header-highlights-count" class="font-mono text-[10px] px-1.5 rounded-full bg-ink/10 dark:bg-dark-border text-ink dark:text-dark-ink">
             0
           </span>
         </button>
@@ -101,7 +101,7 @@ const { course, lesson } = Astro.props;
         <!-- Zen Mode Toggle -->
         <button 
           id="toggle-zen-mode"
-          class="w-8 h-8 rounded-xs border border-ink-border bg-paper-50 hover:bg-paper-200 text-ink-muted hover:text-ink flex items-center justify-center transition-colors cursor-pointer"
+          class="w-8 h-8 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink flex items-center justify-center transition-colors cursor-pointer"
           title="Toggle Distraction-Free Zen Mode"
         >
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -116,39 +116,74 @@ const { course, lesson } = Astro.props;
   <!-- DISPLAY SETTINGS POPOVER -->
   <div 
     id="display-settings-menu"
-    class="hidden fixed top-18 right-6 w-64 p-4 rounded-xs border border-ink-border bg-paper-50 shadow-lg z-50 text-xs font-sans space-y-4"
+    class="hidden fixed top-18 right-6 w-72 p-4 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card shadow-lg z-50 text-xs font-sans space-y-4"
   >
-    <div class="font-mono uppercase tracking-wider text-ink-muted text-[10px]">Typography & Comfort</div>
+    <div class="font-mono uppercase tracking-wider text-ink-muted dark:text-dark-muted text-[10px]">Typography & Comfort</div>
     
     <!-- Font Size -->
     <div>
-      <div class="flex items-center justify-between text-ink-muted mb-1.5">
+      <div class="flex items-center justify-between text-ink-muted dark:text-dark-muted mb-1.5">
         <span>Font Size</span>
         <span id="font-size-label" class="font-mono">Normal</span>
       </div>
       <div class="grid grid-cols-4 gap-1">
-        <button data-size="sm" class="size-btn py-1 border border-ink-border rounded-xs hover:bg-paper-200">A-</button>
-        <button data-size="base" class="size-btn py-1 border border-ink bg-paper-200 rounded-xs font-medium">A</button>
-        <button data-size="lg" class="size-btn py-1 border border-ink-border rounded-xs hover:bg-paper-200">A+</button>
-        <button data-size="xl" class="size-btn py-1 border border-ink-border rounded-xs hover:bg-paper-200">A++</button>
+        <button data-size="sm" class="size-btn py-1 border border-ink-border dark:border-dark-border rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink cursor-pointer">A-</button>
+        <button data-size="base" class="size-btn py-1 border border-ink dark:border-dark-ink bg-paper-200 dark:bg-dark-border rounded-xs font-medium text-ink dark:text-dark-ink cursor-pointer">A</button>
+        <button data-size="lg" class="size-btn py-1 border border-ink-border dark:border-dark-border rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink cursor-pointer">A+</button>
+        <button data-size="xl" class="size-btn py-1 border border-ink-border dark:border-dark-border rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink cursor-pointer">A++</button>
       </div>
     </div>
 
     <!-- Font Family -->
     <div>
-      <div class="text-ink-muted mb-1.5">Font Style</div>
+      <div class="text-ink-muted dark:text-dark-muted mb-1.5">Font Style</div>
       <div class="grid grid-cols-2 gap-1.5">
-        <button id="font-serif-btn" class="py-1.5 px-2 border border-ink bg-paper-200 rounded-xs font-serif text-sm">Newsreader Serif</button>
-        <button id="font-sans-btn" class="py-1.5 px-2 border border-ink-border hover:bg-paper-200 rounded-xs font-sans text-xs">Geist Sans</button>
+        <button id="font-serif-btn" class="py-1.5 px-2 border border-ink dark:border-dark-ink bg-paper-200 dark:bg-dark-border rounded-xs font-serif text-sm text-ink dark:text-dark-ink cursor-pointer">Newsreader Serif</button>
+        <button id="font-sans-btn" class="py-1.5 px-2 border border-ink-border dark:border-dark-border hover:bg-paper-200 dark:hover:bg-dark-border/60 rounded-xs font-sans text-xs text-ink dark:text-dark-ink cursor-pointer">Geist Sans</button>
       </div>
     </div>
 
-    <!-- Dark Mode Toggle -->
-    <div class="pt-2 border-t border-ink-border flex items-center justify-between">
-      <span>Dark Palette</span>
-      <button id="theme-toggle-btn" class="px-2.5 py-1 rounded-xs border border-ink-border hover:bg-paper-200 font-mono text-[11px]">
-        Toggle
-      </button>
+    <!-- Theme Palette Selection: Light / System / Dark -->
+    <div class="pt-2 border-t border-ink-border dark:border-dark-border">
+      <div class="flex items-center justify-between text-ink-muted dark:text-dark-muted mb-2">
+        <span>Appearance</span>
+        <span id="theme-mode-label" class="font-mono uppercase text-[10px]">System</span>
+      </div>
+      <div class="grid grid-cols-3 gap-1">
+        <button 
+          id="reader-theme-light" 
+          data-reader-theme="light"
+          class="reader-theme-btn py-1.5 px-2 rounded-xs border border-ink-border dark:border-dark-border hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center gap-1.5 font-sans text-xs transition-colors cursor-pointer"
+          title="Light Mode"
+        >
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66-1.41 1.41M19.07 4.93-1.41 1.41"/>
+          </svg>
+          <span>Light</span>
+        </button>
+        <button 
+          id="reader-theme-system" 
+          data-reader-theme="system"
+          class="reader-theme-btn py-1.5 px-2 rounded-xs border border-ink-border dark:border-dark-border hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center gap-1.5 font-sans text-xs transition-colors cursor-pointer"
+          title="System Preference"
+        >
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/>
+          </svg>
+          <span>Auto</span>
+        </button>
+        <button 
+          id="reader-theme-dark" 
+          data-reader-theme="dark"
+          class="reader-theme-btn py-1.5 px-2 rounded-xs border border-ink-border dark:border-dark-border hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center gap-1.5 font-sans text-xs transition-colors cursor-pointer"
+          title="Dark Mode"
+        >
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+          </svg>
+          <span>Dark</span>
+        </button>
+      </div>
     </div>
   </div>
 

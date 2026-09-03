@@ -1,6 +1,5 @@
 ---
 import { path } from '../utils/paths';
-import ThemeSwitcher from './ThemeSwitcher.astro';
 
 interface Props {
   activeTab?: 'library' | 'manifesto' | 'commonplace';
@@ -61,10 +60,6 @@ const { activeTab = 'library' } = Astro.props;
           </span>
         </a>
       </nav>
-
-      <div class="h-4 w-px bg-ink-border/60 dark:bg-dark-border" aria-hidden="true"></div>
-
-      <ThemeSwitcher />
     </div>
   </div>
 </header>
