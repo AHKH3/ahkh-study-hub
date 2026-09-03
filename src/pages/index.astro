@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HubHeader from '../components/HubHeader.astro';
+import { COURSES, type CourseStatus } from '../data/courses';
+
+const STATUS_CONFIG: Record<CourseStatus, { label: string; classes: string }> = {
+  active: {
+    label: 'Active',
+    classes: 'text-emerald-700 bg-emerald-50 border-emerald-200',
+  },
+  new: {
+    label: 'New',
+    classes: 'text-blue-700 bg-blue-50 border-blue-200',
+  },
+  explored: {
+    label: 'Explored',
+    classes: 'text-purple-700 bg-purple-50 border-purple-200',
+  },
+  completed: {
+    label: 'Completed',
+    classes: 'text-pink-700 bg-pink-50 border-pink-200',
+  },
+};
+---
+
+<BaseLayout title="Library — AHKH Study Hub" description="Curated library of intensive study curricula and open course companions.">
+  <HubHeader activeTab="library" />
+
+  <main class="flex-1 max-w-hub w-full mx-auto px-6 py-12">
+    <!-- Header Section -->
+    <div class="mb-8 flex items-baseline justify-between gap-4">
+      <h1 class="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-ink">
+        Index of Curricula
+      </h1>
+      <div class="font-mono text-xs text-ink-muted shrink-0">
+        Total Courses: 0{COURSES.length}
+      </div>
+    </div>
+
+    <!-- The Editorial Monograph List -->
+    <div class="divide-y divide-ink-border/80 border-t border-b border-ink-border mb-16">
+      {COURSES.map((course, index) => {
+        const num = String(index + 1).padStart(2, '0');
+        const statusMeta = STATUS_CONFIG[course.status];
+        return (
+          <article class="group py-5 sm:py-6 transition-colors hover:bg-paper-200/40 px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-xs">
+            <a href={`/courses/${course.slug}`} class="block focus:outline-hidden">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                
+                <!-- Left: Number & Course Info -->
+                <div class="flex items-start sm:items-center gap-4 sm:gap-6 min-w-0">
+                  <span class="font-mono text-xs sm:text-sm text-ink-muted font-medium shrink-0 pt-0.5 sm:pt-0">
+                    {num}
+                  </span>
+                  <div>
+                    <div class="flex flex-wrap items-center gap-2.5">
+                      <h2 class="font-serif text-xl sm:text-2xl font-medium text-ink group-hover:text-black group-hover:underline transition-colors">
+                        {course.title}
+                      </h2>
+                      {statusMeta && (
+                        <span class={`text-[10px] uppercase font-mono tracking-wider px-2 py-0.5 rounded-full border ${statusMeta.classes}`}>
+                          {statusMeta.label}
+                        </span>
+                      )}
+                    </div>
+                    <!-- Metadata metrics: Module count, Source count, Duration -->
+                    <div class="flex items-center gap-3 text-xs font-mono text-ink-muted/80 mt-1.5">
+                      <span>{course.totalModules} Modules</span>
+                      <span>·</span>
+                      <span>{course.totalSources} Sources</span>
+                      {course.duration && (
+                        <>
+                          <span>·</span>
+                          <span>{course.duration}</span>
+                        </>
+                      )}
+                      <span>·</span>
+                      <span>Updated {course.updatedAt}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right: Progress Indicator -->
+                <div class="flex items-center shrink-0 pl-8 sm:pl-0">
+                  <div class="flex items-center gap-2 font-mono text-xs text-ink">
+                    <div class="w-24 sm:w-28 h-1.5 bg-paper-300 rounded-full overflow-hidden">
+                      <div 
+                        class="h-full bg-ink transition-all"
+                        style={`width: ${course.progressPercent}%`}
+                      ></div>
+                    </div>
+                    <span class="w-9 text-right font-medium">{course.progressPercent}%</span>
+                  </div>
+                </div>
+
+              </div>
+            </a>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- Quiet Editorial Philosophy Footnote -->
+    <div class="p-6 rounded-xs bg-paper-200/50 border border-ink-border text-xs text-ink-muted leading-relaxed font-sans flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <p class="font-medium text-ink mb-0.5">The Sanctuary Standard</p>
+        <p>Zero distractions, zero advertisements, zero algorithmic feeds. Every lesson is formatted for reading longevity.</p>
+      </div>
+      <a href="/manifesto" class="underline text-ink hover:text-black shrink-0 font-medium">
+        Read the Manifesto &rarr;
+      </a>
+    </div>
+  </main>
+</BaseLayout>

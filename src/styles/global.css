@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    @apply bg-paper-100 text-ink antialiased selection:bg-zinc-200 selection:text-black;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* Reader Typography Customizations */
+.prose-editorial {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.18rem;
+  line-height: 1.8;
+  color: #242220;
+}
+
+.prose-editorial h1,
+.prose-editorial h2,
+.prose-editorial h3 {
+  font-family: 'Newsreader', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: #171615;
+}
+
+.prose-editorial h2 {
+  margin-top: 2.4em;
+  margin-bottom: 0.8em;
+  font-size: 1.65rem;
+  border-bottom: 1px solid #EBE8E1;
+  padding-bottom: 0.3em;
+}
+
+.prose-editorial h3 {
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  font-size: 1.35rem;
+}
+
+.prose-editorial p {
+  margin-bottom: 1.5em;
+}
+
+.prose-editorial blockquote {
+  font-style: italic;
+  border-left: 2px solid #B35334;
+  padding-left: 1.25rem;
+  margin: 2em 0;
+  color: #55534E;
+}
+
+
+/* Sidebar explicit overrides */
+aside[data-collapsed="true"] {
+  display: none !important;
+}
+
+aside[data-expanded="true"] {
+  display: block !important;
+}
+
+/* User Highlight Marks */
+.ahkh-highlight {
+  background-color: var(--course-highlight, rgba(224, 118, 85, 0.28));
+  border-bottom: 1.5px solid var(--course-accent, #B35334);
+  padding: 0.1em 0.2em;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.2s ease;
+}
+
+.ahkh-highlight:hover {
+  filter: brightness(0.95);
+}
+
+@keyframes highlight-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(179, 83, 52, 0.5);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(179, 83, 52, 0.2);
+    filter: brightness(1.25);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(179, 83, 52, 0);
+    filter: brightness(1);
+  }
+}
+
+.ahkh-highlight.active {
+  outline: 2px solid var(--course-accent, #B35334);
+  animation: highlight-pulse 0.8s ease-in-out 2;
+}
+
+/* Marginalia Sidenotes in Gutter */
+.marginalia-gutter-note {
+  position: absolute;
+  left: calc(100% + 2rem);
+  width: 220px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #55534E;
+  background-color: #FFFFFF;
+  border: 1px solid #EBE8E1;
+  border-left: 3px solid var(--course-accent, #B35334);
+  padding: 0.5rem 0.75rem;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.marginalia-gutter-note:hover {
+  color: #171615;
+  border-color: #D4D4D8;
+  border-left-color: var(--course-accent, #B35334);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+/* On screens where right sidebar is open and viewport is < 1440px, hide gutter notes to avoid overlap */
+@media (max-width: 1439px) {
+  body:not([data-zen-mode="true"]):not([data-right-collapsed="true"]) .marginalia-gutter-note {
+    display: none;
+  }
+}
+
+/* YouTube sync active paragraph */
+.yt-active-paragraph {
+  background-color: rgba(245, 240, 230, 0.7);
+  border-left: 3px solid #B35334;
+  padding-left: 1rem;
+  transition: all 0.3s ease;
+}

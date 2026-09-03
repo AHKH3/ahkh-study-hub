@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { COURSES } from '../../../data/courses';
+
+export function getStaticPaths() {
+  return COURSES.map((course) => ({
+    params: { course: course.slug },
+    props: { course },
+  }));
+}
+
+const { course } = Astro.props;
+---
+
+<BaseLayout title={`${course.title} — Learning Journey`} description={course.description}>
+  <!-- Minimal Top Header for Course -->
+  <header class="w-full border-b border-ink-border bg-paper-100/90 backdrop-blur-sm sticky top-0 z-30">
+    <div class="max-w-hub mx-auto px-6 h-14 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 text-xs font-sans font-medium text-ink-muted hover:text-ink transition-colors group">
+        <svg class="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+        Library of Curricula
+      </a>
+
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-xs text-ink-muted">
+          Progress: {course.progressPercent}%
+        </span>
+        <div class="w-20 h-1.5 bg-paper-300 rounded-full overflow-hidden">
+          <div 
+            class="h-full bg-ink" 
+            style={`width: ${course.progressPercent}%`}
+          ></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-hub w-full mx-auto px-6 py-12">
+    <!-- Course Title & Metadata -->
+    <div class="mb-14 pb-8 border-b border-ink-border">
+      <div class="flex items-center gap-2.5 mb-2">
+        <span class="text-[11px] font-mono tracking-widest uppercase text-course-terracotta font-medium px-2 py-0.5 rounded-xs bg-course-terracotta-tint">
+          {course.category}
+        </span>
+        <span class="font-mono text-xs text-ink-muted">· {course.totalModules} Modules · {course.totalSources} Total Sources</span>
+      </div>
+
+      <h1 class="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-ink">
+        {course.title}
+      </h1>
+    </div>
+
+    <!-- The Vertical Learning Journey / Roadmap -->
+    <div class="max-w-2xl mx-auto">
+      <div class="flex items-center justify-between mb-8 pb-3 border-b border-ink-border/60">
+        <h2 class="font-mono text-xs uppercase tracking-wider text-ink-muted">
+          Curriculum Milestone Roadmap
+        </h2>
+        <span class="text-xs font-sans text-ink-muted">Click any lesson to start reading</span>
+      </div>
+
+      {course.modules.length === 0 ? (
+        <div class="py-16 text-center border border-dashed border-ink-border rounded-xs">
+          <p class="font-serif text-lg text-ink">Module Roadmap is being structured</p>
+          <p class="text-xs font-sans text-ink-muted mt-1">Check back as sources are re-architected into this track.</p>
+        </div>
+      ) : (
+        <div class="relative pl-6 sm:pl-8 space-y-12">
+          <!-- Continuous Vertical Spine Line -->
+          <div class="absolute left-[11px] sm:left-[15px] top-3 bottom-3 w-[2px] bg-ink-border"></div>
+
+          {course.modules.map((mod) => (
+            <div class="relative">
+              <!-- Module Milestone Header (Node on spine) -->
+              <div class="flex items-start gap-3 sm:gap-4 -ml-6 sm:-ml-8 mb-6">
+                <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-ink bg-paper-100 flex items-center justify-center font-mono text-xs font-bold text-ink shrink-0 z-10 shadow-2xs">
+                  {mod.number}
+                </div>
+                <div>
+                  <h3 class="font-serif text-xl sm:text-2xl font-medium text-ink">
+                    Unit 0{mod.number}: {mod.title}
+                  </h3>
+                  <p class="font-sans text-xs text-ink-muted mt-0.5">
+                    {mod.description}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Module Lessons List -->
+              <div class="space-y-3.5 pl-3 sm:pl-4">
+                {mod.lessons.map((lesson) => (
+                  <article class="group relative rounded-xs border border-ink-border/80 bg-paper-50 hover:border-ink hover:shadow-xs transition-all p-4">
+                    <a href={`/courses/${course.slug}/${lesson.slug}`} class="block focus:outline-hidden">
+                      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                        
+                        <!-- Title & Meta -->
+                        <div>
+                          <div class="flex items-center gap-2 mb-1">
+                            <span class="font-mono text-xs font-semibold text-ink-muted">
+                              {lesson.lessonNumber}
+                            </span>
+                            <span class:list={[
+                              "text-[10px] font-mono uppercase tracking-wider px-2 py-0.2 rounded-xs border",
+                              lesson.type === 'video' 
+                                ? "border-red-300 text-red-700 bg-red-50/50"
+                                : lesson.type === 'pdf'
+                                ? "border-amber-300 text-amber-800 bg-amber-50/50"
+                                : "border-ink-border text-ink-muted bg-paper-200/50"
+                            ]}>
+                              {lesson.type === 'video' ? 'Video & Synced Transcript' : lesson.type === 'pdf' ? 'PDF Synthesis' : 'Article'}
+                            </span>
+                            <span class="text-xs font-mono text-ink-muted/80">· {lesson.readTime}</span>
+                          </div>
+
+                          <h4 class="font-serif text-lg font-medium text-ink group-hover:text-course-terracotta transition-colors">
+                            {lesson.title}
+                          </h4>
+                          
+                          <p class="font-serif text-xs text-ink-muted italic line-clamp-1 mt-1">
+                            "{lesson.summaryQuote}"
+                          </p>
+                        </div>
+
+                        <!-- Read Action -->
+                        <div class="shrink-0 flex items-center gap-1.5 text-xs font-sans font-medium text-ink-muted group-hover:text-ink pt-2 sm:pt-0">
+                          <span>Study</span>
+                          <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                          </svg>
+                        </div>
+
+                      </div>
+                    </a>
+                  </article>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </main>
+</BaseLayout>

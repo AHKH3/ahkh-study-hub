@@ -1,0 +1,89 @@
+---
+interface Props {
+  activeTab?: 'library' | 'manifesto' | 'commonplace';
+}
+
+const { activeTab = 'library' } = Astro.props;
+---
+
+<header class="w-full border-b border-ink-border/60 dark:border-dark-border bg-paper-100/90 dark:bg-dark-bg/90 backdrop-blur-sm sticky top-0 z-30 transition-colors">
+  <div class="max-w-hub mx-auto px-6 h-16 flex items-center justify-between">
+    <!-- Brand -->
+    <a href="/" class="group flex items-center gap-2.5 py-1">
+      <img 
+        src="/logo.png" 
+        alt="AHKH" 
+        class="h-6 sm:h-7 w-auto object-contain shrink-0" 
+      />
+      <span class="font-serif text-lg sm:text-xl font-medium tracking-tight text-ink dark:text-dark-ink">study hub</span>
+    </a>
+
+    <!-- Navigation Links -->
+    <nav class="flex items-center gap-1 sm:gap-2 text-sm font-sans">
+      <a 
+        href="/" 
+        class:list={[
+          "px-3 py-1.5 rounded-sm transition-colors",
+          activeTab === 'library' 
+            ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border border-ink-border/60 dark:border-dark-border" 
+            : "text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
+        ]}
+      >
+        Library
+      </a>
+      <a 
+        href="/manifesto" 
+        class:list={[
+          "px-3 py-1.5 rounded-sm transition-colors",
+          activeTab === 'manifesto' 
+            ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border border-ink-border/60 dark:border-dark-border" 
+            : "text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
+        ]}
+      >
+        Manifesto
+      </a>
+      <a 
+        href="/commonplace" 
+        class:list={[
+          "px-3 py-1.5 rounded-sm transition-colors flex items-center gap-1.5",
+          activeTab === 'commonplace' 
+            ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border border-ink-border/60 dark:border-dark-border" 
+            : "text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
+        ]}
+      >
+        Commonplace
+        <span id="global-highlight-badge" class="hidden font-mono text-[11px] px-1.5 py-0.2 rounded-full bg-ink/10 dark:bg-dark-border text-ink dark:text-dark-ink">
+          0
+        </span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  // Calculate total highlights count for the commonplace badge
+  window.updateGlobalBadge = function() {
+    let total = 0;
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith('ahkh_hl_')) {
+        try {
+          const items = JSON.parse(localStorage.getItem(key) || '[]');
+          if (Array.isArray(items)) {
+            total += items.length;
+          }
+        } catch (e) {}
+      }
+    }
+    const badge = document.getElementById('global-highlight-badge');
+    if (badge) {
+      if (total > 0) {
+        badge.textContent = total;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+  };
+  document.addEventListener('DOMContentLoaded', window.updateGlobalBadge);
+</script>

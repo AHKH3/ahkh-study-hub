@@ -1,0 +1,1073 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { COURSES } from '../../../data/courses';
+
+export function getStaticPaths() {
+  const paths: any[] = [];
+  COURSES.forEach((course) => {
+    course.modules.forEach((mod) => {
+      mod.lessons.forEach((lesson) => {
+        paths.push({
+          params: { course: course.slug, slug: lesson.slug },
+          props: { course, lesson },
+        });
+      });
+    });
+  });
+  return paths;
+}
+
+const { course, lesson } = Astro.props;
+---
+
+<BaseLayout title={`${lesson.title} — ${course.title}`} description={lesson.summaryQuote}>
+  <!-- 1. PERMANENT TOP PROGRESS BAR (top: 0, 3px, never disappears) -->
+  <div id="top-progress-track" class="fixed top-0 left-0 w-full h-[3px] bg-paper-300 z-50">
+    <div 
+      id="top-progress-fill" 
+      class="h-full transition-all duration-100 ease-out"
+      style={`background-color: ${course.theme.accent}; width: 0%;`}
+    ></div>
+  </div>
+
+  <!-- 2. SMART AUTO-HIDING HEADER -->
+  <header 
+    id="smart-header" 
+    class="fixed top-[3px] left-0 w-full z-40 bg-paper-100/95 backdrop-blur-md border-b border-ink-border transition-transform duration-300 ease-in-out"
+  >
+    <div class="w-full px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+      
+      <!-- Left Controls: Back Arrow + Left Sidebar Toggle -->
+      <div class="flex items-center gap-2 shrink-0">
+        <a 
+          href={`/courses/${course.slug}`} 
+          class="w-8 h-8 rounded-xs border border-ink-border bg-paper-50 hover:bg-paper-200 flex items-center justify-center text-ink transition-colors cursor-pointer"
+          title="Return to Course Journey"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+        </a>
+
+        <button 
+          id="toggle-left-sidebar"
+          class="px-2.5 h-8 rounded-xs border border-ink-border bg-paper-50 hover:bg-paper-200 text-xs font-sans font-medium text-ink flex items-center gap-1.5 transition-colors cursor-pointer"
+          title="Toggle Table of Contents Outline"
+        >
+          <svg class="w-3.5 h-3.5 text-ink-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="15" y1="12" y2="12"/><line x1="3" x2="18" y1="18" y2="18"/>
+          </svg>
+          <span class="hidden sm:inline">Outline</span>
+        </button>
+      </div>
+
+      <!-- Center Title -->
+      <div class="flex-1 text-center min-w-0 px-2">
+        <div class="flex items-center justify-center gap-2">
+          <span class="font-mono text-xs text-ink-muted shrink-0">{lesson.lessonNumber}</span>
+          <h1 class="font-serif text-sm sm:text-base font-medium text-ink truncate">
+            {lesson.title}
+          </h1>
+        </div>
+      </div>
+
+      <!-- Right Controls: Display Settings + Highlights Drawer Toggle + Zen Mode -->
+      <div class="flex items-center gap-2 shrink-0">
+        <!-- Display Settings Button (Aa) -->
+        <button 
+          id="toggle-display-settings"
+          class="w-8 h-8 rounded-xs border border-ink-border bg-paper-50 hover:bg-paper-200 text-ink text-xs font-serif font-semibold flex items-center justify-center transition-colors cursor-pointer"
+          title="Reading Typography Settings"
+        >
+          Aa
+        </button>
+
+        <!-- Right Highlights Sidebar Toggle -->
+        <button 
+          id="toggle-right-sidebar"
+          class="px-2.5 h-8 rounded-xs border border-ink-border bg-paper-50 hover:bg-paper-200 text-xs font-sans font-medium text-ink flex items-center gap-1.5 transition-colors cursor-pointer"
+          title="Toggle Highlights & Notes Drawer"
+        >
+          <svg class="w-3.5 h-3.5 text-course-terracotta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+          <span class="hidden sm:inline">Highlights</span>
+          <span id="header-highlights-count" class="font-mono text-[10px] px-1.5 rounded-full bg-ink/10 text-ink">
+            0
+          </span>
+        </button>
+
+        <!-- Zen Mode Toggle -->
+        <button 
+          id="toggle-zen-mode"
+          class="w-8 h-8 rounded-xs border border-ink-border bg-paper-50 hover:bg-paper-200 text-ink-muted hover:text-ink flex items-center justify-center transition-colors cursor-pointer"
+          title="Toggle Distraction-Free Zen Mode"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/><path d="M3 12h2m14 0h2M12 3v2m0 14v2"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- DISPLAY SETTINGS POPOVER -->
+  <div 
+    id="display-settings-menu"
+    class="hidden fixed top-18 right-6 w-64 p-4 rounded-xs border border-ink-border bg-paper-50 shadow-lg z-50 text-xs font-sans space-y-4"
+  >
+    <div class="font-mono uppercase tracking-wider text-ink-muted text-[10px]">Typography & Comfort</div>
+    
+    <!-- Font Size -->
+    <div>
+      <div class="flex items-center justify-between text-ink-muted mb-1.5">
+        <span>Font Size</span>
+        <span id="font-size-label" class="font-mono">Normal</span>
+      </div>
+      <div class="grid grid-cols-4 gap-1">
+        <button data-size="sm" class="size-btn py-1 border border-ink-border rounded-xs hover:bg-paper-200">A-</button>
+        <button data-size="base" class="size-btn py-1 border border-ink bg-paper-200 rounded-xs font-medium">A</button>
+        <button data-size="lg" class="size-btn py-1 border border-ink-border rounded-xs hover:bg-paper-200">A+</button>
+        <button data-size="xl" class="size-btn py-1 border border-ink-border rounded-xs hover:bg-paper-200">A++</button>
+      </div>
+    </div>
+
+    <!-- Font Family -->
+    <div>
+      <div class="text-ink-muted mb-1.5">Font Style</div>
+      <div class="grid grid-cols-2 gap-1.5">
+        <button id="font-serif-btn" class="py-1.5 px-2 border border-ink bg-paper-200 rounded-xs font-serif text-sm">Newsreader Serif</button>
+        <button id="font-sans-btn" class="py-1.5 px-2 border border-ink-border hover:bg-paper-200 rounded-xs font-sans text-xs">Geist Sans</button>
+      </div>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <div class="pt-2 border-t border-ink-border flex items-center justify-between">
+      <span>Dark Palette</span>
+      <button id="theme-toggle-btn" class="px-2.5 py-1 rounded-xs border border-ink-border hover:bg-paper-200 font-mono text-[11px]">
+        Toggle
+      </button>
+    </div>
+  </div>
+
+  <!-- 3. THE 3-COLUMN STUDY DESK -->
+  <div class="flex-1 w-full pt-16 flex relative">
+    
+    <!-- LEFT SIDEBAR: Outline / TOC Only -->
+    <aside 
+      id="left-sidebar"
+      class="w-64 shrink-0 border-r border-ink-border/80 bg-paper-100/60 h-[calc(100vh-4rem)] sticky top-16 overflow-y-auto p-6 hidden md:block transition-all duration-200"
+    >
+      <div class="font-mono text-[11px] uppercase tracking-widest text-ink-muted mb-4 pb-2 border-b border-ink-border/60">
+        Document Outline
+      </div>
+      <nav class="space-y-2 text-xs font-sans">
+        {lesson.outline.map((item) => (
+          <a 
+            href={`#${item.id}`}
+            class:list={[
+              "block text-ink-muted hover:text-ink transition-colors line-clamp-1 py-1 px-1.5 rounded-xs hover:bg-paper-200/60",
+              item.level === 3 ? "pl-4 text-[11px]" : "font-medium"
+            ]}
+          >
+            {item.title}
+          </a>
+        ))}
+      </nav>
+
+      <div class="mt-8 pt-4 border-t border-ink-border/60">
+        <div class="font-mono text-[10px] text-ink-muted mb-1">Source Information</div>
+        <a 
+          href={lesson.originalSourceUrl || "#"} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="text-[11px] text-course-terracotta hover:underline line-clamp-1 font-sans flex items-center gap-1"
+        >
+          {lesson.originalSourceLabel || "Original Material"} ↗
+        </a>
+      </div>
+    </aside>
+
+    <!-- CENTER: Reading Sanctuary Canvas -->
+    <main id="center-reading-column" class="flex-1 px-6 sm:px-12 py-10 max-w-reading mx-auto transition-all duration-200 relative">
+      
+      <!-- Article Heading Block -->
+      <div class="mb-10 pb-6 border-b border-ink-border/80">
+        <div class="flex items-center gap-2 font-mono text-xs text-ink-muted mb-2">
+          <span>Unit {lesson.unitNumber}</span>
+          <span>·</span>
+          <span>Lesson {lesson.lessonNumber}</span>
+          <span>·</span>
+          <span>{lesson.readTime} read</span>
+        </div>
+
+        <h1 class="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-ink mb-4 leading-tight">
+          {lesson.title}
+        </h1>
+
+        <p class="font-serif text-base sm:text-lg text-ink-muted italic leading-relaxed border-l-2 border-course-terracotta pl-4 py-1">
+          "{lesson.summaryQuote}"
+        </p>
+      </div>
+
+      <!-- VIDEO PLAYER IF TYPE == VIDEO -->
+      {lesson.type === 'video' && lesson.youtubeId && (
+        <div class="mb-10 rounded-xs overflow-hidden border border-ink-border bg-ink shadow-sm">
+          <div class="aspect-video w-full">
+            <iframe 
+              id="youtube-player"
+              class="w-full h-full"
+              src={`https://www.youtube.com/embed/${lesson.youtubeId}?enablejsapi=1`}
+              title="Lesson Video Lecture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="p-3 bg-paper-200/90 border-t border-ink-border flex items-center justify-between text-xs font-sans">
+            <span class="text-ink-muted flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+              Video Lecture & Synced Transcript
+            </span>
+            <label class="flex items-center gap-2 cursor-pointer text-ink font-medium">
+              <input type="checkbox" id="auto-scroll-sync" checked class="rounded-xs text-ink" />
+              Auto-Scroll Transcript
+            </label>
+          </div>
+        </div>
+      )}
+
+      <!-- THE EDITORIAL PROSE CONTENT -->
+      <div id="reading-content" class="prose-editorial relative">
+        <Fragment set:html={lesson.contentHtml} />
+      </div>
+
+      <!-- BOTTOM NAVIGATION (Next / Previous Lesson) -->
+      <div class="mt-16 pt-8 border-t border-ink-border flex items-center justify-between gap-4 font-sans text-xs">
+        <a 
+          href={`/courses/${course.slug}`}
+          class="text-ink-muted hover:text-ink flex items-center gap-1 font-medium"
+        >
+          &larr; Back to Journey
+        </a>
+
+        <button 
+          onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+          class="text-ink-muted hover:text-ink font-mono"
+        >
+          Top ↑
+        </button>
+      </div>
+
+    </main>
+
+    <!-- RIGHT SIDEBAR: Highlights & Notes Only -->
+    <aside 
+      id="right-sidebar"
+      class="w-72 shrink-0 border-l border-ink-border/80 bg-paper-100/60 h-[calc(100vh-4rem)] sticky top-16 overflow-y-auto p-6 hidden lg:block transition-all duration-200"
+    >
+      <div class="flex items-center justify-between mb-4 pb-2 border-b border-ink-border/60">
+        <div class="font-mono text-[11px] uppercase tracking-widest text-ink-muted">
+          Highlights & Marginalia
+        </div>
+        <span id="sidebar-count" class="font-mono text-xs text-ink-muted">0</span>
+      </div>
+
+      <p class="text-xs font-sans text-ink-muted mb-4">
+        Select any passage in the article to highlight it instantly and record marginalia.
+      </p>
+
+      <!-- Highlights list populated by JS -->
+      <div id="sidebar-highlights-list" class="space-y-4">
+        <!-- Populated dynamically -->
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- 4. FLOATING ACTION POPOVER (Appears over selected text or clicked highlight) -->
+  <div 
+    id="selection-popover"
+    class="hidden fixed z-50 bg-paper-50 border border-ink shadow-md rounded-xs py-1 px-1.5 flex items-center gap-1 text-xs font-sans animate-in fade-in"
+  >
+    <button 
+      id="popover-hl-btn"
+      class="px-2.5 py-1 rounded-xs bg-ink text-paper-50 hover:bg-ink/90 font-medium flex items-center gap-1.5 transition-colors cursor-pointer"
+    >
+      <span id="popover-hl-icon" class="flex items-center">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m9 11-6 6v3h3l6-6"/>
+          <path d="m22 7-4.5-4.5a2.12 2.12 0 0 0-3 0l-2.5 2.5 7.5 7.5 2.5-2.5a2.12 2.12 0 0 0 0-3Z"/>
+        </svg>
+      </span>
+      <span id="popover-hl-label">Highlight</span>
+    </button>
+    <button 
+      id="popover-note-btn"
+      class="px-2 py-1 rounded-xs hover:bg-paper-200 text-ink flex items-center gap-1.5 transition-colors cursor-pointer"
+      title="Add or Edit Sidenote"
+    >
+      <svg class="w-3.5 h-3.5 text-ink-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 20h9"/>
+        <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+      </svg>
+      <span>Note</span>
+    </button>
+    <button 
+      id="popover-copy-btn"
+      class="px-2 py-1 rounded-xs hover:bg-paper-200 text-ink flex items-center gap-1.5 transition-colors cursor-pointer"
+      title="Copy Quote with Citation"
+    >
+      <span id="popover-copy-icon" class="flex items-center">
+        <svg class="w-3.5 h-3.5 text-ink-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+          <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+        </svg>
+      </span>
+      <span id="popover-copy-label">Copy</span>
+    </button>
+  </div>
+
+  <!-- 5. INLINE NOTE MODAL INPUT -->
+  <div 
+    id="note-dialog"
+    class="hidden fixed inset-0 z-50 bg-ink/20 backdrop-blur-xs flex items-center justify-center p-4"
+  >
+    <div class="w-full max-w-md bg-paper-50 border border-ink p-5 rounded-xs shadow-xl space-y-3">
+      <div class="flex items-center justify-between">
+        <div class="font-serif text-base font-medium text-ink flex items-center gap-2">
+          <svg class="w-4 h-4 text-course-terracotta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+          </svg>
+          Record Sidenote / Marginalia
+        </div>
+        <button id="close-note-dialog-btn" class="p-1 rounded-xs text-ink-faint hover:text-ink transition-colors cursor-pointer" aria-label="Close dialog">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <p id="note-quote-preview" class="font-serif text-xs text-ink-muted italic line-clamp-2 border-l border-course-terracotta pl-2"></p>
+      <textarea 
+        id="note-input-text"
+        rows="3"
+        placeholder="Write your observation, question, or synthesis..."
+        class="w-full p-2.5 text-xs font-sans rounded-xs border border-ink-border bg-paper-100 placeholder:text-ink-faint focus:outline-hidden focus:border-ink resize-none"
+      ></textarea>
+      <div class="flex items-center justify-between gap-2 pt-1">
+        <span class="text-[10px] font-mono text-ink-faint">Esc to cancel · Ctrl+Enter to save</span>
+        <div class="flex items-center gap-2">
+          <button id="cancel-note-btn" class="px-3 py-1.5 text-xs font-sans text-ink-muted hover:text-ink cursor-pointer">Cancel</button>
+          <button id="save-note-btn" class="px-3.5 py-1.5 text-xs font-sans font-medium rounded-xs bg-ink text-paper-50 hover:bg-ink/90 cursor-pointer">Save Sidenote</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<!-- CLIENT SCRIPT: Smart Header, Highlights, Marginalia, YouTube Sync -->
+<script is:inline define:vars={{ courseId: course.id, courseTitle: course.title, lessonId: lesson.id, lessonSlug: lesson.slug, lessonTitle: lesson.title, courseAccent: course.theme.accent, courseHighlight: course.theme.highlight }}>
+  // A. SMART AUTO-HIDING HEADER & TOP PROGRESS BAR
+  let lastScrollY = window.scrollY;
+  const smartHeader = document.getElementById('smart-header');
+  const progressFill = document.getElementById('top-progress-fill');
+  const displayMenu = document.getElementById('display-settings-menu');
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    
+    // Update progress percentage
+    if (maxScroll > 0 && progressFill) {
+      const pct = Math.min(100, Math.max(0, (currentScrollY / maxScroll) * 100));
+      progressFill.style.width = pct + '%';
+    }
+
+    // Auto-hide header on scroll down, reveal on scroll up
+    if (smartHeader) {
+      if (currentScrollY > 60) {
+        if (currentScrollY > lastScrollY && currentScrollY - lastScrollY > 6) {
+          // Scrolling DOWN -> hide header & close popovers
+          smartHeader.style.transform = 'translateY(-100%)';
+          displayMenu?.classList.add('hidden');
+          hidePopover();
+        } else if (lastScrollY - currentScrollY > 6) {
+          // Scrolling UP -> reveal header
+          smartHeader.style.transform = 'translateY(0)';
+        }
+      } else {
+        smartHeader.style.transform = 'translateY(0)';
+      }
+    }
+
+    lastScrollY = currentScrollY;
+  }, { passive: true });
+
+  // B. SIDEBAR TOGGLES & ZEN MODE (Fix specificity with data attributes)
+  const leftSidebar = document.getElementById('left-sidebar');
+  const rightSidebar = document.getElementById('right-sidebar');
+  const toggleZenBtn = document.getElementById('toggle-zen-mode');
+
+  function isSidebarVisible(el) {
+    if (!el) return false;
+    if (el.getAttribute('data-collapsed') === 'true') return false;
+    if (el.getAttribute('data-expanded') === 'true') return true;
+    return window.getComputedStyle(el).display !== 'none';
+  }
+
+  function toggleLeftSidebar() {
+    if (!leftSidebar) return;
+    if (isSidebarVisible(leftSidebar)) {
+      leftSidebar.setAttribute('data-collapsed', 'true');
+      leftSidebar.removeAttribute('data-expanded');
+    } else {
+      leftSidebar.setAttribute('data-expanded', 'true');
+      leftSidebar.removeAttribute('data-collapsed');
+    }
+    syncZenButtonState();
+  }
+
+  function toggleRightSidebar() {
+    if (!rightSidebar) return;
+    if (isSidebarVisible(rightSidebar)) {
+      rightSidebar.setAttribute('data-collapsed', 'true');
+      rightSidebar.removeAttribute('data-expanded');
+      document.body.setAttribute('data-right-collapsed', 'true');
+    } else {
+      rightSidebar.setAttribute('data-expanded', 'true');
+      rightSidebar.removeAttribute('data-collapsed');
+      document.body.removeAttribute('data-right-collapsed');
+    }
+    syncZenButtonState();
+  }
+
+  function syncZenButtonState() {
+    const bothCollapsed = !isSidebarVisible(leftSidebar) && !isSidebarVisible(rightSidebar);
+    if (bothCollapsed) {
+      document.body.setAttribute('data-zen-mode', 'true');
+      toggleZenBtn?.classList.add('bg-ink', 'text-paper-50');
+      toggleZenBtn?.classList.remove('bg-paper-50', 'text-ink-muted');
+    } else {
+      document.body.removeAttribute('data-zen-mode');
+      toggleZenBtn?.classList.remove('bg-ink', 'text-paper-50');
+      toggleZenBtn?.classList.add('bg-paper-50', 'text-ink-muted');
+    }
+  }
+
+  function toggleZenMode() {
+    const isZen = document.body.getAttribute('data-zen-mode') === 'true' ||
+      (!isSidebarVisible(leftSidebar) && !isSidebarVisible(rightSidebar));
+
+    if (isZen) {
+      // Restore sidebars
+      leftSidebar?.removeAttribute('data-collapsed');
+      leftSidebar?.removeAttribute('data-expanded');
+      rightSidebar?.removeAttribute('data-collapsed');
+      rightSidebar?.removeAttribute('data-expanded');
+      document.body.removeAttribute('data-zen-mode');
+      document.body.removeAttribute('data-right-collapsed');
+      toggleZenBtn?.classList.remove('bg-ink', 'text-paper-50');
+      toggleZenBtn?.classList.add('bg-paper-50', 'text-ink-muted');
+    } else {
+      // Collapse both sidebars -> centers reading canvas
+      leftSidebar?.setAttribute('data-collapsed', 'true');
+      leftSidebar?.removeAttribute('data-expanded');
+      rightSidebar?.setAttribute('data-collapsed', 'true');
+      rightSidebar?.removeAttribute('data-expanded');
+      document.body.setAttribute('data-zen-mode', 'true');
+      document.body.setAttribute('data-right-collapsed', 'true');
+      toggleZenBtn?.classList.add('bg-ink', 'text-paper-50');
+      toggleZenBtn?.classList.remove('bg-paper-50', 'text-ink-muted');
+    }
+  }
+
+  document.getElementById('toggle-left-sidebar')?.addEventListener('click', toggleLeftSidebar);
+  document.getElementById('toggle-right-sidebar')?.addEventListener('click', toggleRightSidebar);
+  toggleZenBtn?.addEventListener('click', toggleZenMode);
+
+  // C. DISPLAY SETTINGS MODAL
+  const displayBtn = document.getElementById('toggle-display-settings');
+  const readingContent = document.getElementById('reading-content');
+
+  displayBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    displayMenu?.classList.toggle('hidden');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (displayMenu && !displayMenu.contains(e.target) && e.target !== displayBtn) {
+      displayMenu.classList.add('hidden');
+    }
+  });
+
+  // Font Size Buttons
+  document.querySelectorAll('.size-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sz = btn.getAttribute('data-size');
+      if (!readingContent) return;
+      readingContent.classList.remove('text-sm', 'text-base', 'text-lg', 'text-xl', 'text-2xl');
+      if (sz === 'sm') readingContent.classList.add('text-base');
+      if (sz === 'base') readingContent.classList.add('text-lg');
+      if (sz === 'lg') readingContent.classList.add('text-xl');
+      if (sz === 'xl') readingContent.classList.add('text-2xl');
+      const label = document.getElementById('font-size-label');
+      if (label && sz) label.textContent = sz.toUpperCase();
+    });
+  });
+
+  // Serif / Sans Buttons
+  document.getElementById('font-serif-btn')?.addEventListener('click', () => {
+    if (readingContent) readingContent.style.fontFamily = "'Newsreader', Georgia, serif";
+  });
+  document.getElementById('font-sans-btn')?.addEventListener('click', () => {
+    if (readingContent) readingContent.style.fontFamily = "'Geist', 'Inter', sans-serif";
+  });
+
+  // Theme Dark toggle
+  document.getElementById('theme-toggle-btn')?.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    localStorage.setItem('ahkh_theme', isDark ? 'dark' : 'light');
+  });
+
+  // D. HIGHLIGHTING & MARGINALIA ENGINE
+  const storageKey = `ahkh_hl_${courseId}_${lessonId}`;
+  let highlights = [];
+  try {
+    highlights = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    if (!Array.isArray(highlights)) highlights = [];
+  } catch (e) {
+    highlights = [];
+  }
+
+  let currentSelectionRange = null;
+  let activeExistingHighlight = null;
+  let activeHighlightIdForNote = null;
+
+  const popover = document.getElementById('selection-popover');
+  const popoverHlBtn = document.getElementById('popover-hl-btn');
+  const popoverNoteBtn = document.getElementById('popover-note-btn');
+  const popoverCopyBtn = document.getElementById('popover-copy-btn');
+  const noteDialog = document.getElementById('note-dialog');
+  const noteInput = document.getElementById('note-input-text');
+  const noteQuotePreview = document.getElementById('note-quote-preview');
+
+  function saveHighlights() {
+    localStorage.setItem(storageKey, JSON.stringify(highlights));
+    renderSidebarHighlights();
+    updateHeaderCount();
+    if (typeof window.updateGlobalBadge === 'function') {
+      window.updateGlobalBadge();
+    }
+  }
+
+  function updateHeaderCount() {
+    const countEl = document.getElementById('header-highlights-count');
+    const sidebarCount = document.getElementById('sidebar-count');
+    if (countEl) countEl.textContent = highlights.length;
+    if (sidebarCount) sidebarCount.textContent = `${highlights.length} saved`;
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // Popover State Helpers
+  function setPopoverMode(mode, highlightItem = null) {
+    const hlIcon = document.getElementById('popover-hl-icon');
+    const hlLabel = document.getElementById('popover-hl-label');
+
+    if (mode === 'remove') {
+      if (popoverHlBtn) {
+        popoverHlBtn.className = 'px-2.5 py-1 rounded-xs bg-red-600 text-white hover:bg-red-700 font-medium flex items-center gap-1.5 transition-colors cursor-pointer';
+      }
+      if (hlIcon) {
+        hlIcon.innerHTML = `
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18M6 6l12 12"/>
+          </svg>
+        `;
+      }
+      if (hlLabel) hlLabel.textContent = 'Remove';
+      activeExistingHighlight = highlightItem;
+    } else {
+      if (popoverHlBtn) {
+        popoverHlBtn.className = 'px-2.5 py-1 rounded-xs bg-ink text-paper-50 hover:bg-ink/90 font-medium flex items-center gap-1.5 transition-colors cursor-pointer';
+      }
+      if (hlIcon) {
+        hlIcon.innerHTML = `
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 11-6 6v3h3l6-6"/>
+            <path d="m22 7-4.5-4.5a2.12 2.12 0 0 0-3 0l-2.5 2.5 7.5 7.5 2.5-2.5a2.12 2.12 0 0 0 0-3Z"/>
+          </svg>
+        `;
+      }
+      if (hlLabel) hlLabel.textContent = 'Highlight';
+      activeExistingHighlight = null;
+    }
+  }
+
+  function positionPopover(rect) {
+    if (!popover) return;
+    const popoverWidth = 240;
+    let left = rect.left + window.scrollX + (rect.width / 2) - (popoverWidth / 2);
+    left = Math.max(12, Math.min(window.innerWidth - popoverWidth - 16, left));
+    let top = rect.top + window.scrollY - 44;
+    if (top < 60) {
+      top = rect.bottom + window.scrollY + 8;
+    }
+    popover.style.left = `${left}px`;
+    popover.style.top = `${top}px`;
+  }
+
+  function hidePopover() {
+    popover?.classList.add('hidden');
+    currentSelectionRange = null;
+    activeExistingHighlight = null;
+  }
+
+  // Handle Text Selection
+  readingContent?.addEventListener('mouseup', handleTextSelection);
+  readingContent?.addEventListener('keyup', handleTextSelection);
+
+  function handleTextSelection() {
+    const selection = window.getSelection();
+    if (!selection || selection.isCollapsed) {
+      return;
+    }
+
+    const text = selection.toString().trim();
+    if (text.length < 3) {
+      hidePopover();
+      return;
+    }
+
+    const range = selection.getRangeAt(0);
+    if (!readingContent || !readingContent.contains(range.commonAncestorContainer)) {
+      hidePopover();
+      return;
+    }
+
+    currentSelectionRange = range.cloneRange();
+    setPopoverMode('highlight');
+    positionPopover(range.getBoundingClientRect());
+    popover?.classList.remove('hidden');
+  }
+
+  document.addEventListener('mousedown', (e) => {
+    if (popover && !popover.contains(e.target) && !e.target.closest('.ahkh-highlight')) {
+      hidePopover();
+    }
+  });
+
+  // Create highlight from current text selection
+  function createHighlightFromSelection() {
+    if (!currentSelectionRange) return null;
+    const selectedText = currentSelectionRange.toString().trim();
+    if (!selectedText) return null;
+
+    const hlId = 'hl_' + Date.now();
+    const span = document.createElement('span');
+    span.className = 'ahkh-highlight';
+    span.id = hlId;
+    span.style.setProperty('--course-accent', courseAccent);
+    span.style.setProperty('--course-highlight', courseHighlight);
+
+    try {
+      currentSelectionRange.surroundContents(span);
+    } catch (e) {
+      const contents = currentSelectionRange.extractContents();
+      span.appendChild(contents);
+      currentSelectionRange.insertNode(span);
+    }
+
+    const newItem = {
+      id: hlId,
+      text: selectedText,
+      note: '',
+      courseId,
+      courseTitle,
+      lessonSlug,
+      lessonTitle,
+      url: window.location.pathname,
+      timestamp: new Date().toISOString(),
+    };
+
+    span.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      openHighlightOptions(newItem, span);
+    });
+
+    highlights.push(newItem);
+    saveHighlights();
+    hidePopover();
+    window.getSelection()?.removeAllRanges();
+    currentSelectionRange = null;
+
+    return newItem;
+  }
+
+  // Click on existing highlight in text
+  function openHighlightOptions(item, spanEl) {
+    const rect = spanEl.getBoundingClientRect();
+    setPopoverMode('remove', item);
+    positionPopover(rect);
+    popover?.classList.remove('hidden');
+  }
+
+  // Popover buttons
+  popoverHlBtn?.addEventListener('click', () => {
+    if (activeExistingHighlight) {
+      removeHighlight(activeExistingHighlight.id);
+      hidePopover();
+    } else if (currentSelectionRange) {
+      createHighlightFromSelection();
+    }
+  });
+
+  popoverNoteBtn?.addEventListener('click', () => {
+    if (activeExistingHighlight) {
+      const h = activeExistingHighlight;
+      hidePopover();
+      openNoteModal(h.id, h.text, h.note || '');
+    } else if (currentSelectionRange) {
+      const created = createHighlightFromSelection();
+      if (created) {
+        openNoteModal(created.id, created.text, '');
+      }
+    }
+  });
+
+  popoverCopyBtn?.addEventListener('click', () => {
+    const textToCopy = activeExistingHighlight 
+      ? activeExistingHighlight.text 
+      : (currentSelectionRange ? currentSelectionRange.toString().trim() : '');
+    if (!textToCopy) return;
+
+    const citation = `"${textToCopy}"\n— ${lessonTitle} (${courseTitle})\n${window.location.href}`;
+    navigator.clipboard.writeText(citation).then(() => {
+      const copyIcon = document.getElementById('popover-copy-icon');
+      const copyLabel = document.getElementById('popover-copy-label');
+      if (copyIcon) {
+        copyIcon.innerHTML = `
+          <svg class="w-3.5 h-3.5 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"/>
+          </svg>
+        `;
+      }
+      if (copyLabel) copyLabel.textContent = 'Copied!';
+      setTimeout(() => {
+        if (copyIcon) {
+          copyIcon.innerHTML = `
+            <svg class="w-3.5 h-3.5 text-ink-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+            </svg>
+          `;
+        }
+        if (copyLabel) copyLabel.textContent = 'Copy';
+        hidePopover();
+      }, 900);
+    });
+  });
+
+  // Remove highlight
+  function removeHighlight(id) {
+    highlights = highlights.filter(h => h.id !== id);
+    const spanEl = document.getElementById(id);
+    if (spanEl && spanEl.parentNode) {
+      spanEl.replaceWith(document.createTextNode(spanEl.textContent || ''));
+    }
+    const gutterEl = document.getElementById(`gutter-note-${id}`);
+    if (gutterEl) gutterEl.remove();
+    saveHighlights();
+  }
+
+  // Note Modal Actions
+  function openNoteModal(id, text, existingNote) {
+    activeHighlightIdForNote = id;
+    if (noteQuotePreview) noteQuotePreview.textContent = `"${text}"`;
+    if (noteInput) {
+      noteInput.value = existingNote || '';
+    }
+    noteDialog?.classList.remove('hidden');
+    setTimeout(() => noteInput?.focus(), 50);
+  }
+
+  function closeNoteModal() {
+    noteDialog?.classList.add('hidden');
+    activeHighlightIdForNote = null;
+  }
+
+  document.getElementById('close-note-dialog-btn')?.addEventListener('click', closeNoteModal);
+  document.getElementById('cancel-note-btn')?.addEventListener('click', closeNoteModal);
+
+  document.getElementById('save-note-btn')?.addEventListener('click', saveNoteAction);
+
+  function saveNoteAction() {
+    if (!activeHighlightIdForNote || !noteInput) return;
+    const noteVal = noteInput.value.trim();
+    const target = highlights.find(h => h.id === activeHighlightIdForNote);
+    if (target) {
+      target.note = noteVal;
+      saveHighlights();
+      renderGutterNote(target);
+    }
+    closeNoteModal();
+  }
+
+  // Keyboard shortcut for note modal
+  window.addEventListener('keydown', (e) => {
+    if (!noteDialog || noteDialog.classList.contains('hidden')) return;
+    if (e.key === 'Escape') {
+      closeNoteModal();
+    } else if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+      saveNoteAction();
+    }
+  });
+
+  // Gutter Marginalia Sidenote Rendering
+  function renderGutterNote(item) {
+    if (!readingContent) return;
+
+    let gutterEl = document.getElementById(`gutter-note-${item.id}`);
+
+    if (!item.note || !item.note.trim()) {
+      if (gutterEl) gutterEl.remove();
+      return;
+    }
+
+    const span = document.getElementById(item.id);
+    if (!span) return;
+
+    if (!gutterEl) {
+      gutterEl = document.createElement('div');
+      gutterEl.className = 'marginalia-gutter-note';
+      gutterEl.id = `gutter-note-${item.id}`;
+      gutterEl.style.setProperty('--course-accent', courseAccent);
+      readingContent.appendChild(gutterEl);
+    }
+
+    const readingBox = readingContent.getBoundingClientRect();
+    const spanBox = span.getBoundingClientRect();
+    const topPos = Math.max(0, spanBox.top - readingBox.top);
+    gutterEl.style.top = `${topPos}px`;
+
+    gutterEl.innerHTML = `
+      <div class="flex items-center justify-between gap-1 text-[10px] font-mono text-ink-faint mb-1">
+        <span class="font-medium text-ink flex items-center gap-1">
+          <svg class="w-3 h-3 text-course-terracotta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+          </svg>
+          Sidenote
+        </span>
+        <span class="text-ink-muted hover:text-ink cursor-pointer p-0.5" title="Edit note">
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+          </svg>
+        </span>
+      </div>
+      <p class="text-xs font-sans text-ink leading-relaxed">${escapeHtml(item.note)}</p>
+    `;
+
+    gutterEl.onclick = (e) => {
+      e.stopPropagation();
+      openNoteModal(item.id, item.text, item.note);
+      jumpToHighlight(item.id);
+    };
+  }
+
+  function repositionAllGutterNotes() {
+    if (!readingContent) return;
+    const readingBox = readingContent.getBoundingClientRect();
+    highlights.forEach(item => {
+      if (item.note) {
+        const span = document.getElementById(item.id);
+        const gutterEl = document.getElementById(`gutter-note-${item.id}`);
+        if (span && gutterEl) {
+          const spanBox = span.getBoundingClientRect();
+          gutterEl.style.top = `${Math.max(0, spanBox.top - readingBox.top)}px`;
+        }
+      }
+    });
+  }
+
+  window.addEventListener('resize', repositionAllGutterNotes, { passive: true });
+
+  // DOM Text Range Search for Highlighting Restoration
+  function findRangeForTextInElement(element, searchText) {
+    const fullText = element.textContent || '';
+    const startChar = fullText.indexOf(searchText);
+    if (startChar === -1) return null;
+    const endChar = startChar + searchText.length;
+
+    let currentChar = 0;
+    let startNode = null;
+    let startOffset = 0;
+    let endNode = null;
+    let endOffset = 0;
+
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null);
+    let textNode;
+
+    while ((textNode = walker.nextNode())) {
+      const len = (textNode.nodeValue || '').length;
+      const nextChar = currentChar + len;
+
+      if (!startNode && startChar >= currentChar && startChar < nextChar) {
+        startNode = textNode;
+        startOffset = startChar - currentChar;
+      }
+      if (!endNode && endChar > currentChar && endChar <= nextChar) {
+        endNode = textNode;
+        endOffset = endChar - currentChar;
+        break;
+      }
+      currentChar = nextChar;
+    }
+
+    if (startNode && endNode) {
+      const range = document.createRange();
+      range.setStart(startNode, startOffset);
+      range.setEnd(endNode, endOffset);
+      return range;
+    }
+    return null;
+  }
+
+  // Restore Highlights in DOM on load
+  function restoreHighlightsInDOM() {
+    if (!readingContent) return;
+
+    highlights.forEach(item => {
+      if (document.getElementById(item.id)) {
+        if (item.note) renderGutterNote(item);
+        return;
+      }
+
+      const blocks = readingContent.querySelectorAll('p, blockquote, li, h2, h3');
+      for (const block of blocks) {
+        const range = findRangeForTextInElement(block, item.text);
+        if (range) {
+          const span = document.createElement('span');
+          span.className = 'ahkh-highlight';
+          span.id = item.id;
+          span.style.setProperty('--course-accent', courseAccent);
+          span.style.setProperty('--course-highlight', courseHighlight);
+
+          try {
+            range.surroundContents(span);
+          } catch (e) {
+            const contents = range.extractContents();
+            span.appendChild(contents);
+            range.insertNode(span);
+          }
+
+          span.addEventListener('click', (ev) => {
+            ev.stopPropagation();
+            openHighlightOptions(item, span);
+          });
+
+          if (item.note) {
+            renderGutterNote(item);
+          }
+          break;
+        }
+      }
+    });
+  }
+
+  // Render Highlights in Right Sidebar
+  function renderSidebarHighlights() {
+    const listEl = document.getElementById('sidebar-highlights-list');
+    if (!listEl) return;
+
+    if (highlights.length === 0) {
+      listEl.innerHTML = `
+        <div class="text-[11px] font-sans text-ink-faint text-center py-8">
+          No highlights yet in this lesson.
+        </div>
+      `;
+      return;
+    }
+
+    listEl.innerHTML = highlights.map(item => `
+      <article 
+        class="p-3 rounded-xs border border-ink-border bg-paper-50 hover:border-ink transition-colors cursor-pointer group"
+        onclick="jumpToHighlight('${item.id}')"
+      >
+        <div class="flex items-center justify-between mb-1.5 text-[10px] font-mono text-ink-faint">
+          <span>${item.timestamp ? new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}</span>
+          <div class="flex items-center gap-2">
+            <span class="group-hover:text-ink text-ink-muted flex items-center gap-0.5">
+              Jump
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17 17 7M7 7h10v10"/>
+              </svg>
+            </span>
+            <button 
+              onclick="event.stopPropagation(); window.deleteSidebarHighlight('${item.id}')"
+              class="text-ink-faint hover:text-red-600 p-0.5 rounded-xs transition-colors cursor-pointer"
+              title="Delete Highlight"
+              aria-label="Delete Highlight"
+            >
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <blockquote class="font-serif text-xs italic text-ink border-l-2 border-course-terracotta pl-2 mb-2 line-clamp-3">
+          "${escapeHtml(item.text)}"
+        </blockquote>
+        ${item.note ? `
+          <div class="text-[11px] font-sans text-ink-muted bg-paper-200/60 p-1.5 rounded-xs border-l border-ink">
+            ${escapeHtml(item.note)}
+          </div>
+        ` : `
+          <button 
+            onclick="event.stopPropagation(); window.openNoteModalExternal('${item.id}')"
+            class="text-[10px] font-mono text-ink-muted hover:text-ink underline cursor-pointer"
+          >
+            + Add Sidenote
+          </button>
+        `}
+      </article>
+    `).join('');
+  }
+
+  window.openNoteModalExternal = function(id) {
+    const item = highlights.find(h => h.id === id);
+    if (item) {
+      openNoteModal(item.id, item.text, item.note || '');
+    }
+  };
+
+  window.deleteSidebarHighlight = function(id) {
+    removeHighlight(id);
+  };
+
+  window.jumpToHighlight = function(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      el.classList.remove('active');
+      void el.offsetWidth; // Reflow to re-trigger CSS animation
+      el.classList.add('active');
+      setTimeout(() => el.classList.remove('active'), 1800);
+    }
+  };
+
+  // E. YOUTUBE TRANSCRIPT SYNC
+  const autoScrollCheckbox = document.getElementById('auto-scroll-sync');
+  const timestampParagraphs = document.querySelectorAll('[data-timestamp]');
+
+  // Initialize UI on load
+  document.addEventListener('DOMContentLoaded', () => {
+    updateHeaderCount();
+    renderSidebarHighlights();
+    restoreHighlightsInDOM();
+  });
+</script>

@@ -1,0 +1,35 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = 'AHKH Study Hub', 
+  description = 'An offline-first, static editorial study sanctuary and reading companion.' 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/logo.png" />
+  </head>
+  <body class="bg-paper-50 dark:bg-dark-bg text-ink dark:text-dark-ink min-h-screen flex flex-col selection:bg-paper-200 dark:selection:bg-dark-border selection:text-ink dark:selection:text-dark-ink transition-colors duration-150">
+    <slot />
+
+    <script is:inline>
+      // Global theme preference initializer
+      const savedTheme = localStorage.getItem('ahkh_theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+  </body>
+</html>
