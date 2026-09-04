@@ -1,4 +1,4 @@
-# DESIGN.md — AHKH Study Hub Design System
+﻿# DESIGN.md — AHKH Study Hub Design System
 
 ## 1. Visual Identity & Mode
 - **Mode:** `Read` (Deep, focused reading) + `Operate` (Course roadmap & study tools).
@@ -9,24 +9,24 @@
 
 ### Global Soft Monochrome (The Sanctuary Canvas)
 - `bg-canvas`: `#FFFFFF` (Pure Crisp White)
-- `bg-card`: `#FFFFFF` / dark: `#181816`
-- `border-subtle`: `#E8E6E1` / dark: `#262523`
-- `text-ink`: `#22211F` (Muted carbon, never stark #000)
-- `text-muted`: `#73716C`
-- `text-faint`: `#A8A6A1`
+- `bg-card`: `#FFFFFF`
+- `border-subtle`: `#E4E4E7` (Crisp Minimal Zinc Border)
+- `text-ink`: `#09090B` (Carbon ink)
+- `text-muted`: `#71717A` (Subtle secondary text)
+- `text-faint`: `#A1A1AA`
 
 ### The Four Ornamental Accent Colors (Decorative Badges & Status Only)
-The site's primary aesthetic is strictly **Soft Monochrome & Swiss Editorial** (carbon ink, warm paper, subtle rules). The four colors below are **strictly ornamental and decorative accents** (small status chips, indicator dots, or discrete metadata badges) and MUST NEVER dominate or be used as whole-page theme colors, heading colors, or large background fills:
-- **Emerald (الأخضر):** `text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800` — زينة للشارات النشطة (Active / Foundational).
-- **Blue (الأزرق):** `text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800` — زينة للشارات الجديدة (New / Architectural).
-- **Purple (البنفسجي):** `text-purple-700 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 border-purple-200 dark:border-purple-800` — زينة لشارات الاستكشاف (Explored / Marginalia).
-- **Pink (الوردي):** `text-pink-700 dark:text-pink-400 bg-pink-50 dark:bg-pink-950/40 border-pink-200 dark:border-pink-800` — زينة لشارات الإتمام (Completed / Mastery).
+The platform's primary aesthetic is strictly **Soft Monochrome & Swiss Editorial** (carbon ink, clean paper, subtle rules). The four colors below are **strictly ornamental and decorative accents** (small status chips, indicator dots, or discrete metadata badges) and MUST NEVER dominate or be used as whole-page theme colors, heading colors, or large background fills:
+- **Emerald:** `text-emerald-700 bg-emerald-50 border-emerald-200` — Status badge for Active courses.
+- **Blue:** `text-blue-700 bg-blue-50 border-blue-200` — Status badge for New courses.
+- **Purple:** `text-purple-700 bg-purple-50 border-purple-200` — Status badge for Explored courses.
+- **Pink:** `text-pink-700 bg-pink-50 border-pink-200` — Status badge for Completed courses.
 
-> **قاعدة الانضباط والوقار التحريري (Restraint & Anti-Slop Rule):**
-> 1. الموقع بالكامل مبني على السكينة والهدوء الأحادي (Soft Monochrome: حبر وورق فقط).
-> 2. يُمنع منعاً باتاً تلوين العناوين أو الأزرار أو الإطارات أو خلفيات التبويبات بالبنفسجي أو بأي لون فاقع (تجنب الـ AI Slop).
-> 3. الألوان الأربعة مجرد لمسات زينة طفيفة (نقاط 6px أو رقاقات وسوم صغيرة جداً).
-> 4. يُحظر استخدام اللون البرتقالي (Terracotta) في أي مكان خارج مساق Springboard UX.
+> **Restraint & Anti-Slop Principles:**
+> 1. The entire platform is grounded in monochromatic stillness (pure white canvas and carbon ink).
+> 2. Never tint titles, buttons, borders, or tab backgrounds with loud or arbitrary neon colors (avoiding generic AI slop).
+> 3. Accent colors are strictly restrained to discrete 6px indicator dots or small rounded pills.
+> 4. Burnt Terracotta is strictly scoped to the Springboard UX course theme.
 
 ### Course DNA (Single Highlight Color per Course)
 - **Springboard UX Curriculum:**
@@ -38,7 +38,7 @@ The site's primary aesthetic is strictly **Soft Monochrome & Swiss Editorial** (
 
 ### Permanent Rule: Course Listing Purity
 - In the Library course listing (`/`), ALL course descriptions and subtitles are strictly removed.
-- Course name is expressive enough, accompanied solely by structural metadata: module count, source count, duration, and the status badge.
+- The course title is expressive enough along with structural metadata: module count, source count, duration, and status badge.
 - For textual descriptions and curriculum details, the user clicks into the individual course page.
 
 ### Absolute Ban on Emojis
@@ -47,9 +47,9 @@ The site's primary aesthetic is strictly **Soft Monochrome & Swiss Editorial** (
 ### Typography Architecture
 - **Editorial Longform:** `Newsreader` / `Lora`
   - High legibility, graceful italics, generous line height (`1.75`), contained reading width (`68ch` / `720px`).
-- **Marginalia / Sidenotes:** `Newsreader Italic` / `Geist Sans`
-  - Small size (`0.85rem`), muted tone, sits in the outer right margin aligned with the paragraph.
-- **UI Structure & Meta:** `Geist Sans` / `Inter`
+- **Marginalia / Sidenotes:** `Newsreader Italic` / `Inter`
+  - Small size (`0.85rem`), muted tone, positioned in the outer right margin aligned with the paragraph.
+- **UI Structure & Meta:** `Inter`
   - Navigation, roadmaps, buttons, timestamps, badges.
 - **Precision Data:** `JetBrains Mono`
   - Lesson numbers, video timestamps, shortcut hints.
@@ -58,35 +58,17 @@ The site's primary aesthetic is strictly **Soft Monochrome & Swiss Editorial** (
 
 ### 1. Top Fixed Progress Line
 - Position: `fixed top-0 left-0 w-full h-[3px] z-50`
-- Shows resource scroll progress in the course accent color.
-- Permanent: Never disappears during scrolling.
+- Fill: Course accent color (`--course-accent`)
+- Behavior: Never scrolls off-screen; indicates exact reading completion percentage.
 
 ### 2. Smart Auto-Hiding Header
-- Position: `fixed top-[3px] left-0 w-full z-40`
+- Position: `fixed top-[3px] left-0 w-full h-14 z-40`
 - Behavior:
-  - Scroll down: slides up (`transform: translateY(-100%)`).
-  - Scroll up: slides down smoothly (`transform: translateY(0)`).
-- Header Components:
-  `[ Back to Journey ]  [ Outline (TOC) ]  --- [ Lesson Title ] ---  [ Aa Display ]  [ Highlights ]`
+  - Scroll down (>60px): Slides up (`translateY(-100%)`).
+  - Scroll up: Slides down (`translateY(0)`).
+  - Dismisses open menus and popovers on scroll.
 
-### 3. Floating Action Popover on Text Selection & Highlight Click
-- When user selects text or clicks an existing highlight:
-  A clean, discreet floating popover appears directly above the text:
-  - `[ Highlight ]` (or `[ Remove ]` if already highlighted)
-  - `[ Note ]`
-  - `[ Copy Quote ]`
-
-### 4. Marginalia (Sidenotes in the Margin Gutters)
-- Since the reading canvas is contained, desktop screens provide a spacious right gutter.
-- Notes added to highlights render as **Marginalia (Sidenotes)** anchored vertically adjacent to the highlighted text block.
-- Hovering or clicking a sidenote subtly pulses the highlighted text in the article, and vice versa.
-
-### 5. Dual Collapsible Sidebars
-- **Left Sidebar (Outline only):** Displays document headings (H2, H3) for quick section jumping.
-- **Right Sidebar (Highlights only):** Collapsible panel aggregating all highlights and notes for the current lesson with jump-to-source click.
-- Collapsing both creates instant Zen distraction-free reading.
-
-### 6. Readwise-Compatible Export (Commonplace)
-- Standard CSV schema conforming to Readwise Import format:
-  `Highlight, Title, Author, URL, Note, Location, Date`
-- Also supports clean Markdown export.
+### 3. Collapsible Dual Sidebars
+- **Left (Outline TOC):** Collapsible drawer listing heading anchors.
+- **Right (Highlights & Sidenotes):** Collapsible drawer listing captured passages.
+- **Zen Mode:** Collapses both sidebars simultaneously with one click.

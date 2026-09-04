@@ -3,8 +3,8 @@
   
   # AHKH Study Hub
   
-  **The Sovereign Editorial Study Sanctuary & Curriculum Reader**  
-  *مكتبة ومحراب المذاكرة التحريري — إعادة هندسة المحتوى التعليمي إلى أدب رفيع قابل للقراءة*
+  **The Sovereign Editorial Study Sanctuary & Living Curriculum Reader**  
+  *Transforming dense educational curricula into enduring, readable literature through the art of HTML & CSS.*
 
   [![Deploy to GitHub Pages](https://github.com/AHKH3/ahkh-study-hub/actions/workflows/deploy.yml/badge.svg)](https://github.com/AHKH3/ahkh-study-hub/actions/workflows/deploy.yml)
   [![Automated Release](https://github.com/AHKH3/ahkh-study-hub/actions/workflows/release.yml/badge.svg)](https://github.com/AHKH3/ahkh-study-hub/actions/workflows/release.yml)
@@ -12,156 +12,161 @@
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-38B2AC.svg?logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
   [![GitHub Pages](https://img.shields.io/badge/Hosted%20On-GitHub%20Pages-222222.svg?logo=github&logoColor=white)](https://ahkh3.github.io/ahkh-study-hub/)
 
-  [**Live Website**](https://ahkh3.github.io/ahkh-study-hub/) · [**Architecture Docs**](docs/ARCHITECTURE.md) · [**Decisions Log**](docs/DECISIONS.md)
+  [**Live Website**](https://ahkh3.github.io/ahkh-study-hub/) · [**Architecture Docs**](docs/ARCHITECTURE.md) · [**Decisions Log**](docs/DECISIONS.md) · [**Project Specs**](docs/PROJECT.md)
 </div>
 
 ---
 
-## نبذة عن المشروع / Project Philosophy
+## Overview & Philosophy
 
-**AHKH Study Hub** هو منصة ومكتبة مذاكرة ثابتة وشخصية مبنية بنمط تحريري رصين (Editorial Sanctuary) كبديل متكامل لأدوات القراءة المدفوعة مثل *Readwise Reader*. 
+**AHKH Study Hub** is a sovereign, local-first static study platform and reader companion engineered as a permanent, high-craft open alternative to subscription services like *Readwise Reader*.
 
-فلسفة المشروع تقوم على **إنقاذ الفكر والمعرفة من جفاف النصوص الرتيبة والترانسكربتات المفرغة الميتة**، وإعادة هندستها بصرياً ومعمارياً باستخدام كامل مرونة وقوة وجماليات **HTML و CSS** (بطاقات ذكية، اقتباسات عريضة، كول أوتس، وجداول بيانات) لتتحول المادة العلمية إلى أدب رفيع ممتع ومريح للقراءة والمذاكرة المطولة، مع الالتزام التام بالقواعد التالية:
-- **أمانة النص الحرفية (Verbatim Fidelity):** الحفاظ الكامل على ألفاظ وصياغة الكاتب الأصلية دون تلخيص توليدي بالذكاء الاصطناعي أو تشويه للنص.
-- **الوقار التحريري ومونوكروم نقي:** خلفية بيضاء ناصعة (`#FFFFFF`) وخطوط سوداء حادة (`#09090B`) وفواصل محايدة (`#E4E4E7`) خالية من أي صبغات اصطناعية أو بهرجة بصرية.
-- **حظر تام للإيموجيز:** اعتماد حصري على أيقونات هندسية نظيفة بصيغة SVG.
-- **سيادة محلية مطلقة (Local-First):** تخزين التظليلات والملاحظات في ذاكرة المتصفح المحلية (`localStorage`) بدون قواعد بيانات سحابية أو تتبع.
-- **تصدير بضغطة زر لريد وايز (Readwise CSV & Markdown):** تصدير كامل مقتطفاتك بصيغة متوافقة 100% مع معايير Readwise الرسمية.
+The core mission of the project is to **rescue intellectual thought from the drought of monotonous text, raw video transcripts, and rigid PDFs**, re-architecting them into publication-grade editorial literature using the expressive power, flexibility, and elegance of **HTML & CSS** (structured cards, commanding pull quotes, contextual callouts, and responsive data grids).
+
+### The Invariant Principles
+1. **Verbatim Text Fidelity:** Source texts, articles, and video transcripts are preserved exactly as articulated by their original authors. Absolute zero algorithmic summarizing, AI omission, or distortion. We re-engineer the vessel, never the substance.
+2. **Pure Monochrome Dignity:** A quiet, clinical aesthetic founded on pure white canvas (`#FFFFFF`), solid carbon black ink (`#09090B`), and neutral zinc borders (`#E4E4E7`). Zero artificial gradients, neon glows, or distracting visual noise.
+3. **Absolute Ban on Emojis:** The interface relies exclusively on geometric inline SVG icons and refined typographic symbols. Emojis are strictly banned from all surfaces.
+4. **Local Sovereignty (Local-First):** Highlights, marginal notes, and reading progress reside entirely in browser `localStorage`. No accounts, no cloud databases, no tracking.
+5. **One-Click Readwise Export:** Direct export of all captured passages and marginalia in official RFC 4180 Readwise CSV schema and universal Markdown.
 
 ---
 
-## Key Features / الميزات الرئيسية
+## Core Features
 
-### 1. The Editorial Monograph Index (المكتبة الرئيسية)
-- جدول تحريري أنيق يعرض الكورسات بدون حشو أو أوصاف مصطنعة.
-- اسم الكورس، عدد الوحدات، عدد المصادر، المدة المقدرة، وشريط الإنجاز.
-- شارات حالة ملونة بدقة:
-  - `Active` (نشط): أخضر زمردي
-  - `New` (جديد): أزرق
-  - `Explored` (مستكشف): بنفسجي
-  - `Completed` (تم): وردي
+### 1. The Editorial Monograph Index (`/`)
+- Pure monograph table displaying curricula without marketing fluff or repetitive subtitles.
+- Strict Course Listing Purity: displays only the course title, module count, source count, estimated duration, progress bar, and status pill.
+- Semantic, high-legibility status chips:
+  - `Active`: Emerald Green (`text-emerald-700 bg-emerald-50 border-emerald-200`)
+  - `New`: Royal Blue (`text-blue-700 bg-blue-50 border-blue-200`)
+  - `Explored`: Purple (`text-purple-700 bg-purple-50 border-purple-200`)
+  - `Completed`: Rose Pink (`text-pink-700 bg-pink-50 border-pink-200`)
 
-### 2. The Comprehensive Study Reader (القارئ التحريري المتقدم)
-- **شريط تقدم ثابت (Permanent Progress Bar):** شريط علوي بارتفاع 3px يوضح نسبة إنجاز قراءة الدرس بلون الكورس المميز.
-- **هيدر ذكي (Smart Auto-Hiding Header):** يختفي بسلاسة عند التمرير لأسفل لتركيز الانتباه، ويعود فوراً عند التمرير لأعلى.
-- **شريطان جانبيان قابلان للطي (Collapsible Sidebars):**
-  - شريط أيسر لفهرس الدرس ومحاوره (Outline).
-  - شريط أيمن لعرض الملاحظات والتظليلات الحية.
-- **وضع الهدوء الكامل (Zen Mode):** ضغطة واحدة تطوي الشريطين معاً وتمركز المحتوى في منتصف الشاشة بدون أي مشتتات.
-- **مزامنة الفيديو والترانسكريبت (Media Player Sync):** دعم تضمين محاضرات الفيديو ومزامنة الطوابع الزمنية مع النص المكتوب تلقائياً.
+### 2. The Comprehensive Study Reader (`/courses/[course]/[slug]`)
+- **Permanent Top Progress Bar:** Fixed 3px line at `top: 0` filled with the course's signature accent color.
+- **Smart Auto-Hiding Header:** Glides out of view on scroll-down to preserve focus; reappears instantly on scroll-up.
+- **Collapsible Dual Sidebars:**
+  - *Left Sidebar:* Structured Table of Contents (Outline) with anchor jump navigation.
+  - *Right Sidebar:* Live feed of all highlights and marginal notes in the active lesson.
+- **Zen Mode:** A single click collapses both sidebars simultaneously, expanding the reading canvas to center with zero peripheral distraction.
+- **Media Player & Transcript Sync:** Embedded video lessons synchronized with interactive text timestamps; clicking any timestamp scrubs the video player directly.
 
-### 3. Highlighting & Marginalia Engine (محرك التظليل والهوامش)
-- **نافذة منبثقة تفاعلية (Floating Popover):** تظهر فور تحديد أي نص وتتيح:
-  - التظليل (`Highlight`) أو إلغاؤه (`Remove`).
-  - كتابة ملاحظة هامشية (`Add Sidenote`).
-  - نسخ الاقتباس مع التوثيق المرجعي الكامل ورابط الدرس (`Copy with Citation`).
-- **ملاحظات الهامش (Gutter Marginalia):** الملاحظات تظهر مباشرة في الهامش الأيمن بجوار الفقرة المظللة على الشاشات العريضة.
-- **نبض التظليل التفاعلي (Highlight Pulse):** النقر على أي تظليل في القائمة ينقلك فوراً إليه وينبض بلون الكورس للتنبيه.
+### 3. Highlighting & Marginalia Engine
+- **Floating Action Popover:** Appears on text selection with single-click actions:
+  - `Highlight` or `Remove Highlight`
+  - `Add/Edit Sidenote`
+  - `Copy Quote with Full Academic Citation`
+- **Gutter Marginalia:** Sidenotes render directly in the desktop right margin gutter alongside their corresponding highlighted paragraph.
+- **Interactive Highlight Pulse:** Clicking any highlight entry in the right sidebar or commonplace smooth-scrolls to the passage and triggers a gentle illumination pulse.
 
-### 4. The Commonplace Book (دفتر الشواهد وتصدير Readwise)
-- مستودع محلي مركزي يجمع كل الاقتباسات والملاحظات عبر جميع الكورسات.
-- بحث فوري وسريع باختصار الزر `/`.
-- تصدير رسمي بضغطة زر بصيغة **Readwise CSV** (وفق مواصفة RFC 4180) أو **Markdown**.
+### 4. The Commonplace Book (`/commonplace`)
+- Central repository aggregating all captured highlights and notes across all courses.
+- Instant search with keyboard shortcut `/`.
+- Dynamic course-specific filter tabs.
+- One-click export to **Readwise CSV** (RFC 4180 compliant) and **Markdown**.
 
 ### 5. Automated CI/CD & Semantic Releases
-- **نشر تلقائي على GitHub Pages:** عبر سير العمل `.github/workflows/deploy.yml` عند كل دمج على فرع `main`.
-- **إصدارات تلقائية (Automated Releases):** عبر سير العمل `.github/workflows/release.yml` لدعم الإصدارات الدلالية والتحديثات.
+- **Automated Deployment:** GitHub Actions workflow (`.github/workflows/deploy.yml`) builds and deploys to GitHub Pages on every push to `main`.
+- **Semantic Release Automation:** GitHub Actions workflow (`.github/workflows/release.yml`) generates GitHub releases and changelogs on version tags.
 
 ---
 
-## Tech Stack / التقنيات المستخدمة
+## Technology Stack
 
-- **Framework:** [Astro 5.x](https://astro.build) (Static Site Generation - SSG)
+- **Core Engine:** [Astro 5.x](https://astro.build) (Static Site Generation — SSG)
 - **Styling:** [Tailwind CSS 3.x](https://tailwindcss.com) with `@tailwindcss/typography`
 - **Typography:** Newsreader (Serif), Inter (Sans-serif), JetBrains Mono (Monospace)
-- **Icons:** Pure inline SVG (Zero font dependencies, zero emojis)
-- **Storage:** Client-side `localStorage` API
-- **Deployment:** GitHub Actions & GitHub Pages
+- **Icons:** Pure accessible inline SVG (Zero font dependencies, zero emojis)
+- **Persistence:** Browser `localStorage` API
+- **Hosting & CI/CD:** GitHub Pages & GitHub Actions
 
 ---
 
-## Getting Started / البدء والتطوير المحلي
+## Getting Started
 
-### المتطلبات المسبقة:
-- [Node.js](https://nodejs.org/) الإصدار 20 أو أحدث
-- npm الإصدار 10 أو أحدث
+### Prerequisites
+- [Node.js](https://nodejs.org/) v22.12.0 or newer
+- npm v10 or newer
 
-### خطوات التثبيت والتشغيل:
+### Local Installation & Development
 ```bash
-# 1. استنساخ المستودع
+# 1. Clone repository
 git clone https://github.com/AHKH3/ahkh-study-hub.git
 cd ahkh-study-hub
 
-# 2. تثبيت الحزم
-npm install
+# 2. Install dependencies with legacy peer resolution
+npm install --legacy-peer-deps
 
-# 3. تشغيل خادم التطوير المحلي
+# 3. Start local development server
 npm run dev
 ```
-افتح المتصفح على الرابط المحلي: `http://localhost:4321/ahkh-study-hub/`
 
-### أوامر البناء والاختبار:
+Visit `http://localhost:4321/ahkh-study-hub/` in your browser.
+
+### Verification & Production Build
 ```bash
-# فحص الأنواع وبناء الموقع الثابت
+# Type check and build static distribution
 npm run build
 
-# معاينة الموقع المبني محلياً
+# Preview production build locally
 npm run preview
 ```
 
 ---
 
-## Automated Releases / إنشاء إصدار جديد
+## Creating Releases
 
-لإنشاء إصدار رسمي جديد وتوليد الملاحظات تلقائياً على GitHub:
-
-### الطريقة الأولى (عبر Git Tag):
+### Option A: Via Git Tag
 ```bash
-git tag v1.0.0
-git push origin v1.0.0
+git tag v1.1.0
+git push origin v1.1.0
 ```
-سيقوم سير عمل GitHub Actions تلقائياً بإنشاء Release مع سجل التغييرات الكامل.
+GitHub Actions will automatically generate the release, compile notes, and publish the release.
 
-### الطريقة الثانية (عبر واجهة GitHub Actions):
-1. اذهب لتبويب **Actions** في المستودع.
-2. اختر سير عمل **Automated Release**.
-3. اضغط **Run workflow** وحدد نوع الزيادة (`patch` أو `minor` أو `major`).
+### Option B: Via GitHub Actions UI
+1. Navigate to the **Actions** tab in the repository.
+2. Select **Automated Release**.
+3. Click **Run workflow** and choose the semver increment (`patch`, `minor`, or `major`).
 
 ---
 
-## Structure / هيكلية المجلدات
+## Repository Architecture
 
 ```
 ahkh-study-hub/
 ├── .github/workflows/
-│   ├── deploy.yml            # نشر تلقائي لـ GitHub Pages
-│   └── release.yml           # توليد الإصدارات التلقائية
+│   ├── deploy.yml            # Automated GitHub Pages CI/CD
+│   └── release.yml           # Automated Semantic Release Generator
 ├── docs/
-│   ├── ARCHITECTURE.md       # المخطط المعماري الكامل
-│   ├── DECISIONS.md          # سجل القرارات الهندسية (ADR)
-│   └── PROJECT.md            # ميثاق ونطاق المشروع
+│   ├── ARCHITECTURE.md       # Full engineering specifications
+│   ├── DECISIONS.md          # Architectural Decision Records (ADR)
+│   └── PROJECT.md            # Scope, taxonomy, and system invariants
 ├── public/
-│   └── logo.png              # الشعار الشفاف الأصلي
+│   └── logo.png              # Transparent brand emblem
 ├── src/
 │   ├── components/
-│   │   └── HubHeader.astro   # الهيدر والتنقل
+│   │   └── HubHeader.astro   # Main navigation header
 │   ├── data/
-│   │   └── courses.ts        # بيانات المناهج والمحاضرات
+│   │   └── courses.ts        # Course catalog and curricula data
 │   ├── layouts/
-│   │   └── BaseLayout.astro  # القالب الأساسي للموقع
+│   │   └── BaseLayout.astro  # Root HTML shell & meta configuration
 │   ├── pages/
-│   │   ├── index.astro       # فهرس المكتبة
-│   │   ├── manifesto.astro   # المانيفيستو
-│   │   ├── commonplace.astro # بنك التظليلات
-│   │   └── courses/          # مسارات وصفحات القارئ
+│   │   ├── index.astro       # Editorial monograph catalog
+│   │   ├── manifesto.astro   # The Architecture of Literature
+│   │   ├── commonplace.astro # Highlights treasury & Readwise exporter
+│   │   └── courses/          # Course journey and study reader pages
 │   ├── styles/
-│   │   └── global.css        # التنسيقات والأنميشن
+│   │   └── global.css        # Typography, marginalia, and layout styles
 │   └── utils/
-│       └── paths.ts          # معالج المسارات لـ GitHub Pages
+│       └── paths.ts          # Base-aware URL resolver for GitHub Pages
+├── astro.config.mjs          # Astro configuration (site & base)
+├── tailwind.config.mjs       # Theme tokens and monochrome palette
+└── package.json              # Project scripts and dependencies
 ```
 
 ---
 
-## License & Sovereignty / الترخيص
+## License & Ownership
 
-هذا المشروع صُمم للدراسة الشخصية الحرة ومتاح للعموم تحت رخصة الاستخدام الشخصي المفتوح.
+Designed and engineered for sovereign personal scholarship and freely published for universal public access.

@@ -1,4 +1,4 @@
-﻿# Architectural Decision Records (ADR)
+# Architectural Decision Records (ADR)
 
 This file records the key architectural and design decisions made in the development of **AHKH Study Hub**.
 
