@@ -345,7 +345,7 @@ const transcriptSegments =
           </div>
           <div class="p-3 bg-paper-200/90 border-t border-ink-border flex items-center justify-between text-xs font-sans">
             <span class="text-ink-muted flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+              <span class="w-2 h-2 rounded-full bg-rose-600 dark:bg-rose-400 animate-pulse"></span>
               Video Lecture & Synced Transcript
             </span>
             <label class="flex items-center gap-2 cursor-pointer text-ink font-medium">
@@ -396,7 +396,7 @@ const transcriptSegments =
               {transcriptSegments.map((cue) => (
                 <button
                   data-timestamp={cue.time}
-                  class="block w-full text-left p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all cursor-pointer hover:border-ink/40 dark:hover:border-dark-ink/40"
+                  class="block w-full text-left p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all cursor-pointer hover:bg-paper-100 dark:hover:bg-dark-border/40"
                 >
                   <span class="font-mono text-xs text-ink-muted dark:text-dark-muted mr-3">[{cue.label}]</span>
                   <span class="font-serif text-[15px] leading-relaxed text-ink/90 dark:text-dark-ink/90">{cue.text}</span>
@@ -523,7 +523,7 @@ const transcriptSegments =
         id="note-input-text"
         rows="3"
         placeholder="Write your observation, question, or synthesis..."
-        class="w-full p-2.5 text-xs font-sans rounded-xs border border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-bg text-ink dark:text-dark-ink placeholder:text-ink-faint dark:placeholder:text-dark-muted focus:outline-hidden focus:border-ink dark:focus:border-dark-ink resize-none"
+        class="w-full p-2.5 text-xs font-sans rounded-xs border border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-bg text-ink dark:text-dark-ink placeholder:text-ink-faint dark:placeholder:text-dark-muted focus:outline-hidden resize-none"
       ></textarea>
       <div class="flex items-center justify-between gap-2 pt-1">
         <span class="text-[10px] font-mono text-ink-faint dark:text-dark-muted">Esc to cancel · Ctrl+Enter to save</span>
@@ -1387,7 +1387,7 @@ const transcriptSegments =
 
     listEl.innerHTML = highlights.map(item => `
       <article 
-        class="p-3.5 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:border-ink dark:hover:border-dark-ink transition-colors cursor-pointer group"
+        class="p-3.5 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-100 dark:hover:bg-dark-border/40 transition-colors cursor-pointer group"
         onclick="jumpToHighlight('${item.id}')"
       >
         <div class="flex items-center justify-between mb-2 text-xs font-mono text-ink/80 dark:text-dark-ink/80">
@@ -1401,7 +1401,7 @@ const transcriptSegments =
             </span>
             <button 
               onclick="event.stopPropagation(); window.deleteSidebarHighlight('${item.id}')"
-              class="text-ink-muted dark:text-dark-muted hover:text-red-600 dark:hover:text-red-400 p-0.5 rounded-xs transition-colors cursor-pointer"
+              class="text-ink-muted dark:text-dark-muted hover:text-rose-700 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 p-0.5 rounded-xs transition-colors cursor-pointer"
               title="Delete Highlight"
               aria-label="Delete Highlight"
             >
@@ -1505,29 +1505,35 @@ const transcriptSegments =
     }
 
     function syncTranscript(currentTime) {
-      const blocks = Array.from(document.querySelectorAll('[data-timestamp]'));
+      // Scope sync to the VISIBLE view only: formatted and verbatim cues share
+      // one engine, and hidden-view cues must never steal the active state.
+      const view = getReadingContent();
+      if (!view) return;
+      const blocks = Array.from(view.querySelectorAll('[data-timestamp]'))
+        .map((el) => ({ el, t: parseFloat(el.getAttribute('data-timestamp') || '0') }))
+        .filter((x) => Number.isFinite(x.t))
+        .sort((a, b) => a.t - b.t);
       if (!blocks.length) return;
 
       let activeEl = null;
-      for (let i = 0; i < blocks.length; i++) {
-        const timeSec = parseFloat(blocks[i].getAttribute('data-timestamp') || '0');
-        if (currentTime >= timeSec) {
-          activeEl = blocks[i];
+      for (const { el, t } of blocks) {
+        if (currentTime >= t) {
+          activeEl = el;
         } else {
           break;
         }
       }
 
-      blocks.forEach(b => {
-        if (b === activeEl) {
-          if (!b.classList.contains('yt-active-paragraph')) {
-            b.classList.add('yt-active-paragraph');
+      blocks.forEach(({ el }) => {
+        if (el === activeEl) {
+          if (!el.classList.contains('yt-active-paragraph')) {
+            el.classList.add('yt-active-paragraph');
             if (autoScrollCheckbox && autoScrollCheckbox.checked) {
-              b.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
           }
         } else {
-          b.classList.remove('yt-active-paragraph');
+          el.classList.remove('yt-active-paragraph');
         }
       });
     }

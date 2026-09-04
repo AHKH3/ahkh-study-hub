@@ -227,7 +227,7 @@ export const COURSES: Course[] = [
               <div class="my-8 grid grid-cols-1 sm:grid-cols-2 gap-5 not-prose">
                 <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-teal-500 shadow-2xs">
                   <div class="flex items-center gap-3 mb-2.5">
-                    <span class="w-7 h-7 rounded-full bg-teal-600 text-white flex items-center justify-center text-sm font-mono font-bold shrink-0">1</span>
+                    <span class="w-7 h-7 rounded-full text-teal-700 bg-teal-50 border border-teal-200/80 dark:text-teal-300 dark:bg-teal-950/40 dark:border-teal-900/50 flex items-center justify-center text-sm font-mono font-bold shrink-0">1</span>
                     <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink">What concrete difficulties do they have?</h4>
                   </div>
                   <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed pl-10 font-normal">
@@ -237,7 +237,7 @@ export const COURSES: Course[] = [
 
                 <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-blue-500 shadow-2xs">
                   <div class="flex items-center gap-3 mb-2.5">
-                    <span class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-mono font-bold shrink-0">2</span>
+                    <span class="w-7 h-7 rounded-full text-blue-700 bg-blue-50 border border-blue-200/80 dark:text-blue-300 dark:bg-blue-950/40 dark:border-blue-900/50 flex items-center justify-center text-sm font-mono font-bold shrink-0">2</span>
                     <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink">Who, specifically, encounters this issue?</h4>
                   </div>
                   <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed pl-10 font-normal">
@@ -247,7 +247,7 @@ export const COURSES: Course[] = [
 
                 <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-amber-500 shadow-2xs">
                   <div class="flex items-center gap-3 mb-2.5">
-                    <span class="w-7 h-7 rounded-full bg-amber-600 text-white flex items-center justify-center text-sm font-mono font-bold shrink-0">3</span>
+                    <span class="w-7 h-7 rounded-full text-amber-700 bg-amber-50 border border-amber-200/80 dark:text-amber-300 dark:bg-amber-950/40 dark:border-amber-900/50 flex items-center justify-center text-sm font-mono font-bold shrink-0">3</span>
                     <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink">What workarounds are they using right now?</h4>
                   </div>
                   <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed pl-10 font-normal">
@@ -257,7 +257,7 @@ export const COURSES: Course[] = [
 
                 <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-rose-500 shadow-2xs">
                   <div class="flex items-center gap-3 mb-2.5">
-                    <span class="w-7 h-7 rounded-full bg-rose-600 text-white flex items-center justify-center text-sm font-mono font-bold shrink-0">4</span>
+                    <span class="w-7 h-7 rounded-full text-rose-700 bg-rose-50 border border-rose-200/80 dark:text-rose-300 dark:bg-rose-950/40 dark:border-rose-900/50 flex items-center justify-center text-sm font-mono font-bold shrink-0">4</span>
                     <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink">Where do their current workarounds break down?</h4>
                   </div>
                   <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed pl-10 font-normal">
@@ -298,7 +298,7 @@ export const COURSES: Course[] = [
                   <!-- Screenshot Figure -->
                   <div class="lg:col-span-5 text-center">
                     <img 
-                      src="\${path('/images/lessons/sb-1-0/page_3_img_2.png')}" 
+                      src="${path('/images/lessons/sb-1-0/page_3_img_2.png')}" 
                       alt="Historical Instagram iOS interface screenshot demonstrating information architecture" 
                       class="max-w-[270px] mx-auto rounded-xl shadow-md border border-ink-border dark:border-dark-border"
                     />
@@ -391,7 +391,7 @@ export const COURSES: Course[] = [
               <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
                 <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center shadow-2xs">
                   <img 
-                    src="\${path('/images/lessons/sb-1-0/page_5_img_2.png')}" 
+                    src="${path('/images/lessons/sb-1-0/page_5_img_2.png')}" 
                     alt="Whiteboard sketch showing early web layout ideation" 
                     class="w-full h-56 object-contain mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
                   />
@@ -402,7 +402,7 @@ export const COURSES: Course[] = [
 
                 <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center shadow-2xs">
                   <img 
-                    src="\${path('/images/lessons/sb-1-0/page_5_img_3.png')}" 
+                    src="${path('/images/lessons/sb-1-0/page_5_img_3.png')}" 
                     alt="Mobile wireframe testing functional content flow" 
                     class="w-full h-56 object-contain mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
                   />
@@ -500,7 +500,7 @@ export const COURSES: Course[] = [
               <!-- Design System Exhibit -->
               <div class="my-8 p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center not-prose shadow-2xs">
                 <img 
-                  src="\${path('/images/lessons/sb-1-0/page_7_img_2.png')}" 
+                  src="${path('/images/lessons/sb-1-0/page_7_img_2.png')}" 
                   alt="A foundational design system library illustrating buttons, color tokens, and typographic styles" 
                   class="max-w-md mx-auto rounded-xs border border-ink-border dark:border-dark-border shadow-xs"
                 />
@@ -604,7 +604,7 @@ export const COURSES: Course[] = [
               <div class="mt-14 pt-6 border-t border-ink-border dark:border-dark-border flex flex-col sm:flex-row items-start sm:items-center justify-between text-sm font-sans text-ink dark:text-dark-ink gap-4 not-prose">
                 <div class="flex items-center gap-3.5">
                   <img 
-                    src="\${path('/images/lessons/sb-1-0/page_8_img_2.png')}" 
+                    src="${path('/images/lessons/sb-1-0/page_8_img_2.png')}" 
                     alt="Laurel Hechanova" 
                     class="w-12 h-12 rounded-full object-cover border border-ink-border dark:border-dark-border shrink-0" 
                   />
