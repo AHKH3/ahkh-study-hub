@@ -1,4 +1,4 @@
-﻿# PRODUCT.md — AHKH Study Hub
+# PRODUCT.md — AHKH Study Hub
 
 ## Purpose
 A dedicated, zero-maintenance online study hub and reading sanctuary for serious courses and bootcamps, starting with the Springboard UX curriculum. Serves as a bespoke, permanent alternative to Readwise Reader with an editorial reading experience tailored for deep focus and comprehension on both desktop and mobile.
@@ -8,7 +8,7 @@ A dedicated, zero-maintenance online study hub and reading sanctuary for serious
 - **Secondary Audience:** Public learners accessing high-quality, structured open course companions for free.
 
 ## Platform
-- `web` (Responsive static site, mobile and desktop).
+- `web`
 
 ## Stack
 - **Engine:** Astro (Static Output)

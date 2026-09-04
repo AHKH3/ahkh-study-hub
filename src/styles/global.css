@@ -10,33 +10,36 @@
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     scrollbar-gutter: stable;
     overflow-y: scroll;
+    overflow-x: clip;
   }
 
   body {
-    @apply bg-paper-50 dark:bg-dark-bg text-ink dark:text-dark-ink antialiased selection:bg-paper-200 dark:selection:bg-dark-border selection:text-ink dark:selection:text-dark-ink;
+    @apply bg-white dark:bg-dark-bg text-ink dark:text-dark-ink antialiased selection:bg-paper-200 dark:selection:bg-dark-border selection:text-ink dark:selection:text-dark-ink;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
   }
 }
 
 /* Reader Typography Customizations */
 .prose-editorial {
-  font-family: 'Newsreader', Georgia, serif;
-  font-size: 1.18rem;
-  line-height: 1.8;
-  color: #242220;
+  font-family: var(--reader-font-family, 'Newsreader', Georgia, serif);
+  font-size: var(--reader-font-size, 1.15rem);
+  line-height: var(--reader-line-height, 1.8);
+  color: #1C1B19;
+  transition: font-size 0.18s ease, line-height 0.18s ease;
 }
 
 .dark .prose-editorial {
-  color: #EDEDED;
+  color: #F4F4F5;
 }
 
 .prose-editorial h1,
 .prose-editorial h2,
 .prose-editorial h3 {
-  font-family: 'Newsreader', Georgia, serif;
+  font-family: inherit;
   font-weight: 500;
   letter-spacing: -0.015em;
-  color: #171615;
+  color: #1C1B19;
 }
 
 .dark .prose-editorial h1,
@@ -46,21 +49,21 @@
 }
 
 .prose-editorial h2 {
-  margin-top: 2.4em;
+  margin-top: 2.2em;
   margin-bottom: 0.8em;
-  font-size: 1.65rem;
-  border-bottom: 1px solid #EBE8E1;
+  font-size: calc(var(--reader-font-size, 1.15rem) * 1.38);
+  border-bottom: 1px solid #E4E4E7;
   padding-bottom: 0.3em;
 }
 
 .dark .prose-editorial h2 {
-  border-bottom-color: #1E1E1E;
+  border-bottom-color: #27272A;
 }
 
 .prose-editorial h3 {
   margin-top: 1.8em;
   margin-bottom: 0.6em;
-  font-size: 1.35rem;
+  font-size: calc(var(--reader-font-size, 1.15rem) * 1.15);
 }
 
 .prose-editorial p {
@@ -69,14 +72,15 @@
 
 .prose-editorial blockquote {
   font-style: italic;
-  border-left: 2px solid #B35334;
+  border-left: 2px solid #1C1B19;
   padding-left: 1.25rem;
   margin: 2em 0;
   color: #55534E;
 }
 
 .dark .prose-editorial blockquote {
-  color: #8E8E93;
+  border-left-color: #F4F4F5;
+  color: #A1A1AA;
 }
 
 .prose-editorial strong {
@@ -85,55 +89,201 @@
 }
 
 .prose-editorial a {
-  color: var(--course-accent, #B35334);
+  color: inherit;
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-/* Sidebar explicit overrides */
-aside[data-collapsed="true"] {
-  display: none !important;
+/* ==========================================================================
+   Editorial Animated Collapsible Sidebars & Reading Desk Choreography
+   ========================================================================== */
+
+#study-desk {
+  overflow-x: clip;
+  min-height: calc(100vh - 3.65rem);
 }
 
-aside[data-expanded="true"] {
-  display: block !important;
+/* Prevent animation flash when restoring collapsed state on page load */
+#study-desk.desk-initial-mount,
+#study-desk.desk-initial-mount * {
+  transition: none !important;
+}
+
+/* Center reading column: silky glide and layout containment for 60fps */
+#center-reading-column {
+  contain: layout;
+  will-change: max-width;
+  transition: max-width 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              padding 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  --top-progress-height: 3px;
+  --header-bar-height: 56px;
+  --reader-header-offset: 59px; /* Exact sum: 3px progress bar + 56px header */
+}
+
+/* Shared Drawer Transition Profile */
+.sidebar-drawer {
+  will-change: margin, opacity;
+}
+
+/* Desktop Left Sidebar: TOC / Document Outline */
+@media (min-width: 768px) {
+  #left-sidebar {
+    width: 16rem;
+    min-width: 16rem;
+    max-width: 16rem;
+    margin-left: 0;
+    opacity: 1;
+    top: var(--reader-header-offset);
+    height: calc(100vh - var(--reader-header-offset));
+    pointer-events: auto;
+    visibility: visible;
+    transition: margin-left 350ms cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 350ms cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 350ms,
+                top 280ms cubic-bezier(0.16, 1, 0.3, 1),
+                height 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  body[data-header-hidden="true"] #left-sidebar {
+    top: var(--top-progress-height);
+    height: calc(100vh - var(--top-progress-height));
+  }
+
+  #left-sidebar[data-collapsed="true"] {
+    margin-left: -16rem !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+}
+
+/* Desktop Right Sidebar: Highlights & Marginalia */
+@media (min-width: 1024px) {
+  #right-sidebar {
+    width: 18rem;
+    min-width: 18rem;
+    max-width: 18rem;
+    margin-right: 0;
+    opacity: 1;
+    top: var(--reader-header-offset);
+    height: calc(100vh - var(--reader-header-offset));
+    pointer-events: auto;
+    visibility: visible;
+    transition: margin-right 350ms cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 350ms cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 350ms,
+                top 280ms cubic-bezier(0.16, 1, 0.3, 1),
+                height 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  body[data-header-hidden="true"] #right-sidebar {
+    top: var(--top-progress-height);
+    height: calc(100vh - var(--top-progress-height));
+  }
+
+  #right-sidebar[data-collapsed="true"] {
+    margin-right: -18rem !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+}
+
+/* Mobile & Tablet Drawer Modes */
+@media (max-width: 767px) {
+  #left-sidebar {
+    position: fixed !important;
+    top: var(--reader-header-offset) !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    height: calc(100vh - var(--reader-header-offset)) !important;
+    width: 18rem !important;
+    max-width: 85vw !important;
+    z-index: 48 !important;
+    background-color: #FAFAFA !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+    transform: translateX(-100%) !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    display: block !important;
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 320ms cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 320ms !important;
+  }
+  .dark #left-sidebar {
+    background-color: #09090B !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.7) !important;
+  }
+  #left-sidebar[data-mobile-open="true"] {
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  #right-sidebar {
+    position: fixed !important;
+    top: var(--reader-header-offset) !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    height: calc(100vh - var(--reader-header-offset)) !important;
+    width: 20rem !important;
+    max-width: 90vw !important;
+    z-index: 48 !important;
+    background-color: #FAFAFA !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+    transform: translateX(100%) !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    display: block !important;
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 320ms cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 320ms !important;
+  }
+  .dark #right-sidebar {
+    background-color: #09090B !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.7) !important;
+  }
+  #right-sidebar[data-mobile-open="true"] {
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
 }
 
 /* User Highlight Marks */
 .ahkh-highlight {
-  background-color: var(--course-highlight, rgba(224, 118, 85, 0.28));
-  border-bottom: 1.5px solid var(--course-accent, #B35334);
+  background-color: var(--course-highlight, rgba(0, 0, 0, 0.08));
+  border-bottom: 1.5px solid var(--course-accent, #1C1B19);
   padding: 0.1em 0.2em;
   border-radius: 2px;
   cursor: pointer;
-  transition: background-color 0.15s ease, box-shadow 0.2s ease;
+  transition: background-color 0.15s ease, outline 0.15s ease;
 }
 
 .ahkh-highlight:hover {
-  filter: brightness(0.95);
+  filter: brightness(0.96);
 }
 
 .dark .ahkh-highlight {
-  filter: brightness(1.1);
-}
-
-@keyframes highlight-pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(179, 83, 52, 0.5);
-    filter: brightness(1);
-  }
-  50% {
-    box-shadow: 0 0 0 6px rgba(179, 83, 52, 0.2);
-    filter: brightness(1.25);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(179, 83, 52, 0);
-    filter: brightness(1);
-  }
+  background-color: var(--course-highlight, rgba(255, 255, 255, 0.12));
+  border-bottom-color: var(--course-accent, #F4F4F5);
+  filter: brightness(1.08);
 }
 
 .ahkh-highlight.active {
-  outline: 2px solid var(--course-accent, #B35334);
-  animation: highlight-pulse 0.8s ease-in-out 2;
+  outline: 2px solid var(--course-accent, #1C1B19);
+  outline-offset: 1px;
+}
+
+.dark .ahkh-highlight.active {
+  outline-color: var(--course-accent, #F4F4F5);
 }
 
 /* Marginalia Sidenotes in Gutter */
@@ -143,172 +293,111 @@ aside[data-expanded="true"] {
   width: 220px;
   font-size: 0.82rem;
   line-height: 1.45;
-  color: #55534E;
+  color: #73716C;
   background-color: #FFFFFF;
-  border: 1px solid #EBE8E1;
-  border-left: 3px solid var(--course-accent, #B35334);
+  border: 1px solid #E4E4E7;
+  border-left: 2px solid var(--course-accent, #1C1B19);
   padding: 0.5rem 0.75rem;
   border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: color 0.15s ease, 
+              border-color 0.15s ease, 
+              opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 20;
   cursor: pointer;
 }
 
 .dark .marginalia-gutter-note {
-  color: #8E8E93;
-  background-color: #0A0A0A;
-  border: 1px solid #1E1E1E;
-  border-left: 3px solid var(--course-accent, #B35334);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  color: #A1A1AA;
+  background-color: #121215;
+  border: 1px solid #27272A;
+  border-left: 2px solid var(--course-accent, #F4F4F5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .marginalia-gutter-note:hover {
-  color: #171615;
+  color: #1C1B19;
   border-color: #D4D4D8;
-  border-left-color: var(--course-accent, #B35334);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
-  transform: translateY(-1px);
+  border-left-color: var(--course-accent, #1C1B19);
 }
 
 .dark .marginalia-gutter-note:hover {
-  color: #FFFFFF;
-  border-color: #333333;
-  border-left-color: var(--course-accent, #B35334);
-  box-shadow: 0 4px 8px -1px rgba(0, 0, 0, 0.9);
+  color: #F4F4F5;
+  border-color: #3F3F46;
+  border-left-color: var(--course-accent, #F4F4F5);
 }
 
 /* On screens where right sidebar is open and viewport is < 1440px, hide gutter notes to avoid overlap */
 @media (max-width: 1439px) {
-  body:not([data-zen-mode="true"]):not([data-right-collapsed="true"]) .marginalia-gutter-note {
-    display: none;
+  body:not([data-right-collapsed="true"]) .marginalia-gutter-note {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(12px);
   }
 }
 
 /* YouTube sync active paragraph */
 .yt-active-paragraph {
-  background-color: rgba(245, 240, 230, 0.7);
-  border-left: 3px solid #B35334;
+  background-color: rgba(0, 0, 0, 0.04);
+  border-left: 2px solid #1C1B19;
   padding-left: 1rem;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .dark .yt-active-paragraph {
-  background-color: rgba(255, 255, 255, 0.08);
-  border-left: 3px solid #B35334;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 2px solid #F4F4F5;
 }
 
 /* ==========================================================================
    Quiet Editorial Page Transitions (Astro ClientRouter)
-   Buttery smooth, subtle crossfade with micro-settle to eliminate page flash.
+   Restrained, subtle crossfade with micro-settle. No blur or curtain drops.
    ========================================================================== */
 
-/* Pinned sanctuary hub header: locked in place with zero geometric movement or translation */
 ::view-transition-group(hub-header) {
   animation: none;
 }
 
 ::view-transition-old(hub-header) {
-  animation: 90ms cubic-bezier(0.4, 0, 1, 1) both ahkh-header-fade;
+  animation: 80ms ease-out both ahkh-header-fade;
 }
 
 ::view-transition-new(hub-header) {
-  animation: 160ms cubic-bezier(0.16, 1, 0.3, 1) both ahkh-page-fade-in-header;
+  animation: 120ms ease-out both ahkh-header-fade-in;
 }
 
 @keyframes ahkh-header-fade {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
-@keyframes ahkh-page-fade-in-header {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+@keyframes ahkh-header-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* Root page transition group: The Sanctuary Hybrid Model */
 ::view-transition-group(root) {
-  animation-duration: 280ms;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-duration: 150ms;
+  animation-timing-function: ease-out;
 }
 
-/* Outgoing page: swift, quiet recede */
 ::view-transition-old(root) {
-  animation: 100ms cubic-bezier(0.4, 0, 1, 1) both ahkh-ink-recede;
+  animation: 70ms ease-out both ahkh-fade-out;
 }
 
-/* Incoming page: The Editorial Ink Cascade (Top-to-bottom unrolling curtain with optical focus) */
 ::view-transition-new(root) {
-  animation: 280ms cubic-bezier(0.16, 1, 0.3, 1) both ahkh-ink-cascade;
+  animation: 140ms ease-out both ahkh-fade-in;
 }
 
-@keyframes ahkh-ink-recede {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(6px);
-  }
+@keyframes ahkh-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
-@keyframes ahkh-ink-cascade {
-  0% {
-    opacity: 0;
-    clip-path: inset(0 0 100% 0);
-    filter: blur(3px);
-    transform: translateY(-8px);
-  }
-  40% {
-    opacity: 1;
-    filter: blur(1.5px);
-  }
-  100% {
-    opacity: 1;
-    clip-path: inset(0 0 0 0);
-    filter: blur(0);
-    transform: translateY(0);
-  }
-}
-
-/* Digital Scribe Typewriter Cursor */
-.editorial-cursor {
-  display: inline-block;
-  margin-left: 2px;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 300;
-  color: var(--course-accent, #B35334);
-  animation: cursor-blink 0.6s step-end infinite;
-  transition: opacity 0.3s ease;
-  vertical-align: baseline;
-  user-select: none;
-}
-
-.dark .editorial-cursor {
-  color: var(--course-accent, #E07655);
-}
-
-.editorial-cursor.fade-out {
-  opacity: 0;
-  animation: none;
-}
-
-@keyframes cursor-blink {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
+@keyframes ahkh-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* Accessibility: Respect prefers-reduced-motion unconditionally */
@@ -319,8 +408,4 @@ aside[data-expanded="true"] {
     animation-duration: 0.01ms !important;
     animation-name: none !important;
   }
-  .editorial-cursor {
-    display: none !important;
-  }
 }
-

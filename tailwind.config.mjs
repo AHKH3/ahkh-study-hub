@@ -12,28 +12,36 @@ export default {
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       colors: {
+        canvas: {
+          light: '#FFFFFF',
+          dark: '#09090B',
+        },
+        surface: {
+          light: '#FAFAFA',
+          dark: '#121215',
+        },
         paper: {
-          50: '#FDFCFA',
-          100: '#F7F5F0',
-          200: '#EFECE6',
-          300: '#DFDAD1',
+          50: '#FFFFFF',
+          100: '#FAFAFA',
+          200: '#F4F4F5',
+          300: '#E4E4E7',
         },
         ink: {
-          DEFAULT: '#22211F',
-          muted: '#73716C',
-          faint: '#A8A6A1',
-          border: '#E8E6E1',
+          DEFAULT: '#18181B',
+          muted: '#71717A',
+          faint: '#A1A1AA',
+          border: '#E4E4E7',
         },
         dark: {
-          bg: '#000000',
-          card: '#0A0A0A',
-          border: '#1E1E1E',
+          bg: '#09090B',
+          surface: '#121215',
+          card: '#18181B',
+          border: '#27272A',
           ink: '#F4F4F5',
-          muted: '#8E8E93',
+          muted: '#A1A1AA',
+          faint: '#52525B',
         },
         course: {
-          terracotta: '#B35334',
-          'terracotta-tint': 'rgba(224, 118, 85, 0.28)',
           pine: '#2D3E35',
           'pine-tint': 'rgba(45, 62, 53, 0.22)',
           sage: '#4A6B5B',
@@ -41,8 +49,8 @@ export default {
         }
       },
       maxWidth: {
-        'reading': '680px',
-        'hub': '860px',
+        'reading': '68ch',
+        'hub': '960px',
       }
     },
   },

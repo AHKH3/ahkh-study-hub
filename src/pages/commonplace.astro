@@ -314,7 +314,7 @@ import { path } from '../utils/paths';
             const isActive = currentFilter === courseName;
             let dotColor = 'bg-ink-muted dark:bg-dark-muted';
             const cn = courseName.toLowerCase();
-            if (cn.includes('springboard')) dotColor = 'bg-course-terracotta';
+            if (cn.includes('springboard')) dotColor = 'bg-ink dark:bg-dark-ink';
             else if (cn.includes('canon') || cn.includes('manifesto')) dotColor = 'bg-emerald-500';
             else if (cn.includes('systems') || cn.includes('architecture')) dotColor = 'bg-blue-500';
             else if (cn.includes('typography') || cn.includes('swiss')) dotColor = 'bg-pink-500';
@@ -446,7 +446,7 @@ import { path } from '../utils/paths';
         let dotColor = 'bg-ink-muted dark:bg-dark-muted';
         const cn = courseName.toLowerCase();
         if (cn.includes('springboard')) {
-          dotColor = 'bg-course-terracotta';
+          dotColor = 'bg-ink dark:bg-dark-ink';
         } else if (cn.includes('canon') || cn.includes('manifesto')) {
           dotColor = 'bg-emerald-500';
         } else if (cn.includes('systems') || cn.includes('architecture')) {

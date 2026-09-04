@@ -119,74 +119,7 @@ const {
       })();
     </script>
   </head>
-  <body class="bg-paper-50 dark:bg-dark-bg text-ink dark:text-dark-ink min-h-screen flex flex-col selection:bg-paper-200 dark:selection:bg-dark-border selection:text-ink dark:selection:text-dark-ink transition-colors duration-150">
+  <body class="bg-white dark:bg-dark-bg text-ink dark:text-dark-ink min-h-screen flex flex-col selection:bg-paper-200 dark:selection:bg-dark-border selection:text-ink dark:selection:text-dark-ink transition-colors duration-150">
     <slot />
-
-    <!-- Digital Scribe Title Entrance (Hybrid Model) -->
-    <script>
-      function playEditorialTypewriter() {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        const h1 = document.querySelector('main h1');
-        if (!h1 || h1.dataset.typed === 'true') return;
-
-        const originalText = h1.textContent?.trim();
-        if (!originalText || originalText.length < 2) return;
-
-        h1.dataset.typed = 'true';
-        h1.innerHTML = '';
-        const charSpans: HTMLSpanElement[] = [];
-
-        for (let i = 0; i < originalText.length; i++) {
-          const span = document.createElement('span');
-          span.textContent = originalText[i];
-          span.style.opacity = '0';
-          span.style.filter = 'blur(1.5px)';
-          span.style.transition = 'opacity 35ms ease-out, filter 35ms ease-out';
-          h1.appendChild(span);
-          charSpans.push(span);
-        }
-
-        const cursor = document.createElement('span');
-        cursor.className = 'editorial-cursor';
-        cursor.textContent = '|';
-        cursor.setAttribute('aria-hidden', 'true');
-        h1.appendChild(cursor);
-
-        let idx = 0;
-        const delay = Math.max(8, Math.min(18, Math.floor(240 / originalText.length)));
-
-        function step() {
-          if (idx < charSpans.length) {
-            charSpans[idx].style.opacity = '1';
-            charSpans[idx].style.filter = 'blur(0)';
-            if (charSpans[idx].nextSibling !== cursor) {
-              h1?.insertBefore(cursor, charSpans[idx].nextSibling);
-            }
-            idx++;
-            setTimeout(step, delay);
-          } else {
-            setTimeout(() => {
-              cursor.classList.add('fade-out');
-              setTimeout(() => {
-                cursor.remove();
-                if (h1) {
-                  h1.textContent = originalText;
-                  delete h1.dataset.typed;
-                }
-              }, 300);
-            }, 200);
-          }
-        }
-
-        step();
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', playEditorialTypewriter);
-      } else {
-        playEditorialTypewriter();
-      }
-      document.addEventListener('astro:page-load', playEditorialTypewriter);
-    </script>
   </body>
 </html>
