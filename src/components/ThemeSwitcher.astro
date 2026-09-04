@@ -116,18 +116,17 @@ const { class: className = '', size = 'sm' } = Astro.props;
       });
     });
 
-    window.addEventListener('ahkh-theme-change', ((e: CustomEvent) => {
-      if (e.detail && e.detail.theme) {
-        updateActiveStyles(e.detail.theme);
-      }
-    }) as EventListener);
+    if (!(window as any).__ahkhThemeWired) {
+      (window as any).__ahkhThemeWired = true;
+      window.addEventListener('ahkh-theme-change', ((e: CustomEvent) => {
+        if (e.detail && e.detail.theme) {
+          updateActiveStyles(e.detail.theme);
+        }
+      }) as EventListener);
+    }
   }
 
-  // Initialize on load and Astro page transitions
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initThemeSwitchers);
-  } else {
-    initThemeSwitchers();
-  }
+  // Single boot path: ClientRouter (always enabled in BaseLayout) fires
+  // astro:page-load on initial load and on every navigation.
   document.addEventListener('astro:page-load', initThemeSwitchers);
 </script>

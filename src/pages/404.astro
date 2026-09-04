@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HubHeader from '../components/HubHeader.astro';
+import { path } from '../utils/paths';
+---
+
+<BaseLayout title="Not Found — AHKH Study Hub" description="The requested page is not on the shelf.">
+  <HubHeader activeTab="library" />
+
+  <main class="flex-1 max-w-hub w-full mx-auto px-6 py-24 text-center">
+    <div class="font-mono text-xs text-ink-muted dark:text-dark-muted mb-4">
+      404
+    </div>
+    <h1 class="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-ink dark:text-dark-ink mb-4">
+      This page is not on the shelf
+    </h1>
+    <p class="font-serif text-base text-ink-muted dark:text-dark-muted max-w-md mx-auto mb-10 leading-relaxed">
+      The passage you seek has moved or was never shelved. Return to the library to continue reading.
+    </p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+      <a
+        href={path('/')}
+        class="inline-flex items-center gap-2 text-xs font-ui font-medium px-4 py-2.5 rounded-xs bg-ink dark:bg-dark-ink text-paper-50 dark:text-dark-bg hover:bg-ink/90 dark:hover:bg-dark-ink/90 transition-colors"
+      >
+        <span>Back to Library</span>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+      <a
+        href={path('/commonplace')}
+        class="inline-flex items-center gap-2 text-xs font-ui font-medium px-4 py-2.5 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card text-ink dark:text-dark-ink hover:bg-paper-200 dark:hover:bg-dark-border/40 transition-colors"
+      >
+        <span>Open Commonplace</span>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </main>
+</BaseLayout>

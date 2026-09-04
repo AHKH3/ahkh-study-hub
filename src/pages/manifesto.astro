@@ -338,6 +338,9 @@ import { path } from '../utils/paths';
   <!-- Client-side Highlight Engine for Manifesto -->
   <script is:inline>
     (function() {
+      // ClientRouter-safe boot: release the previous page's global listeners first.
+      if (window.__ahkhManiAbort) { window.__ahkhManiAbort.abort(); }
+      const __ahkhSignal = (window.__ahkhManiAbort = new AbortController()).signal;
       const STORAGE_KEY = 'ahkh_hl_manifesto';
       const popover = document.getElementById('manifesto-popover');
       const highlightBtn = document.getElementById('popover-highlight-btn');
@@ -410,7 +413,7 @@ import { path } from '../utils/paths';
       document.addEventListener('selectionchange', () => {
         clearTimeout(window._selTimer);
         window._selTimer = setTimeout(handleSelection, 120);
-      });
+      }, { signal: __ahkhSignal });
 
       highlightBtn?.addEventListener('click', () => {
         if (!currentSelection) return;
@@ -429,7 +432,7 @@ import { path } from '../utils/paths';
             lessonId: 'manifesto',
             lessonTitle: 'The Architecture of Literature',
             courseName: 'AHKH Canon',
-            url: '/manifesto',
+            url: window.location.pathname,
             createdAt: new Date().toISOString()
           });
           localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
@@ -448,14 +451,10 @@ import { path } from '../utils/paths';
         if (popover && !popover.contains(e.target) && !window.getSelection()?.toString()) {
           popover.classList.add('hidden');
         }
-      });
+      }, { signal: __ahkhSignal });
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', loadHighlights);
-      } else {
-        loadHighlights();
-      }
-      document.addEventListener('astro:page-load', loadHighlights);
+      // Single boot path: ClientRouter fires astro:page-load on initial load and navigation.
+      document.addEventListener('astro:page-load', loadHighlights, { signal: __ahkhSignal });
     })();
   </script>
 </BaseLayout>

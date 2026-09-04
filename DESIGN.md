@@ -105,7 +105,7 @@ To preserve the serene editorial quality of the reading sanctuary, active states
 The platform employs a three-tier typographic system:
 
 ### 4.1. Longform Editorial Prose (`font-serif`)
-- **Typeface:** `Newsreader` (with optical sizing variable enabled), fallback to `Georgia`.
+- **Typeface:** `Merriweather` (weights 300/400/700/900 + italics — the canonical body face on every surface, wired as `font-serif` and `--reader-font-family`), fallback to `Georgia`. `Newsreader` remains available only as an opt-in reader preference in the Display popover, never as a default.
 - **Body Styling:** `text-[17px] sm:text-[18px]`, `leading-[1.8]`, `tracking-normal`, `text-ink dark:text-dark-ink`.
 - **Optimal Measure:** `max-w-reading` (68 characters per line / 680px).
 - **Paragraph Spacing:** `margin-bottom: 1.5em` between prose blocks.
@@ -213,3 +213,18 @@ All courses share the same interaction model:
 4. **Display & Comfort Popover:** Tactile typography controls (font size, serif/sans typeface, reading measure, and light/dark theme) persisting locally.
 5. **Floating Selection Popover:** Appears on text selection with Highlight, Sidenote, and Copy Citation actions.
 6. **Local Persistence:** Instant client-side persistence in browser `localStorage`.
+7. **ClientRouter-safe boot:** ClientRouter is always enabled, so every inline script uses a single `astro:page-load` subscription (it fires on initial load and navigation — never pair it with `DOMContentLoaded`). Document/window listeners carry a per-run `AbortController` signal, and the YouTube player handle plus sync timer are mirrored on `window` for teardown, so stale runs can never touch the new document or corrupt another lesson's storage.
+
+---
+
+## 7. Applied Lesson Patterns Inventory (Observed & Canonical)
+
+Recipes below are extracted verbatim from the 12 shipped Springboard lessons in `src/data/courses.ts`. All future lessons must reuse these exact recipes instead of inventing new ones. Every recipe ships with both `light` and `dark:` variants; washes never exceed the stated opacity caps.
+
+1. **Axiom pullout (amber rail + wash):** `my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs`, closed by a mono footer (`text-xs sm:text-sm font-mono text-amber-800 dark:text-amber-300 font-bold uppercase`) carrying a `// ...` label. Reserved for foundational axioms only, max 1–2 per lesson.
+2. **Rail cards:** `p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-{hue}-500 shadow-2xs`. Observed rail hues: `sky`, `amber`, `purple`, `teal`, `blue`, `rose`, `indigo`. The rail hue follows the §3.4 tone mapping of the card's subject; body text always stays `text-ink`.
+3. **Tinted compare pair:** `bg-rose-50/50 dark:bg-rose-950/20 border-rose-200 dark:border-rose-900/40` versus `bg-teal-50/50 dark:bg-teal-950/20 border-teal-200 dark:border-teal-900/40`. Reserved strictly for before/after or contrast pairs, never for generic emphasis.
+4. **Stat / step grids:** `grid ... not-prose text-center` with cells `p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border`, optionally topped by `border-t-3 border-t-{hue}-500`.
+5. **Transcript timestamp blocks (required for every video lesson):** `data-timestamp="{seconds}"` on `my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all`. Without these blocks the YouTube transcript-sync engine has no targets and the lesson ships silent. Verbatim cues are auto-ingested at build time (`npm run transcripts` → `src/data/transcripts.json`, ADR-015) and rendered under the Original script tab — never hand-copy transcript text into lesson data.
+6. **Attribution footer:** `mt-16 pt-8 border-t border-ink-border/80 dark:border-dark-border not-prose flex items-start gap-4` with the source label plus an original-link button (`font-ui text-xs border ... px-3 py-1.5 rounded-xs bg-paper-50`).
+7. **Prose isolation rule:** every non-prose block inside `contentHtml` carries `not-prose`; the reader renders content inside a prose container, so a missing `not-prose` leaks typography styles into cards and grids.

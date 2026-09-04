@@ -361,9 +361,8 @@ const statusMeta = STATUS_CONFIG[course.status];
       });
     }
 
-    document.addEventListener('DOMContentLoaded', initModuleAccordions);
-    if (document.readyState === 'interactive' || document.readyState === 'complete') {
-      initModuleAccordions();
-    }
+    // Single boot path: ClientRouter (always enabled in BaseLayout) fires
+    // astro:page-load on initial load and on every navigation.
+    document.addEventListener('astro:page-load', initModuleAccordions);
   </script>
 </BaseLayout>

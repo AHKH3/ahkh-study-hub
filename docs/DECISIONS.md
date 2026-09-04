@@ -181,4 +181,19 @@ This file records the key architectural and design decisions made in the develop
   1. Elimination of visual harshness and distracting black blocks during reading.
   2. Cohesive, calm Swiss editorial experience where interactive overlays feel integral to the paper medium.
 
+---
+
+## ADR-015: Build-Time Automatic YouTube Transcript Ingestion
+- **Date**: 2026-09-04
+- **Status**: Accepted
+- **Context**: Video lessons rendered only the formatted study version; no verbatim lecture script existed anywhere on-site, and hand-copying transcripts does not scale as new videos get embedded.
+- **Decision**:
+  1. `scripts/fetch-transcripts.mjs` auto-discovers every `youtubeId` in `src/data/courses.ts`, downloads the video's public caption track via YouTube's Innertube player endpoint plus timedtext (plain Node fetch — no CORS limits, no OAuth, no third-party service), and bakes verbatim cues into `src/data/transcripts.json`.
+  2. The study reader renders a `Formatted / Original script` toggle for video lessons; both views share the same timestamp-sync engine and click-to-seek, and the choice persists in `localStorage`.
+  3. Ingestion runs automatically before every build via the `prebuild` npm hook (`npm run transcripts` for manual runs with `--refresh` / `--ids=` options), never fails the build (exit code always 0), and videos without published captions keep an honest pending fallback.
+- **Consequences**:
+  1. Any newly embedded YouTube video receives its verbatim transcript automatically on the next build with zero authoring effort.
+  2. Zero runtime network calls, zero servers, zero API keys — the static/local-first architecture is fully preserved.
+  3. Transcript text is never hand-edited into lesson data, eliminating fabrication risk.
+
 

@@ -8,6 +8,9 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "transcripts": "node scripts/fetch-transcripts.mjs",
+    "verify:scripts": "node scripts/check-inline-scripts.mjs",
+    "prebuild": "node scripts/fetch-transcripts.mjs",
     "build": "astro build",
     "preview": "astro preview"
   },

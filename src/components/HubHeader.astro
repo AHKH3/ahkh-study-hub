@@ -102,10 +102,11 @@ const { activeTab = 'library' } = Astro.props;
       }
     }
   };
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', window.updateGlobalBadge);
-  } else {
-    window.updateGlobalBadge();
+  // Single boot path (ClientRouter always enabled): run now for the parsed
+  // header, re-run on every navigation without stacking listeners.
+  window.updateGlobalBadge();
+  if (!window.__ahkhBadgeBoot) {
+    window.__ahkhBadgeBoot = true;
+    document.addEventListener('astro:page-load', window.updateGlobalBadge);
   }
-  document.addEventListener('astro:page-load', window.updateGlobalBadge);
 </script>

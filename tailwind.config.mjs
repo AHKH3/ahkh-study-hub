@@ -41,12 +41,6 @@ export default {
           ink: '#F4F4F5',
           muted: '#A1A1AA',
           faint: '#52525B',
-        },
-        course: {
-          pine: '#2D3E35',
-          'pine-tint': 'rgba(45, 62, 53, 0.22)',
-          sage: '#4A6B5B',
-          ochre: '#9E6726',
         }
       },
       maxWidth: {

@@ -230,6 +230,9 @@ import { path } from '../utils/paths';
 
   <script is:inline>
   (function() {
+    // ClientRouter-safe boot: release the previous page's global listeners first.
+    if (window.__ahkhCommonAbort) { window.__ahkhCommonAbort.abort(); }
+    const __ahkhSignal = (window.__ahkhCommonAbort = new AbortController()).signal;
     let currentFilter = 'all';
     let searchQuery = '';
     let pendingDeletion = null;
@@ -790,7 +793,7 @@ import { path } from '../utils/paths';
         if (wrapper && !wrapper.contains(e.target)) {
           toggleDropdown(false);
         }
-      });
+      }, { signal: __ahkhSignal });
 
       document.getElementById('reset-filter-btn')?.addEventListener('click', () => {
         if (searchInput) searchInput.value = '';
@@ -825,18 +828,15 @@ import { path } from '../utils/paths';
             window.undoArchive();
           }
         }
-      });
+      }, { signal: __ahkhSignal });
 
       document.getElementById('export-readwise-btn')?.addEventListener('click', exportReadwiseCsv);
       document.getElementById('export-markdown-btn')?.addEventListener('click', exportMarkdown);
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initCommonplace);
-    } else {
-      initCommonplace();
-    }
-    document.addEventListener('astro:page-load', initCommonplace);
+    // Single boot path: ClientRouter (always enabled in BaseLayout) fires
+    // astro:page-load on initial load and on every navigation.
+    document.addEventListener('astro:page-load', initCommonplace, { signal: __ahkhSignal });
   })();
 </script>
 </BaseLayout>

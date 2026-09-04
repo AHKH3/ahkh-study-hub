@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { COURSES } from '../../../data/courses';
+import TRANSCRIPTS from '../../../data/transcripts.json';
 import { path } from '../../../utils/paths';
 import { getFormatColor } from '../../../utils/categoryColors';
 import { PanelLeft, PanelRight, ChevronLeft, Sun, Moon, RotateCcw } from '@lucide/astro';
@@ -21,6 +22,11 @@ export function getStaticPaths() {
 }
 
 const { course, lesson } = Astro.props;
+// Auto-ingested verbatim cues for this video (if any), baked at build time by scripts/fetch-transcripts.mjs
+const transcriptSegments =
+  lesson.youtubeId && TRANSCRIPTS[lesson.youtubeId]?.segments?.length
+    ? TRANSCRIPTS[lesson.youtubeId].segments
+    : null;
 ---
 
 <BaseLayout title={`${lesson.title} — ${course.title}`} description={lesson.summaryQuote}>
@@ -324,14 +330,16 @@ const { course, lesson } = Astro.props;
 
       <!-- VIDEO PLAYER IF TYPE == VIDEO -->
       {lesson.type === 'video' && lesson.youtubeId && (
-        <div class="mb-10 rounded-xs overflow-hidden border border-ink-border bg-ink shadow-sm">
-          <div class="aspect-video w-full">
+        <div class="mb-10 rounded-xs overflow-hidden border border-ink-border dark:border-dark-border bg-ink shadow-sm">
+          <div class="aspect-video w-full bg-ink">
             <iframe 
               id="youtube-player"
               class="w-full h-full"
-              src={`https://www.youtube.com/embed/${lesson.youtubeId}?enablejsapi=1`}
-              title="Lesson Video Lecture"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              src={`https://www.youtube-nocookie.com/embed/${lesson.youtubeId}?enablejsapi=1&rel=0&modestbranding=1&playsinline=1`}
+              title={`Video lecture: ${lesson.title}`}
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
             ></iframe>
           </div>
@@ -348,10 +356,60 @@ const { course, lesson } = Astro.props;
         </div>
       )}
 
+      {/* VIDEO WITHOUT EMBED: dignified source-link fallback instead of a silent gap */}
+      {lesson.type === 'video' && !lesson.youtubeId && lesson.originalSourceUrl && (
+        <div class="mb-10 p-5 rounded-xs bg-paper-100 dark:bg-dark-card border border-ink-border dark:border-dark-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <span class="text-sm font-sans text-ink-muted dark:text-dark-muted">
+            Video lecture hosted externally — watch it at the original source.
+          </span>
+          <a
+            href={lesson.originalSourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-ui font-medium text-xs text-ink dark:text-dark-ink hover:underline underline-offset-4 shrink-0 flex items-center gap-1 border border-ink-border dark:border-dark-border px-3 py-1.5 rounded-xs bg-paper-50 dark:bg-dark-card hover:bg-paper-100"
+          >
+            Watch video ↗
+          </a>
+        </div>
+      )}
+
+      {/* TRANSCRIPT VIEW TOGGLE (video lessons): formatted study version vs verbatim original */}
+      {lesson.type === 'video' && (
+        <div class="mb-6 flex items-center justify-end">
+          <div class="flex items-center gap-1 border border-ink-border dark:border-dark-border rounded-xs p-0.5 bg-paper-100 dark:bg-dark-card" role="tablist" aria-label="Transcript view">
+            <button data-transcript-view="formatted" role="tab" class="transcript-tab px-3 py-1.5 text-xs font-ui font-medium rounded-xs border border-transparent transition-colors cursor-pointer">Formatted</button>
+            <button data-transcript-view="original" role="tab" class="transcript-tab px-3 py-1.5 text-xs font-ui font-medium rounded-xs border border-transparent transition-colors cursor-pointer">Original script</button>
+          </div>
+        </div>
+      )}
+
       <!-- THE EDITORIAL PROSE CONTENT -->
-      <div id="reading-content" class="prose-editorial relative">
+      <div id="formatted-view" class="prose-editorial relative">
         <Fragment set:html={lesson.contentHtml} />
       </div>
+
+      {/* VERBATIM ORIGINAL TRANSCRIPT (video lessons, auto-ingested at build time) */}
+      {lesson.type === 'video' && (
+        <div id="transcript-view" class="prose-editorial relative hidden">
+          {transcriptSegments ? (
+            <div class="space-y-3">
+              {transcriptSegments.map((cue) => (
+                <button
+                  data-timestamp={cue.time}
+                  class="block w-full text-left p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all cursor-pointer hover:border-ink/40 dark:hover:border-dark-ink/40"
+                >
+                  <span class="font-mono text-xs text-ink-muted dark:text-dark-muted mr-3">[{cue.label}]</span>
+                  <span class="font-serif text-[15px] leading-relaxed text-ink/90 dark:text-dark-ink/90">{cue.text}</span>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <p class="text-sm font-sans text-ink-muted dark:text-dark-muted border-l-2 border-ink-border dark:border-dark-border pl-4">
+              The verbatim original script for this lecture is pending ingestion. Run `npm run transcripts` to fetch its published captions; the formatted study version above preserves its full substance with synced timestamps.
+            </p>
+          )}
+        </div>
+      )}
 
       <!-- BOTTOM NAVIGATION (Next / Previous Lesson) -->
       <div class="mt-16 pt-8 border-t border-ink-border/80 dark:border-dark-border flex items-center justify-between gap-4 font-ui text-xs">
@@ -480,6 +538,15 @@ const { course, lesson } = Astro.props;
 
 <!-- CLIENT SCRIPT: Smart Header, Highlights, Marginalia, YouTube Sync -->
   <script is:inline define:vars={{ courseId: course.id, courseTitle: course.title, lessonId: lesson.id, lessonSlug: lesson.slug, lessonTitle: lesson.title, courseAccent: course.theme.accent, courseHighlight: course.theme.highlight }}>
+  // ClientRouter-safe boot: Astro re-executes this script on every navigation
+  // while `document`/`window` persist. Release the previous page's player,
+  // timers, and global listeners first; every document/window binding below
+  // carries the run signal so stale runs can never touch the new document.
+  try { window.__ahkhYtPlayer?.destroy?.(); } catch (e) {}
+  window.__ahkhYtPlayer = null;
+  if (window.__ahkhYtTimer) { clearInterval(window.__ahkhYtTimer); window.__ahkhYtTimer = null; }
+  if (window.__ahkhReaderAbort) { window.__ahkhReaderAbort.abort(); }
+  const __ahkhSignal = (window.__ahkhReaderAbort = new AbortController()).signal;
   // A. SMART AUTO-HIDING HEADER & TOP PROGRESS BAR
   let lastScrollY = window.scrollY;
   const smartHeader = document.getElementById('smart-header');
@@ -520,7 +587,7 @@ const { course, lesson } = Astro.props;
     }
 
     lastScrollY = currentScrollY;
-  }, { passive: true });
+  }, { passive: true, signal: __ahkhSignal });
 
   // B. SIDEBAR TOGGLES & ANIMATED DRAWERS
   const leftSidebar = document.getElementById('left-sidebar');
@@ -641,7 +708,12 @@ const { course, lesson } = Astro.props;
 
   // C. DISPLAY SETTINGS CONTROLLER (Swiss Editorial Polish)
   const displayBtn = document.getElementById('toggle-display-settings');
-  const readingContent = document.getElementById('reading-content');
+  // Active reading surface: formatted study view by default, verbatim transcript view when selected on video lessons
+  function getReadingContent() {
+    const transcriptView = document.getElementById('transcript-view');
+    if (transcriptView && !transcriptView.classList.contains('hidden')) return transcriptView;
+    return document.getElementById('formatted-view');
+  }
 
   const fontSizes = {
     sm: { size: '1rem', lh: '1.75', label: 'Small (16px)' },
@@ -801,7 +873,7 @@ const { course, lesson } = Astro.props;
       displayBtn?.setAttribute('aria-expanded', 'false');
       displayBtn?.classList.remove('bg-paper-200', 'dark:bg-dark-border');
     }
-  });
+  }, { signal: __ahkhSignal });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -822,7 +894,7 @@ const { course, lesson } = Astro.props;
         toggleRightSidebar();
       }
     }
-  });
+  }, { signal: __ahkhSignal });
 
   // Size buttons listeners
   document.querySelectorAll('.size-btn').forEach(btn => {
@@ -949,8 +1021,8 @@ const { course, lesson } = Astro.props;
   }
 
   // Handle Text Selection
-  readingContent?.addEventListener('mouseup', handleTextSelection);
-  readingContent?.addEventListener('keyup', handleTextSelection);
+  document.addEventListener('mouseup', handleTextSelection, { signal: __ahkhSignal });
+  document.addEventListener('keyup', handleTextSelection, { signal: __ahkhSignal });
 
   function handleTextSelection() {
     const selection = window.getSelection();
@@ -965,7 +1037,7 @@ const { course, lesson } = Astro.props;
     }
 
     const range = selection.getRangeAt(0);
-    if (!readingContent || !readingContent.contains(range.commonAncestorContainer)) {
+    if (!getReadingContent() || !getReadingContent().contains(range.commonAncestorContainer)) {
       hidePopover();
       return;
     }
@@ -980,7 +1052,7 @@ const { course, lesson } = Astro.props;
     if (popover && !popover.contains(e.target) && !e.target.closest('.ahkh-highlight')) {
       hidePopover();
     }
-  });
+  }, { signal: __ahkhSignal });
 
   // Create highlight from current text selection
   function createHighlightFromSelection() {
@@ -1146,11 +1218,11 @@ const { course, lesson } = Astro.props;
     } else if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
       saveNoteAction();
     }
-  });
+  }, { signal: __ahkhSignal });
 
   // Gutter Marginalia Sidenote Rendering
   function renderGutterNote(item) {
-    if (!readingContent) return;
+    if (!getReadingContent()) return;
 
     let gutterEl = document.getElementById(`gutter-note-${item.id}`);
 
@@ -1167,10 +1239,10 @@ const { course, lesson } = Astro.props;
       gutterEl.className = 'marginalia-gutter-note';
       gutterEl.id = `gutter-note-${item.id}`;
       gutterEl.style.setProperty('--course-accent', courseAccent);
-      readingContent.appendChild(gutterEl);
+      getReadingContent().appendChild(gutterEl);
     }
 
-    const readingBox = readingContent.getBoundingClientRect();
+    const readingBox = getReadingContent().getBoundingClientRect();
     const spanBox = span.getBoundingClientRect();
     const topPos = Math.max(0, spanBox.top - readingBox.top);
     gutterEl.style.top = `${topPos}px`;
@@ -1200,8 +1272,8 @@ const { course, lesson } = Astro.props;
   }
 
   function repositionAllGutterNotes() {
-    if (!readingContent) return;
-    const readingBox = readingContent.getBoundingClientRect();
+    if (!getReadingContent()) return;
+    const readingBox = getReadingContent().getBoundingClientRect();
     highlights.forEach(item => {
       if (item.note) {
         const span = document.getElementById(item.id);
@@ -1214,7 +1286,7 @@ const { course, lesson } = Astro.props;
     });
   }
 
-  window.addEventListener('resize', repositionAllGutterNotes, { passive: true });
+  window.addEventListener('resize', repositionAllGutterNotes, { passive: true, signal: __ahkhSignal });
 
   // DOM Text Range Search for Highlighting Restoration
   function findRangeForTextInElement(element, searchText) {
@@ -1259,7 +1331,7 @@ const { course, lesson } = Astro.props;
 
   // Restore Highlights in DOM on load
   function restoreHighlightsInDOM() {
-    if (!readingContent) return;
+    if (!getReadingContent()) return;
 
     highlights.forEach(item => {
       if (document.getElementById(item.id)) {
@@ -1267,7 +1339,7 @@ const { course, lesson } = Astro.props;
         return;
       }
 
-      const blocks = readingContent.querySelectorAll('p, blockquote, li, h2, h3');
+      const blocks = getReadingContent().querySelectorAll('p, blockquote, li, h2, h3');
       for (const block of blocks) {
         const range = findRangeForTextInElement(block, item.text);
         if (range) {
@@ -1397,6 +1469,7 @@ const { course, lesson } = Astro.props;
             'onStateChange': onPlayerStateChange
           }
         });
+        window.__ahkhYtPlayer = ytPlayer;
       } catch (err) {
         console.warn('Could not initialize YouTube Player:', err);
       }
@@ -1420,6 +1493,7 @@ const { course, lesson } = Astro.props;
           syncTranscript(currentTime);
         } catch (e) {}
       }, 250);
+      window.__ahkhYtTimer = ytSyncTimer;
     }
 
     function stopSyncInterval() {
@@ -1427,6 +1501,7 @@ const { course, lesson } = Astro.props;
         clearInterval(ytSyncTimer);
         ytSyncTimer = null;
       }
+      window.__ahkhYtTimer = null;
     }
 
     function syncTranscript(currentTime) {
@@ -1474,9 +1549,7 @@ const { course, lesson } = Astro.props;
     if (window.YT && window.YT.Player) {
       setupPlayer();
     } else {
-      const prevCallback = window.onYouTubeIframeAPIReady;
       window.onYouTubeIframeAPIReady = function() {
-        if (typeof prevCallback === 'function') prevCallback();
         setupPlayer();
       };
 
@@ -1487,6 +1560,46 @@ const { course, lesson } = Astro.props;
         firstScriptTag?.parentNode?.insertBefore(tag, firstScriptTag);
       }
     }
+  }
+
+  // Transcript view toggle (video lessons): formatted study version vs verbatim original
+  const TRANSCRIPT_VIEW_KEY = 'ahkh_transcript_view';
+  function paintTranscriptTabs(mode) {
+    document.querySelectorAll('.transcript-tab').forEach((btn) => {
+      const active = btn.getAttribute('data-transcript-view') === mode;
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+      btn.classList.toggle('bg-paper-200/90', active);
+      btn.classList.toggle('dark:bg-dark-border/80', active);
+      btn.classList.toggle('text-ink', active);
+      btn.classList.toggle('dark:text-dark-ink', active);
+      btn.classList.toggle('border-ink-border/80', active);
+      btn.classList.toggle('dark:border-dark-border', active);
+      btn.classList.toggle('text-ink-muted', !active);
+      btn.classList.toggle('dark:text-dark-muted', !active);
+    });
+  }
+  function setTranscriptView(mode, persist = true) {
+    const formatted = document.getElementById('formatted-view');
+    const original = document.getElementById('transcript-view');
+    if (!formatted || !original) return;
+    const showOriginal = mode === 'original';
+    formatted.classList.toggle('hidden', showOriginal);
+    original.classList.toggle('hidden', !showOriginal);
+    paintTranscriptTabs(mode);
+    if (persist) {
+      try { localStorage.setItem(TRANSCRIPT_VIEW_KEY, mode); } catch (e) {}
+    }
+  }
+  function initTranscriptToggle() {
+    const tabs = document.querySelectorAll('.transcript-tab');
+    if (!tabs.length) return;
+    let saved = 'formatted';
+    try { saved = localStorage.getItem(TRANSCRIPT_VIEW_KEY) || 'formatted'; } catch (e) {}
+    if (saved !== 'original' && saved !== 'formatted') saved = 'formatted';
+    tabs.forEach((btn) => {
+      btn.addEventListener('click', () => setTranscriptView(btn.getAttribute('data-transcript-view') || 'formatted'));
+    });
+    setTranscriptView(saved, false);
   }
 
   // Initialize UI on load
@@ -1533,12 +1646,10 @@ const { course, lesson } = Astro.props;
     renderSidebarHighlights();
     restoreHighlightsInDOM();
     initYouTubeSync();
+    initTranscriptToggle();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLesson);
-  } else {
-    initLesson();
-  }
-  document.addEventListener('astro:page-load', initLesson);
+  // Single boot path: ClientRouter (always enabled in BaseLayout) fires
+  // astro:page-load on initial load and on every navigation.
+  document.addEventListener('astro:page-load', initLesson, { signal: __ahkhSignal });
 </script>
