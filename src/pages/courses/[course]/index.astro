@@ -12,17 +12,42 @@ export function getStaticPaths() {
 }
 
 const { course } = Astro.props;
+
+const STATUS_CONFIG: Record<string, { label: string; dotClass: string; textClass: string }> = {
+  active: {
+    label: 'Active',
+    dotClass: 'bg-emerald-600 dark:bg-emerald-400',
+    textClass: 'text-emerald-700 dark:text-emerald-400',
+  },
+  new: {
+    label: 'New Track',
+    dotClass: 'bg-blue-600 dark:bg-blue-400',
+    textClass: 'text-blue-700 dark:text-blue-400',
+  },
+  explored: {
+    label: 'Explored',
+    dotClass: 'bg-purple-600 dark:bg-purple-400',
+    textClass: 'text-purple-700 dark:text-purple-400',
+  },
+  completed: {
+    label: 'Completed',
+    dotClass: 'bg-pink-600 dark:bg-pink-400',
+    textClass: 'text-pink-700 dark:text-pink-400',
+  },
+};
+
+const statusMeta = STATUS_CONFIG[course.status];
 ---
 
 <BaseLayout title={`${course.title} — Learning Journey`} description={course.description}>
   <!-- Minimal Top Header for Course -->
   <header class="w-full border-b border-ink-border/80 dark:border-dark-border bg-paper-100/90 dark:bg-dark-bg/90 backdrop-blur-sm sticky top-0 z-30 transition-colors">
     <div class="max-w-hub mx-auto px-6 h-14 flex items-center justify-between">
-      <a href={path('/')} class="flex items-center gap-2 text-xs font-sans font-medium text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink transition-colors group">
-        <svg class="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <a href={path('/')} class="flex items-center gap-2 text-xs font-ui font-medium text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink transition-colors group">
+        <svg class="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m15 18-6-6 6-6"/>
         </svg>
-        Library of Curricula
+        <span>Library of Curricula</span>
       </a>
 
       <div class="flex items-center gap-3">
@@ -40,91 +65,305 @@ const { course } = Astro.props;
   </header>
 
   <main class="flex-1 max-w-hub w-full mx-auto px-6 py-12">
-    <!-- Course Title & Metadata -->
+    <!-- Course Title & Metadata (Library-Aligned Monograph) -->
     <div class="mb-14 pb-8 border-b border-ink-border/80 dark:border-dark-border">
-      <div class="flex items-center gap-2.5 mb-2.5">
+      <div class="flex flex-wrap items-center gap-3 mb-3">
         <span class={`text-xs font-mono tracking-wider uppercase font-medium ${getCategoryColor(course.category)}`}>
           {course.category}
         </span>
-        <span class="font-mono text-xs text-ink-muted/80 dark:text-dark-muted/80">
-          · <span class="font-medium text-ink dark:text-dark-ink">{course.totalModules}</span> Modules · <span class="font-medium text-ink dark:text-dark-ink">{course.totalSources}</span> Total Sources
-        </span>
+        {statusMeta && (
+          <span class={`inline-flex items-center gap-1.5 text-[11px] font-mono tracking-wide ${statusMeta.textClass}`}>
+            <span class={`w-1.5 h-1.5 rounded-full ${statusMeta.dotClass}`}></span>
+            {statusMeta.label}
+          </span>
+        )}
       </div>
 
-      <h1 class="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-ink dark:text-dark-ink">
+      <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-ink dark:text-dark-ink mb-4">
         {course.title}
       </h1>
+
+      {course.description && (
+        <p class="font-serif text-base sm:text-lg text-ink/80 dark:text-dark-ink/80 max-w-3xl leading-relaxed">
+          {course.description}
+        </p>
+      )}
     </div>
 
-    <!-- The Vertical Learning Journey / Units -->
-    <div class="max-w-2xl mx-auto">
+    <!-- The Architectural Learning Journey Grid -->
+    <div class="max-w-3xl mx-auto">
       {course.modules.length === 0 ? (
-        <div class="py-16 text-center border border-dashed border-ink-border dark:border-dark-border rounded-xs">
-          <p class="font-serif text-lg text-ink dark:text-dark-ink">Module Roadmap is being structured</p>
-          <p class="text-xs font-sans text-ink-muted dark:text-dark-muted mt-1">Check back as sources are integrated into this track.</p>
+        <div class="py-16 text-center border border-dashed border-ink-border dark:border-dark-border rounded-xs bg-paper-50/50 dark:bg-dark-card/50">
+          <p class="font-serif text-lg text-ink dark:text-dark-ink">Curriculum is being structured</p>
+          <p class="text-xs font-sans text-ink-muted dark:text-dark-muted mt-1">Check back as sources and modules are integrated into this track.</p>
         </div>
       ) : (
-        <div class="relative pl-6 sm:pl-8 space-y-12">
-          <!-- Continuous Vertical Spine Line -->
-          <div class="absolute left-[11px] sm:left-[13px] top-3 bottom-3 w-px bg-ink-border dark:bg-dark-border"></div>
+        <div>
+          <!-- Quick Utilities: Single authoritative count & Global Expand/Collapse -->
+          <div class="flex items-center justify-between pb-3.5 mb-6 border-b border-ink-border/60 dark:border-dark-border/60 text-xs font-mono text-ink-muted dark:text-dark-muted">
+            <span>
+              {course.modules.length} {course.modules.length === 1 ? 'Unit' : 'Units'} · {course.totalSources} Lessons{course.duration ? ` · ${course.duration}` : ''}
+            </span>
+            <button 
+              id="toggle-all-modules-btn" 
+              class="hover:text-ink dark:hover:text-dark-ink transition-colors cursor-pointer flex items-center gap-1.5 focus:outline-hidden"
+              data-action="collapse"
+              title="Toggle all units"
+            >
+              <span id="toggle-all-text">Collapse all</span>
+            </button>
+          </div>
 
-          {course.modules.map((mod) => (
-            <div class="relative">
-              <!-- Module Milestone Header (Node on spine) -->
-              <div class="flex items-start gap-3 sm:gap-4 -ml-6 sm:-ml-8 mb-6">
-                <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-ink dark:border-dark-ink bg-paper-100 dark:bg-dark-card flex items-center justify-center font-mono text-xs font-medium text-ink dark:text-dark-ink shrink-0 z-10">
-                  {mod.number}
-                </div>
-                <div>
-                  <h3 class="font-serif text-xl sm:text-2xl font-medium text-ink dark:text-dark-ink">
-                    Unit 0{mod.number}: {mod.title}
-                  </h3>
-                  <p class="font-sans text-xs text-ink-muted dark:text-dark-muted mt-0.5">
-                    {mod.description}
-                  </p>
-                </div>
-              </div>
+          <!-- Modules List -->
+          <div class="space-y-6">
+            {course.modules.map((mod) => (
+              <section class="border border-ink-border/80 dark:border-dark-border rounded-xs bg-white dark:bg-dark-card overflow-hidden transition-colors">
+                <!-- Module Milestone Header (Interactive Accordion Trigger) -->
+                <button
+                  type="button"
+                  class="module-toggle-btn w-full flex items-start justify-between gap-4 p-4 hover:bg-paper-100/60 dark:hover:bg-dark-border/30 transition-colors text-left group cursor-pointer focus:outline-hidden"
+                  data-module-id={mod.id}
+                  aria-expanded="true"
+                >
+                  <div class="flex items-start gap-3.5 min-w-0">
+                    <!-- Concise Coordinate Badge: ONLY U1, U2 -->
+                    <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded-xs border border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-card text-ink dark:text-dark-ink shrink-0 group-hover:border-ink-muted/60 transition-colors shadow-2xs">
+                      U{mod.number}
+                    </span>
 
-              <!-- Module Lessons List -->
-              <div class="space-y-3 pl-3 sm:pl-4">
-                {mod.lessons.map((lesson) => (
-                  <article class="group relative rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:border-ink dark:hover:border-dark-ink transition-all p-4">
-                    <a href={path(`/courses/${course.slug}/${lesson.slug}`)} class="block focus:outline-hidden">
-                      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        
-                        <!-- Title & Meta -->
-                        <div>
-                          <div class="flex items-center gap-2 mb-1.5">
-                            <span class="font-mono text-xs font-medium text-ink-muted dark:text-dark-muted">
-                              {lesson.lessonNumber}
-                            </span>
-                            <span class="font-mono text-xs text-ink-muted/80 dark:text-dark-muted/80">
-                              · <span class={`font-medium ${getFormatColor(lesson.type)}`}>{lesson.type === 'video' ? 'Video' : lesson.type === 'pdf' ? 'PDF' : 'Article'}</span> · {lesson.readTime}
-                            </span>
+                    <div class="min-w-0 pt-0.5">
+                      <!-- Module Title - Clean and direct without redundant copy or underlines -->
+                      <h2 class="font-serif text-lg sm:text-xl font-medium text-ink dark:text-dark-ink transition-colors">
+                        {mod.title}
+                      </h2>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-2.5 shrink-0 pt-1 text-ink-muted dark:text-dark-muted group-hover:text-ink dark:group-hover:text-dark-ink transition-colors">
+                    <span class="font-mono text-[11px]">
+                      {mod.lessons.length} {mod.lessons.length === 1 ? 'lesson' : 'lessons'}
+                    </span>
+                    <svg 
+                      class="w-4 h-4 transform transition-transform duration-200 chevron-icon rotate-180" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      stroke-width="2" 
+                      stroke-linecap="round" 
+                      stroke-linejoin="round" 
+                      aria-hidden="true"
+                    >
+                      <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                  </div>
+                </button>
+
+                <!-- Lessons Tree-Grid (Collapsible Container with Smooth Grid Animation) -->
+                <div 
+                  id={`module-content-${mod.id}`} 
+                  class="module-content grid transition-[grid-template-rows,opacity] duration-300 ease-in-out border-t border-ink-border/40 dark:border-dark-border/40"
+                  style="grid-template-rows: 1fr; opacity: 1;"
+                >
+                  <div class="overflow-hidden min-h-0">
+                    <div class="ml-4 sm:ml-5 pl-6 sm:pl-8 space-y-3 pt-3 pb-5 pr-4 sm:pr-5">
+                      {mod.lessons.map((lesson, idx) => {
+                        const isLast = idx === mod.lessons.length - 1;
+                        return (
+                          <div class="relative group">
+                            {/* Architectural Tree-Grid Connectors */}
+                            {!isLast ? (
+                              <>
+                                {/* Continuous vertical guide line */}
+                                <div 
+                                  class="absolute -left-6 sm:-left-8 -top-3 bottom-0 w-px bg-ink-border/80 dark:border-dark-border group-hover:bg-ink-muted/50 transition-colors" 
+                                  aria-hidden="true"
+                                />
+                                {/* Horizontal orthogonal branch */}
+                                <div 
+                                  class="absolute -left-6 sm:-left-8 top-1/2 -translate-y-1/2 w-6 sm:w-8 h-px bg-ink-border/80 dark:bg-dark-border group-hover:bg-ink-muted/50 transition-colors" 
+                                  aria-hidden="true"
+                                />
+                              </>
+                            ) : (
+                              <>
+                                {/* Terminal corner bracket (└─) */}
+                                <div 
+                                  class="absolute -left-6 sm:-left-8 -top-3 h-[calc(50%+12px)] w-6 sm:w-8 border-l border-b border-ink-border/80 dark:border-dark-border rounded-bl-xs group-hover:border-ink-muted/50 transition-colors" 
+                                  aria-hidden="true"
+                                />
+                              </>
+                            )}
+
+                            {/* Precision junction tick on the spine */}
+                            <div 
+                              class="absolute -left-6 sm:-left-8 -ml-[2px] top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-paper-300 dark:bg-dark-border group-hover:bg-ink dark:group-hover:bg-dark-ink transition-colors z-10" 
+                              aria-hidden="true"
+                            />
+
+                            <!-- Editorial Lesson Row Surface -->
+                            <article class="relative rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50/70 dark:bg-dark-bg/60 hover:bg-white dark:hover:bg-dark-card hover:border-ink-border dark:hover:border-dark-border transition-all p-3 sm:p-3.5 shadow-2xs">
+                              <a href={path(`/courses/${course.slug}/${lesson.slug}`)} class="block focus:outline-hidden">
+                                <div class="flex items-center justify-between gap-4">
+                                  
+                                  <div class="flex items-start sm:items-center gap-3 sm:gap-4 min-w-0">
+                                    <!-- Sequential Monospaced Coordinate Number: 01, 02 -->
+                                    <span class="font-mono text-xs font-semibold text-ink-muted dark:text-dark-muted group-hover:text-ink dark:group-hover:text-dark-ink transition-colors shrink-0 pt-0.5 sm:pt-0">
+                                      {String(idx + 1).padStart(2, '0')}
+                                    </span>
+
+                                    <div class="min-w-0">
+                                      <h3 class="font-serif text-base sm:text-lg font-medium text-ink dark:text-dark-ink transition-colors truncate">
+                                        {lesson.title}
+                                      </h3>
+
+                                      <div class="flex items-center gap-2 text-xs font-mono text-ink-muted/80 dark:text-dark-muted/80 mt-1">
+                                        <span class={`font-medium ${getFormatColor(lesson.type)}`}>
+                                          {lesson.type === 'video' ? 'Video' : lesson.type === 'pdf' ? 'PDF' : 'Article'}
+                                        </span>
+                                        <span>·</span>
+                                        <span>{lesson.readTime}</span>
+                                        {lesson.originalSourceLabel && (
+                                          <>
+                                            <span class="hidden sm:inline">·</span>
+                                            <span class="hidden sm:inline truncate max-w-[220px] text-ink-muted/70 dark:text-dark-muted/70">
+                                              {lesson.originalSourceLabel}
+                                            </span>
+                                          </>
+                                        )}
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <!-- Right Arrow Indicator (No 'Study' label) -->
+                                  <div class="shrink-0 flex items-center justify-center w-6 h-6 rounded-xs text-ink-muted/60 dark:text-dark-muted/60 group-hover:text-ink dark:group-hover:text-dark-ink transition-colors">
+                                    <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                                    </svg>
+                                  </div>
+
+                                </div>
+                              </a>
+                            </article>
                           </div>
-
-                          <h4 class="font-serif text-lg font-medium text-ink dark:text-dark-ink group-hover:underline transition-colors">
-                            {lesson.title}
-                          </h4>
-                        </div>
-
-                        <!-- Read Action -->
-                        <div class="shrink-0 flex items-center gap-1.5 text-xs font-sans font-medium text-ink-muted dark:text-dark-muted group-hover:text-ink dark:group-hover:text-dark-ink pt-1 sm:pt-0">
-                          <span>Study</span>
-                          <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                          </svg>
-                        </div>
-
-                      </div>
-                    </a>
-                  </article>
-                ))}
-              </div>
-            </div>
-          ))}
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </section>
+            ))}
+          </div>
         </div>
       )}
     </div>
+
+    <!-- Editorial Colophon Footer -->
+    <footer class="mt-16 pt-8 border-t border-ink-border/60 dark:border-dark-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-sans text-ink-muted dark:text-dark-muted">
+      <p>A sovereign, local-first reading sanctuary for rigorous study curricula.</p>
+      <a href={path('/')} class="hover:text-ink dark:hover:text-dark-ink transition-colors underline underline-offset-4">
+        &larr; Return to Library
+      </a>
+    </footer>
   </main>
+
+  <!-- Client-side script for Collapsible Module Accordion -->
+  <script is:inline>
+    function initModuleAccordions() {
+      const toggleAllBtn = document.getElementById('toggle-all-modules-btn');
+      const toggleAllText = document.getElementById('toggle-all-text');
+      const moduleToggles = document.querySelectorAll('.module-toggle-btn');
+      
+      const courseSlug = window.location.pathname.split('/').filter(Boolean).pop() || 'default';
+      const storageKey = `ahkh_course_collapsed_${courseSlug}`;
+      let collapsedModules = new Set();
+      try {
+        const stored = localStorage.getItem(storageKey);
+        if (stored) {
+          collapsedModules = new Set(JSON.parse(stored));
+        }
+      } catch (e) {
+        collapsedModules = new Set();
+      }
+
+      function setModuleState(moduleId, isCollapsed) {
+        const content = document.getElementById(`module-content-${moduleId}`);
+        const btn = document.querySelector(`.module-toggle-btn[data-module-id="${moduleId}"]`);
+        const chevron = btn ? btn.querySelector('.chevron-icon') : null;
+
+        if (isCollapsed) {
+          if (content) {
+            content.style.gridTemplateRows = '0fr';
+            content.style.opacity = '0';
+          }
+          btn?.setAttribute('aria-expanded', 'false');
+          chevron?.classList.remove('rotate-180');
+          collapsedModules.add(moduleId);
+        } else {
+          if (content) {
+            content.style.gridTemplateRows = '1fr';
+            content.style.opacity = '1';
+          }
+          btn?.setAttribute('aria-expanded', 'true');
+          chevron?.classList.add('rotate-180');
+          collapsedModules.delete(moduleId);
+        }
+        try {
+          localStorage.setItem(storageKey, JSON.stringify([...collapsedModules]));
+        } catch (e) {}
+        updateToggleAllButtonState();
+      }
+
+      function updateToggleAllButtonState() {
+        if (!toggleAllBtn || !toggleAllText) return;
+        const total = moduleToggles.length;
+        if (total === 0) return;
+        
+        const allCollapsed = collapsedModules.size === total;
+        if (allCollapsed) {
+          toggleAllBtn.setAttribute('data-action', 'expand');
+          toggleAllText.textContent = 'Expand all';
+        } else {
+          toggleAllBtn.setAttribute('data-action', 'collapse');
+          toggleAllText.textContent = 'Collapse all';
+        }
+      }
+
+      // Apply initial state
+      moduleToggles.forEach((btn) => {
+        const moduleId = btn.getAttribute('data-module-id');
+        if (moduleId && collapsedModules.has(moduleId)) {
+          setModuleState(moduleId, true);
+        } else if (moduleId) {
+          setModuleState(moduleId, false);
+        }
+      });
+
+      // Handle individual accordion clicks
+      moduleToggles.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const moduleId = btn.getAttribute('data-module-id');
+          if (!moduleId) return;
+          const isCurrentlyCollapsed = collapsedModules.has(moduleId);
+          setModuleState(moduleId, !isCurrentlyCollapsed);
+        });
+      });
+
+      // Handle Toggle-All button
+      toggleAllBtn?.addEventListener('click', () => {
+        const currentAction = toggleAllBtn.getAttribute('data-action');
+        const shouldCollapse = currentAction === 'collapse';
+        moduleToggles.forEach((btn) => {
+          const moduleId = btn.getAttribute('data-module-id');
+          if (moduleId) {
+            setModuleState(moduleId, shouldCollapse);
+          }
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initModuleAccordions);
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
+      initModuleAccordions();
+    }
+  </script>
 </BaseLayout>

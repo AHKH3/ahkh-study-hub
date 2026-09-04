@@ -56,6 +56,7 @@ All courses in AHKH Study Hub adhere strictly to the **Unified Global Design Sys
 - **Absolute Ban on Emojis**: Zero emojis in the codebase, UI, lesson text, badges, buttons, and markdown files. Use clean inline SVG icons and dignified typographical symbols (`—`, `•`, `//`, `*`) exclusively.
 - **Verbatim Text Preservation**: Content from articles, video transcripts, or PDFs must be ingested with 100% fidelity. Never summarize, truncate, or rewrite text unless explicitly instructed by the user.
 - **Local Sovereignty**: All reader highlights and marginal notes persist exclusively in browser `localStorage` under `ahkh_hl_${courseId}_${lessonId}`. Never add remote servers, databases, or tracking telemetry.
+- **Low-Contrast Tactile Active States & Overlays (No Inverted Black Blocks)**: Never invert active buttons, segmented controls, floating menus, or selection popovers into solid jet-black blocks (`bg-ink`) or heavy black borders (`border-ink`). Active states on light surfaces must use subtle recessed neutral fills (`bg-paper-200/90` or `bg-white` with `shadow-2xs`) and maintain standard neutral zinc borders (`border-ink-border`). Floating popovers and toasts must float on pure white (`bg-white`) or clean off-white surfaces with delicate soft shadows.
 - **Base URL Awareness**: All internal links and static assets must wrap their paths with `path()` from `src/utils/paths.ts` to ensure flawless routing on GitHub Pages (`/ahkh-study-hub`).
 
 ## 3. Post-Implementation Verification

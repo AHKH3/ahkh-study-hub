@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['Newsreader', 'Lora', 'Charter', 'Georgia', 'serif'],
+        ui: ['"Playfair Display"', 'Georgia', 'serif'],
+        serif: ['var(--reader-font-family, Merriweather)', 'Merriweather', 'Georgia', 'serif'],
         sans: ['Geist', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },

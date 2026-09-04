@@ -167,3 +167,18 @@ This file records the key architectural and design decisions made in the develop
   2. High-contrast, publication-grade reading environment.
   3. Permanent immunity against AI agents overwriting `#FFFFFF`.
 
+---
+
+## ADR-014: Elimination of High-Contrast Inverted UI Elements & Overlays
+- **Date**: 2026-09-04
+- **Status**: Accepted
+- **Context**: Several interactive controls (the floating selection popover, sidebar toggle buttons when open, reading comfort segmented controls, and undo toast) used harsh, solid jet-black backgrounds (`bg-ink`) or heavy dark outlines (`border-ink`). This produced abrupt visual shock and high-contrast blemishes against pure white surfaces.
+- **Decision**:
+  1. **Tactile Low-Contrast Active Buttons**: Prohibit `bg-ink` on button active states. Active states utilize soft recessed neutral fills (`bg-paper-200/90` light / `dark:bg-dark-border/80` dark) with standard neutral zinc borders (`border-ink-border`).
+  2. **Soft Floating Overlays**: Floating menus and toasts float on crisp white paper (`bg-white` light / `dark:bg-dark-card` dark) with soft, featherweight drop shadows (`shadow-lg shadow-black/5`) and neutral zinc borders.
+  3. **Soft Calibrated Removal Action**: Replaced aggressive solid red blocks (`bg-red-600 text-white`) with gentle tone-calibrated rose (`text-rose-700 bg-rose-50 border-rose-200/80` light / `dark:text-rose-400 dark:bg-rose-950/40 dark:border-rose-900/50`).
+- **Consequences**:
+  1. Elimination of visual harshness and distracting black blocks during reading.
+  2. Cohesive, calm Swiss editorial experience where interactive overlays feel integral to the paper medium.
+
+

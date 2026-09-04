@@ -92,6 +92,12 @@ To eliminate "monochrome blindness" while strictly protecting the quiet paper/ca
   - `PDF`: Amber (`text-amber-700 dark:text-amber-400 font-medium`)
   - `Audio`: Violet (`text-violet-600 dark:text-violet-400 font-medium`)
 
+### 3.5. Tactile Low-Contrast Active States & Overlays (No Inverted Black Blocks)
+To preserve the serene editorial quality of the reading sanctuary, active states and overlays must never produce harsh visual contrast:
+- **Active Controls & Sidebar Toggles**: Active states must NOT invert into solid black blocks (`bg-ink`) or heavy dark borders (`border-ink`). Instead, they use a soft, tactile recessed background (`bg-paper-200/90` light / `dark:bg-dark-border/80` dark) with normal neutral zinc borders (`border-ink-border`).
+- **Floating Overlays & Popovers**: Floating menus (such as the text selection popover, display comfort popover, and undo toast) must float on pure white or subtle off-white paper (`bg-white` light / `dark:bg-dark-card` dark) with gentle drop shadows (`shadow-lg shadow-black/5`) and neutral zinc borders (`border-ink-border`). Never use stark black cards (`bg-ink`) for floating menus.
+- **Destructive/Remove Actions**: Removal or destructive states use soft tone-calibrated rose (`text-rose-700 bg-rose-50 border-rose-200/80` light / `dark:text-rose-400 dark:bg-rose-950/40 dark:border-rose-900/50`) instead of aggressive solid crimson blocks (`bg-red-600 text-white`).
+
 ---
 
 ## 4. Typography Hierarchy

@@ -53,7 +53,7 @@ const { course, lesson } = Astro.props;
 
         <button 
           id="toggle-left-sidebar"
-          class="w-8 h-8 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-all active:scale-95 duration-150 cursor-pointer"
+          class="w-8 h-8 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink flex items-center justify-center transition-all active:scale-95 duration-150 cursor-pointer"
           title="Toggle Document Outline (Left Sidebar) [ [ ]"
           aria-label="Toggle Document Outline"
         >
@@ -76,7 +76,7 @@ const { course, lesson } = Astro.props;
         <!-- Display Settings Button (Aa) -->
         <button 
           id="toggle-display-settings"
-          class="w-8 h-8 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink text-xs font-serif font-semibold flex items-center justify-center transition-all active:scale-95 duration-150 cursor-pointer"
+          class="w-8 h-8 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink text-xs font-ui font-semibold flex items-center justify-center transition-all active:scale-95 duration-150 cursor-pointer"
           title="Reading & Typography Settings"
           aria-label="Reading & Typography Settings"
           aria-expanded="false"
@@ -88,14 +88,14 @@ const { course, lesson } = Astro.props;
         <!-- Right Highlights Sidebar Toggle Icon Button -->
         <button 
           id="toggle-right-sidebar"
-          class="w-8 h-8 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-all active:scale-95 duration-150 cursor-pointer relative"
+          class="w-8 h-8 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink flex items-center justify-center transition-all active:scale-95 duration-150 cursor-pointer relative"
           title="Toggle Highlights & Marginalia (Right Sidebar) [ ] ]"
           aria-label="Toggle Highlights & Marginalia"
         >
           <PanelRight class="w-4 h-4" />
           <span 
             id="header-highlights-count" 
-            class="absolute -top-1 -right-1 font-mono text-[9px] min-w-[15px] h-[15px] px-1 rounded-full bg-ink text-paper-50 dark:bg-dark-ink dark:text-dark-bg flex items-center justify-center transition-all hidden scale-90 font-medium"
+            class="absolute -top-1 -right-1 font-mono text-[9px] min-w-[15px] h-[15px] px-1 rounded-full bg-paper-200 text-ink dark:bg-dark-border dark:text-dark-ink border border-ink-border/80 dark:border-dark-border flex items-center justify-center transition-all hidden scale-90 font-medium"
           >
             0
           </span>
@@ -110,7 +110,7 @@ const { course, lesson } = Astro.props;
     id="display-settings-menu"
     role="dialog"
     aria-label="Reading Typography and Comfort Settings"
-    class="hidden fixed top-16 right-4 sm:right-6 w-72 p-4 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50/98 dark:bg-dark-card/98 backdrop-blur-md shadow-xl shadow-ink/5 dark:shadow-black/50 z-50 text-xs font-sans space-y-4 text-ink dark:text-dark-ink"
+    class="hidden fixed top-16 right-4 sm:right-6 w-80 sm:w-84 max-h-[88vh] overflow-y-auto p-4 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50/98 dark:bg-dark-card/98 backdrop-blur-md shadow-xl shadow-ink/5 dark:shadow-black/50 z-50 text-xs font-sans space-y-4 text-ink dark:text-dark-ink"
   >
     <!-- Header: Title + Reset -->
     <div class="flex items-center justify-between pb-2 border-b border-ink-border/60 dark:border-dark-border/60">
@@ -132,45 +132,105 @@ const { course, lesson } = Astro.props;
         <span id="font-size-label" class="font-mono text-[10px] text-ink dark:text-dark-ink">Standard (18px)</span>
       </div>
       <div class="grid grid-cols-4 gap-1 p-0.5 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60">
-        <button data-size="sm" class="size-btn py-1.5 px-2 rounded-xs text-center font-serif transition-all cursor-pointer" title="Small (16px)">
+        <button data-size="sm" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-all cursor-pointer" title="Small (16px)">
           <span class="text-xs">A</span>
         </button>
-        <button data-size="base" class="size-btn py-1.5 px-2 rounded-xs text-center font-serif transition-all cursor-pointer" title="Standard (18px)">
+        <button data-size="base" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-all cursor-pointer" title="Standard (18px)">
           <span class="text-sm">A</span>
         </button>
-        <button data-size="lg" class="size-btn py-1.5 px-2 rounded-xs text-center font-serif transition-all cursor-pointer" title="Large (21px)">
+        <button data-size="lg" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-all cursor-pointer" title="Large (21px)">
           <span class="text-base font-medium">A</span>
         </button>
-        <button data-size="xl" class="size-btn py-1.5 px-2 rounded-xs text-center font-serif transition-all cursor-pointer" title="Expanded (24px)">
+        <button data-size="xl" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-all cursor-pointer" title="Expanded (24px)">
           <span class="text-lg font-bold">A</span>
         </button>
       </div>
     </div>
 
-    <!-- 2. Typeface Family -->
+    <!-- 2. Typeface Family (Unified 7-Typeface Selector) -->
     <div>
-      <div class="text-ink-muted dark:text-dark-muted mb-2 font-medium text-[11px]">Typeface</div>
-      <div class="grid grid-cols-2 gap-1.5 p-0.5 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60">
-        <button id="font-serif-btn" class="font-family-btn py-2 px-2.5 rounded-xs text-center font-serif text-sm transition-all cursor-pointer flex items-center justify-center">
-          <span>Newsreader Serif</span>
+      <div class="flex items-center justify-between text-ink dark:text-dark-ink mb-2">
+        <span class="font-medium text-[11px]">Reading Typeface</span>
+        <span id="font-family-label" class="font-mono text-[10px] font-semibold text-ink dark:text-dark-ink">Merriweather</span>
+      </div>
+      
+      <div class="space-y-1 p-1 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60 max-h-56 overflow-y-auto">
+        <button 
+          data-font-id="merriweather" 
+          class="font-family-btn w-full py-2 px-3 rounded-xs text-left transition-all cursor-pointer flex items-center justify-between"
+          style="font-family: 'Merriweather', Georgia, serif;"
+        >
+          <span class="text-[13px] font-medium text-ink dark:text-dark-ink">Merriweather</span>
+          <span class="text-[10px] font-mono font-medium text-ink/75 dark:text-dark-ink/75">Serif (Default)</span>
         </button>
-        <button id="font-sans-btn" class="font-family-btn py-2 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center">
-          <span>Geist Sans</span>
+
+        <button 
+          data-font-id="source-serif" 
+          class="font-family-btn w-full py-2 px-3 rounded-xs text-left transition-all cursor-pointer flex items-center justify-between"
+          style="font-family: 'Source Serif 4', Georgia, serif;"
+        >
+          <span class="text-[13px] font-medium text-ink dark:text-dark-ink">Source Serif 4</span>
+          <span class="text-[10px] font-mono font-medium text-ink/75 dark:text-dark-ink/75">Book Serif</span>
+        </button>
+        
+        <button 
+          data-font-id="literata" 
+          class="font-family-btn w-full py-2 px-3 rounded-xs text-left transition-all cursor-pointer flex items-center justify-between"
+          style="font-family: 'Literata', Georgia, serif;"
+        >
+          <span class="text-[13px] font-medium text-ink dark:text-dark-ink">Literata</span>
+          <span class="text-[10px] font-mono font-medium text-ink/75 dark:text-dark-ink/75">Digital Reading</span>
+        </button>
+        
+        <button 
+          data-font-id="lora" 
+          class="font-family-btn w-full py-2 px-3 rounded-xs text-left transition-all cursor-pointer flex items-center justify-between"
+          style="font-family: 'Lora', Georgia, serif;"
+        >
+          <span class="text-[13px] font-medium text-ink dark:text-dark-ink">Lora</span>
+          <span class="text-[10px] font-mono font-medium text-ink/75 dark:text-dark-ink/75">Contemporary</span>
+        </button>
+        
+        <button 
+          data-font-id="newsreader" 
+          class="font-family-btn w-full py-2 px-3 rounded-xs text-left transition-all cursor-pointer flex items-center justify-between"
+          style="font-family: 'Newsreader', Georgia, serif;"
+        >
+          <span class="text-[13px] font-medium text-ink dark:text-dark-ink">Newsreader</span>
+          <span class="text-[10px] font-mono font-medium text-ink/75 dark:text-dark-ink/75">Classic Literary</span>
+        </button>
+
+        <button 
+          data-font-id="geist" 
+          class="font-family-btn w-full py-2 px-3 rounded-xs text-left transition-all cursor-pointer flex items-center justify-between"
+          style="font-family: 'Geist', sans-serif;"
+        >
+          <span class="text-[13px] font-medium text-ink dark:text-dark-ink">Geist Sans</span>
+          <span class="text-[10px] font-mono font-medium text-ink/75 dark:text-dark-ink/75">Clean Minimalist</span>
+        </button>
+        
+        <button 
+          data-font-id="inter" 
+          class="font-family-btn w-full py-2 px-3 rounded-xs text-left transition-all cursor-pointer flex items-center justify-between"
+          style="font-family: 'Inter', sans-serif;"
+        >
+          <span class="text-[13px] font-medium text-ink dark:text-dark-ink">Inter</span>
+          <span class="text-[10px] font-mono font-medium text-ink/75 dark:text-dark-ink/75">Interface Sans</span>
         </button>
       </div>
     </div>
 
     <!-- 3. Reading Measure -->
     <div>
-      <div class="flex items-center justify-between text-ink-muted dark:text-dark-muted mb-2">
+      <div class="flex items-center justify-between text-ink dark:text-dark-ink mb-2">
         <span class="font-medium text-[11px]">Reading Measure</span>
-        <span id="measure-label" class="font-mono text-[10px] text-ink dark:text-dark-ink">Standard (68ch)</span>
+        <span id="measure-label" class="font-mono text-[10px] font-semibold text-ink dark:text-dark-ink">Standard (68ch)</span>
       </div>
       <div class="grid grid-cols-2 gap-1.5 p-0.5 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60">
-        <button id="measure-standard-btn" class="measure-btn py-1.5 px-2 rounded-xs text-center font-sans text-xs transition-all cursor-pointer">
+        <button id="measure-standard-btn" class="measure-btn py-1.5 px-2 rounded-xs text-center font-ui text-xs transition-all cursor-pointer">
           Standard (68ch)
         </button>
-        <button id="measure-wide-btn" class="measure-btn py-1.5 px-2 rounded-xs text-center font-sans text-xs transition-all cursor-pointer">
+        <button id="measure-wide-btn" class="measure-btn py-1.5 px-2 rounded-xs text-center font-ui text-xs transition-all cursor-pointer">
           Expanded (82ch)
         </button>
       </div>
@@ -183,11 +243,11 @@ const { course, lesson } = Astro.props;
         <span id="theme-status-label" class="font-mono text-[10px] text-ink dark:text-dark-ink">Light</span>
       </div>
       <div class="grid grid-cols-2 gap-1.5 p-0.5 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60">
-        <button id="theme-light-btn" class="theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5">
+        <button id="theme-light-btn" class="theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-ui text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5">
           <Sun class="w-3.5 h-3.5" />
           <span>Light</span>
         </button>
-        <button id="theme-dark-btn" class="theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5">
+        <button id="theme-dark-btn" class="theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-ui text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5">
           <Moon class="w-3.5 h-3.5" />
           <span>Dark</span>
         </button>
@@ -207,7 +267,7 @@ const { course, lesson } = Astro.props;
       class="sidebar-drawer shrink-0 border-r border-ink-border/80 dark:border-dark-border bg-paper-100/95 dark:bg-dark-bg/95 backdrop-blur-md sticky overflow-y-auto overflow-x-hidden p-6"
     >
       <div class="w-52 min-w-[13rem]">
-        <div class="font-mono text-[11px] uppercase tracking-widest text-ink-muted dark:text-dark-muted mb-4 pb-2 border-b border-ink-border/60 dark:border-dark-border/60">
+        <div class="font-mono text-[11px] uppercase tracking-widest text-ink dark:text-dark-ink font-semibold mb-4 pb-2 border-b border-ink-border/60 dark:border-dark-border/60">
           Document Outline
         </div>
         <nav class="space-y-2 text-xs font-sans">
@@ -215,7 +275,7 @@ const { course, lesson } = Astro.props;
             <a 
               href={`#${item.id}`}
               class:list={[
-                "block text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink transition-colors line-clamp-1 py-1 px-1.5 rounded-xs hover:bg-paper-200/60 dark:hover:bg-dark-card/60",
+                "block text-ink/80 dark:text-dark-ink/80 hover:text-ink dark:hover:text-dark-ink transition-colors line-clamp-1 py-1 px-1.5 rounded-xs hover:bg-paper-200/60 dark:hover:bg-dark-card/60",
                 item.level === 3 ? "pl-4 text-[11px]" : "font-medium"
               ]}
             >
@@ -225,7 +285,7 @@ const { course, lesson } = Astro.props;
         </nav>
 
         <div class="mt-8 pt-4 border-t border-ink-border/60 dark:border-dark-border/60">
-          <div class="font-mono text-[10px] text-ink-muted dark:text-dark-muted mb-1">Source Information</div>
+          <div class="font-mono text-[10px] text-ink/75 dark:text-dark-ink/75 font-semibold mb-1">Source Information</div>
           <a 
             href={lesson.originalSourceUrl || "#"} 
             target="_blank" 
@@ -243,7 +303,7 @@ const { course, lesson } = Astro.props;
       
       <!-- Article Heading Block -->
       <div class="mb-10 pb-6 border-b border-ink-border/80 dark:border-dark-border">
-        <div class="flex items-center gap-2 font-mono text-xs text-ink-muted/80 dark:text-dark-muted/80 mb-2">
+        <div class="flex items-center gap-2 font-mono text-xs text-ink/80 dark:text-dark-ink/80 mb-2 font-medium">
           <span>Unit {lesson.unitNumber}</span>
           <span>·</span>
           <span>Lesson {lesson.lessonNumber}</span>
@@ -257,7 +317,7 @@ const { course, lesson } = Astro.props;
           {lesson.title}
         </h1>
 
-        <p class="font-serif text-base sm:text-lg text-ink-muted dark:text-dark-muted italic leading-relaxed border-l-2 border-ink dark:border-dark-ink pl-4 py-1">
+        <p class="font-serif text-base sm:text-lg text-ink dark:text-dark-ink italic leading-relaxed border-l-2 border-ink dark:border-dark-ink pl-4 py-1">
           "{lesson.summaryQuote}"
         </p>
       </div>
@@ -294,7 +354,7 @@ const { course, lesson } = Astro.props;
       </div>
 
       <!-- BOTTOM NAVIGATION (Next / Previous Lesson) -->
-      <div class="mt-16 pt-8 border-t border-ink-border/80 dark:border-dark-border flex items-center justify-between gap-4 font-sans text-xs">
+      <div class="mt-16 pt-8 border-t border-ink-border/80 dark:border-dark-border flex items-center justify-between gap-4 font-ui text-xs">
         <a 
           href={path(`/courses/${course.slug}`)}
           class="text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink flex items-center gap-1 font-medium transition-colors"
@@ -341,11 +401,11 @@ const { course, lesson } = Astro.props;
   <!-- 4. FLOATING ACTION POPOVER (Appears over selected text or clicked highlight) -->
   <div 
     id="selection-popover"
-    class="hidden fixed z-50 bg-paper-50 dark:bg-dark-card border border-ink dark:border-dark-border shadow-md rounded-xs py-1 px-1.5 flex items-center gap-1 text-xs font-sans animate-in fade-in"
+    class="hidden fixed z-50 bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-lg shadow-black/5 dark:shadow-black/40 rounded-xs py-1 px-1.5 flex items-center gap-1 text-xs font-ui animate-in fade-in"
   >
     <button 
       id="popover-hl-btn"
-      class="px-2.5 py-1 rounded-xs bg-ink dark:bg-dark-ink text-paper-50 dark:text-dark-bg hover:bg-ink/90 dark:hover:bg-dark-ink/90 font-medium flex items-center gap-1.5 transition-colors cursor-pointer"
+      class="px-2.5 py-1 rounded-xs bg-paper-200/90 dark:bg-dark-border/80 hover:bg-paper-200 dark:hover:bg-dark-border text-ink dark:text-dark-ink border border-ink-border/80 dark:border-dark-border font-medium flex items-center gap-1.5 transition-colors cursor-pointer font-ui"
     >
       <span id="popover-hl-icon" class="flex items-center">
         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -357,7 +417,7 @@ const { course, lesson } = Astro.props;
     </button>
     <button 
       id="popover-note-btn"
-      class="px-2 py-1 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center gap-1.5 transition-colors cursor-pointer"
+      class="px-2 py-1 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center gap-1.5 transition-colors cursor-pointer font-ui"
       title="Add or Edit Sidenote"
     >
       <svg class="w-3.5 h-3.5 text-ink-muted dark:text-dark-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -368,7 +428,7 @@ const { course, lesson } = Astro.props;
     </button>
     <button 
       id="popover-copy-btn"
-      class="px-2 py-1 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center gap-1.5 transition-colors cursor-pointer"
+      class="px-2 py-1 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center gap-1.5 transition-colors cursor-pointer font-ui"
       title="Copy Quote with Citation"
     >
       <span id="popover-copy-icon" class="flex items-center">
@@ -386,7 +446,7 @@ const { course, lesson } = Astro.props;
     id="note-dialog"
     class="hidden fixed inset-0 z-50 bg-ink/20 dark:bg-black/60 backdrop-blur-xs flex items-center justify-center p-4"
   >
-    <div class="w-full max-w-md bg-paper-50 dark:bg-dark-card border border-ink dark:border-dark-border p-5 rounded-xs shadow-xl space-y-3">
+    <div class="w-full max-w-md bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border p-5 rounded-xs shadow-xl space-y-3">
       <div class="flex items-center justify-between">
         <div class="font-serif text-base font-medium text-ink dark:text-dark-ink flex items-center gap-2">
           <svg class="w-4 h-4 text-ink-muted dark:text-dark-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -410,8 +470,8 @@ const { course, lesson } = Astro.props;
       <div class="flex items-center justify-between gap-2 pt-1">
         <span class="text-[10px] font-mono text-ink-faint dark:text-dark-muted">Esc to cancel · Ctrl+Enter to save</span>
         <div class="flex items-center gap-2">
-          <button id="cancel-note-btn" class="px-3 py-1.5 text-xs font-sans text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink cursor-pointer transition-colors">Cancel</button>
-          <button id="save-note-btn" class="px-3.5 py-1.5 text-xs font-sans font-medium rounded-xs bg-ink dark:bg-dark-ink text-paper-50 dark:text-dark-bg hover:bg-ink/90 dark:hover:bg-dark-ink/90 cursor-pointer transition-colors">Save Sidenote</button>
+          <button id="cancel-note-btn" class="px-3 py-1.5 text-xs font-ui text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink cursor-pointer transition-colors">Cancel</button>
+          <button id="save-note-btn" class="px-3.5 py-1.5 text-xs font-ui font-medium rounded-xs bg-paper-200/90 hover:bg-paper-200 dark:bg-dark-border/80 dark:hover:bg-dark-border text-ink dark:text-dark-ink border border-ink-border/80 dark:border-dark-border cursor-pointer transition-colors">Save Sidenote</button>
         </div>
       </div>
     </div>
@@ -445,7 +505,8 @@ const { course, lesson } = Astro.props;
           document.body.setAttribute('data-header-hidden', 'true');
           displayMenu?.classList.add('hidden');
           displayBtn?.setAttribute('aria-expanded', 'false');
-          displayBtn?.classList.remove('bg-paper-200', 'dark:bg-dark-border');
+          displayBtn?.classList.remove('bg-paper-200/90', 'dark:bg-dark-border/80', 'text-ink', 'dark:text-dark-ink');
+          displayBtn?.classList.add('text-ink-muted', 'dark:text-dark-muted');
           hidePopover();
         } else if (lastScrollY - currentScrollY > 6) {
           // Scrolling UP -> reveal header
@@ -501,20 +562,20 @@ const { course, lesson } = Astro.props;
 
     if (toggleLeftBtn) {
       if (leftOpen) {
-        toggleLeftBtn.classList.add('bg-paper-200', 'dark:bg-dark-border', 'border-ink/50', 'dark:border-dark-ink/50', 'text-ink', 'dark:text-dark-ink');
+        toggleLeftBtn.classList.add('bg-paper-200/90', 'dark:bg-dark-border/80', 'text-ink', 'dark:text-dark-ink');
         toggleLeftBtn.classList.remove('text-ink-muted', 'dark:text-dark-muted');
       } else {
-        toggleLeftBtn.classList.remove('bg-paper-200', 'dark:bg-dark-border', 'border-ink/50', 'dark:border-dark-ink/50');
+        toggleLeftBtn.classList.remove('bg-paper-200/90', 'dark:bg-dark-border/80', 'text-ink', 'dark:text-dark-ink');
         toggleLeftBtn.classList.add('text-ink-muted', 'dark:text-dark-muted');
       }
     }
 
     if (toggleRightBtn) {
       if (rightOpen) {
-        toggleRightBtn.classList.add('bg-paper-200', 'dark:bg-dark-border', 'border-ink/50', 'dark:border-dark-ink/50', 'text-ink', 'dark:text-dark-ink');
+        toggleRightBtn.classList.add('bg-paper-200/90', 'dark:bg-dark-border/80', 'text-ink', 'dark:text-dark-ink');
         toggleRightBtn.classList.remove('text-ink-muted', 'dark:text-dark-muted');
       } else {
-        toggleRightBtn.classList.remove('bg-paper-200', 'dark:bg-dark-border', 'border-ink/50', 'dark:border-dark-ink/50');
+        toggleRightBtn.classList.remove('bg-paper-200/90', 'dark:bg-dark-border/80', 'text-ink', 'dark:text-dark-ink');
         toggleRightBtn.classList.add('text-ink-muted', 'dark:text-dark-muted');
       }
     }
@@ -601,32 +662,52 @@ const { course, lesson } = Astro.props;
     document.querySelectorAll('.size-btn').forEach(btn => {
       const isCur = btn.getAttribute('data-size') === sz;
       if (isCur) {
-        btn.className = 'size-btn py-1.5 px-2 rounded-xs text-center font-serif transition-all cursor-pointer bg-ink text-paper-50 dark:bg-dark-ink dark:text-dark-bg font-medium shadow-xs';
+        btn.className = 'size-btn py-1.5 px-2 rounded-xs text-center font-serif transition-all cursor-pointer bg-white dark:bg-dark-card text-ink dark:text-dark-ink font-medium border border-ink-border dark:border-dark-border shadow-2xs';
       } else {
-        btn.className = 'size-btn py-1.5 px-2 rounded-xs text-center font-serif transition-all cursor-pointer text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink';
+        btn.className = 'size-btn py-1.5 px-2 rounded-xs text-center font-serif transition-all cursor-pointer text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink border border-transparent';
       }
     });
 
     if (persist) localStorage.setItem('ahkh_reader_font_size', sz);
   }
 
+  const FONT_MAP = {
+    'merriweather': { val: "'Merriweather', Georgia, serif", name: 'Merriweather' },
+    'source-serif': { val: "'Source Serif 4', Georgia, serif", name: 'Source Serif 4' },
+    'literata': { val: "'Literata', Georgia, serif", name: 'Literata' },
+    'lora': { val: "'Lora', Georgia, serif", name: 'Lora' },
+    'newsreader': { val: "'Newsreader', Georgia, serif", name: 'Newsreader' },
+    'geist': { val: "'Geist', -apple-system, BlinkMacSystemFont, sans-serif", name: 'Geist Sans' },
+    'inter': { val: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif", name: 'Inter' },
+    // Backwards compatibility
+    'serif': { val: "'Merriweather', Georgia, serif", name: 'Merriweather' },
+    'sans': { val: "'Geist', -apple-system, BlinkMacSystemFont, sans-serif", name: 'Geist Sans' },
+  };
+
   function applyFontFamily(fam, persist = true) {
-    const isSerif = fam !== 'sans';
-    const fontVal = isSerif ? "'Newsreader', Georgia, serif" : "'Geist', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif";
-    document.documentElement.style.setProperty('--reader-font-family', fontVal);
+    let resolvedFam = fam;
+    if (fam === 'serif') resolvedFam = 'merriweather';
+    if (fam === 'sans') resolvedFam = 'geist';
+    if (!FONT_MAP[resolvedFam]) resolvedFam = 'merriweather';
 
-    const serifBtn = document.getElementById('font-serif-btn');
-    const sansBtn = document.getElementById('font-sans-btn');
+    const fontInfo = FONT_MAP[resolvedFam];
+    document.documentElement.style.setProperty('--reader-font-family', fontInfo.val);
 
-    if (isSerif) {
-      if (serifBtn) serifBtn.className = 'font-family-btn py-2 px-2.5 rounded-xs text-center font-serif text-sm transition-all cursor-pointer flex items-center justify-center bg-ink text-paper-50 dark:bg-dark-ink dark:text-dark-bg font-medium shadow-xs';
-      if (sansBtn) sansBtn.className = 'font-family-btn py-2 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink';
-    } else {
-      if (sansBtn) sansBtn.className = 'font-family-btn py-2 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center bg-ink text-paper-50 dark:bg-dark-ink dark:text-dark-bg font-medium shadow-xs';
-      if (serifBtn) serifBtn.className = 'font-family-btn py-2 px-2.5 rounded-xs text-center font-serif text-sm transition-all cursor-pointer flex items-center justify-center text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink';
-    }
+    const label = document.getElementById('font-family-label');
+    if (label) label.textContent = fontInfo.name;
 
-    if (persist) localStorage.setItem('ahkh_reader_font_family', isSerif ? 'serif' : 'sans');
+    document.querySelectorAll('.font-family-btn').forEach(btn => {
+      const btnFontId = btn.getAttribute('data-font-id');
+      const isActive = btnFontId === resolvedFam;
+      
+      if (isActive) {
+        btn.className = 'font-family-btn w-full py-2 px-3 rounded-xs text-left transition-all cursor-pointer flex items-center justify-between bg-white dark:bg-dark-card text-ink dark:text-dark-ink font-medium border border-ink-border dark:border-dark-border shadow-2xs';
+      } else {
+        btn.className = 'font-family-btn w-full py-2 px-3 rounded-xs text-left transition-all cursor-pointer flex items-center justify-between text-ink/75 dark:text-dark-ink/75 hover:text-ink dark:hover:text-dark-ink border border-transparent hover:bg-paper-200/50 dark:hover:bg-dark-border/40';
+      }
+    });
+
+    if (persist) localStorage.setItem('ahkh_reader_font_family', resolvedFam);
   }
 
   function applyReadingMeasure(measure, persist = true) {
@@ -648,19 +729,21 @@ const { course, lesson } = Astro.props;
 
     if (label) label.textContent = isWide ? 'Expanded (82ch)' : 'Standard (68ch)';
 
-    if (isWide) {
-      if (wideBtn) wideBtn.className = 'measure-btn py-1.5 px-2 rounded-xs text-center font-sans text-xs transition-all cursor-pointer bg-ink text-paper-50 dark:bg-dark-ink dark:text-dark-bg font-medium shadow-xs';
-      if (standardBtn) standardBtn.className = 'measure-btn py-1.5 px-2 rounded-xs text-center font-sans text-xs transition-all cursor-pointer text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink';
-    } else {
-      if (standardBtn) standardBtn.className = 'measure-btn py-1.5 px-2 rounded-xs text-center font-sans text-xs transition-all cursor-pointer bg-ink text-paper-50 dark:bg-dark-ink dark:text-dark-bg font-medium shadow-xs';
-      if (wideBtn) wideBtn.className = 'measure-btn py-1.5 px-2 rounded-xs text-center font-sans text-xs transition-all cursor-pointer text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink';
+    if (standardBtn && wideBtn) {
+      if (isWide) {
+        wideBtn.className = 'measure-btn py-1.5 px-2 rounded-xs text-center font-sans text-xs transition-all cursor-pointer bg-white dark:bg-dark-card text-ink dark:text-dark-ink font-medium border border-ink-border dark:border-dark-border shadow-2xs';
+        standardBtn.className = 'measure-btn py-1.5 px-2 rounded-xs text-center font-sans text-xs transition-all cursor-pointer text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink border border-transparent';
+      } else {
+        standardBtn.className = 'measure-btn py-1.5 px-2 rounded-xs text-center font-sans text-xs transition-all cursor-pointer bg-white dark:bg-dark-card text-ink dark:text-dark-ink font-medium border border-ink-border dark:border-dark-border shadow-2xs';
+        wideBtn.className = 'measure-btn py-1.5 px-2 rounded-xs text-center font-sans text-xs transition-all cursor-pointer text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink border border-transparent';
+      }
     }
 
-    if (persist) localStorage.setItem('ahkh_reader_measure', isWide ? 'wide' : 'standard');
+    if (persist) localStorage.setItem('ahkh_reader_measure', measure);
   }
 
-  function applyTheme(th, persist = true) {
-    const isDark = th === 'dark';
+  function applyTheme(theme, persist = true) {
+    const isDark = theme === 'dark';
     if (isDark) {
       document.documentElement.classList.add('dark');
     } else {
@@ -674,11 +757,11 @@ const { course, lesson } = Astro.props;
     const darkBtn = document.getElementById('theme-dark-btn');
 
     if (isDark) {
-      if (darkBtn) darkBtn.className = 'theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 bg-ink text-paper-50 dark:bg-dark-ink dark:text-dark-bg font-medium shadow-xs';
-      if (lightBtn) lightBtn.className = 'theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink';
+      if (darkBtn) darkBtn.className = 'theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 bg-white dark:bg-dark-card text-ink dark:text-dark-ink font-medium border border-ink-border dark:border-dark-border shadow-2xs';
+      if (lightBtn) lightBtn.className = 'theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink border border-transparent';
     } else {
-      if (lightBtn) lightBtn.className = 'theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 bg-ink text-paper-50 dark:bg-dark-ink dark:text-dark-bg font-medium shadow-xs';
-      if (darkBtn) darkBtn.className = 'theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink';
+      if (lightBtn) lightBtn.className = 'theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 bg-white dark:bg-dark-card text-ink dark:text-dark-ink font-medium border border-ink-border dark:border-dark-border shadow-2xs';
+      if (darkBtn) darkBtn.className = 'theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink border border-transparent';
     }
 
     if (persist) localStorage.setItem('ahkh_theme', isDark ? 'dark' : 'light');
@@ -686,7 +769,7 @@ const { course, lesson } = Astro.props;
 
   function resetDisplaySettings() {
     applyFontSize('base', true);
-    applyFontFamily('serif', true);
+    applyFontFamily('merriweather', true);
     applyReadingMeasure('standard', true);
   }
 
@@ -697,11 +780,13 @@ const { course, lesson } = Astro.props;
     if (isHidden) {
       displayMenu.classList.remove('hidden');
       displayBtn?.setAttribute('aria-expanded', 'true');
-      displayBtn?.classList.add('bg-paper-200', 'dark:bg-dark-border');
+      displayBtn?.classList.add('bg-paper-200/90', 'dark:bg-dark-border/80', 'text-ink', 'dark:text-dark-ink');
+      displayBtn?.classList.remove('text-ink-muted', 'dark:text-dark-muted');
     } else {
       displayMenu.classList.add('hidden');
       displayBtn?.setAttribute('aria-expanded', 'false');
-      displayBtn?.classList.remove('bg-paper-200', 'dark:bg-dark-border');
+      displayBtn?.classList.remove('bg-paper-200/90', 'dark:bg-dark-border/80', 'text-ink', 'dark:text-dark-ink');
+      displayBtn?.classList.add('text-ink-muted', 'dark:text-dark-muted');
     }
   }
 
@@ -748,8 +833,12 @@ const { course, lesson } = Astro.props;
   });
 
   // Font buttons listeners
-  document.getElementById('font-serif-btn')?.addEventListener('click', () => applyFontFamily('serif', true));
-  document.getElementById('font-sans-btn')?.addEventListener('click', () => applyFontFamily('sans', true));
+  document.querySelectorAll('.font-family-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const fontId = btn.getAttribute('data-font-id');
+      if (fontId) applyFontFamily(fontId, true);
+    });
+  });
 
   // Measure buttons listeners
   document.getElementById('measure-standard-btn')?.addEventListener('click', () => applyReadingMeasure('standard', true));
@@ -812,7 +901,7 @@ const { course, lesson } = Astro.props;
 
     if (mode === 'remove') {
       if (popoverHlBtn) {
-        popoverHlBtn.className = 'px-2.5 py-1 rounded-xs bg-red-600 text-white hover:bg-red-700 font-medium flex items-center gap-1.5 transition-colors cursor-pointer';
+        popoverHlBtn.className = 'px-2.5 py-1 rounded-xs text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border border-rose-200/80 dark:border-rose-900/50 hover:bg-rose-100 dark:hover:bg-rose-900/60 font-medium flex items-center gap-1.5 transition-colors cursor-pointer';
       }
       if (hlIcon) {
         hlIcon.innerHTML = `
@@ -825,7 +914,7 @@ const { course, lesson } = Astro.props;
       activeExistingHighlight = highlightItem;
     } else {
       if (popoverHlBtn) {
-        popoverHlBtn.className = 'px-2.5 py-1 rounded-xs bg-ink text-paper-50 hover:bg-ink/90 font-medium flex items-center gap-1.5 transition-colors cursor-pointer';
+        popoverHlBtn.className = 'px-2.5 py-1 rounded-xs bg-paper-200/90 dark:bg-dark-border/80 hover:bg-paper-200 dark:hover:bg-dark-border text-ink dark:text-dark-ink border border-ink-border/80 dark:border-dark-border font-medium flex items-center gap-1.5 transition-colors cursor-pointer';
       }
       if (hlIcon) {
         hlIcon.innerHTML = `
@@ -1087,20 +1176,20 @@ const { course, lesson } = Astro.props;
     gutterEl.style.top = `${topPos}px`;
 
     gutterEl.innerHTML = `
-      <div class="flex items-center justify-between gap-1 text-[10px] font-mono text-ink-faint mb-1">
-        <span class="font-medium text-ink dark:text-dark-ink flex items-center gap-1">
-          <svg class="w-3 h-3 text-ink-muted dark:text-dark-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="flex items-center justify-between gap-1 text-xs font-mono text-ink/80 dark:text-dark-ink/80 mb-1.5 pb-1 border-b border-ink-border/60 dark:border-dark-border/60">
+        <span class="font-bold text-ink dark:text-dark-ink flex items-center gap-1.5 font-ui">
+          <svg class="w-3.5 h-3.5 text-ink dark:text-dark-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
           </svg>
           Sidenote
         </span>
-        <span class="text-ink-muted hover:text-ink cursor-pointer p-0.5" title="Edit note">
-          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink cursor-pointer p-0.5" title="Edit note">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
           </svg>
         </span>
       </div>
-      <p class="text-xs font-sans text-ink leading-relaxed">${escapeHtml(item.note)}</p>
+      <p class="text-[13px] font-sans text-ink dark:text-dark-ink leading-relaxed font-normal">${escapeHtml(item.note)}</p>
     `;
 
     gutterEl.onclick = (e) => {
@@ -1226,41 +1315,41 @@ const { course, lesson } = Astro.props;
 
     listEl.innerHTML = highlights.map(item => `
       <article 
-        class="p-3 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:border-ink dark:hover:border-dark-ink transition-colors cursor-pointer group"
+        class="p-3.5 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:border-ink dark:hover:border-dark-ink transition-colors cursor-pointer group"
         onclick="jumpToHighlight('${item.id}')"
       >
-        <div class="flex items-center justify-between mb-1.5 text-[10px] font-mono text-ink-faint dark:text-dark-muted">
-          <span>${item.timestamp ? new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}</span>
-          <div class="flex items-center gap-2">
-            <span class="group-hover:text-ink dark:group-hover:text-dark-ink text-ink-muted dark:text-dark-muted flex items-center gap-0.5">
+        <div class="flex items-center justify-between mb-2 text-xs font-mono text-ink/80 dark:text-dark-ink/80">
+          <span class="font-medium">${item.timestamp ? new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}</span>
+          <div class="flex items-center gap-2.5">
+            <span class="group-hover:text-ink dark:group-hover:text-dark-ink text-ink-muted dark:text-dark-muted flex items-center gap-1 font-ui text-xs">
               Jump
-              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M7 17 17 7M7 7h10v10"/>
               </svg>
             </span>
             <button 
               onclick="event.stopPropagation(); window.deleteSidebarHighlight('${item.id}')"
-              class="text-ink-faint dark:text-dark-muted hover:text-red-600 dark:hover:text-red-400 p-0.5 rounded-xs transition-colors cursor-pointer"
+              class="text-ink-muted dark:text-dark-muted hover:text-red-600 dark:hover:text-red-400 p-0.5 rounded-xs transition-colors cursor-pointer"
               title="Delete Highlight"
               aria-label="Delete Highlight"
             >
-              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M18 6 6 18M6 6l12 12"/>
               </svg>
             </button>
           </div>
         </div>
-        <blockquote class="font-serif text-xs italic text-ink dark:text-dark-ink border-l-2 border-ink dark:border-dark-ink pl-2 mb-2 line-clamp-3">
+        <blockquote class="font-serif text-[13px] sm:text-sm italic text-ink dark:text-dark-ink border-l-2 border-ink dark:border-dark-ink pl-2.5 mb-2.5 leading-relaxed line-clamp-3">
           "${escapeHtml(item.text)}"
         </blockquote>
         ${item.note ? `
-          <div class="text-[11px] font-sans text-ink-muted dark:text-dark-muted bg-paper-200/60 dark:bg-dark-border/40 p-1.5 rounded-xs border-l border-ink dark:border-dark-ink">
+          <div class="text-xs font-sans text-ink dark:text-dark-ink bg-paper-200/80 dark:bg-dark-border/60 p-2 rounded-xs border-l-2 border-ink dark:border-dark-ink leading-relaxed">
             ${escapeHtml(item.note)}
           </div>
         ` : `
           <button 
             onclick="event.stopPropagation(); window.openNoteModalExternal('${item.id}')"
-            class="text-[10px] font-mono text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink underline cursor-pointer"
+            class="text-xs font-ui text-ink dark:text-dark-ink underline font-medium cursor-pointer hover:opacity-80"
           >
             + Add Sidenote
           </button>
@@ -1297,9 +1386,15 @@ const { course, lesson } = Astro.props;
 
   // Initialize UI on load
   function initLesson() {
+    // Clean up legacy cached defaults from previous sessions
+    const legacyFont = localStorage.getItem('ahkh_reader_font_family');
+    if (!legacyFont || legacyFont === 'source-serif' || legacyFont === 'newsreader' || legacyFont === 'serif') {
+      localStorage.setItem('ahkh_reader_font_family', 'merriweather');
+    }
+
     // Restore saved reading typography preferences
     const savedSize = localStorage.getItem('ahkh_reader_font_size') || 'base';
-    const savedFamily = localStorage.getItem('ahkh_reader_font_family') || 'serif';
+    const savedFamily = localStorage.getItem('ahkh_reader_font_family') || 'merriweather';
     const savedMeasure = localStorage.getItem('ahkh_reader_measure') || 'standard';
     const savedTheme = localStorage.getItem('ahkh_theme') || (document.documentElement.classList.contains('dark') ? 'dark' : 'light');
 

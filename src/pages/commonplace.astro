@@ -23,7 +23,7 @@ import { path } from '../utils/paths';
       <div class="flex items-center gap-2.5 shrink-0">
         <button 
           id="export-markdown-btn"
-          class="px-3.5 py-2 text-xs font-sans font-medium rounded-xs border border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink transition-colors flex items-center gap-2 cursor-pointer shadow-2xs disabled:opacity-40 disabled:cursor-not-allowed"
+          class="px-3.5 py-2 text-xs font-ui font-medium rounded-xs border border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink transition-colors flex items-center gap-2 cursor-pointer shadow-2xs disabled:opacity-40 disabled:cursor-not-allowed"
           title="Export all highlights to universal Markdown format"
         >
           <svg class="w-3.5 h-3.5 text-ink dark:text-dark-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -34,7 +34,7 @@ import { path } from '../utils/paths';
 
         <button 
           id="export-readwise-btn"
-          class="px-3.5 py-2 text-xs font-sans font-medium rounded-xs bg-ink dark:bg-dark-ink text-paper-50 dark:text-dark-bg hover:bg-ink/90 dark:hover:bg-dark-ink/90 transition-colors flex items-center gap-2 shadow-xs cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+          class="px-3.5 py-2 text-xs font-ui font-medium rounded-xs bg-ink dark:bg-dark-ink text-paper-50 dark:text-dark-bg hover:bg-ink/90 dark:hover:bg-dark-ink/90 transition-colors flex items-center gap-2 shadow-xs cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
           title="Export in official Readwise CSV schema"
         >
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -84,7 +84,7 @@ import { path } from '../utils/paths';
           id="filter-dropdown-btn"
           aria-haspopup="true"
           aria-expanded="false"
-          class="w-full sm:w-auto px-3.5 py-2.5 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-100 dark:hover:bg-dark-border/40 text-ink dark:text-dark-ink text-xs font-sans font-medium transition-colors cursor-pointer flex items-center justify-between sm:justify-start gap-2.5 shadow-2xs"
+          class="w-full sm:w-auto px-3.5 py-2.5 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-100 dark:hover:bg-dark-border/40 text-ink dark:text-dark-ink text-xs font-ui font-medium transition-colors cursor-pointer flex items-center justify-between sm:justify-start gap-2.5 shadow-2xs"
           title="Filter passages by scope or curriculum"
         >
           <div class="flex items-center gap-2">
@@ -102,7 +102,7 @@ import { path } from '../utils/paths';
         <!-- Dropdown Menu Panel -->
         <div 
           id="filter-menu-panel" 
-          class="hidden absolute right-0 mt-1.5 w-64 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card shadow-lg z-30 py-1 text-xs font-sans divide-y divide-ink-border/50 dark:divide-dark-border/50 transition-all"
+          class="hidden absolute right-0 mt-1.5 w-64 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card shadow-lg z-30 py-1 text-xs font-ui divide-y divide-ink-border/50 dark:divide-dark-border/50 transition-all"
           role="menu"
         >
           <!-- Primary General Scopes -->
@@ -195,7 +195,7 @@ import { path } from '../utils/paths';
       </p>
       <button 
         id="reset-filter-btn" 
-        class="inline-flex items-center gap-1.5 text-xs font-sans font-medium px-3.5 py-2 rounded-xs border border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-bg text-ink dark:text-dark-ink hover:bg-paper-200 dark:hover:bg-dark-border/60 transition-colors cursor-pointer"
+        class="inline-flex items-center gap-1.5 text-xs font-ui font-medium px-3.5 py-2 rounded-xs border border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-bg text-ink dark:text-dark-ink hover:bg-paper-200 dark:hover:bg-dark-border/60 transition-colors cursor-pointer"
       >
         Clear Search & Filters
       </button>
@@ -210,19 +210,19 @@ import { path } from '../utils/paths';
   <!-- Floating Undo Toast (6-Second Grace Period) -->
   <div 
     id="undo-toast" 
-    class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-ink dark:bg-dark-card text-paper-50 dark:text-dark-ink px-4 py-3 rounded-xs shadow-xl border border-ink/20 dark:border-dark-border flex items-center gap-3 text-xs font-sans transition-all pointer-events-auto"
+    class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-white dark:bg-dark-card text-ink dark:text-dark-ink px-4 py-3 rounded-xs shadow-lg shadow-black/5 dark:shadow-black/40 border border-ink-border dark:border-dark-border flex items-center gap-3 text-xs font-sans transition-all pointer-events-auto"
     role="status"
     aria-live="polite"
   >
     <div class="flex items-center gap-2">
-      <svg class="w-3.5 h-3.5 text-paper-200 dark:text-dark-muted shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <svg class="w-3.5 h-3.5 text-ink-muted dark:text-dark-muted shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path d="M3 6h18m-2 0v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6m3 0V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
       </svg>
       <span id="undo-toast-message">Passage archived.</span>
     </div>
     <button 
       id="undo-btn" 
-      class="font-mono text-paper-100 dark:text-dark-ink underline font-medium hover:text-white cursor-pointer ml-1"
+      class="font-mono text-ink dark:text-dark-ink underline font-medium hover:text-ink-muted cursor-pointer ml-1"
     >
       Undo (Ctrl+Z)
     </button>
