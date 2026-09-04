@@ -364,11 +364,10 @@ const { course, lesson } = Astro.props;
       </div>
     </div>
   </div>
-
 </BaseLayout>
 
 <!-- CLIENT SCRIPT: Smart Header, Highlights, Marginalia, YouTube Sync -->
-<script is:inline define:vars={{ courseId: course.id, courseTitle: course.title, lessonId: lesson.id, lessonSlug: lesson.slug, lessonTitle: lesson.title, courseAccent: course.theme.accent, courseHighlight: course.theme.highlight }}>
+  <script is:inline define:vars={{ courseId: course.id, courseTitle: course.title, lessonId: lesson.id, lessonSlug: lesson.slug, lessonTitle: lesson.title, courseAccent: course.theme.accent, courseHighlight: course.theme.highlight }}>
   // A. SMART AUTO-HIDING HEADER & TOP PROGRESS BAR
   let lastScrollY = window.scrollY;
   const smartHeader = document.getElementById('smart-header');
@@ -1066,9 +1065,16 @@ const { course, lesson } = Astro.props;
   const timestampParagraphs = document.querySelectorAll('[data-timestamp]');
 
   // Initialize UI on load
-  document.addEventListener('DOMContentLoaded', () => {
+  function initLesson() {
     updateHeaderCount();
     renderSidebarHighlights();
     restoreHighlightsInDOM();
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLesson);
+  } else {
+    initLesson();
+  }
+  document.addEventListener('astro:page-load', initLesson);
 </script>

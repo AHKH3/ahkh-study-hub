@@ -46,3 +46,16 @@ This file records the key architectural and design decisions made in the develop
 - **Context**: Learners want full ownership over their highlights and marginalia without paywalls, signups, or tracking cookies.
 - **Decision**: Store all study artifacts in browser `localStorage` using structured keys (`ahkh_hl_${courseId}_${lessonId}`) and provide 1-click Readwise CSV & Markdown export.
 - **Consequences**: 100% privacy, instant client-side read/write with zero latency, zero backend overhead.
+
+---
+
+## ADR-006: Unification of Platform Design System & Cancellation of Per-Course Divergence
+- **Date**: 2026-09-04
+- **Status**: Accepted
+- **Context**: An earlier concept explored generating a separate, bespoke design system for each curriculum. Upon strategic architectural evaluation, divergent styling across courses introduces unnecessary maintenance friction, visual fragmentation, and dilutes the cohesive identity of the platform.
+- **Decision**: Cancel per-course design divergences. Standardize 100% of engineering and design effort on establishing, perfecting, and deepening a single unified, publication-grade Global Design System across all courses, pages, reader surfaces, and editorial components.
+- **Consequences**:
+  1. A cohesive, instantly recognizable literary aesthetic for the entire platform.
+  2. A rock-solid, reusable universal component library (Pullout Quotes, Synthesis Cards, Socratic Callouts, Comparison Matrices, Timelines).
+  3. Seamless course ingestion without having to invent or maintain bespoke CSS palettes for each track.
+  4. Complete typographic harmony and shared reading ergonomics across all materials.

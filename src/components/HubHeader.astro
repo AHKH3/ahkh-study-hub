@@ -9,7 +9,10 @@ interface Props {
 const { activeTab = 'library' } = Astro.props;
 ---
 
-<header class="w-full border-b border-ink-border/60 dark:border-dark-border bg-paper-100/90 dark:bg-dark-bg/90 backdrop-blur-sm sticky top-0 z-30 transition-colors">
+<header 
+  transition:name="hub-header"
+  class="hub-header w-full border-b border-ink-border/60 dark:border-dark-border bg-paper-100/90 dark:bg-dark-bg/90 backdrop-blur-sm sticky top-0 z-30 transition-colors"
+>
   <div class="max-w-hub mx-auto px-6 h-16 flex items-center justify-between gap-4">
     <!-- Brand -->
     <a href={path('/')} class="group flex items-center gap-2.5 py-1">
@@ -32,10 +35,10 @@ const { activeTab = 'library' } = Astro.props;
         <a 
           href={path('/')} 
           class:list={[
-            "px-3 py-1.5 rounded-sm transition-colors",
+            "px-3 py-1.5 rounded-sm transition-colors border",
             activeTab === 'library' 
-              ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border border-ink-border/60 dark:border-dark-border" 
-              : "text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
+              ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border-ink-border/60 dark:border-dark-border" 
+              : "border-transparent text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
           ]}
         >
           Library
@@ -43,10 +46,10 @@ const { activeTab = 'library' } = Astro.props;
         <a 
           href={path('/manifesto')} 
           class:list={[
-            "px-3 py-1.5 rounded-sm transition-colors",
+            "px-3 py-1.5 rounded-sm transition-colors border",
             activeTab === 'manifesto' 
-              ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border border-ink-border/60 dark:border-dark-border" 
-              : "text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
+              ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border-ink-border/60 dark:border-dark-border" 
+              : "border-transparent text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
           ]}
         >
           Manifesto
@@ -54,14 +57,14 @@ const { activeTab = 'library' } = Astro.props;
         <a 
           href={path('/commonplace')} 
           class:list={[
-            "px-3 py-1.5 rounded-sm transition-colors flex items-center gap-1.5",
+            "px-3 py-1.5 rounded-sm transition-colors border flex items-center gap-1.5",
             activeTab === 'commonplace' 
-              ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border border-ink-border/60 dark:border-dark-border" 
-              : "text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
+              ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border-ink-border/60 dark:border-dark-border" 
+              : "border-transparent text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
           ]}
         >
           Commonplace
-          <span id="global-highlight-badge" class="hidden font-mono text-[11px] px-1.5 py-0.2 rounded-full bg-ink/10 dark:bg-dark-border text-ink dark:text-dark-ink">
+          <span id="global-highlight-badge" class="hidden font-mono text-[11px] px-1.5 py-0.5 rounded-full bg-ink/10 dark:bg-dark-border text-ink dark:text-dark-ink">
             0
           </span>
         </a>
@@ -99,5 +102,10 @@ const { activeTab = 'library' } = Astro.props;
       }
     }
   };
-  document.addEventListener('DOMContentLoaded', window.updateGlobalBadge);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', window.updateGlobalBadge);
+  } else {
+    window.updateGlobalBadge();
+  }
+  document.addEventListener('astro:page-load', window.updateGlobalBadge);
 </script>

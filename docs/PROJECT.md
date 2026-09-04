@@ -49,9 +49,8 @@ AHKH Study Hub is a sovereign, local-first static study platform and reader comp
 ### 3. Technology Stack
 - Astro 5.x + Tailwind CSS 3.x (Static SSG, zero runtime JS bloat, high performance).
 
-### 4. Course Creation & Design System Protocol
-Whenever a new course or curriculum is commissioned:
-- Follow the foundry specification in [`docs/COURSE_DESIGN_SYSTEM_SPEC.md`](COURSE_DESIGN_SYSTEM_SPEC.md).
-- Each course receives an autonomous, domain-matched design system (`CourseDesignSystem`) registered in `src/data/courses.ts`.
-- The global sanctuary frame (header, sidebars, progress line) remains uniform; the reading canvas, roadmap, typography, and editorial card formats embody the course's design system.
-- Zero emojis, absolute verbatim text fidelity, and strict Library listing purity (no descriptions or subtitles on course cards in `/`).
+### 4. Course Creation & Unified Design System Standard
+All courses, learning roadmaps, and study readers adhere strictly to the **Unified Global Design System** documented in [`DESIGN.md`](../DESIGN.md).
+- Rather than fragmenting the platform with divergent styling per course, all courses share the cohesive Soft Monochrome & Swiss Editorial design language.
+- When creating or importing a new course, format its articles using the Universal Editorial Component Library (Axiom Pullout Quotes, Synthesis Cards, Socratic Callouts, and Data Matrices).
+- Strictly maintain Course Listing Purity in the Library index (no descriptions or subtitles), verbatim text fidelity, and zero emojis.

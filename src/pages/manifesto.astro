@@ -455,6 +455,7 @@ import { path } from '../utils/paths';
       } else {
         loadHighlights();
       }
+      document.addEventListener('astro:page-load', loadHighlights);
     })();
   </script>
 </BaseLayout>

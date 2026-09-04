@@ -227,9 +227,8 @@ import { path } from '../utils/paths';
       Undo (Ctrl+Z)
     </button>
   </div>
-</BaseLayout>
 
-<script is:inline>
+  <script is:inline>
   (function() {
     let currentFilter = 'all';
     let searchQuery = '';
@@ -732,8 +731,8 @@ import { path } from '../utils/paths';
       URL.revokeObjectURL(link.href);
     }
 
-    // Event Listeners Initialization
-    document.addEventListener('DOMContentLoaded', () => {
+    // Event Listeners & State Initialization
+    function initCommonplace() {
       renderCommonplace();
 
       const searchInput = document.getElementById('commonplace-search');
@@ -830,6 +829,14 @@ import { path } from '../utils/paths';
 
       document.getElementById('export-readwise-btn')?.addEventListener('click', exportReadwiseCsv);
       document.getElementById('export-markdown-btn')?.addEventListener('click', exportMarkdown);
-    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCommonplace);
+    } else {
+      initCommonplace();
+    }
+    document.addEventListener('astro:page-load', initCommonplace);
   })();
 </script>
+</BaseLayout>

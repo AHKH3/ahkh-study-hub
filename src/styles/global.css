@@ -8,6 +8,8 @@
   html {
     scroll-behavior: smooth;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    scrollbar-gutter: stable;
+    overflow-y: scroll;
   }
 
   body {
@@ -195,3 +197,130 @@ aside[data-expanded="true"] {
   background-color: rgba(255, 255, 255, 0.08);
   border-left: 3px solid #B35334;
 }
+
+/* ==========================================================================
+   Quiet Editorial Page Transitions (Astro ClientRouter)
+   Buttery smooth, subtle crossfade with micro-settle to eliminate page flash.
+   ========================================================================== */
+
+/* Pinned sanctuary hub header: locked in place with zero geometric movement or translation */
+::view-transition-group(hub-header) {
+  animation: none;
+}
+
+::view-transition-old(hub-header) {
+  animation: 90ms cubic-bezier(0.4, 0, 1, 1) both ahkh-header-fade;
+}
+
+::view-transition-new(hub-header) {
+  animation: 160ms cubic-bezier(0.16, 1, 0.3, 1) both ahkh-page-fade-in-header;
+}
+
+@keyframes ahkh-header-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes ahkh-page-fade-in-header {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Root page transition group: The Sanctuary Hybrid Model */
+::view-transition-group(root) {
+  animation-duration: 280ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Outgoing page: swift, quiet recede */
+::view-transition-old(root) {
+  animation: 100ms cubic-bezier(0.4, 0, 1, 1) both ahkh-ink-recede;
+}
+
+/* Incoming page: The Editorial Ink Cascade (Top-to-bottom unrolling curtain with optical focus) */
+::view-transition-new(root) {
+  animation: 280ms cubic-bezier(0.16, 1, 0.3, 1) both ahkh-ink-cascade;
+}
+
+@keyframes ahkh-ink-recede {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@keyframes ahkh-ink-cascade {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    filter: blur(3px);
+    transform: translateY(-8px);
+  }
+  40% {
+    opacity: 1;
+    filter: blur(1.5px);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* Digital Scribe Typewriter Cursor */
+.editorial-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  color: var(--course-accent, #B35334);
+  animation: cursor-blink 0.6s step-end infinite;
+  transition: opacity 0.3s ease;
+  vertical-align: baseline;
+  user-select: none;
+}
+
+.dark .editorial-cursor {
+  color: var(--course-accent, #E07655);
+}
+
+.editorial-cursor.fade-out {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes cursor-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Accessibility: Respect prefers-reduced-motion unconditionally */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.01ms !important;
+    animation-name: none !important;
+  }
+  .editorial-cursor {
+    display: none !important;
+  }
+}
+

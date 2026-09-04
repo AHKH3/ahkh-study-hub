@@ -1,4 +1,4 @@
-﻿<!-- CONSTITUTION:START -->
+<!-- CONSTITUTION:START -->
 # دستور مجلد الشغل — إلزامي على كل وكيل
 
 هذا المشروع تابع لدستور مجلد الشغل. المرجع الأعلى: `C:/Users/abdel/dev/AGENTS.md` — اقرأه فورًا (هوية المستخدم، القواعد الكاملة، فهرس المشاريع). أي تعليمات محلية هنا لا تخالفه.
@@ -19,18 +19,16 @@
 
 All AI programming agents (opencode, Claude Code, Cursor, Codex, Antigravity, Gemini CLI) working on this project MUST strictly comply with the following instructions:
 
-## 1. Adding a New Course or Designing a Course Design System
-When the user asks to add a new course, import curriculum materials, or create a design system for a course:
-1. **Mandatory Specification**: Immediately read and follow [`docs/COURSE_DESIGN_SYSTEM_SPEC.md`](docs/COURSE_DESIGN_SYSTEM_SPEC.md).
-2. **The Living Canvas Paradigm**:
-   - The outer sanctuary frame (`HubHeader`, sidebars, progress line, Zen mode toggle) remains uniform and fixed.
-   - The course journey page (`/courses/[course]`) and study reader (`/courses/[course]/[slug]`) must embody the course's bespoke design system.
-3. **Execute the Full Design System Contract**:
-   - **Extract Inspiration**: Translate the user's reference image, movement, or concept (e.g. Japanese woodblock, Bauhaus, Swiss Grid, Monastic Codex, Industrial Design) into a cohesive design language.
-   - **Color DNA**: Define the primary accent, selection highlight tint (`rgba`), card background, borders, and pulse keyframe animation.
-   - **Typography Architecture**: Select Google Fonts pairings (headings + body) and declare the font import URL.
-   - **Editorial Formats (3 to 5 Archetypes)**: Author custom HTML/Tailwind treatments for Pullout Quotes, Synthesis Cards, Socratic Callouts, Comparison Matrices, and Source Citations.
-   - **TypeScript Schema**: Register the course in [`src/data/courses.ts`](src/data/courses.ts) conforming to the `CourseDesignSystem` interface.
+## 1. Adding a New Course & The Unified Global Design System
+All courses in AHKH Study Hub adhere strictly to the **Unified Global Design System** documented in [`DESIGN.md`](DESIGN.md):
+1. **No Per-Course Divergent Styling**: Do NOT invent competing design systems, random color themes, or divergent layouts for individual courses. All courses, roadmap journeys, and study readers share the single, publication-grade Soft Monochrome & Swiss Editorial design system.
+2. **Universal Editorial Component Library**: Format lesson content exclusively using the standardized editorial components detailed in `DESIGN.md`:
+   - **The Pullout Axiom** (Commanding blockquote with author attribution).
+   - **The Key Principle / Synthesis Card** (Clean paper card for core takeaways).
+   - **The Socratic Callout** (Study inquiry & reflection container).
+   - **The Comparative Data Matrix** (Minimal grid for contrasts and heuristics).
+   - **The Source Attribution Footer** (External publication citation link).
+3. **Course Ingestion**: Register new courses, modules, and lessons in [`src/data/courses.ts`](src/data/courses.ts).
 
 ## 2. Invariant Guardrails (Zero Exceptions)
 - **Course Listing Purity in `/` (The Library Index)**:
