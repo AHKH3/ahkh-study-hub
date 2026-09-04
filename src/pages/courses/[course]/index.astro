@@ -241,7 +241,7 @@ const statusMeta = STATUS_CONFIG[course.status];
                                     <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                       <path d="M5 12h14M12 5l7 7-7 7"/>
                                     </svg>
-                                    <span class="read-tick hidden font-mono text-[10px] text-emerald-700 dark:text-emerald-400" data-read-tick>Read</span>
+                                    <span class="read-tick hidden font-mono text-[10px]" data-read-tick></span>
                                   </div>
 
                                 </div>
@@ -397,11 +397,29 @@ const statusMeta = STATUS_CONFIG[course.status];
         if (fill) fill.style.width = percent + '%';
         const label = document.getElementById('journey-progress-label');
         if (label) label.textContent = `Progress: ${percent}%`;
+        const READ_ON = ['text-emerald-700', 'dark:text-emerald-400'];
+        const READING_ON = ['text-amber-700', 'dark:text-amber-400'];
         lessonEls.forEach((el) => {
           try {
             const slug = el.getAttribute('data-lesson-slug');
             const tick = el.querySelector('[data-read-tick]');
-            if (tick && slug && readSet.has(slug)) tick.classList.remove('hidden');
+            if (!tick || !slug) return;
+            tick.classList.remove('hidden');
+            if (readSet.has(slug)) {
+              tick.textContent = 'Read';
+              READING_ON.forEach((c) => tick.classList.remove(c));
+              READ_ON.forEach((c) => tick.classList.add(c));
+            } else {
+              let opened = false;
+              try { opened = localStorage.getItem(`ahkh_opened_${courseId}_${slug}`) !== null; } catch (e) {}
+              if (opened) {
+                tick.textContent = 'Reading';
+                READ_ON.forEach((c) => tick.classList.remove(c));
+                READING_ON.forEach((c) => tick.classList.add(c));
+              } else {
+                tick.classList.add('hidden');
+              }
+            }
           } catch (e) {}
         });
         if (percent === 100) {

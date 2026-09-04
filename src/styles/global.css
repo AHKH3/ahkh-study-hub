@@ -305,6 +305,24 @@
   outline-color: var(--course-accent, #F4F4F5);
 }
 
+/* Crisp native text selection */
+::selection { background-color: #18181B; color: #FAFAFA; }
+.dark ::selection { background-color: #F4F4F5; color: #09090B; }
+
+/* User-selected highlight colors (tone-calibrated per theme) */
+.ahkh-hl-graphite { background-color: rgba(0, 0, 0, 0.10); border-bottom-color: #1C1B19; }
+.dark .ahkh-hl-graphite { background-color: rgba(255, 255, 255, 0.14); border-bottom-color: #F4F4F5; }
+.ahkh-hl-amber { background-color: rgba(180, 83, 9, 0.16); border-bottom-color: #B45309; }
+.dark .ahkh-hl-amber { background-color: rgba(251, 191, 36, 0.22); border-bottom-color: #FBBF24; }
+.ahkh-hl-emerald { background-color: rgba(4, 120, 87, 0.14); border-bottom-color: #047857; }
+.dark .ahkh-hl-emerald { background-color: rgba(52, 211, 153, 0.22); border-bottom-color: #34D399; }
+.ahkh-hl-sky { background-color: rgba(2, 132, 199, 0.14); border-bottom-color: #0284C7; }
+.dark .ahkh-hl-sky { background-color: rgba(56, 189, 248, 0.22); border-bottom-color: #38BDF8; }
+.ahkh-hl-rose { background-color: rgba(225, 29, 72, 0.13); border-bottom-color: #E11D48; }
+.dark .ahkh-hl-rose { background-color: rgba(251, 113, 133, 0.24); border-bottom-color: #FB7185; }
+.ahkh-hl-violet { background-color: rgba(124, 58, 237, 0.13); border-bottom-color: #7C3AED; }
+.dark .ahkh-hl-violet { background-color: rgba(167, 139, 250, 0.24); border-bottom-color: #A78BFA; }
+
 /* Marginalia Sidenotes in Gutter */
 .marginalia-gutter-note {
   position: absolute;

@@ -63,6 +63,7 @@ The platform avoids loud colored accents by default. Highlights and marginalia f
   - Light Mode: `rgba(0, 0, 0, 0.08)` (Subtle graphite veil with 1.5px baseline ink rule)
   - Dark Mode: `rgba(255, 255, 255, 0.12)` (Subtle chalk veil with 1.5px baseline light rule)
 - **Sidenote Gutter Rule:** 2px solid `border-ink` (`#1C1B19` light / `#F4F4F5` dark)
+- **User-selected highlight colors:** readers pick graphite (default), amber, emerald, sky, rose, or violet via popover swatches; every option ships tone-calibrated light/dark pairs (600–700-grade hues light / 400 dark over soft translucent washes); the choice persists per highlight (`color`) with the last-used default (`ahkh_hl_color`).
 
 ### 3.3. Distilled Status Indicators (Library Index Only)
 Status is indicated with minimal typographic indicator dots (`• Label`), never full-width noisy banners:
@@ -215,6 +216,7 @@ All courses share the same interaction model:
 5. **Floating Selection Popover:** Appears on text selection with Highlight, Sidenote, and Copy Citation actions.
 6. **Local Persistence:** Instant client-side persistence in browser `localStorage`.
 7. **ClientRouter-safe boot:** ClientRouter is always enabled, so every inline script uses a single `astro:page-load` subscription (it fires on initial load and navigation — never pair it with `DOMContentLoaded`). Document/window listeners carry a per-run `AbortController` signal, and the YouTube player handle plus sync timer are mirrored on `window` for teardown, so stale runs can never touch the new document or corrupt another lesson's storage.
+8. **Lesson read states:** Unread (muted) / Reading (opened marker, amber tick) / Read (90% scroll depth, emerald tick) via `ahkh_opened_` / `ahkh_read_` keys; course progress counts Read lessons only.
 
 ---
 

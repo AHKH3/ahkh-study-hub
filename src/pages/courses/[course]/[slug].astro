@@ -497,6 +497,15 @@ const transcriptSegments =
       </span>
       <span id="popover-copy-label">Copy</span>
     </button>
+    <span class="w-px h-5 bg-ink-border/70 dark:bg-dark-border/70 mx-0.5" aria-hidden="true"></span>
+    <div class="flex items-center gap-1 px-0.5" role="radiogroup" aria-label="Highlight color">
+      <button data-hl-color="graphite" title="Graphite" aria-label="Graphite" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:rgba(0,0,0,0.35)"></button>
+      <button data-hl-color="amber" title="Amber" aria-label="Amber" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:#D97706"></button>
+      <button data-hl-color="emerald" title="Emerald" aria-label="Emerald" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:#059669"></button>
+      <button data-hl-color="sky" title="Sky" aria-label="Sky" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:#0284C7"></button>
+      <button data-hl-color="rose" title="Rose" aria-label="Rose" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:#E11D48"></button>
+      <button data-hl-color="violet" title="Violet" aria-label="Violet" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:#7C3AED"></button>
+    </div>
   </div>
 
   <!-- 5. INLINE NOTE MODAL INPUT -->
@@ -521,7 +530,7 @@ const transcriptSegments =
       <p id="note-quote-preview" class="font-serif text-xs text-ink-muted dark:text-dark-muted italic line-clamp-2 border-l border-ink dark:border-dark-ink pl-2"></p>
       <textarea 
         id="note-input-text"
-        rows="3"
+        rows="4"
         placeholder="Write your observation, question, or synthesis..."
         class="w-full p-2.5 text-xs font-sans rounded-xs border border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-bg text-ink dark:text-dark-ink placeholder:text-ink-faint dark:placeholder:text-dark-muted focus:outline-hidden resize-none"
       ></textarea>
@@ -1008,15 +1017,57 @@ const transcriptSegments =
     }
   }
 
+  // User-selected highlight colors (persisted last choice; stored per highlight)
+  const HL_COLORS = ['graphite', 'amber', 'emerald', 'sky', 'rose', 'violet'];
+  const HL_COLOR_KEY = 'ahkh_hl_color';
+  function getHlColor() {
+    try {
+      const c = localStorage.getItem(HL_COLOR_KEY);
+      return HL_COLORS.includes(c) ? c : 'graphite';
+    } catch (e) { return 'graphite'; }
+  }
+  function hlClass(color) { return `ahkh-hl-${HL_COLORS.includes(color) ? color : 'graphite'}`; }
+  function paintHlSwatches() {
+    document.querySelectorAll('.hl-swatch').forEach((b) => {
+      const on = b.getAttribute('data-hl-color') === getHlColor();
+      b.setAttribute('aria-checked', on ? 'true' : 'false');
+      b.classList.toggle('ring-2', on);
+      b.classList.toggle('ring-offset-1', on);
+      b.classList.toggle('ring-ink/50', on);
+      b.classList.toggle('dark:ring-white/60', on);
+    });
+  }
+  function initHlSwatches() {
+    paintHlSwatches();
+    document.querySelectorAll('.hl-swatch').forEach((b) => {
+      b.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const c = b.getAttribute('data-hl-color') || 'graphite';
+        try { localStorage.setItem(HL_COLOR_KEY, c); } catch (err) {}
+        paintHlSwatches();
+        if (activeExistingHighlight) {
+          activeExistingHighlight.color = c;
+          const span = document.getElementById(activeExistingHighlight.id);
+          if (span) span.className = `ahkh-highlight ${hlClass(c)}`;
+          saveHighlights();
+        }
+      });
+    });
+  }
+
   function positionPopover(rect) {
     if (!popover) return;
-    const popoverWidth = 240;
-    let left = rect.left + window.scrollX + (rect.width / 2) - (popoverWidth / 2);
-    left = Math.max(12, Math.min(window.innerWidth - popoverWidth - 16, left));
-    let top = rect.top + window.scrollY - 44;
-    if (top < 60) {
-      top = rect.bottom + window.scrollY + 8;
-    }
+    // The popover is position:fixed: use viewport coordinates only, never scroll offsets.
+    popover.classList.remove('hidden');
+    const popW = popover.offsetWidth || 264;
+    const popH = popover.offsetHeight || 44;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    let left = rect.left + rect.width / 2 - popW / 2;
+    left = Math.max(8, Math.min(vw - popW - 8, left));
+    let top = rect.top - popH - 12;
+    if (top < 70) top = rect.bottom + 12;
+    top = Math.max(8, Math.min(vh - popH - 8, top));
     popover.style.left = `${left}px`;
     popover.style.top = `${top}px`;
   }
@@ -1069,7 +1120,7 @@ const transcriptSegments =
 
     const hlId = 'hl_' + Date.now();
     const span = document.createElement('span');
-    span.className = 'ahkh-highlight';
+    span.className = 'ahkh-highlight ' + hlClass(getHlColor());
     span.id = hlId;
     span.style.setProperty('--course-accent', courseAccent);
     span.style.setProperty('--course-highlight', courseHighlight);
@@ -1086,6 +1137,7 @@ const transcriptSegments =
       id: hlId,
       text: selectedText,
       note: '',
+      color: getHlColor(),
       courseId,
       courseTitle,
       lessonSlug,
@@ -1204,6 +1256,9 @@ const transcriptSegments =
   document.getElementById('cancel-note-btn')?.addEventListener('click', closeNoteModal);
 
   document.getElementById('save-note-btn')?.addEventListener('click', saveNoteAction);
+  document.getElementById('note-dialog')?.addEventListener('mousedown', (e) => {
+    if (e.target && e.target.id === 'note-dialog') closeNoteModal();
+  });
 
   function saveNoteAction() {
     if (!activeHighlightIdForNote || !noteInput) return;
@@ -1370,7 +1425,7 @@ const transcriptSegments =
         const range = findRangeForTextInElement(block, item.text);
         if (range) {
           const span = document.createElement('span');
-          span.className = 'ahkh-highlight';
+          span.className = 'ahkh-highlight ' + hlClass(item.color);
           span.id = item.id;
           span.style.setProperty('--course-accent', courseAccent);
           span.style.setProperty('--course-highlight', courseHighlight);
@@ -1670,6 +1725,7 @@ const transcriptSegments =
       document.body.setAttribute('data-right-collapsed', 'true');
     }
     updateSidebarButtons();
+    try { localStorage.setItem(`ahkh_opened_${courseId}_${lessonSlug}`, new Date().toISOString()); } catch (e) {}
 
     // Re-enable smooth transitions on the next frame
     requestAnimationFrame(() => {
@@ -1683,6 +1739,7 @@ const transcriptSegments =
     restoreHighlightsInDOM();
     initYouTubeSync();
     initTranscriptToggle();
+    initHlSwatches();
   }
 
   // Single boot path: ClientRouter (always enabled in BaseLayout) fires
