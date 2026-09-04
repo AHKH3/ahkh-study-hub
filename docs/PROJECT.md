@@ -1,4 +1,4 @@
-﻿# AHKH Study Hub — Project Definition & Specifications
+# AHKH Study Hub — Project Definition & Specifications
 
 AHKH Study Hub is a sovereign, local-first static study platform and reader companion engineered as a permanent, high-craft open alternative to subscription services like Readwise Reader.
 
@@ -48,3 +48,10 @@ AHKH Study Hub is a sovereign, local-first static study platform and reader comp
 
 ### 3. Technology Stack
 - Astro 5.x + Tailwind CSS 3.x (Static SSG, zero runtime JS bloat, high performance).
+
+### 4. Course Creation & Design System Protocol
+Whenever a new course or curriculum is commissioned:
+- Follow the foundry specification in [`docs/COURSE_DESIGN_SYSTEM_SPEC.md`](COURSE_DESIGN_SYSTEM_SPEC.md).
+- Each course receives an autonomous, domain-matched design system (`CourseDesignSystem`) registered in `src/data/courses.ts`.
+- The global sanctuary frame (header, sidebars, progress line) remains uniform; the reading canvas, roadmap, typography, and editorial card formats embody the course's design system.
+- Zero emojis, absolute verbatim text fidelity, and strict Library listing purity (no descriptions or subtitles on course cards in `/`).
