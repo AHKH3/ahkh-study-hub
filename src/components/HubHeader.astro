@@ -1,5 +1,6 @@
 ---
 import { path } from '../utils/paths';
+import ThemeSwitcher from './ThemeSwitcher.astro';
 
 interface Props {
   activeTab?: 'library' | 'manifesto' | 'commonplace';
@@ -15,7 +16,12 @@ const { activeTab = 'library' } = Astro.props;
       <img 
         src={path('/logo.png')} 
         alt="AHKH" 
-        class="h-6 sm:h-7 w-auto object-contain shrink-0" 
+        class="h-6 sm:h-7 w-auto object-contain shrink-0 dark:hidden" 
+      />
+      <img 
+        src={path('/logo-white.png')} 
+        alt="AHKH" 
+        class="h-6 sm:h-7 w-auto object-contain shrink-0 hidden dark:block" 
       />
       <span class="font-serif text-lg sm:text-xl font-medium tracking-tight text-ink dark:text-dark-ink">study hub</span>
     </a>
@@ -60,6 +66,10 @@ const { activeTab = 'library' } = Astro.props;
           </span>
         </a>
       </nav>
+
+      <div class="h-4 w-px bg-ink-border/60 dark:bg-dark-border" aria-hidden="true"></div>
+
+      <ThemeSwitcher />
     </div>
   </div>
 </header>

@@ -11,7 +11,7 @@
   }
 
   body {
-    @apply bg-paper-100 text-ink antialiased selection:bg-zinc-200 selection:text-black;
+    @apply bg-paper-50 dark:bg-dark-bg text-ink dark:text-dark-ink antialiased selection:bg-paper-200 dark:selection:bg-dark-border selection:text-ink dark:selection:text-dark-ink;
     text-rendering: optimizeLegibility;
   }
 }
@@ -24,6 +24,10 @@
   color: #242220;
 }
 
+.dark .prose-editorial {
+  color: #EDEDED;
+}
+
 .prose-editorial h1,
 .prose-editorial h2,
 .prose-editorial h3 {
@@ -33,12 +37,22 @@
   color: #171615;
 }
 
+.dark .prose-editorial h1,
+.dark .prose-editorial h2,
+.dark .prose-editorial h3 {
+  color: #FFFFFF;
+}
+
 .prose-editorial h2 {
   margin-top: 2.4em;
   margin-bottom: 0.8em;
   font-size: 1.65rem;
   border-bottom: 1px solid #EBE8E1;
   padding-bottom: 0.3em;
+}
+
+.dark .prose-editorial h2 {
+  border-bottom-color: #1E1E1E;
 }
 
 .prose-editorial h3 {
@@ -59,6 +73,19 @@
   color: #55534E;
 }
 
+.dark .prose-editorial blockquote {
+  color: #8E8E93;
+}
+
+.prose-editorial strong {
+  color: inherit;
+  font-weight: 600;
+}
+
+.prose-editorial a {
+  color: var(--course-accent, #B35334);
+  text-decoration: underline;
+}
 
 /* Sidebar explicit overrides */
 aside[data-collapsed="true"] {
@@ -81,6 +108,10 @@ aside[data-expanded="true"] {
 
 .ahkh-highlight:hover {
   filter: brightness(0.95);
+}
+
+.dark .ahkh-highlight {
+  filter: brightness(1.1);
 }
 
 @keyframes highlight-pulse {
@@ -122,12 +153,27 @@ aside[data-expanded="true"] {
   cursor: pointer;
 }
 
+.dark .marginalia-gutter-note {
+  color: #8E8E93;
+  background-color: #0A0A0A;
+  border: 1px solid #1E1E1E;
+  border-left: 3px solid var(--course-accent, #B35334);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
 .marginalia-gutter-note:hover {
   color: #171615;
   border-color: #D4D4D8;
   border-left-color: var(--course-accent, #B35334);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
   transform: translateY(-1px);
+}
+
+.dark .marginalia-gutter-note:hover {
+  color: #FFFFFF;
+  border-color: #333333;
+  border-left-color: var(--course-accent, #B35334);
+  box-shadow: 0 4px 8px -1px rgba(0, 0, 0, 0.9);
 }
 
 /* On screens where right sidebar is open and viewport is < 1440px, hide gutter notes to avoid overlap */
@@ -143,4 +189,9 @@ aside[data-expanded="true"] {
   border-left: 3px solid #B35334;
   padding-left: 1rem;
   transition: all 0.3s ease;
+}
+
+.dark .yt-active-paragraph {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-left: 3px solid #B35334;
 }
