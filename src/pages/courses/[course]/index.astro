@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ThemeSwitcher from '../../../components/ThemeSwitcher.astro';
 import { COURSES } from '../../../data/courses';
 import { path } from '../../../utils/paths';
 import { getCategoryColor, getFormatColor } from '../../../utils/categoryColors';
@@ -62,11 +63,13 @@ const statusMeta = STATUS_CONFIG[course.status];
             style={`width: ${course.progressPercent}%`}
           ></div>
         </div>
+        <div class="h-4 w-px bg-ink-border/60 dark:border-dark-border" aria-hidden="true"></div>
+        <ThemeSwitcher />
       </div>
     </div>
   </header>
 
-  <main class="flex-1 max-w-hub w-full mx-auto px-6 py-12" data-course-id={course.slug} data-total={countLessons(course)}>
+  <main class="flex-1 max-w-reading w-full mx-auto px-6 py-12" data-course-id={course.slug} data-total={countLessons(course)}>
     <!-- Course Title & Metadata (Library-Aligned Monograph) -->
     <div class="mb-14 pb-8 border-b border-ink-border/80 dark:border-dark-border">
       <div class="flex flex-wrap items-center gap-3 mb-3">

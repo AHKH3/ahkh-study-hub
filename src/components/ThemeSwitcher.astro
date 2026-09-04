@@ -4,129 +4,167 @@ interface Props {
   size?: 'sm' | 'md';
 }
 
-const { class: className = '', size = 'sm' } = Astro.props;
+const { 
+  class: className = '', 
+  size = 'sm',
+} = Astro.props;
 ---
 
-<div 
-  class:list={[
-    "theme-switcher inline-flex items-center p-0.5 rounded-sm bg-paper-200/60 dark:bg-dark-card border border-ink-border/60 dark:border-dark-border text-ink-muted dark:text-dark-muted transition-colors",
-    size === 'sm' ? "text-xs" : "text-sm",
-    className
-  ]}
-  role="group"
-  aria-label="Theme selection"
->
-  <!-- Light Mode Button -->
+<div class:list={["theme-dropdown-wrapper relative inline-block text-left", className]}>
+  <!-- Dropdown Trigger Button -->
   <button
     type="button"
-    data-theme-value="light"
-    class="theme-btn p-1.5 rounded-xs transition-all hover:text-ink dark:hover:text-dark-ink cursor-pointer focus:outline-hidden"
-    title="Light mode"
-    aria-label="Switch to Light mode"
+    class:list={[
+      "theme-dropdown-btn rounded-xs border border-ink-border/70 dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink transition-colors cursor-pointer flex items-center justify-center shadow-2xs focus:outline-hidden",
+      size === 'sm' ? "w-8 h-8 p-1.5" : "w-9 h-9 p-2"
+    ]}
+    aria-label="Toggle theme menu"
+    aria-haspopup="true"
+    aria-expanded="false"
+    title="Theme settings"
   >
-    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <!-- Sun icon (Light) -->
+    <svg class="theme-icon-light w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <circle cx="12" cy="12" r="4"/>
-      <path d="M12 2v2"/>
-      <path d="M12 20v2"/>
-      <path d="m4.93 4.93 1.41 1.41"/>
-      <path d="m17.66 17.66 1.41 1.41"/>
-      <path d="M2 12h2"/>
-      <path d="M20 12h2"/>
-      <path d="m6.34 17.66-1.41 1.41"/>
-      <path d="m19.07 4.93-1.41 1.41"/>
+      <path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
     </svg>
-  </button>
-
-  <!-- System Mode Button -->
-  <button
-    type="button"
-    data-theme-value="system"
-    class="theme-btn p-1.5 rounded-xs transition-all hover:text-ink dark:hover:text-dark-ink cursor-pointer focus:outline-hidden"
-    title="System preference"
-    aria-label="Switch to System preference"
-  >
-    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <!-- Laptop/Monitor icon (System) -->
+    <svg class="theme-icon-system w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <rect width="20" height="14" x="2" y="3" rx="2"/>
       <line x1="8" x2="16" y1="21" y2="21"/>
       <line x1="12" x2="12" y1="17" y2="21"/>
     </svg>
-  </button>
-
-  <!-- Dark Mode Button -->
-  <button
-    type="button"
-    data-theme-value="dark"
-    class="theme-btn p-1.5 rounded-xs transition-all hover:text-ink dark:hover:text-dark-ink cursor-pointer focus:outline-hidden"
-    title="Dark mode"
-    aria-label="Switch to Dark mode"
-  >
-    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <!-- Moon icon (Dark) -->
+    <svg class="theme-icon-dark w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
     </svg>
   </button>
+
+  <!-- Dropdown Popover Menu -->
+  <div 
+    class="theme-dropdown-menu hidden absolute right-0 mt-1.5 w-32 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card shadow-lg z-50 py-1 text-xs font-ui transition-all"
+    role="menu"
+    aria-orientation="vertical"
+  >
+    <!-- Light Option -->
+    <button
+      type="button"
+      data-theme-value="light"
+      role="menuitem"
+      class="theme-btn w-full px-3 py-2 text-left flex items-center justify-between gap-2 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-100 dark:hover:bg-dark-border/40 transition-colors cursor-pointer"
+    >
+      <div class="flex items-center gap-2">
+        <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+        </svg>
+        <span>Light</span>
+      </div>
+      <svg class="theme-check-icon w-3.5 h-3.5 hidden text-ink dark:text-dark-ink shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 6 9 17l-5-5"/>
+      </svg>
+    </button>
+
+    <!-- System Option -->
+    <button
+      type="button"
+      data-theme-value="system"
+      role="menuitem"
+      class="theme-btn w-full px-3 py-2 text-left flex items-center justify-between gap-2 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-100 dark:hover:bg-dark-border/40 transition-colors cursor-pointer"
+    >
+      <div class="flex items-center gap-2">
+        <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect width="20" height="14" x="2" y="3" rx="2"/>
+          <line x1="8" x2="16" y1="21" y2="21"/>
+          <line x1="12" x2="12" y1="17" y2="21"/>
+        </svg>
+        <span>System</span>
+      </div>
+      <svg class="theme-check-icon w-3.5 h-3.5 hidden text-ink dark:text-dark-ink shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 6 9 17l-5-5"/>
+      </svg>
+    </button>
+
+    <!-- Dark Option -->
+    <button
+      type="button"
+      data-theme-value="dark"
+      role="menuitem"
+      class="theme-btn w-full px-3 py-2 text-left flex items-center justify-between gap-2 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-100 dark:hover:bg-dark-border/40 transition-colors cursor-pointer"
+    >
+      <div class="flex items-center gap-2">
+        <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+        <span>Dark</span>
+      </div>
+      <svg class="theme-check-icon w-3.5 h-3.5 hidden text-ink dark:text-dark-ink shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 6 9 17l-5-5"/>
+      </svg>
+    </button>
+  </div>
 </div>
 
 <script>
-  function initThemeSwitchers() {
-    const switchers = document.querySelectorAll('.theme-switcher');
-    if (!switchers.length) return;
+  function closeAllThemeMenus() {
+    document.querySelectorAll('.theme-dropdown-menu').forEach((menu) => {
+      menu.classList.add('hidden');
+    });
+    document.querySelectorAll('.theme-dropdown-btn').forEach((btn) => {
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  }
 
-    function updateActiveStyles(theme: string) {
-      switchers.forEach((switcher) => {
-        const buttons = switcher.querySelectorAll<HTMLButtonElement>('.theme-btn');
-        buttons.forEach((btn) => {
-          const val = btn.getAttribute('data-theme-value');
-          const isActive = val === theme;
-          btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-          if (isActive) {
-            btn.classList.add(
-              'bg-paper-50',
-              'dark:bg-dark-border',
-              'text-ink',
-              'dark:text-dark-ink',
-              'shadow-2xs'
-            );
-            btn.classList.remove('text-ink-muted', 'dark:text-dark-muted');
-          } else {
-            btn.classList.remove(
-              'bg-paper-50',
-              'dark:bg-dark-border',
-              'text-ink',
-              'dark:text-dark-ink',
-              'shadow-2xs'
-            );
-            btn.classList.add('text-ink-muted', 'dark:text-dark-muted');
-          }
-        });
-      });
-    }
+  function initThemeDropdowns() {
+    document.querySelectorAll('.theme-dropdown-wrapper').forEach((wrapper) => {
+      const btn = wrapper.querySelector<HTMLButtonElement>('.theme-dropdown-btn');
+      const menu = wrapper.querySelector<HTMLDivElement>('.theme-dropdown-menu');
+      if (!btn || !menu) return;
 
-    const currentTheme = (window as any).__getTheme ? (window as any).__getTheme() : (localStorage.getItem('ahkh_theme') || 'system');
-    updateActiveStyles(currentTheme);
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        const isHidden = menu.classList.contains('hidden');
+        closeAllThemeMenus();
+        if (isHidden) {
+          menu.classList.remove('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      };
 
-    switchers.forEach((switcher) => {
-      const buttons = switcher.querySelectorAll<HTMLButtonElement>('.theme-btn');
-      buttons.forEach((btn) => {
-        btn.onclick = () => {
-          const target = btn.getAttribute('data-theme-value');
+      menu.querySelectorAll<HTMLButtonElement>('.theme-btn').forEach((item) => {
+        item.onclick = (e) => {
+          e.stopPropagation();
+          const target = item.getAttribute('data-theme-value');
           if (target && (window as any).__setTheme) {
             (window as any).__setTheme(target);
           }
+          closeAllThemeMenus();
         };
       });
     });
-
-    if (!(window as any).__ahkhThemeWired) {
-      (window as any).__ahkhThemeWired = true;
-      window.addEventListener('ahkh-theme-change', ((e: CustomEvent) => {
-        if (e.detail && e.detail.theme) {
-          updateActiveStyles(e.detail.theme);
-        }
-      }) as EventListener);
-    }
   }
 
-  // Single boot path: ClientRouter (always enabled in BaseLayout) fires
-  // astro:page-load on initial load and on every navigation.
-  document.addEventListener('astro:page-load', initThemeSwitchers);
+  if (!(window as any).__ahkhThemeDropdownWired) {
+    (window as any).__ahkhThemeDropdownWired = true;
+    document.addEventListener('click', (e) => {
+      if (!(e.target as HTMLElement)?.closest('.theme-dropdown-wrapper')) {
+        closeAllThemeMenus();
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeAllThemeMenus();
+      }
+    });
+  }
+
+  // Run immediately if DOM ready
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    initThemeDropdowns();
+  }
+
+  // Single boot path: ClientRouter fires astro:page-load on initial load and navigation
+  document.addEventListener('astro:page-load', initThemeDropdowns);
 </script>
+
+

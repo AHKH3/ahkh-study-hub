@@ -90,16 +90,44 @@ const {
         applyTheme(initialTheme);
         applyGlobalFont();
 
+        function syncThemeButtons(currentTheme) {
+          var theme = currentTheme || getSavedTheme();
+          var buttons = document.querySelectorAll('.theme-btn');
+          for (var i = 0; i < buttons.length; i++) {
+            var val = buttons[i].getAttribute('data-theme-value');
+            buttons[i].setAttribute('aria-pressed', val === theme ? 'true' : 'false');
+          }
+        }
+
         window.__getTheme = getSavedTheme;
         window.__applyTheme = applyTheme;
         window.__applyGlobalFont = applyGlobalFont;
+        window.__syncThemeButtons = syncThemeButtons;
+
+        syncThemeButtons(initialTheme);
+
         window.__setTheme = function(theme) {
           try {
             localStorage.setItem('ahkh_theme', theme);
           } catch (e) {}
           applyTheme(theme);
+          syncThemeButtons(theme);
           window.dispatchEvent(new CustomEvent('ahkh-theme-change', { detail: { theme: theme } }));
         };
+
+        // Delegated click handler: guarantees every .theme-btn works anywhere, anytime
+        document.addEventListener('click', function(e) {
+          var btn = e.target && e.target.closest ? e.target.closest('.theme-btn') : null;
+          if (!btn) return;
+          var val = btn.getAttribute('data-theme-value');
+          if (val && window.__setTheme) {
+            window.__setTheme(val);
+          }
+        });
+
+        document.addEventListener('astro:page-load', function() {
+          syncThemeButtons();
+        });
 
         if (window.matchMedia) {
           const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');

@@ -53,7 +53,11 @@ All courses in AHKH Study Hub adhere strictly to the **Unified Global Design Sys
   - `new`: Blue (`text-blue-700 bg-blue-50 border-blue-200`)
   - `explored`: Purple (`text-purple-700 bg-purple-50 border-purple-200`)
   - `completed`: Pink (`text-pink-700 bg-pink-50 border-pink-200`)
-- **Absolute Ban on Emojis**: Zero emojis in the codebase, UI, lesson text, badges, buttons, and markdown files. Use clean inline SVG icons and dignified typographical symbols (`—`, `•`, `//`, `*`) exclusively.
+- **Absolute Ban on AI Slop & Synthetic Crutches (Zero Slashes `//` & Zero Emojis)**:
+  - Strictly ZERO emojis and ZERO double-slashes (`//`) in the codebase, UI, lesson text, badges, cards, or markdown files.
+  - Never use `//` or programming syntax as a fake "technical" or "editorial" costume.
+  - Never use kickers or eyebrows above headings; per the Impeccable Craft Floor, the heading carries its own weight.
+  - Use clean, bespoke inline SVG icons and dignified typographical punctuation (`—`, `•`) exclusively.
 - **Verbatim Text Preservation**: Content from articles, video transcripts, or PDFs must be ingested with 100% fidelity. Never summarize, truncate, or rewrite text unless explicitly instructed by the user.
 - **Local Sovereignty**: All reader highlights and marginal notes persist exclusively in browser `localStorage` under `ahkh_hl_${courseId}_${lessonId}`. Never add remote servers, databases, or tracking telemetry.
 - **Low-Contrast Tactile Active States & Overlays (No Inverted Black Blocks)**: Never invert active buttons, segmented controls, floating menus, or selection popovers into solid jet-black blocks (`bg-ink`) or heavy black borders (`border-ink`). Active states on light surfaces must use subtle recessed neutral fills (`bg-paper-200/90` or `bg-white` with `shadow-2xs`) and maintain standard neutral zinc borders (`border-ink-border`). Floating popovers and toasts must float on pure white (`bg-white`) or clean off-white surfaces with delicate soft shadows.

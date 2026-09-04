@@ -18,9 +18,7 @@ All pages, curricula, study reader surfaces, editorial components, and UI elemen
 
 ## 2. The Impeccable Craft Floor (Anti-Patterns & Slop Elimination)
 
-To protect the reading environment from digital noise and generic "AI slop", the following rules are strictly enforced:
-
-1. **Zero Emojis Invariant:** Strictly zero emojis across the entire project. All interfaces rely exclusively on clean, geometric inline SVG icons and dignified typographic punctuation (`—`, `•`, `//`, `*`).
+1. **Zero Emojis & Zero Double-Slashes (`//`):** Strictly zero emojis and zero decorative double-slashes (`//`) across the entire project. All interfaces rely exclusively on clean, bespoke inline SVG icons and dignified typographical punctuation (`—`, `•`). Never use fake code comments in prose.
 2. **Zero Gimmicks / Zero Artificial Novelty:**
    - No animated typewriter cursors on headings.
    - No decorative text gradients or chromatic noise.
@@ -145,8 +143,9 @@ Used for foundational principles, defining philosophical quotes, or author state
 Used for summarizing critical takeaways, definitions, mental models, or heuristics.
 ```html
 <div class="my-8 p-6 rounded-xs bg-paper-100 dark:bg-dark-card border border-ink-border dark:border-dark-border">
-  <div class="text-[11px] font-mono uppercase tracking-wider text-ink-muted dark:text-dark-muted mb-2">
-    Key Principle // 01
+  <div class="flex items-center gap-2 text-xs font-sans font-bold uppercase tracking-wider text-ink-muted dark:text-dark-muted mb-2">
+    <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+    <span>Key Principle 01</span>
   </div>
   <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-2">
     Recognition Over Recall
@@ -224,7 +223,7 @@ All courses share the same interaction model:
 
 Recipes below are extracted verbatim from the 12 shipped Springboard lessons in `src/data/courses.ts`. All future lessons must reuse these exact recipes instead of inventing new ones. Every recipe ships with both `light` and `dark:` variants; washes never exceed the stated opacity caps.
 
-1. **Axiom pullout (amber rail + wash):** `my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs`, closed by a mono footer (`text-xs sm:text-sm font-mono text-amber-800 dark:text-amber-300 font-bold uppercase`) carrying a `// ...` label. Reserved for foundational axioms only, max 1–2 per lesson.
+1. **Axiom pullout (amber rail + wash):** `my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs`, closed by a dignified footer (`text-xs sm:text-sm font-sans text-amber-800 dark:text-amber-300 font-bold uppercase`) carrying author/source attribution (e.g., `— Dieter Rams`). Reserved for foundational axioms only, max 1–2 per lesson.
 2. **Rail cards:** `p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-{hue}-500 shadow-2xs`. Observed rail hues: `sky`, `amber`, `purple`, `teal`, `blue`, `rose`, `indigo`. The rail hue follows the §3.4 tone mapping of the card's subject; body text always stays `text-ink`.
 3. **Tinted compare pair:** `bg-rose-50/50 dark:bg-rose-950/20 border-rose-200 dark:border-rose-900/40` versus `bg-teal-50/50 dark:bg-teal-950/20 border-teal-200 dark:border-teal-900/40`. Reserved strictly for before/after or contrast pairs, never for generic emphasis.
 4. **Stat / step grids:** `grid ... not-prose text-center` with cells `p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border`, optionally topped by `border-t-3 border-t-{hue}-500`.

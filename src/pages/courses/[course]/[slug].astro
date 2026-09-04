@@ -330,30 +330,66 @@ const transcriptSegments =
 
       <!-- VIDEO PLAYER IF TYPE == VIDEO -->
       {lesson.type === 'video' && lesson.youtubeId && (
-        <div class="mb-10 rounded-xs overflow-hidden border border-ink-border dark:border-dark-border bg-ink shadow-sm">
-          <div class="aspect-video w-full bg-ink">
-            <iframe 
-              id="youtube-player"
-              class="w-full h-full"
-              src={`https://www.youtube-nocookie.com/embed/${lesson.youtubeId}?enablejsapi=1&rel=0&modestbranding=1&playsinline=1`}
-              title={`Video lecture: ${lesson.title}`}
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
+        <>
+          <div id="video-scroll-sentinel" class="w-full h-px -mt-px pointer-events-none opacity-0" aria-hidden="true"></div>
+          <div id="video-sticky-wrapper" class="video-sticky-wrapper mb-10 transition-all duration-300">
+            <div class="video-player-card rounded-xs overflow-hidden border border-ink-border dark:border-dark-border bg-ink shadow-sm transition-all duration-300">
+              <div class="video-aspect-box aspect-video w-full bg-ink transition-all duration-300">
+                <iframe 
+                  id="youtube-player"
+                  class="w-full h-full"
+                  src={`https://www.youtube-nocookie.com/embed/${lesson.youtubeId}?enablejsapi=1&rel=0&modestbranding=1&playsinline=1`}
+                  title={`Video lecture: ${lesson.title}`}
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="p-2.5 bg-paper-200/90 dark:bg-dark-card border-t border-ink-border dark:border-dark-border flex flex-wrap items-center justify-between gap-3 text-xs font-sans">
+                <span class="text-ink-muted dark:text-dark-muted flex items-center gap-1.5 font-medium">
+                  <span class="w-2 h-2 rounded-full bg-rose-600 dark:bg-rose-400 animate-pulse"></span>
+                  <span>Video Lecture & Synced Transcript</span>
+                </span>
+                <div class="flex items-center gap-2.5">
+                  <label class="flex items-center gap-1.5 cursor-pointer text-ink dark:text-dark-ink font-medium select-none text-[11px] sm:text-xs">
+                    <input type="checkbox" id="auto-scroll-sync" checked class="rounded-xs text-ink accent-rose-600 cursor-pointer" />
+                    <span>Auto-Scroll</span>
+                  </label>
+                  <div class="h-3.5 w-px bg-ink-border dark:bg-dark-border hidden sm:block"></div>
+                  <button 
+                    type="button" 
+                    id="toggle-video-pin" 
+                    class="font-ui text-[11px] sm:text-xs flex items-center gap-1 px-2 py-1 rounded-xs border border-ink-border/80 dark:border-dark-border text-ink dark:text-dark-ink bg-paper-50 dark:bg-dark-surface hover:bg-paper-100 dark:hover:bg-dark-border/40 transition-colors cursor-pointer select-none"
+                    title="Toggle sticky video player when scrolling"
+                    aria-pressed="true"
+                  >
+                    <svg class="w-3 h-3 text-rose-600 dark:text-rose-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="12" y1="17" x2="12" y2="22"/>
+                      <path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/>
+                    </svg>
+                    <span id="video-pin-label">Pinned</span>
+                  </button>
+                  <button 
+                    type="button" 
+                    id="toggle-video-compact" 
+                    class="font-ui text-[11px] sm:text-xs flex items-center gap-1 px-2 py-1 rounded-xs border border-ink-border/80 dark:border-dark-border text-ink dark:text-dark-ink bg-paper-50 dark:bg-dark-surface hover:bg-paper-100 dark:hover:bg-dark-border/40 transition-colors cursor-pointer select-none"
+                    title="Toggle compact video height when docked"
+                    aria-pressed="false"
+                  >
+                    <svg class="w-3 h-3 text-ink-muted dark:text-dark-muted shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="4 14 10 14 10 20"/>
+                      <polyline points="20 10 14 10 14 4"/>
+                      <line x1="14" y1="10" x2="21" y2="3"/>
+                      <line x1="3" y1="21" x2="10" y2="14"/>
+                    </svg>
+                    <span id="video-compact-label">Compact</span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="p-3 bg-paper-200/90 border-t border-ink-border flex items-center justify-between text-xs font-sans">
-            <span class="text-ink-muted flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-rose-600 dark:bg-rose-400 animate-pulse"></span>
-              Video Lecture & Synced Transcript
-            </span>
-            <label class="flex items-center gap-2 cursor-pointer text-ink font-medium">
-              <input type="checkbox" id="auto-scroll-sync" checked class="rounded-xs text-ink" />
-              Auto-Scroll Transcript
-            </label>
-          </div>
-        </div>
+        </>
       )}
 
       {/* VIDEO WITHOUT EMBED: dignified source-link fallback instead of a silent gap */}
@@ -384,7 +420,11 @@ const transcriptSegments =
       )}
 
       <!-- THE EDITORIAL PROSE CONTENT -->
-      <div id="formatted-view" class="prose-editorial relative">
+      <div 
+        id="formatted-view" 
+        class="prose-editorial relative"
+        data-video-timestamps={lesson.type === 'video' && lesson.videoTimestamps ? JSON.stringify(lesson.videoTimestamps) : undefined}
+      >
         <Fragment set:html={lesson.contentHtml} />
       </div>
 
@@ -394,13 +434,27 @@ const transcriptSegments =
           {transcriptSegments ? (
             <div class="space-y-3">
               {transcriptSegments.map((cue) => (
-                <button
+                <div
                   data-timestamp={cue.time}
-                  class="block w-full text-left p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all cursor-pointer hover:bg-paper-100 dark:hover:bg-dark-border/40"
+                  class="transcript-cue group relative block w-full text-left p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all duration-200 select-text"
                 >
-                  <span class="font-mono text-xs text-ink-muted dark:text-dark-muted mr-3">[{cue.label}]</span>
-                  <span class="font-serif text-[15px] leading-relaxed text-ink/90 dark:text-dark-ink/90">{cue.text}</span>
-                </button>
+                  <div class="flex items-start gap-3">
+                    <button
+                      type="button"
+                      class="timestamp-btn cue-timestamp shrink-0 inline-flex items-center gap-1.5 font-mono text-xs px-2 py-0.5 rounded-xs border border-ink-border/60 dark:border-dark-border/60 bg-paper-100 dark:bg-dark-surface text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:border-ink-border dark:hover:border-dark-border transition-all duration-200 cursor-pointer"
+                      data-seek-time={cue.time}
+                      title={`Play lecture from ${cue.label}`}
+                    >
+                      <svg class="cue-playing-icon w-3 h-3 text-rose-600 dark:text-rose-400 hidden shrink-0 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polygon points="6 3 20 12 6 21 6 3" fill="currentColor"/>
+                      </svg>
+                      <span>{cue.label}</span>
+                    </button>
+                    <p class="cue-text font-serif text-[15px] sm:text-base leading-relaxed text-ink/90 dark:text-dark-ink/90 select-text cursor-text flex-1">
+                      {cue.text}
+                    </p>
+                  </div>
+                </div>
               ))}
             </div>
           ) : (
@@ -832,29 +886,33 @@ const transcriptSegments =
   }
 
   function applyTheme(theme, persist = true) {
-    const isDark = theme === 'dark';
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
+    if (persist && theme) {
+      if (window.__setTheme) {
+        window.__setTheme(theme);
+      } else {
+        try { localStorage.setItem('ahkh_theme', theme); } catch (e) {}
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+        else if (theme === 'light') document.documentElement.classList.remove('dark');
+      }
     }
 
+    const currentIsDark = document.documentElement.classList.contains('dark');
     const themeLabel = document.getElementById('theme-status-label');
-    if (themeLabel) themeLabel.textContent = isDark ? 'Carbon (Dark)' : 'Paper (Light)';
+    if (themeLabel) themeLabel.textContent = currentIsDark ? 'Carbon (Dark)' : 'Paper (Light)';
 
     const lightBtn = document.getElementById('theme-light-btn');
     const darkBtn = document.getElementById('theme-dark-btn');
 
-    if (isDark) {
+    if (currentIsDark) {
       if (darkBtn) darkBtn.className = 'theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 bg-white dark:bg-dark-card text-ink dark:text-dark-ink font-medium border border-ink-border dark:border-dark-border shadow-2xs';
       if (lightBtn) lightBtn.className = 'theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink border border-transparent';
     } else {
       if (lightBtn) lightBtn.className = 'theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 bg-white dark:bg-dark-card text-ink dark:text-dark-ink font-medium border border-ink-border dark:border-dark-border shadow-2xs';
       if (darkBtn) darkBtn.className = 'theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink border border-transparent';
     }
-
-    if (persist) localStorage.setItem('ahkh_theme', isDark ? 'dark' : 'light');
   }
+
+
 
   function resetDisplaySettings() {
     applyFontSize('base', true);
@@ -936,6 +994,12 @@ const transcriptSegments =
   // Theme buttons listeners
   document.getElementById('theme-light-btn')?.addEventListener('click', () => applyTheme('light', true));
   document.getElementById('theme-dark-btn')?.addEventListener('click', () => applyTheme('dark', true));
+
+  // Theme change listener for reader UI sync
+  window.addEventListener('ahkh-theme-change', () => {
+    applyTheme(null, false);
+  }, { signal: __ahkhSignal });
+
 
   // Reset button listener
   document.getElementById('reset-display-btn')?.addEventListener('click', resetDisplaySettings);
@@ -1422,7 +1486,7 @@ const transcriptSegments =
         return;
       }
 
-      const blocks = restoreViews.flatMap((v) => Array.from(v.querySelectorAll('p, blockquote, li, h2, h3, button[data-timestamp]')));
+      const blocks = restoreViews.flatMap((v) => Array.from(v.querySelectorAll('p, blockquote, li, h2, h3, .cue-text, [data-timestamp] p')));
       for (const block of blocks) {
         const range = findRangeForTextInElement(block, item.text);
         if (range) {
@@ -1445,7 +1509,7 @@ const transcriptSegments =
             openHighlightOptions(item, span);
           });
 
-          if (item.note && span.closest('#formatted-view')) {
+          if (item.note && (span.closest('#formatted-view') || span.closest('#transcript-view'))) {
             renderGutterNote(item);
           }
           break;
@@ -1531,13 +1595,58 @@ const transcriptSegments =
       if (tv && tv.contains(el) && tv.classList.contains('hidden') && typeof setTranscriptView === 'function') {
         setTranscriptView('original', false);
       }
-      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      scrollActiveCueIntoView(el, true);
       el.classList.remove('active');
       void el.offsetWidth; // Reflow to re-trigger CSS animation
       el.classList.add('active');
       setTimeout(() => el.classList.remove('active'), 1800);
     }
   };
+
+  // Safe vertical clearance calculation preventing text from hiding under sticky video & header
+  function getStickyVideoClearance() {
+    const stickyWrapper = document.getElementById('video-sticky-wrapper');
+    const isHeaderHidden = document.body.getAttribute('data-header-hidden') === 'true';
+    const topProgressHeight = 3;
+    const headerHeight = 56;
+    const headerTopOffset = isHeaderHidden ? topProgressHeight : (topProgressHeight + headerHeight);
+
+    if (!stickyWrapper) return headerTopOffset + 12;
+
+    const isStuck = stickyWrapper.classList.contains('is-stuck');
+    if (!isStuck) {
+      return headerTopOffset + 16;
+    }
+
+    const rect = stickyWrapper.getBoundingClientRect();
+    return Math.max(rect.bottom, headerTopOffset + 24);
+  }
+
+  function scrollActiveCueIntoView(el, forceReposition = false) {
+    if (!el) return;
+    if (!forceReposition && (!autoScrollCheckbox || !autoScrollCheckbox.checked)) return;
+
+    const clearance = getStickyVideoClearance();
+    const rect = el.getBoundingClientRect();
+    const viewHeight = window.innerHeight;
+
+    // Available open reading height below the bottom of the sticky video
+    const clearReadingHeight = Math.max(200, viewHeight - clearance);
+    // Ideal comfortable focal position: ~24% down the clear reading area below the video
+    const idealTop = clearance + Math.max(24, clearReadingHeight * 0.24);
+
+    const isObscuredByVideo = rect.top < (clearance + 18);
+    const isOffBottom = rect.bottom > (viewHeight - 32);
+
+    if (forceReposition || isObscuredByVideo || isOffBottom) {
+      const delta = rect.top - idealTop;
+      const targetScrollY = Math.max(0, window.scrollY + delta);
+      window.scrollTo({
+        top: targetScrollY,
+        behavior: 'smooth'
+      });
+    }
+  }
 
   // E. YOUTUBE TRANSCRIPT SYNC & INTERACTIVE TIMESTAMPS
   const autoScrollCheckbox = document.getElementById('auto-scroll-sync');
@@ -1615,14 +1724,37 @@ const transcriptSegments =
         if (el === activeEl) {
           if (!el.classList.contains('yt-active-paragraph')) {
             el.classList.add('yt-active-paragraph');
-            if (autoScrollCheckbox && autoScrollCheckbox.checked) {
-              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+            el.setAttribute('aria-current', 'true');
+            el.setAttribute('data-active', 'true');
+            scrollActiveCueIntoView(el);
           }
         } else {
           el.classList.remove('yt-active-paragraph');
+          el.removeAttribute('aria-current');
+          el.removeAttribute('data-active');
         }
       });
+    }
+
+    // Tag outline headings in formatted-view if no data-timestamp exists yet
+    const formattedView = document.getElementById('formatted-view');
+    if (formattedView && formattedView.hasAttribute('data-video-timestamps')) {
+      const existingBlocks = formattedView.querySelectorAll('[data-timestamp]');
+      if (existingBlocks.length === 0) {
+        try {
+          const vts = JSON.parse(formattedView.getAttribute('data-video-timestamps') || '[]');
+          const headings = Array.from(formattedView.querySelectorAll('h2, h3'));
+          if (vts.length > 0 && headings.length > 0) {
+            vts.forEach((vt, idx) => {
+              const h = headings[idx];
+              if (h && !h.hasAttribute('data-timestamp')) {
+                h.setAttribute('data-timestamp', vt.time.toString());
+                h.classList.add('transition-all', 'duration-200', 'rounded-xs');
+              }
+            });
+          }
+        } catch (e) {}
+      }
     }
 
     // Attach click handlers to timestamp jump buttons
@@ -1635,6 +1767,10 @@ const transcriptSegments =
           if (typeof ytPlayer.playVideo === 'function') {
             ytPlayer.playVideo();
           }
+        }
+        const targetCue = btn.closest('[data-timestamp]') || btn;
+        if (targetCue) {
+          scrollActiveCueIntoView(targetCue, true);
         }
       });
     });
@@ -1653,6 +1789,116 @@ const transcriptSegments =
         firstScriptTag?.parentNode?.insertBefore(tag, firstScriptTag);
       }
     }
+  }
+
+  // F. STICKY YOUTUBE VIDEO CONTROLLER
+  function initStickyVideo() {
+    const wrapper = document.getElementById('video-sticky-wrapper');
+    const sentinel = document.getElementById('video-scroll-sentinel');
+    const pinBtn = document.getElementById('toggle-video-pin');
+    const compactBtn = document.getElementById('toggle-video-compact');
+    if (!wrapper || !sentinel) return;
+
+    let isPinned = true;
+    try {
+      const savedPin = localStorage.getItem('ahkh_video_pinned');
+      if (savedPin !== null) isPinned = savedPin === 'true';
+    } catch (e) {}
+
+    let isCompact = false;
+    try {
+      const savedCompact = localStorage.getItem('ahkh_video_compact');
+      if (savedCompact !== null) isCompact = savedCompact === 'true';
+    } catch (e) {}
+
+    let isPastSentinel = false;
+
+    function updateStuckState() {
+      const shouldStick = isPinned && isPastSentinel;
+      const wasStuck = wrapper.classList.contains('is-stuck');
+      if (wasStuck !== shouldStick) {
+        wrapper.classList.toggle('is-stuck', shouldStick);
+        setTimeout(() => {
+          const active = document.querySelector('.yt-active-paragraph');
+          if (active) scrollActiveCueIntoView(active, false);
+        }, 280);
+      }
+    }
+
+    function applyPinState() {
+      if (pinBtn) {
+        pinBtn.setAttribute('aria-pressed', isPinned ? 'true' : 'false');
+        pinBtn.classList.toggle('bg-paper-200/90', isPinned);
+        pinBtn.classList.toggle('dark:bg-dark-border/80', isPinned);
+        pinBtn.classList.toggle('text-rose-700', isPinned);
+        pinBtn.classList.toggle('dark:text-rose-400', isPinned);
+        const pinLabel = document.getElementById('video-pin-label');
+        if (pinLabel) pinLabel.textContent = isPinned ? 'Pinned' : 'Pin Video';
+      }
+      updateStuckState();
+    }
+
+    function applyCompactState() {
+      wrapper.classList.toggle('is-compact', isCompact);
+      if (compactBtn) {
+        compactBtn.setAttribute('aria-pressed', isCompact ? 'true' : 'false');
+        compactBtn.classList.toggle('bg-paper-200/90', isCompact);
+        compactBtn.classList.toggle('dark:bg-dark-border/80', isCompact);
+        compactBtn.classList.toggle('text-rose-700', isCompact);
+        compactBtn.classList.toggle('dark:text-rose-400', isCompact);
+        const compactLabel = document.getElementById('video-compact-label');
+        if (compactLabel) compactLabel.textContent = isCompact ? 'Expanded' : 'Compact';
+      }
+    }
+
+    pinBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      isPinned = !isPinned;
+      try { localStorage.setItem('ahkh_video_pinned', isPinned.toString()); } catch (err) {}
+      applyPinState();
+      setTimeout(() => {
+        const active = document.querySelector('.yt-active-paragraph');
+        if (active) scrollActiveCueIntoView(active, true);
+      }, 320);
+    });
+
+    compactBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      isCompact = !isCompact;
+      try { localStorage.setItem('ahkh_video_compact', isCompact.toString()); } catch (err) {}
+      applyCompactState();
+      setTimeout(() => {
+        const active = document.querySelector('.yt-active-paragraph');
+        if (active) scrollActiveCueIntoView(active, true);
+      }, 320);
+    });
+
+    applyPinState();
+    applyCompactState();
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          isPastSentinel = !entry.isIntersecting && entry.boundingClientRect.top <= 75;
+          updateStuckState();
+        });
+      }, {
+        rootMargin: '-59px 0px 0px 0px',
+        threshold: [0, 1]
+      });
+      observer.observe(sentinel);
+    }
+
+    window.addEventListener('scroll', () => {
+      const rect = sentinel.getBoundingClientRect();
+      isPastSentinel = rect.top <= 65;
+      updateStuckState();
+    }, { passive: true, signal: __ahkhSignal });
+
+    window.addEventListener('resize', () => {
+      const active = document.querySelector('.yt-active-paragraph');
+      if (active) scrollActiveCueIntoView(active, false);
+    }, { passive: true, signal: __ahkhSignal });
   }
 
   // Transcript view toggle (video lessons): formatted study version vs verbatim original
@@ -1682,6 +1928,8 @@ const transcriptSegments =
     if (persist) {
       try { localStorage.setItem(TRANSCRIPT_VIEW_KEY, mode); } catch (e) {}
     }
+    restoreHighlightsInDOM();
+    repositionAllGutterNotes();
   }
   function initTranscriptToggle() {
     const tabs = document.querySelectorAll('.transcript-tab');
@@ -1712,7 +1960,7 @@ const transcriptSegments =
     applyFontSize(savedSize, false);
     applyFontFamily(savedFamily, false);
     applyReadingMeasure(savedMeasure, false);
-    applyTheme(savedTheme, false);
+    applyTheme(null, false);
 
     // Prevent animation flicker on initial mount or page transition
     const studyDesk = document.getElementById('study-desk');
@@ -1740,6 +1988,7 @@ const transcriptSegments =
     renderSidebarHighlights();
     restoreHighlightsInDOM();
     initYouTubeSync();
+    initStickyVideo();
     initTranscriptToggle();
     initHlSwatches();
   }

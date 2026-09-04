@@ -15,11 +15,11 @@ export default {
       colors: {
         canvas: {
           light: '#FFFFFF',
-          dark: '#09090B',
+          dark: '#121214',
         },
         surface: {
           light: '#FAFAFA',
-          dark: '#121215',
+          dark: '#18181B',
         },
         paper: {
           50: '#FFFFFF',
@@ -34,11 +34,11 @@ export default {
           border: '#E4E4E7',
         },
         dark: {
-          bg: '#09090B',
-          surface: '#121215',
-          card: '#18181B',
+          bg: '#121214',
+          surface: '#18181B',
+          card: '#1E1E22',
           border: '#27272A',
-          ink: '#F4F4F5',
+          ink: '#D4D4D8',
           muted: '#A1A1AA',
           faint: '#52525B',
         }

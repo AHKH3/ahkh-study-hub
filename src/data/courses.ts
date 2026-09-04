@@ -100,7 +100,7 @@ export const COURSES: Course[] = [
             lessonNumber: '1.0',
             type: 'pdf',
             readTime: '18 min',
-            originalSourceUrl: 'https://readwise.io/reader/document_raw_content/490658744',
+            originalSourceUrl: 'https://eadwise.io/reader/document_raw_content/490658744',
             originalSourceLabel: 'Laurel Hechanova (Goodmaker / Springboard Foundations)',
             
             summaryQuote: 'User experience is what someone feels, what they do, and what they understand when using a product. Good design begins with understanding real human needs.',
@@ -159,9 +159,7 @@ export const COURSES: Course[] = [
             
             contentHtml: `
 
-
-
-              <p class="lead text-lg sm:text-xl font-serif text-ink dark:text-dark-ink mb-8 leading-relaxed">
+<p class="lead text-lg sm:text-xl font-serif text-ink dark:text-dark-ink mb-8 leading-relaxed">
                 Even if you have never studied design before, you experience user experience dozens of times every single day. Every time you find a search bar without squinting, buy a train ticket on your phone in three taps, or rent a room without getting lost, you are benefiting from the work of a UX designer.
               </p>
 
@@ -176,7 +174,7 @@ export const COURSES: Course[] = [
               <!-- Pullout Axiom with Calibrated Terracotta Accent -->
               <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
                 <p>"Good design does not begin with graphics or code. It begins with curiosity about how real people live, where they struggle, and how a thoughtful tool can make their day easier."</p>
-                <footer class="mt-3 flex items-center gap-2 text-xs font-sans not-italic text-amber-800 dark:text-amber-300 font-semibold tracking-wide uppercase">
+                <footer class="mt-3 flex items-center gap-2 text-xs font-sans not-italic text-amber-800 dark:text-amber-400 font-semibold tracking-wide uppercase">
                   <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
                   <span>Core Design Axiom</span>
                 </footer>
@@ -187,74 +185,59 @@ export const COURSES: Course[] = [
                 When most people hear the word "experience," they usually picture an app on a smartphone screen. But user experience actually operates at three connected levels:
               </p>
 
-              <!-- The Three Levels - High-Contrast Clear Reading Cards -->
-              <div class="my-8 grid grid-cols-1 md:grid-cols-3 gap-5 not-prose">
-                <!-- Level 1: Product -->
-                <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-sky-500 shadow-2xs">
-                  <div class="flex items-center justify-between mb-3">
-                    <span class="text-xs font-sans font-bold uppercase tracking-wider text-sky-800 dark:text-sky-300">
-                      Level 01: Product
-                    </span>
-                    <svg class="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
-                      <path d="M12 18h.01"/>
-                    </svg>
-                  </div>
-                  <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">
-                    The Direct Object
-                  </h4>
-                  <p class="text-sm text-ink dark:text-dark-ink leading-relaxed mb-3">
-                    The physical or digital tool directly in front of you.
-                  </p>
-                  <div class="text-sm font-sans font-medium text-ink dark:text-dark-ink pt-2.5 border-t border-ink-border dark:border-dark-border">
-                    <span class="font-bold text-sky-800 dark:text-sky-300">Examples:</span> A mobile app, a website, a car dashboard, or an electric teapot on your kitchen counter.
-                  </div>
+              <!-- The Three Levels - Architectural Continuum -->
+              <div class="my-8 border border-ink-border rounded-xs bg-paper-50 dark:bg-dark-card overflow-hidden not-prose dark:border-dark-border">
+                <div class="px-6 py-4 border-b border-ink-border bg-white dark:bg-dark-bg flex items-center justify-between dark:border-dark-border">
+                  <span class="text-xs font-mono font-bold uppercase tracking-wider text-ink-muted dark:text-dark-muted">Architectural Continuum &mdash; The Three Levels of Experience</span>
+                  <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Micro to Macro Scope</span>
                 </div>
+                <div class="divide-y divide-ink-border dark:divide-dark-border">
+                  <!-- Level 3: System (The Foundation) -->
+                  <div class="p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-start bg-paper-100/50 dark:bg-dark-card/50">
+                    <div class="md:col-span-3">
+                      <span class="text-xs font-mono font-bold uppercase text-purple-800 dark:text-purple-400 block">Level 3 &bull; Macro</span>
+                      <h4 class="font-sans font-bold text-lg text-ink dark:text-dark-ink mt-0.5">The System</h4>
+                    </div>
+                    <div class="md:col-span-5 text-sm text-ink dark:text-dark-ink leading-relaxed">
+                      The underlying engine, network, and data policies connecting multiple tools, institutions, and infrastructure together into a cohesive ecosystem.
+                    </div>
+                    <div class="md:col-span-4 text-xs font-mono text-ink-muted dark:text-dark-muted bg-white dark:bg-dark-bg p-3 border border-ink-border rounded-xs dark:border-dark-border">
+                      <strong class="text-ink dark:text-dark-ink block mb-1">Ecosystem Manifestation:</strong>
+                      Global payment networks (Visa/Stripe), municipal transit APIs, interconnected health records.
+                    </div>
+                  </div>
 
-                <!-- Level 2: Service -->
-                <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-amber-500 shadow-2xs">
-                  <div class="flex items-center justify-between mb-3">
-                    <span class="text-xs font-sans font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
-                      Level 02: Service
-                    </span>
-                    <svg class="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
-                    </svg>
+                  <!-- Level 2: Service (The Journey) -->
+                  <div class="p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-start bg-paper-50 dark:bg-dark-bg/60">
+                    <div class="md:col-span-3">
+                      <span class="text-xs font-mono font-bold uppercase text-amber-800 dark:text-amber-400 block">Level 2 &bull; Meso</span>
+                      <h4 class="font-sans font-bold text-lg text-ink dark:text-dark-ink mt-0.5">The Service</h4>
+                    </div>
+                    <div class="md:col-span-5 text-sm text-ink dark:text-dark-ink leading-relaxed">
+                      The complete temporal journey: accomplishing an objective across physical and digital touchpoints, people, and time.
+                    </div>
+                    <div class="md:col-span-4 text-xs font-mono text-ink-muted dark:text-dark-muted bg-white dark:bg-dark-bg p-3 border border-ink-border rounded-xs dark:border-dark-border">
+                      <strong class="text-ink dark:text-dark-ink block mb-1">Ecosystem Manifestation:</strong>
+                      Hailing, riding, and splitting a fare in Uber; booking, checking into, and reviewing a hotel stay.
+                    </div>
                   </div>
-                  <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">
-                    The Ongoing Task Flow
-                  </h4>
-                  <p class="text-sm text-ink dark:text-dark-ink leading-relaxed mb-3">
-                    Getting something done across multiple steps and interactions over time.
-                  </p>
-                  <div class="text-sm font-sans font-medium text-ink dark:text-dark-ink pt-2.5 border-t border-ink-border dark:border-dark-border">
-                    <span class="font-bold text-amber-800 dark:text-amber-300">Examples:</span> Booking a hotel room, hailing a ride, making an in-app payment, or returning a broken teapot for a refund.
-                  </div>
-                </div>
 
-                <!-- Level 3: System -->
-                <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-purple-500 shadow-2xs">
-                  <div class="flex items-center justify-between mb-3">
-                    <span class="text-xs font-sans font-bold uppercase tracking-wider text-purple-800 dark:text-purple-300">
-                      Level 03: System
-                    </span>
-                    <svg class="w-4 h-4 text-purple-600 dark:text-purple-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <rect width="8" height="8" x="2" y="2" rx="1.5"/>
-                      <path d="M14 2h6a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/>
-                      <path d="M2 14h8a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/>
-                      <path d="M16 14h6a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/>
-                    </svg>
-                  </div>
-                  <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">
-                    The Underlying Engine
-                  </h4>
-                  <p class="text-sm text-ink dark:text-dark-ink leading-relaxed mb-3">
-                    The network, servers, and rules connecting tools, databases, and people together.
-                  </p>
-                  <div class="text-sm font-sans font-medium text-ink dark:text-dark-ink pt-2.5 border-t border-ink-border dark:border-dark-border">
-                    <span class="font-bold text-purple-800 dark:text-purple-300">Examples:</span> The Apple App Store, a hotel chain reservation database, or an automated warranty platform.
+                  <!-- Level 1: Product (The Interface) -->
+                  <div class="p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-start bg-white dark:bg-dark-surface">
+                    <div class="md:col-span-3">
+                      <span class="text-xs font-mono font-bold uppercase text-sky-800 dark:text-sky-400 block">Level 1 &bull; Micro</span>
+                      <h4 class="font-sans font-bold text-lg text-ink dark:text-dark-ink mt-0.5">The Product</h4>
+                    </div>
+                    <div class="md:col-span-5 text-sm text-ink dark:text-dark-ink leading-relaxed">
+                      The direct sensory object in front of the human being: the screen, hardware controls, button affordances, and immediate feedback loop.
+                    </div>
+                    <div class="md:col-span-4 text-xs font-mono text-ink-muted dark:text-dark-muted bg-paper-50 dark:bg-dark-card p-3 border border-ink-border rounded-xs dark:border-dark-border">
+                      <strong class="text-ink dark:text-dark-ink block mb-1">Ecosystem Manifestation:</strong>
+                      A smartphone screen, an ATM touch panel, an electric kettle thermostat switch.
+                    </div>
                   </div>
                 </div>
+              </div>
               </div>
 
               <p>
@@ -273,46 +256,44 @@ export const COURSES: Course[] = [
               </p>
 
               <!-- 4 Research Questions - High Contrast Clear Reading Cards -->
-              <div class="my-8 grid grid-cols-1 sm:grid-cols-2 gap-5 not-prose">
-                <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-teal-500 shadow-2xs">
-                  <div class="flex items-center gap-3 mb-2.5">
-                    <span class="w-7 h-7 rounded-full text-teal-700 bg-teal-50 border border-teal-200/80 dark:text-teal-300 dark:bg-teal-950/40 dark:border-teal-900/50 flex items-center justify-center text-sm font-mono font-bold shrink-0">1</span>
-                    <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink">What concrete difficulties do they have?</h4>
-                  </div>
-                  <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed pl-10 font-normal">
-                    Identify the exact friction point that wastes their time, causes daily mistakes, or stresses them out.
-                  </p>
-                </div>
-
-                <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-blue-500 shadow-2xs">
-                  <div class="flex items-center gap-3 mb-2.5">
-                    <span class="w-7 h-7 rounded-full text-blue-700 bg-blue-50 border border-blue-200/80 dark:text-blue-300 dark:bg-blue-950/40 dark:border-blue-900/50 flex items-center justify-center text-sm font-mono font-bold shrink-0">2</span>
-                    <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink">Who, specifically, encounters this issue?</h4>
-                  </div>
-                  <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed pl-10 font-normal">
-                    Narrow down the exact audience segment. If you design for "everyone," you satisfy no one well.
-                  </p>
-                </div>
-
-                <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-amber-500 shadow-2xs">
-                  <div class="flex items-center gap-3 mb-2.5">
-                    <span class="w-7 h-7 rounded-full text-amber-700 bg-amber-50 border border-amber-200/80 dark:text-amber-300 dark:bg-amber-950/40 dark:border-amber-900/50 flex items-center justify-center text-sm font-mono font-bold shrink-0">3</span>
-                    <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink">What workarounds are they using right now?</h4>
-                  </div>
-                  <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed pl-10 font-normal">
-                    People rarely sit idle; they patch problems with spreadsheets, handwritten post-it notes, or messy email chains.
-                  </p>
-                </div>
-
-                <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-rose-500 shadow-2xs">
-                  <div class="flex items-center gap-3 mb-2.5">
-                    <span class="w-7 h-7 rounded-full text-rose-700 bg-rose-50 border border-rose-200/80 dark:text-rose-300 dark:bg-rose-950/40 dark:border-rose-900/50 flex items-center justify-center text-sm font-mono font-bold shrink-0">4</span>
-                    <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink">Where do their current workarounds break down?</h4>
-                  </div>
-                  <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed pl-10 font-normal">
-                    Uncover where their improvised habits cost them energy, time, or money. That specific gap is your product opportunity.
-                  </p>
-                </div>
+              <!-- 4 Research Questions - Field Diagnostic Matrix -->
+              <div class="my-8 border-y border-ink-border dark:border-dark-border not-prose overflow-x-auto">
+                <table class="w-full text-left text-sm font-sans border-collapse">
+                  <thead>
+                    <tr class="border-b border-ink dark:border-dark-border text-xs font-mono uppercase tracking-wider text-ink dark:text-dark-ink font-bold bg-paper-100 dark:bg-dark-card">
+                      <th class="py-3 px-4 w-12 text-center">#</th>
+                      <th class="py-3 px-4 w-1/3">The Diagnostic Question</th>
+                      <th class="py-3 px-4">What It Uncovers in User Reality</th>
+                      <th class="py-3 px-4 w-1/4">Product Implication</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-ink-border dark:divide-dark-border text-ink dark:text-dark-ink">
+                    <tr>
+                      <td class="py-3.5 px-4 font-mono font-bold text-teal-800 dark:text-teal-400 text-center">01</td>
+                      <td class="py-3.5 px-4 font-semibold">What concrete difficulties do people face?</td>
+                      <td class="py-3.5 px-4 text-sm leading-relaxed">The exact friction points, delays, errors, or anxieties that disrupt their daily routine.</td>
+                      <td class="py-3.5 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Identifies the core job-to-be-done.</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3.5 px-4 font-mono font-bold text-blue-800 dark:text-blue-400 text-center">02</td>
+                      <td class="py-3.5 px-4 font-semibold">Who, specifically, encounters this friction?</td>
+                      <td class="py-3.5 px-4 text-sm leading-relaxed">The distinct demographic, role, context, or cognitive profile. Designing for "everyone" creates bloated products that satisfy no one.</td>
+                      <td class="py-3.5 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Defines target personas and boundary constraints.</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3.5 px-4 font-mono font-bold text-amber-800 dark:text-amber-400 text-center">03</td>
+                      <td class="py-3.5 px-4 font-semibold">What workarounds are they using right now?</td>
+                      <td class="py-3.5 px-4 text-sm leading-relaxed">People rarely wait idle; they invent improvised solutions using spreadsheets, scrap paper, sticky notes, or WhatsApp groups.</td>
+                      <td class="py-3.5 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Reveals existing behavioral habits and mental models.</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3.5 px-4 font-mono font-bold text-rose-800 dark:text-rose-400 text-center">04</td>
+                      <td class="py-3.5 px-4 font-semibold">Where do those workarounds break down?</td>
+                      <td class="py-3.5 px-4 text-sm leading-relaxed">The exact points where improvised habits become brittle, error-prone, insecure, or costly.</td>
+                      <td class="py-3.5 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Pinpoints the commercial product opportunity.</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
 
               <h2 id="sec-ia">4. Phase 2: Information Architecture (Organizing the App)</h2>
@@ -331,7 +312,7 @@ export const COURSES: Course[] = [
 
               <div class="my-10 p-6 sm:p-8 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose shadow-xs">
                 <div class="flex items-center justify-between pb-4 mb-6 border-b border-ink-border dark:border-dark-border">
-                  <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-wider text-blue-800 dark:text-blue-300 font-bold">
+                  <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-wider text-blue-800 dark:text-blue-400 font-bold">
                     <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                     <span>Case Study &mdash; Structural Breakdown</span>
                   </div>
@@ -342,7 +323,7 @@ export const COURSES: Course[] = [
                   <!-- Screenshot Figure -->
                   <div class="lg:col-span-5 text-center">
                     <img 
-                      src="\\${path('/images/lessons/sb-1-0/page_3_img_2.png')}" 
+                      src="${path('/images/lessons/sb-1-0/page_3_img_2.png')}" 
                       alt="Historical Instagram iOS interface screenshot demonstrating information architecture" 
                       class="max-w-[270px] mx-auto rounded-xl shadow-md border border-ink-border dark:border-dark-border"
                     />
@@ -354,10 +335,10 @@ export const COURSES: Course[] = [
                   <!-- 4 Color-Coordinated Zones & Hierarchy -->
                   <div class="lg:col-span-7 space-y-4">
                     <!-- Zone 1 -->
-                    <div class="p-4 rounded-xs border-l-4 border-sky-500 bg-paper-50 dark:bg-dark-bg border border-ink-border dark:border-dark-border">
+                    <div class="p-4 rounded-xs border-l-2 border-sky-500 bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border">
                       <div class="flex items-center justify-between mb-1.5">
-                        <h4 class="font-sans font-bold text-base text-sky-800 dark:text-sky-300">1. Header Utility Bar</h4>
-                        <span class="text-xs font-mono font-bold text-sky-800 dark:text-sky-300">Top Navigation</span>
+                        <h4 class="font-sans font-bold text-base text-sky-800 dark:text-sky-400">1. Header Utility Bar</h4>
+                        <span class="text-xs font-mono font-bold text-sky-800 dark:text-sky-400">Top Navigation</span>
                       </div>
                       <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed">
                         Dedicated to quick actions: camera capture on the left, brand logo in the center, and private direct messages on the right.
@@ -365,10 +346,10 @@ export const COURSES: Course[] = [
                     </div>
 
                     <!-- Zone 2 -->
-                    <div class="p-4 rounded-xs border-l-4 border-amber-500 bg-paper-50 dark:bg-dark-bg border border-ink-border dark:border-dark-border">
+                    <div class="p-4 rounded-xs border-l-2 border-amber-500 bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border">
                       <div class="flex items-center justify-between mb-1.5">
-                        <h4 class="font-sans font-bold text-base text-amber-800 dark:text-amber-300">2. Ephemeral Stories Carousel</h4>
-                        <span class="text-xs font-mono font-bold text-amber-800 dark:text-amber-300">Horizontal Rail</span>
+                        <h4 class="font-sans font-bold text-base text-amber-800 dark:text-amber-400">2. Ephemeral Stories Carousel</h4>
+                        <span class="text-xs font-mono font-bold text-amber-800 dark:text-amber-400">Horizontal Rail</span>
                       </div>
                       <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed">
                         Houses 24-hour casual media in a horizontal scroll rail, intentionally separated so it does not interrupt the permanent vertical feed below.
@@ -376,10 +357,10 @@ export const COURSES: Course[] = [
                     </div>
 
                     <!-- Zone 3 -->
-                    <div class="p-4 rounded-xs border-l-4 border-indigo-500 bg-paper-50 dark:bg-dark-bg border border-ink-border dark:border-dark-border">
+                    <div class="p-4 rounded-xs border-l-2 border-indigo-500 bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border">
                       <div class="flex items-center justify-between mb-1.5">
-                        <h4 class="font-sans font-bold text-base text-indigo-800 dark:text-indigo-300">3. Primary Consumption Feed</h4>
-                        <span class="text-xs font-mono font-bold text-indigo-800 dark:text-indigo-300">Vertical Canvas</span>
+                        <h4 class="font-sans font-bold text-base text-indigo-800 dark:text-indigo-400">3. Primary Consumption Feed</h4>
+                        <span class="text-xs font-mono font-bold text-indigo-800 dark:text-indigo-400">Vertical Canvas</span>
                       </div>
                       <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed">
                         The core reason users open the app: an infinite vertical stream of photos, videos, and comments from followed creators.
@@ -387,10 +368,10 @@ export const COURSES: Course[] = [
                     </div>
 
                     <!-- Zone 4 -->
-                    <div class="p-4 rounded-xs border-l-4 border-emerald-500 bg-paper-50 dark:bg-dark-bg border border-ink-border dark:border-dark-border">
+                    <div class="p-4 rounded-xs border-l-2 border-emerald-500 bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border">
                       <div class="flex items-center justify-between mb-1.5">
-                        <h4 class="font-sans font-bold text-base text-emerald-800 dark:text-emerald-300">4. Bottom Navigation Bar</h4>
-                        <span class="text-xs font-mono font-bold text-emerald-800 dark:text-emerald-300">Persistent Dock</span>
+                        <h4 class="font-sans font-bold text-base text-emerald-800 dark:text-emerald-400">4. Bottom Navigation Bar</h4>
+                        <span class="text-xs font-mono font-bold text-emerald-800 dark:text-emerald-400">Persistent Dock</span>
                       </div>
                       <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed">
                         The five core product destinations (Home, Search, Create, Activity, and Profile), permanently anchored within comfortable thumb reach.
@@ -399,14 +380,15 @@ export const COURSES: Course[] = [
 
                     <!-- Architectural Tree View -->
                     <div class="pt-4 border-t border-ink-border dark:border-dark-border">
-                      <div class="text-xs font-mono uppercase tracking-wider text-ink dark:text-dark-ink font-bold mb-2.5">
-                        // Hierarchical Tree Representation
+                      <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-wider text-ink dark:text-dark-ink font-bold mb-2.5">
+                        <svg class="w-3.5 h-3.5 text-sky-600 dark:text-sky-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
+                        <span>Hierarchical Tree Representation</span>
                       </div>
-                      <div class="p-3.5 rounded-xs bg-paper-100 dark:bg-dark-bg border border-ink-border dark:border-dark-border font-mono text-sm space-y-1.5 text-ink dark:text-dark-ink">
-                        <div class="text-sky-800 dark:text-sky-300 font-bold">1. Header (Camera, IGTV, Direct Messages)</div>
-                        <div class="text-amber-800 dark:text-amber-300 font-bold">2. Stories Carousel (Your Story, Following)</div>
-                        <div class="text-indigo-800 dark:text-indigo-300 font-bold">3. Main Stream (Media Card, Social Actions)</div>
-                        <div class="text-emerald-800 dark:text-emerald-300 font-bold">4. Global Tab Dock</div>
+                      <div class="p-3.5 rounded-xs bg-paper-100 dark:bg-dark-surface border border-ink-border dark:border-dark-border font-mono text-sm space-y-1.5 text-ink dark:text-dark-ink">
+                        <div class="text-sky-800 dark:text-sky-400 font-bold">1. Header (Camera, IGTV, Direct Messages)</div>
+                        <div class="text-amber-800 dark:text-amber-400 font-bold">2. Stories Carousel (Your Story, Following)</div>
+                        <div class="text-indigo-800 dark:text-indigo-400 font-bold">3. Main Stream (Media Card, Social Actions)</div>
+                        <div class="text-emerald-800 dark:text-emerald-400 font-bold">4. Global Tab Dock</div>
                         <div class="pl-4 font-sans text-xs sm:text-sm font-medium text-ink dark:text-dark-ink">4.1 Home &bull; 4.2 Explore &bull; 4.3 Post &bull; 4.4 Activity (Following / You) &bull; 4.5 Profile</div>
                       </div>
                     </div>
@@ -414,13 +396,7 @@ export const COURSES: Course[] = [
                 </div>
               </div>
 
-              <!-- Step 3: Interaction Design -->
-              <div class="mt-12 mb-4 flex items-center gap-2 not-prose">
-                <span class="px-3 py-1 rounded-full text-xs font-mono font-bold text-violet-800 dark:text-violet-300 border border-violet-500/50 bg-violet-500/10">
-                  Phase 03 // Behavior
-                </span>
-              </div>
-              <h2 id="sec-ixd" class="!mt-2">6. Phase 3: Interaction Design (Sketches & Wireframes)</h2>
+              <h2 id="sec-ixd">6. Phase 3: Interaction Design (Sketches & Wireframes)</h2>
               <p>
                 After deciding what content belongs on each screen, you map out how users move between them. This is called <strong>Interaction Design (IxD)</strong>.
               </p>
@@ -435,8 +411,8 @@ export const COURSES: Course[] = [
               <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
                 <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center shadow-2xs">
                   <img 
-                    src="\\${path('/images/lessons/sb-1-0/page_5_img_2.png')}" 
-                    alt="Whiteboard sketch showing early web layout ideation" 
+                    src="${path('/images/lessons/sb-1-0/whiteboard_wireframe_sketch.jpg')}" 
+                    alt="High-fidelity whiteboard sketch showing early web layout ideation and divergent thinking" 
                     class="w-full h-56 object-contain mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
                   />
                   <p class="text-xs sm:text-sm font-sans font-medium text-ink dark:text-dark-ink mt-3">
@@ -446,8 +422,8 @@ export const COURSES: Course[] = [
 
                 <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center shadow-2xs">
                   <img 
-                    src="\\${path('/images/lessons/sb-1-0/page_5_img_3.png')}" 
-                    alt="Mobile wireframe testing functional content flow" 
+                    src="${path('/images/lessons/sb-1-0/mobile_wireframe_screens.jpg')}" 
+                    alt="Structured mobile wireframe flow illustrating content hierarchy and touch targets" 
                     class="w-full h-56 object-contain mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
                   />
                   <p class="text-xs sm:text-sm font-sans font-medium text-ink dark:text-dark-ink mt-3">
@@ -456,13 +432,7 @@ export const COURSES: Course[] = [
                 </div>
               </div>
 
-              <!-- Step 4: Usability Testing -->
-              <div class="mt-12 mb-4 flex items-center gap-2 not-prose">
-                <span class="px-3 py-1 rounded-full text-xs font-mono font-bold text-amber-800 dark:text-amber-300 border border-amber-500/50 bg-amber-500/10">
-                  Phase 04 // Validation
-                </span>
-              </div>
-              <h2 id="sec-testing" class="!mt-2">7. Phase 4: Usability Testing (Catching Mistakes Early)</h2>
+              <h2 id="sec-testing">7. Phase 4: Usability Testing (Catching Mistakes Early)</h2>
               <p>
                 Once wireframes are linked together into a clickable prototype, it is time to put your ideas to the test. In <strong>Usability Testing</strong>, you sit down with representative users, give them realistic tasks (such as <em>"Try finding a hotel room under $150 and reserving it"</em>), and observe where they hesitate, tap by mistake, or become confused.
               </p>
@@ -473,67 +443,62 @@ export const COURSES: Course[] = [
               <!-- Cost of Change Comparison Matrix -->
               <div class="my-8 p-6 sm:p-8 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose shadow-xs">
                 <div class="flex items-center justify-between pb-4 mb-5 border-b border-ink-border dark:border-dark-border">
-                  <span class="text-xs font-mono uppercase tracking-wider text-amber-800 dark:text-amber-300 font-bold">
-                    // The Law of Iteration Economics
-                  </span>
+                  <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-wider text-amber-800 dark:text-amber-400 font-bold">
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    <span>The Law of Iteration Economics</span>
+                  </div>
                   <span class="text-xs sm:text-sm font-mono font-bold text-ink dark:text-dark-ink">Why Early Testing Wins</span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
                   <!-- Stage 1 -->
-                  <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-bg border border-ink-border dark:border-dark-border shadow-2xs">
+                  <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
                     <div class="flex items-center justify-between mb-2">
-                      <span class="text-xs font-mono text-emerald-800 dark:text-emerald-300 font-bold uppercase">Stage 1</span>
-                      <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                      <span class="text-xs font-sans text-emerald-800 dark:text-emerald-400 font-bold uppercase">Stage 1</span>
+                      <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
                     </div>
                     <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1.5">Sketches & Paper</h4>
                     <p class="text-sm text-ink dark:text-dark-ink mb-3 leading-relaxed">
                       Rough pen-and-paper diagrams testing basic structural concepts.
                     </p>
-                    <div class="text-sm font-mono font-bold text-emerald-800 dark:text-emerald-300 pt-2.5 border-t border-ink-border dark:border-dark-border">
+                    <div class="text-sm font-mono font-bold text-emerald-800 dark:text-emerald-400 pt-2.5 border-t border-ink-border dark:border-dark-border">
                       Cost to revise: Minutes
                     </div>
                   </div>
 
                   <!-- Stage 2 -->
-                  <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-bg border-2 border-amber-500 shadow-xs">
+                  <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-surface border-2 border-amber-500 shadow-xs">
                     <div class="flex items-center justify-between mb-2">
-                      <span class="text-xs font-mono text-amber-800 dark:text-amber-300 font-bold uppercase">Stage 2</span>
-                      <span class="w-2 h-2 rounded-full bg-amber-600"></span>
+                      <span class="text-xs font-sans text-amber-800 dark:text-amber-400 font-bold uppercase">Stage 2</span>
+                      <svg class="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="m13 13 6 6"/></svg>
                     </div>
                     <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1.5">Clickable Prototypes</h4>
                     <p class="text-sm text-ink dark:text-dark-ink mb-3 leading-relaxed">
                       Interactive wireframes evaluated directly with real end-users.
                     </p>
-                    <div class="text-sm font-mono font-bold text-amber-800 dark:text-amber-300 pt-2.5 border-t border-ink-border dark:border-dark-border">
+                    <div class="text-sm font-mono font-bold text-amber-800 dark:text-amber-400 pt-2.5 border-t border-ink-border dark:border-dark-border">
                       Ideal Window to Catch Flaws
                     </div>
                   </div>
 
                   <!-- Stage 3 -->
-                  <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-bg border border-ink-border dark:border-dark-border shadow-2xs">
+                  <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
                     <div class="flex items-center justify-between mb-2">
-                      <span class="text-xs font-mono text-rose-800 dark:text-rose-300 font-bold uppercase">Stage 3</span>
-                      <span class="w-2 h-2 rounded-full bg-rose-600"></span>
+                      <span class="text-xs font-sans text-rose-800 dark:text-rose-400 font-bold uppercase">Stage 3</span>
+                      <svg class="w-3.5 h-3.5 text-rose-600 dark:text-rose-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                     </div>
                     <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1.5">Production Code</h4>
                     <p class="text-sm text-ink dark:text-dark-ink mb-3 leading-relaxed">
                       Fully engineered software running on live production servers.
                     </p>
-                    <div class="text-sm font-mono font-bold text-rose-800 dark:text-rose-300 pt-2.5 border-t border-ink-border dark:border-dark-border">
+                    <div class="text-sm font-mono font-bold text-rose-800 dark:text-rose-400 pt-2.5 border-t border-ink-border dark:border-dark-border">
                       Cost to revise: Weeks & High Budget
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Step 5: Visual Design -->
-              <div class="mt-12 mb-4 flex items-center gap-2 not-prose">
-                <span class="px-3 py-1 rounded-full text-xs font-mono font-bold text-emerald-800 dark:text-emerald-300 border border-emerald-500/50 bg-emerald-500/10">
-                  Phase 05 // Surface Craft
-                </span>
-              </div>
-              <h2 id="sec-visual" class="!mt-2">8. Phase 5: Visual & UI Design (Design Systems & Voice UI)</h2>
+              <h2 id="sec-visual">8. Phase 5: Visual & UI Design (Design Systems & Voice UI)</h2>
               <p>
                 When user testing proves that the navigation and interactive flows work smoothly, designers focus on <strong>Visual & UI Design</strong>. This is the visual surface that users touch and see: typographic hierarchy, harmonious color palettes, comfortable spacing, crisp icons, and high-quality photography.
               </p>
@@ -544,8 +509,8 @@ export const COURSES: Course[] = [
               <!-- Design System Exhibit -->
               <div class="my-8 p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center not-prose shadow-2xs">
                 <img 
-                  src="\\${path('/images/lessons/sb-1-0/page_7_img_2.png')}" 
-                  alt="A foundational design system library illustrating buttons, color tokens, and typographic styles" 
+                  src="${path('/images/lessons/sb-1-0/design_system_spec.jpg')}" 
+                  alt="Design system specification illustrating component states, color tokens, and typography" 
                   class="max-w-md mx-auto rounded-xs border border-ink-border dark:border-dark-border shadow-xs"
                 />
                 <p class="text-xs sm:text-sm font-sans font-medium text-ink dark:text-dark-ink mt-3">
@@ -565,9 +530,9 @@ export const COURSES: Course[] = [
 
               <!-- Career Paths Comparative Matrix - Clear Black High Contrast -->
               <div class="my-8 overflow-x-auto not-prose">
-                <table class="w-full text-left text-sm sm:text-[15px] font-sans border-collapse border-y-2 border-ink dark:border-dark-ink">
+                <table class="w-full text-left text-sm sm:text-[15px] font-sans border-collapse border-y border-ink-border dark:border-dark-border">
                   <thead>
-                    <tr class="border-b-2 border-ink dark:border-dark-ink text-xs sm:text-sm font-mono uppercase tracking-wider text-ink dark:text-dark-ink font-bold">
+                    <tr class="border-b border-ink-border dark:border-dark-border text-xs sm:text-sm font-mono uppercase tracking-wider text-ink dark:text-dark-ink font-bold">
                       <th class="py-3.5 pr-4">Career Archetype</th>
                       <th class="py-3.5 px-4">Core Responsibility</th>
                       <th class="py-3.5 px-4">Ideal Environment</th>
@@ -576,7 +541,7 @@ export const COURSES: Course[] = [
                   </thead>
                   <tbody class="divide-y divide-ink-border dark:divide-dark-border text-ink dark:text-dark-ink">
                     <tr>
-                      <td class="py-4 pr-4 font-mono font-bold text-blue-800 dark:text-blue-300">
+                      <td class="py-4 pr-4 font-mono font-bold text-blue-800 dark:text-blue-400">
                         Generalist
                       </td>
                       <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
@@ -590,7 +555,7 @@ export const COURSES: Course[] = [
                       </td>
                     </tr>
                     <tr>
-                      <td class="py-4 pr-4 font-mono font-bold text-violet-800 dark:text-violet-300">
+                      <td class="py-4 pr-4 font-mono font-bold text-violet-800 dark:text-violet-400">
                         Specialist
                       </td>
                       <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
@@ -604,7 +569,7 @@ export const COURSES: Course[] = [
                       </td>
                     </tr>
                     <tr>
-                      <td class="py-4 pr-4 font-mono font-bold text-emerald-800 dark:text-emerald-300">
+                      <td class="py-4 pr-4 font-mono font-bold text-emerald-800 dark:text-emerald-400">
                         T-Shaped
                       </td>
                       <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
@@ -618,7 +583,7 @@ export const COURSES: Course[] = [
                       </td>
                     </tr>
                     <tr>
-                      <td class="py-4 pr-4 font-mono font-bold text-amber-800 dark:text-amber-300">
+                      <td class="py-4 pr-4 font-mono font-bold text-amber-800 dark:text-amber-400">
                         M-Shaped
                       </td>
                       <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
@@ -648,28 +613,29 @@ export const COURSES: Course[] = [
               <div class="mt-14 pt-6 border-t border-ink-border dark:border-dark-border flex flex-col sm:flex-row items-start sm:items-center justify-between text-sm font-sans text-ink dark:text-dark-ink gap-4 not-prose">
                 <div class="flex items-center gap-3.5">
                   <img 
-                    src="\\${path('/images/lessons/sb-1-0/page_8_img_2.png')}" 
+                    src="${path('/images/lessons/sb-1-0/page_8_img_2.png')}" 
                     alt="Laurel Hechanova" 
                     class="w-12 h-12 rounded-full object-cover border border-ink-border dark:border-dark-border shrink-0" 
                   />
                   <div>
-                    <span class="font-mono text-xs uppercase tracking-wider text-teal-800 dark:text-teal-300 font-bold block mb-0.5">// Curriculum Citation</span>
+                    <div class="flex items-center gap-1.5 font-sans text-xs uppercase tracking-wider text-teal-800 dark:text-teal-400 font-bold mb-0.5">
+                      <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+                      <span>Curriculum Citation</span>
+                    </div>
                     <span class="text-ink dark:text-dark-ink font-medium">Adapted for sovereign study inspired by <em>Introduction to UX Design</em> by <strong>Laurel Hechanova</strong> (Co-founder of Goodmaker, Springboard UX Track).</span>
                   </div>
                 </div>
                 <a 
-                  href="https://readwise.io/reader/document_raw_content/490658744" 
+                  href="https://eadwise.io/reader/document_raw_content/490658744" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  class="font-ui font-medium text-xs text-ink dark:text-dark-ink hover:underline underline-offset-4 shrink-0 flex items-center gap-1 border border-ink-border dark:border-dark-border px-3 py-1.5 rounded-xs bg-paper-50 dark:bg-dark-card hover:bg-paper-100"
+                  class="font-ui font-medium text-xs text-ink dark:text-dark-ink hover:underline underline-offset-4 shrink-0 flex items-center gap-1 border border-ink-border dark:border-dark-border px-3 py-1.5 rounded-xs bg-paper-50 dark:bg-dark-card hover:bg-paper-100 dark:hover:bg-dark-surface"
                 >
                   <span>Original Source</span>
                   <span>↗</span>
                 </a>
               </div>
-            
-            
-            
+
             `,
           },
           {
@@ -681,7 +647,7 @@ export const COURSES: Course[] = [
             lessonNumber: '1.1',
             type: 'article',
             readTime: '24 min',
-            originalSourceUrl: 'https://www.springboard.com/blog/design/ux-design-process/',
+            originalSourceUrl: 'https://ww.springboard.com/blog/design/ux-design-process/',
             originalSourceLabel: 'Sakshi Gupta (Design Researcher & Strategist)',
             
             summaryQuote: 'The UX design process is a disciplined journey from an ambiguous problem to a validated digital solution, grounding every interface choice in real human behavior.',
@@ -769,17 +735,17 @@ export const COURSES: Course[] = [
 
     <!-- Industry Metrics Card -->
     <div class="my-10 p-6 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-4">
-      <div class="flex items-center gap-2 font-mono text-xs text-amber-800 dark:text-amber-300 font-bold uppercase tracking-wider">
-        <span>// Industry Benchmarks & Economic Value</span>
+      <div class="flex items-center gap-2 font-mono text-xs text-amber-800 dark:text-amber-400 font-bold uppercase tracking-wider">
+        <span>Industry Benchmarks & Economic Value</span>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
-        <div class="p-4 rounded-xs bg-white dark:bg-dark-bg border border-ink-border/80 dark:border-dark-border">
+        <div class="p-4 rounded-xs bg-white dark:bg-dark-surface border border-ink-border/80 dark:border-dark-border">
           <strong class="text-ink dark:text-dark-ink block text-sm font-sans mb-1 font-bold">LinkedIn In-Demand Index</strong>
           <p class="text-xs sm:text-sm text-ink dark:text-dark-ink font-serif leading-relaxed">
             Consistently ranks in the highest bracket of sought-after technical skills across enterprise software, consumer apps, healthcare, and fintech.
           </p>
         </div>
-        <div class="p-4 rounded-xs bg-white dark:bg-dark-bg border border-ink-border/80 dark:border-dark-border">
+        <div class="p-4 rounded-xs bg-white dark:bg-dark-surface border border-ink-border/80 dark:border-dark-border">
           <strong class="text-ink dark:text-dark-ink block text-sm font-sans mb-1 font-bold">Glassdoor Top 25 Careers</strong>
           <p class="text-xs sm:text-sm text-ink dark:text-dark-ink font-serif leading-relaxed">
             Celebrated for high career mobility, competitive compensation, remote flexibility, and cross-functional executive leadership pathways.
@@ -803,8 +769,8 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
       <p>"UX design goes far beyond cosmetic styling; it anchors technical decisions in observable human behavior, ensuring that human goals and business objectives converge effortlessly."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-300 font-bold tracking-wide uppercase">
-        // Core Philosophy &mdash; Sakshi Gupta
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
+        Core Philosophy &mdash; Sakshi Gupta
       </footer>
     </blockquote>
 
@@ -827,8 +793,8 @@ export const COURSES: Course[] = [
         <thead>
           <tr class="border-b border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-card">
             <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-ink dark:text-dark-ink">Dimension</th>
-            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-300">UX Design (Experience)</th>
-            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-indigo-800 dark:text-indigo-300">UI Design (Interface)</th>
+            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-400">UX Design (Experience)</th>
+            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-indigo-800 dark:text-indigo-400">UI Design (Interface)</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-ink-border/60 dark:divide-dark-border/60">
@@ -862,9 +828,9 @@ export const COURSES: Course[] = [
     </p>
 
     <div class="my-8 space-y-4 not-prose">
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-amber-500 shadow-2xs">
+      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-2 border-l-amber-500 shadow-2xs">
         <div class="flex items-center justify-between mb-1.5">
-          <span class="font-mono text-xs font-bold text-amber-800 dark:text-amber-300 uppercase">Stage 01 // Define</span>
+          <span class="font-mono text-xs font-bold text-amber-800 dark:text-amber-400 uppercase">Stage 01 Define</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Alignment & Scope</span>
         </div>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Define the Core Challenge</h4>
@@ -873,9 +839,9 @@ export const COURSES: Course[] = [
         </p>
       </div>
 
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-teal-500 shadow-2xs">
+      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-2 border-l-teal-500 shadow-2xs">
         <div class="flex items-center justify-between mb-1.5">
-          <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-300 uppercase">Stage 02 // Research</span>
+          <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase">Stage 02 Research</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Contextual Inquiry</span>
         </div>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Discover User Realities</h4>
@@ -884,9 +850,9 @@ export const COURSES: Course[] = [
         </p>
       </div>
 
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-sky-500 shadow-2xs">
+      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-2 border-l-sky-500 shadow-2xs">
         <div class="flex items-center justify-between mb-1.5">
-          <span class="font-mono text-xs font-bold text-sky-800 dark:text-sky-300 uppercase">Stage 03 // Analyze</span>
+          <span class="font-mono text-xs font-bold text-sky-800 dark:text-sky-400 uppercase">Stage 03 Analyze</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Synthesis & Scenarios</span>
         </div>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Map Personas and Journeys</h4>
@@ -895,9 +861,9 @@ export const COURSES: Course[] = [
         </p>
       </div>
 
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-indigo-500 shadow-2xs">
+      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-2 border-l-indigo-500 shadow-2xs">
         <div class="flex items-center justify-between mb-1.5">
-          <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-300 uppercase">Stage 04 // Design</span>
+          <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase">Stage 04 Design</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Architecture & Prototypes</span>
         </div>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Construct Wireframes & Interactive Prototypes</h4>
@@ -906,9 +872,9 @@ export const COURSES: Course[] = [
         </p>
       </div>
 
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-rose-500 shadow-2xs">
+      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-2 border-l-rose-500 shadow-2xs">
         <div class="flex items-center justify-between mb-1.5">
-          <span class="font-mono text-xs font-bold text-rose-800 dark:text-rose-300 uppercase">Stage 05 // Validate</span>
+          <span class="font-mono text-xs font-bold text-rose-800 dark:text-rose-400 uppercase">Stage 05 Validate</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Empirical Testing</span>
         </div>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Test with Real Participants</h4>
@@ -980,7 +946,7 @@ export const COURSES: Course[] = [
 
     <!-- Socratic Callout -->
     <aside class="my-10 p-5 rounded-xs border-l-3 border-teal-600 dark:border-teal-500 bg-teal-500/5 text-ink dark:text-dark-ink space-y-2 not-prose">
-      <p class="font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-300 tracking-wider">// Reflection Inquiry</p>
+      <p class="font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-400 tracking-wider">Reflection Inquiry</p>
       <p class="font-serif text-sm sm:text-base leading-relaxed">
         Why is it dangerous to treat the UX design process as a strict linear conveyor belt? How does circling back between prototyping and user research actually save engineering capital?
       </p>
@@ -1014,7 +980,7 @@ export const COURSES: Course[] = [
           This comprehensive editorial study guide is synthesized from the official curriculum publication <em>"What Is the UX Design Process? 8 Steps Explained in Detail"</em> by Sakshi Gupta at Springboard.
         </p>
         <a 
-          href="https://www.springboard.com/blog/design/ux-design-process/" 
+          href="https://ww.springboard.com/blog/design/ux-design-process/" 
           target="_blank" 
           rel="noopener noreferrer" 
           class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:text-black dark:hover:text-white"
@@ -1036,7 +1002,7 @@ export const COURSES: Course[] = [
             lessonNumber: '1.2',
             type: 'article',
             readTime: '20 min',
-            originalSourceUrl: 'https://www.springboard.com/blog/design/ux-vs-ui/',
+            originalSourceUrl: 'https://ww.springboard.com/blog/design/ux-vs-ui/',
             originalSourceLabel: 'Jesse James Garrett & Don Norman (Foundations of HCI)',
             
             summaryQuote: 'UX design builds the structural architecture and behavioral pathways; UI design crafts the sensory affordances and visual surface.',
@@ -1108,8 +1074,8 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
       <p>"UI is the saddle, the stirrups, and the reins; UX is the feeling you have being able to ride the horse with mastery, comfort, and confidence."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-300 font-bold tracking-wide uppercase">
-        // Classic Design Axiom &mdash; Dain Miller
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
+        Classic Design Axiom &mdash; Dain Miller
       </footer>
     </blockquote>
 
@@ -1128,32 +1094,60 @@ export const COURSES: Course[] = [
     <p>
       Jesse James Garrett famously defined user experience as five interdependent planes built from bottom to top:
     </p>
-    <div class="my-8 grid grid-cols-1 sm:grid-cols-5 gap-3 not-prose text-center">
-      <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border">
-        <div class="font-mono text-xs text-teal-800 dark:text-teal-300 font-bold mb-1">01 // Base</div>
-        <div class="font-bold text-sm text-ink dark:text-dark-ink">Strategy</div>
-        <div class="text-xs text-ink/80 dark:text-dark-ink/80 mt-1">User needs & business goals</div>
-      </div>
-      <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border">
-        <div class="font-mono text-xs text-blue-800 dark:text-blue-300 font-bold mb-1">02</div>
-        <div class="font-bold text-sm text-ink dark:text-dark-ink">Scope</div>
-        <div class="text-xs text-ink/80 dark:text-dark-ink/80 mt-1">Features & content specs</div>
-      </div>
-      <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border">
-        <div class="font-mono text-xs text-amber-800 dark:text-amber-300 font-bold mb-1">03</div>
-        <div class="font-bold text-sm text-ink dark:text-dark-ink">Structure</div>
-        <div class="text-xs text-ink/80 dark:text-dark-ink/80 mt-1">IA & interaction design</div>
-      </div>
-      <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border">
-        <div class="font-mono text-xs text-indigo-800 dark:text-indigo-300 font-bold mb-1">04</div>
-        <div class="font-bold text-sm text-ink dark:text-dark-ink">Skeleton</div>
-        <div class="text-xs text-ink/80 dark:text-dark-ink/80 mt-1">Navigation & wireframes</div>
-      </div>
-      <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border">
-        <div class="font-mono text-xs text-rose-800 dark:text-rose-300 font-bold mb-1">05 // Top</div>
-        <div class="font-bold text-sm text-ink dark:text-dark-ink">Surface</div>
-        <div class="text-xs text-ink/80 dark:text-dark-ink/80 mt-1">Visual presentation (UI)</div>
-      </div>
+    <figure class="my-10 text-center not-prose">
+      <img 
+        src="${path('/images/lessons/sb-1-2/garrett_5_planes.jpg')}" 
+        alt="Jesse James Garrett's Five Planes of User Experience: Strategy, Scope, Structure, Skeleton, and Surface" 
+        class="w-full max-w-2xl mx-auto rounded-xs border border-ink-border shadow-xs dark:border-dark-border"
+      />
+      <figcaption class="text-xs font-mono text-ink-muted mt-3 dark:text-dark-muted">
+        Figure 1: Jesse James Garrett's Five Planes of UX &mdash; ascending from abstract human intent to concrete sensory surface.
+      </figcaption>
+    </figure>
+
+    <div class="my-8 border-y border-ink-border not-prose overflow-x-auto dark:border-dark-border">
+      <table class="w-full text-left text-sm font-sans border-collapse">
+        <thead>
+          <tr class="border-b border-ink-border text-xs font-mono uppercase tracking-wider text-ink font-bold bg-paper-100 dark:bg-dark-surface dark:text-dark-ink dark:border-dark-border">
+            <th class="py-3 px-4 w-12 text-center">Plane</th>
+            <th class="py-3 px-4 w-1/4">Architectural Level</th>
+            <th class="py-3 px-4">Core Deliverables & Specifications</th>
+            <th class="py-3 px-4 w-1/4">Key Question</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-ink-border text-ink dark:text-dark-ink dark:divide-dark-border">
+          <tr>
+            <td class="py-3 px-4 font-mono font-bold text-teal-800 text-center dark:text-teal-400">01</td>
+            <td class="py-3 px-4 font-semibold">Strategy Plane</td>
+            <td class="py-3 px-4 text-sm leading-relaxed">User research insights, business goals, success metrics, stakeholder alignment.</td>
+            <td class="py-3 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Why are we building this, and for whom?</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 font-mono font-bold text-blue-800 text-center dark:text-blue-400">02</td>
+            <td class="py-3 px-4 font-semibold">Scope Plane</td>
+            <td class="py-3 px-4 text-sm leading-relaxed">Functional specifications, content inventory, feature prioritization matrices.</td>
+            <td class="py-3 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">What exact features and content are required?</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 font-mono font-bold text-amber-800 text-center dark:text-amber-400">03</td>
+            <td class="py-3 px-4 font-semibold">Structure Plane</td>
+            <td class="py-3 px-4 text-sm leading-relaxed">Information architecture taxonomies, tree diagrams, interaction flowcharts.</td>
+            <td class="py-3 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">How does the user navigate between tasks?</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 font-mono font-bold text-indigo-800 text-center dark:text-indigo-400">04</td>
+            <td class="py-3 px-4 font-semibold">Skeleton Plane</td>
+            <td class="py-3 px-4 text-sm leading-relaxed">Interface wireframes, navigation mechanisms, information design layouts.</td>
+            <td class="py-3 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Where do buttons, lists, and controls sit?</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-4 font-mono font-bold text-rose-800 text-center dark:text-rose-400">05</td>
+            <td class="py-3 px-4 font-semibold">Surface Plane</td>
+            <td class="py-3 px-4 text-sm leading-relaxed">Visual design tokens, typographic hierarchy, color systems, tactile micro-animations.</td>
+            <td class="py-3 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">How does the final interface look and feel?</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <p>
       Notice that UI occupies the <strong>Surface</strong> plane—the final, visible culmination of the preceding four structural planes. If the Strategy, Scope, Structure, or Skeleton are broken, the most exquisite Surface styling cannot rescue the product.
@@ -1196,8 +1190,8 @@ export const COURSES: Course[] = [
         <thead>
           <tr class="border-b border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-card">
             <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-ink dark:text-dark-ink">Category</th>
-            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-300">UX Designer</th>
-            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-indigo-800 dark:text-indigo-300">UI Designer</th>
+            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-400">UX Designer</th>
+            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-indigo-800 dark:text-indigo-400">UI Designer</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-ink-border/60 dark:divide-dark-border/60">
@@ -1272,7 +1266,7 @@ export const COURSES: Course[] = [
           Synthesized from the foundational curriculum publication <em>"UX vs. UI: The Difference Between UX and UI Design(ers)"</em> by the Springboard Editorial Team.
         </p>
         <a 
-          href="https://www.springboard.com/blog/design/ux-vs-ui/" 
+          href="https://ww.springboard.com/blog/design/ux-vs-ui/" 
           target="_blank" 
           rel="noopener noreferrer" 
           class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:text-black dark:hover:text-white"
@@ -1294,7 +1288,7 @@ export const COURSES: Course[] = [
             lessonNumber: '1.3',
             type: 'video',
             readTime: '18 min',
-            originalSourceUrl: 'https://www.nngroup.com/videos/design-thinking-101/',
+            originalSourceUrl: 'https://ww.nngroup.com/videos/design-thinking-101/',
             originalSourceLabel: 'Sarah Gibbons (Chief Designer, Nielsen Norman Group)',
             youtubeId: '6lmvCqvmjfE',
             summaryQuote: 'Design thinking is not a rigid linear checklist; it is an iterative mindset grounded in deep empathy and divergent-convergent exploration.',
@@ -1375,7 +1369,7 @@ export const COURSES: Course[] = [
 
     <div data-timestamp="0" class="my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all">
       <div class="flex items-center justify-between gap-2 mb-2">
-        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-300 uppercase">// Video Timestamp Section</span>
+        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase">Video Timestamp Section</span>
         <button class="timestamp-btn font-mono text-xs px-2.5 py-1 rounded bg-paper-200 dark:bg-dark-border text-ink dark:text-dark-ink font-bold cursor-pointer hover:bg-paper-300 dark:hover:bg-dark-border/80 transition-colors" data-seek-time="0">
           00:00 &mdash; Play Lecture Intro
         </button>
@@ -1389,27 +1383,27 @@ export const COURSES: Course[] = [
     <!-- The 5 Stages Visual Grid -->
     <div class="my-10 grid grid-cols-1 sm:grid-cols-5 gap-3 not-prose text-center">
       <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-teal-500">
-        <div class="font-mono text-xs text-teal-800 dark:text-teal-300 font-bold mb-1">01</div>
+        <div class="font-mono text-xs text-teal-800 dark:text-teal-400 font-bold mb-1">01</div>
         <div class="font-bold text-sm text-ink dark:text-dark-ink">Empathize</div>
         <div class="text-xs text-ink/80 dark:text-dark-ink/80 mt-1">Listen & observe</div>
       </div>
       <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-blue-500">
-        <div class="font-mono text-xs text-blue-800 dark:text-blue-300 font-bold mb-1">02</div>
+        <div class="font-mono text-xs text-blue-800 dark:text-blue-400 font-bold mb-1">02</div>
         <div class="font-bold text-sm text-ink dark:text-dark-ink">Define</div>
         <div class="text-xs text-ink/80 dark:text-dark-ink/80 mt-1">Frame the friction</div>
       </div>
       <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-amber-500">
-        <div class="font-mono text-xs text-amber-800 dark:text-amber-300 font-bold mb-1">03</div>
+        <div class="font-mono text-xs text-amber-800 dark:text-amber-400 font-bold mb-1">03</div>
         <div class="font-bold text-sm text-ink dark:text-dark-ink">Ideate</div>
         <div class="text-xs text-ink/80 dark:text-dark-ink/80 mt-1">Brainstorm widely</div>
       </div>
       <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-indigo-500">
-        <div class="font-mono text-xs text-indigo-800 dark:text-indigo-300 font-bold mb-1">04</div>
+        <div class="font-mono text-xs text-indigo-800 dark:text-indigo-400 font-bold mb-1">04</div>
         <div class="font-bold text-sm text-ink dark:text-dark-ink">Prototype</div>
         <div class="text-xs text-ink/80 dark:text-dark-ink/80 mt-1">Build test models</div>
       </div>
       <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-rose-500">
-        <div class="font-mono text-xs text-rose-800 dark:text-rose-300 font-bold mb-1">05</div>
+        <div class="font-mono text-xs text-rose-800 dark:text-rose-400 font-bold mb-1">05</div>
         <div class="font-bold text-sm text-ink dark:text-dark-ink">Test</div>
         <div class="text-xs text-ink/80 dark:text-dark-ink/80 mt-1">Validate with users</div>
       </div>
@@ -1418,7 +1412,7 @@ export const COURSES: Course[] = [
     <!-- Stage 1 -->
     <div data-timestamp="90" class="my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all">
       <div class="flex items-center justify-between gap-2 mb-2">
-        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-300 uppercase">// Video Timestamp Section</span>
+        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase">Video Timestamp Section</span>
         <button class="timestamp-btn font-mono text-xs px-2.5 py-1 rounded bg-paper-200 dark:bg-dark-border text-ink dark:text-dark-ink font-bold cursor-pointer hover:bg-paper-300 dark:hover:bg-dark-border/80 transition-colors" data-seek-time="90">
           01:30 &mdash; Jump to Empathy Phase
         </button>
@@ -1435,7 +1429,7 @@ export const COURSES: Course[] = [
     <!-- Stage 2 -->
     <div data-timestamp="210" class="my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all">
       <div class="flex items-center justify-between gap-2 mb-2">
-        <span class="font-mono text-xs font-bold text-blue-800 dark:text-blue-300 uppercase">// Video Timestamp Section</span>
+        <span class="font-mono text-xs font-bold text-blue-800 dark:text-blue-400 uppercase">Video Timestamp Section</span>
         <button class="timestamp-btn font-mono text-xs px-2.5 py-1 rounded bg-paper-200 dark:bg-dark-border text-ink dark:text-dark-ink font-bold cursor-pointer hover:bg-paper-300 dark:hover:bg-dark-border/80 transition-colors" data-seek-time="210">
           03:30 &mdash; Jump to Define Phase
         </button>
@@ -1444,8 +1438,8 @@ export const COURSES: Course[] = [
       <p class="font-serif text-base sm:text-lg text-ink dark:text-dark-ink leading-relaxed">
         In the Define phase, you synthesize messy field observations into a tight, actionable problem statement known as a <strong>Point-of-View (POV)</strong>.
       </p>
-      <div class="my-4 p-4 rounded-xs bg-white dark:bg-dark-bg border border-ink-border/60 dark:border-dark-border font-serif text-sm">
-        <strong class="font-sans text-xs uppercase font-bold text-blue-800 dark:text-blue-300 block mb-1">// Standard POV Formula</strong>
+      <div class="my-4 p-4 rounded-xs bg-white dark:bg-dark-surface border border-ink-border/60 dark:border-dark-border font-serif text-sm">
+        <strong class="font-sans text-xs uppercase font-bold text-blue-800 dark:text-blue-400 block mb-1">Standard POV Formula</strong>
         <p class="italic text-ink dark:text-dark-ink">"[User description] needs a way to [user need] because surprisingly, [unexpected insight uncovered in research]."</p>
       </div>
       <p class="font-serif text-base text-ink dark:text-dark-ink leading-relaxed">
@@ -1456,7 +1450,7 @@ export const COURSES: Course[] = [
     <!-- Stage 3 -->
     <div data-timestamp="330" class="my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all">
       <div class="flex items-center justify-between gap-2 mb-2">
-        <span class="font-mono text-xs font-bold text-amber-800 dark:text-amber-300 uppercase">// Video Timestamp Section</span>
+        <span class="font-mono text-xs font-bold text-amber-800 dark:text-amber-400 uppercase">Video Timestamp Section</span>
         <button class="timestamp-btn font-mono text-xs px-2.5 py-1 rounded bg-paper-200 dark:bg-dark-border text-ink dark:text-dark-ink font-bold cursor-pointer hover:bg-paper-300 dark:hover:bg-dark-border/80 transition-colors" data-seek-time="330">
           05:30 &mdash; Jump to Ideation Phase
         </button>
@@ -1473,7 +1467,7 @@ export const COURSES: Course[] = [
     <!-- Stage 4 & 5 -->
     <div data-timestamp="450" class="my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all">
       <div class="flex items-center justify-between gap-2 mb-2">
-        <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-300 uppercase">// Video Timestamp Section</span>
+        <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase">Video Timestamp Section</span>
         <button class="timestamp-btn font-mono text-xs px-2.5 py-1 rounded bg-paper-200 dark:bg-dark-border text-ink dark:text-dark-ink font-bold cursor-pointer hover:bg-paper-300 dark:hover:bg-dark-border/80 transition-colors" data-seek-time="450">
           07:30 &mdash; Jump to Prototype & Test
         </button>
@@ -1490,8 +1484,8 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
       <p>"Fail early, fail cheaply, and fail in a mockup rather than in production code. A prototype is a conversation piece with the user's subconscious mind."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-300 font-bold tracking-wide uppercase">
-        // Sarah Gibbons &mdash; Nielsen Norman Group
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
+        Sarah Gibbons &mdash; Nielsen Norman Group
       </footer>
     </blockquote>
 
@@ -1499,9 +1493,20 @@ export const COURSES: Course[] = [
     <p>
       The British Design Council visualized Design Thinking as two interconnected diamonds:
     </p>
+    <figure class="my-10 text-center not-prose">
+      <img 
+        src="${path('/images/lessons/sb-1-3/double_diamond_framework.jpg')}" 
+        alt="The Double Diamond Design Model illustrating alternating divergent and convergent phases across problem and solution spaces" 
+        class="w-full max-w-2xl mx-auto rounded-xs border border-ink-border shadow-xs dark:border-dark-border"
+      />
+      <figcaption class="text-xs font-mono text-ink-muted mt-3 dark:text-dark-muted">
+        Figure 1: The Double Diamond Framework &mdash; Discover, Define, Develop, Deliver (British Design Council).
+      </figcaption>
+    </figure>
+
     <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-300 uppercase block mb-1">Diamond 01 // Problem Space</span>
+        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase block mb-1">Diamond 01 Problem Space</span>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">Discover & Define</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           You first expand outward (diverge) to explore all possible facets of user pain, then focus inward (converge) onto the single high-impact problem to solve.
@@ -1509,7 +1514,7 @@ export const COURSES: Course[] = [
       </div>
 
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-300 uppercase block mb-1">Diamond 02 // Solution Space</span>
+        <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase block mb-1">Diamond 02 Solution Space</span>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">Develop & Deliver</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           You expand outward again (diverge) to generate dozens of radical solution prototypes, then converge onto the validated design that will be handed off to engineering.
@@ -1533,7 +1538,7 @@ export const COURSES: Course[] = [
           Synthesized from the definitive video masterclass and publication <em>"Design Thinking 101"</em> by Sarah Gibbons at Nielsen Norman Group.
         </p>
         <a 
-          href="https://www.nngroup.com/articles/design-thinking/" 
+          href="https://ww.nngroup.com/articles/design-thinking/" 
           target="_blank" 
           rel="noopener noreferrer" 
           class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:text-black dark:hover:text-white"
@@ -1555,7 +1560,7 @@ export const COURSES: Course[] = [
             lessonNumber: '1.4',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://www.youtube.com/watch?v=TtgegZfk5ZU',
+            originalSourceUrl: 'https://ww.youtube.com/watch?v=TtgegZfk5ZU',
             originalSourceLabel: 'The Strategy Group (Innovation & Design Strategy)',
             youtubeId: 'TtgegZfk5ZU',
             summaryQuote: 'Design thinking balances human desirability, technical feasibility, and business viability to create products people genuinely love.',
@@ -1601,37 +1606,37 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Design thinking is an iterative, non-linear methodology that teams use to understand users, challenge assumptions, redefine problems, and create innovative solutions. Rather than starting with technical constraints or business models, design thinking begins with human empathy.
   </p>
 
-  <h2 id="dt-intro" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Innovation Sweet Spot: Desirability, Viability, Feasibility</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="dt-intro" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. The Innovation Sweet Spot: Desirability, Viability, Feasibility</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Truly successful innovations exist strictly at the intersection of three competing forces:
   </p>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-5 my-6 not-prose">
-    <div class="p-5 border border-ink-border bg-paper-50 rounded-xs">
-      <span class="font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-300 block mb-1">Human Desirability</span>
-      <h4 class="font-bold text-base text-ink mb-2">Do People Want This?</h4>
-      <p class="text-sm text-ink-muted">Does the product solve a real human pain point, match mental models, and provide genuine emotional relief?</p>
+    <div class="p-5 border border-ink-border bg-paper-50 rounded-xs dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-400 block mb-1">Human Desirability</span>
+      <h4 class="font-bold text-base text-ink mb-2 dark:text-dark-ink">Do People Want This?</h4>
+      <p class="text-sm text-ink-muted dark:text-dark-muted">Does the product solve a real human pain point, match mental models, and provide genuine emotional relief?</p>
     </div>
-    <div class="p-5 border border-ink-border bg-paper-50 rounded-xs">
-      <span class="font-mono text-xs uppercase font-bold text-sky-800 dark:text-sky-300 block mb-1">Technical Feasibility</span>
-      <h4 class="font-bold text-base text-ink mb-2">Can We Build This?</h4>
-      <p class="text-sm text-ink-muted">Can current technology, APIs, infrastructure, and engineering resources build this reliably within operational limits?</p>
+    <div class="p-5 border border-ink-border bg-paper-50 rounded-xs dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase font-bold text-sky-800 dark:text-sky-400 block mb-1">Technical Feasibility</span>
+      <h4 class="font-bold text-base text-ink mb-2 dark:text-dark-ink">Can We Build This?</h4>
+      <p class="text-sm text-ink-muted dark:text-dark-muted">Can current technology, APIs, infrastructure, and engineering resources build this reliably within operational limits?</p>
     </div>
-    <div class="p-5 border border-ink-border bg-paper-50 rounded-xs">
-      <span class="font-mono text-xs uppercase font-bold text-amber-800 dark:text-amber-300 block mb-1">Business Viability</span>
-      <h4 class="font-bold text-base text-ink mb-2">Should We Build This?</h4>
-      <p class="text-sm text-ink-muted">Does the unit economics work? Does this align with strategic company goals and generate sustainable value?</p>
+    <div class="p-5 border border-ink-border bg-paper-50 rounded-xs dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase font-bold text-amber-800 dark:text-amber-400 block mb-1">Business Viability</span>
+      <h4 class="font-bold text-base text-ink mb-2 dark:text-dark-ink">Should We Build This?</h4>
+      <p class="text-sm text-ink-muted dark:text-dark-muted">Does the unit economics work? Does this align with strategic company goals and generate sustainable value?</p>
     </div>
   </div>
 
-  <h2 id="dt-five-stages" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The Five Non-Linear Stages of Design Thinking</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="dt-five-stages" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. The Five Non-Linear Stages of Design Thinking</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Popularized by Stanford d.school and IDEO, design thinking moves between five interactive states:
   </p>
-  <ol class="list-decimal pl-6 space-y-3 text-ink">
+  <ol class="list-decimal pl-6 space-y-3 text-ink dark:text-dark-ink">
     <li><strong>Empathize:</strong> Research your users' authentic needs through unscripted observation, immersive interviews, and emotional immersion.</li>
     <li><strong>Define:</strong> Synthesize raw observations into a concise, human-centered problem statement (a Point of View or "How Might We" prompt).</li>
     <li><strong>Ideate:</strong> Brainstorm a wide range of wild, creative solutions without premature judgment.</li>
@@ -1639,22 +1644,22 @@ export const COURSES: Course[] = [
     <li><strong>Test:</strong> Place prototypes in front of real users to observe reactions, gather critique, and refine hypotheses.</li>
   </ol>
 
-  <h2 id="dt-programmatic-model" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Interactive Schema: The Divergent-Convergent Funnel</h2>
-  <div class="my-8 p-6 border border-ink-border bg-paper-100 rounded-xs not-prose">
-    <div class="text-xs font-mono uppercase tracking-widest text-ink font-bold mb-4">// Programmatic Architecture Model: Divergent vs Convergent Thinking</div>
+  <h2 id="dt-programmatic-model" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">3. Interactive Schema: The Divergent-Convergent Funnel</h2>
+  <div class="my-8 p-6 border border-ink-border bg-paper-100 rounded-xs not-prose dark:bg-dark-surface dark:border-dark-border">
+    <div class="text-xs font-mono uppercase tracking-widest text-ink font-bold mb-4 dark:text-dark-ink">Programmatic Architecture Model: Divergent vs Convergent Thinking</div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
-      <div class="p-4 bg-white border border-ink-border">
-        <span class="font-bold text-teal-800 block mb-2">Divergent Phase (Opening the Funnel)</span>
-        <ul class="space-y-1 text-ink-muted">
+      <div class="p-4 bg-white border border-ink-border dark:bg-dark-card dark:border-dark-border">
+        <span class="font-bold text-teal-800 block mb-2 dark:text-teal-400">Divergent Phase (Opening the Funnel)</span>
+        <ul class="space-y-1 text-ink-muted dark:text-dark-muted">
           <li>&bull; Questioning orthodoxies</li>
           <li>&bull; "Yes, and..." thinking</li>
           <li>&bull; Maximizing solution variety</li>
           <li>&bull; Suspension of technical constraints</li>
         </ul>
       </div>
-      <div class="p-4 bg-white border border-ink-border">
-        <span class="font-bold text-indigo-800 block mb-2">Convergent Phase (Closing the Funnel)</span>
-        <ul class="space-y-1 text-ink-muted">
+      <div class="p-4 bg-white border border-ink-border dark:bg-dark-card dark:border-dark-border">
+        <span class="font-bold text-indigo-800 block mb-2 dark:text-indigo-400">Convergent Phase (Closing the Funnel)</span>
+        <ul class="space-y-1 text-ink-muted dark:text-dark-muted">
           <li>&bull; Dot voting and prioritization</li>
           <li>&bull; Filtering by feasibility</li>
           <li>&bull; Synthesizing into concrete specs</li>
@@ -1664,20 +1669,20 @@ export const COURSES: Course[] = [
     </div>
   </div>
 
-  <h2 id="dt-mindsets" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">4. The Four Core Mindsets of Human-Centered Innovators</h2>
-  <ul class="list-disc pl-6 space-y-2 text-ink">
+  <h2 id="dt-mindsets" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">4. The Four Core Mindsets of Human-Centered Innovators</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li><strong>Show, Don't Tell:</strong> Communicate vision through quick sketches and clickable prototypes rather than abstract presentations.</li>
     <li><strong>Focus on Human Values:</strong> Empathy for the people you are designing for is your ultimate north star.</li>
     <li><strong>Craft Clarity:</strong> Produce clean, unambiguous problem definitions from messy, confusing reality.</li>
     <li><strong>Bias Toward Action:</strong> When in doubt, build something small and test it immediately rather than debating in conference rooms.</li>
   </ul>
 
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>What is Design Thinking?</em> by <strong>The Strategy Group</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=TtgegZfk5ZU" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">
+    <a href="https://ww.youtube.com/watch?v=TtgegZfk5ZU" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
       Original Lecture ↗
     </a>
   </div>
@@ -1694,7 +1699,7 @@ export const COURSES: Course[] = [
             lessonNumber: '1.5',
             type: 'article',
             readTime: '26 min study',
-            originalSourceUrl: 'https://www.nngroup.com/articles/design-thinking/',
+            originalSourceUrl: 'https://ww.nngroup.com/articles/design-thinking/',
             originalSourceLabel: 'Sarah Gibbons (Chief Designer, Nielsen Norman Group)',
             
             summaryQuote: 'Design thinking provides a common vocabulary and unified framework for multidisciplinary teams to tackle ambiguous problems together.',
@@ -1729,129 +1734,129 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Design thinking is not exclusive to designers; it is a shared framework for multidisciplinary problem-solving. In this masterclass from Nielsen Norman Group, Chief Designer Sarah Gibbons deconstructs how design thinking connects business strategy with human psychology.
   </p>
 
-  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-4 border-ink">
-    <p class="text-lg italic font-serif text-ink">
+  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-2 border-ink dark:bg-dark-card dark:border-dark-border">
+    <p class="text-lg italic font-serif text-ink dark:text-dark-ink">
       "Design thinking bridges the gap between what is technically possible and what is genuinely meaningful for human beings."
     </p>
-    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted">
+    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted dark:text-dark-muted">
       — Sarah Gibbons, Nielsen Norman Group
     </cite>
   </div>
 
-  <h2 id="dt-def" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Definition & Foundations of Design Thinking</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="dt-def" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. Definition & Foundations of Design Thinking</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Nielsen Norman Group defines design thinking as a human-centered, iterative approach to innovation that integrates the needs of people, the possibilities of technology, and the requirements for business success. Unlike traditional waterfall development, design thinking expects failure early and uses it as diagnostic data.
   </p>
 
-  <h2 id="dt-process-nng" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The 6-Phase NN/g Process Model</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="dt-process-nng" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. The 6-Phase NN/g Process Model</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     While some models group activities into 5 steps, NN/g structures design thinking into six distinct, interconnected phases divided across three buckets:
   </p>
 
   <div class="space-y-4 my-6 not-prose">
-    <div class="p-5 bg-white border border-ink-border rounded-xs">
-      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1">Bucket 1: Understand</span>
-      <h4 class="font-bold text-base text-ink mb-1">Phase 1: Empathize &bull; Phase 2: Define</h4>
-      <p class="text-sm text-ink-muted">Conduct field studies and user interviews to uncover what users need, feel, and say. Synthesize these inputs into actionable problem statements that do not dictate solutions.</p>
+    <div class="p-5 bg-white border border-ink-border rounded-xs dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1 dark:text-teal-400">Bucket 1: Understand</span>
+      <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Phase 1: Empathize &bull; Phase 2: Define</h4>
+      <p class="text-sm text-ink-muted dark:text-dark-muted">Conduct field studies and user interviews to uncover what users need, feel, and say. Synthesize these inputs into actionable problem statements that do not dictate solutions.</p>
     </div>
-    <div class="p-5 bg-white border border-ink-border rounded-xs">
-      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1">Bucket 2: Explore</span>
-      <h4 class="font-bold text-base text-ink mb-1">Phase 3: Ideate &bull; Phase 4: Prototype</h4>
-      <p class="text-sm text-ink-muted">Brainstorm unconstrained approaches. Select the most promising ideas and convert them immediately into tangible paper or digital wireframes to reveal trade-offs.</p>
+    <div class="p-5 bg-white border border-ink-border rounded-xs dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1 dark:text-indigo-400">Bucket 2: Explore</span>
+      <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Phase 3: Ideate &bull; Phase 4: Prototype</h4>
+      <p class="text-sm text-ink-muted dark:text-dark-muted">Brainstorm unconstrained approaches. Select the most promising ideas and convert them immediately into tangible paper or digital wireframes to reveal trade-offs.</p>
     </div>
-    <div class="p-5 bg-white border border-ink-border rounded-xs">
-      <span class="font-mono text-xs uppercase font-bold text-amber-800 block mb-1">Bucket 3: Materialize</span>
-      <h4 class="font-bold text-base text-ink mb-1">Phase 5: Test &bull; Phase 6: Implement</h4>
-      <p class="text-sm text-ink-muted">Observe representative end-users interacting with the prototype. Feed learnings back into the cycle, and hand off validated specifications to engineering.</p>
+    <div class="p-5 bg-white border border-ink-border rounded-xs dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase font-bold text-amber-800 block mb-1 dark:text-amber-400">Bucket 3: Materialize</span>
+      <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Phase 5: Test &bull; Phase 6: Implement</h4>
+      <p class="text-sm text-ink-muted dark:text-dark-muted">Observe representative end-users interacting with the prototype. Feed learnings back into the cycle, and hand off validated specifications to engineering.</p>
     </div>
   </div>
 
-  <h2 id="dt-wireframe-example" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Programmatic Wireframe: Low-Fidelity Rapid Ideation</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="dt-wireframe-example" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">3. Programmatic Wireframe: Low-Fidelity Rapid Ideation</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     In the Ideate and Prototype phases, designers avoid high-fidelity cosmetics. Below is an example of an editorial low-fidelity wireframe illustrating structural content zones:
   </p>
 
   <!-- PROGRAMMATIC WIREFRAME COMPONENT -->
-  <div class="my-8 max-w-sm mx-auto p-4 bg-white border-2 border-dashed border-ink-border rounded-xs shadow-sm not-prose font-mono text-xs">
+  <div class="my-8 max-w-sm mx-auto p-4 bg-white border-2 border-dashed border-ink-border rounded-xs shadow-sm not-prose font-mono text-xs dark:bg-dark-card dark:border-dark-border">
     <!-- Header -->
-    <div class="flex items-center justify-between pb-3 border-b border-ink-border">
-      <span class="w-5 h-5 bg-paper-200 border border-ink-border rounded-xs inline-block"></span>
-      <span class="font-bold tracking-wider text-ink">APP_HEADER</span>
-      <span class="w-5 h-5 bg-paper-200 border border-ink-border rounded-xs inline-block"></span>
+    <div class="flex items-center justify-between pb-3 border-b border-ink-border dark:border-dark-border">
+      <span class="w-5 h-5 bg-paper-200 border border-ink-border rounded-xs inline-block dark:bg-dark-border dark:border-dark-border"></span>
+      <span class="font-bold tracking-wider text-ink dark:text-dark-ink">APP_HEADER</span>
+      <span class="w-5 h-5 bg-paper-200 border border-ink-border rounded-xs inline-block dark:bg-dark-border dark:border-dark-border"></span>
     </div>
 
     <!-- Search Input Skeleton -->
-    <div class="my-3 p-2 bg-paper-100 border border-ink-border rounded-xs text-ink-muted flex items-center justify-between">
+    <div class="my-3 p-2 bg-paper-100 border border-ink-border rounded-xs text-ink-muted flex items-center justify-between dark:bg-dark-surface dark:text-dark-muted dark:border-dark-border">
       <span>[ Search courses or topics... ]</span>
       <span class="text-[10px] text-ink-border font-bold">ESC</span>
     </div>
 
     <!-- Hero Card Wireframe -->
-    <div class="my-3 p-4 bg-paper-50 border border-ink-border rounded-xs space-y-2">
-      <div class="h-4 bg-paper-200 w-3/4 rounded-2xs"></div>
-      <div class="h-2.5 bg-paper-200 w-full rounded-2xs"></div>
-      <div class="h-2.5 bg-paper-200 w-2/3 rounded-2xs"></div>
+    <div class="my-3 p-4 bg-paper-50 border border-ink-border rounded-xs space-y-2 dark:bg-dark-card dark:border-dark-border">
+      <div class="h-4 bg-paper-200 w-3/4 rounded-2xs dark:bg-dark-border"></div>
+      <div class="h-2.5 bg-paper-200 w-full rounded-2xs dark:bg-dark-border"></div>
+      <div class="h-2.5 bg-paper-200 w-2/3 rounded-2xs dark:bg-dark-border"></div>
       <div class="pt-2 flex gap-2">
         <span class="px-2 py-1 bg-ink text-white text-[10px] rounded-2xs font-bold">CTA_BUTTON</span>
-        <span class="px-2 py-1 border border-ink-border text-[10px] rounded-2xs">LEARN_MORE</span>
+        <span class="px-2 py-1 border border-ink-border text-[10px] rounded-2xs dark:border-dark-border">LEARN_MORE</span>
       </div>
     </div>
 
     <!-- Feed Items -->
     <div class="space-y-2 pt-2">
-      <div class="flex items-center gap-2 p-2 border border-ink-border bg-white rounded-xs">
-        <span class="w-8 h-8 bg-paper-200 border border-ink-border rounded-xs shrink-0"></span>
+      <div class="flex items-center gap-2 p-2 border border-ink-border bg-white rounded-xs dark:bg-dark-card dark:border-dark-border">
+        <span class="w-8 h-8 bg-paper-200 border border-ink-border rounded-xs shrink-0 dark:bg-dark-border dark:border-dark-border"></span>
         <div class="flex-1 space-y-1">
-          <div class="h-2.5 bg-paper-200 w-4/5"></div>
-          <div class="h-2 bg-paper-100 w-1/2"></div>
+          <div class="h-2.5 bg-paper-200 w-4/5 dark:bg-dark-border"></div>
+          <div class="h-2 bg-paper-100 w-1/2 dark:bg-dark-surface"></div>
         </div>
       </div>
-      <div class="flex items-center gap-2 p-2 border border-ink-border bg-white rounded-xs">
-        <span class="w-8 h-8 bg-paper-200 border border-ink-border rounded-xs shrink-0"></span>
+      <div class="flex items-center gap-2 p-2 border border-ink-border bg-white rounded-xs dark:bg-dark-card dark:border-dark-border">
+        <span class="w-8 h-8 bg-paper-200 border border-ink-border rounded-xs shrink-0 dark:bg-dark-border dark:border-dark-border"></span>
         <div class="flex-1 space-y-1">
-          <div class="h-2.5 bg-paper-200 w-3/5"></div>
-          <div class="h-2 bg-paper-100 w-2/5"></div>
+          <div class="h-2.5 bg-paper-200 w-3/5 dark:bg-dark-border"></div>
+          <div class="h-2 bg-paper-100 w-2/5 dark:bg-dark-surface"></div>
         </div>
       </div>
     </div>
 
     <!-- Tab Dock -->
-    <div class="mt-4 pt-3 border-t border-ink-border grid grid-cols-4 gap-1 text-center text-[10px] text-ink-muted">
-      <div class="font-bold text-ink">[Home]</div>
+    <div class="mt-4 pt-3 border-t border-ink-border grid grid-cols-4 gap-1 text-center text-[10px] text-ink-muted dark:text-dark-muted dark:border-dark-border">
+      <div class="font-bold text-ink dark:text-dark-ink">[Home]</div>
       <div>[Search]</div>
       <div>[Library]</div>
       <div>[Profile]</div>
     </div>
   </div>
-  <p class="text-xs font-sans text-ink-muted text-center mt-2">Figure: Clean programmatic wireframe demonstrating structural zone allocation before visual design.</p>
+  <p class="text-xs font-sans text-ink-muted text-center mt-2 dark:text-dark-muted">Figure: Clean programmatic wireframe demonstrating structural zone allocation before visual design.</p>
 
-  <h2 id="dt-advantages" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">4. Strategic Advantages: Why Organizations Adopt It</h2>
-  <ul class="list-disc pl-6 space-y-2 text-ink">
+  <h2 id="dt-advantages" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">4. Strategic Advantages: Why Organizations Adopt It</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li><strong>De-risks Investments:</strong> Validates user appetite and workflow logic before investing engineering capital in database development.</li>
     <li><strong>Breaks Organizational Silos:</strong> Provides a structured forum where developers, product managers, and marketers collaborate as co-designers.</li>
     <li><strong>Anchors on Authentic Outcomes:</strong> Keeps product teams focused on solving measurable human problems rather than shipping feature bloat.</li>
   </ul>
 
-  <h2 id="dt-scalability" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">5. Scalability: Applying Design Thinking from Features to Systems</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="dt-scalability" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">5. Scalability: Applying Design Thinking from Features to Systems</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Design thinking is fractal. It operates equally well at three distinct organizational altitudes:
   </p>
-  <ul class="list-disc pl-6 space-y-2 text-ink">
+  <ul class="list-disc pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li><strong>Micro (Feature Level):</strong> Redesigning an onboarding form, checkout modal, or audio player scrubber.</li>
     <li><strong>Meso (Product Level):</strong> Reimagining the entire end-to-end journey of booking a doctor's appointment or filing taxes online.</li>
     <li><strong>Macro (Systemic Level):</strong> Transforming how an enterprise hospital network coordinates patient data across multiple facilities.</li>
   </ul>
 
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Design Thinking 101</em> by <strong>Sarah Gibbons</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://www.nngroup.com/articles/design-thinking/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">
+    <a href="https://ww.nngroup.com/articles/design-thinking/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
       Original Guide ↗
     </a>
   </div>
@@ -1876,7 +1881,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.1',
             type: 'article',
             readTime: '25 min',
-            originalSourceUrl: 'https://uxplanet.org/ultimate-guide-to-user-research-bed4a57d260',
+            originalSourceUrl: 'https://xplanet.org/ultimate-guide-to-user-research-bed4a57d260',
             originalSourceLabel: 'Mona Yang (UX Researcher & Product Strategist)',
             
             summaryQuote: 'Observing authentic user behavior in their natural habitat reveals the unspoken truths that surveys and focus groups completely conceal.',
@@ -1938,8 +1943,8 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
       <p>"User research is not about validating your existing opinions; it is about systematically dismantling your assumptions before engineers write a single line of code."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-300 font-bold tracking-wide uppercase">
-        // Mona Yang &mdash; UX Planet
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
+        Mona Yang &mdash; UX Planet
       </footer>
     </blockquote>
 
@@ -1948,8 +1953,8 @@ export const COURSES: Course[] = [
       User research activities fall into two distinct phases of the product lifecycle:
     </p>
     <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
-      <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-teal-500 shadow-2xs">
-        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-300 uppercase block mb-1">Phase A // Discovery</span>
+      <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-2 border-l-teal-500 shadow-2xs">
+        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase block mb-1">Phase A Discovery</span>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">Generative (Exploratory) Research</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed mb-3">
           Conducted <em>before</em> any solution is imagined. Its goal is to uncover unmet human needs, emotional pain points, and current broken habits.
@@ -1959,8 +1964,8 @@ export const COURSES: Course[] = [
         </div>
       </div>
 
-      <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-indigo-500 shadow-2xs">
-        <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-300 uppercase block mb-1">Phase B // Validation</span>
+      <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-2 border-l-indigo-500 shadow-2xs">
+        <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase block mb-1">Phase B Validation</span>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">Evaluative (Testing) Research</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed mb-3">
           Conducted <em>during and after</em> designs are produced. Its goal is to test whether the proposed interface functions intuitively in real hands.
@@ -1977,9 +1982,9 @@ export const COURSES: Course[] = [
         <thead>
           <tr class="border-b border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-card">
             <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-ink dark:text-dark-ink">Methodology</th>
-            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-300">Data Type</th>
-            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-amber-800 dark:text-amber-300">Best Used For</th>
-            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-indigo-800 dark:text-indigo-300">Sample Size</th>
+            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-400">Data Type</th>
+            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-amber-800 dark:text-amber-400">Best Used For</th>
+            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-indigo-800 dark:text-indigo-400">Sample Size</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-ink-border/60 dark:divide-dark-border/60">
@@ -2019,7 +2024,7 @@ export const COURSES: Course[] = [
     <!-- Good vs Bad Interviewing Matrix -->
     <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
       <div class="p-5 rounded-xs bg-rose-50/50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900/40">
-        <h4 class="font-sans font-bold text-rose-800 dark:text-rose-300 text-sm mb-2 flex items-center gap-1.5">
+        <h4 class="font-sans font-bold text-rose-800 dark:text-rose-400 text-sm mb-2 flex items-center gap-1.5">
           <span>&times;</span> Leading Questions (Biased & Useless)
         </h4>
         <ul class="space-y-2 text-xs font-serif text-ink dark:text-dark-ink">
@@ -2030,7 +2035,7 @@ export const COURSES: Course[] = [
       </div>
 
       <div class="p-5 rounded-xs bg-teal-50/50 dark:bg-teal-950/20 border border-teal-200 dark:border-teal-900/40">
-        <h4 class="font-sans font-bold text-teal-800 dark:text-teal-300 text-sm mb-2 flex items-center gap-1.5">
+        <h4 class="font-sans font-bold text-teal-800 dark:text-teal-400 text-sm mb-2 flex items-center gap-1.5">
           <span>&check;</span> Non-Leading Questions (Behavioral & Reliable)
         </h4>
         <ul class="space-y-2 text-xs font-serif text-ink dark:text-dark-ink">
@@ -2082,7 +2087,7 @@ export const COURSES: Course[] = [
           Synthesized from the comprehensive research publication <em>"The Essential Guide to User Research & Field Inquiry"</em> by Mona Yang on UX Planet.
         </p>
         <a 
-          href="https://uxplanet.org/ultimate-guide-to-user-research-bed4a57d260" 
+          href="https://xplanet.org/ultimate-guide-to-user-research-bed4a57d260" 
           target="_blank" 
           rel="noopener noreferrer" 
           class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:text-black dark:hover:text-white"
@@ -2104,7 +2109,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.2',
             type: 'article',
             readTime: '22 min study',
-            originalSourceUrl: 'https://www.nngroup.com/articles/personas-jobs-be-done/',
+            originalSourceUrl: 'https://ww.nngroup.com/articles/personas-jobs-be-done/',
             originalSourceLabel: 'Page Laubheimer (Senior User Experience Specialist, NN/g)',
             
             summaryQuote: 'Personas build human empathy for who you are designing for; Jobs-to-Be-Done clarifies what functional outcome they are trying to achieve.',
@@ -2139,135 +2144,135 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Product teams frequently debate whether to use <strong>User Personas</strong> or <strong>Jobs-to-Be-Done (JTBD)</strong>. Some advocate abandoning personas, claiming demographic profiles distract from actual tasks. Others argue that JTBD lacks the emotional depth necessary to build empathetic experiences. In this study guide from Nielsen Norman Group, Page Laubheimer demonstrates why these two tools are not competitors—they are powerful complements.
   </p>
 
-  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-4 border-ink">
-    <p class="text-lg italic font-serif text-ink">
+  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-2 border-ink dark:bg-dark-card dark:border-dark-border">
+    <p class="text-lg italic font-serif text-ink dark:text-dark-ink">
       "Personas answer: 'Who are we building for, and what are their values?' Jobs-to-Be-Done answers: 'What progress is that person trying to achieve in a specific circumstance?'"
     </p>
-    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted">
+    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted dark:text-dark-muted">
       — Page Laubheimer, Nielsen Norman Group
     </cite>
   </div>
 
-  <h2 id="p-jtbd-intro" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Tension Between Who and What</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="p-jtbd-intro" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. The Tension Between Who and What</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Traditional personas often fail because they are cluttered with irrelevant trivia: a stock photo, arbitrary age, favorite music, and fake hobbies that have zero impact on software design. When a persona is just a demographic caricature, engineers and product managers dismiss it.
   </p>
-  <p class="text-ink leading-relaxed">
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     <strong>Jobs-to-Be-Done (JTBD)</strong> emerged as an antidote. Popularized by Clayton Christensen, JTBD focuses on the job a customer "hires" a product to do. A person does not buy a drill because they love drills; they buy a drill because they need a quarter-inch hole in their wall.
   </p>
 
-  <h2 id="p-jtbd-definitions" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Defining the Tools: Archetypes vs Functional Jobs</h2>
+  <h2 id="p-jtbd-definitions" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Defining the Tools: Archetypes vs Functional Jobs</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-6 not-prose">
-    <div class="p-5 border border-ink-border bg-paper-50 rounded-xs">
-      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1">Human-Centered Archetype</span>
-      <h4 class="font-bold text-base text-ink mb-2">The Behavioral Persona</h4>
-      <p class="text-sm text-ink-muted mb-3">A composite archetype representing a distinct user group characterized by similar goals, mental models, frustrations, and digital literacy.</p>
-      <div class="text-xs font-mono bg-white p-3 border border-ink-border">
+    <div class="p-5 border border-ink-border bg-paper-50 rounded-xs dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1 dark:text-teal-400">Human-Centered Archetype</span>
+      <h4 class="font-bold text-base text-ink mb-2 dark:text-dark-ink">The Behavioral Persona</h4>
+      <p class="text-sm text-ink-muted mb-3 dark:text-dark-muted">A composite archetype representing a distinct user group characterized by similar goals, mental models, frustrations, and digital literacy.</p>
+      <div class="text-xs font-mono bg-white p-3 border border-ink-border dark:bg-dark-card dark:border-dark-border">
         <strong>Key Superpower:</strong> Establishes shared team empathy, humanizes edge cases, and prevents self-referential design.
       </div>
     </div>
-    <div class="p-5 border border-ink-border bg-paper-50 rounded-xs">
-      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1">Outcome-Driven Statement</span>
-      <h4 class="font-bold text-base text-ink mb-2">The Job-to-Be-Done</h4>
-      <p class="text-sm text-ink-muted mb-3">A structured sentence describing the core functional progress someone wants to make under specific situational constraints.</p>
-      <div class="text-xs font-mono bg-white p-3 border border-ink-border">
+    <div class="p-5 border border-ink-border bg-paper-50 rounded-xs dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1 dark:text-indigo-400">Outcome-Driven Statement</span>
+      <h4 class="font-bold text-base text-ink mb-2 dark:text-dark-ink">The Job-to-Be-Done</h4>
+      <p class="text-sm text-ink-muted mb-3 dark:text-dark-muted">A structured sentence describing the core functional progress someone wants to make under specific situational constraints.</p>
+      <div class="text-xs font-mono bg-white p-3 border border-ink-border dark:bg-dark-card dark:border-dark-border">
         <strong>Formula:</strong> When [Situation], I want to [Motivation], So that [Expected Outcome].
       </div>
     </div>
   </div>
 
-  <h2 id="p-jtbd-matrix" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Comparative Matrix: When to Use Personas vs JTBD</h2>
+  <h2 id="p-jtbd-matrix" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">3. Comparative Matrix: When to Use Personas vs JTBD</h2>
   <div class="my-6 overflow-x-auto not-prose">
-    <table class="w-full text-left text-sm font-sans border-collapse border border-ink-border">
+    <table class="w-full text-left text-sm font-sans border-collapse border border-ink-border dark:border-dark-border">
       <thead>
-        <tr class="bg-paper-100 border-b border-ink-border text-xs font-mono uppercase tracking-wider text-ink font-bold">
+        <tr class="bg-paper-100 border-b border-ink-border text-xs font-mono uppercase tracking-wider text-ink font-bold dark:bg-dark-surface dark:text-dark-ink dark:border-dark-border">
           <th class="p-3">Evaluation Dimension</th>
           <th class="p-3">User Personas</th>
           <th class="p-3">Jobs-to-Be-Done</th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-ink-border">
+      <tbody class="divide-y divide-ink-border dark:divide-dark-border">
         <tr>
           <td class="p-3 font-mono font-bold text-xs">Primary Question</td>
-          <td class="p-3 text-ink-muted">Who is experiencing this problem?</td>
-          <td class="p-3 text-ink-muted">What progress needs to be accomplished?</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Who is experiencing this problem?</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">What progress needs to be accomplished?</td>
         </tr>
         <tr>
           <td class="p-3 font-mono font-bold text-xs">Core Value</td>
-          <td class="p-3 text-ink-muted">Builds empathy, aligns vocabulary, highlights cognitive limits</td>
-          <td class="p-3 text-ink-muted">Uncovers true competitors, identifies root motivations</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Builds empathy, aligns vocabulary, highlights cognitive limits</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Uncovers true competitors, identifies root motivations</td>
         </tr>
         <tr>
           <td class="p-3 font-mono font-bold text-xs">Best Suited For</td>
-          <td class="p-3 text-ink-muted">Information architecture, tone of voice, visual ergonomics</td>
-          <td class="p-3 text-ink-muted">Product roadmap strategy, value proposition definition</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Information architecture, tone of voice, visual ergonomics</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Product roadmap strategy, value proposition definition</td>
         </tr>
         <tr>
           <td class="p-3 font-mono font-bold text-xs">Common Failure Mode</td>
-          <td class="p-3 text-ink-muted">Decorating with useless demographic fluff</td>
-          <td class="p-3 text-ink-muted">Ignoring accessibility, emotional stress, and technical competence</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Decorating with useless demographic fluff</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Ignoring accessibility, emotional stress, and technical competence</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <h2 id="p-jtbd-programmatic" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">4. Programmatic Model: The Integrated Persona-JTBD Card</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="p-jtbd-programmatic" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">4. Programmatic Model: The Integrated Persona-JTBD Card</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Leading product squads combine both into a unified <strong>Job-Embedded Persona Card</strong>:
   </p>
 
   <!-- PROGRAMMATIC ARTIFACT: UNIFIED PERSONA CARD -->
-  <div class="my-8 max-w-lg mx-auto p-6 bg-white border border-ink-border rounded-xs shadow-sm not-prose font-sans">
-    <div class="flex items-center justify-between pb-3 border-b border-ink-border">
+  <div class="my-8 max-w-lg mx-auto p-6 bg-white border border-ink-border rounded-xs shadow-sm not-prose font-sans dark:bg-dark-card dark:border-dark-border">
+    <div class="flex items-center justify-between pb-3 border-b border-ink-border dark:border-dark-border">
       <div>
-        <span class="text-xs font-mono font-bold uppercase tracking-widest text-teal-800">Archetype #01 // Enterprise Ops</span>
-        <h4 class="text-lg font-serif font-bold text-ink">The High-Frequency Dispatcher</h4>
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-teal-800 dark:text-teal-400">Archetype #01 Enterprise Ops</span>
+        <h4 class="text-lg font-serif font-bold text-ink dark:text-dark-ink">The High-Frequency Dispatcher</h4>
       </div>
-      <span class="px-2.5 py-1 bg-paper-100 border border-ink-border font-mono text-[10px] text-ink font-bold">DESKTOP_HEAVY</span>
+      <span class="px-2.5 py-1 bg-paper-100 border border-ink-border font-mono text-[10px] text-ink font-bold dark:bg-dark-surface dark:text-dark-ink dark:border-dark-border">DESKTOP_HEAVY</span>
     </div>
 
     <div class="my-4 space-y-3 text-xs">
       <div>
-        <strong class="font-mono text-ink block mb-1 uppercase tracking-wider">// Cognitive Environment & Mental Model</strong>
-        <p class="text-ink-muted leading-relaxed">Operates under severe time pressure across 3 monitors simultaneously. Highly intolerant of multi-step modals; relies strictly on keyboard shortcuts.</p>
+        <strong class="font-mono text-ink block mb-1 uppercase tracking-wider dark:text-dark-ink">Cognitive Environment & Mental Model</strong>
+        <p class="text-ink-muted leading-relaxed dark:text-dark-muted">Operates under severe time pressure across 3 monitors simultaneously. Highly intolerant of multi-step modals; relies strictly on keyboard shortcuts.</p>
       </div>
 
-      <div class="p-3 bg-paper-50 border border-ink-border rounded-xs">
-        <strong class="font-mono text-indigo-800 block mb-1 uppercase tracking-wider">// Primary Job-to-Be-Done</strong>
-        <p class="text-ink italic">
+      <div class="p-3 bg-paper-50 border border-ink-border rounded-xs dark:bg-dark-card dark:border-dark-border">
+        <strong class="font-mono text-indigo-800 block mb-1 uppercase tracking-wider dark:text-indigo-400">Primary Job-to-Be-Done</strong>
+        <p class="text-ink italic dark:text-dark-ink">
           "When an urgent delivery route is blocked by weather, I want to reroute 40 drivers in bulk with one confirmation step, so that customer shipments are not delayed and our SLA penalty is avoided."
         </p>
       </div>
 
       <div class="grid grid-cols-2 gap-2 pt-1 font-mono text-[11px]">
-        <div class="p-2 border border-ink-border bg-white">
-          <span class="font-bold text-rose-700 block">Core Frustration</span>
+        <div class="p-2 border border-ink-border bg-white dark:bg-dark-card dark:border-dark-border">
+          <span class="font-bold text-rose-700 block dark:text-rose-400">Core Frustration</span>
           Laggy dropdown filters that reset search state.
         </div>
-        <div class="p-2 border border-ink-border bg-white">
-          <span class="font-bold text-emerald-700 block">Success Metric</span>
+        <div class="p-2 border border-ink-border bg-white dark:bg-dark-card dark:border-dark-border">
+          <span class="font-bold text-emerald-700 block dark:text-emerald-400">Success Metric</span>
           Reroute execution time reduced from 8 min to under 45 sec.
         </div>
       </div>
     </div>
   </div>
 
-  <h2 id="p-jtbd-synthesis" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">5. How to Combine Both Frameworks in Product Sprints</h2>
-  <ol class="list-decimal pl-6 space-y-2 text-ink">
+  <h2 id="p-jtbd-synthesis" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">5. How to Combine Both Frameworks in Product Sprints</h2>
+  <ol class="list-decimal pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li><strong>Start with JTBD to define the product feature:</strong> Identify what functional outcome creates genuine progress for the customer.</li>
     <li><strong>Layer Personas to design the interaction details:</strong> Adapt the interface layout, typography density, and error messaging to match the specific digital literacy and environmental context of the user archetype.</li>
   </ol>
 
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Personas vs. Jobs-to-Be-Done</em> by <strong>Page Laubheimer</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://www.nngroup.com/articles/personas-jobs-be-done/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">
+    <a href="https://ww.nngroup.com/articles/personas-jobs-be-done/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
       Original Article ↗
     </a>
   </div>
@@ -2284,7 +2289,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.3',
             type: 'article',
             readTime: '24 min study',
-            originalSourceUrl: 'https://www.nngroup.com/articles/affinity-diagram/',
+            originalSourceUrl: 'https://ww.nngroup.com/articles/affinity-diagram/',
             originalSourceLabel: 'Rachel Krause (User Experience Specialist, NN/g)',
             
             summaryQuote: 'Affinity diagramming turns hundreds of fragmented user research observations into coherent thematic clusters through inductive, bottom-up sorting.',
@@ -2319,40 +2324,40 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     After conducting user interviews, diary studies, or usability tests, design teams face a mountain of qualitative data: audio snippets, sticky notes, quotes, and behavioral observations. <strong>Affinity diagramming</strong> (also called affinity mapping) is the fundamental synthesis method used to organize messy qualitative observations into intuitive, hierarchical groups.
   </p>
 
-  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-4 border-ink">
-    <p class="text-lg italic font-serif text-ink">
+  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-2 border-ink dark:bg-dark-card dark:border-dark-border">
+    <p class="text-lg italic font-serif text-ink dark:text-dark-ink">
       "Affinity diagramming is inductive synthesis: you do not force raw data into pre-conceived categories. You let the natural clusters emerge organically from the voices of your users."
     </p>
-    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted">
+    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted dark:text-dark-muted">
       — Rachel Krause, Nielsen Norman Group
     </cite>
   </div>
 
-  <h2 id="aff-intro" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. What is an Affinity Diagram?</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="aff-intro" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. What is an Affinity Diagram?</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Invented by Jiro Kawakita in the 1960s (often referred to as the KJ Method), an affinity diagram is a visual clustering exercise. Each individual observation, user quote, or pain point is recorded on an independent sticky note. Team members collaboratively group notes based on natural similarity rather than arbitrary predefined silos.
   </p>
 
-  <h2 id="aff-why" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Why Affinity Mapping Works (Inductive vs Deductive)</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="aff-why" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Why Affinity Mapping Works (Inductive vs Deductive)</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Traditional business analysis is typically <strong>deductive</strong>: executives create categories first (e.g., "Navigation", "Pricing", "Customer Service") and then stuff observations into those boxes. This biases the outcome.
   </p>
-  <p class="text-ink leading-relaxed">
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Affinity diagramming is strictly <strong>inductive (bottom-up)</strong>:
   </p>
-  <ul class="list-disc pl-6 space-y-2 text-ink">
+  <ul class="list-disc pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li>You begin with individual, concrete data points at the bottom.</li>
     <li>Notes that feel related are placed side by side.</li>
     <li>Categories are named <em>only after</em> the cluster has physically formed.</li>
     <li>This prevents team confirmation bias and surfaces surprising insights that leadership never anticipated.</li>
   </ul>
 
-  <h2 id="aff-steps" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. The 5 Steps to Facilitate an Affinity Session</h2>
-  <ol class="list-decimal pl-6 space-y-3 text-ink">
+  <h2 id="aff-steps" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">3. The 5 Steps to Facilitate an Affinity Session</h2>
+  <ol class="list-decimal pl-6 space-y-3 text-ink dark:text-dark-ink">
     <li><strong>Record Observations:</strong> Write one insight per sticky note. Ensure notes are self-explanatory (include context, not just one vague word).</li>
     <li><strong>Post Notes on the Wall:</strong> Scatter notes across a large whiteboard or digital canvas (FigJam / Miro) so everyone can see them.</li>
     <li><strong>Silent Sorting (The Golden Rule):</strong> Team members group related notes together in complete silence for 15 to 20 minutes. Working silently eliminates office politics and prevents senior executives from dominating the clustering.</li>
@@ -2360,67 +2365,67 @@ export const COURSES: Course[] = [
     <li><strong>Vote and Prioritize:</strong> Use dot voting (giving each team member 3 sticky dots) to vote on the most urgent problem clusters to address in the roadmap.</li>
   </ol>
 
-  <h2 id="aff-programmatic-board" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">4. Programmatic Model: The Clustered Sticky Board</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="aff-programmatic-board" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">4. Programmatic Model: The Clustered Sticky Board</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Here is an interactive programmatic model of an affinity synthesis board after silent sorting:
   </p>
 
   <!-- PROGRAMMATIC AFFINITY BOARD COMPONENT -->
-  <div class="my-8 p-6 bg-paper-100 border border-ink-border rounded-xs not-prose">
-    <div class="text-xs font-mono uppercase tracking-widest text-ink font-bold mb-4">// Programmatic Artifact: Qualitative Synthesis Board</div>
+  <div class="my-8 p-6 bg-paper-100 border border-ink-border rounded-xs not-prose dark:bg-dark-surface dark:border-dark-border">
+    <div class="text-xs font-mono uppercase tracking-widest text-ink font-bold mb-4 dark:text-dark-ink">Programmatic Artifact: Qualitative Synthesis Board</div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <!-- Cluster 1 -->
-      <div class="p-4 bg-white border border-ink-border rounded-xs">
-        <div class="pb-2 mb-3 border-b border-ink-border">
-          <span class="text-[10px] font-mono text-teal-800 font-bold uppercase block">Cluster 01 // Trust & Transparency</span>
-          <h5 class="text-xs font-bold text-ink">"Where is my money going?"</h5>
+      <div class="p-4 bg-white border border-ink-border rounded-xs dark:bg-dark-card dark:border-dark-border">
+        <div class="pb-2 mb-3 border-b border-ink-border dark:border-dark-border">
+          <span class="text-[10px] font-mono text-teal-800 font-bold uppercase block dark:text-teal-400">Cluster 01 Trust & Transparency</span>
+          <h5 class="text-xs font-bold text-ink dark:text-dark-ink">"Where is my money going?"</h5>
         </div>
         <div class="space-y-2 text-[11px] font-mono">
-          <div class="p-2.5 bg-amber-50 border border-amber-200 text-ink shadow-2xs">
+          <div class="p-2.5 bg-amber-50 border border-amber-200 text-ink shadow-2xs dark:text-dark-ink">
             "I hesitated when the final total changed after adding shipping; felt deceptive."
           </div>
-          <div class="p-2.5 bg-amber-50 border border-amber-200 text-ink shadow-2xs">
+          <div class="p-2.5 bg-amber-50 border border-amber-200 text-ink shadow-2xs dark:text-dark-ink">
             "Didn't see any cancellation policy before giving credit card."
           </div>
-          <div class="p-2.5 bg-amber-50 border border-amber-200 text-ink shadow-2xs">
+          <div class="p-2.5 bg-amber-50 border border-amber-200 text-ink shadow-2xs dark:text-dark-ink">
             "Why is the service fee hidden until step 4?"
           </div>
         </div>
       </div>
 
       <!-- Cluster 2 -->
-      <div class="p-4 bg-white border border-ink-border rounded-xs">
-        <div class="pb-2 mb-3 border-b border-ink-border">
-          <span class="text-[10px] font-mono text-indigo-800 font-bold uppercase block">Cluster 02 // Cognitive Friction</span>
-          <h5 class="text-xs font-bold text-ink">"Too much jargon on the home screen"</h5>
+      <div class="p-4 bg-white border border-ink-border rounded-xs dark:bg-dark-card dark:border-dark-border">
+        <div class="pb-2 mb-3 border-b border-ink-border dark:border-dark-border">
+          <span class="text-[10px] font-mono text-indigo-800 font-bold uppercase block dark:text-indigo-400">Cluster 02 Cognitive Friction</span>
+          <h5 class="text-xs font-bold text-ink dark:text-dark-ink">"Too much jargon on the home screen"</h5>
         </div>
         <div class="space-y-2 text-[11px] font-mono">
-          <div class="p-2.5 bg-blue-50 border border-blue-200 text-ink shadow-2xs">
+          <div class="p-2.5 bg-blue-50 border border-blue-200 text-ink shadow-2xs dark:text-dark-ink">
             "What does 'Portfolio Rebalancing' mean? I just want to invest $50."
           </div>
-          <div class="p-2.5 bg-blue-50 border border-blue-200 text-ink shadow-2xs">
+          <div class="p-2.5 bg-blue-50 border border-blue-200 text-ink shadow-2xs dark:text-dark-ink">
             "The filter terms don't match how I think about my budget."
           </div>
-          <div class="p-2.5 bg-blue-50 border border-blue-200 text-ink shadow-2xs">
+          <div class="p-2.5 bg-blue-50 border border-blue-200 text-ink shadow-2xs dark:text-dark-ink">
             "Icons without text labels confused 4 out of 5 users."
           </div>
         </div>
       </div>
 
       <!-- Cluster 3 -->
-      <div class="p-4 bg-white border border-ink-border rounded-xs">
-        <div class="pb-2 mb-3 border-b border-ink-border">
-          <span class="text-[10px] font-mono text-rose-800 font-bold uppercase block">Cluster 03 // System Latency</span>
-          <h5 class="text-xs font-bold text-ink">"Waiting with no feedback"</h5>
+      <div class="p-4 bg-white border border-ink-border rounded-xs dark:bg-dark-card dark:border-dark-border">
+        <div class="pb-2 mb-3 border-b border-ink-border dark:border-dark-border">
+          <span class="text-[10px] font-mono text-rose-800 font-bold uppercase block dark:text-rose-400">Cluster 03 System Latency</span>
+          <h5 class="text-xs font-bold text-ink dark:text-dark-ink">"Waiting with no feedback"</h5>
         </div>
         <div class="space-y-2 text-[11px] font-mono">
-          <div class="p-2.5 bg-rose-50 border border-rose-200 text-ink shadow-2xs">
+          <div class="p-2.5 bg-rose-50 border border-rose-200 text-ink shadow-2xs dark:text-dark-ink">
             "Tapped 'Submit' twice because button didn't show a spinner."
           </div>
-          <div class="p-2.5 bg-rose-50 border border-rose-200 text-ink shadow-2xs">
+          <div class="p-2.5 bg-rose-50 border border-rose-200 text-ink shadow-2xs dark:text-dark-ink">
             "Screen went blank for 3 seconds; user thought app crashed."
           </div>
-          <div class="p-2.5 bg-rose-50 border border-rose-200 text-ink shadow-2xs">
+          <div class="p-2.5 bg-rose-50 border border-rose-200 text-ink shadow-2xs dark:text-dark-ink">
             "No receipt email sent immediately after payment."
           </div>
         </div>
@@ -2428,10 +2433,10 @@ export const COURSES: Course[] = [
     </div>
   </div>
 
-  <h2 id="aff-dos-donts" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">5. Critical Facilitation Dos and Don'ts</h2>
+  <h2 id="aff-dos-donts" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">5. Critical Facilitation Dos and Don'ts</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 text-xs font-mono not-prose">
-    <div class="p-4 bg-emerald-50 border border-emerald-200 text-ink">
-      <span class="font-bold text-emerald-800 block mb-2">DO</span>
+    <div class="p-4 bg-emerald-50 border border-emerald-200 text-ink dark:text-dark-ink">
+      <span class="font-bold text-emerald-800 block mb-2 dark:text-emerald-400">DO</span>
       <ul class="space-y-1">
         <li>&bull; Keep individual notes concise and specific.</li>
         <li>&bull; Encourage split clusters if a group exceeds 10 notes.</li>
@@ -2439,8 +2444,8 @@ export const COURSES: Course[] = [
         <li>&bull; Involve developers and PMs directly in the clustering.</li>
       </ul>
     </div>
-    <div class="p-4 bg-rose-50 border border-rose-200 text-ink">
-      <span class="font-bold text-rose-800 block mb-2">DON'T</span>
+    <div class="p-4 bg-rose-50 border border-rose-200 text-ink dark:text-dark-ink">
+      <span class="font-bold text-rose-800 block mb-2 dark:text-rose-400">DON'T</span>
       <ul class="space-y-1">
         <li>&bull; Pre-label cluster boxes before reading the notes.</li>
         <li>&bull; Allow loud verbal debate during the sorting phase.</li>
@@ -2450,12 +2455,12 @@ export const COURSES: Course[] = [
     </div>
   </div>
 
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Affinity Diagramming for Sorting UX Findings</em> by <strong>Rachel Krause</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://www.nngroup.com/articles/affinity-diagram/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">
+    <a href="https://ww.nngroup.com/articles/affinity-diagram/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
       Original Guide ↗
     </a>
   </div>
@@ -2472,7 +2477,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.4',
             type: 'article',
             readTime: '30 min',
-            originalSourceUrl: 'https://www.nngroup.com/articles/ten-usability-heuristics/',
+            originalSourceUrl: 'https://ww.nngroup.com/articles/ten-usability-heuristics/',
             originalSourceLabel: 'Jakob Nielsen (Nielsen Norman Group)',
             
             summaryQuote: 'Jakob Nielsen\'s ten heuristics provide a timeless diagnostic toolkit for auditing digital interfaces and eliminating cognitive friction.',
@@ -2559,7 +2564,7 @@ export const COURSES: Course[] = [
       <em>The design should always keep users informed about what is going on, through appropriate feedback within a reasonable time.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-teal-800 dark:text-teal-300 block mb-1">// Concrete Implementation</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-teal-800 dark:text-teal-400 block mb-1">Concrete Implementation</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         When an application is performing a background process (like uploading a 200MB video), never present a frozen screen. Provide a determinable progress bar with estimated time remaining (<em>"45 seconds left..."</em>). When users tap a submit button, immediately transition the button into a spinner state so they know their click registered and do not double-click, charging their credit card twice.
       </p>
@@ -2571,7 +2576,7 @@ export const COURSES: Course[] = [
       <em>The design should speak the users' language, using words, phrases, and concepts familiar to the user, rather than internal system-oriented terms. Follow real-world conventions, making information appear in a natural and logical order.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-blue-800 dark:text-blue-300 block mb-1">// Concrete Implementation</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-blue-800 dark:text-blue-400 block mb-1">Concrete Implementation</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         A desktop trash can icon maps to the physical wastebasket beside an office desk. An e-commerce site uses a "Shopping Cart" rather than an "Entity Array Buffer." Avoid exposing internal server database jargon (like <em>"Error: NullPointerException at record 0x4F"</em>); speak in natural human consequences (<em>"We could not save your address because the postal code was missing a digit."</em>).
       </p>
@@ -2583,7 +2588,7 @@ export const COURSES: Course[] = [
       <em>Users often perform actions by mistake. They need a clearly marked "emergency exit" to leave the unwanted action without having to go through an extended process. Support undo and redo.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-amber-800 dark:text-amber-300 block mb-1">// Concrete Implementation</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-amber-800 dark:text-amber-400 block mb-1">Concrete Implementation</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         When users accidentally delete an email in Gmail, they do not face a blocking, anxiety-inducing confirmation modal. Instead, the action happens instantly, paired with an unobtrusive "Undo" toast floating at the bottom. Knowing they can reverse any mistake gives users the psychological safety to explore software confidently.
       </p>
@@ -2595,7 +2600,7 @@ export const COURSES: Course[] = [
       <em>Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-indigo-800 dark:text-indigo-300 block mb-1">// Jakob's Law of the Web</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-indigo-800 dark:text-indigo-400 block mb-1">Jakob's Law of the Web</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         Jakob's Law states: <em>"Users spend most of their time on other sites."</em> That means users expect your site to work just like all the other sites they already know. If you invent an unconventional navigation model where clicking the logo does not return home, or where the shopping cart lives at the bottom left instead of the top right, users become confused and frustrated.
       </p>
@@ -2607,7 +2612,7 @@ export const COURSES: Course[] = [
       <em>Even better than good error messages is a careful design which prevents a problem from occurring in the first place. Either eliminate error-prone conditions or check for them and present users with a confirmation option before they commit to the action.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-rose-800 dark:text-rose-300 block mb-1">// Slips vs. Mistakes</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-rose-800 dark:text-rose-400 block mb-1">Slips vs. Mistakes</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         A <strong>slip</strong> occurs through inattention (e.g., mistyping an email address). Prevent slips with sensible constraints, such as auto-suggesting "@gmail.com" or disabling date-picker selection for dates in the past. A <strong>mistake</strong> occurs when users have the wrong mental model. Prevent mistakes by clarifying destructive actions before execution.
       </p>
@@ -2619,7 +2624,7 @@ export const COURSES: Course[] = [
       <em>Minimize the user's memory load by making elements, actions, and options visible. The user should not have to remember information from one part of the interface to another.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-teal-800 dark:text-teal-300 block mb-1">// Cognitive Principle</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-teal-800 dark:text-teal-400 block mb-1">Cognitive Principle</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         Human short-term memory can only hold 4 to 7 items at once. Never force users to write down an order number from Screen A to type it into Screen B. Instead of making users remember an item's exact SKU number to search for it, provide an autocomplete menu with visual thumbnails as they type.
       </p>
@@ -2631,7 +2636,7 @@ export const COURSES: Course[] = [
       <em>Shortcuts &mdash; hidden from novice users &mdash; may speed up the interaction for the expert user such that the design can cater to both inexperienced and experienced users. Allow users to tailor frequent actions.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-blue-800 dark:text-blue-300 block mb-1">// Dual-Paced Interfaces</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-blue-800 dark:text-blue-400 block mb-1">Dual-Paced Interfaces</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         A novice user clicks <em>File &rarr; Save</em> with their mouse; an expert presses <em>Ctrl + S</em>. Excellent software serves beginners with clear visible buttons while delighting power users with keyboard accelerators, command palettes (<em>Cmd + K</em>), and customizable workspace macros.
       </p>
@@ -2643,7 +2648,7 @@ export const COURSES: Course[] = [
       <em>Interfaces should not contain information that is irrelevant or rarely needed. Every extra unit of information in an interface competes with the relevant units of information and diminishes their relative visibility.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-amber-800 dark:text-amber-300 block mb-1">// Signal-to-Noise Ratio</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-amber-800 dark:text-amber-400 block mb-1">Signal-to-Noise Ratio</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         Minimalism is not about sterile white screens; it is about maximizing the signal-to-noise ratio. Practice <strong>progressive disclosure</strong>: show only the essential primary controls needed for the immediate task, tucking secondary configurations into advanced disclosure drawers.
       </p>
@@ -2655,7 +2660,7 @@ export const COURSES: Course[] = [
       <em>Error messages should be expressed in plain language (no error codes), precisely indicate the problem, and constructively suggest a solution.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-rose-800 dark:text-rose-300 block mb-1">// Anatomy of a Great Error State</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-rose-800 dark:text-rose-400 block mb-1">Anatomy of a Great Error State</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         Bad error message: <em>"System Error 403: Invalid Request."</em><br>
         Exceptional error message: <em>"Your password needs at least 8 characters and one number. Try adding a digit to the end."</em> Always tell the user what went wrong, why it happened, and the exact physical step they should take right now to fix it.
@@ -2684,17 +2689,17 @@ export const COURSES: Course[] = [
         </thead>
         <tbody class="divide-y divide-ink-border/60 dark:divide-dark-border/60">
           <tr>
-            <td class="py-3 px-4 font-mono font-bold text-teal-800 dark:text-teal-300">0</td>
+            <td class="py-3 px-4 font-mono font-bold text-teal-800 dark:text-teal-400">0</td>
             <td class="py-3 px-4 text-ink dark:text-dark-ink">Not a usability problem at all.</td>
             <td class="py-3 px-4 text-ink-muted dark:text-dark-muted">No action required.</td>
           </tr>
           <tr>
-            <td class="py-3 px-4 font-mono font-bold text-blue-800 dark:text-blue-300">1</td>
+            <td class="py-3 px-4 font-mono font-bold text-blue-800 dark:text-blue-400">1</td>
             <td class="py-3 px-4 text-ink dark:text-dark-ink">Cosmetic problem only.</td>
             <td class="py-3 px-4 text-ink-muted dark:text-dark-muted">Fix only if extra design sprint capacity exists.</td>
           </tr>
           <tr>
-            <td class="py-3 px-4 font-mono font-bold text-amber-800 dark:text-amber-300">2</td>
+            <td class="py-3 px-4 font-mono font-bold text-amber-800 dark:text-amber-400">2</td>
             <td class="py-3 px-4 text-ink dark:text-dark-ink">Minor usability problem.</td>
             <td class="py-3 px-4 text-ink-muted dark:text-dark-muted">Low priority fix; causes slight user friction.</td>
           </tr>
@@ -2704,7 +2709,7 @@ export const COURSES: Course[] = [
             <td class="py-3 px-4 text-ink-muted dark:text-dark-muted">High priority fix; frequently blocks users from task completion.</td>
           </tr>
           <tr>
-            <td class="py-3 px-4 font-mono font-bold text-rose-800 dark:text-rose-300">4</td>
+            <td class="py-3 px-4 font-mono font-bold text-rose-800 dark:text-rose-400">4</td>
             <td class="py-3 px-4 text-ink dark:text-dark-ink font-bold">Usability catastrophe!</td>
             <td class="py-3 px-4 text-rose-700 dark:text-rose-400 font-bold">Emergency stop-ship; must be resolved before release.</td>
           </tr>
@@ -2723,7 +2728,7 @@ export const COURSES: Course[] = [
           Synthesized from the definitive foundational usability text <em>"10 Usability Heuristics for User Interface Design"</em> by Dr. Jakob Nielsen at Nielsen Norman Group.
         </p>
         <a 
-          href="https://www.nngroup.com/articles/ten-usability-heuristics/" 
+          href="https://ww.nngroup.com/articles/ten-usability-heuristics/" 
           target="_blank" 
           rel="noopener noreferrer" 
           class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:text-black dark:hover:text-white"
@@ -2745,7 +2750,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.5',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://www.youtube.com/watch?v=cTtc90jCULU',
+            originalSourceUrl: 'https://ww.youtube.com/watch?v=cTtc90jCULU',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: 'cTtc90jCULU',
             summaryQuote: 'The design should always keep users informed about what is going on, through appropriate feedback within a reasonable time.',
@@ -2781,29 +2786,29 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     When users interact with a system, they need to know whether their action was registered. If an elevator button does not light up when pressed, you press it again—or assume the elevator is broken. The first heuristic guarantees that every user action receives immediate, perceptible confirmation.
   </p>
-  <h2 id="h1-principle" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Core Principle: Never Leave Users in the Dark</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="h1-principle" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. The Core Principle: Never Leave Users in the Dark</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Predictable feedback creates psychological safety. When an app provides clear status updates, users feel in control, take confident actions, and rarely make accidental double-purchases or duplicate uploads.
   </p>
-  <h2 id="h1-latencies" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The 3 Human Attention Limits: 0.1s, 1.0s, 10.0s</h2>
-  <ul class="list-disc pl-6 space-y-2 text-ink">
+  <h2 id="h1-latencies" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. The 3 Human Attention Limits: 0.1s, 1.0s, 10.0s</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li><strong>0.1 Second:</strong> Feels instantaneous. Required for button press states and hover effects.</li>
     <li><strong>1.0 Second:</strong> The user notices the delay but their train of thought is not interrupted. Display an inline spinner.</li>
     <li><strong>10.0 Seconds:</strong> The limit of human attention. A progress bar with percentage and estimated remaining time is mandatory.</li>
   </ul>
-  <h2 id="h1-examples" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Real-World Implementations: Progress Bars & Skeleton Screens</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="h1-examples" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">3. Real-World Implementations: Progress Bars & Skeleton Screens</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Replace jarring blank white loading screens with <strong>Skeleton Screens</strong> (placeholder grey shapes that mimic the layout). Skeletons reduce perceived wait time by showing structural progression.
   </p>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Visibility of System Status</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=cTtc90jCULU" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+    <a href="https://ww.youtube.com/watch?v=cTtc90jCULU" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -2818,7 +2823,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.6',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://www.youtube.com/watch?v=0TAt9Pln51g',
+            originalSourceUrl: 'https://ww.youtube.com/watch?v=0TAt9Pln51g',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: '0TAt9Pln51g',
             summaryQuote: 'The design should speak the users\' language, with words, phrases, and concepts familiar to the user, rather than system-oriented terms.',
@@ -2854,27 +2859,27 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     How people interpret your product depends heavily on their prior experiences. If your interface introduces technical concepts that do not map to everyday reality, cognitive dissonance occurs.
   </p>
-  <h2 id="h2-principle" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Speaking the User's Natural Language</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="h2-principle" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. Speaking the User's Natural Language</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Never force users to learn database nomenclature. An e-commerce customer does not "Query SQL Database for SKU"; they "Search shoes in Size 10". Match user vocabulary verbatim.
   </p>
-  <h2 id="h2-metaphors" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Real-World Metaphors (Desktop, Cart, Trash)</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="h2-metaphors" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Real-World Metaphors (Desktop, Cart, Trash)</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     The reason the personal computer succeeded was the desktop metaphor: files, folders, and a trash can. By leveraging metaphors that users already understood from physical offices, the learning curve dropped to zero.
   </p>
-  <h2 id="h2-jargon" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Eliminating Engineering Jargon from Interfaces</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="h2-jargon" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">3. Eliminating Engineering Jargon from Interfaces</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Audit error dialogues: replace "Error 0x80040154: Interface not registered" with "We couldn't connect to your printer. Check if it's turned on."
   </p>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Match Between System & Real World</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=0TAt9Pln51g" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+    <a href="https://ww.youtube.com/watch?v=0TAt9Pln51g" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -2889,7 +2894,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.7',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://www.youtube.com/watch?v=MXuk-fdbr0A',
+            originalSourceUrl: 'https://ww.youtube.com/watch?v=MXuk-fdbr0A',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: 'MXuk-fdbr0A',
             summaryQuote: 'Users often choose system functions by mistake and will need a clearly marked emergency exit to leave the unwanted state without an extended dialogue.',
@@ -2920,23 +2925,23 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     When people explore software, they make mistakes: clicking the wrong button, deleting a paragraph, or entering the wrong form step. If an application traps them without an obvious way out, anxiety rises.
   </p>
-  <h2 id="h3-principle" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Emergency Exit Axiom</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="h3-principle" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. The Emergency Exit Axiom</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Every state in an interface must provide a visible, low-cost exit route: Cancel buttons on modals, a clear Back arrow on mobile flows, and a universal Escape key action.
   </p>
-  <h2 id="h3-undo" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The Power of Undo vs Destructive Confirmations</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="h3-undo" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. The Power of Undo vs Destructive Confirmations</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Modern design favors <strong>instant action with Undo</strong> (e.g. Gmail's "Message sent — Undo" toast) over annoying, disruptive popups asking "Are you sure you want to delete this?".
   </p>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>User Control & Freedom</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=MXuk-fdbr0A" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+    <a href="https://ww.youtube.com/watch?v=MXuk-fdbr0A" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -2951,7 +2956,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.8',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://www.youtube.com/watch?v=Ibndy9KLOSQ',
+            originalSourceUrl: 'https://ww.youtube.com/watch?v=Ibndy9KLOSQ',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: 'Ibndy9KLOSQ',
             summaryQuote: 'Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions.',
@@ -2982,24 +2987,24 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Jakob's Law states: <strong>Users spend most of their time on sites other than yours.</strong> This means that users arrive at your product with expectations deeply conditioned by how other digital tools work.
   </p>
-  <h2 id="h4-jakobs-law" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Jakob's Law of Internet User Experience</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="h4-jakobs-law" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. Jakob's Law of Internet User Experience</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     If your app places the logo on the bottom-right and the search bar in the footer, users do not marvel at your creativity; they get frustrated and leave. Conventions are cognitive shortcuts.
   </p>
-  <h2 id="h4-internal-external" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Internal vs. External Consistency</h2>
-  <ul class="list-disc pl-6 space-y-2 text-ink">
+  <h2 id="h4-internal-external" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Internal vs. External Consistency</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li><strong>Internal Consistency:</strong> Maintain identical button styles, typography tokens, and terminology across all pages of your own product.</li>
     <li><strong>External Consistency:</strong> Respect operating system conventions (e.g. iOS tab bars at bottom, Android app bars at top).</li>
   </ul>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Consistency & Standards</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=Ibndy9KLOSQ" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+    <a href="https://ww.youtube.com/watch?v=Ibndy9KLOSQ" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3014,7 +3019,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.9',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://www.youtube.com/watch?v=imS9s1DUY-I',
+            originalSourceUrl: 'https://ww.youtube.com/watch?v=imS9s1DUY-I',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: 'imS9s1DUY-I',
             summaryQuote: 'Even better than good error messages is a careful design which prevents a problem from occurring in the first place.',
@@ -3045,24 +3050,24 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     A great error message is polite and helpful. But an exceptional design prevents the error from occurring altogether.
   </p>
-  <h2 id="h5-slips-mistakes" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Slips (Unconscious) vs. Mistakes (Conscious)</h2>
-  <ul class="list-disc pl-6 space-y-2 text-ink">
+  <h2 id="h5-slips-mistakes" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. Slips (Unconscious) vs. Mistakes (Conscious)</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li><strong>Slips:</strong> Occur when the user intends to do the right thing, but physical friction causes a blunder (e.g. typing a comma instead of a period, or tapping adjacent touch targets).</li>
     <li><strong>Mistakes:</strong> Occur when the user has an incorrect mental model and deliberately chooses the wrong action.</li>
   </ul>
-  <h2 id="h5-constraints" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Eliminating Slips with Constraints & Smart Defaults</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="h5-constraints" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Eliminating Slips with Constraints & Smart Defaults</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Use date-picker widgets that disable past dates for hotel bookings. Restrict input fields to numbers only for credit card entries. Do not let users submit invalid data.
   </p>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Error Prevention</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=imS9s1DUY-I" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+    <a href="https://ww.youtube.com/watch?v=imS9s1DUY-I" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3077,7 +3082,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.10',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://www.youtube.com/watch?v=6glQPp6q4Jc',
+            originalSourceUrl: 'https://ww.youtube.com/watch?v=6glQPp6q4Jc',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: '6glQPp6q4Jc',
             summaryQuote: 'Minimize the user\'s memory load by making elements, actions, and options visible. The user should not have to remember information from one part of the interface to another.',
@@ -3108,23 +3113,23 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Human working memory is extremely limited. Asking a user to remember an account number, promo code, or file path while navigating across multiple screens creates severe cognitive strain.
   </p>
-  <h2 id="h6-memory" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Human Memory Limits: Miller's Law & Working Memory</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="h6-memory" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. Human Memory Limits: Miller's Law & Working Memory</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     George Miller demonstrated that short-term working memory holds roughly 7 &plusmn; 2 chunks of information. Good interfaces act as external memory aids, displaying all necessary choices on screen.
   </p>
-  <h2 id="h6-recognition" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Recognition vs Recall: Why Multiple Choice is Easier</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="h6-recognition" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Recognition vs Recall: Why Multiple Choice is Easier</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Recognizing a face in a crowd is effortless; recalling someone's exact name from memory takes effort. Interfaces should present visible options (Recognition) rather than demanding users remember and type commands (Recall).
   </p>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Recognition Rather Than Recall</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=6glQPp6q4Jc" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+    <a href="https://ww.youtube.com/watch?v=6glQPp6q4Jc" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3139,7 +3144,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.11',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://www.youtube.com/watch?v=LoTdRTBB8BQ',
+            originalSourceUrl: 'https://ww.youtube.com/watch?v=LoTdRTBB8BQ',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: 'LoTdRTBB8BQ',
             summaryQuote: 'Shortcuts—unseen by the novice user—may often speed up the interaction for the expert user such that the design caters to both inexperienced and experienced users.',
@@ -3170,23 +3175,23 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     A great product feels simple on day one, yet provides immense speed on day one hundred. Interfaces must cater to both beginners who need hand-holding and power users who demand lightning speed.
   </p>
-  <h2 id="h7-accelerators" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. What Are Accelerators?</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="h7-accelerators" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. What Are Accelerators?</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     An accelerator is a design mechanism that speeds up frequent tasks without cluttering the interface for novices. Common examples include keyboard shortcuts (Cmd+K / Ctrl+K), swipe gestures, and macros.
   </p>
-  <h2 id="h7-novice-expert" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Designing Dual Pathways: Novice vs Expert</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="h7-novice-expert" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Designing Dual Pathways: Novice vs Expert</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     A novice clicks through a 3-step wizard to export a report. An expert presses a single key combination. Both users are delighted.
   </p>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Flexibility & Efficiency of Use</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=LoTdRTBB8BQ" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+    <a href="https://ww.youtube.com/watch?v=LoTdRTBB8BQ" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3201,7 +3206,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.12',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://www.youtube.com/watch?v=ZgbRmeWDgd0',
+            originalSourceUrl: 'https://ww.youtube.com/watch?v=ZgbRmeWDgd0',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: 'ZgbRmeWDgd0',
             summaryQuote: 'Interfaces should not contain information that is irrelevant or rarely needed. Every extra unit of information in an interface competes with the relevant units of information.',
@@ -3232,23 +3237,23 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Minimalism in UI design is not an aesthetic fashion trend; it is the discipline of eliminating visual noise so the user's brain can process essential information effortlessly.
   </p>
-  <h2 id="h8-signal-noise" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Signal-to-Noise Ratio in UI</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="h8-signal-noise" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. The Signal-to-Noise Ratio in UI</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Every icon, border, color badge, and paragraph on a screen is a cognitive tax. High signal-to-noise ratio means that every visible pixel serves a deliberate communicative purpose.
   </p>
-  <h2 id="h8-progressive-disclosure" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Progressive Disclosure: Simplicity with Power</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="h8-progressive-disclosure" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Progressive Disclosure: Simplicity with Power</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Show only the essential information upfront. Hide advanced settings and secondary data behind clean expandable disclosures or tabs so novices are not overwhelmed.
   </p>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Aesthetic & Minimalist Design</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=ZgbRmeWDgd0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+    <a href="https://ww.youtube.com/watch?v=ZgbRmeWDgd0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3271,7 +3276,7 @@ export const COURSES: Course[] = [
             lessonNumber: '3.1',
             type: 'article',
             readTime: '28 min study',
-            originalSourceUrl: 'https://www.nngroup.com/articles/ia-study-guide/',
+            originalSourceUrl: 'https://ww.nngroup.com/articles/ia-study-guide/',
             originalSourceLabel: 'Page Laubheimer (Information Architecture Specialist, NN/g)',
             
             summaryQuote: 'Information Architecture creates order out of chaos, structuring mental models so users intuitively find what they need without cognitive strain.',
@@ -3306,59 +3311,59 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Information Architecture (IA) is the structural foundation of digital design. If the content of a website or mobile app is not organized according to the user's natural mental model, even the most beautiful visual UI will fail. In this masterclass from Nielsen Norman Group, Page Laubheimer breaks down how to structure complex taxonomies, design navigation pathways, and validate architectures before drawing screens.
   </p>
 
-  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-4 border-ink">
-    <p class="text-lg italic font-serif text-ink">
+  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-2 border-ink dark:bg-dark-card dark:border-dark-border">
+    <p class="text-lg italic font-serif text-ink dark:text-dark-ink">
       "Information Architecture is about helping people understand their surroundings and find what they're looking for, in the real world as well as online."
     </p>
-    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted">
+    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted dark:text-dark-muted">
       — Louis Rosenfeld & Peter Morville
     </cite>
   </div>
 
-  <h2 id="ia-def" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. What is Information Architecture (IA)?</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="ia-def" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. What is Information Architecture (IA)?</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Information Architecture is the practice of deciding how the parts of something should be arranged to be understandable. In software products, IA focuses on organizing content so that users can adjust to the interface quickly and easily find everything they need with minimal cognitive friction.
   </p>
 
-  <h2 id="ia-four-systems" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Rosenfeld & Morville's 4 IA Systems</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="ia-four-systems" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Rosenfeld & Morville's 4 IA Systems</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     In their seminal text <em>Information Architecture for the World Wide Web</em>, Lou Rosenfeld and Peter Morville established the four foundational systems of any digital ecosystem:
   </p>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-6 not-prose">
-    <div class="p-5 border border-ink-border bg-white rounded-xs">
-      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1">System 01</span>
-      <h4 class="font-bold text-base text-ink mb-1">Organization Systems</h4>
-      <p class="text-xs text-ink-muted leading-relaxed">How content is categorized and grouped: chronological, alphabetical, geographical, topic-based, or task-oriented.</p>
+    <div class="p-5 border border-ink-border bg-white rounded-xs dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1 dark:text-teal-400">System 01</span>
+      <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Organization Systems</h4>
+      <p class="text-xs text-ink-muted leading-relaxed dark:text-dark-muted">How content is categorized and grouped: chronological, alphabetical, geographical, topic-based, or task-oriented.</p>
     </div>
-    <div class="p-5 border border-ink-border bg-white rounded-xs">
-      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1">System 02</span>
-      <h4 class="font-bold text-base text-ink mb-1">Labeling Systems</h4>
-      <p class="text-xs text-ink-muted leading-relaxed">The terminology and language used to represent data chunks (e.g. "Contact Us" vs "Get Help", "Settings" vs "Preferences").</p>
+    <div class="p-5 border border-ink-border bg-white rounded-xs dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1 dark:text-indigo-400">System 02</span>
+      <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Labeling Systems</h4>
+      <p class="text-xs text-ink-muted leading-relaxed dark:text-dark-muted">The terminology and language used to represent data chunks (e.g. "Contact Us" vs "Get Help", "Settings" vs "Preferences").</p>
     </div>
-    <div class="p-5 border border-ink-border bg-white rounded-xs">
-      <span class="font-mono text-xs uppercase font-bold text-amber-800 block mb-1">System 03</span>
-      <h4 class="font-bold text-base text-ink mb-1">Navigation Systems</h4>
-      <p class="text-xs text-ink-muted leading-relaxed">How users physically move through content: global top headers, local sidebars, breadcrumb rails, and contextual inline links.</p>
+    <div class="p-5 border border-ink-border bg-white rounded-xs dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase font-bold text-amber-800 block mb-1 dark:text-amber-400">System 03</span>
+      <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Navigation Systems</h4>
+      <p class="text-xs text-ink-muted leading-relaxed dark:text-dark-muted">How users physically move through content: global top headers, local sidebars, breadcrumb rails, and contextual inline links.</p>
     </div>
-    <div class="p-5 border border-ink-border bg-white rounded-xs">
-      <span class="font-mono text-xs uppercase font-bold text-rose-800 block mb-1">System 04</span>
-      <h4 class="font-bold text-base text-ink mb-1">Search Systems</h4>
-      <p class="text-xs text-ink-muted leading-relaxed">How users query data directly: search syntax, autocomplete suggestions, faceted filters, and zero-state recommendations.</p>
+    <div class="p-5 border border-ink-border bg-white rounded-xs dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase font-bold text-rose-800 block mb-1 dark:text-rose-400">System 04</span>
+      <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Search Systems</h4>
+      <p class="text-xs text-ink-muted leading-relaxed dark:text-dark-muted">How users query data directly: search syntax, autocomplete suggestions, faceted filters, and zero-state recommendations.</p>
     </div>
   </div>
 
-  <h2 id="ia-programmatic-sitemap" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Programmatic Model: Multi-Tier Sitemap Architecture</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="ia-programmatic-sitemap" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">3. Programmatic Model: Multi-Tier Sitemap Architecture</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Below is a programmatic architectural tree illustrating a clean 3-tier hierarchy that balances breadth and depth:
   </p>
 
   <!-- PROGRAMMATIC SITEMAP TREE COMPONENT -->
-  <div class="my-8 p-6 bg-paper-100 border border-ink-border rounded-xs not-prose font-mono text-xs">
-    <div class="text-[10px] uppercase font-bold tracking-widest text-ink mb-4">// Programmatic Artifact: Hierarchical Taxonomy Tree</div>
+  <div class="my-8 p-6 bg-paper-100 border border-ink-border rounded-xs not-prose font-mono text-xs dark:bg-dark-surface dark:border-dark-border">
+    <div class="text-[10px] uppercase font-bold tracking-widest text-ink mb-4 dark:text-dark-ink">Programmatic Artifact: Hierarchical Taxonomy Tree</div>
     
     <!-- Level 0 Root -->
     <div class="p-3 bg-ink text-white rounded-xs font-bold text-center mb-4">
@@ -3368,9 +3373,9 @@ export const COURSES: Course[] = [
     <!-- Level 1 Columns -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <!-- Tier 1 -->
-      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-2">
-        <div class="font-bold text-teal-800 border-b border-ink-border pb-1">[1.0] EXPLORE / DISCOVER</div>
-        <div class="pl-2 space-y-1 text-[11px] text-ink-muted">
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-2 dark:bg-dark-card dark:border-dark-border">
+        <div class="font-bold text-teal-800 border-b border-ink-border pb-1 dark:border-dark-border dark:text-teal-400">[1.0] EXPLORE / DISCOVER</div>
+        <div class="pl-2 space-y-1 text-[11px] text-ink-muted dark:text-dark-muted">
           <div>&bull; 1.1 Category Directory</div>
           <div>&bull; 1.2 Featured Collections</div>
           <div>&bull; 1.3 Search & Faceted Filter</div>
@@ -3378,9 +3383,9 @@ export const COURSES: Course[] = [
       </div>
 
       <!-- Tier 2 -->
-      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-2">
-        <div class="font-bold text-indigo-800 border-b border-ink-border pb-1">[2.0] WORKSPACE / STUDIO</div>
-        <div class="pl-2 space-y-1 text-[11px] text-ink-muted">
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-2 dark:bg-dark-card dark:border-dark-border">
+        <div class="font-bold text-indigo-800 border-b border-ink-border pb-1 dark:border-dark-border dark:text-indigo-400">[2.0] WORKSPACE / STUDIO</div>
+        <div class="pl-2 space-y-1 text-[11px] text-ink-muted dark:text-dark-muted">
           <div>&bull; 2.1 Active Projects</div>
           <div>&bull; 2.2 Shared Assets Library</div>
           <div>&bull; 2.3 Revision History Log</div>
@@ -3388,9 +3393,9 @@ export const COURSES: Course[] = [
       </div>
 
       <!-- Tier 3 -->
-      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-2">
-        <div class="font-bold text-amber-800 border-b border-ink-border pb-1">[3.0] ACCOUNT & SYSTEM</div>
-        <div class="pl-2 space-y-1 text-[11px] text-ink-muted">
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-2 dark:bg-dark-card dark:border-dark-border">
+        <div class="font-bold text-amber-800 border-b border-ink-border pb-1 dark:border-dark-border dark:text-amber-400">[3.0] ACCOUNT & SYSTEM</div>
+        <div class="pl-2 space-y-1 text-[11px] text-ink-muted dark:text-dark-muted">
           <div>&bull; 3.1 Organization Profile</div>
           <div>&bull; 3.2 Role-Based Permissions</div>
           <div>&bull; 3.3 Billing & Invoices</div>
@@ -3399,30 +3404,30 @@ export const COURSES: Course[] = [
     </div>
   </div>
 
-  <h2 id="ia-card-sorting" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">4. Research Methods: Open, Closed & Hybrid Card Sorting</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="ia-card-sorting" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">4. Research Methods: Open, Closed & Hybrid Card Sorting</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     To discover how real users organize topics in their heads, researchers use <strong>Card Sorting</strong>:
   </p>
-  <ul class="list-disc pl-6 space-y-2 text-ink">
+  <ul class="list-disc pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li><strong>Open Card Sort:</strong> Participants are given ~40 topic cards and asked to organize them into groups that make sense to them, then name each group. Used for generative discovery.</li>
     <li><strong>Closed Card Sort:</strong> Participants are given predefined categories and asked to place topic cards into those fixed slots. Used to evaluate an existing taxonomy.</li>
     <li><strong>Hybrid Card Sort:</strong> Participants place cards into predefined categories but are permitted to create new ones if needed.</li>
   </ul>
 
-  <h2 id="ia-tree-testing" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">5. Quantitative Validation: Tree Testing Menus</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="ia-tree-testing" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">5. Quantitative Validation: Tree Testing Menus</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Before investing in wireframes or visual mockups, test your hierarchy using <strong>Tree Testing</strong> (Reverse Card Sorting). Participants are given a text-only menu tree without any visual styling and asked: <em>"Where would you click to change your billing address?"</em>
   </p>
-  <p class="text-ink text-sm leading-relaxed">
+  <p class="text-ink text-sm leading-relaxed dark:text-dark-ink">
     Tree testing reveals the exact task success rate, directness rate, and the specific branch nodes where users backtrack or choose the wrong category.
   </p>
 
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Information Architecture Study Guide</em> by <strong>Page Laubheimer</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://www.nngroup.com/articles/ia-study-guide/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">
+    <a href="https://ww.nngroup.com/articles/ia-study-guide/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
       Original Guide ↗
     </a>
   </div>
@@ -3447,7 +3452,7 @@ export const COURSES: Course[] = [
             lessonNumber: '4.1',
             type: 'article',
             readTime: '22 min',
-            originalSourceUrl: 'https://www.smashingmagazine.com/2011/12/the-messy-art-of-ux-sketching/',
+            originalSourceUrl: 'https://ww.smashingmagazine.com/2011/12/the-messy-art-of-ux-sketching/',
             originalSourceLabel: 'Peiter Buick (Senior Designer & Smashing Magazine Contributor)',
             
             summaryQuote: 'Sketching on paper removes perfectionism, allowing designers to iterate ideas at the speed of thought before committing to digital pixels.',
@@ -3504,8 +3509,8 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
       <p>"The primary value of a sketch is not the artifact on the page; it is the mental clarity gained by the designer while making the marks."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-300 font-bold tracking-wide uppercase">
-        // Peiter Buick &mdash; Smashing Magazine
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
+        Peiter Buick &mdash; Smashing Magazine
       </footer>
     </blockquote>
 
@@ -3515,7 +3520,7 @@ export const COURSES: Course[] = [
     </p>
     <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-rose-800 dark:text-rose-300 uppercase block mb-1">High-Fidelity Mockup</span>
+        <span class="font-mono text-xs font-bold text-rose-800 dark:text-rose-400 uppercase block mb-1">High-Fidelity Mockup</span>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">Triggers Superficial Feedback</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           When stakeholders see a polished screen with photos and colors, they assume the architectural decisions are finished. They debate button colors, font sizes, and hero image models while ignoring broken task flows.
@@ -3523,7 +3528,7 @@ export const COURSES: Course[] = [
       </div>
 
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-300 uppercase block mb-1">Rough Pen Sketch</span>
+        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase block mb-1">Rough Pen Sketch</span>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">Triggers Structural Feedback</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           When stakeholders see hand-drawn boxes and squiggly lines, they immediately recognize the work is in-progress. They feel invited to grab a marker, point out missing steps, and debate the core business logic.
@@ -3589,7 +3594,7 @@ export const COURSES: Course[] = [
           Synthesized from the foundational sketching masterclass <em>"The Messy Art Of UX Sketching"</em> by Peiter Buick on Smashing Magazine.
         </p>
         <a 
-          href="https://www.smashingmagazine.com/2011/12/the-messy-art-of-ux-sketching/" 
+          href="https://ww.smashingmagazine.com/2011/12/the-messy-art-of-ux-sketching/" 
           target="_blank" 
           rel="noopener noreferrer" 
           class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:text-black dark:hover:text-white"
@@ -3611,7 +3616,7 @@ export const COURSES: Course[] = [
             lessonNumber: '4.2',
             type: 'video',
             readTime: '20 min study',
-            originalSourceUrl: 'https://www.youtube.com/watch?v=yz4g87XapQ0',
+            originalSourceUrl: 'https://ww.youtube.com/watch?v=yz4g87XapQ0',
             originalSourceLabel: 'AJ&Smart (Official Google Ventures Sprint Partner)',
             youtubeId: 'yz4g87XapQ0',
             summaryQuote: 'Crazy 8s is a core Design Sprint method that forces your brain past obvious first solutions by generating eight distinct variations under strict time pressure.',
@@ -3657,105 +3662,105 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Most designers sketch one idea, fall in love with it, and spend four hours polishing it in Figma before realizing the concept is fundamentally flawed. In the Google Ventures Design Sprint, <strong>Crazy 8s</strong> prevents premature attachment by forcing you to generate eight distinct layout concepts in eight frantic minutes.
   </p>
 
-  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-4 border-ink">
-    <p class="text-lg italic font-serif text-ink">
+  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-2 border-ink dark:bg-dark-card dark:border-dark-border">
+    <p class="text-lg italic font-serif text-ink dark:text-dark-ink">
       "Your first idea is rarely your best idea; it is just the most obvious one. Crazy 8s exhausts your predictable habits and forces your brain to innovate."
     </p>
-    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted">
+    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted dark:text-dark-muted">
       — Jonathan Courtney, AJ&Smart
     </cite>
   </div>
 
-  <h2 id="c8-intro" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. What is Crazy 8s & Why Time Pressure Unlocks Creativity</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="c8-intro" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. What is Crazy 8s & Why Time Pressure Unlocks Creativity</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Crazy 8s is a fast-paced sketching exercise that challenges team members to sketch eight distinct ideas in eight minutes. The goal is not to create a masterpiece; the goal is to explore a wide breadth of layouts, navigation structures, and interaction mechanics.
   </p>
 
-  <h2 id="c8-setup" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Preparation: The Folded Paper Technique</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="c8-setup" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Preparation: The Folded Paper Technique</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Take a plain blank sheet of letter or A4 paper. Fold it in half three times. When you unfold it, you have a grid of eight equal rectangular boxes. Each box represents a mobile screen viewport.
   </p>
 
-  <h2 id="c8-programmatic-sheet" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Programmatic Model: The 8-Box Sprint Matrix</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="c8-programmatic-sheet" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">3. Programmatic Model: The 8-Box Sprint Matrix</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Here is an interactive programmatic representation of a completed Crazy 8s sheet:
   </p>
 
   <!-- PROGRAMMATIC CRAZY 8S SHEET -->
-  <div class="my-8 p-6 bg-paper-100 border border-ink-border rounded-xs not-prose font-mono text-xs">
-    <div class="text-[10px] uppercase font-bold tracking-widest text-ink mb-4">// Programmatic Artifact: Folded 8-Screen Ideation Sheet</div>
+  <div class="my-8 p-6 bg-paper-100 border border-ink-border rounded-xs not-prose font-mono text-xs dark:bg-dark-surface dark:border-dark-border">
+    <div class="text-[10px] uppercase font-bold tracking-widest text-ink mb-4 dark:text-dark-ink">Programmatic Artifact: Folded 8-Screen Ideation Sheet</div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
       <!-- Box 1 -->
-      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center">
-        <span class="text-[10px] font-bold text-ink-muted">Box 01 // Tab List</span>
-        <div class="h-2 bg-paper-200 w-3/4 mx-auto"></div>
-        <div class="h-10 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted">Vertical List</div>
-        <div class="h-2 bg-paper-200 w-1/2 mx-auto"></div>
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center dark:bg-dark-card dark:border-dark-border">
+        <span class="text-[10px] font-bold text-ink-muted dark:text-dark-muted">Box 01 Tab List</span>
+        <div class="h-2 bg-paper-200 w-3/4 mx-auto dark:bg-dark-border"></div>
+        <div class="h-10 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted dark:bg-dark-card dark:text-dark-muted dark:border-dark-border">Vertical List</div>
+        <div class="h-2 bg-paper-200 w-1/2 mx-auto dark:bg-dark-border"></div>
       </div>
       <!-- Box 2 -->
-      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center">
-        <span class="text-[10px] font-bold text-ink-muted">Box 02 // Swipe Cards</span>
-        <div class="h-2 bg-paper-200 w-3/4 mx-auto"></div>
-        <div class="h-10 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted">Tinder Card Deck</div>
-        <div class="h-2 bg-paper-200 w-1/2 mx-auto"></div>
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center dark:bg-dark-card dark:border-dark-border">
+        <span class="text-[10px] font-bold text-ink-muted dark:text-dark-muted">Box 02 Swipe Cards</span>
+        <div class="h-2 bg-paper-200 w-3/4 mx-auto dark:bg-dark-border"></div>
+        <div class="h-10 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted dark:bg-dark-card dark:text-dark-muted dark:border-dark-border">Tinder Card Deck</div>
+        <div class="h-2 bg-paper-200 w-1/2 mx-auto dark:bg-dark-border"></div>
       </div>
       <!-- Box 3 -->
-      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center">
-        <span class="text-[10px] font-bold text-ink-muted">Box 03 // Search First</span>
-        <div class="h-4 bg-paper-100 border border-ink-border flex items-center justify-center text-[9px] text-ink-muted">Search Modal</div>
-        <div class="h-8 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted">Instant Results</div>
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center dark:bg-dark-card dark:border-dark-border">
+        <span class="text-[10px] font-bold text-ink-muted dark:text-dark-muted">Box 03 Search First</span>
+        <div class="h-4 bg-paper-100 border border-ink-border flex items-center justify-center text-[9px] text-ink-muted dark:bg-dark-surface dark:text-dark-muted dark:border-dark-border">Search Modal</div>
+        <div class="h-8 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted dark:bg-dark-card dark:text-dark-muted dark:border-dark-border">Instant Results</div>
       </div>
       <!-- Box 4 -->
-      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center">
-        <span class="text-[10px] font-bold text-ink-muted">Box 04 // Bottom Sheet</span>
-        <div class="h-6 bg-paper-200 w-full"></div>
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center dark:bg-dark-card dark:border-dark-border">
+        <span class="text-[10px] font-bold text-ink-muted dark:text-dark-muted">Box 04 Bottom Sheet</span>
+        <div class="h-6 bg-paper-200 w-full dark:bg-dark-border"></div>
         <div class="h-6 bg-ink text-white flex items-center justify-center text-[9px] font-bold">Drawer Sheet</div>
       </div>
       <!-- Box 5 -->
-      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center">
-        <span class="text-[10px] font-bold text-ink-muted">Box 05 // Conversational</span>
-        <div class="h-12 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted">Chat Dialogue UI</div>
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center dark:bg-dark-card dark:border-dark-border">
+        <span class="text-[10px] font-bold text-ink-muted dark:text-dark-muted">Box 05 Conversational</span>
+        <div class="h-12 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted dark:bg-dark-card dark:text-dark-muted dark:border-dark-border">Chat Dialogue UI</div>
       </div>
       <!-- Box 6 -->
-      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center">
-        <span class="text-[10px] font-bold text-ink-muted">Box 06 // Stepper Wizard</span>
-        <div class="flex justify-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-ink"></span><span class="w-1.5 h-1.5 rounded-full bg-paper-200"></span><span class="w-1.5 h-1.5 rounded-full bg-paper-200"></span></div>
-        <div class="h-8 bg-paper-50 border border-ink-border flex items-center justify-center text-[9px] text-ink-muted">Step 1 of 3</div>
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center dark:bg-dark-card dark:border-dark-border">
+        <span class="text-[10px] font-bold text-ink-muted dark:text-dark-muted">Box 06 Stepper Wizard</span>
+        <div class="flex justify-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-ink"></span><span class="w-1.5 h-1.5 rounded-full bg-paper-200 dark:bg-dark-border"></span><span class="w-1.5 h-1.5 rounded-full bg-paper-200 dark:bg-dark-border"></span></div>
+        <div class="h-8 bg-paper-50 border border-ink-border flex items-center justify-center text-[9px] text-ink-muted dark:bg-dark-card dark:text-dark-muted dark:border-dark-border">Step 1 of 3</div>
       </div>
       <!-- Box 7 -->
-      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center">
-        <span class="text-[10px] font-bold text-ink-muted">Box 07 // Data Dashboard</span>
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center dark:bg-dark-card dark:border-dark-border">
+        <span class="text-[10px] font-bold text-ink-muted dark:text-dark-muted">Box 07 Data Dashboard</span>
         <div class="grid grid-cols-2 gap-1 h-10">
-          <div class="bg-paper-100 border border-ink-border"></div>
-          <div class="bg-paper-100 border border-ink-border"></div>
+          <div class="bg-paper-100 border border-ink-border dark:bg-dark-surface dark:border-dark-border"></div>
+          <div class="bg-paper-100 border border-ink-border dark:bg-dark-surface dark:border-dark-border"></div>
         </div>
       </div>
       <!-- Box 8 -->
-      <div class="p-3 bg-white border-2 border-teal-600 rounded-xs space-y-1.5 text-center">
-        <span class="text-[10px] font-bold text-teal-800">Box 08 // Winner *</span>
+      <div class="p-3 bg-white border-2 border-teal-600 rounded-xs space-y-1.5 text-center dark:bg-dark-card">
+        <span class="text-[10px] font-bold text-teal-800 dark:text-teal-400">Box 08 Winner *</span>
         <div class="h-10 bg-teal-50 border border-teal-300 flex items-center justify-center text-[9px] text-teal-900 font-bold">Hybrid Grid + Tab</div>
       </div>
     </div>
   </div>
 
-  <h2 id="c8-facilitation" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">4. Facilitation Protocol: The 60-Second Interval Whistle</h2>
-  <ul class="list-disc pl-6 space-y-2 text-ink">
+  <h2 id="c8-facilitation" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">4. Facilitation Protocol: The 60-Second Interval Whistle</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li>The facilitator sets a timer for 60 seconds.</li>
     <li>Everyone sketches their first idea in Box 1.</li>
     <li>At 60 seconds, the facilitator calls: <em>"Switch to Box 2!"</em> No finishing touches; move to the next box immediately.</li>
     <li>Repeat until all eight boxes are filled.</li>
   </ul>
 
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Design Sprint Crazy 8s</em> by <strong>AJ&Smart</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=yz4g87XapQ0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+    <a href="https://ww.youtube.com/watch?v=yz4g87XapQ0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3770,7 +3775,7 @@ export const COURSES: Course[] = [
             lessonNumber: '4.3',
             type: 'article',
             readTime: '24 min study',
-            originalSourceUrl: 'https://www.uxpin.com/studio/blog/great-artists-reuse-reusable-patterns-product-design/',
+            originalSourceUrl: 'https://ww.uxpin.com/studio/blog/great-artists-reuse-reusable-patterns-product-design/',
             originalSourceLabel: 'Marcin Treder (CEO & Product Designer, UXPin)',
             
             summaryQuote: 'Designers should not reinvent the wheel for routine interactions. Reusing standardized patterns frees up creative energy to solve truly unique domain challenges.',
@@ -3800,41 +3805,41 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Pablo Picasso famously quipped: <em>"Good artists copy; great artists steal."</em> In digital product design, trying to make every single form input, navigation bar, or modal dialog completely unique is not innovation; it is a disservice to the user. Standardized UI patterns are the established vocabulary of software.
   </p>
 
-  <h2 id="pat-intro" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Myth of Pure Originality in UI</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="pat-intro" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. The Myth of Pure Originality in UI</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Users do not open an application to admire an avant-garde password reset flow. They want to reset their password in five seconds and return to their work. When you reuse familiar patterns, users feel instantly competent.
   </p>
 
-  <h2 id="pat-two-kinds" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The Two Kinds of Copying in Product Design</h2>
-  <ul class="list-disc pl-6 space-y-2 text-ink">
+  <h2 id="pat-two-kinds" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. The Two Kinds of Copying in Product Design</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li><strong>Superficial Copying (Plagiarism):</strong> Copying someone else's visual aesthetics, colors, or typography without understanding the underlying behavioral rationale. This results in mismatched, dysfunctional interfaces.</li>
     <li><strong>Structural Reuse (Pattern Adoption):</strong> Adopting proven interaction conventions—like swipe-to-archive, infinite scroll with sticky headers, or stepper checkouts—because they have been battle-tested with millions of humans.</li>
   </ul>
 
-  <h2 id="pat-building-blocks" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Building Blocks vs Compound Patterns</h2>
+  <h2 id="pat-building-blocks" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">3. Building Blocks vs Compound Patterns</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-6 not-prose">
-    <div class="p-5 border border-ink-border bg-white rounded-xs">
-      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1">Atomic Tier</span>
-      <h4 class="font-bold text-base text-ink mb-1">Building Blocks (Atoms)</h4>
-      <p class="text-xs text-ink-muted">Basic primitives: text inputs, primary buttons, checkboxes, icons, toggle switches, and badges.</p>
+    <div class="p-5 border border-ink-border bg-white rounded-xs dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1 dark:text-teal-400">Atomic Tier</span>
+      <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Building Blocks (Atoms)</h4>
+      <p class="text-xs text-ink-muted dark:text-dark-muted">Basic primitives: text inputs, primary buttons, checkboxes, icons, toggle switches, and badges.</p>
     </div>
-    <div class="p-5 border border-ink-border bg-white rounded-xs">
-      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1">Organismic Tier</span>
-      <h4 class="font-bold text-base text-ink mb-1">Compound Patterns (Molecules)</h4>
-      <p class="text-xs text-ink-muted">Combinations of building blocks solving specific user goals: credit card entry widgets, search bars with autocomplete, and comment threads.</p>
+    <div class="p-5 border border-ink-border bg-white rounded-xs dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1 dark:text-indigo-400">Organismic Tier</span>
+      <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Compound Patterns (Molecules)</h4>
+      <p class="text-xs text-ink-muted dark:text-dark-muted">Combinations of building blocks solving specific user goals: credit card entry widgets, search bars with autocomplete, and comment threads.</p>
     </div>
   </div>
 
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Great Artists Reuse</em> by <strong>Marcin Treder</strong> (UXPin).</span>
     </div>
-    <a href="https://www.uxpin.com/studio/blog/great-artists-reuse-reusable-patterns-product-design/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Article ↗</a>
+    <a href="https://ww.uxpin.com/studio/blog/great-artists-reuse-reusable-patterns-product-design/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Article ↗</a>
   </div>
 </section>
 
@@ -3849,7 +3854,7 @@ export const COURSES: Course[] = [
             lessonNumber: '4.4',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://www.youtube.com/watch?v=RGajFMYZ0mM',
+            originalSourceUrl: 'https://ww.youtube.com/watch?v=RGajFMYZ0mM',
             originalSourceLabel: 'Springboard Design Curriculum Team',
             youtubeId: 'RGajFMYZ0mM',
             summaryQuote: 'Watch how experienced designers assemble proven UI patterns onto a paper grid to create a cohesive screen in minutes.',
@@ -3875,19 +3880,19 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     In this video demonstration, Springboard design mentors demonstrate how to take a collection of isolated design patterns (e.g. a carousel header, an avatar list, and a sticky footer CTA) and assemble them harmoniously into an intuitive mobile view.
   </p>
-  <h2 id="skp-walkthrough" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Assembling Patterns on Paper</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="skp-walkthrough" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. Assembling Patterns on Paper</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     By using thicker markers (such as a chisel-tip Sharpie) rather than fine pens, designers are forced to focus on macro hierarchy, element weights, and proportions, rather than getting bogged down in micro-details.
   </p>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Springboard Masterclass: <strong>Sketching a Screen with Existing Patterns</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=RGajFMYZ0mM" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+    <a href="https://ww.youtube.com/watch?v=RGajFMYZ0mM" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3902,7 +3907,7 @@ export const COURSES: Course[] = [
             lessonNumber: '4.5',
             type: 'article',
             readTime: '20 min study',
-            originalSourceUrl: 'https://thedaylightstudio.com/wireframes-at-daylight/',
+            originalSourceUrl: 'https://hedaylightstudio.com/wireframes-at-daylight/',
             originalSourceLabel: 'Daylight Design Studio',
             
             summaryQuote: 'A wireframe is a contractual blueprint between content, functionality, and user intent, stripping away color and decoration to test raw usability.',
@@ -3927,23 +3932,23 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     At Daylight Studio, wireframes are considered the most critical communication asset in product development. Before clients argue over whether a button should be teal or navy, wireframes force everyone to agree on what information needs to be on the page and why.
   </p>
-  <h2 id="dl-purpose" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The True Goal of a Wireframe</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="dl-purpose" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. The True Goal of a Wireframe</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Wireframes are intentionally monochromatic. By stripping away typography branding, color accents, and photographic styling, stakeholders are prevented from commenting on superficial aesthetics and forced to evaluate functional layout, content hierarchy, and task efficiency.
   </p>
-  <h2 id="dl-annotation" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The Art of Wireframe Annotation</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="dl-annotation" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. The Art of Wireframe Annotation</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Professional wireframes always include numbered callouts in the margins explaining functional logic: <em>"Tap expands inline accordion without page reload"</em> or <em>"Displays error state if postal code fails validation"</em>.
   </p>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Wireframes at Daylight</em> by <strong>Daylight Studio</strong>.</span>
     </div>
-    <a href="https://thedaylightstudio.com/wireframes-at-daylight/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Guide ↗</a>
+    <a href="https://hedaylightstudio.com/wireframes-at-daylight/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -3966,7 +3971,7 @@ export const COURSES: Course[] = [
             lessonNumber: '5.1',
             type: 'article',
             readTime: '26 min',
-            originalSourceUrl: 'https://help.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma',
+            originalSourceUrl: 'https://elp.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma',
             originalSourceLabel: 'Figma Learn Documentation Team',
             
             summaryQuote: 'A prototype turns abstract debate into concrete physical reality, validating workflows before expensive engineering development begins.',
@@ -4026,8 +4031,8 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
       <p>"If a picture is worth a thousand words, an interactive prototype is worth a thousand meetings."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-300 font-bold tracking-wide uppercase">
-        // IDEO Prototyping Canon
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
+        IDEO Prototyping Canon
       </footer>
     </blockquote>
 
@@ -4037,7 +4042,7 @@ export const COURSES: Course[] = [
     </p>
     <div class="my-8 grid grid-cols-1 md:grid-cols-3 gap-5 not-prose">
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-teal-500 shadow-2xs">
-        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-300 uppercase block mb-1">Part 01</span>
+        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase block mb-1">Part 01</span>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Trigger</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           The physical user gesture that initiates the event: <em>On Click, While Hovering, While Pressing, On Drag, or After Delay</em>.
@@ -4045,7 +4050,7 @@ export const COURSES: Course[] = [
       </div>
 
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-blue-500 shadow-2xs">
-        <span class="font-mono text-xs font-bold text-blue-800 dark:text-blue-300 uppercase block mb-1">Part 02</span>
+        <span class="font-mono text-xs font-bold text-blue-800 dark:text-blue-400 uppercase block mb-1">Part 02</span>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Action</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           What the system does in response: <em>Navigate to screen, Open overlay, Swap variant, Scroll to anchor, or Set variable</em>.
@@ -4053,7 +4058,7 @@ export const COURSES: Course[] = [
       </div>
 
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-indigo-500 shadow-2xs">
-        <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-300 uppercase block mb-1">Part 03</span>
+        <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase block mb-1">Part 03</span>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Transition & Easing</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           The temporal physics of the movement: <em>Instant, Dissolve, Smart Animate, Slide In, or Push</em>, tuned with cubic-bezier curves (e.g., 300ms ease-out).
@@ -4112,7 +4117,7 @@ export const COURSES: Course[] = [
           Synthesized from the definitive prototyping curriculum and documentation published by the Figma Education & Community Team.
         </p>
         <a 
-          href="https://help.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma" 
+          href="https://elp.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma" 
           target="_blank" 
           rel="noopener noreferrer" 
           class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:text-black dark:hover:text-white"
@@ -4134,7 +4139,7 @@ export const COURSES: Course[] = [
             lessonNumber: '5.2',
             type: 'article',
             readTime: '18 min study',
-            originalSourceUrl: 'https://www.sketch.com/docs/prototyping/',
+            originalSourceUrl: 'https://ww.sketch.com/docs/prototyping/',
             originalSourceLabel: 'Sketch Documentation Team',
             
             summaryQuote: 'Prototyping in Sketch connects visual artboards with interactive hotspots, transitions, and fixed elements to simulate real device software.',
@@ -4159,23 +4164,23 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Prototyping turns static UI artboards into interactive simulations. By defining interactive hotspots and screen transitions, designers can evaluate user flows directly on physical devices.
   </p>
-  <h2 id="sk-hotspots" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Creating Hotspots & Target Artboards</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="sk-hotspots" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. Creating Hotspots & Target Artboards</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Select any layer, button, or card, press <code>W</code> to create a Link, and drag the connector line to your destination artboard. You can define trigger conditions such as Click or Tap.
   </p>
-  <h2 id="sk-transitions" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Transition Animations & Fixed Headers</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="sk-transitions" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Transition Animations & Fixed Headers</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Choose from four primary transition types: Slide In, Slide Out, Push, or Instant. Check <strong>Fix position when scrolling</strong> to pin top navigation headers and bottom tab bars so they remain stationary while page content scrolls underneath.
   </p>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Prototyping in Sketch</em> by <strong>Sketch Docs</strong>.</span>
     </div>
-    <a href="https://www.sketch.com/docs/prototyping/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Guide ↗</a>
+    <a href="https://ww.sketch.com/docs/prototyping/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -4198,7 +4203,7 @@ export const COURSES: Course[] = [
             lessonNumber: '6.1',
             type: 'article',
             readTime: '25 min',
-            originalSourceUrl: 'https://dribbble.com/stories/2018/12/19/choosing-colors-for-web-design-a-practical-ui-color-application-guide',
+            originalSourceUrl: 'https://ribbble.com/stories/2018/12/19/choosing-colors-for-web-design-a-practical-ui-color-application-guide',
             originalSourceLabel: 'Stefano Peschiera (Lead Product Designer, Dribbble Guide)',
             
             summaryQuote: 'Visual design in product software is functional architecture: guiding user attention effortlessly through contrast, scale, and spatial rhythm.',
@@ -4228,145 +4233,145 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Visual design in digital products is not decoration; it is functional architecture. Where UX design establishes the skeleton and behavioral pathways of an interface, user interface (UI) design translates cognitive affordances into visual form. Every pixel, margin, and color swatch either clarifies system intent or burdens the user's working memory.
   </p>
   
-  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-4 border-ink">
-    <p class="text-lg italic font-serif text-ink">
+  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-2 border-ink dark:bg-dark-card dark:border-dark-border">
+    <p class="text-lg italic font-serif text-ink dark:text-dark-ink">
       "Design is not just what it looks like and feels like. Design is how it works. A beautiful interface that confuses the user is fundamentally broken engineering."
     </p>
-    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted">
+    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted dark:text-dark-muted">
       — Design Axiom: Form Follows Cognitive Function
     </cite>
   </div>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The 60-30-10 Color Harmonization Rule</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. The 60-30-10 Color Harmonization Rule</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Rooted in interior decorating and classical architecture, the <strong>60-30-10 rule</strong> prevents visual chaos in user interfaces:
   </p>
-  <ul class="list-disc pl-6 space-y-3 text-ink">
+  <ul class="list-disc pl-6 space-y-3 text-ink dark:text-dark-ink">
     <li><strong>60% Dominant Base:</strong> Typically neutral canvas (pure white <code>#FFFFFF</code> or clean paper off-white <code>#FAFAFA</code> in light mode; deep carbon ink in dark mode). This creates negative space and prevents visual fatigue.</li>
     <li><strong>30% Secondary Structure:</strong> Cards, sidebars, navigation bars, borders, and secondary text. In our design system, this is represented by zinc neutrals (<code>#E4E4E7</code> borders, <code>#71717A</code> muted typography).</li>
     <li><strong>10% Intentional Accent:</strong> High-energy semantic color reserved exclusively for primary calls to action (CTAs), progress indicators, active tabs, and key interactive focal points. Never scatter accent colors across passive layout elements.</li>
   </ul>
 
-  <div class="editorial-card my-8 p-6 bg-paper-50 border border-ink-border rounded-none">
-    <h3 class="text-lg font-serif font-semibold text-ink mb-3">Color Architecture: HSL-Based Semantic Tokens</h3>
-    <p class="text-ink text-sm leading-relaxed mb-4">
+  <div class="editorial-card my-8 p-6 bg-paper-50 border border-ink-border rounded-none dark:bg-dark-card dark:border-dark-border">
+    <h3 class="text-lg font-serif font-semibold text-ink mb-3 dark:text-dark-ink">Color Architecture: HSL-Based Semantic Tokens</h3>
+    <p class="text-ink text-sm leading-relaxed mb-4 dark:text-dark-ink">
       Modern design systems do not use static hex colors directly in components. Instead, colors are generated as semantic tokens along an HSL (Hue, Saturation, Lightness) scale:
     </p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
-      <div class="p-3 bg-white border border-ink-border">
-        <span class="font-bold block text-ink">Base 50–100</span>
-        <span class="text-ink-muted">Lightness 95–98%</span>
-        <p class="mt-2 text-ink-muted font-sans">Used for card fills, table zebra striping, and subtle selection states.</p>
+      <div class="p-3 bg-white border border-ink-border dark:bg-dark-card dark:border-dark-border">
+        <span class="font-bold block text-ink dark:text-dark-ink">Base 50–100</span>
+        <span class="text-ink-muted dark:text-dark-muted">Lightness 95–98%</span>
+        <p class="mt-2 text-ink-muted font-sans dark:text-dark-muted">Used for card fills, table zebra striping, and subtle selection states.</p>
       </div>
-      <div class="p-3 bg-white border border-ink-border">
-        <span class="font-bold block text-ink">Core 500–600</span>
-        <span class="text-ink-muted">Lightness 40–55%</span>
-        <p class="mt-2 text-ink-muted font-sans">The signature brand hue. Used for primary buttons and active navigational indicators.</p>
+      <div class="p-3 bg-white border border-ink-border dark:bg-dark-card dark:border-dark-border">
+        <span class="font-bold block text-ink dark:text-dark-ink">Core 500–600</span>
+        <span class="text-ink-muted dark:text-dark-muted">Lightness 40–55%</span>
+        <p class="mt-2 text-ink-muted font-sans dark:text-dark-muted">The signature brand hue. Used for primary buttons and active navigational indicators.</p>
       </div>
-      <div class="p-3 bg-white border border-ink-border">
-        <span class="font-bold block text-ink">Deep 800–900</span>
-        <span class="text-ink-muted">Lightness 10–20%</span>
-        <p class="mt-2 text-ink-muted font-sans">Used for high-contrast typography and active pressed states.</p>
+      <div class="p-3 bg-white border border-ink-border dark:bg-dark-card dark:border-dark-border">
+        <span class="font-bold block text-ink dark:text-dark-ink">Deep 800–900</span>
+        <span class="text-ink-muted dark:text-dark-muted">Lightness 10–20%</span>
+        <p class="mt-2 text-ink-muted font-sans dark:text-dark-muted">Used for high-contrast typography and active pressed states.</p>
       </div>
     </div>
   </div>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Typography: The Modular Scale & Baseline Rhythm</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Typography: The Modular Scale & Baseline Rhythm</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Typography represents more than 90% of web interfaces. Arbitrary font sizes create visual friction. World-class interfaces derive all type scales from a mathematical ratio (such as the Major Second <code>1.125</code> or the Minor Third <code>1.200</code>):
   </p>
 
   <div class="editorial-matrix my-6 overflow-x-auto">
-    <table class="w-full text-left text-sm border-collapse border border-ink-border">
+    <table class="w-full text-left text-sm border-collapse border border-ink-border dark:border-dark-border">
       <thead>
-        <tr class="bg-paper-100 border-b border-ink-border">
-          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink">Token</th>
-          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink">Computed Size</th>
-          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink">Line Height</th>
-          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink">Target Usage</th>
+        <tr class="bg-paper-100 border-b border-ink-border dark:bg-dark-surface dark:border-dark-border">
+          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink dark:text-dark-ink">Token</th>
+          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink dark:text-dark-ink">Computed Size</th>
+          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink dark:text-dark-ink">Line Height</th>
+          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink dark:text-dark-ink">Target Usage</th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-ink-border">
+      <tbody class="divide-y divide-ink-border dark:divide-dark-border">
         <tr>
           <td class="p-3 font-mono font-bold text-xs">text-xs</td>
           <td class="p-3 font-mono text-xs">12px (0.75rem)</td>
           <td class="p-3 font-mono text-xs">16px (1.33)</td>
-          <td class="p-3 text-ink-muted">Metadata, timestamps, uppercase category labels, badges</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Metadata, timestamps, uppercase category labels, badges</td>
         </tr>
         <tr>
           <td class="p-3 font-mono font-bold text-xs">text-sm</td>
           <td class="p-3 font-mono text-xs">14px (0.875rem)</td>
           <td class="p-3 font-mono text-xs">20px (1.43)</td>
-          <td class="p-3 text-ink-muted">Dense table data, UI buttons, sidebar navigation items</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Dense table data, UI buttons, sidebar navigation items</td>
         </tr>
         <tr>
           <td class="p-3 font-mono font-bold text-xs">text-base</td>
           <td class="p-3 font-mono text-xs">16px (1.000rem)</td>
           <td class="p-3 font-mono text-xs">24px (1.50)</td>
-          <td class="p-3 text-ink-muted">Standard long-form editorial body prose, input fields</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Standard long-form editorial body prose, input fields</td>
         </tr>
         <tr>
           <td class="p-3 font-mono font-bold text-xs">text-lg</td>
           <td class="p-3 font-mono text-xs">18px (1.125rem)</td>
           <td class="p-3 font-mono text-xs">28px (1.55)</td>
-          <td class="p-3 text-ink-muted">Introductory lead paragraphs, pull quotes, card headers</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Introductory lead paragraphs, pull quotes, card headers</td>
         </tr>
         <tr>
           <td class="p-3 font-mono font-bold text-xs">text-2xl</td>
           <td class="p-3 font-mono text-xs">24px (1.500rem)</td>
           <td class="p-3 font-mono text-xs">32px (1.33)</td>
-          <td class="p-3 text-ink-muted">Section headers (H2), major modal headings</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Section headers (H2), major modal headings</td>
         </tr>
         <tr>
           <td class="p-3 font-mono font-bold text-xs">text-4xl</td>
           <td class="p-3 font-mono text-xs">36px (2.250rem)</td>
           <td class="p-3 font-mono text-xs">40px (1.11)</td>
-          <td class="p-3 text-ink-muted">Page titles (H1), hero headline displays</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Page titles (H1), hero headline displays</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="editorial-callout my-6 p-5 bg-paper-100 border-l-2 border-ink">
-    <h4 class="font-mono text-xs uppercase tracking-widest text-ink mb-1">Typographic Golden Rule: Measure & Leading</h4>
-    <p class="text-sm text-ink leading-relaxed">
+  <div class="editorial-callout my-6 p-5 bg-paper-100 border-l-2 border-ink dark:bg-dark-surface dark:border-dark-border">
+    <h4 class="font-mono text-xs uppercase tracking-widest text-ink mb-1 dark:text-dark-ink">Typographic Golden Rule: Measure & Leading</h4>
+    <p class="text-sm text-ink leading-relaxed dark:text-dark-ink">
       Optimal reading comfort requires a line length (<strong>measure</strong>) between <strong>45 and 75 characters</strong> (including spaces). Lines that are too wide cause the reader's eye to lose its place when returning to the left margin. Lines that are too narrow break reading rhythm. Furthermore, as type size increases, line-height (<strong>leading</strong>) must proportionally tighten.
     </p>
   </div>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Spatial Rhythm: The 8-Point Grid System</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">3. Spatial Rhythm: The 8-Point Grid System</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Why do leading tech companies (Apple, Google, Stripe, Airbnb) align all padding, margins, and component dimensions to multiples of <strong>8 pixels</strong> (and a half-step 4px unit)?
   </p>
-  <ul class="list-disc pl-6 space-y-2 text-ink">
+  <ul class="list-disc pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li><strong>Screen Scaling Precision:</strong> Modern display resolutions (1x, 2x Retina, 3x Super Retina, 1.5x Android hdpi) scale numbers divisible by 8 cleanly into whole integers without anti-aliasing blur or sub-pixel distortion.</li>
     <li><strong>Decision Velocity:</strong> Eliminates endless designer-developer debate between 13px vs 15px margins. The options are strictly: <code>4px, 8px, 16px, 24px, 32px, 48px, 64px</code>.</li>
     <li><strong>Cognitive Cohesion:</strong> Interfaces built on an 8pt grid possess an innate subconscious mathematical balance.</li>
   </ul>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">4. Accessibility & Human Interface Ergonomics</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">4. Accessibility & Human Interface Ergonomics</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Aesthetic refinement without inclusive ergonomics is poor craftsmanship. Professional UI design adheres to rigid legal and biological standards:
   </p>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-    <div class="p-5 border border-ink-border bg-white">
-      <h4 class="font-serif font-semibold text-ink mb-2">WCAG 2.1 Contrast Ratios</h4>
-      <p class="text-xs text-ink-muted mb-3">Enforced by international law (European Accessibility Act & ADA Title III):</p>
-      <ul class="space-y-2 text-xs text-ink">
+    <div class="p-5 border border-ink-border bg-white dark:bg-dark-card dark:border-dark-border">
+      <h4 class="font-serif font-semibold text-ink mb-2 dark:text-dark-ink">WCAG 2.1 Contrast Ratios</h4>
+      <p class="text-xs text-ink-muted mb-3 dark:text-dark-muted">Enforced by international law (European Accessibility Act & ADA Title III):</p>
+      <ul class="space-y-2 text-xs text-ink dark:text-dark-ink">
         <li><strong>4.5 : 1 (AA Minimum):</strong> Required for regular body text below 18px.</li>
         <li><strong>3.0 : 1 (AA Large):</strong> Permitted for bold text 14px+ or regular text 18px+.</li>
         <li><strong>7.0 : 1 (AAA Enhanced):</strong> Publication-grade target for critical legibility and aging eyes.</li>
         <li><strong>3.0 : 1 (UI Components):</strong> Required for form input borders, checkboxes, and active icons.</li>
       </ul>
     </div>
-    <div class="p-5 border border-ink-border bg-white">
-      <h4 class="font-serif font-semibold text-ink mb-2">Touch Target Ergonomics</h4>
-      <p class="text-xs text-ink-muted mb-3">Based on human thumb contact pads (10mm x 10mm):</p>
-      <ul class="space-y-2 text-xs text-ink">
+    <div class="p-5 border border-ink-border bg-white dark:bg-dark-card dark:border-dark-border">
+      <h4 class="font-serif font-semibold text-ink mb-2 dark:text-dark-ink">Touch Target Ergonomics</h4>
+      <p class="text-xs text-ink-muted mb-3 dark:text-dark-muted">Based on human thumb contact pads (10mm x 10mm):</p>
+      <ul class="space-y-2 text-xs text-ink dark:text-dark-ink">
         <li><strong>Minimum Target Size:</strong> 44 x 44 CSS pixels (Apple HIG) or 48 x 48 dp (Google Material 3).</li>
         <li><strong>Visual Size vs Tap Target:</strong> An icon can visually measure 20x20px, but its transparent clickable bounding box MUST expand to at least 44x44px.</li>
         <li><strong>Target Separation:</strong> Maintain at least 8px spacing between adjacent touch targets to eliminate accidental taps.</li>
@@ -4374,23 +4379,23 @@ export const COURSES: Course[] = [
     </div>
   </div>
 
-  <div class="editorial-card my-8 p-6 bg-paper-50 border border-ink-border">
-    <h3 class="text-lg font-serif font-semibold text-ink mb-2">Self-Assessment Checklist for UI Polish</h3>
-    <div class="space-y-2 text-sm text-ink">
+  <div class="editorial-card my-8 p-6 bg-paper-50 border border-ink-border dark:bg-dark-card dark:border-dark-border">
+    <h3 class="text-lg font-serif font-semibold text-ink mb-2 dark:text-dark-ink">Self-Assessment Checklist for UI Polish</h3>
+    <div class="space-y-2 text-sm text-ink dark:text-dark-ink">
       <label class="flex items-start gap-2">
-        <span class="font-mono text-ink font-bold">[ ]</span>
+        <span class="font-mono text-ink font-bold dark:text-dark-ink">[ ]</span>
         <span>Are all spacings and margins derived strictly from the 8-point spatial system?</span>
       </label>
       <label class="flex items-start gap-2">
-        <span class="font-mono text-ink font-bold">[ ]</span>
+        <span class="font-mono text-ink font-bold dark:text-dark-ink">[ ]</span>
         <span>Does the primary accent color account for no more than 10% of total screen surface area?</span>
       </label>
       <label class="flex items-start gap-2">
-        <span class="font-mono text-ink font-bold">[ ]</span>
+        <span class="font-mono text-ink font-bold dark:text-dark-ink">[ ]</span>
         <span>Have you verified with a contrast checker that all secondary text meets at least 4.5:1 against the canvas?</span>
       </label>
       <label class="flex items-start gap-2">
-        <span class="font-mono text-ink font-bold">[ ]</span>
+        <span class="font-mono text-ink font-bold dark:text-dark-ink">[ ]</span>
         <span>Do all interactive mobile touch targets have an active hit area of at least 44x44 CSS pixels?</span>
       </label>
     </div>
@@ -4408,7 +4413,7 @@ export const COURSES: Course[] = [
             lessonNumber: '6.2',
             type: 'article',
             readTime: '28 min study',
-            originalSourceUrl: 'https://www.smashingmagazine.com/2018/06/reference-guide-typography-mobile-web-design/',
+            originalSourceUrl: 'https://ww.smashingmagazine.com/2018/06/reference-guide-typography-mobile-web-design/',
             originalSourceLabel: 'Suzanne Scacca (Smashing Magazine Typography Fellow)',
             
             summaryQuote: 'Mobile typography must balance small glass screens with human vision limits, maintaining legibility across daylight glare and thumb scroll speeds.',
@@ -4438,35 +4443,35 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Designing typography for mobile devices is significantly more demanding than desktop web. Mobile phones are viewed at variable distances (from 10 to 18 inches), under harsh sunlight, while users are walking or distracted. In this comprehensive guide, Suzanne Scacca establishes the mathematical and optical rules for mobile typographic excellence.
   </p>
 
-  <h2 id="mob-type-foundations" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Small Screen Constraints & Viewing Distance</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="mob-type-foundations" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. Small Screen Constraints & Viewing Distance</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Desktop monitors sit 20–30 inches away from the user's eyes on a stable desk. Smartphones sit much closer, but move continuously with human hand tremors. Body copy on mobile must never drop below <strong>16px (1rem)</strong>; smaller sizes trigger automatic iOS Safari zoom and force users to pinch-and-squint.
   </p>
 
-  <h2 id="mob-type-scales" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Mathematical Modular Scales for Handheld Screens</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="mob-type-scales" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Mathematical Modular Scales for Handheld Screens</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     On wide desktop monitors, a dramatic scale ratio (like the Golden Ratio <code>1.618</code>) looks regal. On a 390px mobile screen, an H1 at 1.618 creates awkward 2-word line wraps. Use tighter scales on mobile:
   </p>
-  <ul class="list-disc pl-6 space-y-2 text-ink">
+  <ul class="list-disc pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li><strong>Minor Third (1.200):</strong> Ideal for dense mobile tools, enterprise dashboards, and compact lists.</li>
     <li><strong>Major Second (1.125):</strong> The quietest, most subtle scale for high-information-density mobile screens.</li>
   </ul>
 
-  <h2 id="mob-type-measure" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Measure (Line Length) & Optical Tracking</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="mob-type-measure" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">3. Measure (Line Length) & Optical Tracking</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Desktop measure allows 60–75 characters per line. On mobile screens, aim for <strong>35 to 45 characters per line</strong>. If lines are wider, users lose their place when jumping down to the next row; if narrower, reading rhythm stutters with excessive hyphens.
   </p>
 
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Typography in Mobile Web Design</em> by <strong>Suzanne Scacca</strong> (Smashing Magazine).</span>
     </div>
-    <a href="https://www.smashingmagazine.com/2018/06/reference-guide-typography-mobile-web-design/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Guide ↗</a>
+    <a href="https://ww.smashingmagazine.com/2018/06/reference-guide-typography-mobile-web-design/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -4481,7 +4486,7 @@ export const COURSES: Course[] = [
             lessonNumber: '6.3',
             type: 'article',
             readTime: '24 min study',
-            originalSourceUrl: 'https://www.nngroup.com/articles/visual-design-in-ux-study-guide/',
+            originalSourceUrl: 'https://ww.nngroup.com/articles/visual-design-in-ux-study-guide/',
             originalSourceLabel: 'Kelley Gordon (Visual Design Specialist, NN/g)',
             
             summaryQuote: 'Visual design in UX is the disciplined orchestration of scale, visual hierarchy, balance, and contrast to communicate system architecture.',
@@ -4506,23 +4511,23 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Visual design is the bridge between psychology and software. When executed properly, visual hierarchy guides the user's attention along the exact path necessary to complete their goals without deliberate thought.
   </p>
-  <h2 id="vis-foundations" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The 5 Core Visual Design Principles</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="vis-foundations" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. The 5 Core Visual Design Principles</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Nielsen Norman Group categorizes the foundational visual design principles as: Scale, Visual Hierarchy, Balance, Contrast, and Gestalt Proximity.
   </p>
-  <h2 id="vis-gestalt" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Gestalt Principles in Digital UI (Proximity & Similarity)</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="vis-gestalt" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Gestalt Principles in Digital UI (Proximity & Similarity)</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     <strong>Law of Proximity:</strong> Elements placed close together are perceived as belonging to the same functional group. A label must always sit closer to its corresponding form field than to the field above it.
   </p>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Visual Design in UX Study Guide</em> by <strong>Kelley Gordon</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://www.nngroup.com/articles/visual-design-in-ux-study-guide/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Guide ↗</a>
+    <a href="https://ww.nngroup.com/articles/visual-design-in-ux-study-guide/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -4545,7 +4550,7 @@ export const COURSES: Course[] = [
             lessonNumber: '7.1',
             type: 'video',
             readTime: '25 min study',
-            originalSourceUrl: 'https://www.youtube.com/watch?v=U9ZG19XTbd4',
+            originalSourceUrl: 'https://ww.youtube.com/watch?v=U9ZG19XTbd4',
             originalSourceLabel: 'Michael Margolis & Jake Knapp (Google Ventures Design Sprint)',
             youtubeId: 'U9ZG19XTbd4',
             summaryQuote: 'Watching just five real customers interact with your prototype uncovers 85% of all usability problems before writing production code.',
@@ -4606,60 +4611,60 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Usability testing is not a focus group, nor is it market research. It is an empirical observation of a human being interacting with your prototype to accomplish authentic tasks. In the Google Ventures Design Sprint methodology, Friday is dedicated entirely to testing your prototype with five real customers. Michael Margolis, Research Partner at Google Ventures, developed the <strong>Five-Act Interview</strong> to turn high-stakes testing into a repeatable, comfortable conversation that reveals critical flaws before building expensive software.
   </p>
 
-  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-4 border-ink">
-    <p class="text-lg italic font-serif text-ink">
+  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-2 border-ink dark:bg-dark-card dark:border-dark-border">
+    <p class="text-lg italic font-serif text-ink dark:text-dark-ink">
       "Watching real people struggle with your prototype is emotionally painful, but it is a hundred times cheaper than launching a product that nobody can figure out how to use."
     </p>
-    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted">
+    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted dark:text-dark-muted">
       — Michael Margolis, Google Ventures Research Partner
     </cite>
   </div>
 
-  <div class="editorial-callout my-6 p-4 bg-paper-100 border border-ink-border flex items-center justify-between">
-    <div class="text-sm font-mono text-ink">
+  <div class="editorial-callout my-6 p-4 bg-paper-100 border border-ink-border flex items-center justify-between dark:bg-dark-surface dark:border-dark-border">
+    <div class="text-sm font-mono text-ink dark:text-dark-ink">
       <span class="font-bold">Interactive Video Transcript:</span> Click any timestamp to jump the video directly to that act.
     </div>
-    <span class="text-xs font-mono uppercase tracking-widest text-ink-muted">Google Ventures / Sprint</span>
+    <span class="text-xs font-mono uppercase tracking-widest text-ink-muted dark:text-dark-muted">Google Ventures / Sprint</span>
   </div>
 
   <!-- ACT 1 -->
-  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-200" data-timestamp="0">
+  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-200 dark:bg-dark-card dark:border-dark-border" data-timestamp="0">
     <div class="flex items-center justify-between mb-3">
-      <h3 class="text-lg font-serif font-semibold text-ink">Act 1: The Friendly Welcome & Psychological Safety</h3>
-      <button class="timestamp-btn font-mono text-xs px-2.5 py-1 border border-ink-border hover:bg-paper-100 text-ink transition-colors" data-seek-time="0">
+      <h3 class="text-lg font-serif font-semibold text-ink dark:text-dark-ink">Act 1: The Friendly Welcome & Psychological Safety</h3>
+      <button class="timestamp-btn font-mono text-xs px-2.5 py-1 border border-ink-border hover:bg-paper-100 text-ink transition-colors dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface" data-seek-time="0">
         00:00 - Jump
       </button>
     </div>
-    <p class="text-ink leading-relaxed mb-3">
+    <p class="text-ink leading-relaxed mb-3 dark:text-dark-ink">
       Participants enter the session nervous. They assume they are taking a test and fear looking incompetent. Your first task is to dismantle their anxiety completely:
     </p>
-    <div class="p-4 bg-paper-50 border-l-2 border-ink text-sm space-y-2">
-      <p class="font-bold text-ink">Verbatim Protocol Script:</p>
-      <p class="italic text-ink">
+    <div class="p-4 bg-paper-50 border-l-2 border-ink text-sm space-y-2 dark:bg-dark-card dark:border-dark-border">
+      <p class="font-bold text-ink dark:text-dark-ink">Verbatim Protocol Script:</p>
+      <p class="italic text-ink dark:text-dark-ink">
         "Thank you so much for joining us today! Before we get started, let me explain how this works. We are testing a new product concept, and we want to see how it works for real people like you. <strong>I want to emphasize: we are testing the product, not you.</strong> You cannot do or say anything wrong here. In fact, if you get confused, that is the most helpful thing you can show us, because it tells us where the product is broken."
       </p>
-      <p class="italic text-ink">
+      <p class="italic text-ink dark:text-dark-ink">
         "Also, I didn't design this myself, so you won't hurt my feelings. Please be brutally honest. As we go through, please <strong>think aloud</strong>—tell me what you are looking at, what you expect to happen, and what puzzles you."
       </p>
     </div>
   </div>
 
   <!-- ACT 2 -->
-  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-200" data-timestamp="75">
+  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-200 dark:bg-dark-card dark:border-dark-border" data-timestamp="75">
     <div class="flex items-center justify-between mb-3">
-      <h3 class="text-lg font-serif font-semibold text-ink">Act 2: Context Questions & Background Warm-up</h3>
-      <button class="timestamp-btn font-mono text-xs px-2.5 py-1 border border-ink-border hover:bg-paper-100 text-ink transition-colors" data-seek-time="75">
+      <h3 class="text-lg font-serif font-semibold text-ink dark:text-dark-ink">Act 2: Context Questions & Background Warm-up</h3>
+      <button class="timestamp-btn font-mono text-xs px-2.5 py-1 border border-ink-border hover:bg-paper-100 text-ink transition-colors dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface" data-seek-time="75">
         01:15 - Jump
       </button>
     </div>
-    <p class="text-ink leading-relaxed mb-3">
+    <p class="text-ink leading-relaxed mb-3 dark:text-dark-ink">
       Spend 5 to 7 minutes asking about the participant's daily routine, habits, and existing tools before showing any screens. This contextualizes their later reactions:
     </p>
-    <ul class="list-disc pl-6 space-y-2 text-ink text-sm">
+    <ul class="list-disc pl-6 space-y-2 text-ink text-sm dark:text-dark-ink">
       <li><strong>Current Workflows:</strong> "How do you currently handle [problem area] today? What tools or apps do you rely on?"</li>
       <li><strong>Pain Points:</strong> "What is the most frustrating part of that process? When was the last time that happened?"</li>
       <li><strong>Vocabulary Calibration:</strong> Note the exact words they use to describe their domain. Notice if your product uses corporate jargon that clashes with their natural terminology.</li>
@@ -4667,98 +4672,98 @@ export const COURSES: Course[] = [
   </div>
 
   <!-- ACT 3 -->
-  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-200" data-timestamp="210">
+  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-200 dark:bg-dark-card dark:border-dark-border" data-timestamp="210">
     <div class="flex items-center justify-between mb-3">
-      <h3 class="text-lg font-serif font-semibold text-ink">Act 3: Introducing the Prototype</h3>
-      <button class="timestamp-btn font-mono text-xs px-2.5 py-1 border border-ink-border hover:bg-paper-100 text-ink transition-colors" data-seek-time="210">
+      <h3 class="text-lg font-serif font-semibold text-ink dark:text-dark-ink">Act 3: Introducing the Prototype</h3>
+      <button class="timestamp-btn font-mono text-xs px-2.5 py-1 border border-ink-border hover:bg-paper-100 text-ink transition-colors dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface" data-seek-time="210">
         03:30 - Jump
       </button>
     </div>
-    <p class="text-ink leading-relaxed mb-3">
+    <p class="text-ink leading-relaxed mb-3 dark:text-dark-ink">
       Bring out the device or load the Figma prototype without explaining what it does. Set expectations about prototype fidelity:
     </p>
-    <div class="p-4 bg-paper-50 border-l-2 border-ink text-sm">
-      <p class="italic text-ink">
+    <div class="p-4 bg-paper-50 border-l-2 border-ink text-sm dark:bg-dark-card dark:border-dark-border">
+      <p class="italic text-ink dark:text-dark-ink">
         "This is an early prototype. Some buttons might not click, and some data is just placeholder text. If something doesn't respond, just let me know what you would have expected to happen. Take a look at this initial screen—without clicking anything yet, what do you make of this? What do you think this is for?"
       </p>
     </div>
   </div>
 
   <!-- ACT 4 -->
-  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-200" data-timestamp="315">
+  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-200 dark:bg-dark-card dark:border-dark-border" data-timestamp="315">
     <div class="flex items-center justify-between mb-3">
-      <h3 class="text-lg font-serif font-semibold text-ink">Act 4: Tasks, Scenarios & The Art of Non-Directive Nudging</h3>
-      <button class="timestamp-btn font-mono text-xs px-2.5 py-1 border border-ink-border hover:bg-paper-100 text-ink transition-colors" data-seek-time="315">
+      <h3 class="text-lg font-serif font-semibold text-ink dark:text-dark-ink">Act 4: Tasks, Scenarios & The Art of Non-Directive Nudging</h3>
+      <button class="timestamp-btn font-mono text-xs px-2.5 py-1 border border-ink-border hover:bg-paper-100 text-ink transition-colors dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface" data-seek-time="315">
         05:15 - Jump
       </button>
     </div>
-    <p class="text-ink leading-relaxed mb-3">
+    <p class="text-ink leading-relaxed mb-3 dark:text-dark-ink">
       Give the participant an authentic goal, not a button-by-button instruction checklist:
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 text-xs font-mono">
-      <div class="p-4 bg-red-50/40 border border-red-200 text-ink">
+      <div class="p-4 bg-red-50/40 border border-red-200 text-ink dark:text-dark-ink">
         <span class="font-bold text-red-700 block mb-1">BAD: Leading Instruction</span>
         "Please click the blue 'Export' button in the top right and save this file as a CSV."
-        <p class="mt-2 text-ink-muted font-sans">This tests reading comprehension, not interface usability.</p>
+        <p class="mt-2 text-ink-muted font-sans dark:text-dark-muted">This tests reading comprehension, not interface usability.</p>
       </div>
-      <div class="p-4 bg-emerald-50/40 border border-emerald-200 text-ink">
-        <span class="font-bold text-emerald-700 block mb-1">GOOD: Scenario-Based Goal</span>
+      <div class="p-4 bg-emerald-50/40 border border-emerald-200 text-ink dark:text-dark-ink">
+        <span class="font-bold text-emerald-700 block mb-1 dark:text-emerald-400">GOOD: Scenario-Based Goal</span>
         "Imagine you need to share last month's financial numbers with your accountant. How would you accomplish that here?"
-        <p class="mt-2 text-ink-muted font-sans">Allows the user to search, interpret labels, and reveal their natural mental model.</p>
+        <p class="mt-2 text-ink-muted font-sans dark:text-dark-muted">Allows the user to search, interpret labels, and reveal their natural mental model.</p>
       </div>
     </div>
-    <div class="editorial-callout my-4 p-4 bg-paper-50 border border-ink-border text-sm">
-      <h4 class="font-mono text-xs uppercase font-bold text-ink mb-1">The Boomerang Technique</h4>
-      <p class="text-ink">
+    <div class="editorial-callout my-4 p-4 bg-paper-50 border border-ink-border text-sm dark:bg-dark-card dark:border-dark-border">
+      <h4 class="font-mono text-xs uppercase font-bold text-ink mb-1 dark:text-dark-ink">The Boomerang Technique</h4>
+      <p class="text-ink dark:text-dark-ink">
         When the participant gets stuck and asks: <em>"What does this button do?"</em> or <em>"Did I do this right?"</em>, <strong>never answer directly</strong>. Throw the question back with a warm smile:
       </p>
-      <p class="italic text-ink mt-2">
+      <p class="italic text-ink mt-2 dark:text-dark-ink">
         "What do you think it does?" / "What would you expect to happen if you tapped that?"
       </p>
     </div>
   </div>
 
   <!-- ACT 5 -->
-  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-200" data-timestamp="525">
+  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-200 dark:bg-dark-card dark:border-dark-border" data-timestamp="525">
     <div class="flex items-center justify-between mb-3">
-      <h3 class="text-lg font-serif font-semibold text-ink">Act 5: Quick Debrief & The Magic Wand Question</h3>
-      <button class="timestamp-btn font-mono text-xs px-2.5 py-1 border border-ink-border hover:bg-paper-100 text-ink transition-colors" data-seek-time="525">
+      <h3 class="text-lg font-serif font-semibold text-ink dark:text-dark-ink">Act 5: Quick Debrief & The Magic Wand Question</h3>
+      <button class="timestamp-btn font-mono text-xs px-2.5 py-1 border border-ink-border hover:bg-paper-100 text-ink transition-colors dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface" data-seek-time="525">
         08:45 - Jump
       </button>
     </div>
-    <p class="text-ink leading-relaxed mb-3">
+    <p class="text-ink leading-relaxed mb-3 dark:text-dark-ink">
       Wrap up the session with reflective, summarizing questions that reveal overarching mental impressions:
     </p>
-    <ul class="list-disc pl-6 space-y-2 text-ink text-sm">
+    <ul class="list-disc pl-6 space-y-2 text-ink text-sm dark:text-dark-ink">
       <li>"How would you describe this tool to a colleague in your own words?"</li>
       <li>"What was the most intuitive part? What felt clumsy or unnatural?"</li>
       <li><strong>The Magic Wand:</strong> "If you had a magic wand and could change one single thing about how this worked, what would it be?"</li>
     </ul>
   </div>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">Why Exactly Five Users? (The Nielsen-Landauer Mathematical Proof)</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">Why Exactly Five Users? (The Nielsen-Landauer Mathematical Proof)</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Designers frequently ask: <em>"Isn't 5 users too small of a sample size to make major product decisions?"</em> Jakob Nielsen and Thomas Landauer proved mathematically that the number of usability problems found in an interface follows the Poisson distribution formula:
   </p>
-  <div class="editorial-axiom my-6 p-4 bg-paper-100 font-mono text-center text-sm border border-ink-border">
+  <div class="editorial-axiom my-6 p-4 bg-paper-100 font-mono text-center text-sm border border-ink-border dark:bg-dark-surface dark:border-dark-border">
     U(n) = N * (1 - (1 - L)^n)
   </div>
-  <p class="text-ink text-sm leading-relaxed">
+  <p class="text-ink text-sm leading-relaxed dark:text-dark-ink">
     Where <code>N</code> is the total number of usability issues in the design, and <code>L</code> is the proportion of usability issues discovered by a single user (empirically averaged at <code>31%</code> across hundreds of studies):
   </p>
-  <ul class="list-disc pl-6 space-y-2 text-ink text-sm mt-3">
+  <ul class="list-disc pl-6 space-y-2 text-ink text-sm mt-3 dark:text-dark-ink">
     <li><strong>1 User:</strong> Discovers ~31% of total usability flaws.</li>
     <li><strong>2 Users:</strong> Discovers ~53% of flaws.</li>
     <li><strong>3 Users:</strong> Discovers ~68% of flaws.</li>
     <li><strong>5 Users:</strong> Discovers <strong>~85%</strong> of all usability defects.</li>
   </ul>
-  <p class="text-ink text-sm leading-relaxed mt-3">
+  <p class="text-ink text-sm leading-relaxed mt-3 dark:text-dark-ink">
     Beyond five users, you encounter diminishing returns: the same issues are repeated, wasting research budget that would be far better spent iterating the design and running a second 5-user study.
   </p>
 
-  <div class="editorial-card my-8 p-6 bg-paper-50 border border-ink-border">
-    <h3 class="text-lg font-serif font-semibold text-ink mb-3">Synthesizing Notes on Friday Afternoon</h3>
-    <p class="text-ink text-sm leading-relaxed mb-3">
+  <div class="editorial-card my-8 p-6 bg-paper-50 border border-ink-border dark:bg-dark-card dark:border-dark-border">
+    <h3 class="text-lg font-serif font-semibold text-ink mb-3 dark:text-dark-ink">Synthesizing Notes on Friday Afternoon</h3>
+    <p class="text-ink text-sm leading-relaxed mb-3 dark:text-dark-ink">
       While the interviewer conducts sessions in the testing room, the rest of the sprint team watches the live feed in an observation room. Team members write raw observations on sticky notes using color coding:
     </p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-mono">
@@ -4789,7 +4794,7 @@ export const COURSES: Course[] = [
             lessonNumber: '7.2',
             type: 'article',
             readTime: '26 min study',
-            originalSourceUrl: 'https://www.nngroup.com/articles/usability-testing-101/',
+            originalSourceUrl: 'https://ww.nngroup.com/articles/usability-testing-101/',
             originalSourceLabel: 'Kate Moran (Vice President, Nielsen Norman Group)',
             
             summaryQuote: 'Usability testing evaluates a product by testing it on real users, measuring task completion, error frequency, and subjective satisfaction.',
@@ -4819,24 +4824,24 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Usability testing is the core engine of user-centered design. In this comprehensive guide from Nielsen Norman Group, VP Kate Moran explains how to structure, conduct, and analyze usability tests to turn qualitative observations into decisive product improvements.
   </p>
-  <h2 id="ut101-why" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Why Usability Test? (Formative vs Summative)</h2>
-  <ul class="list-disc pl-6 space-y-2 text-ink">
+  <h2 id="ut101-why" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. Why Usability Test? (Formative vs Summative)</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li><strong>Formative Testing (Diagnostic):</strong> Conducted during the iterative design phase with low-fi prototypes to identify usability flaws and refine workflows before code is written.</li>
     <li><strong>Summative Testing (Benchmarking):</strong> Conducted on live production software to measure performance metrics (e.g. System Usability Scale, task completion rate) and compare against competitors.</li>
   </ul>
-  <h2 id="ut101-elements" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The 3 Core Elements: Facilitator, Tasks, Participant</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="ut101-elements" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. The 3 Core Elements: Facilitator, Tasks, Participant</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Every usability test consists of: A neutral facilitator who presents tasks without coaching; authentic scenarios that reflect real human goals; and a representative participant from your primary user archetype.
   </p>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Usability Testing 101</em> by <strong>Kate Moran</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://www.nngroup.com/articles/usability-testing-101/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Guide ↗</a>
+    <a href="https://ww.nngroup.com/articles/usability-testing-101/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -4851,7 +4856,7 @@ export const COURSES: Course[] = [
             lessonNumber: '7.3',
             type: 'article',
             readTime: '20 min study',
-            originalSourceUrl: 'https://www.nngroup.com/videos/user-testing-jakob-nielsen/',
+            originalSourceUrl: 'https://ww.nngroup.com/videos/user-testing-jakob-nielsen/',
             originalSourceLabel: 'Jakob Nielsen (Pioneer of Discount Usability Engineering)',
             
             summaryQuote: 'Discount usability engineering is about running fast, cheap, frequent tests rather than rare, expensive laboratory experiments.',
@@ -4871,19 +4876,19 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Jakob Nielsen revolutionized the tech industry by introducing <strong>Discount Usability Engineering</strong> in the 1990s. Prior to Nielsen's work, companies believed usability testing required expensive one-way mirror labs and $50,000 budgets.
   </p>
-  <h2 id="jn-discount" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Philosophy of Discount Usability Engineering</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="jn-discount" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. The Philosophy of Discount Usability Engineering</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Nielsen proved that simple paper prototypes, tested in coffee shops or offices with five users, uncover more than 85% of interface blunders. Running ten small studies across a product lifecycle is infinitely superior to running one massive study at the very end.
   </p>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>User Testing: Why & How</em> by <strong>Jakob Nielsen</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://www.nngroup.com/videos/user-testing-jakob-nielsen/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Article ↗</a>
+    <a href="https://ww.nngroup.com/videos/user-testing-jakob-nielsen/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Article ↗</a>
   </div>
 </section>
 
@@ -4898,7 +4903,7 @@ export const COURSES: Course[] = [
             lessonNumber: '7.4',
             type: 'article',
             readTime: '24 min study',
-            originalSourceUrl: 'https://contentsquare.com/guides/usability-testing/moderated/',
+            originalSourceUrl: 'https://ontentsquare.com/guides/usability-testing/moderated/',
             originalSourceLabel: 'Contentsquare User Research Academy',
             
             summaryQuote: 'Moderated testing allows researchers to probe unexpected behaviors live, asking \'why\' the moment a user pauses or shows surprise.',
@@ -4923,23 +4928,23 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Moderated usability testing provides the highest qualitative fidelity in digital product design. Because a human facilitator is present live, you can observe facial micro-expressions, body tension, and probe moments of confusion with non-directive follow-up questions.
   </p>
-  <h2 id="cs-process" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The 5-Step Moderated Protocol</h2>
-  <ol class="list-decimal pl-6 space-y-2 text-ink">
+  <h2 id="cs-process" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. The 5-Step Moderated Protocol</h2>
+  <ol class="list-decimal pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li><strong>Study Scoping:</strong> Align key research questions with product squad goals.</li>
     <li><strong>Participant Recruitment:</strong> Screen for exact behavioral habits, not just demographics.</li>
     <li><strong>Script & Task Creation:</strong> Write authentic scenarios without revealing button names.</li>
     <li><strong>Session Execution:</strong> Run 45-minute sessions adhering strictly to the Think-Aloud protocol.</li>
     <li><strong>Debrief & Action Plan:</strong> Synthesize findings into ranked Jira / Linear tickets with video clips.</li>
   </ol>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Moderated Usability Testing Guide</em> by <strong>Contentsquare</strong>.</span>
     </div>
-    <a href="https://contentsquare.com/guides/usability-testing/moderated/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Guide ↗</a>
+    <a href="https://ontentsquare.com/guides/usability-testing/moderated/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -4962,7 +4967,7 @@ export const COURSES: Course[] = [
             lessonNumber: '8.1',
             type: 'article',
             readTime: '28 min',
-            originalSourceUrl: 'https://www.springboard.com/blog/design/ux-design-portfolio-guide/',
+            originalSourceUrl: 'https://ww.springboard.com/blog/design/ux-design-portfolio-guide/',
             originalSourceLabel: 'Springboard Design Mentorship Board & Principal Design Leaders',
             
             summaryQuote: 'Standout UX portfolios do not showcase decorative mockups; they prove business acumen, constraint management, and rigorous human-centered validation.',
@@ -4987,62 +4992,62 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     A design portfolio is not an art gallery; it is a proof of problem-solving capability. Hiring managers spend an average of less than 90 seconds scanning a UX portfolio before deciding whether to advance a candidate to the interview loop. If your case studies present only polished final Dribbble-style mockups without demonstrating how you navigated constraints, made trade-offs, and validated assumptions with real humans, your application will be filtered out.
   </p>
 
-  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-4 border-ink">
-    <p class="text-lg italic font-serif text-ink">
+  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-2 border-ink dark:bg-dark-card dark:border-dark-border">
+    <p class="text-lg italic font-serif text-ink dark:text-dark-ink">
       "Junior designers show what they built. Senior designers show why they built it, what went wrong along the way, how they validated it, and what measurable impact it produced for the business."
     </p>
-    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted">
+    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted dark:text-dark-muted">
       — Principal Design Director, San Francisco
     </cite>
   </div>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Anatomy of a World-Class Case Study</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. Anatomy of a World-Class Case Study</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Every standout UX case study follows a classic narrative arc: Hook, Context, Conflict, Resolution, and Reflection. Avoid monolithic walls of text; use scannable typographic hierarchy, diagrams, and annotated visuals:
   </p>
 
   <div class="space-y-6 my-6">
-    <div class="p-6 border border-ink-border bg-white">
-      <span class="font-mono text-xs uppercase tracking-widest text-ink-muted block mb-1">Phase 1</span>
-      <h3 class="text-lg font-serif font-semibold text-ink mb-2">The Executive Summary (Above the Fold)</h3>
-      <p class="text-sm text-ink leading-relaxed mb-3">
+    <div class="p-6 border border-ink-border bg-white dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase tracking-widest text-ink-muted block mb-1 dark:text-dark-muted">Phase 1</span>
+      <h3 class="text-lg font-serif font-semibold text-ink mb-2 dark:text-dark-ink">The Executive Summary (Above the Fold)</h3>
+      <p class="text-sm text-ink leading-relaxed mb-3 dark:text-dark-ink">
         Before diving into research, give the reviewer an immediate snapshot of the project scope:
       </p>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs font-mono bg-paper-50 p-4 border border-ink-border">
-        <div><strong class="block text-ink">Role:</strong> Lead Product Designer</div>
-        <div><strong class="block text-ink">Timeline:</strong> 8 Weeks (Q3)</div>
-        <div><strong class="block text-ink">Platform:</strong> iOS & Web App</div>
-        <div><strong class="block text-ink">Outcome:</strong> +34% Task Completion</div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs font-mono bg-paper-50 p-4 border border-ink-border dark:bg-dark-card dark:border-dark-border">
+        <div><strong class="block text-ink dark:text-dark-ink">Role:</strong> Lead Product Designer</div>
+        <div><strong class="block text-ink dark:text-dark-ink">Timeline:</strong> 8 Weeks (Q3)</div>
+        <div><strong class="block text-ink dark:text-dark-ink">Platform:</strong> iOS & Web App</div>
+        <div><strong class="block text-ink dark:text-dark-ink">Outcome:</strong> +34% Task Completion</div>
       </div>
-      <p class="text-xs text-ink-muted mt-2">
+      <p class="text-xs text-ink-muted mt-2 dark:text-dark-muted">
         <strong>The Problem Statement:</strong> In 2 sentences, explain the user friction and the business risk.
       </p>
     </div>
 
-    <div class="p-6 border border-ink-border bg-white">
-      <span class="font-mono text-xs uppercase tracking-widest text-ink-muted block mb-1">Phase 2</span>
-      <h3 class="text-lg font-serif font-semibold text-ink mb-2">The Messy Middle & Pivot Points</h3>
-      <p class="text-sm text-ink leading-relaxed mb-2">
+    <div class="p-6 border border-ink-border bg-white dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase tracking-widest text-ink-muted block mb-1 dark:text-dark-muted">Phase 2</span>
+      <h3 class="text-lg font-serif font-semibold text-ink mb-2 dark:text-dark-ink">The Messy Middle & Pivot Points</h3>
+      <p class="text-sm text-ink leading-relaxed mb-2 dark:text-dark-ink">
         Hiring teams actively distrust case studies where everything was perfect from day one. Real product design is messy:
       </p>
-      <ul class="list-disc pl-6 space-y-1 text-sm text-ink">
+      <ul class="list-disc pl-6 space-y-1 text-sm text-ink dark:text-dark-ink">
         <li>Show your initial sketch or assumption that completely failed in usability testing.</li>
         <li>Explain the engineering constraint (e.g., legacy API latency) that forced you to change your UI architecture.</li>
         <li>Document how you balanced competing user needs against business revenue requirements.</li>
       </ul>
     </div>
 
-    <div class="p-6 border border-ink-border bg-white">
-      <span class="font-mono text-xs uppercase tracking-widest text-ink-muted block mb-1">Phase 3</span>
-      <h3 class="text-lg font-serif font-semibold text-ink mb-2">The Measurable Impact & Reflection</h3>
-      <p class="text-sm text-ink leading-relaxed mb-2">
+    <div class="p-6 border border-ink-border bg-white dark:bg-dark-card dark:border-dark-border">
+      <span class="font-mono text-xs uppercase tracking-widest text-ink-muted block mb-1 dark:text-dark-muted">Phase 3</span>
+      <h3 class="text-lg font-serif font-semibold text-ink mb-2 dark:text-dark-ink">The Measurable Impact & Reflection</h3>
+      <p class="text-sm text-ink leading-relaxed mb-2 dark:text-dark-ink">
         Close your case study with concrete numbers, not vague claims:
       </p>
-      <ul class="list-disc pl-6 space-y-1 text-sm text-ink">
+      <ul class="list-disc pl-6 space-y-1 text-sm text-ink dark:text-dark-ink">
         <li><strong>Quantitative Metrics:</strong> Conversion rate lift, reduction in customer support tickets, SUS (System Usability Scale) score improvement.</li>
         <li><strong>Qualitative Validation:</strong> Quotes from post-launch customer interviews.</li>
         <li><strong>Retrospective Humility:</strong> "If I had two more weeks on this project, I would investigate edge-case accessibility on small-screen Android devices."</li>
@@ -5050,68 +5055,68 @@ export const COURSES: Course[] = [
     </div>
   </div>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The 5-Step Whiteboard Challenge Playbook</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. The 5-Step Whiteboard Challenge Playbook</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     During on-site interview loops, you will frequently be asked to solve an ambiguous design prompt on a whiteboard in 45 minutes (e.g., <em>"Design an automated kiosk for a subway station"</em>). Follow this rigorous 5-step framework:
   </p>
 
   <div class="editorial-matrix my-6 overflow-x-auto">
-    <table class="w-full text-left text-sm border-collapse border border-ink-border">
+    <table class="w-full text-left text-sm border-collapse border border-ink-border dark:border-dark-border">
       <thead>
-        <tr class="bg-paper-100 border-b border-ink-border">
-          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink">Step</th>
-          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink">Time Allocation</th>
-          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink">Core Action & Questions</th>
+        <tr class="bg-paper-100 border-b border-ink-border dark:bg-dark-surface dark:border-dark-border">
+          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink dark:text-dark-ink">Step</th>
+          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink dark:text-dark-ink">Time Allocation</th>
+          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink dark:text-dark-ink">Core Action & Questions</th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-ink-border">
+      <tbody class="divide-y divide-ink-border dark:divide-dark-border">
         <tr>
           <td class="p-3 font-mono font-bold text-xs">1. Clarify the Scope</td>
           <td class="p-3 font-mono text-xs">5 minutes</td>
-          <td class="p-3 text-ink-muted">Ask questions! Who is paying? What are the hardware limitations? Is this domestic or international travelers?</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Ask questions! Who is paying? What are the hardware limitations? Is this domestic or international travelers?</td>
         </tr>
         <tr>
           <td class="p-3 font-mono font-bold text-xs">2. Define the User & Context</td>
           <td class="p-3 font-mono text-xs">10 minutes</td>
-          <td class="p-3 text-ink-muted">Identify primary persona and stress environment (e.g., rushing commuter with luggage vs first-time tourist).</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Identify primary persona and stress environment (e.g., rushing commuter with luggage vs first-time tourist).</td>
         </tr>
         <tr>
           <td class="p-3 font-mono font-bold text-xs">3. Map Core User Journey</td>
           <td class="p-3 font-mono text-xs">10 minutes</td>
-          <td class="p-3 text-ink-muted">Draw a linear flowchart: Approach &rarr; Select Language &rarr; Pick Destination &rarr; Payment &rarr; Dispense Ticket.</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Draw a linear flowchart: Approach &rarr; Select Language &rarr; Pick Destination &rarr; Payment &rarr; Dispense Ticket.</td>
         </tr>
         <tr>
           <td class="p-3 font-mono font-bold text-xs">4. Sketch Wireframe Interface</td>
           <td class="p-3 font-mono text-xs">15 minutes</td>
-          <td class="p-3 text-ink-muted">Sketch low-fidelity wireframes of the critical 3 screens. Annotate touch targets, hierarchy, and physical hardware interaction.</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Sketch low-fidelity wireframes of the critical 3 screens. Annotate touch targets, hierarchy, and physical hardware interaction.</td>
         </tr>
         <tr>
           <td class="p-3 font-mono font-bold text-xs">5. Critique, Edge Cases & Wrap</td>
           <td class="p-3 font-mono text-xs">5 minutes</td>
-          <td class="p-3 text-ink-muted">Proactively point out potential flaws: "What if the paper runs out? What if the payment fails? How does a wheelchair user reach the screen?"</td>
+          <td class="p-3 text-ink-muted dark:text-dark-muted">Proactively point out potential flaws: "What if the paper runs out? What if the payment fails? How does a wheelchair user reach the screen?"</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Thriving in the AI-Augmented Era of UX</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">3. Thriving in the AI-Augmented Era of UX</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Artificial intelligence is rapidly commoditizing generic UI production. Tools like Midjourney, v0, Galileo, and AI-assisted design systems can generate screens in seconds. Where does this leave the professional product designer?
   </p>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-    <div class="p-5 border border-ink-border bg-paper-50">
-      <h4 class="font-serif font-semibold text-ink mb-2">What AI Replaces (The Low-Leverage Tasks)</h4>
-      <ul class="space-y-2 text-xs text-ink">
+    <div class="p-5 border border-ink-border bg-paper-50 dark:bg-dark-card dark:border-dark-border">
+      <h4 class="font-serif font-semibold text-ink mb-2 dark:text-dark-ink">What AI Replaces (The Low-Leverage Tasks)</h4>
+      <ul class="space-y-2 text-xs text-ink dark:text-dark-ink">
         <li>Generating boilerplate lorem ipsum and placeholder imagery.</li>
         <li>Basic component variation generation and token exports.</li>
         <li>Writing standard form layouts and routine admin dashboards.</li>
         <li>Initial competitive screenshot auditing and basic data sorting.</li>
       </ul>
     </div>
-    <div class="p-5 border border-ink-border bg-white">
-      <h4 class="font-serif font-semibold text-ink mb-2">What Becomes 10x More Valuable (Irreplaceable Core)</h4>
-      <ul class="space-y-2 text-xs text-ink">
+    <div class="p-5 border border-ink-border bg-white dark:bg-dark-card dark:border-dark-border">
+      <h4 class="font-serif font-semibold text-ink mb-2 dark:text-dark-ink">What Becomes 10x More Valuable (Irreplaceable Core)</h4>
+      <ul class="space-y-2 text-xs text-ink dark:text-dark-ink">
         <li><strong>Problem Framing:</strong> Determining if we are solving the right human problem before building anything.</li>
         <li><strong>In-Person Contextual Empathy:</strong> Observing unspoken emotional body language in user research.</li>
         <li><strong>Cross-Functional Persuasion:</strong> Aligning engineering, product, legal, and executive stakeholders around vision.</li>
@@ -5120,11 +5125,11 @@ export const COURSES: Course[] = [
     </div>
   </div>
 
-  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-4 border-ink">
-    <p class="text-lg italic font-serif text-ink">
+  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-2 border-ink dark:bg-dark-card dark:border-dark-border">
+    <p class="text-lg italic font-serif text-ink dark:text-dark-ink">
       "AI will not replace UX designers. But UX designers who master AI tools to conduct deeper research, explore wider option spaces, and ship higher-fidelity solutions will replace designers who refuse to evolve."
     </p>
-    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted">
+    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted dark:text-dark-muted">
       — Design Leadership Manifesto, 2026
     </cite>
   </div>
@@ -5141,7 +5146,7 @@ export const COURSES: Course[] = [
             lessonNumber: '8.2',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://www.youtube.com/watch?v=Hq7ohURsQN8',
+            originalSourceUrl: 'https://ww.youtube.com/watch?v=Hq7ohURsQN8',
             originalSourceLabel: 'Springboard Career Series',
             youtubeId: 'Hq7ohURsQN8',
             summaryQuote: 'What does a UX designer actually do on a typical Tuesday? Explore standups, user testing reviews, cross-functional engineering alignment, and design critiques.',
@@ -5172,23 +5177,23 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Aspiring designers often imagine the job consists of sitting alone with noise-canceling headphones drawing pretty shapes in Figma. The reality is that UX design is primarily a <strong>communication and consensus-building discipline</strong>.
   </p>
-  <h2 id="day-morning" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Morning: Standups, Analytics Review & Sprint Priorities</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="day-morning" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. Morning: Standups, Analytics Review & Sprint Priorities</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     The day begins with a 15-minute cross-functional standup with software engineers and product managers. You review Jira tickets, unblock frontend developers who need component token specs, and check Amplitude / PostHog funnels.
   </p>
-  <h2 id="day-afternoon" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Afternoon: Deep Work, Wireframing & Design Critique</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="day-afternoon" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Afternoon: Deep Work, Wireframing & Design Critique</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     Afternoons are reserved for focused deep work: translating user interview synthesis into wireframes, followed by a <strong>Design Critique</strong> where peers stress-test your layouts for edge cases and accessibility.
   </p>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Springboard Career Series: <strong>A Day in the Life of a Designer</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=Hq7ohURsQN8" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+    <a href="https://ww.youtube.com/watch?v=Hq7ohURsQN8" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -5203,7 +5208,7 @@ export const COURSES: Course[] = [
             lessonNumber: '8.3',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://www.youtube.com/watch?v=qwCEZ1lRkHo',
+            originalSourceUrl: 'https://ww.youtube.com/watch?v=qwCEZ1lRkHo',
             originalSourceLabel: 'Springboard Career Series',
             youtubeId: 'qwCEZ1lRkHo',
             summaryQuote: 'An honest evaluation of the product design profession: the immense thrill of launching products versus navigating corporate politics and technical constraints.',
@@ -5234,23 +5239,23 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Every career path has trade-offs. Knowing what to expect before entering the tech industry allows you to cultivate emotional resilience and focus on high-leverage activities.
   </p>
-  <h2 id="gb-rewards" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Rewards: Impact, Autonomy & Creative Problem-Solving</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="gb-rewards" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. The Rewards: Impact, Autonomy & Creative Problem-Solving</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     There is no feeling comparable to watching a customer easily navigate a workflow that used to take them forty minutes of frustration. Designers have a direct voice in shaping human interactions with technology.
   </p>
-  <h2 id="gb-frustrations" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The Frustrations: Stakeholder Pushback & Technical Debt</h2>
-  <p class="text-ink leading-relaxed">
+  <h2 id="gb-frustrations" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. The Frustrations: Stakeholder Pushback & Technical Debt</h2>
+  <p class="text-ink leading-relaxed dark:text-dark-ink">
     You will frequently design elegant solutions that engineering cannot build in the current quarter due to legacy database debt. Learning to make graceful compromises is what separates mature designers from juniors.
   </p>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Springboard Career Series: <strong>The Good and Bad of Working as a Designer</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=qwCEZ1lRkHo" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+    <a href="https://ww.youtube.com/watch?v=qwCEZ1lRkHo" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -5265,7 +5270,7 @@ export const COURSES: Course[] = [
             lessonNumber: '8.4',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://www.youtube.com/watch?v=ebzQXHIMZu0',
+            originalSourceUrl: 'https://ww.youtube.com/watch?v=ebzQXHIMZu0',
             originalSourceLabel: 'Springboard Career Series',
             youtubeId: 'ebzQXHIMZu0',
             summaryQuote: 'Transitioning from psychology, graphic design, architecture, or customer service: how to position your prior background as your ultimate unfair advantage.',
@@ -5296,22 +5301,22 @@ export const COURSES: Course[] = [
             contentHtml: `
 
 <section class="lesson-section space-y-6">
-  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light dark:text-dark-ink">
     Almost nobody starts their career as a UX designer from childhood. The design community is filled with former teachers, psychologists, journalists, accountants, and customer support representatives.
   </p>
-  <h2 id="break-backgrounds" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Turning Non-Design Backgrounds into Unfair Advantages</h2>
-  <ul class="list-disc pl-6 space-y-2 text-ink">
+  <h2 id="break-backgrounds" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">1. Turning Non-Design Backgrounds into Unfair Advantages</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink dark:text-dark-ink">
     <li><strong>Psychology & Social Work:</strong> Deep empathy, active listening, and unbiased research interview skills.</li>
     <li><strong>Architecture & Industrial Design:</strong> Spatial rhythm, modular systems thinking, and ergonomic awareness.</li>
     <li><strong>Journalism & English Literature:</strong> Narrative storytelling, clear microcopy, and synthesizing complex information.</li>
     <li><strong>Customer Service:</strong> Direct firsthand knowledge of where software breaks and why users get angry.</li>
   </ul>
-  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Springboard Career Series: <strong>How Do You Get into Design?</strong></span>
     </div>
-    <a href="https://www.youtube.com/watch?v=ebzQXHIMZu0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+    <a href="https://ww.youtube.com/watch?v=ebzQXHIMZu0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
