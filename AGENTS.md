@@ -59,5 +59,23 @@ All courses in AHKH Study Hub adhere strictly to the **Unified Global Design Sys
 - **Low-Contrast Tactile Active States & Overlays (No Inverted Black Blocks)**: Never invert active buttons, segmented controls, floating menus, or selection popovers into solid jet-black blocks (`bg-ink`) or heavy black borders (`border-ink`). Active states on light surfaces must use subtle recessed neutral fills (`bg-paper-200/90` or `bg-white` with `shadow-2xs`) and maintain standard neutral zinc borders (`border-ink-border`). Floating popovers and toasts must float on pure white (`bg-white`) or clean off-white surfaces with delicate soft shadows.
 - **Base URL Awareness**: All internal links and static assets must wrap their paths with `path()` from `src/utils/paths.ts` to ensure flawless routing on GitHub Pages (`/ahkh-study-hub`).
 
-## 3. Post-Implementation Verification
+## 3. Visual Reproduction, Synthetic Assets & Course Source Protocol (دستور إعادة إنتاج الدروس والأصول البصرية)
+All agents creating or updating courses and lessons must follow these mandatory asset and reproduction standards:
+1. **Public & Real-World UI Screenshots**:
+   - For real-world production applications (e.g. Instagram, Apple iOS, Google, Figma interfaces), use clean public reference screenshots with clear caption attributions.
+2. **Proprietary, Uncertain or Low-Fidelity Assets**:
+   - NEVER leave broken image links, blurry low-res scans, or empty placeholder boxes.
+   - If an original diagram or image is proprietary, low-resolution, or of uncertain provenance, re-create an equivalent high-fidelity visual asset using either:
+     - The `generate_image` tool for visual illustrations and realistic interface renders.
+     - Pure programmatic code (HTML5 canvas, responsive CSS/Tailwind components, or inline SVG) for wireframes, sitemaps, data matrices, and architectural schemas.
+3. **Autonomous Pedagogical Elevation**:
+   - Do not restrict yourself to what is solely on paper or text. You have full programmatic agency. Proactively generate expressive, informative visual illustrations and interactive wireframe models whenever they elevate conceptual understanding for the learner.
+4. **Absolute Ban on Promotional Clutter & Marketing Fluff**:
+   - The platform is a sovereign, publication-grade academic library.
+   - NEVER copy or generate commercial marketing copy, promotional banners, academy sales pitches, or repetitive vendor slogans.
+   - Mention the original source strictly as a quiet, dignified academic citation in the standardized **Source Attribution Footer** at the bottom of the lesson ("من باب العلم بالشيء").
+5. **Curriculum Scope & Syllabus Integrity**:
+   - Never artificially compress or abandon resources from an approved syllabus matrix. All sources in the curriculum index must be either directly authored as dedicated lessons or systematically structured into coherent, comprehensive sequential modules without discarding topics.
+
+## 4. Post-Implementation Verification
 - Always execute `npm run build` to confirm zero TypeScript, Vite, or Astro compilation errors before reporting completion.

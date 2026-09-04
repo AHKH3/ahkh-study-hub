@@ -10,7 +10,7 @@ All pages, curricula, study reader surfaces, editorial components, and UI elemen
 
 - **Mode:** `Read` (Deep, focused, contemplative reading sanctuary) + `Operate` (Course roadmap navigation, local marginalia).
 - **Aesthetic:** **Swiss Modernist Editorial & Soft Monochrome** (disciplined typographic rhythm, high legibility, generous whitespace, tactile paper surfaces).
-- **The Rule of Framing:** Content surfaces never stretch to fill the full monitor width. Contained measures (`max-w-reading` at 68ch for prose, `max-w-hub` at 960px for indexes) preserve bookish dignity.
+- **The Rule of Framing:** Content surfaces never stretch to fill the full monitor width. Contained measures (`max-w-reading` at 68ch as the unified default measure for main content, and `max-w-hub` at 960px for top navigation headers) preserve bookish dignity.
 - **Verbatim Text Sacredness:** Design exists solely to elevate and clarify thought. The underlying source text is never summarized, truncated, or altered by algorithms.
 - **Local Sovereignty:** All highlights, marginalia, and notes persist strictly in browser `localStorage` (`ahkh_hl_${courseId}_${lessonId}`). Zero telemetry, zero cloud trackers.
 
@@ -231,3 +231,26 @@ Recipes below are extracted verbatim from the 12 shipped Springboard lessons in 
 5. **Transcript timestamp blocks (required for every video lesson):** `data-timestamp="{seconds}"` on `my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all`. Without these blocks the YouTube transcript-sync engine has no targets and the lesson ships silent. Verbatim cues are auto-ingested at build time (`npm run transcripts` → `src/data/transcripts.json`, ADR-015) and rendered under the Original script tab — never hand-copy transcript text into lesson data.
 6. **Attribution footer:** `mt-16 pt-8 border-t border-ink-border/80 dark:border-dark-border not-prose flex items-start gap-4` with the source label plus an original-link button (`font-ui text-xs border ... px-3 py-1.5 rounded-xs bg-paper-50`).
 7. **Prose isolation rule:** every non-prose block inside `contentHtml` carries `not-prose`; the reader renders content inside a prose container, so a missing `not-prose` leaks typography styles into cards and grids.
+
+---
+
+## 8. Programmatic Wireframes, Synthetic UI Models & Visual Asset Guidelines
+
+Agents have unlimited creative and technical capabilities to produce visual models, UI prototypes, and architectural diagrams:
+
+### 8.1. Programmatic Wireframe Components (Pure CSS/HTML)
+When illustrating layout wireframes, card sorting, or interaction patterns, build clean, responsive wireframes directly using Tailwind classes:
+- **Wireframe Viewport Frame:** A minimal device frame with subtle neutral zinc borders (`border border-ink-border bg-white dark:bg-dark-card p-4 rounded-xs shadow-2xs`).
+- **Placeholder Blocks (Wireframe Skeletons):** Use neutral tinted blocks (`bg-paper-200 dark:bg-dark-border/60`) with dashed or solid 1px borders to represent images, search inputs, and button hit targets.
+- **Annotated Callouts:** Floating numeric badges (`w-6 h-6 rounded-full bg-ink text-paper-50 font-mono text-xs`) pointing to specific interface zones.
+
+### 8.2. Synthetic Image Generation Protocol
+- If a lesson requires visual demonstration (e.g. 3D device ergonomics, realistic mobile interfaces, conceptual illustrations) and no authentic public screenshot exists:
+  - Generate a crisp, publication-grade asset using the `generate_image` tool.
+  - Save generated assets to `public/images/lessons/[lesson-id]/` with descriptive filenames.
+  - Embed with dignified figure captions: `<p class="text-xs sm:text-sm font-sans font-medium text-ink-muted mt-2.5 text-center">Figure X: Descriptive analytical explanation</p>`.
+
+### 8.3. Anti-Marketing & Sovereign Academic Purity
+- Lessons must read as authoritative, timeless textbooks.
+- Strip away all platform marketing ("Sign up now", "Enroll in our bootcamp", "Springboard community features").
+- Attribution is strictly bibliographic: author, original publication year/title, and an external reference link placed in the quiet `Attribution footer` at the bottom of the page.
