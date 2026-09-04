@@ -1,5 +1,9 @@
-﻿<div align="center">
-  <img src="public/logo.png" alt="AHKH Study Hub Logo" width="220" />
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="public/logo-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="public/logo.png">
+    <img src="public/logo-dark.png" alt="AHKH Study Hub Logo" width="220" />
+  </picture>
   
   # AHKH Study Hub
   

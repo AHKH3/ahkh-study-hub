@@ -25,11 +25,11 @@ export default {
           border: '#E8E6E1',
         },
         dark: {
-          bg: '#141413',
-          card: '#1A1A18',
-          border: '#282724',
-          ink: '#ECEBE7',
-          muted: '#96948E',
+          bg: '#000000',
+          card: '#0A0A0A',
+          border: '#1E1E1E',
+          ink: '#F4F4F5',
+          muted: '#8E8E93',
         },
         course: {
           terracotta: '#B35334',
