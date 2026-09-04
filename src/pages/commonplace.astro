@@ -45,60 +45,112 @@ import { path } from '../utils/paths';
       </div>
     </header>
 
-    <!-- Controls Bar: Multidimensional Filter Tabs & Search -->
-    <div class="space-y-4 mb-8">
-      <!-- Course & Category Filter Tabs -->
-      <div id="filter-tabs-container" class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs font-sans">
-        <button 
-          data-filter="all" 
-          class="filter-tab px-3 py-1.5 rounded-xs font-medium border border-ink dark:border-dark-ink bg-ink dark:bg-dark-ink text-paper-50 dark:text-dark-bg transition-colors cursor-pointer"
-        >
-          All Passages (<span id="tab-count-all">0</span>)
-        </button>
-        <button 
-          data-filter="notes-only" 
-          class="filter-tab px-3 py-1.5 rounded-xs font-medium border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink transition-colors cursor-pointer"
-        >
-          With Marginalia (<span id="tab-count-notes">0</span>)
-        </button>
-        <!-- Dynamic Course Tabs injected by JS -->
-        <div id="dynamic-course-tabs" class="flex items-center gap-1.5"></div>
+    <!-- Controls Bar: Search & Compact Filter Dropdown Menu -->
+    <div class="mb-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+      <!-- Search Input Bar -->
+      <div class="relative flex-1">
+        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-ink-muted dark:text-dark-muted">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+          </svg>
+        </div>
+        <input 
+          type="text" 
+          id="commonplace-search"
+          aria-label="Filter highlights or notes"
+          placeholder="Search by keyword, lesson title, or marginal thoughts... (Press / to focus)"
+          class="w-full pl-10 pr-20 py-2.5 text-sm font-sans rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card text-ink dark:text-dark-ink placeholder:text-ink-faint dark:placeholder:text-dark-muted focus:outline-hidden focus:ring-1 focus:ring-ink/20 dark:focus:ring-dark-ink/30 focus:border-ink dark:focus:border-dark-ink transition-colors"
+        />
+        <div class="absolute inset-y-0 right-0 pr-3 flex items-center gap-1.5">
+          <button 
+            id="clear-search-btn" 
+            class="hidden text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink p-1 rounded-xs transition-colors cursor-pointer"
+            title="Clear search"
+            aria-label="Clear search"
+          >
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
+          </button>
+          <kbd class="hidden sm:inline font-mono text-[10px] px-1.5 py-0.5 rounded border border-ink-border/80 dark:border-dark-border/80 text-ink-muted dark:text-dark-muted bg-paper-100 dark:bg-dark-bg select-none" aria-hidden="true">
+            /
+          </kbd>
+        </div>
       </div>
 
-      <!-- Search Input Bar -->
-      <div class="flex items-center gap-3">
-        <div class="relative flex-1">
-          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-ink-muted dark:text-dark-muted">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+      <!-- Compact Filter Dropdown Menu (Takes up single button space) -->
+      <div class="relative shrink-0" id="filter-dropdown-wrapper">
+        <button 
+          id="filter-dropdown-btn"
+          aria-haspopup="true"
+          aria-expanded="false"
+          class="w-full sm:w-auto px-3.5 py-2.5 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-100 dark:hover:bg-dark-border/40 text-ink dark:text-dark-ink text-xs font-sans font-medium transition-colors cursor-pointer flex items-center justify-between sm:justify-start gap-2.5 shadow-2xs"
+          title="Filter passages by scope or curriculum"
+        >
+          <div class="flex items-center gap-2">
+            <svg class="w-3.5 h-3.5 text-ink-muted dark:text-dark-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M3 6h18M7 12h10M10 18h4"/>
             </svg>
+            <span class="text-ink-muted dark:text-dark-muted">Filter:</span>
+            <span id="active-filter-label" class="font-medium text-ink dark:text-dark-ink">All Passages</span>
           </div>
-          <input 
-            type="text" 
-            id="commonplace-search"
-            aria-label="Filter highlights or notes"
-            placeholder="Search by keyword, lesson title, or marginal thoughts... (Press / to focus)"
-            class="w-full pl-10 pr-20 py-2.5 text-sm font-sans rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card text-ink dark:text-dark-ink placeholder:text-ink-faint dark:placeholder:text-dark-muted focus:outline-hidden focus:ring-1 focus:ring-ink/20 dark:focus:ring-dark-ink/30 focus:border-ink dark:focus:border-dark-ink transition-colors"
-          />
-          <div class="absolute inset-y-0 right-0 pr-3 flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-ink-muted dark:text-dark-muted transition-transform duration-150" id="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+
+        <!-- Dropdown Menu Panel -->
+        <div 
+          id="filter-menu-panel" 
+          class="hidden absolute right-0 mt-1.5 w-64 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card shadow-lg z-30 py-1 text-xs font-sans divide-y divide-ink-border/50 dark:divide-dark-border/50 transition-all"
+          role="menu"
+        >
+          <!-- Primary General Scopes -->
+          <div class="py-1">
             <button 
-              id="clear-search-btn" 
-              class="hidden text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink p-1 rounded-xs transition-colors cursor-pointer"
-              title="Clear search"
-              aria-label="Clear search"
+              data-filter="all" 
+              role="menuitem"
+              class="filter-menu-option w-full px-3 py-2 text-left flex items-center justify-between hover:bg-paper-100 dark:hover:bg-dark-border/40 transition-colors cursor-pointer text-ink dark:text-dark-ink font-medium"
             >
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M18 6 6 18M6 6l12 12"/>
-              </svg>
+              <div class="flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 text-ink dark:text-dark-ink opacity-100 filter-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
+                <span>All Passages</span>
+              </div>
+              <span id="tab-count-all" class="font-mono text-[11px] text-ink-muted dark:text-dark-muted">0</span>
             </button>
-            <kbd class="hidden sm:inline font-mono text-[10px] px-1.5 py-0.5 rounded border border-ink-border/80 dark:border-dark-border/80 text-ink-muted dark:text-dark-muted bg-paper-100 dark:bg-dark-bg select-none" aria-hidden="true">
-              /
-            </kbd>
+
+            <button 
+              data-filter="notes-only" 
+              role="menuitem"
+              class="filter-menu-option w-full px-3 py-2 text-left flex items-center justify-between hover:bg-paper-100 dark:hover:bg-dark-border/40 transition-colors cursor-pointer text-ink-muted dark:text-dark-muted"
+            >
+              <div class="flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 text-ink dark:text-dark-ink opacity-0 filter-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
+                <span>With Marginalia Only</span>
+              </div>
+              <span id="tab-count-notes" class="font-mono text-[11px] text-ink-muted dark:text-dark-muted">0</span>
+            </button>
+          </div>
+
+          <!-- Dynamic Courses List -->
+          <div class="py-1">
+            <div class="px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-ink-muted dark:text-dark-muted font-medium">
+              Curricula & Sources
+            </div>
+            <div id="dynamic-courses-menu" class="max-h-52 overflow-y-auto">
+              <!-- Dynamically populated via client script -->
+            </div>
           </div>
         </div>
-        <div id="highlights-counter" class="text-xs font-mono text-ink-muted dark:text-dark-muted shrink-0" aria-live="polite">
-          0 Highlights
-        </div>
+      </div>
+
+      <!-- Highlights Counter -->
+      <div id="highlights-counter" class="text-xs font-mono text-ink-muted dark:text-dark-muted shrink-0 text-right sm:text-left self-center" aria-live="polite">
+        0 Highlights
       </div>
     </div>
 
@@ -238,16 +290,15 @@ import { path } from '../utils/paths';
       if (rwBtn) rwBtn.disabled = isDisabled;
     }
 
-    function buildFilterTabs(allItems) {
-      const dynamicTabsContainer = document.getElementById('dynamic-course-tabs');
+    function buildFilterMenu(allItems) {
+      const dynamicMenu = document.getElementById('dynamic-courses-menu');
       const tabCountAll = document.getElementById('tab-count-all');
       const tabCountNotes = document.getElementById('tab-count-notes');
+      const activeLabel = document.getElementById('active-filter-label');
       
       const notesCount = allItems.filter(h => h.note && h.note.trim().length > 0).length;
       if (tabCountAll) tabCountAll.textContent = allItems.length;
       if (tabCountNotes) tabCountNotes.textContent = notesCount;
-
-      if (!dynamicTabsContainer) return;
 
       // Extract unique course names
       const courses = {};
@@ -256,21 +307,67 @@ import { path } from '../utils/paths';
         courses[c] = (courses[c] || 0) + 1;
       });
 
-      dynamicTabsContainer.innerHTML = Object.entries(courses).map(([courseName, count]) => {
-        const isActive = currentFilter === courseName;
-        return `
-          <button 
-            data-filter="${escapeAttr(courseName)}" 
-            class="filter-tab px-3 py-1.5 rounded-xs font-medium border transition-colors cursor-pointer whitespace-nowrap ${
-              isActive 
-                ? 'border-ink dark:border-dark-ink bg-ink dark:bg-dark-ink text-paper-50 dark:text-dark-bg' 
-                : 'border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink'
-            }"
-          >
-            ${escapeHtml(courseName)} (${count})
-          </button>
-        `;
-      }).join('');
+      if (dynamicMenu) {
+        if (Object.keys(courses).length === 0) {
+          dynamicMenu.innerHTML = '<div class="px-3 py-1.5 text-[11px] text-ink-muted dark:text-dark-muted italic">No courses recorded</div>';
+        } else {
+          dynamicMenu.innerHTML = Object.entries(courses).map(([courseName, count]) => {
+            const isActive = currentFilter === courseName;
+            let dotColor = 'bg-ink-muted dark:bg-dark-muted';
+            const cn = courseName.toLowerCase();
+            if (cn.includes('springboard')) dotColor = 'bg-course-terracotta';
+            else if (cn.includes('canon') || cn.includes('manifesto')) dotColor = 'bg-emerald-500';
+            else if (cn.includes('systems') || cn.includes('architecture')) dotColor = 'bg-blue-500';
+            else if (cn.includes('typography') || cn.includes('swiss')) dotColor = 'bg-pink-500';
+            else dotColor = 'bg-purple-500';
+
+            return `
+              <button 
+                data-filter="${escapeAttr(courseName)}" 
+                role="menuitem"
+                class="filter-menu-option w-full px-3 py-2 text-left flex items-center justify-between hover:bg-paper-100 dark:hover:bg-dark-border/40 transition-colors cursor-pointer ${isActive ? 'text-ink dark:text-dark-ink font-medium bg-paper-100/60 dark:bg-dark-border/20' : 'text-ink-muted dark:text-dark-muted'}"
+              >
+                <div class="flex items-center gap-2 min-w-0 pr-2">
+                  <svg class="w-3.5 h-3.5 shrink-0 text-ink dark:text-dark-ink ${isActive ? 'opacity-100' : 'opacity-0'} filter-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <path d="M20 6 9 17l-5-5"/>
+                  </svg>
+                  <span class="w-1.5 h-1.5 rounded-full shrink-0 ${dotColor}" aria-hidden="true"></span>
+                  <span class="truncate">${escapeHtml(courseName)}</span>
+                </div>
+                <span class="font-mono text-[11px] text-ink-muted dark:text-dark-muted shrink-0">${count}</span>
+              </button>
+            `;
+          }).join('');
+        }
+      }
+
+      // Update active filter label in button trigger
+      if (activeLabel) {
+        if (currentFilter === 'all') {
+          activeLabel.textContent = 'All Passages';
+        } else if (currentFilter === 'notes-only') {
+          activeLabel.textContent = 'With Marginalia';
+        } else {
+          activeLabel.textContent = currentFilter;
+        }
+      }
+
+      // Synchronize active checkmarks on static options
+      document.querySelectorAll('.filter-menu-option').forEach(opt => {
+        const isSel = opt.getAttribute('data-filter') === currentFilter;
+        const check = opt.querySelector('.filter-check');
+        if (check) {
+          check.classList.toggle('opacity-100', isSel);
+          check.classList.toggle('opacity-0', !isSel);
+        }
+        if (isSel) {
+          opt.classList.add('text-ink', 'dark:text-dark-ink', 'font-medium', 'bg-paper-100/60', 'dark:bg-dark-border/20');
+          opt.classList.remove('text-ink-muted', 'dark:text-dark-muted');
+        } else {
+          opt.classList.remove('text-ink', 'dark:text-dark-ink', 'font-medium', 'bg-paper-100/60', 'dark:bg-dark-border/20');
+          opt.classList.add('text-ink-muted', 'dark:text-dark-muted');
+        }
+      });
     }
 
     function renderCommonplace() {
@@ -285,7 +382,7 @@ import { path } from '../utils/paths';
 
       const allItems = getAllHighlights();
       updateExportButtons(allItems.length);
-      buildFilterTabs(allItems);
+      buildFilterMenu(allItems);
 
       // Manage Global Empty State (Pristine)
       if (allItems.length === 0) {
@@ -655,29 +752,52 @@ import { path } from '../utils/paths';
         searchInput?.focus();
       });
 
-      document.getElementById('reset-filter-btn')?.addEventListener('click', () => {
-        if (searchInput) searchInput.value = '';
-        searchQuery = '';
-        currentFilter = 'all';
-        renderCommonplace();
+      const dropdownBtn = document.getElementById('filter-dropdown-btn');
+      const menuPanel = document.getElementById('filter-menu-panel');
+      const chevron = document.getElementById('filter-chevron');
+
+      function toggleDropdown(show) {
+        if (!menuPanel) return;
+        const willShow = show !== undefined ? show : menuPanel.classList.contains('hidden');
+        if (willShow) {
+          menuPanel.classList.remove('hidden');
+          dropdownBtn?.setAttribute('aria-expanded', 'true');
+          chevron?.classList.add('rotate-180');
+        } else {
+          menuPanel.classList.add('hidden');
+          dropdownBtn?.setAttribute('aria-expanded', 'false');
+          chevron?.classList.remove('rotate-180');
+        }
+      }
+
+      dropdownBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleDropdown();
       });
 
-      document.getElementById('filter-tabs-container')?.addEventListener('click', (e) => {
-        const btn = e.target.closest('.filter-tab');
+      menuPanel?.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-menu-option');
         if (!btn) return;
         const filter = btn.getAttribute('data-filter');
         if (!filter) return;
 
         currentFilter = filter;
-        document.querySelectorAll('.filter-tab').forEach(t => {
-          const isSelected = t.getAttribute('data-filter') === filter;
-          t.className = `filter-tab px-3 py-1.5 rounded-xs font-medium border transition-colors cursor-pointer whitespace-nowrap ${
-            isSelected 
-              ? 'border-ink dark:border-dark-ink bg-ink dark:bg-dark-ink text-paper-50 dark:text-dark-bg' 
-              : 'border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink'
-          }`;
-        });
+        toggleDropdown(false);
+        renderCommonplace();
+      });
 
+      document.addEventListener('click', (e) => {
+        const wrapper = document.getElementById('filter-dropdown-wrapper');
+        if (wrapper && !wrapper.contains(e.target)) {
+          toggleDropdown(false);
+        }
+      });
+
+      document.getElementById('reset-filter-btn')?.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        searchQuery = '';
+        currentFilter = 'all';
+        toggleDropdown(false);
         renderCommonplace();
       });
 
@@ -688,13 +808,16 @@ import { path } from '../utils/paths';
           e.preventDefault();
           searchInput?.focus();
         }
-        if (e.key === 'Escape' && document.activeElement === searchInput) {
-          if (searchInput.value.trim().length > 0) {
-            searchInput.value = '';
-            searchQuery = '';
-            renderCommonplace();
-          } else {
-            searchInput.blur();
+        if (e.key === 'Escape') {
+          toggleDropdown(false);
+          if (document.activeElement === searchInput) {
+            if (searchInput.value.trim().length > 0) {
+              searchInput.value = '';
+              searchQuery = '';
+              renderCommonplace();
+            } else {
+              searchInput.blur();
+            }
           }
         }
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {

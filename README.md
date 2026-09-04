@@ -16,7 +16,7 @@
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-38B2AC.svg?logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
   [![GitHub Pages](https://img.shields.io/badge/Hosted%20On-GitHub%20Pages-222222.svg?logo=github&logoColor=white)](https://ahkh3.github.io/ahkh-study-hub/)
 
-  [**Live Website**](https://ahkh3.github.io/ahkh-study-hub/) · [**Architecture Docs**](docs/ARCHITECTURE.md) · [**Decisions Log**](docs/DECISIONS.md) · [**Project Specs**](docs/PROJECT.md)
+  [**Live Website**](https://ahkh3.github.io/ahkh-study-hub/) · [**Architecture Docs**](docs/ARCHITECTURE.md) · [**Decisions Log**](docs/DECISIONS.md) · [**Project Specs**](docs/PROJECT.md) · [**Course Design System Spec**](docs/COURSE_DESIGN_SYSTEM_SPEC.md)
 </div>
 
 ---

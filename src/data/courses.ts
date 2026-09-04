@@ -18,6 +18,28 @@ export interface Lesson {
 
 export type CourseStatus = 'active' | 'new' | 'explored' | 'completed';
 
+export interface CourseDesignSystem {
+  accent: string;
+  highlight: string;
+  paperBg?: string;
+  secondary?: string;
+  sidenoteBorder?: string;
+  cardBg?: string;
+  border?: string;
+  typography?: {
+    headingFont?: string;
+    bodyFont?: string;
+    fontImportUrl?: string;
+    fontSizeScale?: 'compact' | 'classic' | 'spacious';
+    lineHeight?: string;
+  };
+  motifs?: {
+    borderRadius?: string;
+    dividerStyle?: string;
+    quoteStyle?: 'bordered-left' | 'callout-box' | 'centered-large' | 'bracketed';
+  };
+}
+
 export interface Course {
   id: string;
   slug: string;
@@ -31,11 +53,7 @@ export interface Course {
   totalModules: number;
   totalSources: number;
   status: CourseStatus;
-  theme: {
-    accent: string;
-    highlight: string;
-    paperBg: string;
-  };
+  theme: CourseDesignSystem;
   modules: {
     id: string;
     number: number;
