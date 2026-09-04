@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { COURSES } from '../../../data/courses';
 import { path } from '../../../utils/paths';
 import { getCategoryColor, getFormatColor } from '../../../utils/categoryColors';
+import { countLessons } from '../../../utils/courseStats';
 
 export function getStaticPaths() {
   return COURSES.map((course) => ({
@@ -51,11 +52,12 @@ const statusMeta = STATUS_CONFIG[course.status];
       </a>
 
       <div class="flex items-center gap-3">
-        <span class="font-mono text-xs text-ink-muted dark:text-dark-muted">
+        <span id="journey-progress-label" class="font-mono text-xs text-ink-muted dark:text-dark-muted">
           Progress: {course.progressPercent}%
         </span>
         <div class="w-20 h-1.5 bg-paper-300 dark:bg-dark-border rounded-full overflow-hidden">
           <div 
+            id="journey-progress-fill"
             class="h-full bg-ink dark:bg-dark-ink transition-all" 
             style={`width: ${course.progressPercent}%`}
           ></div>
@@ -64,7 +66,7 @@ const statusMeta = STATUS_CONFIG[course.status];
     </div>
   </header>
 
-  <main class="flex-1 max-w-hub w-full mx-auto px-6 py-12">
+  <main class="flex-1 max-w-hub w-full mx-auto px-6 py-12" data-course-id={course.slug} data-total={countLessons(course)}>
     <!-- Course Title & Metadata (Library-Aligned Monograph) -->
     <div class="mb-14 pb-8 border-b border-ink-border/80 dark:border-dark-border">
       <div class="flex flex-wrap items-center gap-3 mb-3">
@@ -72,8 +74,8 @@ const statusMeta = STATUS_CONFIG[course.status];
           {course.category}
         </span>
         {statusMeta && (
-          <span class={`inline-flex items-center gap-1.5 text-[11px] font-mono tracking-wide ${statusMeta.textClass}`}>
-            <span class={`w-1.5 h-1.5 rounded-full ${statusMeta.dotClass}`}></span>
+          <span id="journey-status-badge" data-status={course.status} data-statusbadge class={`inline-flex items-center gap-1.5 text-[11px] font-mono tracking-wide ${statusMeta.textClass}`}>
+            <span id="journey-status-dot" data-statusdot class={`w-1.5 h-1.5 rounded-full ${statusMeta.dotClass}`}></span>
             {statusMeta.label}
           </span>
         )}
@@ -102,7 +104,7 @@ const statusMeta = STATUS_CONFIG[course.status];
           <!-- Quick Utilities: Single authoritative count & Global Expand/Collapse -->
           <div class="flex items-center justify-between pb-3.5 mb-6 border-b border-ink-border/60 dark:border-dark-border/60 text-xs font-mono text-ink-muted dark:text-dark-muted">
             <span>
-              {course.modules.length} {course.modules.length === 1 ? 'Unit' : 'Units'} · {course.totalSources} Lessons{course.duration ? ` · ${course.duration}` : ''}
+              {course.modules.length} {course.modules.length === 1 ? 'Unit' : 'Units'} · {countLessons(course)} Lessons{course.duration ? ` · ${course.duration}` : ''}
             </span>
             <button 
               id="toggle-all-modules-btn" 
@@ -201,7 +203,7 @@ const statusMeta = STATUS_CONFIG[course.status];
                             />
 
                             <!-- Editorial Lesson Row Surface -->
-                            <article class="relative rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50/70 dark:bg-dark-bg/60 hover:bg-white dark:hover:bg-dark-card hover:border-ink-border dark:hover:border-dark-border transition-all p-3 sm:p-3.5 shadow-2xs">
+                            <article data-lesson-slug={lesson.slug} class="relative rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50/70 dark:bg-dark-bg/60 hover:bg-white dark:hover:bg-dark-card hover:border-ink-border dark:hover:border-dark-border transition-all p-3 sm:p-3.5 shadow-2xs">
                               <a href={path(`/courses/${course.slug}/${lesson.slug}`)} class="block focus:outline-hidden">
                                 <div class="flex items-center justify-between gap-4">
                                   
@@ -239,6 +241,7 @@ const statusMeta = STATUS_CONFIG[course.status];
                                     <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                       <path d="M5 12h14M12 5l7 7-7 7"/>
                                     </svg>
+                                    <span class="read-tick hidden font-mono text-[10px] text-emerald-700 dark:text-emerald-400" data-read-tick>Read</span>
                                   </div>
 
                                 </div>
@@ -364,5 +367,62 @@ const statusMeta = STATUS_CONFIG[course.status];
     // Single boot path: ClientRouter (always enabled in BaseLayout) fires
     // astro:page-load on initial load and on every navigation.
     document.addEventListener('astro:page-load', initModuleAccordions);
+  </script>
+
+  <script is:inline>
+    const STATUS_META = {
+      active: { label: 'Active', dot: 'bg-emerald-600 dark:bg-emerald-400', text: 'text-emerald-700 dark:text-emerald-400' },
+      new: { label: 'New', dot: 'bg-blue-600 dark:bg-blue-400', text: 'text-blue-700 dark:text-blue-400' },
+      explored: { label: 'Explored', dot: 'bg-purple-600 dark:bg-purple-400', text: 'text-purple-700 dark:text-purple-400' },
+      completed: { label: 'Completed', dot: 'bg-pink-600 dark:bg-pink-400', text: 'text-pink-700 dark:text-pink-400' }
+    };
+    function refreshJourneyProgress() {
+      try {
+        if (typeof localStorage === 'undefined') return;
+        const main = document.querySelector('main[data-course-id]');
+        if (!main) return;
+        const courseId = main.getAttribute('data-course-id');
+        const totalAttr = main.getAttribute('data-total');
+        const lessonEls = Array.from(document.querySelectorAll('[data-lesson-slug]'));
+        const slugs = lessonEls.map((el) => el.getAttribute('data-lesson-slug')).filter(Boolean);
+        const total = totalAttr ? parseInt(totalAttr, 10) : slugs.length;
+        const readSet = new Set();
+        try {
+          slugs.forEach((slug) => {
+            if (localStorage.getItem(`ahkh_read_${courseId}_${slug}`) !== null) readSet.add(slug);
+          });
+        } catch (e) {}
+        const percent = total ? Math.round((readSet.size / total) * 100) : 0;
+        const fill = document.getElementById('journey-progress-fill');
+        if (fill) fill.style.width = percent + '%';
+        const label = document.getElementById('journey-progress-label');
+        if (label) label.textContent = `Progress: ${percent}%`;
+        lessonEls.forEach((el) => {
+          try {
+            const slug = el.getAttribute('data-lesson-slug');
+            const tick = el.querySelector('[data-read-tick]');
+            if (tick && slug && readSet.has(slug)) tick.classList.remove('hidden');
+          } catch (e) {}
+        });
+        if (percent === 100) {
+          const badge = document.getElementById('journey-status-badge');
+          const meta = STATUS_META.completed;
+          if (badge && meta) {
+            const dot = badge.querySelector('[data-statusdot]');
+            if (dot) dot.className = `w-1.5 h-1.5 rounded-full ${meta.dot}`;
+            ['text-emerald-700', 'dark:text-emerald-400', 'text-blue-700', 'dark:text-blue-400', 'text-purple-700', 'dark:text-purple-400', 'text-pink-700', 'dark:text-pink-400'].forEach((c) => badge.classList.remove(c));
+            meta.text.split(' ').forEach((c) => badge.classList.add(c));
+            const textNode = Array.from(badge.childNodes).find((n) => n.nodeType === 3 && n.textContent.trim() !== '');
+            if (textNode) textNode.textContent = ` ${meta.label}`;
+            else badge.append(document.createTextNode(` ${meta.label}`));
+          }
+        }
+      } catch (e) {}
+    }
+    refreshJourneyProgress();
+    if (!window.__ahkhJourneyBoot) {
+      window.__ahkhJourneyBoot = true;
+      document.addEventListener('astro:page-load', refreshJourneyProgress);
+    }
   </script>
 </BaseLayout>

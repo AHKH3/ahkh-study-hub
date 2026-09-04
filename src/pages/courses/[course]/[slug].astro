@@ -553,6 +553,7 @@ const transcriptSegments =
   const progressFill = document.getElementById('top-progress-fill');
   const displayMenu = document.getElementById('display-settings-menu');
 
+  window.__ahkhMarkedRead = false;
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -561,6 +562,12 @@ const transcriptSegments =
     if (maxScroll > 0 && progressFill) {
       const pct = Math.min(100, Math.max(0, (currentScrollY / maxScroll) * 100));
       progressFill.style.width = pct + '%';
+    }
+
+    // Mark lesson read at >=90% depth (drives real course progress)
+    if (maxScroll > 0 && !window.__ahkhMarkedRead && (currentScrollY / maxScroll) >= 0.9) {
+      window.__ahkhMarkedRead = true;
+      try { localStorage.setItem(`ahkh_read_${courseId}_${lessonSlug}`, new Date().toISOString()); } catch (e) {}
     }
 
     // Auto-hide header on scroll down, reveal on scroll up

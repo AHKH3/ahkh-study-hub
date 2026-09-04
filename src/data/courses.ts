@@ -74,10 +74,10 @@ export const COURSES: Course[] = [
     description: 'A disciplined, master-level curriculum covering contextual inquiry, user testing protocols, synthesis, and ergonomic interface design.',
     category: 'Product Design',
     updatedAt: '2 days ago',
-    duration: '40 hrs',
-    progressPercent: 34,
+    duration: '5 hrs 27 min',
+    progressPercent: 0,
     totalModules: 8,
-    totalSources: 60,
+    totalSources: 12,
     status: 'active',
     theme: {
       accent: '#18181B',

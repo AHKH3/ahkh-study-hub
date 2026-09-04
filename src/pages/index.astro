@@ -4,6 +4,7 @@ import HubHeader from '../components/HubHeader.astro';
 import { COURSES, type CourseStatus } from '../data/courses';
 import { path } from '../utils/paths';
 import { getCategoryColor } from '../utils/categoryColors';
+import { countLessons } from '../utils/courseStats';
 
 const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; textClass: string }> = {
   active: {
@@ -49,7 +50,7 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
         const num = String(index + 1).padStart(2, '0');
         const statusMeta = STATUS_CONFIG[course.status];
         return (
-          <article class="group py-5 sm:py-6 transition-colors hover:bg-paper-200/40 dark:hover:bg-dark-card/60 px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-xs">
+          <article class="group py-5 sm:py-6 transition-colors hover:bg-paper-200/40 dark:hover:bg-dark-card/60 px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-xs" data-course-id={course.id} data-lessons={course.modules.flatMap((m) => m.lessons.map((l) => l.slug)).join(',')}>
             <a href={path(`/courses/${course.slug}`)} class="block focus:outline-hidden">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 
@@ -69,17 +70,17 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
                         {course.title}
                       </h2>
                       {statusMeta && (
-                        <span class={`inline-flex items-center gap-1.5 text-[11px] font-mono tracking-wide ${statusMeta.textClass}`}>
-                          <span class={`w-1.5 h-1.5 rounded-full ${statusMeta.dotClass}`}></span>
+                        <span class={`inline-flex items-center gap-1.5 text-[11px] font-mono tracking-wide ${statusMeta.textClass}`} data-statusbadge>
+                          <span class={`w-1.5 h-1.5 rounded-full ${statusMeta.dotClass}`} data-statusdot></span>
                           {statusMeta.label}
                         </span>
                       )}
                     </div>
                     <!-- Metadata metrics: Module count, Source count, Duration -->
                     <div class="flex items-center gap-2.5 text-xs font-mono text-ink-muted/80 dark:text-dark-muted/80 mt-1.5">
-                      <span><span class="font-medium text-ink dark:text-dark-ink">{course.totalModules}</span> Modules</span>
+                      <span><span class="font-medium text-ink dark:text-dark-ink">{course.modules.length}</span> Modules</span>
                       <span>·</span>
-                      <span><span class="font-medium text-ink dark:text-dark-ink">{course.totalSources}</span> Sources</span>
+                      <span><span class="font-medium text-ink dark:text-dark-ink">{countLessons(course)}</span> Sources</span>
                       {course.duration && (
                         <>
                           <span>·</span>
@@ -95,11 +96,12 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
                   <div class="flex items-center gap-2 font-mono text-xs text-ink dark:text-dark-ink">
                     <div class="w-24 sm:w-28 h-1.5 bg-paper-300 dark:bg-dark-border rounded-full overflow-hidden">
                       <div 
-                        class="h-full bg-ink dark:bg-dark-ink transition-all"
+                        class="h-full bg-ink dark:bg-dark-ink transition-all progress-fill"
+                        data-role="progress-fill"
                         style={`width: ${course.progressPercent}%`}
                       ></div>
                     </div>
-                    <span class="w-9 text-right font-medium">{course.progressPercent}%</span>
+                    <span class="w-9 text-right font-medium progress-label">{course.progressPercent}%</span>
                   </div>
                 </div>
 
@@ -118,4 +120,56 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
       </a>
     </footer>
   </main>
+
+  <script is:inline>
+    const STATUS_META = {
+      active: { label: 'Active', dot: 'bg-emerald-600 dark:bg-emerald-400', text: 'text-emerald-700 dark:text-emerald-400' },
+      new: { label: 'New', dot: 'bg-blue-600 dark:bg-blue-400', text: 'text-blue-700 dark:text-blue-400' },
+      explored: { label: 'Explored', dot: 'bg-purple-600 dark:bg-purple-400', text: 'text-purple-700 dark:text-purple-400' },
+      completed: { label: 'Completed', dot: 'bg-pink-600 dark:bg-pink-400', text: 'text-pink-700 dark:text-pink-400' }
+    };
+    function refreshLibraryProgress() {
+      try {
+        if (typeof localStorage === 'undefined') return;
+        const articles = document.querySelectorAll('article[data-course-id]');
+        articles.forEach((article) => {
+          try {
+            const courseId = article.getAttribute('data-course-id');
+            const lessonsAttr = article.getAttribute('data-lessons') || '';
+            const slugs = lessonsAttr ? lessonsAttr.split(',').filter(Boolean) : [];
+            const total = slugs.length;
+            let read = 0;
+            try {
+              slugs.forEach((slug) => {
+                if (localStorage.getItem(`ahkh_read_${courseId}_${slug}`) !== null) read += 1;
+              });
+            } catch (e) {}
+            const percent = total ? Math.round((read / total) * 100) : 0;
+            const fill = article.querySelector('[data-role="progress-fill"]');
+            if (fill) fill.style.width = percent + '%';
+            const label = article.querySelector('.progress-label');
+            if (label) label.textContent = percent + '%';
+            if (percent === 100) {
+              const badge = article.querySelector('[data-statusbadge]');
+              const meta = STATUS_META.completed;
+              if (badge && meta) {
+                const dot = badge.querySelector('[data-statusdot]');
+                if (dot) dot.className = `w-1.5 h-1.5 rounded-full ${meta.dot}`;
+                ['text-emerald-700', 'dark:text-emerald-400', 'text-blue-700', 'dark:text-blue-400', 'text-purple-700', 'dark:text-purple-400', 'text-pink-700', 'dark:text-pink-400'].forEach((c) => badge.classList.remove(c));
+                meta.text.split(' ').forEach((c) => badge.classList.add(c));
+                const textNode = Array.from(badge.childNodes).find((n) => n.nodeType === 3 && n.textContent.trim() !== '');
+                if (textNode) textNode.textContent = ` ${meta.label}`;
+                else badge.append(document.createTextNode(` ${meta.label}`));
+              }
+            }
+          } catch (e) {}
+        });
+      } catch (e) {}
+    }
+    refreshLibraryProgress();
+    if (!window.__ahkhLibBoot) {
+      window.__ahkhLibBoot = true;
+      document.addEventListener('astro:page-load', refreshLibraryProgress);
+    }
+  </script>
 </BaseLayout>

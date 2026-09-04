@@ -22,6 +22,10 @@ for (const f of files) {
   blocks.forEach((code, i) => {
     if (!code.trim()) return;
     const ext = f.includes('ThemeSwitcher') ? '.ts' : '.js';
+    if (ext === '.ts') {
+      console.log(`  block ${i}: TS (syntax covered by astro build)`);
+      return;
+    }
     const p = join(tmp, `${f.replace(/[^A-Za-z0-9]/g, '_')}_${i}${ext}`);
     writeFileSync(p, code);
     try {
