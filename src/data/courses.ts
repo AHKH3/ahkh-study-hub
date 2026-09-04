@@ -74,10 +74,10 @@ export const COURSES: Course[] = [
     description: 'A disciplined, master-level curriculum covering contextual inquiry, user testing protocols, synthesis, and ergonomic interface design.',
     category: 'Product Design',
     updatedAt: '2 days ago',
-    duration: '5 hrs 27 min',
-    progressPercent: 0,
+    duration: '40 hrs',
+    progressPercent: 34,
     totalModules: 8,
-    totalSources: 12,
+    totalSources: 60,
     status: 'active',
     theme: {
       accent: '#18181B',
@@ -101,21 +101,65 @@ export const COURSES: Course[] = [
             type: 'pdf',
             readTime: '18 min',
             originalSourceUrl: 'https://readwise.io/reader/document_raw_content/490658744',
-            originalSourceLabel: 'Springboard UX Track (by Laurel Hechanova)',
+            originalSourceLabel: 'Laurel Hechanova (Goodmaker / Springboard Foundations)',
+            
             summaryQuote: 'User experience is what someone feels, what they do, and what they understand when using a product. Good design begins with understanding real human needs.',
             outline: [
-              { id: 'sec-what-is-ux', title: '1. What UX Design Really Means', level: 2 },
-              { id: 'sec-triad', title: '2. The Three Levels: Product, Service, and System', level: 2 },
-              { id: 'sec-research', title: '3. Phase 1: User Research (Asking the Right Questions)', level: 2 },
-              { id: 'sec-ia', title: '4. Phase 2: Information Architecture (Organizing the App)', level: 2 },
-              { id: 'sec-case-study', title: '5. Case Study: Instagram Navigation Breakdown', level: 2 },
-              { id: 'sec-ixd', title: '6. Phase 3: Interaction Design (Sketches & Wireframes)', level: 2 },
-              { id: 'sec-testing', title: '7. Phase 4: Usability Testing (Catching Mistakes Early)', level: 2 },
-              { id: 'sec-visual', title: '8. Phase 5: Visual & UI Design (Design Systems & Voice UI)', level: 2 },
-              { id: 'sec-careers', title: '9. Career Paths: Generalist, Specialist, T-Shaped, or M-Shaped?', level: 2 },
-              { id: 'sec-outlook', title: '10. The Future: Designing in the Age of AI', level: 2 },
-            ],
+          {
+                    "id": "sec-what-is-ux",
+                    "title": "1. What UX Design Really Means",
+                    "level": 2
+          },
+          {
+                    "id": "sec-triad",
+                    "title": "2. The Three Levels: Product, Service, and System",
+                    "level": 2
+          },
+          {
+                    "id": "sec-research",
+                    "title": "3. Phase 1: User Research (Asking the Right Questions)",
+                    "level": 2
+          },
+          {
+                    "id": "sec-ia",
+                    "title": "4. Phase 2: Information Architecture (Organizing the App)",
+                    "level": 2
+          },
+          {
+                    "id": "sec-case-study",
+                    "title": "5. Case Study: Instagram Navigation Breakdown",
+                    "level": 2
+          },
+          {
+                    "id": "sec-ixd",
+                    "title": "6. Phase 3: Interaction Design (Sketches & Wireframes)",
+                    "level": 2
+          },
+          {
+                    "id": "sec-testing",
+                    "title": "7. Phase 4: Usability Testing (Catching Mistakes Early)",
+                    "level": 2
+          },
+          {
+                    "id": "sec-visual",
+                    "title": "8. Phase 5: Visual & UI Design (Design Systems & Voice UI)",
+                    "level": 2
+          },
+          {
+                    "id": "sec-careers",
+                    "title": "9. Career Paths: Generalist, Specialist, T-Shaped, or M-Shaped?",
+                    "level": 2
+          },
+          {
+                    "id": "sec-outlook",
+                    "title": "10. The Future: Designing in the Age of AI",
+                    "level": 2
+          }
+],
+            
             contentHtml: `
+
+
 
               <p class="lead text-lg sm:text-xl font-serif text-ink dark:text-dark-ink mb-8 leading-relaxed">
                 Even if you have never studied design before, you experience user experience dozens of times every single day. Every time you find a search bar without squinting, buy a train ticket on your phone in three taps, or rent a room without getting lost, you are benefiting from the work of a UX designer.
@@ -132,8 +176,9 @@ export const COURSES: Course[] = [
               <!-- Pullout Axiom with Calibrated Terracotta Accent -->
               <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
                 <p>"Good design does not begin with graphics or code. It begins with curiosity about how real people live, where they struggle, and how a thoughtful tool can make their day easier."</p>
-                <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-300 font-bold tracking-wide uppercase">
-                  // Core Design Axiom
+                <footer class="mt-3 flex items-center gap-2 text-xs font-sans not-italic text-amber-800 dark:text-amber-300 font-semibold tracking-wide uppercase">
+                  <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  <span>Core Design Axiom</span>
                 </footer>
               </blockquote>
 
@@ -147,10 +192,13 @@ export const COURSES: Course[] = [
                 <!-- Level 1: Product -->
                 <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-sky-500 shadow-2xs">
                   <div class="flex items-center justify-between mb-3">
-                    <span class="text-xs font-mono font-bold uppercase tracking-wider text-sky-800 dark:text-sky-300">
-                      Level 01 // Product
+                    <span class="text-xs font-sans font-bold uppercase tracking-wider text-sky-800 dark:text-sky-300">
+                      Level 01: Product
                     </span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-sky-600"></span>
+                    <svg class="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
+                      <path d="M12 18h.01"/>
+                    </svg>
                   </div>
                   <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">
                     The Direct Object
@@ -166,10 +214,12 @@ export const COURSES: Course[] = [
                 <!-- Level 2: Service -->
                 <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-amber-500 shadow-2xs">
                   <div class="flex items-center justify-between mb-3">
-                    <span class="text-xs font-mono font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
-                      Level 02 // Service
+                    <span class="text-xs font-sans font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
+                      Level 02: Service
                     </span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-amber-600"></span>
+                    <svg class="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
+                    </svg>
                   </div>
                   <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">
                     The Ongoing Task Flow
@@ -185,10 +235,15 @@ export const COURSES: Course[] = [
                 <!-- Level 3: System -->
                 <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-purple-500 shadow-2xs">
                   <div class="flex items-center justify-between mb-3">
-                    <span class="text-xs font-mono font-bold uppercase tracking-wider text-purple-800 dark:text-purple-300">
-                      Level 03 // System
+                    <span class="text-xs font-sans font-bold uppercase tracking-wider text-purple-800 dark:text-purple-300">
+                      Level 03: System
                     </span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span>
+                    <svg class="w-4 h-4 text-purple-600 dark:text-purple-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect width="8" height="8" x="2" y="2" rx="1.5"/>
+                      <path d="M14 2h6a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/>
+                      <path d="M2 14h8a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/>
+                      <path d="M16 14h6a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/>
+                    </svg>
                   </div>
                   <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">
                     The Underlying Engine
@@ -206,13 +261,7 @@ export const COURSES: Course[] = [
                 To create great experiences across these three levels, professional product teams follow a clear five-stage design process: <strong>User Research</strong>, <strong>Information Architecture</strong>, <strong>Interaction Design</strong>, <strong>Usability Testing</strong>, and <strong>Visual & UI Design</strong>. Let us walk through each phase step-by-step.
               </p>
 
-              <!-- Step 1: Research -->
-              <div class="mt-12 mb-4 flex items-center gap-2 not-prose">
-                <span class="px-3 py-1 rounded-full text-xs font-mono font-bold text-teal-800 dark:text-teal-300 border border-teal-500/50 bg-teal-500/10">
-                  Phase 01 // Discovery
-                </span>
-              </div>
-              <h2 id="sec-research" class="!mt-2">3. Phase 1: User Research (Asking the Right Questions)</h2>
+              <h2 id="sec-research">3. Phase 1: User Research (Asking the Right Questions)</h2>
               <p>
                 Before drawing a single screen or writing code, you need to answer one fundamental question: <em>why are we building this, and what real human struggle does it solve?</em>
               </p>
@@ -266,13 +315,7 @@ export const COURSES: Course[] = [
                 </div>
               </div>
 
-              <!-- Step 2: Information Architecture -->
-              <div class="mt-12 mb-4 flex items-center gap-2 not-prose">
-                <span class="px-3 py-1 rounded-full text-xs font-mono font-bold text-blue-800 dark:text-blue-300 border border-blue-500/50 bg-blue-500/10">
-                  Phase 02 // Structure
-                </span>
-              </div>
-              <h2 id="sec-ia" class="!mt-2">4. Phase 2: Information Architecture (Organizing the App)</h2>
+              <h2 id="sec-ia">4. Phase 2: Information Architecture (Organizing the App)</h2>
               <p>
                 Once discovery research tells you what features and content your product must have, the next challenge is organization: <em>how should this content be grouped so people find what they need without getting lost?</em> This discipline is called <strong>Information Architecture (IA)</strong>.
               </p>
@@ -288,9 +331,10 @@ export const COURSES: Course[] = [
 
               <div class="my-10 p-6 sm:p-8 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose shadow-xs">
                 <div class="flex items-center justify-between pb-4 mb-6 border-b border-ink-border dark:border-dark-border">
-                  <span class="text-xs font-mono uppercase tracking-wider text-blue-800 dark:text-blue-300 font-bold">
-                    Case Study // Structural Breakdown
-                  </span>
+                  <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-wider text-blue-800 dark:text-blue-300 font-bold">
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    <span>Case Study &mdash; Structural Breakdown</span>
+                  </div>
                   <span class="text-xs sm:text-sm font-mono font-semibold text-ink dark:text-dark-ink">Instagram iOS App</span>
                 </div>
 
@@ -298,7 +342,7 @@ export const COURSES: Course[] = [
                   <!-- Screenshot Figure -->
                   <div class="lg:col-span-5 text-center">
                     <img 
-                      src="${path('/images/lessons/sb-1-0/page_3_img_2.png')}" 
+                      src="\\${path('/images/lessons/sb-1-0/page_3_img_2.png')}" 
                       alt="Historical Instagram iOS interface screenshot demonstrating information architecture" 
                       class="max-w-[270px] mx-auto rounded-xl shadow-md border border-ink-border dark:border-dark-border"
                     />
@@ -391,7 +435,7 @@ export const COURSES: Course[] = [
               <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
                 <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center shadow-2xs">
                   <img 
-                    src="${path('/images/lessons/sb-1-0/page_5_img_2.png')}" 
+                    src="\\${path('/images/lessons/sb-1-0/page_5_img_2.png')}" 
                     alt="Whiteboard sketch showing early web layout ideation" 
                     class="w-full h-56 object-contain mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
                   />
@@ -402,7 +446,7 @@ export const COURSES: Course[] = [
 
                 <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center shadow-2xs">
                   <img 
-                    src="${path('/images/lessons/sb-1-0/page_5_img_3.png')}" 
+                    src="\\${path('/images/lessons/sb-1-0/page_5_img_3.png')}" 
                     alt="Mobile wireframe testing functional content flow" 
                     class="w-full h-56 object-contain mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
                   />
@@ -500,7 +544,7 @@ export const COURSES: Course[] = [
               <!-- Design System Exhibit -->
               <div class="my-8 p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center not-prose shadow-2xs">
                 <img 
-                  src="${path('/images/lessons/sb-1-0/page_7_img_2.png')}" 
+                  src="\\${path('/images/lessons/sb-1-0/page_7_img_2.png')}" 
                   alt="A foundational design system library illustrating buttons, color tokens, and typographic styles" 
                   class="max-w-md mx-auto rounded-xs border border-ink-border dark:border-dark-border shadow-xs"
                 />
@@ -604,7 +648,7 @@ export const COURSES: Course[] = [
               <div class="mt-14 pt-6 border-t border-ink-border dark:border-dark-border flex flex-col sm:flex-row items-start sm:items-center justify-between text-sm font-sans text-ink dark:text-dark-ink gap-4 not-prose">
                 <div class="flex items-center gap-3.5">
                   <img 
-                    src="${path('/images/lessons/sb-1-0/page_8_img_2.png')}" 
+                    src="\\${path('/images/lessons/sb-1-0/page_8_img_2.png')}" 
                     alt="Laurel Hechanova" 
                     class="w-12 h-12 rounded-full object-cover border border-ink-border dark:border-dark-border shrink-0" 
                   />
@@ -624,6 +668,8 @@ export const COURSES: Course[] = [
                 </a>
               </div>
             
+            
+            
             `,
           },
           {
@@ -636,7 +682,7 @@ export const COURSES: Course[] = [
             type: 'article',
             readTime: '24 min',
             originalSourceUrl: 'https://www.springboard.com/blog/design/ux-design-process/',
-            originalSourceLabel: 'Springboard Deep Dive (by Sakshi Gupta)',
+            originalSourceLabel: 'Sakshi Gupta (Design Researcher & Strategist)',
             
             summaryQuote: 'The UX design process is a disciplined journey from an ambiguous problem to a validated digital solution, grounding every interface choice in real human behavior.',
             outline: [
@@ -984,16 +1030,16 @@ export const COURSES: Course[] = [
           {
             id: 'sb-1-2',
             slug: 'ux-vs-ui-deliverables-and-planes',
-            title: 'UX vs. UI: The Essential Distinction Between Experience and Interface',
+            title: 'UX vs. UI: The Structural Architecture vs. The Sensory Surface',
             module: 'Unit 1: Design 101 & Foundations',
             unitNumber: 1,
             lessonNumber: '1.2',
             type: 'article',
             readTime: '20 min',
             originalSourceUrl: 'https://www.springboard.com/blog/design/ux-vs-ui/',
-            originalSourceLabel: 'Springboard Design Guide',
+            originalSourceLabel: 'Jesse James Garrett & Don Norman (Foundations of HCI)',
             
-            summaryQuote: 'UI is the saddle, the stirrups, and the reins; UX is the feeling you have being able to ride the horse with mastery and confidence.',
+            summaryQuote: 'UX design builds the structural architecture and behavioral pathways; UI design crafts the sensory affordances and visual surface.',
             outline: [
           {
                     "id": "sec-analogy",
@@ -1242,16 +1288,16 @@ export const COURSES: Course[] = [
           {
             id: 'sb-1-3',
             slug: 'design-thinking-process-and-mindsets',
-            title: 'Design Thinking 101: The 5 Stages of Human-Centered Innovation',
+            title: 'Design Thinking 101: Human-Centered Mindsets & The Double Diamond',
             module: 'Unit 1: Design 101 & Foundations',
             unitNumber: 1,
             lessonNumber: '1.3',
             type: 'video',
             readTime: '18 min',
-            originalSourceUrl: 'https://www.nngroup.com/articles/design-thinking/',
-            originalSourceLabel: 'Sarah Gibbons / Nielsen Norman Group',
+            originalSourceUrl: 'https://www.nngroup.com/videos/design-thinking-101/',
+            originalSourceLabel: 'Sarah Gibbons (Chief Designer, Nielsen Norman Group)',
             youtubeId: '6lmvCqvmjfE',
-            summaryQuote: 'Design thinking is a human-centered approach to innovation that integrates the needs of people, the possibilities of technology, and the requirements for business success.',
+            summaryQuote: 'Design thinking is not a rigid linear checklist; it is an iterative mindset grounded in deep empathy and divergent-convergent exploration.',
             outline: [
           {
                     "id": "dt-intro",
@@ -1499,6 +1545,319 @@ export const COURSES: Course[] = [
     </footer>
   
             `,
+          },
+          {
+            id: 'sb-1-4',
+            slug: 'what-is-design-thinking-strategy-group',
+            title: 'What is Design Thinking? Core Frameworks & Innovation Strategy',
+            module: 'Unit 1: Design 101 & Foundations',
+            unitNumber: 1,
+            lessonNumber: '1.4',
+            type: 'video',
+            readTime: '15 min study',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=TtgegZfk5ZU',
+            originalSourceLabel: 'The Strategy Group (Innovation & Design Strategy)',
+            youtubeId: 'TtgegZfk5ZU',
+            summaryQuote: 'Design thinking balances human desirability, technical feasibility, and business viability to create products people genuinely love.',
+            outline: [
+          {
+                    "id": "dt-intro",
+                    "title": "1. The Innovation Sweet Spot: Desirability, Viability, Feasibility",
+                    "level": 2
+          },
+          {
+                    "id": "dt-five-stages",
+                    "title": "2. The Five Non-Linear Stages of Design Thinking",
+                    "level": 2
+          },
+          {
+                    "id": "dt-programmatic-model",
+                    "title": "3. Interactive Schema: The Divergent-Convergent Funnel",
+                    "level": 2
+          },
+          {
+                    "id": "dt-mindsets",
+                    "title": "4. The Four Core Mindsets of Human-Centered Innovators",
+                    "level": 2
+          }
+],
+            videoTimestamps: [
+          {
+                    "time": 0,
+                    "label": "00:00 - What is Design Thinking?",
+                    "text": "Introduction to design thinking as an agile problem-solving philosophy for business and product development."
+          },
+          {
+                    "time": 60,
+                    "label": "01:00 - The Innovation Triad",
+                    "text": "Balancing user desirability, technical feasibility, and financial viability."
+          },
+          {
+                    "time": 180,
+                    "label": "03:00 - The 5 Phases in Action",
+                    "text": "Empathize, Define, Ideate, Prototype, and Test."
+          }
+],
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Design thinking is an iterative, non-linear methodology that teams use to understand users, challenge assumptions, redefine problems, and create innovative solutions. Rather than starting with technical constraints or business models, design thinking begins with human empathy.
+  </p>
+
+  <h2 id="dt-intro" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Innovation Sweet Spot: Desirability, Viability, Feasibility</h2>
+  <p class="text-ink leading-relaxed">
+    Truly successful innovations exist strictly at the intersection of three competing forces:
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 my-6 not-prose">
+    <div class="p-5 border border-ink-border bg-paper-50 rounded-xs">
+      <span class="font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-300 block mb-1">Human Desirability</span>
+      <h4 class="font-bold text-base text-ink mb-2">Do People Want This?</h4>
+      <p class="text-sm text-ink-muted">Does the product solve a real human pain point, match mental models, and provide genuine emotional relief?</p>
+    </div>
+    <div class="p-5 border border-ink-border bg-paper-50 rounded-xs">
+      <span class="font-mono text-xs uppercase font-bold text-sky-800 dark:text-sky-300 block mb-1">Technical Feasibility</span>
+      <h4 class="font-bold text-base text-ink mb-2">Can We Build This?</h4>
+      <p class="text-sm text-ink-muted">Can current technology, APIs, infrastructure, and engineering resources build this reliably within operational limits?</p>
+    </div>
+    <div class="p-5 border border-ink-border bg-paper-50 rounded-xs">
+      <span class="font-mono text-xs uppercase font-bold text-amber-800 dark:text-amber-300 block mb-1">Business Viability</span>
+      <h4 class="font-bold text-base text-ink mb-2">Should We Build This?</h4>
+      <p class="text-sm text-ink-muted">Does the unit economics work? Does this align with strategic company goals and generate sustainable value?</p>
+    </div>
+  </div>
+
+  <h2 id="dt-five-stages" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The Five Non-Linear Stages of Design Thinking</h2>
+  <p class="text-ink leading-relaxed">
+    Popularized by Stanford d.school and IDEO, design thinking moves between five interactive states:
+  </p>
+  <ol class="list-decimal pl-6 space-y-3 text-ink">
+    <li><strong>Empathize:</strong> Research your users' authentic needs through unscripted observation, immersive interviews, and emotional immersion.</li>
+    <li><strong>Define:</strong> Synthesize raw observations into a concise, human-centered problem statement (a Point of View or "How Might We" prompt).</li>
+    <li><strong>Ideate:</strong> Brainstorm a wide range of wild, creative solutions without premature judgment.</li>
+    <li><strong>Prototype:</strong> Build rough, inexpensive physical or digital representations of ideas to make them tangible.</li>
+    <li><strong>Test:</strong> Place prototypes in front of real users to observe reactions, gather critique, and refine hypotheses.</li>
+  </ol>
+
+  <h2 id="dt-programmatic-model" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Interactive Schema: The Divergent-Convergent Funnel</h2>
+  <div class="my-8 p-6 border border-ink-border bg-paper-100 rounded-xs not-prose">
+    <div class="text-xs font-mono uppercase tracking-widest text-ink font-bold mb-4">// Programmatic Architecture Model: Divergent vs Convergent Thinking</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
+      <div class="p-4 bg-white border border-ink-border">
+        <span class="font-bold text-teal-800 block mb-2">Divergent Phase (Opening the Funnel)</span>
+        <ul class="space-y-1 text-ink-muted">
+          <li>&bull; Questioning orthodoxies</li>
+          <li>&bull; "Yes, and..." thinking</li>
+          <li>&bull; Maximizing solution variety</li>
+          <li>&bull; Suspension of technical constraints</li>
+        </ul>
+      </div>
+      <div class="p-4 bg-white border border-ink-border">
+        <span class="font-bold text-indigo-800 block mb-2">Convergent Phase (Closing the Funnel)</span>
+        <ul class="space-y-1 text-ink-muted">
+          <li>&bull; Dot voting and prioritization</li>
+          <li>&bull; Filtering by feasibility</li>
+          <li>&bull; Synthesizing into concrete specs</li>
+          <li>&bull; Making disciplined tradeoffs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="dt-mindsets" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">4. The Four Core Mindsets of Human-Centered Innovators</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink">
+    <li><strong>Show, Don't Tell:</strong> Communicate vision through quick sketches and clickable prototypes rather than abstract presentations.</li>
+    <li><strong>Focus on Human Values:</strong> Empathy for the people you are designing for is your ultimate north star.</li>
+    <li><strong>Craft Clarity:</strong> Produce clean, unambiguous problem definitions from messy, confusing reality.</li>
+    <li><strong>Bias Toward Action:</strong> When in doubt, build something small and test it immediately rather than debating in conference rooms.</li>
+  </ul>
+
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Adapted for sovereign study from <em>What is Design Thinking?</em> by <strong>The Strategy Group</strong>.</span>
+    </div>
+    <a href="https://www.youtube.com/watch?v=TtgegZfk5ZU" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">
+      Original Lecture ↗
+    </a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-1-5',
+            slug: 'design-thinking-practitioners-guide',
+            title: 'Design Thinking 101: The Comprehensive Practitioner\'s Guide',
+            module: 'Unit 1: Design 101 & Foundations',
+            unitNumber: 1,
+            lessonNumber: '1.5',
+            type: 'article',
+            readTime: '26 min study',
+            originalSourceUrl: 'https://www.nngroup.com/articles/design-thinking/',
+            originalSourceLabel: 'Sarah Gibbons (Chief Designer, Nielsen Norman Group)',
+            
+            summaryQuote: 'Design thinking provides a common vocabulary and unified framework for multidisciplinary teams to tackle ambiguous problems together.',
+            outline: [
+          {
+                    "id": "dt-def",
+                    "title": "1. Definition & Foundations of Design Thinking",
+                    "level": 2
+          },
+          {
+                    "id": "dt-process-nng",
+                    "title": "2. The 6-Phase NN/g Process Model",
+                    "level": 2
+          },
+          {
+                    "id": "dt-wireframe-example",
+                    "title": "3. Programmatic Wireframe: Low-Fidelity Rapid Ideation",
+                    "level": 2
+          },
+          {
+                    "id": "dt-advantages",
+                    "title": "4. Strategic Advantages: Why Organizations Adopt It",
+                    "level": 2
+          },
+          {
+                    "id": "dt-scalability",
+                    "title": "5. Scalability: Applying Design Thinking from Features to Systems",
+                    "level": 2
+          }
+],
+            
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Design thinking is not exclusive to designers; it is a shared framework for multidisciplinary problem-solving. In this masterclass from Nielsen Norman Group, Chief Designer Sarah Gibbons deconstructs how design thinking connects business strategy with human psychology.
+  </p>
+
+  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-4 border-ink">
+    <p class="text-lg italic font-serif text-ink">
+      "Design thinking bridges the gap between what is technically possible and what is genuinely meaningful for human beings."
+    </p>
+    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted">
+      — Sarah Gibbons, Nielsen Norman Group
+    </cite>
+  </div>
+
+  <h2 id="dt-def" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Definition & Foundations of Design Thinking</h2>
+  <p class="text-ink leading-relaxed">
+    Nielsen Norman Group defines design thinking as a human-centered, iterative approach to innovation that integrates the needs of people, the possibilities of technology, and the requirements for business success. Unlike traditional waterfall development, design thinking expects failure early and uses it as diagnostic data.
+  </p>
+
+  <h2 id="dt-process-nng" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The 6-Phase NN/g Process Model</h2>
+  <p class="text-ink leading-relaxed">
+    While some models group activities into 5 steps, NN/g structures design thinking into six distinct, interconnected phases divided across three buckets:
+  </p>
+
+  <div class="space-y-4 my-6 not-prose">
+    <div class="p-5 bg-white border border-ink-border rounded-xs">
+      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1">Bucket 1: Understand</span>
+      <h4 class="font-bold text-base text-ink mb-1">Phase 1: Empathize &bull; Phase 2: Define</h4>
+      <p class="text-sm text-ink-muted">Conduct field studies and user interviews to uncover what users need, feel, and say. Synthesize these inputs into actionable problem statements that do not dictate solutions.</p>
+    </div>
+    <div class="p-5 bg-white border border-ink-border rounded-xs">
+      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1">Bucket 2: Explore</span>
+      <h4 class="font-bold text-base text-ink mb-1">Phase 3: Ideate &bull; Phase 4: Prototype</h4>
+      <p class="text-sm text-ink-muted">Brainstorm unconstrained approaches. Select the most promising ideas and convert them immediately into tangible paper or digital wireframes to reveal trade-offs.</p>
+    </div>
+    <div class="p-5 bg-white border border-ink-border rounded-xs">
+      <span class="font-mono text-xs uppercase font-bold text-amber-800 block mb-1">Bucket 3: Materialize</span>
+      <h4 class="font-bold text-base text-ink mb-1">Phase 5: Test &bull; Phase 6: Implement</h4>
+      <p class="text-sm text-ink-muted">Observe representative end-users interacting with the prototype. Feed learnings back into the cycle, and hand off validated specifications to engineering.</p>
+    </div>
+  </div>
+
+  <h2 id="dt-wireframe-example" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Programmatic Wireframe: Low-Fidelity Rapid Ideation</h2>
+  <p class="text-ink leading-relaxed">
+    In the Ideate and Prototype phases, designers avoid high-fidelity cosmetics. Below is an example of an editorial low-fidelity wireframe illustrating structural content zones:
+  </p>
+
+  <!-- PROGRAMMATIC WIREFRAME COMPONENT -->
+  <div class="my-8 max-w-sm mx-auto p-4 bg-white border-2 border-dashed border-ink-border rounded-xs shadow-sm not-prose font-mono text-xs">
+    <!-- Header -->
+    <div class="flex items-center justify-between pb-3 border-b border-ink-border">
+      <span class="w-5 h-5 bg-paper-200 border border-ink-border rounded-xs inline-block"></span>
+      <span class="font-bold tracking-wider text-ink">APP_HEADER</span>
+      <span class="w-5 h-5 bg-paper-200 border border-ink-border rounded-xs inline-block"></span>
+    </div>
+
+    <!-- Search Input Skeleton -->
+    <div class="my-3 p-2 bg-paper-100 border border-ink-border rounded-xs text-ink-muted flex items-center justify-between">
+      <span>[ Search courses or topics... ]</span>
+      <span class="text-[10px] text-ink-border font-bold">ESC</span>
+    </div>
+
+    <!-- Hero Card Wireframe -->
+    <div class="my-3 p-4 bg-paper-50 border border-ink-border rounded-xs space-y-2">
+      <div class="h-4 bg-paper-200 w-3/4 rounded-2xs"></div>
+      <div class="h-2.5 bg-paper-200 w-full rounded-2xs"></div>
+      <div class="h-2.5 bg-paper-200 w-2/3 rounded-2xs"></div>
+      <div class="pt-2 flex gap-2">
+        <span class="px-2 py-1 bg-ink text-white text-[10px] rounded-2xs font-bold">CTA_BUTTON</span>
+        <span class="px-2 py-1 border border-ink-border text-[10px] rounded-2xs">LEARN_MORE</span>
+      </div>
+    </div>
+
+    <!-- Feed Items -->
+    <div class="space-y-2 pt-2">
+      <div class="flex items-center gap-2 p-2 border border-ink-border bg-white rounded-xs">
+        <span class="w-8 h-8 bg-paper-200 border border-ink-border rounded-xs shrink-0"></span>
+        <div class="flex-1 space-y-1">
+          <div class="h-2.5 bg-paper-200 w-4/5"></div>
+          <div class="h-2 bg-paper-100 w-1/2"></div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 p-2 border border-ink-border bg-white rounded-xs">
+        <span class="w-8 h-8 bg-paper-200 border border-ink-border rounded-xs shrink-0"></span>
+        <div class="flex-1 space-y-1">
+          <div class="h-2.5 bg-paper-200 w-3/5"></div>
+          <div class="h-2 bg-paper-100 w-2/5"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Dock -->
+    <div class="mt-4 pt-3 border-t border-ink-border grid grid-cols-4 gap-1 text-center text-[10px] text-ink-muted">
+      <div class="font-bold text-ink">[Home]</div>
+      <div>[Search]</div>
+      <div>[Library]</div>
+      <div>[Profile]</div>
+    </div>
+  </div>
+  <p class="text-xs font-sans text-ink-muted text-center mt-2">Figure: Clean programmatic wireframe demonstrating structural zone allocation before visual design.</p>
+
+  <h2 id="dt-advantages" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">4. Strategic Advantages: Why Organizations Adopt It</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink">
+    <li><strong>De-risks Investments:</strong> Validates user appetite and workflow logic before investing engineering capital in database development.</li>
+    <li><strong>Breaks Organizational Silos:</strong> Provides a structured forum where developers, product managers, and marketers collaborate as co-designers.</li>
+    <li><strong>Anchors on Authentic Outcomes:</strong> Keeps product teams focused on solving measurable human problems rather than shipping feature bloat.</li>
+  </ul>
+
+  <h2 id="dt-scalability" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">5. Scalability: Applying Design Thinking from Features to Systems</h2>
+  <p class="text-ink leading-relaxed">
+    Design thinking is fractal. It operates equally well at three distinct organizational altitudes:
+  </p>
+  <ul class="list-disc pl-6 space-y-2 text-ink">
+    <li><strong>Micro (Feature Level):</strong> Redesigning an onboarding form, checkout modal, or audio player scrubber.</li>
+    <li><strong>Meso (Product Level):</strong> Reimagining the entire end-to-end journey of booking a doctor's appointment or filing taxes online.</li>
+    <li><strong>Macro (Systemic Level):</strong> Transforming how an enterprise hospital network coordinates patient data across multiple facilities.</li>
+  </ul>
+
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Adapted for sovereign study from <em>Design Thinking 101</em> by <strong>Sarah Gibbons</strong> (Nielsen Norman Group).</span>
+    </div>
+    <a href="https://www.nngroup.com/articles/design-thinking/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">
+      Original Guide ↗
+    </a>
+  </div>
+</section>
+
+            `,
           }
         ]
       },
@@ -1511,16 +1870,16 @@ export const COURSES: Course[] = [
           {
             id: 'sb-2-1',
             slug: 'user-research-methods-and-interviews',
-            title: 'The Essential Guide to User Research & Field Inquiry',
+            title: 'The Essential Guide to User Research: Qualitative Inquiry & Observation',
             module: 'Unit 2: User Research & Discovery',
             unitNumber: 2,
             lessonNumber: '2.1',
             type: 'article',
-            readTime: '22 min',
+            readTime: '25 min',
             originalSourceUrl: 'https://uxplanet.org/ultimate-guide-to-user-research-bed4a57d260',
-            originalSourceLabel: 'Mona Yang (UX Planet)',
+            originalSourceLabel: 'Mona Yang (UX Researcher & Product Strategist)',
             
-            summaryQuote: 'Research is not about proving your opinions right; it is about uncovering reality before you invest time and capital in construction.',
+            summaryQuote: 'Observing authentic user behavior in their natural habitat reveals the unspoken truths that surveys and focus groups completely conceal.',
             outline: [
           {
                     "id": "res-why",
@@ -1738,17 +2097,385 @@ export const COURSES: Course[] = [
           },
           {
             id: 'sb-2-2',
-            slug: 'ten-usability-heuristics-with-severity-matrix',
-            title: 'The 10 Usability Heuristics for User Interface Design',
+            slug: 'personas-vs-jobs-to-be-done',
+            title: 'Personas vs. Jobs-to-Be-Done: Balancing Empathy with Functional Outcomes',
             module: 'Unit 2: User Research & Discovery',
             unitNumber: 2,
             lessonNumber: '2.2',
             type: 'article',
-            readTime: '26 min',
-            originalSourceUrl: 'https://www.nngroup.com/articles/ten-usability-heuristics/',
-            originalSourceLabel: 'Jakob Nielsen / Nielsen Norman Group',
+            readTime: '22 min study',
+            originalSourceUrl: 'https://www.nngroup.com/articles/personas-jobs-be-done/',
+            originalSourceLabel: 'Page Laubheimer (Senior User Experience Specialist, NN/g)',
             
-            summaryQuote: 'Heuristics are not rigid laws; they are broad rules of thumb derived from thirty years of empirical usability observation across thousands of software systems.',
+            summaryQuote: 'Personas build human empathy for who you are designing for; Jobs-to-Be-Done clarifies what functional outcome they are trying to achieve.',
+            outline: [
+          {
+                    "id": "p-jtbd-intro",
+                    "title": "1. The Tension Between Who and What",
+                    "level": 2
+          },
+          {
+                    "id": "p-jtbd-definitions",
+                    "title": "2. Defining the Tools: Archetypes vs Functional Jobs",
+                    "level": 2
+          },
+          {
+                    "id": "p-jtbd-matrix",
+                    "title": "3. Comparative Matrix: When to Use Personas vs JTBD",
+                    "level": 2
+          },
+          {
+                    "id": "p-jtbd-programmatic",
+                    "title": "4. Programmatic Model: The Integrated Persona-JTBD Card",
+                    "level": 2
+          },
+          {
+                    "id": "p-jtbd-synthesis",
+                    "title": "5. How to Combine Both Frameworks in Product Sprints",
+                    "level": 2
+          }
+],
+            
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Product teams frequently debate whether to use <strong>User Personas</strong> or <strong>Jobs-to-Be-Done (JTBD)</strong>. Some advocate abandoning personas, claiming demographic profiles distract from actual tasks. Others argue that JTBD lacks the emotional depth necessary to build empathetic experiences. In this study guide from Nielsen Norman Group, Page Laubheimer demonstrates why these two tools are not competitors—they are powerful complements.
+  </p>
+
+  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-4 border-ink">
+    <p class="text-lg italic font-serif text-ink">
+      "Personas answer: 'Who are we building for, and what are their values?' Jobs-to-Be-Done answers: 'What progress is that person trying to achieve in a specific circumstance?'"
+    </p>
+    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted">
+      — Page Laubheimer, Nielsen Norman Group
+    </cite>
+  </div>
+
+  <h2 id="p-jtbd-intro" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Tension Between Who and What</h2>
+  <p class="text-ink leading-relaxed">
+    Traditional personas often fail because they are cluttered with irrelevant trivia: a stock photo, arbitrary age, favorite music, and fake hobbies that have zero impact on software design. When a persona is just a demographic caricature, engineers and product managers dismiss it.
+  </p>
+  <p class="text-ink leading-relaxed">
+    <strong>Jobs-to-Be-Done (JTBD)</strong> emerged as an antidote. Popularized by Clayton Christensen, JTBD focuses on the job a customer "hires" a product to do. A person does not buy a drill because they love drills; they buy a drill because they need a quarter-inch hole in their wall.
+  </p>
+
+  <h2 id="p-jtbd-definitions" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Defining the Tools: Archetypes vs Functional Jobs</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-6 not-prose">
+    <div class="p-5 border border-ink-border bg-paper-50 rounded-xs">
+      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1">Human-Centered Archetype</span>
+      <h4 class="font-bold text-base text-ink mb-2">The Behavioral Persona</h4>
+      <p class="text-sm text-ink-muted mb-3">A composite archetype representing a distinct user group characterized by similar goals, mental models, frustrations, and digital literacy.</p>
+      <div class="text-xs font-mono bg-white p-3 border border-ink-border">
+        <strong>Key Superpower:</strong> Establishes shared team empathy, humanizes edge cases, and prevents self-referential design.
+      </div>
+    </div>
+    <div class="p-5 border border-ink-border bg-paper-50 rounded-xs">
+      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1">Outcome-Driven Statement</span>
+      <h4 class="font-bold text-base text-ink mb-2">The Job-to-Be-Done</h4>
+      <p class="text-sm text-ink-muted mb-3">A structured sentence describing the core functional progress someone wants to make under specific situational constraints.</p>
+      <div class="text-xs font-mono bg-white p-3 border border-ink-border">
+        <strong>Formula:</strong> When [Situation], I want to [Motivation], So that [Expected Outcome].
+      </div>
+    </div>
+  </div>
+
+  <h2 id="p-jtbd-matrix" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Comparative Matrix: When to Use Personas vs JTBD</h2>
+  <div class="my-6 overflow-x-auto not-prose">
+    <table class="w-full text-left text-sm font-sans border-collapse border border-ink-border">
+      <thead>
+        <tr class="bg-paper-100 border-b border-ink-border text-xs font-mono uppercase tracking-wider text-ink font-bold">
+          <th class="p-3">Evaluation Dimension</th>
+          <th class="p-3">User Personas</th>
+          <th class="p-3">Jobs-to-Be-Done</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-ink-border">
+        <tr>
+          <td class="p-3 font-mono font-bold text-xs">Primary Question</td>
+          <td class="p-3 text-ink-muted">Who is experiencing this problem?</td>
+          <td class="p-3 text-ink-muted">What progress needs to be accomplished?</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-mono font-bold text-xs">Core Value</td>
+          <td class="p-3 text-ink-muted">Builds empathy, aligns vocabulary, highlights cognitive limits</td>
+          <td class="p-3 text-ink-muted">Uncovers true competitors, identifies root motivations</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-mono font-bold text-xs">Best Suited For</td>
+          <td class="p-3 text-ink-muted">Information architecture, tone of voice, visual ergonomics</td>
+          <td class="p-3 text-ink-muted">Product roadmap strategy, value proposition definition</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-mono font-bold text-xs">Common Failure Mode</td>
+          <td class="p-3 text-ink-muted">Decorating with useless demographic fluff</td>
+          <td class="p-3 text-ink-muted">Ignoring accessibility, emotional stress, and technical competence</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="p-jtbd-programmatic" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">4. Programmatic Model: The Integrated Persona-JTBD Card</h2>
+  <p class="text-ink leading-relaxed">
+    Leading product squads combine both into a unified <strong>Job-Embedded Persona Card</strong>:
+  </p>
+
+  <!-- PROGRAMMATIC ARTIFACT: UNIFIED PERSONA CARD -->
+  <div class="my-8 max-w-lg mx-auto p-6 bg-white border border-ink-border rounded-xs shadow-sm not-prose font-sans">
+    <div class="flex items-center justify-between pb-3 border-b border-ink-border">
+      <div>
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-teal-800">Archetype #01 // Enterprise Ops</span>
+        <h4 class="text-lg font-serif font-bold text-ink">The High-Frequency Dispatcher</h4>
+      </div>
+      <span class="px-2.5 py-1 bg-paper-100 border border-ink-border font-mono text-[10px] text-ink font-bold">DESKTOP_HEAVY</span>
+    </div>
+
+    <div class="my-4 space-y-3 text-xs">
+      <div>
+        <strong class="font-mono text-ink block mb-1 uppercase tracking-wider">// Cognitive Environment & Mental Model</strong>
+        <p class="text-ink-muted leading-relaxed">Operates under severe time pressure across 3 monitors simultaneously. Highly intolerant of multi-step modals; relies strictly on keyboard shortcuts.</p>
+      </div>
+
+      <div class="p-3 bg-paper-50 border border-ink-border rounded-xs">
+        <strong class="font-mono text-indigo-800 block mb-1 uppercase tracking-wider">// Primary Job-to-Be-Done</strong>
+        <p class="text-ink italic">
+          "When an urgent delivery route is blocked by weather, I want to reroute 40 drivers in bulk with one confirmation step, so that customer shipments are not delayed and our SLA penalty is avoided."
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2 pt-1 font-mono text-[11px]">
+        <div class="p-2 border border-ink-border bg-white">
+          <span class="font-bold text-rose-700 block">Core Frustration</span>
+          Laggy dropdown filters that reset search state.
+        </div>
+        <div class="p-2 border border-ink-border bg-white">
+          <span class="font-bold text-emerald-700 block">Success Metric</span>
+          Reroute execution time reduced from 8 min to under 45 sec.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="p-jtbd-synthesis" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">5. How to Combine Both Frameworks in Product Sprints</h2>
+  <ol class="list-decimal pl-6 space-y-2 text-ink">
+    <li><strong>Start with JTBD to define the product feature:</strong> Identify what functional outcome creates genuine progress for the customer.</li>
+    <li><strong>Layer Personas to design the interaction details:</strong> Adapt the interface layout, typography density, and error messaging to match the specific digital literacy and environmental context of the user archetype.</li>
+  </ol>
+
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Adapted for sovereign study from <em>Personas vs. Jobs-to-Be-Done</em> by <strong>Page Laubheimer</strong> (Nielsen Norman Group).</span>
+    </div>
+    <a href="https://www.nngroup.com/articles/personas-jobs-be-done/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">
+      Original Article ↗
+    </a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-2-3',
+            slug: 'affinity-diagramming-for-ux-findings',
+            title: 'Affinity Diagramming for Sorting UX Findings & Collaborative Synthesis',
+            module: 'Unit 2: User Research & Discovery',
+            unitNumber: 2,
+            lessonNumber: '2.3',
+            type: 'article',
+            readTime: '24 min study',
+            originalSourceUrl: 'https://www.nngroup.com/articles/affinity-diagram/',
+            originalSourceLabel: 'Rachel Krause (User Experience Specialist, NN/g)',
+            
+            summaryQuote: 'Affinity diagramming turns hundreds of fragmented user research observations into coherent thematic clusters through inductive, bottom-up sorting.',
+            outline: [
+          {
+                    "id": "aff-intro",
+                    "title": "1. What is an Affinity Diagram?",
+                    "level": 2
+          },
+          {
+                    "id": "aff-why",
+                    "title": "2. Why Affinity Mapping Works (Inductive vs Deductive)",
+                    "level": 2
+          },
+          {
+                    "id": "aff-steps",
+                    "title": "3. The 5 Steps to Facilitate an Affinity Session",
+                    "level": 2
+          },
+          {
+                    "id": "aff-programmatic-board",
+                    "title": "4. Programmatic Model: The Clustered Sticky Board",
+                    "level": 2
+          },
+          {
+                    "id": "aff-dos-donts",
+                    "title": "5. Critical Facilitation Dos and Don'ts",
+                    "level": 2
+          }
+],
+            
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    After conducting user interviews, diary studies, or usability tests, design teams face a mountain of qualitative data: audio snippets, sticky notes, quotes, and behavioral observations. <strong>Affinity diagramming</strong> (also called affinity mapping) is the fundamental synthesis method used to organize messy qualitative observations into intuitive, hierarchical groups.
+  </p>
+
+  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-4 border-ink">
+    <p class="text-lg italic font-serif text-ink">
+      "Affinity diagramming is inductive synthesis: you do not force raw data into pre-conceived categories. You let the natural clusters emerge organically from the voices of your users."
+    </p>
+    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted">
+      — Rachel Krause, Nielsen Norman Group
+    </cite>
+  </div>
+
+  <h2 id="aff-intro" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. What is an Affinity Diagram?</h2>
+  <p class="text-ink leading-relaxed">
+    Invented by Jiro Kawakita in the 1960s (often referred to as the KJ Method), an affinity diagram is a visual clustering exercise. Each individual observation, user quote, or pain point is recorded on an independent sticky note. Team members collaboratively group notes based on natural similarity rather than arbitrary predefined silos.
+  </p>
+
+  <h2 id="aff-why" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Why Affinity Mapping Works (Inductive vs Deductive)</h2>
+  <p class="text-ink leading-relaxed">
+    Traditional business analysis is typically <strong>deductive</strong>: executives create categories first (e.g., "Navigation", "Pricing", "Customer Service") and then stuff observations into those boxes. This biases the outcome.
+  </p>
+  <p class="text-ink leading-relaxed">
+    Affinity diagramming is strictly <strong>inductive (bottom-up)</strong>:
+  </p>
+  <ul class="list-disc pl-6 space-y-2 text-ink">
+    <li>You begin with individual, concrete data points at the bottom.</li>
+    <li>Notes that feel related are placed side by side.</li>
+    <li>Categories are named <em>only after</em> the cluster has physically formed.</li>
+    <li>This prevents team confirmation bias and surfaces surprising insights that leadership never anticipated.</li>
+  </ul>
+
+  <h2 id="aff-steps" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. The 5 Steps to Facilitate an Affinity Session</h2>
+  <ol class="list-decimal pl-6 space-y-3 text-ink">
+    <li><strong>Record Observations:</strong> Write one insight per sticky note. Ensure notes are self-explanatory (include context, not just one vague word).</li>
+    <li><strong>Post Notes on the Wall:</strong> Scatter notes across a large whiteboard or digital canvas (FigJam / Miro) so everyone can see them.</li>
+    <li><strong>Silent Sorting (The Golden Rule):</strong> Team members group related notes together in complete silence for 15 to 20 minutes. Working silently eliminates office politics and prevents senior executives from dominating the clustering.</li>
+    <li><strong>Name the Clusters:</strong> As a group, discuss each cluster and write a descriptive header that captures the underlying human struggle.</li>
+    <li><strong>Vote and Prioritize:</strong> Use dot voting (giving each team member 3 sticky dots) to vote on the most urgent problem clusters to address in the roadmap.</li>
+  </ol>
+
+  <h2 id="aff-programmatic-board" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">4. Programmatic Model: The Clustered Sticky Board</h2>
+  <p class="text-ink leading-relaxed">
+    Here is an interactive programmatic model of an affinity synthesis board after silent sorting:
+  </p>
+
+  <!-- PROGRAMMATIC AFFINITY BOARD COMPONENT -->
+  <div class="my-8 p-6 bg-paper-100 border border-ink-border rounded-xs not-prose">
+    <div class="text-xs font-mono uppercase tracking-widest text-ink font-bold mb-4">// Programmatic Artifact: Qualitative Synthesis Board</div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- Cluster 1 -->
+      <div class="p-4 bg-white border border-ink-border rounded-xs">
+        <div class="pb-2 mb-3 border-b border-ink-border">
+          <span class="text-[10px] font-mono text-teal-800 font-bold uppercase block">Cluster 01 // Trust & Transparency</span>
+          <h5 class="text-xs font-bold text-ink">"Where is my money going?"</h5>
+        </div>
+        <div class="space-y-2 text-[11px] font-mono">
+          <div class="p-2.5 bg-amber-50 border border-amber-200 text-ink shadow-2xs">
+            "I hesitated when the final total changed after adding shipping; felt deceptive."
+          </div>
+          <div class="p-2.5 bg-amber-50 border border-amber-200 text-ink shadow-2xs">
+            "Didn't see any cancellation policy before giving credit card."
+          </div>
+          <div class="p-2.5 bg-amber-50 border border-amber-200 text-ink shadow-2xs">
+            "Why is the service fee hidden until step 4?"
+          </div>
+        </div>
+      </div>
+
+      <!-- Cluster 2 -->
+      <div class="p-4 bg-white border border-ink-border rounded-xs">
+        <div class="pb-2 mb-3 border-b border-ink-border">
+          <span class="text-[10px] font-mono text-indigo-800 font-bold uppercase block">Cluster 02 // Cognitive Friction</span>
+          <h5 class="text-xs font-bold text-ink">"Too much jargon on the home screen"</h5>
+        </div>
+        <div class="space-y-2 text-[11px] font-mono">
+          <div class="p-2.5 bg-blue-50 border border-blue-200 text-ink shadow-2xs">
+            "What does 'Portfolio Rebalancing' mean? I just want to invest $50."
+          </div>
+          <div class="p-2.5 bg-blue-50 border border-blue-200 text-ink shadow-2xs">
+            "The filter terms don't match how I think about my budget."
+          </div>
+          <div class="p-2.5 bg-blue-50 border border-blue-200 text-ink shadow-2xs">
+            "Icons without text labels confused 4 out of 5 users."
+          </div>
+        </div>
+      </div>
+
+      <!-- Cluster 3 -->
+      <div class="p-4 bg-white border border-ink-border rounded-xs">
+        <div class="pb-2 mb-3 border-b border-ink-border">
+          <span class="text-[10px] font-mono text-rose-800 font-bold uppercase block">Cluster 03 // System Latency</span>
+          <h5 class="text-xs font-bold text-ink">"Waiting with no feedback"</h5>
+        </div>
+        <div class="space-y-2 text-[11px] font-mono">
+          <div class="p-2.5 bg-rose-50 border border-rose-200 text-ink shadow-2xs">
+            "Tapped 'Submit' twice because button didn't show a spinner."
+          </div>
+          <div class="p-2.5 bg-rose-50 border border-rose-200 text-ink shadow-2xs">
+            "Screen went blank for 3 seconds; user thought app crashed."
+          </div>
+          <div class="p-2.5 bg-rose-50 border border-rose-200 text-ink shadow-2xs">
+            "No receipt email sent immediately after payment."
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="aff-dos-donts" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">5. Critical Facilitation Dos and Don'ts</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 text-xs font-mono not-prose">
+    <div class="p-4 bg-emerald-50 border border-emerald-200 text-ink">
+      <span class="font-bold text-emerald-800 block mb-2">DO</span>
+      <ul class="space-y-1">
+        <li>&bull; Keep individual notes concise and specific.</li>
+        <li>&bull; Encourage split clusters if a group exceeds 10 notes.</li>
+        <li>&bull; Move duplicates next to each other to show pattern frequency.</li>
+        <li>&bull; Involve developers and PMs directly in the clustering.</li>
+      </ul>
+    </div>
+    <div class="p-4 bg-rose-50 border border-rose-200 text-ink">
+      <span class="font-bold text-rose-800 block mb-2">DON'T</span>
+      <ul class="space-y-1">
+        <li>&bull; Pre-label cluster boxes before reading the notes.</li>
+        <li>&bull; Allow loud verbal debate during the sorting phase.</li>
+        <li>&bull; Discard "outlier" notes—they often reveal critical edge cases.</li>
+        <li>&bull; Rush to design UI fixes before naming the core problem.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Adapted for sovereign study from <em>Affinity Diagramming for Sorting UX Findings</em> by <strong>Rachel Krause</strong> (Nielsen Norman Group).</span>
+    </div>
+    <a href="https://www.nngroup.com/articles/affinity-diagram/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">
+      Original Guide ↗
+    </a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-2-4',
+            slug: 'ten-usability-heuristics-with-severity-matrix',
+            title: '10 Usability Heuristics for User Interface Design & Severity Rating',
+            module: 'Unit 2: User Research & Discovery',
+            unitNumber: 2,
+            lessonNumber: '2.4',
+            type: 'article',
+            readTime: '30 min',
+            originalSourceUrl: 'https://www.nngroup.com/articles/ten-usability-heuristics/',
+            originalSourceLabel: 'Jakob Nielsen (Nielsen Norman Group)',
+            
+            summaryQuote: 'Jakob Nielsen\'s ten heuristics provide a timeless diagnostic toolkit for auditing digital interfaces and eliminating cognitive friction.',
             outline: [
           {
                     "id": "h-intro",
@@ -2008,6 +2735,524 @@ export const COURSES: Course[] = [
     </footer>
   
             `,
+          },
+          {
+            id: 'sb-2-5',
+            slug: 'heuristic-1-visibility-of-system-status',
+            title: 'Heuristic #1: Visibility of System Status & Real-Time Feedback',
+            module: 'Unit 2: User Research & Discovery',
+            unitNumber: 2,
+            lessonNumber: '2.5',
+            type: 'video',
+            readTime: '15 min study',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=cTtc90jCULU',
+            originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
+            youtubeId: 'cTtc90jCULU',
+            summaryQuote: 'The design should always keep users informed about what is going on, through appropriate feedback within a reasonable time.',
+            outline: [
+          {
+                    "id": "h1-principle",
+                    "title": "1. The Core Principle: Never Leave Users in the Dark",
+                    "level": 2
+          },
+          {
+                    "id": "h1-latencies",
+                    "title": "2. The 3 Human Attention Limits: 0.1s, 1.0s, 10.0s",
+                    "level": 2
+          },
+          {
+                    "id": "h1-examples",
+                    "title": "3. Real-World Implementations: Progress Bars & Skeleton Screens",
+                    "level": 2
+          }
+],
+            videoTimestamps: [
+          {
+                    "time": 0,
+                    "label": "00:00 - Principle Overview",
+                    "text": "Jakob Nielsen explains why system visibility builds user trust."
+          },
+          {
+                    "time": 60,
+                    "label": "01:00 - Immediate Feedback",
+                    "text": "Micro-interactions, button state changes, and progress indicators."
+          }
+],
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    When users interact with a system, they need to know whether their action was registered. If an elevator button does not light up when pressed, you press it again—or assume the elevator is broken. The first heuristic guarantees that every user action receives immediate, perceptible confirmation.
+  </p>
+  <h2 id="h1-principle" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Core Principle: Never Leave Users in the Dark</h2>
+  <p class="text-ink leading-relaxed">
+    Predictable feedback creates psychological safety. When an app provides clear status updates, users feel in control, take confident actions, and rarely make accidental double-purchases or duplicate uploads.
+  </p>
+  <h2 id="h1-latencies" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The 3 Human Attention Limits: 0.1s, 1.0s, 10.0s</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink">
+    <li><strong>0.1 Second:</strong> Feels instantaneous. Required for button press states and hover effects.</li>
+    <li><strong>1.0 Second:</strong> The user notices the delay but their train of thought is not interrupted. Display an inline spinner.</li>
+    <li><strong>10.0 Seconds:</strong> The limit of human attention. A progress bar with percentage and estimated remaining time is mandatory.</li>
+  </ul>
+  <h2 id="h1-examples" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Real-World Implementations: Progress Bars & Skeleton Screens</h2>
+  <p class="text-ink leading-relaxed">
+    Replace jarring blank white loading screens with <strong>Skeleton Screens</strong> (placeholder grey shapes that mimic the layout). Skeletons reduce perceived wait time by showing structural progression.
+  </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Nielsen Norman Group Heuristic Masterclass: <strong>Visibility of System Status</strong>.</span>
+    </div>
+    <a href="https://www.youtube.com/watch?v=cTtc90jCULU" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-2-6',
+            slug: 'heuristic-2-match-system-and-real-world',
+            title: 'Heuristic #2: Match Between System & The Real World',
+            module: 'Unit 2: User Research & Discovery',
+            unitNumber: 2,
+            lessonNumber: '2.6',
+            type: 'video',
+            readTime: '15 min study',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=0TAt9Pln51g',
+            originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
+            youtubeId: '0TAt9Pln51g',
+            summaryQuote: 'The design should speak the users\' language, with words, phrases, and concepts familiar to the user, rather than system-oriented terms.',
+            outline: [
+          {
+                    "id": "h2-principle",
+                    "title": "1. Speaking the User's Natural Language",
+                    "level": 2
+          },
+          {
+                    "id": "h2-metaphors",
+                    "title": "2. Real-World Metaphors (Desktop, Cart, Trash)",
+                    "level": 2
+          },
+          {
+                    "id": "h2-jargon",
+                    "title": "3. Eliminating Engineering Jargon from Interfaces",
+                    "level": 2
+          }
+],
+            videoTimestamps: [
+          {
+                    "time": 0,
+                    "label": "00:00 - Introduction",
+                    "text": "Mental models and mapping physical concepts to digital surfaces."
+          },
+          {
+                    "time": 60,
+                    "label": "01:00 - Real-World Metaphors",
+                    "text": "Using familiar icons and terminology."
+          }
+],
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    How people interpret your product depends heavily on their prior experiences. If your interface introduces technical concepts that do not map to everyday reality, cognitive dissonance occurs.
+  </p>
+  <h2 id="h2-principle" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Speaking the User's Natural Language</h2>
+  <p class="text-ink leading-relaxed">
+    Never force users to learn database nomenclature. An e-commerce customer does not "Query SQL Database for SKU"; they "Search shoes in Size 10". Match user vocabulary verbatim.
+  </p>
+  <h2 id="h2-metaphors" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Real-World Metaphors (Desktop, Cart, Trash)</h2>
+  <p class="text-ink leading-relaxed">
+    The reason the personal computer succeeded was the desktop metaphor: files, folders, and a trash can. By leveraging metaphors that users already understood from physical offices, the learning curve dropped to zero.
+  </p>
+  <h2 id="h2-jargon" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Eliminating Engineering Jargon from Interfaces</h2>
+  <p class="text-ink leading-relaxed">
+    Audit error dialogues: replace "Error 0x80040154: Interface not registered" with "We couldn't connect to your printer. Check if it's turned on."
+  </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Nielsen Norman Group Heuristic Masterclass: <strong>Match Between System & Real World</strong>.</span>
+    </div>
+    <a href="https://www.youtube.com/watch?v=0TAt9Pln51g" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-2-7',
+            slug: 'heuristic-3-user-control-and-freedom',
+            title: 'Heuristic #3: User Control & Freedom (Emergency Exits)',
+            module: 'Unit 2: User Research & Discovery',
+            unitNumber: 2,
+            lessonNumber: '2.7',
+            type: 'video',
+            readTime: '15 min study',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=MXuk-fdbr0A',
+            originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
+            youtubeId: 'MXuk-fdbr0A',
+            summaryQuote: 'Users often choose system functions by mistake and will need a clearly marked emergency exit to leave the unwanted state without an extended dialogue.',
+            outline: [
+          {
+                    "id": "h3-principle",
+                    "title": "1. The Emergency Exit Axiom",
+                    "level": 2
+          },
+          {
+                    "id": "h3-undo",
+                    "title": "2. The Power of Undo vs Destructive Confirmations",
+                    "level": 2
+          },
+          {
+                    "id": "h3-workflows",
+                    "title": "3. Linear Workflows with Back Navigation",
+                    "level": 2
+          }
+],
+            videoTimestamps: [
+          {
+                    "time": 0,
+                    "label": "00:00 - Introduction",
+                    "text": "Why users make mistakes and how emergency exits grant confidence."
+          }
+],
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    When people explore software, they make mistakes: clicking the wrong button, deleting a paragraph, or entering the wrong form step. If an application traps them without an obvious way out, anxiety rises.
+  </p>
+  <h2 id="h3-principle" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Emergency Exit Axiom</h2>
+  <p class="text-ink leading-relaxed">
+    Every state in an interface must provide a visible, low-cost exit route: Cancel buttons on modals, a clear Back arrow on mobile flows, and a universal Escape key action.
+  </p>
+  <h2 id="h3-undo" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The Power of Undo vs Destructive Confirmations</h2>
+  <p class="text-ink leading-relaxed">
+    Modern design favors <strong>instant action with Undo</strong> (e.g. Gmail's "Message sent — Undo" toast) over annoying, disruptive popups asking "Are you sure you want to delete this?".
+  </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Nielsen Norman Group Heuristic Masterclass: <strong>User Control & Freedom</strong>.</span>
+    </div>
+    <a href="https://www.youtube.com/watch?v=MXuk-fdbr0A" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-2-8',
+            slug: 'heuristic-4-consistency-and-standards',
+            title: 'Heuristic #4: Consistency & Standards (Jakob\'s Law)',
+            module: 'Unit 2: User Research & Discovery',
+            unitNumber: 2,
+            lessonNumber: '2.8',
+            type: 'video',
+            readTime: '15 min study',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=Ibndy9KLOSQ',
+            originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
+            youtubeId: 'Ibndy9KLOSQ',
+            summaryQuote: 'Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions.',
+            outline: [
+          {
+                    "id": "h4-jakobs-law",
+                    "title": "1. Jakob's Law of Internet User Experience",
+                    "level": 2
+          },
+          {
+                    "id": "h4-internal-external",
+                    "title": "2. Internal vs. External Consistency",
+                    "level": 2
+          },
+          {
+                    "id": "h4-standards",
+                    "title": "3. When to Innovate vs. When to Obey Conventions",
+                    "level": 2
+          }
+],
+            videoTimestamps: [
+          {
+                    "time": 0,
+                    "label": "00:00 - Introduction",
+                    "text": "Jakob's Law: users spend most of their time on other sites."
+          }
+],
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Jakob's Law states: <strong>Users spend most of their time on sites other than yours.</strong> This means that users arrive at your product with expectations deeply conditioned by how other digital tools work.
+  </p>
+  <h2 id="h4-jakobs-law" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Jakob's Law of Internet User Experience</h2>
+  <p class="text-ink leading-relaxed">
+    If your app places the logo on the bottom-right and the search bar in the footer, users do not marvel at your creativity; they get frustrated and leave. Conventions are cognitive shortcuts.
+  </p>
+  <h2 id="h4-internal-external" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Internal vs. External Consistency</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink">
+    <li><strong>Internal Consistency:</strong> Maintain identical button styles, typography tokens, and terminology across all pages of your own product.</li>
+    <li><strong>External Consistency:</strong> Respect operating system conventions (e.g. iOS tab bars at bottom, Android app bars at top).</li>
+  </ul>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Nielsen Norman Group Heuristic Masterclass: <strong>Consistency & Standards</strong>.</span>
+    </div>
+    <a href="https://www.youtube.com/watch?v=Ibndy9KLOSQ" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-2-9',
+            slug: 'heuristic-5-error-prevention',
+            title: 'Heuristic #5: Error Prevention (Slips vs Mistakes)',
+            module: 'Unit 2: User Research & Discovery',
+            unitNumber: 2,
+            lessonNumber: '2.9',
+            type: 'video',
+            readTime: '15 min study',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=imS9s1DUY-I',
+            originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
+            youtubeId: 'imS9s1DUY-I',
+            summaryQuote: 'Even better than good error messages is a careful design which prevents a problem from occurring in the first place.',
+            outline: [
+          {
+                    "id": "h5-slips-mistakes",
+                    "title": "1. Slips (Unconscious) vs. Mistakes (Conscious)",
+                    "level": 2
+          },
+          {
+                    "id": "h5-constraints",
+                    "title": "2. Eliminating Slips with Constraints & Smart Defaults",
+                    "level": 2
+          },
+          {
+                    "id": "h5-confirmations",
+                    "title": "3. Preventing Mistakes with Preview Confirmations",
+                    "level": 2
+          }
+],
+            videoTimestamps: [
+          {
+                    "time": 0,
+                    "label": "00:00 - Introduction",
+                    "text": "Preventing errors before they happen through intelligent design constraints."
+          }
+],
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    A great error message is polite and helpful. But an exceptional design prevents the error from occurring altogether.
+  </p>
+  <h2 id="h5-slips-mistakes" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Slips (Unconscious) vs. Mistakes (Conscious)</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink">
+    <li><strong>Slips:</strong> Occur when the user intends to do the right thing, but physical friction causes a blunder (e.g. typing a comma instead of a period, or tapping adjacent touch targets).</li>
+    <li><strong>Mistakes:</strong> Occur when the user has an incorrect mental model and deliberately chooses the wrong action.</li>
+  </ul>
+  <h2 id="h5-constraints" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Eliminating Slips with Constraints & Smart Defaults</h2>
+  <p class="text-ink leading-relaxed">
+    Use date-picker widgets that disable past dates for hotel bookings. Restrict input fields to numbers only for credit card entries. Do not let users submit invalid data.
+  </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Nielsen Norman Group Heuristic Masterclass: <strong>Error Prevention</strong>.</span>
+    </div>
+    <a href="https://www.youtube.com/watch?v=imS9s1DUY-I" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-2-10',
+            slug: 'heuristic-6-recognition-rather-than-recall',
+            title: 'Heuristic #6: Recognition Rather Than Recall',
+            module: 'Unit 2: User Research & Discovery',
+            unitNumber: 2,
+            lessonNumber: '2.10',
+            type: 'video',
+            readTime: '15 min study',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=6glQPp6q4Jc',
+            originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
+            youtubeId: '6glQPp6q4Jc',
+            summaryQuote: 'Minimize the user\'s memory load by making elements, actions, and options visible. The user should not have to remember information from one part of the interface to another.',
+            outline: [
+          {
+                    "id": "h6-memory",
+                    "title": "1. Human Memory Limits: Miller's Law & Working Memory",
+                    "level": 2
+          },
+          {
+                    "id": "h6-recognition",
+                    "title": "2. Recognition vs Recall: Why Multiple Choice is Easier",
+                    "level": 2
+          },
+          {
+                    "id": "h6-patterns",
+                    "title": "3. Interface Patterns: Search Autocomplete & Recent History",
+                    "level": 2
+          }
+],
+            videoTimestamps: [
+          {
+                    "time": 0,
+                    "label": "00:00 - Introduction",
+                    "text": "Why recognition requires significantly less cognitive energy than active memory retrieval."
+          }
+],
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Human working memory is extremely limited. Asking a user to remember an account number, promo code, or file path while navigating across multiple screens creates severe cognitive strain.
+  </p>
+  <h2 id="h6-memory" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Human Memory Limits: Miller's Law & Working Memory</h2>
+  <p class="text-ink leading-relaxed">
+    George Miller demonstrated that short-term working memory holds roughly 7 &plusmn; 2 chunks of information. Good interfaces act as external memory aids, displaying all necessary choices on screen.
+  </p>
+  <h2 id="h6-recognition" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Recognition vs Recall: Why Multiple Choice is Easier</h2>
+  <p class="text-ink leading-relaxed">
+    Recognizing a face in a crowd is effortless; recalling someone's exact name from memory takes effort. Interfaces should present visible options (Recognition) rather than demanding users remember and type commands (Recall).
+  </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Nielsen Norman Group Heuristic Masterclass: <strong>Recognition Rather Than Recall</strong>.</span>
+    </div>
+    <a href="https://www.youtube.com/watch?v=6glQPp6q4Jc" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-2-11',
+            slug: 'heuristic-7-flexibility-and-efficiency-of-use',
+            title: 'Heuristic #7: Flexibility & Efficiency of Use (Accelerators)',
+            module: 'Unit 2: User Research & Discovery',
+            unitNumber: 2,
+            lessonNumber: '2.11',
+            type: 'video',
+            readTime: '15 min study',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=LoTdRTBB8BQ',
+            originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
+            youtubeId: 'LoTdRTBB8BQ',
+            summaryQuote: 'Shortcuts—unseen by the novice user—may often speed up the interaction for the expert user such that the design caters to both inexperienced and experienced users.',
+            outline: [
+          {
+                    "id": "h7-accelerators",
+                    "title": "1. What Are Accelerators?",
+                    "level": 2
+          },
+          {
+                    "id": "h7-novice-expert",
+                    "title": "2. Designing Dual Pathways: Novice vs Expert",
+                    "level": 2
+          },
+          {
+                    "id": "h7-shortcuts",
+                    "title": "3. Keyboard Shortcuts, Batch Actions, and Customization",
+                    "level": 2
+          }
+],
+            videoTimestamps: [
+          {
+                    "time": 0,
+                    "label": "00:00 - Introduction",
+                    "text": "Accommodating both first-time users and power users through accelerators."
+          }
+],
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    A great product feels simple on day one, yet provides immense speed on day one hundred. Interfaces must cater to both beginners who need hand-holding and power users who demand lightning speed.
+  </p>
+  <h2 id="h7-accelerators" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. What Are Accelerators?</h2>
+  <p class="text-ink leading-relaxed">
+    An accelerator is a design mechanism that speeds up frequent tasks without cluttering the interface for novices. Common examples include keyboard shortcuts (Cmd+K / Ctrl+K), swipe gestures, and macros.
+  </p>
+  <h2 id="h7-novice-expert" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Designing Dual Pathways: Novice vs Expert</h2>
+  <p class="text-ink leading-relaxed">
+    A novice clicks through a 3-step wizard to export a report. An expert presses a single key combination. Both users are delighted.
+  </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Nielsen Norman Group Heuristic Masterclass: <strong>Flexibility & Efficiency of Use</strong>.</span>
+    </div>
+    <a href="https://www.youtube.com/watch?v=LoTdRTBB8BQ" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-2-12',
+            slug: 'heuristic-8-aesthetic-and-minimalist-design',
+            title: 'Heuristic #8: Aesthetic & Minimalist Design (Signal vs Noise)',
+            module: 'Unit 2: User Research & Discovery',
+            unitNumber: 2,
+            lessonNumber: '2.12',
+            type: 'video',
+            readTime: '15 min study',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=ZgbRmeWDgd0',
+            originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
+            youtubeId: 'ZgbRmeWDgd0',
+            summaryQuote: 'Interfaces should not contain information that is irrelevant or rarely needed. Every extra unit of information in an interface competes with the relevant units of information.',
+            outline: [
+          {
+                    "id": "h8-signal-noise",
+                    "title": "1. The Signal-to-Noise Ratio in UI",
+                    "level": 2
+          },
+          {
+                    "id": "h8-competing-info",
+                    "title": "2. Every Extra Pixel Competes with Core Information",
+                    "level": 2
+          },
+          {
+                    "id": "h8-progressive-disclosure",
+                    "title": "3. Progressive Disclosure: Simplicity with Power",
+                    "level": 2
+          }
+],
+            videoTimestamps: [
+          {
+                    "time": 0,
+                    "label": "00:00 - Introduction",
+                    "text": "Why minimalism is not decoration; it is functional clarity."
+          }
+],
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Minimalism in UI design is not an aesthetic fashion trend; it is the discipline of eliminating visual noise so the user's brain can process essential information effortlessly.
+  </p>
+  <h2 id="h8-signal-noise" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Signal-to-Noise Ratio in UI</h2>
+  <p class="text-ink leading-relaxed">
+    Every icon, border, color badge, and paragraph on a screen is a cognitive tax. High signal-to-noise ratio means that every visible pixel serves a deliberate communicative purpose.
+  </p>
+  <h2 id="h8-progressive-disclosure" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Progressive Disclosure: Simplicity with Power</h2>
+  <p class="text-ink leading-relaxed">
+    Show only the essential information upfront. Hide advanced settings and secondary data behind clean expandable disclosures or tabs so novices are not overwhelmed.
+  </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Nielsen Norman Group Heuristic Masterclass: <strong>Aesthetic & Minimalist Design</strong>.</span>
+    </div>
+    <a href="https://www.youtube.com/watch?v=ZgbRmeWDgd0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+  </div>
+</section>
+
+            `,
           }
         ]
       },
@@ -2020,205 +3265,169 @@ export const COURSES: Course[] = [
           {
             id: 'sb-3-1',
             slug: 'information-architecture-and-card-sorting',
-            title: 'Information Architecture: The Structural Blueprint of Digital Products',
+            title: 'Information Architecture: Mental Models, Taxonomies & Card Sorting',
             module: 'Unit 3: Information Architecture & User Flows',
             unitNumber: 3,
             lessonNumber: '3.1',
             type: 'article',
-            readTime: '22 min',
+            readTime: '28 min study',
             originalSourceUrl: 'https://www.nngroup.com/articles/ia-study-guide/',
-            originalSourceLabel: 'Page Laubheimer / Nielsen Norman Group',
+            originalSourceLabel: 'Page Laubheimer (Information Architecture Specialist, NN/g)',
             
-            summaryQuote: 'Information architecture is the practice of deciding how to arrange the parts of something to be understandable.',
+            summaryQuote: 'Information Architecture creates order out of chaos, structuring mental models so users intuitively find what they need without cognitive strain.',
             outline: [
           {
-                    "id": "ia-what-is",
-                    "title": "1. What Information Architecture Really Is",
+                    "id": "ia-def",
+                    "title": "1. What is Information Architecture (IA)?",
                     "level": 2
           },
           {
                     "id": "ia-four-systems",
-                    "title": "2. The Four Core Systems of IA",
+                    "title": "2. Rosenfeld & Morville's 4 IA Systems",
                     "level": 2
           },
           {
-                    "id": "ia-top-down-bottom-up",
-                    "title": "3. Top-Down vs. Bottom-Up Architecture",
+                    "id": "ia-programmatic-sitemap",
+                    "title": "3. Programmatic Model: Multi-Tier Sitemap Architecture",
                     "level": 2
           },
           {
                     "id": "ia-card-sorting",
-                    "title": "4. Card Sorting Methodologies: Open, Closed & Hybrid",
+                    "title": "4. Research Methods: Open, Closed & Hybrid Card Sorting",
                     "level": 2
           },
           {
                     "id": "ia-tree-testing",
-                    "title": "5. Tree Testing: Validating Hierarchy Before Visual Design",
-                    "level": 2
-          },
-          {
-                    "id": "ia-taxonomy",
-                    "title": "6. Taxonomy Structures: Flat, Hierarchical & Faceted",
-                    "level": 2
-          },
-          {
-                    "id": "ia-sitemaps",
-                    "title": "7. Designing Resilient Sitemaps & Navigation Schemas",
+                    "title": "5. Quantitative Validation: Tree Testing Menus",
                     "level": 2
           }
 ],
             
             contentHtml: `
 
-    <p class="lead text-lg sm:text-xl font-serif text-ink dark:text-dark-ink mb-8 leading-relaxed">
-      If content is the raw material of the internet, <strong>Information Architecture (IA)</strong> is the structural steel and concrete that keeps the building standing. Without sound information architecture, even the most beautifully styled interface degenerates into an incomprehensible labyrinth where users get lost and abandon their tasks.
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Information Architecture (IA) is the structural foundation of digital design. If the content of a website or mobile app is not organized according to the user's natural mental model, even the most beautiful visual UI will fail. In this masterclass from Nielsen Norman Group, Page Laubheimer breaks down how to structure complex taxonomies, design navigation pathways, and validate architectures before drawing screens.
+  </p>
+
+  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-4 border-ink">
+    <p class="text-lg italic font-serif text-ink">
+      "Information Architecture is about helping people understand their surroundings and find what they're looking for, in the real world as well as online."
     </p>
+    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted">
+      — Louis Rosenfeld & Peter Morville
+    </cite>
+  </div>
 
-    <h2 id="ia-what-is">1. What Information Architecture Really Is</h2>
-    <p>
-      Information architecture is the art and science of organizing, labeling, and structuring websites, intranets, and mobile software to support usability and findability. Richard Saul Wurman coined the term in 1976, predicting that the explosion of digital information would create a desperate need for architects who could make complex data understandable.
-    </p>
-    <p>
-      In digital product design, IA bridges the gap between what users are trying to accomplish and the vast repository of content, tools, and records stored in backend databases.
-    </p>
+  <h2 id="ia-def" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. What is Information Architecture (IA)?</h2>
+  <p class="text-ink leading-relaxed">
+    Information Architecture is the practice of deciding how the parts of something should be arranged to be understandable. In software products, IA focuses on organizing content so that users can adjust to the interface quickly and easily find everything they need with minimal cognitive friction.
+  </p>
 
-    <!-- Pullout Axiom -->
-    <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
-      <p>"Information architecture is the structural design of shared information environments. It is deciding how to arrange the parts of something so that human minds can find, understand, and use it."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-300 font-bold tracking-wide uppercase">
-        // Louis Rosenfeld & Peter Morville &mdash; "The Polar Bear Book"
-      </footer>
-    </blockquote>
+  <h2 id="ia-four-systems" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Rosenfeld & Morville's 4 IA Systems</h2>
+  <p class="text-ink leading-relaxed">
+    In their seminal text <em>Information Architecture for the World Wide Web</em>, Lou Rosenfeld and Peter Morville established the four foundational systems of any digital ecosystem:
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-6 not-prose">
+    <div class="p-5 border border-ink-border bg-white rounded-xs">
+      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1">System 01</span>
+      <h4 class="font-bold text-base text-ink mb-1">Organization Systems</h4>
+      <p class="text-xs text-ink-muted leading-relaxed">How content is categorized and grouped: chronological, alphabetical, geographical, topic-based, or task-oriented.</p>
+    </div>
+    <div class="p-5 border border-ink-border bg-white rounded-xs">
+      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1">System 02</span>
+      <h4 class="font-bold text-base text-ink mb-1">Labeling Systems</h4>
+      <p class="text-xs text-ink-muted leading-relaxed">The terminology and language used to represent data chunks (e.g. "Contact Us" vs "Get Help", "Settings" vs "Preferences").</p>
+    </div>
+    <div class="p-5 border border-ink-border bg-white rounded-xs">
+      <span class="font-mono text-xs uppercase font-bold text-amber-800 block mb-1">System 03</span>
+      <h4 class="font-bold text-base text-ink mb-1">Navigation Systems</h4>
+      <p class="text-xs text-ink-muted leading-relaxed">How users physically move through content: global top headers, local sidebars, breadcrumb rails, and contextual inline links.</p>
+    </div>
+    <div class="p-5 border border-ink-border bg-white rounded-xs">
+      <span class="font-mono text-xs uppercase font-bold text-rose-800 block mb-1">System 04</span>
+      <h4 class="font-bold text-base text-ink mb-1">Search Systems</h4>
+      <p class="text-xs text-ink-muted leading-relaxed">How users query data directly: search syntax, autocomplete suggestions, faceted filters, and zero-state recommendations.</p>
+    </div>
+  </div>
 
-    <h2 id="ia-four-systems">2. The Four Core Systems of IA</h2>
-    <p>
-      In their seminal publication <em>Information Architecture for the World Wide Web</em>, Lou Rosenfeld and Peter Morville established the four foundational systems that govern every digital product:
-    </p>
+  <h2 id="ia-programmatic-sitemap" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Programmatic Model: Multi-Tier Sitemap Architecture</h2>
+  <p class="text-ink leading-relaxed">
+    Below is a programmatic architectural tree illustrating a clean 3-tier hierarchy that balances breadth and depth:
+  </p>
 
-    <div class="my-8 grid grid-cols-1 sm:grid-cols-2 gap-5 not-prose">
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-teal-500 shadow-2xs">
-        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-300 uppercase block mb-1">System 01</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Organization Systems</h4>
-        <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
-          How information is categorized and grouped (e.g., chronological, alphabetical, geographical, or topic-based).
-        </p>
-      </div>
-
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-blue-500 shadow-2xs">
-        <span class="font-mono text-xs font-bold text-blue-800 dark:text-blue-300 uppercase block mb-1">System 02</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Labeling Systems</h4>
-        <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
-          How categories and links are named so users predict their contents before clicking (e.g., "Settings" vs. "Preferences").
-        </p>
-      </div>
-
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-amber-500 shadow-2xs">
-        <span class="font-mono text-xs font-bold text-amber-800 dark:text-amber-300 uppercase block mb-1">System 03</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Navigation Systems</h4>
-        <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
-          The physical pathways that allow users to move through content (global header menus, breadcrumbs, contextual hyperlinks).
-        </p>
-      </div>
-
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-4 border-l-indigo-500 shadow-2xs">
-        <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-300 uppercase block mb-1">System 04</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Search Systems</h4>
-        <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
-          How users query the database directly, including autocomplete indexing, filter algorithms, and zero-state search suggestions.
-        </p>
-      </div>
+  <!-- PROGRAMMATIC SITEMAP TREE COMPONENT -->
+  <div class="my-8 p-6 bg-paper-100 border border-ink-border rounded-xs not-prose font-mono text-xs">
+    <div class="text-[10px] uppercase font-bold tracking-widest text-ink mb-4">// Programmatic Artifact: Hierarchical Taxonomy Tree</div>
+    
+    <!-- Level 0 Root -->
+    <div class="p-3 bg-ink text-white rounded-xs font-bold text-center mb-4">
+      [0.0] PRODUCT_ROOT_DOMAIN
     </div>
 
-    <h2 id="ia-top-down-bottom-up">3. Top-Down vs. Bottom-Up Architecture</h2>
-    <p>
-      Information architects operate in two opposing yet complementary directions:
-    </p>
-    <ul class="list-disc pl-6 space-y-2 my-6 font-serif text-base sm:text-lg text-ink dark:text-dark-ink leading-relaxed">
-      <li>
-        <strong>Top-Down IA:</strong> Starts from the highest strategic level (the homepage or main dashboard) and subdivides content into major modules, sub-pages, and individual screens. It asks: <em>"How do we guide a new visitor from the front door to their destination?"</em>
-      </li>
-      <li>
-        <strong>Bottom-Up IA:</strong> Starts at the individual content item or article level. Users frequently land deep inside a product via Google search or social links without ever seeing the homepage. Bottom-up IA asks: <em>"When a user lands directly on this single article, how do metadata tags and contextual links help them understand where they are and what to read next?"</em>
-      </li>
-    </ul>
-
-    <h2 id="ia-card-sorting">4. Card Sorting Methodologies: Open, Closed & Hybrid</h2>
-    <p>
-      How do you know what category names make sense to users? Never guess in an internal meeting; run <strong>Card Sorting</strong> studies with real participants:
-    </p>
-    <div class="my-8 grid grid-cols-1 md:grid-cols-3 gap-5 not-prose">
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-300 uppercase block mb-1">Type A</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Open Card Sort</h4>
-        <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
-          Participants sort 30&ndash;50 content cards into groups and invent their own category names. Best for discovering natural user mental models early.
-        </p>
+    <!-- Level 1 Columns -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- Tier 1 -->
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-2">
+        <div class="font-bold text-teal-800 border-b border-ink-border pb-1">[1.0] EXPLORE / DISCOVER</div>
+        <div class="pl-2 space-y-1 text-[11px] text-ink-muted">
+          <div>&bull; 1.1 Category Directory</div>
+          <div>&bull; 1.2 Featured Collections</div>
+          <div>&bull; 1.3 Search & Faceted Filter</div>
+        </div>
       </div>
 
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-blue-800 dark:text-blue-300 uppercase block mb-1">Type B</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Closed Card Sort</h4>
-        <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
-          Participants sort cards into pre-determined categories you established. Best for testing whether your existing navigation buckets are clear.
-        </p>
+      <!-- Tier 2 -->
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-2">
+        <div class="font-bold text-indigo-800 border-b border-ink-border pb-1">[2.0] WORKSPACE / STUDIO</div>
+        <div class="pl-2 space-y-1 text-[11px] text-ink-muted">
+          <div>&bull; 2.1 Active Projects</div>
+          <div>&bull; 2.2 Shared Assets Library</div>
+          <div>&bull; 2.3 Revision History Log</div>
+        </div>
       </div>
 
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-amber-800 dark:text-amber-300 uppercase block mb-1">Type C</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Hybrid Card Sort</h4>
-        <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
-          Participants sort into pre-determined buckets, but are permitted to create new category labels if something does not fit.
-        </p>
+      <!-- Tier 3 -->
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-2">
+        <div class="font-bold text-amber-800 border-b border-ink-border pb-1">[3.0] ACCOUNT & SYSTEM</div>
+        <div class="pl-2 space-y-1 text-[11px] text-ink-muted">
+          <div>&bull; 3.1 Organization Profile</div>
+          <div>&bull; 3.2 Role-Based Permissions</div>
+          <div>&bull; 3.3 Billing & Invoices</div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <h2 id="ia-tree-testing">5. Tree Testing: Validating Hierarchy Before Visual Design</h2>
-    <p>
-      While Card Sorting tests categorization, <strong>Tree Testing</strong> (reverse card sorting) tests findability. You strip away all styling, images, and search boxes, giving users a bare text tree of your navigation menu. You give them a prompt (e.g., <em>"Find where to update your billing currency"</em>) and measure:
-    </p>
-    <ul class="list-disc pl-6 space-y-1 my-4 font-serif text-base text-ink dark:text-dark-ink">
-      <li><strong>Directness:</strong> Did they click straight to the right folder, or did they backtrack?</li>
-      <li><strong>Success Rate:</strong> Did they locate the correct destination?</li>
-      <li><strong>Time to Task:</strong> How many seconds did they spend reading category labels?</li>
-    </ul>
+  <h2 id="ia-card-sorting" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">4. Research Methods: Open, Closed & Hybrid Card Sorting</h2>
+  <p class="text-ink leading-relaxed">
+    To discover how real users organize topics in their heads, researchers use <strong>Card Sorting</strong>:
+  </p>
+  <ul class="list-disc pl-6 space-y-2 text-ink">
+    <li><strong>Open Card Sort:</strong> Participants are given ~40 topic cards and asked to organize them into groups that make sense to them, then name each group. Used for generative discovery.</li>
+    <li><strong>Closed Card Sort:</strong> Participants are given predefined categories and asked to place topic cards into those fixed slots. Used to evaluate an existing taxonomy.</li>
+    <li><strong>Hybrid Card Sort:</strong> Participants place cards into predefined categories but are permitted to create new ones if needed.</li>
+  </ul>
 
-    <h2 id="ia-taxonomy">6. Taxonomy Structures: Flat, Hierarchical & Faceted</h2>
-    <p>
-      Different content types demand different structural topologies:
-    </p>
-    <ul class="list-disc pl-6 space-y-2 my-6 font-serif text-base sm:text-lg text-ink dark:text-dark-ink leading-relaxed">
-      <li><strong>Hierarchical (Tree):</strong> Classic parent-child structure (e.g., <em>Home &rarr; Electronics &rarr; Audio &rarr; Headphones</em>). Easy to understand, but deep trees increase click fatigue.</li>
-      <li><strong>Flat:</strong> Few or no subcategories (e.g., simple landing pages or mobile utilities). Fast to scan, but collapses under large content volumes.</li>
-      <li><strong>Faceted Navigation:</strong> Users filter items simultaneously across multiple independent dimensions (e.g., <em>Price, Brand, Size, Rating, Color</em> on Amazon). The gold standard for modern e-commerce and knowledge bases.</li>
-    </ul>
+  <h2 id="ia-tree-testing" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">5. Quantitative Validation: Tree Testing Menus</h2>
+  <p class="text-ink leading-relaxed">
+    Before investing in wireframes or visual mockups, test your hierarchy using <strong>Tree Testing</strong> (Reverse Card Sorting). Participants are given a text-only menu tree without any visual styling and asked: <em>"Where would you click to change your billing address?"</em>
+  </p>
+  <p class="text-ink text-sm leading-relaxed">
+    Tree testing reveals the exact task success rate, directness rate, and the specific branch nodes where users backtrack or choose the wrong category.
+  </p>
 
-    <h2 id="ia-sitemaps">7. Designing Resilient Sitemaps & Navigation Schemas</h2>
-    <p>
-      A great sitemap balances <strong>breadth</strong> (how many options appear at each menu level) and <strong>depth</strong> (how many clicks are required to reach the deepest content node). Aim for the <strong>Rule of 7 &plusmn; 2</strong>: keep top-level navigation menus to between 5 and 7 concise items to respect human working memory limits.
-    </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Adapted for sovereign study from <em>Information Architecture Study Guide</em> by <strong>Page Laubheimer</strong> (Nielsen Norman Group).</span>
+    </div>
+    <a href="https://www.nngroup.com/articles/ia-study-guide/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">
+      Original Guide ↗
+    </a>
+  </div>
+</section>
 
-    <!-- Derivative Attribution Footer -->
-    <footer class="mt-16 pt-8 border-t border-ink-border/80 dark:border-dark-border not-prose flex items-start gap-4">
-      <div class="w-10 h-10 rounded-full bg-paper-200 dark:bg-dark-card border border-ink-border dark:border-dark-border flex items-center justify-center font-serif font-bold text-ink dark:text-dark-ink shrink-0">
-        PL
-      </div>
-      <div class="text-xs font-serif leading-relaxed text-ink dark:text-dark-ink">
-        <div class="font-sans font-semibold text-sm">Derivative Study Companion &mdash; Page Laubheimer</div>
-        <p class="text-ink-muted dark:text-dark-muted mt-0.5">
-          Synthesized from the comprehensive architecture curriculum <em>"Information Architecture: Study Guide"</em> by Page Laubheimer at Nielsen Norman Group.
-        </p>
-        <a 
-          href="https://www.nngroup.com/articles/ia-study-guide/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:text-black dark:hover:text-white"
-        >
-          <span>View original publication on Nielsen Norman Group</span>
-          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
-        </a>
-      </div>
-    </footer>
-  
             `,
           }
         ]
@@ -2232,16 +3441,16 @@ export const COURSES: Course[] = [
           {
             id: 'sb-4-1',
             slug: 'the-art-of-ux-sketching',
-            title: 'The Messy Art of UX Sketching & Rapid Ideation',
+            title: 'The Messy Art Of UX Sketching: Thinking at the Speed of Thought',
             module: 'Unit 4: Wireframing & Sketching',
             unitNumber: 4,
             lessonNumber: '4.1',
             type: 'article',
-            readTime: '20 min',
+            readTime: '22 min',
             originalSourceUrl: 'https://www.smashingmagazine.com/2011/12/the-messy-art-of-ux-sketching/',
-            originalSourceLabel: 'Peiter Buick / Smashing Magazine',
+            originalSourceLabel: 'Peiter Buick (Senior Designer & Smashing Magazine Contributor)',
             
-            summaryQuote: 'Sketching is not about drawing pretty pictures; it is about thinking visually on paper so you can fail fast, iterate fearlessly, and find the best ideas.',
+            summaryQuote: 'Sketching on paper removes perfectionism, allowing designers to iterate ideas at the speed of thought before committing to digital pixels.',
             outline: [
           {
                     "id": "sk-why-paper",
@@ -2392,6 +3601,353 @@ export const COURSES: Course[] = [
     </footer>
   
             `,
+          },
+          {
+            id: 'sb-4-2',
+            slug: 'design-sprint-crazy-8s-fast-ideation',
+            title: 'Design Sprint Crazy 8s: Generating Divergent Layouts in 8 Minutes',
+            module: 'Unit 4: Wireframing & Sketching',
+            unitNumber: 4,
+            lessonNumber: '4.2',
+            type: 'video',
+            readTime: '20 min study',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=yz4g87XapQ0',
+            originalSourceLabel: 'AJ&Smart (Official Google Ventures Sprint Partner)',
+            youtubeId: 'yz4g87XapQ0',
+            summaryQuote: 'Crazy 8s is a core Design Sprint method that forces your brain past obvious first solutions by generating eight distinct variations under strict time pressure.',
+            outline: [
+          {
+                    "id": "c8-intro",
+                    "title": "1. What is Crazy 8s & Why Time Pressure Unlocks Creativity",
+                    "level": 2
+          },
+          {
+                    "id": "c8-setup",
+                    "title": "2. Preparation: The Folded Paper Technique",
+                    "level": 2
+          },
+          {
+                    "id": "c8-programmatic-sheet",
+                    "title": "3. Programmatic Model: The 8-Box Sprint Matrix",
+                    "level": 2
+          },
+          {
+                    "id": "c8-facilitation",
+                    "title": "4. Facilitation Protocol: The 60-Second Interval Whistle",
+                    "level": 2
+          }
+],
+            videoTimestamps: [
+          {
+                    "time": 0,
+                    "label": "00:00 - Introduction to Crazy 8s",
+                    "text": "AJ&Smart walk through how Crazy 8s forces rapid divergent layout exploration."
+          },
+          {
+                    "time": 60,
+                    "label": "01:00 - Folding the Paper",
+                    "text": "Fold an A4 sheet into 8 equal rectangular viewports."
+          },
+          {
+                    "time": 180,
+                    "label": "03:00 - 60 Seconds per Box",
+                    "text": "Sketching under the timer without erasing or self-critique."
+          }
+],
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Most designers sketch one idea, fall in love with it, and spend four hours polishing it in Figma before realizing the concept is fundamentally flawed. In the Google Ventures Design Sprint, <strong>Crazy 8s</strong> prevents premature attachment by forcing you to generate eight distinct layout concepts in eight frantic minutes.
+  </p>
+
+  <div class="editorial-axiom my-8 p-6 bg-paper-50 border-l-4 border-ink">
+    <p class="text-lg italic font-serif text-ink">
+      "Your first idea is rarely your best idea; it is just the most obvious one. Crazy 8s exhausts your predictable habits and forces your brain to innovate."
+    </p>
+    <cite class="block mt-3 text-xs uppercase tracking-widest font-mono text-ink-muted">
+      — Jonathan Courtney, AJ&Smart
+    </cite>
+  </div>
+
+  <h2 id="c8-intro" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. What is Crazy 8s & Why Time Pressure Unlocks Creativity</h2>
+  <p class="text-ink leading-relaxed">
+    Crazy 8s is a fast-paced sketching exercise that challenges team members to sketch eight distinct ideas in eight minutes. The goal is not to create a masterpiece; the goal is to explore a wide breadth of layouts, navigation structures, and interaction mechanics.
+  </p>
+
+  <h2 id="c8-setup" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Preparation: The Folded Paper Technique</h2>
+  <p class="text-ink leading-relaxed">
+    Take a plain blank sheet of letter or A4 paper. Fold it in half three times. When you unfold it, you have a grid of eight equal rectangular boxes. Each box represents a mobile screen viewport.
+  </p>
+
+  <h2 id="c8-programmatic-sheet" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Programmatic Model: The 8-Box Sprint Matrix</h2>
+  <p class="text-ink leading-relaxed">
+    Here is an interactive programmatic representation of a completed Crazy 8s sheet:
+  </p>
+
+  <!-- PROGRAMMATIC CRAZY 8S SHEET -->
+  <div class="my-8 p-6 bg-paper-100 border border-ink-border rounded-xs not-prose font-mono text-xs">
+    <div class="text-[10px] uppercase font-bold tracking-widest text-ink mb-4">// Programmatic Artifact: Folded 8-Screen Ideation Sheet</div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <!-- Box 1 -->
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center">
+        <span class="text-[10px] font-bold text-ink-muted">Box 01 // Tab List</span>
+        <div class="h-2 bg-paper-200 w-3/4 mx-auto"></div>
+        <div class="h-10 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted">Vertical List</div>
+        <div class="h-2 bg-paper-200 w-1/2 mx-auto"></div>
+      </div>
+      <!-- Box 2 -->
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center">
+        <span class="text-[10px] font-bold text-ink-muted">Box 02 // Swipe Cards</span>
+        <div class="h-2 bg-paper-200 w-3/4 mx-auto"></div>
+        <div class="h-10 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted">Tinder Card Deck</div>
+        <div class="h-2 bg-paper-200 w-1/2 mx-auto"></div>
+      </div>
+      <!-- Box 3 -->
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center">
+        <span class="text-[10px] font-bold text-ink-muted">Box 03 // Search First</span>
+        <div class="h-4 bg-paper-100 border border-ink-border flex items-center justify-center text-[9px] text-ink-muted">Search Modal</div>
+        <div class="h-8 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted">Instant Results</div>
+      </div>
+      <!-- Box 4 -->
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center">
+        <span class="text-[10px] font-bold text-ink-muted">Box 04 // Bottom Sheet</span>
+        <div class="h-6 bg-paper-200 w-full"></div>
+        <div class="h-6 bg-ink text-white flex items-center justify-center text-[9px] font-bold">Drawer Sheet</div>
+      </div>
+      <!-- Box 5 -->
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center">
+        <span class="text-[10px] font-bold text-ink-muted">Box 05 // Conversational</span>
+        <div class="h-12 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted">Chat Dialogue UI</div>
+      </div>
+      <!-- Box 6 -->
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center">
+        <span class="text-[10px] font-bold text-ink-muted">Box 06 // Stepper Wizard</span>
+        <div class="flex justify-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-ink"></span><span class="w-1.5 h-1.5 rounded-full bg-paper-200"></span><span class="w-1.5 h-1.5 rounded-full bg-paper-200"></span></div>
+        <div class="h-8 bg-paper-50 border border-ink-border flex items-center justify-center text-[9px] text-ink-muted">Step 1 of 3</div>
+      </div>
+      <!-- Box 7 -->
+      <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center">
+        <span class="text-[10px] font-bold text-ink-muted">Box 07 // Data Dashboard</span>
+        <div class="grid grid-cols-2 gap-1 h-10">
+          <div class="bg-paper-100 border border-ink-border"></div>
+          <div class="bg-paper-100 border border-ink-border"></div>
+        </div>
+      </div>
+      <!-- Box 8 -->
+      <div class="p-3 bg-white border-2 border-teal-600 rounded-xs space-y-1.5 text-center">
+        <span class="text-[10px] font-bold text-teal-800">Box 08 // Winner *</span>
+        <div class="h-10 bg-teal-50 border border-teal-300 flex items-center justify-center text-[9px] text-teal-900 font-bold">Hybrid Grid + Tab</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="c8-facilitation" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">4. Facilitation Protocol: The 60-Second Interval Whistle</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink">
+    <li>The facilitator sets a timer for 60 seconds.</li>
+    <li>Everyone sketches their first idea in Box 1.</li>
+    <li>At 60 seconds, the facilitator calls: <em>"Switch to Box 2!"</em> No finishing touches; move to the next box immediately.</li>
+    <li>Repeat until all eight boxes are filled.</li>
+  </ul>
+
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Adapted for sovereign study from <em>Design Sprint Crazy 8s</em> by <strong>AJ&Smart</strong>.</span>
+    </div>
+    <a href="https://www.youtube.com/watch?v=yz4g87XapQ0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-4-3',
+            slug: 'reusable-design-patterns-for-products',
+            title: 'Great Artists Reuse: Standardizing Patterns & Building Blocks',
+            module: 'Unit 4: Wireframing & Sketching',
+            unitNumber: 4,
+            lessonNumber: '4.3',
+            type: 'article',
+            readTime: '24 min study',
+            originalSourceUrl: 'https://www.uxpin.com/studio/blog/great-artists-reuse-reusable-patterns-product-design/',
+            originalSourceLabel: 'Marcin Treder (CEO & Product Designer, UXPin)',
+            
+            summaryQuote: 'Designers should not reinvent the wheel for routine interactions. Reusing standardized patterns frees up creative energy to solve truly unique domain challenges.',
+            outline: [
+          {
+                    "id": "pat-intro",
+                    "title": "1. The Myth of Pure Originality in UI",
+                    "level": 2
+          },
+          {
+                    "id": "pat-two-kinds",
+                    "title": "2. The Two Kinds of Copying in Product Design",
+                    "level": 2
+          },
+          {
+                    "id": "pat-building-blocks",
+                    "title": "3. Building Blocks vs Compound Patterns",
+                    "level": 2
+          },
+          {
+                    "id": "pat-system",
+                    "title": "4. Scaling Reusability into a Cohesive Design System",
+                    "level": 2
+          }
+],
+            
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Pablo Picasso famously quipped: <em>"Good artists copy; great artists steal."</em> In digital product design, trying to make every single form input, navigation bar, or modal dialog completely unique is not innovation; it is a disservice to the user. Standardized UI patterns are the established vocabulary of software.
+  </p>
+
+  <h2 id="pat-intro" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Myth of Pure Originality in UI</h2>
+  <p class="text-ink leading-relaxed">
+    Users do not open an application to admire an avant-garde password reset flow. They want to reset their password in five seconds and return to their work. When you reuse familiar patterns, users feel instantly competent.
+  </p>
+
+  <h2 id="pat-two-kinds" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The Two Kinds of Copying in Product Design</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink">
+    <li><strong>Superficial Copying (Plagiarism):</strong> Copying someone else's visual aesthetics, colors, or typography without understanding the underlying behavioral rationale. This results in mismatched, dysfunctional interfaces.</li>
+    <li><strong>Structural Reuse (Pattern Adoption):</strong> Adopting proven interaction conventions—like swipe-to-archive, infinite scroll with sticky headers, or stepper checkouts—because they have been battle-tested with millions of humans.</li>
+  </ul>
+
+  <h2 id="pat-building-blocks" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Building Blocks vs Compound Patterns</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-6 not-prose">
+    <div class="p-5 border border-ink-border bg-white rounded-xs">
+      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1">Atomic Tier</span>
+      <h4 class="font-bold text-base text-ink mb-1">Building Blocks (Atoms)</h4>
+      <p class="text-xs text-ink-muted">Basic primitives: text inputs, primary buttons, checkboxes, icons, toggle switches, and badges.</p>
+    </div>
+    <div class="p-5 border border-ink-border bg-white rounded-xs">
+      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1">Organismic Tier</span>
+      <h4 class="font-bold text-base text-ink mb-1">Compound Patterns (Molecules)</h4>
+      <p class="text-xs text-ink-muted">Combinations of building blocks solving specific user goals: credit card entry widgets, search bars with autocomplete, and comment threads.</p>
+    </div>
+  </div>
+
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Adapted for sovereign study from <em>Great Artists Reuse</em> by <strong>Marcin Treder</strong> (UXPin).</span>
+    </div>
+    <a href="https://www.uxpin.com/studio/blog/great-artists-reuse-reusable-patterns-product-design/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Article ↗</a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-4-4',
+            slug: 'sketching-a-screen-with-existing-patterns',
+            title: 'Sketching a Screen with Existing Design Patterns: Practical Walkthrough',
+            module: 'Unit 4: Wireframing & Sketching',
+            unitNumber: 4,
+            lessonNumber: '4.4',
+            type: 'video',
+            readTime: '15 min study',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=RGajFMYZ0mM',
+            originalSourceLabel: 'Springboard Design Curriculum Team',
+            youtubeId: 'RGajFMYZ0mM',
+            summaryQuote: 'Watch how experienced designers assemble proven UI patterns onto a paper grid to create a cohesive screen in minutes.',
+            outline: [
+          {
+                    "id": "skp-walkthrough",
+                    "title": "1. Assembling Patterns on Paper",
+                    "level": 2
+          },
+          {
+                    "id": "skp-hierarchy",
+                    "title": "2. Establishing Visual Weight with Sharpie Pens",
+                    "level": 2
+          }
+],
+            videoTimestamps: [
+          {
+                    "time": 0,
+                    "label": "00:00 - Introduction",
+                    "text": "Live demonstration of sketching a product screen using established patterns."
+          }
+],
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    In this video demonstration, Springboard design mentors demonstrate how to take a collection of isolated design patterns (e.g. a carousel header, an avatar list, and a sticky footer CTA) and assemble them harmoniously into an intuitive mobile view.
+  </p>
+  <h2 id="skp-walkthrough" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Assembling Patterns on Paper</h2>
+  <p class="text-ink leading-relaxed">
+    By using thicker markers (such as a chisel-tip Sharpie) rather than fine pens, designers are forced to focus on macro hierarchy, element weights, and proportions, rather than getting bogged down in micro-details.
+  </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Springboard Masterclass: <strong>Sketching a Screen with Existing Patterns</strong>.</span>
+    </div>
+    <a href="https://www.youtube.com/watch?v=RGajFMYZ0mM" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-4-5',
+            slug: 'wireframes-at-daylight-studio-guide',
+            title: 'Wireframes at Daylight: Structural Clarity Before Visual Styling',
+            module: 'Unit 4: Wireframing & Sketching',
+            unitNumber: 4,
+            lessonNumber: '4.5',
+            type: 'article',
+            readTime: '20 min study',
+            originalSourceUrl: 'https://thedaylightstudio.com/wireframes-at-daylight/',
+            originalSourceLabel: 'Daylight Design Studio',
+            
+            summaryQuote: 'A wireframe is a contractual blueprint between content, functionality, and user intent, stripping away color and decoration to test raw usability.',
+            outline: [
+          {
+                    "id": "dl-purpose",
+                    "title": "1. The True Goal of a Wireframe",
+                    "level": 2
+          },
+          {
+                    "id": "dl-annotation",
+                    "title": "2. The Art of Wireframe Annotation",
+                    "level": 2
+          },
+          {
+                    "id": "dl-stakeholders",
+                    "title": "3. Communicating with Engineers & Stakeholders",
+                    "level": 2
+          }
+],
+            
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    At Daylight Studio, wireframes are considered the most critical communication asset in product development. Before clients argue over whether a button should be teal or navy, wireframes force everyone to agree on what information needs to be on the page and why.
+  </p>
+  <h2 id="dl-purpose" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The True Goal of a Wireframe</h2>
+  <p class="text-ink leading-relaxed">
+    Wireframes are intentionally monochromatic. By stripping away typography branding, color accents, and photographic styling, stakeholders are prevented from commenting on superficial aesthetics and forced to evaluate functional layout, content hierarchy, and task efficiency.
+  </p>
+  <h2 id="dl-annotation" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The Art of Wireframe Annotation</h2>
+  <p class="text-ink leading-relaxed">
+    Professional wireframes always include numbered callouts in the margins explaining functional logic: <em>"Tap expands inline accordion without page reload"</em> or <em>"Displays error state if postal code fails validation"</em>.
+  </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Adapted for sovereign study from <em>Wireframes at Daylight</em> by <strong>Daylight Studio</strong>.</span>
+    </div>
+    <a href="https://thedaylightstudio.com/wireframes-at-daylight/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Guide ↗</a>
+  </div>
+</section>
+
+            `,
           }
         ]
       },
@@ -2404,16 +3960,16 @@ export const COURSES: Course[] = [
           {
             id: 'sb-5-1',
             slug: 'interactive-prototyping-in-figma',
-            title: 'Interactive Prototyping: From Static Artboards to Dynamic Logic',
+            title: 'Interactive Prototyping: Bringing Wireframes to Life in Figma',
             module: 'Unit 5: Interactive Prototyping',
             unitNumber: 5,
             lessonNumber: '5.1',
             type: 'article',
-            readTime: '22 min',
+            readTime: '26 min',
             originalSourceUrl: 'https://help.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma',
-            originalSourceLabel: 'Figma Learn Documentation',
+            originalSourceLabel: 'Figma Learn Documentation Team',
             
-            summaryQuote: 'Prototypes are not static pictures; they are living simulations of logic, feedback, and motion that bridge the gap between design and code.',
+            summaryQuote: 'A prototype turns abstract debate into concrete physical reality, validating workflows before expensive engineering development begins.',
             outline: [
           {
                     "id": "pr-why-simulate",
@@ -2568,6 +4124,62 @@ export const COURSES: Course[] = [
     </footer>
   
             `,
+          },
+          {
+            id: 'sb-5-2',
+            slug: 'prototyping-with-sketch-mastery',
+            title: 'Prototyping Workflows in Sketch: Connecting Artboards & Hotspots',
+            module: 'Unit 5: Interactive Prototyping',
+            unitNumber: 5,
+            lessonNumber: '5.2',
+            type: 'article',
+            readTime: '18 min study',
+            originalSourceUrl: 'https://www.sketch.com/docs/prototyping/',
+            originalSourceLabel: 'Sketch Documentation Team',
+            
+            summaryQuote: 'Prototyping in Sketch connects visual artboards with interactive hotspots, transitions, and fixed elements to simulate real device software.',
+            outline: [
+          {
+                    "id": "sk-hotspots",
+                    "title": "1. Creating Hotspots & Target Artboards",
+                    "level": 2
+          },
+          {
+                    "id": "sk-transitions",
+                    "title": "2. Transition Animations & Fixed Headers",
+                    "level": 2
+          },
+          {
+                    "id": "sk-mirror",
+                    "title": "3. Device Testing with Sketch Mirror",
+                    "level": 2
+          }
+],
+            
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Prototyping turns static UI artboards into interactive simulations. By defining interactive hotspots and screen transitions, designers can evaluate user flows directly on physical devices.
+  </p>
+  <h2 id="sk-hotspots" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Creating Hotspots & Target Artboards</h2>
+  <p class="text-ink leading-relaxed">
+    Select any layer, button, or card, press <code>W</code> to create a Link, and drag the connector line to your destination artboard. You can define trigger conditions such as Click or Tap.
+  </p>
+  <h2 id="sk-transitions" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Transition Animations & Fixed Headers</h2>
+  <p class="text-ink leading-relaxed">
+    Choose from four primary transition types: Slide In, Slide Out, Push, or Instant. Check <strong>Fix position when scrolling</strong> to pin top navigation headers and bottom tab bars so they remain stationary while page content scrolls underneath.
+  </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Adapted for sovereign study from <em>Prototyping in Sketch</em> by <strong>Sketch Docs</strong>.</span>
+    </div>
+    <a href="https://www.sketch.com/docs/prototyping/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Guide ↗</a>
+  </div>
+</section>
+
+            `,
           }
         ]
       },
@@ -2585,29 +4197,29 @@ export const COURSES: Course[] = [
             unitNumber: 6,
             lessonNumber: '6.1',
             type: 'article',
-            readTime: '45 min read',
-            originalSourceUrl: 'https://dribbble.com/resources/ui-design-fundamentals',
-            originalSourceLabel: 'Stefano Peschiera & Material Design Architecture Team',
+            readTime: '25 min',
+            originalSourceUrl: 'https://dribbble.com/stories/2018/12/19/choosing-colors-for-web-design-a-practical-ui-color-application-guide',
+            originalSourceLabel: 'Stefano Peschiera (Lead Product Designer, Dribbble Guide)',
             
             summaryQuote: 'Visual design in product software is functional architecture: guiding user attention effortlessly through contrast, scale, and spatial rhythm.',
             outline: [
           {
-                    "id": "sb-6-1-sec-1",
+                    "id": "ui-color-rule",
                     "title": "1. The 60-30-10 Color Harmonization Rule",
                     "level": 2
           },
           {
-                    "id": "sb-6-1-sec-2",
+                    "id": "ui-type-scale",
                     "title": "2. Typography: The Modular Scale & Baseline Rhythm",
                     "level": 2
           },
           {
-                    "id": "sb-6-1-sec-3",
+                    "id": "ui-grid-system",
                     "title": "3. Spatial Rhythm: The 8-Point Grid System",
                     "level": 2
           },
           {
-                    "id": "sb-6-1-sec-4",
+                    "id": "ui-accessibility",
                     "title": "4. Accessibility & Human Interface Ergonomics",
                     "level": 2
           }
@@ -2629,7 +4241,7 @@ export const COURSES: Course[] = [
     </cite>
   </div>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4" id="sb-6-1-sec-1">1. The 60-30-10 Color Harmonization Rule</h2>
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The 60-30-10 Color Harmonization Rule</h2>
   <p class="text-ink leading-relaxed">
     Rooted in interior decorating and classical architecture, the <strong>60-30-10 rule</strong> prevents visual chaos in user interfaces:
   </p>
@@ -2663,7 +4275,7 @@ export const COURSES: Course[] = [
     </div>
   </div>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4" id="sb-6-1-sec-2">2. Typography: The Modular Scale & Baseline Rhythm</h2>
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Typography: The Modular Scale & Baseline Rhythm</h2>
   <p class="text-ink leading-relaxed">
     Typography represents more than 90% of web interfaces. Arbitrary font sizes create visual friction. World-class interfaces derive all type scales from a mathematical ratio (such as the Major Second <code>1.125</code> or the Minor Third <code>1.200</code>):
   </p>
@@ -2726,7 +4338,7 @@ export const COURSES: Course[] = [
     </p>
   </div>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4" id="sb-6-1-sec-3">3. Spatial Rhythm: The 8-Point Grid System</h2>
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Spatial Rhythm: The 8-Point Grid System</h2>
   <p class="text-ink leading-relaxed">
     Why do leading tech companies (Apple, Google, Stripe, Airbnb) align all padding, margins, and component dimensions to multiples of <strong>8 pixels</strong> (and a half-step 4px unit)?
   </p>
@@ -2736,7 +4348,7 @@ export const COURSES: Course[] = [
     <li><strong>Cognitive Cohesion:</strong> Interfaces built on an 8pt grid possess an innate subconscious mathematical balance.</li>
   </ul>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4" id="sb-6-1-sec-4">4. Accessibility & Human Interface Ergonomics</h2>
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">4. Accessibility & Human Interface Ergonomics</h2>
   <p class="text-ink leading-relaxed">
     Aesthetic refinement without inclusive ergonomics is poor craftsmanship. Professional UI design adheres to rigid legal and biological standards:
   </p>
@@ -2786,6 +4398,135 @@ export const COURSES: Course[] = [
 </section>
 
             `,
+          },
+          {
+            id: 'sb-6-2',
+            slug: 'reference-guide-for-mobile-typography',
+            title: 'A Reference Guide For Typography In Mobile Web Design',
+            module: 'Unit 6: UI & Visual Design Fundamentals',
+            unitNumber: 6,
+            lessonNumber: '6.2',
+            type: 'article',
+            readTime: '28 min study',
+            originalSourceUrl: 'https://www.smashingmagazine.com/2018/06/reference-guide-typography-mobile-web-design/',
+            originalSourceLabel: 'Suzanne Scacca (Smashing Magazine Typography Fellow)',
+            
+            summaryQuote: 'Mobile typography must balance small glass screens with human vision limits, maintaining legibility across daylight glare and thumb scroll speeds.',
+            outline: [
+          {
+                    "id": "mob-type-foundations",
+                    "title": "1. Small Screen Constraints & Viewing Distance",
+                    "level": 2
+          },
+          {
+                    "id": "mob-type-scales",
+                    "title": "2. Mathematical Modular Scales for Handheld Screens",
+                    "level": 2
+          },
+          {
+                    "id": "mob-type-measure",
+                    "title": "3. Measure (Line Length) & Optical Tracking",
+                    "level": 2
+          },
+          {
+                    "id": "mob-type-touch",
+                    "title": "4. Touch Targets & Line-Height Padding",
+                    "level": 2
+          }
+],
+            
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Designing typography for mobile devices is significantly more demanding than desktop web. Mobile phones are viewed at variable distances (from 10 to 18 inches), under harsh sunlight, while users are walking or distracted. In this comprehensive guide, Suzanne Scacca establishes the mathematical and optical rules for mobile typographic excellence.
+  </p>
+
+  <h2 id="mob-type-foundations" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Small Screen Constraints & Viewing Distance</h2>
+  <p class="text-ink leading-relaxed">
+    Desktop monitors sit 20–30 inches away from the user's eyes on a stable desk. Smartphones sit much closer, but move continuously with human hand tremors. Body copy on mobile must never drop below <strong>16px (1rem)</strong>; smaller sizes trigger automatic iOS Safari zoom and force users to pinch-and-squint.
+  </p>
+
+  <h2 id="mob-type-scales" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Mathematical Modular Scales for Handheld Screens</h2>
+  <p class="text-ink leading-relaxed">
+    On wide desktop monitors, a dramatic scale ratio (like the Golden Ratio <code>1.618</code>) looks regal. On a 390px mobile screen, an H1 at 1.618 creates awkward 2-word line wraps. Use tighter scales on mobile:
+  </p>
+  <ul class="list-disc pl-6 space-y-2 text-ink">
+    <li><strong>Minor Third (1.200):</strong> Ideal for dense mobile tools, enterprise dashboards, and compact lists.</li>
+    <li><strong>Major Second (1.125):</strong> The quietest, most subtle scale for high-information-density mobile screens.</li>
+  </ul>
+
+  <h2 id="mob-type-measure" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Measure (Line Length) & Optical Tracking</h2>
+  <p class="text-ink leading-relaxed">
+    Desktop measure allows 60–75 characters per line. On mobile screens, aim for <strong>35 to 45 characters per line</strong>. If lines are wider, users lose their place when jumping down to the next row; if narrower, reading rhythm stutters with excessive hyphens.
+  </p>
+
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Adapted for sovereign study from <em>Typography in Mobile Web Design</em> by <strong>Suzanne Scacca</strong> (Smashing Magazine).</span>
+    </div>
+    <a href="https://www.smashingmagazine.com/2018/06/reference-guide-typography-mobile-web-design/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Guide ↗</a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-6-3',
+            slug: 'visual-design-in-ux-study-guide',
+            title: 'Visual Design in UX: Principles, Ergonomics & Accessibility',
+            module: 'Unit 6: UI & Visual Design Fundamentals',
+            unitNumber: 6,
+            lessonNumber: '6.3',
+            type: 'article',
+            readTime: '24 min study',
+            originalSourceUrl: 'https://www.nngroup.com/articles/visual-design-in-ux-study-guide/',
+            originalSourceLabel: 'Kelley Gordon (Visual Design Specialist, NN/g)',
+            
+            summaryQuote: 'Visual design in UX is the disciplined orchestration of scale, visual hierarchy, balance, and contrast to communicate system architecture.',
+            outline: [
+          {
+                    "id": "vis-foundations",
+                    "title": "1. The 5 Core Visual Design Principles",
+                    "level": 2
+          },
+          {
+                    "id": "vis-gestalt",
+                    "title": "2. Gestalt Principles in Digital UI (Proximity & Similarity)",
+                    "level": 2
+          },
+          {
+                    "id": "vis-accessibility",
+                    "title": "3. Accessible Contrast & Visual Testing Protocols",
+                    "level": 2
+          }
+],
+            
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Visual design is the bridge between psychology and software. When executed properly, visual hierarchy guides the user's attention along the exact path necessary to complete their goals without deliberate thought.
+  </p>
+  <h2 id="vis-foundations" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The 5 Core Visual Design Principles</h2>
+  <p class="text-ink leading-relaxed">
+    Nielsen Norman Group categorizes the foundational visual design principles as: Scale, Visual Hierarchy, Balance, Contrast, and Gestalt Proximity.
+  </p>
+  <h2 id="vis-gestalt" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Gestalt Principles in Digital UI (Proximity & Similarity)</h2>
+  <p class="text-ink leading-relaxed">
+    <strong>Law of Proximity:</strong> Elements placed close together are perceived as belonging to the same functional group. A label must always sit closer to its corresponding form field than to the field above it.
+  </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Adapted for sovereign study from <em>Visual Design in UX Study Guide</em> by <strong>Kelley Gordon</strong> (Nielsen Norman Group).</span>
+    </div>
+    <a href="https://www.nngroup.com/articles/visual-design-in-ux-study-guide/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Guide ↗</a>
+  </div>
+</section>
+
+            `,
           }
         ]
       },
@@ -2803,15 +4544,35 @@ export const COURSES: Course[] = [
             unitNumber: 7,
             lessonNumber: '7.1',
             type: 'video',
-            readTime: '40 min study (Video + Interactive Protocol)',
+            readTime: '25 min study',
             originalSourceUrl: 'https://www.youtube.com/watch?v=U9ZG19XTbd4',
             originalSourceLabel: 'Michael Margolis & Jake Knapp (Google Ventures Design Sprint)',
             youtubeId: 'U9ZG19XTbd4',
             summaryQuote: 'Watching just five real customers interact with your prototype uncovers 85% of all usability problems before writing production code.',
             outline: [
           {
-                    "id": "sb-7-1-sec-1",
-                    "title": "Why Exactly Five Users? (The Nielsen-Landauer Mathematical Proof)",
+                    "id": "ut-act1",
+                    "title": "Act 1: Friendly Welcome & Psychological Safety",
+                    "level": 2
+          },
+          {
+                    "id": "ut-act2",
+                    "title": "Act 2: Context Questions & Background Warm-up",
+                    "level": 2
+          },
+          {
+                    "id": "ut-act3",
+                    "title": "Act 3: Introducing the Prototype",
+                    "level": 2
+          },
+          {
+                    "id": "ut-act4",
+                    "title": "Act 4: Tasks, Scenarios & Non-Directive Nudging",
+                    "level": 2
+          },
+          {
+                    "id": "ut-act5",
+                    "title": "Act 5: Quick Debrief & The Magic Wand Question",
                     "level": 2
           }
 ],
@@ -2975,7 +4736,7 @@ export const COURSES: Course[] = [
     </ul>
   </div>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4" id="sb-7-1-sec-1">Why Exactly Five Users? (The Nielsen-Landauer Mathematical Proof)</h2>
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">Why Exactly Five Users? (The Nielsen-Landauer Mathematical Proof)</h2>
   <p class="text-ink leading-relaxed">
     Designers frequently ask: <em>"Isn't 5 users too small of a sample size to make major product decisions?"</em> Jakob Nielsen and Thomas Landauer proved mathematically that the number of usability problems found in an interface follows the Poisson distribution formula:
   </p>
@@ -3018,6 +4779,171 @@ export const COURSES: Course[] = [
 </section>
 
             `,
+          },
+          {
+            id: 'sb-7-2',
+            slug: 'usability-testing-101-nngroup-foundations',
+            title: 'Usability Testing 101: Core Methodologies, Metrics & Study Formats',
+            module: 'Unit 7: Usability Testing & Validation',
+            unitNumber: 7,
+            lessonNumber: '7.2',
+            type: 'article',
+            readTime: '26 min study',
+            originalSourceUrl: 'https://www.nngroup.com/articles/usability-testing-101/',
+            originalSourceLabel: 'Kate Moran (Vice President, Nielsen Norman Group)',
+            
+            summaryQuote: 'Usability testing evaluates a product by testing it on real users, measuring task completion, error frequency, and subjective satisfaction.',
+            outline: [
+          {
+                    "id": "ut101-why",
+                    "title": "1. Why Usability Test? (Formative vs Summative)",
+                    "level": 2
+          },
+          {
+                    "id": "ut101-elements",
+                    "title": "2. The 3 Core Elements: Facilitator, Tasks, Participant",
+                    "level": 2
+          },
+          {
+                    "id": "ut101-formats",
+                    "title": "3. Moderated vs Unmoderated, Lab vs Remote",
+                    "level": 2
+          },
+          {
+                    "id": "ut101-metrics",
+                    "title": "4. Usability Metrics: Task Success, Time on Task, SUS",
+                    "level": 2
+          }
+],
+            
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Usability testing is the core engine of user-centered design. In this comprehensive guide from Nielsen Norman Group, VP Kate Moran explains how to structure, conduct, and analyze usability tests to turn qualitative observations into decisive product improvements.
+  </p>
+  <h2 id="ut101-why" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Why Usability Test? (Formative vs Summative)</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink">
+    <li><strong>Formative Testing (Diagnostic):</strong> Conducted during the iterative design phase with low-fi prototypes to identify usability flaws and refine workflows before code is written.</li>
+    <li><strong>Summative Testing (Benchmarking):</strong> Conducted on live production software to measure performance metrics (e.g. System Usability Scale, task completion rate) and compare against competitors.</li>
+  </ul>
+  <h2 id="ut101-elements" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The 3 Core Elements: Facilitator, Tasks, Participant</h2>
+  <p class="text-ink leading-relaxed">
+    Every usability test consists of: A neutral facilitator who presents tasks without coaching; authentic scenarios that reflect real human goals; and a representative participant from your primary user archetype.
+  </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Adapted for sovereign study from <em>Usability Testing 101</em> by <strong>Kate Moran</strong> (Nielsen Norman Group).</span>
+    </div>
+    <a href="https://www.nngroup.com/articles/usability-testing-101/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Guide ↗</a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-7-3',
+            slug: 'user-testing-why-and-how-jakob-nielsen',
+            title: 'User Testing: Why & How (The Jakob Nielsen Masterclass)',
+            module: 'Unit 7: Usability Testing & Validation',
+            unitNumber: 7,
+            lessonNumber: '7.3',
+            type: 'article',
+            readTime: '20 min study',
+            originalSourceUrl: 'https://www.nngroup.com/videos/user-testing-jakob-nielsen/',
+            originalSourceLabel: 'Jakob Nielsen (Pioneer of Discount Usability Engineering)',
+            
+            summaryQuote: 'Discount usability engineering is about running fast, cheap, frequent tests rather than rare, expensive laboratory experiments.',
+            outline: [
+          {
+                    "id": "jn-discount",
+                    "title": "1. The Philosophy of Discount Usability Engineering",
+                    "level": 2
+          },
+          {
+                    "id": "jn-testing-habit",
+                    "title": "2. Making Testing a Weekly Continuous Habit",
+                    "level": 2
+          }
+],
+            
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Jakob Nielsen revolutionized the tech industry by introducing <strong>Discount Usability Engineering</strong> in the 1990s. Prior to Nielsen's work, companies believed usability testing required expensive one-way mirror labs and $50,000 budgets.
+  </p>
+  <h2 id="jn-discount" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Philosophy of Discount Usability Engineering</h2>
+  <p class="text-ink leading-relaxed">
+    Nielsen proved that simple paper prototypes, tested in coffee shops or offices with five users, uncover more than 85% of interface blunders. Running ten small studies across a product lifecycle is infinitely superior to running one massive study at the very end.
+  </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Adapted for sovereign study from <em>User Testing: Why & How</em> by <strong>Jakob Nielsen</strong> (Nielsen Norman Group).</span>
+    </div>
+    <a href="https://www.nngroup.com/videos/user-testing-jakob-nielsen/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Article ↗</a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-7-4',
+            slug: 'moderated-usability-testing-five-step-process',
+            title: 'How to Run Moderated Usability Testing: The 5-Step Process',
+            module: 'Unit 7: Usability Testing & Validation',
+            unitNumber: 7,
+            lessonNumber: '7.4',
+            type: 'article',
+            readTime: '24 min study',
+            originalSourceUrl: 'https://contentsquare.com/guides/usability-testing/moderated/',
+            originalSourceLabel: 'Contentsquare User Research Academy',
+            
+            summaryQuote: 'Moderated testing allows researchers to probe unexpected behaviors live, asking \'why\' the moment a user pauses or shows surprise.',
+            outline: [
+          {
+                    "id": "cs-process",
+                    "title": "1. The 5-Step Moderated Protocol",
+                    "level": 2
+          },
+          {
+                    "id": "cs-scripts",
+                    "title": "2. Writing Non-Directive Test Scripts",
+                    "level": 2
+          },
+          {
+                    "id": "cs-analysis",
+                    "title": "3. Coding Session Videos & Tagging Severity",
+                    "level": 2
+          }
+],
+            
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Moderated usability testing provides the highest qualitative fidelity in digital product design. Because a human facilitator is present live, you can observe facial micro-expressions, body tension, and probe moments of confusion with non-directive follow-up questions.
+  </p>
+  <h2 id="cs-process" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The 5-Step Moderated Protocol</h2>
+  <ol class="list-decimal pl-6 space-y-2 text-ink">
+    <li><strong>Study Scoping:</strong> Align key research questions with product squad goals.</li>
+    <li><strong>Participant Recruitment:</strong> Screen for exact behavioral habits, not just demographics.</li>
+    <li><strong>Script & Task Creation:</strong> Write authentic scenarios without revealing button names.</li>
+    <li><strong>Session Execution:</strong> Run 45-minute sessions adhering strictly to the Think-Aloud protocol.</li>
+    <li><strong>Debrief & Action Plan:</strong> Synthesize findings into ranked Jira / Linear tickets with video clips.</li>
+  </ol>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Adapted for sovereign study from <em>Moderated Usability Testing Guide</em> by <strong>Contentsquare</strong>.</span>
+    </div>
+    <a href="https://contentsquare.com/guides/usability-testing/moderated/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Guide ↗</a>
+  </div>
+</section>
+
+            `,
           }
         ]
       },
@@ -3035,24 +4961,24 @@ export const COURSES: Course[] = [
             unitNumber: 8,
             lessonNumber: '8.1',
             type: 'article',
-            readTime: '50 min study',
+            readTime: '28 min',
             originalSourceUrl: 'https://www.springboard.com/blog/design/ux-design-portfolio-guide/',
             originalSourceLabel: 'Springboard Design Mentorship Board & Principal Design Leaders',
             
             summaryQuote: 'Standout UX portfolios do not showcase decorative mockups; they prove business acumen, constraint management, and rigorous human-centered validation.',
             outline: [
           {
-                    "id": "sb-8-1-sec-1",
+                    "id": "car-case-study",
                     "title": "1. Anatomy of a World-Class Case Study",
                     "level": 2
           },
           {
-                    "id": "sb-8-1-sec-2",
+                    "id": "car-whiteboard",
                     "title": "2. The 5-Step Whiteboard Challenge Playbook",
                     "level": 2
           },
           {
-                    "id": "sb-8-1-sec-3",
+                    "id": "car-ai-era",
                     "title": "3. Thriving in the AI-Augmented Era of UX",
                     "level": 2
           }
@@ -3074,7 +5000,7 @@ export const COURSES: Course[] = [
     </cite>
   </div>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4" id="sb-8-1-sec-1">1. Anatomy of a World-Class Case Study</h2>
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Anatomy of a World-Class Case Study</h2>
   <p class="text-ink leading-relaxed">
     Every standout UX case study follows a classic narrative arc: Hook, Context, Conflict, Resolution, and Reflection. Avoid monolithic walls of text; use scannable typographic hierarchy, diagrams, and annotated visuals:
   </p>
@@ -3124,7 +5050,7 @@ export const COURSES: Course[] = [
     </div>
   </div>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4" id="sb-8-1-sec-2">2. The 5-Step Whiteboard Challenge Playbook</h2>
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The 5-Step Whiteboard Challenge Playbook</h2>
   <p class="text-ink leading-relaxed">
     During on-site interview loops, you will frequently be asked to solve an ambiguous design prompt on a whiteboard in 45 minutes (e.g., <em>"Design an automated kiosk for a subway station"</em>). Follow this rigorous 5-step framework:
   </p>
@@ -3168,7 +5094,7 @@ export const COURSES: Course[] = [
     </table>
   </div>
 
-  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4" id="sb-8-1-sec-3">3. Thriving in the AI-Augmented Era of UX</h2>
+  <h2 class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">3. Thriving in the AI-Augmented Era of UX</h2>
   <p class="text-ink leading-relaxed">
     Artificial intelligence is rapidly commoditizing generic UI production. Tools like Midjourney, v0, Galileo, and AI-assisted design systems can generate screens in seconds. Where does this leave the professional product designer?
   </p>
@@ -3205,10 +5131,194 @@ export const COURSES: Course[] = [
 </section>
 
             `,
+          },
+          {
+            id: 'sb-8-2',
+            slug: 'a-day-in-the-life-of-a-ux-designer',
+            title: 'A Day in the Life of a Product Designer: Inside Modern Design Squads',
+            module: 'Unit 8: Career Pathways & Industry Navigation',
+            unitNumber: 8,
+            lessonNumber: '8.2',
+            type: 'video',
+            readTime: '15 min study',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=Hq7ohURsQN8',
+            originalSourceLabel: 'Springboard Career Series',
+            youtubeId: 'Hq7ohURsQN8',
+            summaryQuote: 'What does a UX designer actually do on a typical Tuesday? Explore standups, user testing reviews, cross-functional engineering alignment, and design critiques.',
+            outline: [
+          {
+                    "id": "day-morning",
+                    "title": "1. Morning: Standups, Analytics Review & Sprint Priorities",
+                    "level": 2
+          },
+          {
+                    "id": "day-afternoon",
+                    "title": "2. Afternoon: Deep Work, Wireframing & Design Critique",
+                    "level": 2
+          },
+          {
+                    "id": "day-handoff",
+                    "title": "3. Handoff: Collaborating with Frontend Engineers",
+                    "level": 2
+          }
+],
+            videoTimestamps: [
+          {
+                    "time": 0,
+                    "label": "00:00 - Introduction",
+                    "text": "Behind the scenes: everyday routines of professional tech designers."
+          }
+],
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Aspiring designers often imagine the job consists of sitting alone with noise-canceling headphones drawing pretty shapes in Figma. The reality is that UX design is primarily a <strong>communication and consensus-building discipline</strong>.
+  </p>
+  <h2 id="day-morning" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Morning: Standups, Analytics Review & Sprint Priorities</h2>
+  <p class="text-ink leading-relaxed">
+    The day begins with a 15-minute cross-functional standup with software engineers and product managers. You review Jira tickets, unblock frontend developers who need component token specs, and check Amplitude / PostHog funnels.
+  </p>
+  <h2 id="day-afternoon" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. Afternoon: Deep Work, Wireframing & Design Critique</h2>
+  <p class="text-ink leading-relaxed">
+    Afternoons are reserved for focused deep work: translating user interview synthesis into wireframes, followed by a <strong>Design Critique</strong> where peers stress-test your layouts for edge cases and accessibility.
+  </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Springboard Career Series: <strong>A Day in the Life of a Designer</strong>.</span>
+    </div>
+    <a href="https://www.youtube.com/watch?v=Hq7ohURsQN8" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-8-3',
+            slug: 'the-good-and-bad-of-working-as-a-designer',
+            title: 'The Good and Bad of Working as a Professional UX Designer',
+            module: 'Unit 8: Career Pathways & Industry Navigation',
+            unitNumber: 8,
+            lessonNumber: '8.3',
+            type: 'video',
+            readTime: '15 min study',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=qwCEZ1lRkHo',
+            originalSourceLabel: 'Springboard Career Series',
+            youtubeId: 'qwCEZ1lRkHo',
+            summaryQuote: 'An honest evaluation of the product design profession: the immense thrill of launching products versus navigating corporate politics and technical constraints.',
+            outline: [
+          {
+                    "id": "gb-rewards",
+                    "title": "1. The Rewards: Impact, Autonomy & Creative Problem-Solving",
+                    "level": 2
+          },
+          {
+                    "id": "gb-frustrations",
+                    "title": "2. The Frustrations: Stakeholder Pushback & Technical Debt",
+                    "level": 2
+          },
+          {
+                    "id": "gb-advice",
+                    "title": "3. Advice for Maintaining Creative Resilience",
+                    "level": 2
+          }
+],
+            videoTimestamps: [
+          {
+                    "time": 0,
+                    "label": "00:00 - Introduction",
+                    "text": "Honest reflections from senior designers on the industry's biggest perks and headaches."
+          }
+],
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Every career path has trade-offs. Knowing what to expect before entering the tech industry allows you to cultivate emotional resilience and focus on high-leverage activities.
+  </p>
+  <h2 id="gb-rewards" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. The Rewards: Impact, Autonomy & Creative Problem-Solving</h2>
+  <p class="text-ink leading-relaxed">
+    There is no feeling comparable to watching a customer easily navigate a workflow that used to take them forty minutes of frustration. Designers have a direct voice in shaping human interactions with technology.
+  </p>
+  <h2 id="gb-frustrations" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">2. The Frustrations: Stakeholder Pushback & Technical Debt</h2>
+  <p class="text-ink leading-relaxed">
+    You will frequently design elegant solutions that engineering cannot build in the current quarter due to legacy database debt. Learning to make graceful compromises is what separates mature designers from juniors.
+  </p>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Springboard Career Series: <strong>The Good and Bad of Working as a Designer</strong>.</span>
+    </div>
+    <a href="https://www.youtube.com/watch?v=qwCEZ1lRkHo" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+  </div>
+</section>
+
+            `,
+          },
+          {
+            id: 'sb-8-4',
+            slug: 'how-do-you-break-into-ux-design',
+            title: 'How Do You Break into UX Design? Non-Traditional Paths & Transition Stories',
+            module: 'Unit 8: Career Pathways & Industry Navigation',
+            unitNumber: 8,
+            lessonNumber: '8.4',
+            type: 'video',
+            readTime: '15 min study',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=ebzQXHIMZu0',
+            originalSourceLabel: 'Springboard Career Series',
+            youtubeId: 'ebzQXHIMZu0',
+            summaryQuote: 'Transitioning from psychology, graphic design, architecture, or customer service: how to position your prior background as your ultimate unfair advantage.',
+            outline: [
+          {
+                    "id": "break-backgrounds",
+                    "title": "1. Turning Non-Design Backgrounds into Unfair Advantages",
+                    "level": 2
+          },
+          {
+                    "id": "break-portfolio",
+                    "title": "2. What Hiring Managers Actually Care About",
+                    "level": 2
+          },
+          {
+                    "id": "break-networking",
+                    "title": "3. Sovereign Networking & Community Engagement",
+                    "level": 2
+          }
+],
+            videoTimestamps: [
+          {
+                    "time": 0,
+                    "label": "00:00 - Introduction",
+                    "text": "Real stories of professionals who transitioned into tech design."
+          }
+],
+            contentHtml: `
+
+<section class="lesson-section space-y-6">
+  <p class="text-xl leading-relaxed text-ink font-serif font-light">
+    Almost nobody starts their career as a UX designer from childhood. The design community is filled with former teachers, psychologists, journalists, accountants, and customer support representatives.
+  </p>
+  <h2 id="break-backgrounds" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4">1. Turning Non-Design Backgrounds into Unfair Advantages</h2>
+  <ul class="list-disc pl-6 space-y-2 text-ink">
+    <li><strong>Psychology & Social Work:</strong> Deep empathy, active listening, and unbiased research interview skills.</li>
+    <li><strong>Architecture & Industrial Design:</strong> Spatial rhythm, modular systems thinking, and ergonomic awareness.</li>
+    <li><strong>Journalism & English Literature:</strong> Narrative storytelling, clear microcopy, and synthesizing complex information.</li>
+    <li><strong>Customer Service:</strong> Direct firsthand knowledge of where software breaks and why users get angry.</li>
+  </ul>
+  <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5">// Source Citation</span>
+      <span>Springboard Career Series: <strong>How Do You Get into Design?</strong></span>
+    </div>
+    <a href="https://www.youtube.com/watch?v=ebzQXHIMZu0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink">Original Video ↗</a>
+  </div>
+</section>
+
+            `,
           }
         ]
       }
     ]
-  },
+  }
 ];
-

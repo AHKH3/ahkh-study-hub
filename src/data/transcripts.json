@@ -484,5 +484,2597 @@
         "label": "07:38"
       }
     ]
+  },
+  "TtgegZfk5ZU": {
+    "videoId": "TtgegZfk5ZU",
+    "fetchedAt": "2026-09-04T17:08:13.173Z",
+    "lang": "en",
+    "kind": "manual",
+    "segments": [
+      {
+        "time": 0,
+        "text": "When you go to a hardware store to buy a drill, what do you want?",
+        "label": "00:00"
+      },
+      {
+        "time": 4,
+        "text": "Is it the drill? Or the hole the drill will create?",
+        "label": "00:04"
+      },
+      {
+        "time": 8,
+        "text": "What customers are interested in, and what they will remember, are outcomes and experiences.",
+        "label": "00:08"
+      },
+      {
+        "time": 19,
+        "text": "74% of consumers say they have spent more with a company due to a history of positive customer experiences.",
+        "label": "00:19"
+      },
+      {
+        "time": 26,
+        "text": "86% of buyers will pay more for a better customer experience.",
+        "label": "00:26"
+      },
+      {
+        "time": 30,
+        "text": "but only 1% of customers feel that businesses consistently meet their expectations.",
+        "label": "00:30"
+      },
+      {
+        "time": 36,
+        "text": "Design thinking is a person-centred approach to designing outcomes and experiences to delight the customer.",
+        "label": "00:36"
+      },
+      {
+        "time": 43,
+        "text": "How does it work?",
+        "label": "00:43"
+      },
+      {
+        "time": 46,
+        "text": "1. Empathise –it starts by putting yourself in your customers’ shoes.",
+        "label": "00:46"
+      },
+      {
+        "time": 51,
+        "text": "By empathising with people through observation or open-ended interviews to uncover what people do, rather than what they want.",
+        "label": "00:51"
+      },
+      {
+        "time": 59,
+        "text": "Because if you ask people what they want, they don’t know.",
+        "label": "00:59"
+      },
+      {
+        "time": 63,
+        "text": "By immersing yourself in your customer’s world, you can understand their Needs, Gains and Pains.",
+        "label": "01:03"
+      },
+      {
+        "time": 69,
+        "text": "2. Define – Once you’ve empathised with your customer you need to filter out the non-obvious insights.",
+        "label": "01:09"
+      },
+      {
+        "time": 75,
+        "text": "What’s the ‘aha’ moment from the observations? What’s the problem to be solved?",
+        "label": "01:15"
+      },
+      {
+        "time": 81,
+        "text": "3. Ideate – Now we know the problem. What are some solutions?",
+        "label": "01:21"
+      },
+      {
+        "time": 87,
+        "text": "The best way is to diverge and look at all possible solutions no matter how ‘out there’ then converge into solutions that are desirable, viable and feasible.",
+        "label": "01:27"
+      },
+      {
+        "time": 98,
+        "text": "4. Prototype – Now we’ve got some solutions let’s bring them to life in the cheapest, fastest way possible.",
+        "label": "01:38"
+      },
+      {
+        "time": 106,
+        "text": "5. Test – Now let’s go back to the customers and ask what they think. Let’s test their reaction to our prototype.",
+        "label": "01:46"
+      },
+      {
+        "time": 115,
+        "text": "Design thinking starts with the customer then offers the solution, not the other way around!",
+        "label": "01:55"
+      },
+      {
+        "time": 122,
+        "text": "To see how design thinking can generate novel ideas to delight customers check out our video \"DESIGN THINKING IN ACTION\"",
+        "label": "02:02"
+      },
+      {
+        "time": 129,
+        "text": "To learn more about The Strategy Group, visit our website.",
+        "label": "02:09"
+      }
+    ]
+  },
+  "cTtc90jCULU": {
+    "videoId": "cTtc90jCULU",
+    "fetchedAt": "2026-09-04T17:08:20.988Z",
+    "lang": "en",
+    "kind": "manual",
+    "segments": [
+      {
+        "time": 0,
+        "text": "The first of Jakob Nielsen’s ten usability heuristics is Visibility of System Status.",
+        "label": "00:00"
+      },
+      {
+        "time": 6,
+        "text": "This heuristic refers to how well the state of a system is conveyed to its users.",
+        "label": "00:06"
+      },
+      {
+        "time": 11,
+        "text": "Systems should always keep users informed about what is going on, through appropriate",
+        "label": "00:11"
+      },
+      {
+        "time": 15,
+        "text": "feedback within a reasonable time.",
+        "label": "00:15"
+      },
+      {
+        "time": 18,
+        "text": "Imagine waiting for an elevator: you press the call button, and expect it to light up",
+        "label": "00:18"
+      },
+      {
+        "time": 23,
+        "text": "to reflect that the system knows you’re waiting and will send an elevator soon.",
+        "label": "00:23"
+      },
+      {
+        "time": 28,
+        "text": "You might even be able to see what floor that elevator is currently at, so you can gauge",
+        "label": "00:28"
+      },
+      {
+        "time": 32,
+        "text": "how long you’ll need to wait. That knowledge is power: open communication between the system and the user not only allows you",
+        "label": "00:32"
+      },
+      {
+        "time": 41,
+        "text": "to understand what is happening, but also empowers you to make decisions based on that information.",
+        "label": "00:41"
+      },
+      {
+        "time": 47,
+        "text": "Consider what information about a system the user needs to know,",
+        "label": "00:47"
+      },
+      {
+        "time": 51,
+        "text": "and present that to them in a timely manner.",
+        "label": "00:51"
+      },
+      {
+        "time": 53,
+        "text": "This system status could be persistent — or always visible — like a battery life or",
+        "label": "00:53"
+      },
+      {
+        "time": 59,
+        "text": "Wi-Fi connection indicator; or it can be feedback that is only shown after the user has done something.",
+        "label": "00:59"
+      },
+      {
+        "time": 66,
+        "text": "Just like when pressing that elevator button, feedback is critical to let people know their",
+        "label": "01:06"
+      },
+      {
+        "time": 71,
+        "text": "interactions with a system were acknowledged and successful.",
+        "label": "01:11"
+      },
+      {
+        "time": 74,
+        "text": "On a website or app, we expect visual feedback when we click an element — which can be",
+        "label": "01:14"
+      },
+      {
+        "time": 78,
+        "text": "as simple as changing the button color and, where appropriate, displaying a progress indicator.",
+        "label": "01:18"
+      },
+      {
+        "time": 84,
+        "text": "People should feel confident that their click was recognized, and that the system is now",
+        "label": "01:24"
+      },
+      {
+        "time": 88,
+        "text": "working on the request.",
+        "label": "01:28"
+      },
+      {
+        "time": 91,
+        "text": "Understanding a system’s current state is all about allowing users to feel in control.",
+        "label": "01:31"
+      },
+      {
+        "time": 96,
+        "text": "That said, providing visibility into the system does NOT mean you need to tell the user absolutely",
+        "label": "01:36"
+      },
+      {
+        "time": 101,
+        "text": "everything the system is doing! Don’t provide system status updates if the user can’t do anything with that feedback anyway.",
+        "label": "01:41"
+      },
+      {
+        "time": 108,
+        "text": "Too much information is distracting, so focus on only those key pieces of information that",
+        "label": "01:48"
+      },
+      {
+        "time": 113,
+        "text": "will truly be helpful or provide reassurance to the user.",
+        "label": "01:53"
+      },
+      {
+        "time": 117,
+        "text": "The Visibility of System Status heuristic highlights the importance of open and continuous",
+        "label": "01:57"
+      },
+      {
+        "time": 122,
+        "text": "communication, which is fundamental to ALL relationships, whether with people or with our devices.",
+        "label": "02:02"
+      },
+      {
+        "time": 128,
+        "text": "It’s the key to making a system feel reliable and predictable, which in turn creates trust.",
+        "label": "02:08"
+      }
+    ]
+  },
+  "0TAt9Pln51g": {
+    "videoId": "0TAt9Pln51g",
+    "fetchedAt": "2026-09-04T17:08:21.439Z",
+    "lang": "en",
+    "kind": "manual",
+    "segments": [
+      {
+        "time": 0,
+        "text": "Jakob Nielsen's second usability heuristic",
+        "label": "00:00"
+      },
+      {
+        "time": 3,
+        "text": "says to match between the system and the real world.",
+        "label": "00:03"
+      },
+      {
+        "time": 7,
+        "text": "That means the system should speak the user's language",
+        "label": "00:07"
+      },
+      {
+        "time": 11,
+        "text": "with words, phrases, and concepts familiar to the user",
+        "label": "00:11"
+      },
+      {
+        "time": 16,
+        "text": "rather than system-oriented terms.",
+        "label": "00:16"
+      },
+      {
+        "time": 18,
+        "text": "Additionally, the system should follow real world conventions,",
+        "label": "00:18"
+      },
+      {
+        "time": 23,
+        "text": "making sure that information appears in a logical order.",
+        "label": "00:23"
+      },
+      {
+        "time": 28,
+        "text": "Let's discuss each of those components a bit more.",
+        "label": "00:28"
+      },
+      {
+        "time": 31,
+        "text": "The system should speak the user's language. Too often I see the use of marketing jargon",
+        "label": "00:31"
+      },
+      {
+        "time": 36,
+        "text": "instead of direct, plain language",
+        "label": "00:36"
+      },
+      {
+        "time": 39,
+        "text": "to describe features or web components.",
+        "label": "00:39"
+      },
+      {
+        "time": 42,
+        "text": "So let's say we're redesigning an intranet",
+        "label": "00:42"
+      },
+      {
+        "time": 45,
+        "text": "and need to name a section that houses contact information for employees.",
+        "label": "00:45"
+      },
+      {
+        "time": 50,
+        "text": "Maybe we're looking at two proposed names:",
+        "label": "00:50"
+      },
+      {
+        "time": 53,
+        "text": "meet-and-greet or staff directory.",
+        "label": "00:53"
+      },
+      {
+        "time": 56,
+        "text": "Well meet-and-greet might sound trendy,",
+        "label": "00:56"
+      },
+      {
+        "time": 59,
+        "text": "but it requires the user to make a lot of inferences.",
+        "label": "00:59"
+      },
+      {
+        "time": 63,
+        "text": "You might think, 'is that work events? maybe calendar invites?'",
+        "label": "01:03"
+      },
+      {
+        "time": 67,
+        "text": "Using the more direct label of staff directory",
+        "label": "01:07"
+      },
+      {
+        "time": 71,
+        "text": "results in a stronger information scent, because many users will recognize the term directory",
+        "label": "01:11"
+      },
+      {
+        "time": 77,
+        "text": "as a place to find contact information.",
+        "label": "01:17"
+      },
+      {
+        "time": 81,
+        "text": "In addition to speaking the user's language, We should also follow real-world conventions.",
+        "label": "01:21"
+      },
+      {
+        "time": 87,
+        "text": "Here, it's important to point out that people's mental models of technology",
+        "label": "01:27"
+      },
+      {
+        "time": 91,
+        "text": "are based on their previous digital experiences,",
+        "label": "01:31"
+      },
+      {
+        "time": 95,
+        "text": "in addition to their prior experiences in the physical realm.",
+        "label": "01:35"
+      },
+      {
+        "time": 99,
+        "text": "Now, we can't talk about the second usability heuristic",
+        "label": "01:39"
+      },
+      {
+        "time": 102,
+        "text": "without mentioning skeuomorphic design. Skeuomorphic web design entails designing digital experiences",
+        "label": "01:42"
+      },
+      {
+        "time": 108,
+        "text": "to match a physical experience both in visual and interaction.",
+        "label": "01:48"
+      },
+      {
+        "time": 113,
+        "text": "For example, books. In physical books, we can turn pages,",
+        "label": "01:53"
+      },
+      {
+        "time": 118,
+        "text": "highlight text, or use a bookmark.",
+        "label": "01:58"
+      },
+      {
+        "time": 121,
+        "text": "Looking at a digital book in the Kindle app",
+        "label": "02:01"
+      },
+      {
+        "time": 123,
+        "text": "we can highlight text by pressing and holding a word,",
+        "label": "02:03"
+      },
+      {
+        "time": 127,
+        "text": "turn pages with a swipe gesture,",
+        "label": "02:07"
+      },
+      {
+        "time": 130,
+        "text": "or place a bookmark by tapping the page,",
+        "label": "02:10"
+      },
+      {
+        "time": 133,
+        "text": "clicking the bookmark icon in the top right.",
+        "label": "02:13"
+      },
+      {
+        "time": 136,
+        "text": "The digital experience of reading a book",
+        "label": "02:16"
+      },
+      {
+        "time": 139,
+        "text": "is closely aligned to the physical experience.",
+        "label": "02:19"
+      },
+      {
+        "time": 142,
+        "text": "Effectively following the second usability heuristic",
+        "label": "02:22"
+      },
+      {
+        "time": 145,
+        "text": "means speaking the user's language",
+        "label": "02:25"
+      },
+      {
+        "time": 148,
+        "text": "and following real-world conventions.",
+        "label": "02:28"
+      },
+      {
+        "time": 151,
+        "text": "If you're not doing both, users might portray your interface in a negative light",
+        "label": "02:31"
+      },
+      {
+        "time": 155,
+        "text": "as if you don't really know them or you just don't care.",
+        "label": "02:35"
+      },
+      {
+        "time": 159,
+        "text": "At the end of the day, get out and observe real users.",
+        "label": "02:39"
+      },
+      {
+        "time": 162,
+        "text": "Test your prototypes. And remember to design for them and not for you.",
+        "label": "02:42"
+      }
+    ]
+  },
+  "MXuk-fdbr0A": {
+    "videoId": "MXuk-fdbr0A",
+    "fetchedAt": "2026-09-04T17:08:21.936Z",
+    "lang": "en",
+    "kind": "manual",
+    "segments": [
+      {
+        "time": 0,
+        "text": "Have you ever said a friendly hello to someone and then got caught in a long, drawn-out conversation?",
+        "label": "00:00"
+      },
+      {
+        "time": 6,
+        "text": "You might’ve wanted out of it, but couldn’t think of a polite exit.",
+        "label": "00:06"
+      },
+      {
+        "time": 10,
+        "text": "Because there’s no way undo that hello, you might begin to avoid such niceties in the future.",
+        "label": "00:10"
+      },
+      {
+        "time": 16,
+        "text": "User Control and Freedom is one of Jakob Nielsen’s ten usability heuristics.",
+        "label": "00:16"
+      },
+      {
+        "time": 21,
+        "text": "It states that users often choose system functions by mistake, and need a clearly marked",
+        "label": "00:21"
+      },
+      {
+        "time": 26,
+        "text": "“emergency exit” to leave that unwanted state. Basically: support undo and redo.",
+        "label": "00:26"
+      },
+      {
+        "time": 32,
+        "text": "A common example would be the back and forward buttons on every web browser.",
+        "label": "00:32"
+      },
+      {
+        "time": 36,
+        "text": "Imagine if that didn’t exist! You’d have to be really confident in every single click as you navigate around the web,",
+        "label": "00:36"
+      },
+      {
+        "time": 43,
+        "text": "because there’d be no easy way to get back to where you were if you clicked to visit",
+        "label": "00:43"
+      },
+      {
+        "time": 47,
+        "text": "a page and realized it wasn’t what you needed.",
+        "label": "00:47"
+      },
+      {
+        "time": 51,
+        "text": "Similarly, any process or mode in any digital system should include a way for users to back",
+        "label": "00:51"
+      },
+      {
+        "time": 55,
+        "text": "out when needed. And websites can’t only rely on those browser buttons, but should provide users a clear",
+        "label": "00:55"
+      },
+      {
+        "time": 61,
+        "text": "way to leave a stepped process or cancel whatever it was they started on that web page itself.",
+        "label": "01:01"
+      },
+      {
+        "time": 67,
+        "text": "Undo or cancel is particularly important for mobile devices and other touchscreens, where",
+        "label": "01:07"
+      },
+      {
+        "time": 72,
+        "text": "accidental taps are common. And again, these “emergency exits” should be clearly marked.",
+        "label": "01:12"
+      },
+      {
+        "time": 78,
+        "text": "For instance, many people have no clue that some mobile apps allow undo by shaking the",
+        "label": "01:18"
+      },
+      {
+        "time": 84,
+        "text": "device just like you could shake-to-erase the classic Etch A Sketch toy!",
+        "label": "01:24"
+      },
+      {
+        "time": 88,
+        "text": "If users never discover a feature, does it even exist?",
+        "label": "01:28"
+      },
+      {
+        "time": 92,
+        "text": "When it’s easy for people to back out of unwanted processes or undo an action, it fosters",
+        "label": "01:32"
+      },
+      {
+        "time": 98,
+        "text": "a sense of freedom because realize they don’t need to be afraid to click on that link or",
+        "label": "01:38"
+      },
+      {
+        "time": 102,
+        "text": "test out that photo filter — they know that if it turns out to not be what they wanted,",
+        "label": "01:42"
+      },
+      {
+        "time": 107,
+        "text": "they can easily undo that action. They’re always in control of the system, and aren’t going to get stuck somewhere they didn’t intend.",
+        "label": "01:47"
+      }
+    ]
+  },
+  "Ibndy9KLOSQ": {
+    "videoId": "Ibndy9KLOSQ",
+    "fetchedAt": "2026-09-04T17:08:22.842Z",
+    "lang": "en",
+    "kind": "manual",
+    "segments": [
+      {
+        "time": 0,
+        "text": "One of Jakob's ten heuristics for UI design is to maintain consistency and adhere to standards.",
+        "label": "00:00"
+      },
+      {
+        "time": 6,
+        "text": "This heuristic is crucial for ensuring that your UI is predictable and learnable.",
+        "label": "00:06"
+      },
+      {
+        "time": 12,
+        "text": "People shouldn't have to wonder whether different words, symbols, situations, or actions",
+        "label": "00:12"
+      },
+      {
+        "time": 17,
+        "text": "mean the same thing. We can think about two types of consistency as it applies to UX design:",
+        "label": "00:17"
+      },
+      {
+        "time": 24,
+        "text": "internal consistency and external consistency.",
+        "label": "00:24"
+      },
+      {
+        "time": 27,
+        "text": "Internal consistency refers to maintaining consistency within a product or family of products.",
+        "label": "00:27"
+      },
+      {
+        "time": 34,
+        "text": "For example, maybe your visual designers decide to use a specific shade of orange to",
+        "label": "00:34"
+      },
+      {
+        "time": 40,
+        "text": "highlight actionable elements: things like call-to-action buttons.",
+        "label": "00:40"
+      },
+      {
+        "time": 43,
+        "text": "If you decided to then use that orange to highlight a static heading, you'd be breaking internal consistency.",
+        "label": "00:43"
+      },
+      {
+        "time": 51,
+        "text": "That might be a problem because it violates the established meaning of that visual treatment.",
+        "label": "00:51"
+      },
+      {
+        "time": 57,
+        "text": "Users may no longer be able to rely on it to help them determine which elements in your UI are actionable.",
+        "label": "00:57"
+      },
+      {
+        "time": 64,
+        "text": "External consistency refers to maintaining consistency outside of products.",
+        "label": "01:04"
+      },
+      {
+        "time": 70,
+        "text": "You might have established conventions for UIs in your industry,",
+        "label": "01:10"
+      },
+      {
+        "time": 73,
+        "text": "or even established conventions for UIs in general.",
+        "label": "01:13"
+      },
+      {
+        "time": 76,
+        "text": "For example most ecommerce sites have a shopping cart feature.",
+        "label": "01:16"
+      },
+      {
+        "time": 80,
+        "text": "People are familiar with this feature because they see it anytime they use an e-commerce site.",
+        "label": "01:20"
+      },
+      {
+        "time": 86,
+        "text": "They have existing expectations for how that feature should work, and where it should be placed:",
+        "label": "01:26"
+      },
+      {
+        "time": 92,
+        "text": "in the upper right corner of the screen usually. Jakob's Law can help us to understand why external standards are so important.",
+        "label": "01:32"
+      },
+      {
+        "time": 99,
+        "text": "Jakob's Law states that, \"People spend most of their time on sites other than yours.\"",
+        "label": "01:39"
+      },
+      {
+        "time": 105,
+        "text": "If all of those other sites follow a consistent convention, but your site breaks that convention,",
+        "label": "01:45"
+      },
+      {
+        "time": 112,
+        "text": "You're forcing people to learn something new. There are times when breaking conventions can be worthwhile.",
+        "label": "01:52"
+      },
+      {
+        "time": 117,
+        "text": "Maybe you just figured out a new and better pattern.",
+        "label": "01:57"
+      },
+      {
+        "time": 120,
+        "text": "Just remember you're adding to your users cognitive load every time",
+        "label": "02:00"
+      },
+      {
+        "time": 124,
+        "text": "you make them learn something new. So, you should only do it when it's absolutely necessary.",
+        "label": "02:04"
+      },
+      {
+        "time": 129,
+        "text": "In most cases, it's best to maintain consistency, both internal and external,",
+        "label": "02:09"
+      },
+      {
+        "time": 134,
+        "text": "to improve your products learnability.",
+        "label": "02:14"
+      }
+    ]
+  },
+  "imS9s1DUY-I": {
+    "videoId": "imS9s1DUY-I",
+    "fetchedAt": "2026-09-04T17:08:23.254Z",
+    "lang": "en",
+    "kind": "manual",
+    "segments": [
+      {
+        "time": 0,
+        "text": "It's happened to all of us. You go to your inbox. You open an email, and you see it.",
+        "label": "00:00"
+      },
+      {
+        "time": 5,
+        "text": "It's something that has been sent -- not just to the recipient -- but \"reply all\"",
+        "label": "00:05"
+      },
+      {
+        "time": 10,
+        "text": "... to everyone ... ... including lots of people it wasn't supposed to go to.",
+        "label": "00:10"
+      },
+      {
+        "time": 14,
+        "text": "Sometimes we've been on the receiving end, and it's cringeworthy; but of course it's",
+        "label": "00:14"
+      },
+      {
+        "time": 17,
+        "text": "even more mortifying if you were actually the sender, and you've sent something out",
+        "label": "00:17"
+      },
+      {
+        "time": 21,
+        "text": "to your entire workplace of 200,000 people or your campus or your community.",
+        "label": "00:21"
+      },
+      {
+        "time": 27,
+        "text": "That is not user error. In fact, it's the design error.",
+        "label": "00:27"
+      },
+      {
+        "time": 32,
+        "text": "The design failed to prevent the user from accidentally clicking that reply-all button.",
+        "label": "00:32"
+      },
+      {
+        "time": 37,
+        "text": "Now, this concept of error prevention is one of Jakob Nielsen's heuristics.",
+        "label": "00:37"
+      },
+      {
+        "time": 42,
+        "text": "It's one of these most important concepts to have good usability in a design.",
+        "label": "00:42"
+      },
+      {
+        "time": 47,
+        "text": "Let me show you something I found the other day that was actually wonderful.",
+        "label": "00:47"
+      },
+      {
+        "time": 50,
+        "text": "This is my electric toothbrush, which does a great job at cleaning my teeth, but it also",
+        "label": "00:50"
+      },
+      {
+        "time": 56,
+        "text": "has a nice feature designed to prevent me from forgetting to charge it.",
+        "label": "00:56"
+      },
+      {
+        "time": 61,
+        "text": "When I finish brushing my teeth and its battery is running low, it vibrates three times.",
+        "label": "01:01"
+      },
+      {
+        "time": 65,
+        "text": "It makes a little sound. It goes \"Brrrm brrrm brrm!\" Something like that. And that tells me that I need to plug it in. Now what's the worst that could happen if I forget to charge this toothbrush?",
+        "label": "01:05"
+      },
+      {
+        "time": 76,
+        "text": "I can still brush my teeth just fine. But there are plenty of designs where the stakes are actually really high.",
+        "label": "01:16"
+      },
+      {
+        "time": 82,
+        "text": "Those of you who might be designing things for use in medical scenarios, in transportation,",
+        "label": "01:22"
+      },
+      {
+        "time": 88,
+        "text": "in security, or finance -- where, if someone accidentally starts to reach for the wrong button,",
+        "label": "01:28"
+      },
+      {
+        "time": 94,
+        "text": "it could have really serious and damaging consequences.",
+        "label": "01:34"
+      },
+      {
+        "time": 97,
+        "text": "So, error prevention is critical. If you're looking at your designs, I want you to start with the issues that might cause severe damage.",
+        "label": "01:37"
+      },
+      {
+        "time": 103,
+        "text": "Then, go down and look at things that you can do to prevent simple annoyances and frustrations,",
+        "label": "01:43"
+      },
+      {
+        "time": 108,
+        "text": "and prevent people from having to redo their work.",
+        "label": "01:48"
+      },
+      {
+        "time": 111,
+        "text": "Sometimes these are simple fixes like changing size, the color, or placement, location of a button;",
+        "label": "01:51"
+      },
+      {
+        "time": 117,
+        "text": "sometimes changing the texture of a button if you're in the physical world.",
+        "label": "01:57"
+      },
+      {
+        "time": 120,
+        "text": "Other times, it's offering a confirmation dialog that says, \"Are you sure you want to",
+        "label": "02:00"
+      },
+      {
+        "time": 124,
+        "text": "transfer all of your money to this other account?\" It's worth the interruption because you want to prevent an accidental transfer.",
+        "label": "02:04"
+      },
+      {
+        "time": 131,
+        "text": "And last, having an undo button is a great way to at least prevent errors from becoming permanent.",
+        "label": "02:11"
+      },
+      {
+        "time": 137,
+        "text": "If someone goes down that path of making a mistake, they can still catch it and hopefully undo.",
+        "label": "02:17"
+      },
+      {
+        "time": 142,
+        "text": "So, when you're looking through your designs take the time to find out ways that you can",
+        "label": "02:22"
+      },
+      {
+        "time": 147,
+        "text": "stop errors before they happen. And in the meantime, stay clear of that reply-all button.",
+        "label": "02:27"
+      }
+    ]
+  },
+  "6glQPp6q4Jc": {
+    "videoId": "6glQPp6q4Jc",
+    "fetchedAt": "2026-09-04T17:08:23.556Z",
+    "lang": "en",
+    "kind": "manual",
+    "segments": [
+      {
+        "time": 0,
+        "text": "One of the top 10 usability heuristics advises to promote recognition over recall in user-interfaces.",
+        "label": "00:00"
+      },
+      {
+        "time": 10,
+        "text": "So what are recognition and recall and why is recognition easier than recall?",
+        "label": "00:10"
+      },
+      {
+        "time": 15,
+        "text": "Let’s take an example. If I ask you a question such as: Is Lisbon the capital of Portugal?",
+        "label": "00:15"
+      },
+      {
+        "time": 23,
+        "text": "answering it involves recognition:",
+        "label": "00:23"
+      },
+      {
+        "time": 26,
+        "text": "You simply have to recognize whether the information provided is correct.",
+        "label": "00:26"
+      },
+      {
+        "time": 31,
+        "text": "If instead I asked you: What is the capital of Portugal?",
+        "label": "00:31"
+      },
+      {
+        "time": 36,
+        "text": "You would use a process of recall to retrieve the right answer from your memory.",
+        "label": "00:36"
+      },
+      {
+        "time": 43,
+        "text": "Memory retrieval is made easier by the cues that we receive from the context.",
+        "label": "00:43"
+      },
+      {
+        "time": 49,
+        "text": "All those cues send signals to related information that is stored in our memory.",
+        "label": "00:49"
+      },
+      {
+        "time": 56,
+        "text": "The more cues we have, the easier it is to retrieve the right concept from memory.",
+        "label": "00:56"
+      },
+      {
+        "time": 62,
+        "text": "The big difference between recognition and recall is the number of cues provided by the",
+        "label": "01:02"
+      },
+      {
+        "time": 69,
+        "text": "context that can help the memory retrieval; recall involves fewer cues than recognition.",
+        "label": "01:09"
+      },
+      {
+        "time": 77,
+        "text": "A menu system is the most classic example of a recognition-based user interface: the",
+        "label": "01:17"
+      },
+      {
+        "time": 83,
+        "text": "computer shows you the available commands, and you recognize the one you want.",
+        "label": "01:23"
+      },
+      {
+        "time": 88,
+        "text": "Say, for example, that you’re working with a word processor and you want to cross a sentence",
+        "label": "01:28"
+      },
+      {
+        "time": 95,
+        "text": "out to indicate that it's no longer valid.",
+        "label": "01:35"
+      },
+      {
+        "time": 99,
+        "text": "Before the graphical user interfaces, if you used a command-line editor, you would have",
+        "label": "01:39"
+      },
+      {
+        "time": 105,
+        "text": "to recall the name of this rarely used formatting feature; the recall is difficult and error-prone.",
+        "label": "01:45"
+      },
+      {
+        "time": 114,
+        "text": "With a graphical user interface, however, you look at the menu of formatting options",
+        "label": "01:54"
+      },
+      {
+        "time": 119,
+        "text": "and easily recognize the term strikethrough or an icon for that function.",
+        "label": "01:59"
+      },
+      {
+        "time": 126,
+        "text": "Interfaces that promote recognition give users extra help in remembering information.",
+        "label": "02:06"
+      },
+      {
+        "time": 134,
+        "text": "Minimizing user work is essential for a good user experience, so that’s why we recommend",
+        "label": "02:14"
+      },
+      {
+        "time": 142,
+        "text": "that you strive to promote recognition over recall in your UIs.",
+        "label": "02:22"
+      }
+    ]
+  },
+  "LoTdRTBB8BQ": {
+    "videoId": "LoTdRTBB8BQ",
+    "fetchedAt": "2026-09-04T17:08:23.864Z",
+    "lang": "en",
+    "kind": "manual",
+    "segments": [
+      {
+        "time": 0,
+        "text": "Imagine that you're writing an email to a large group of people.",
+        "label": "00:00"
+      },
+      {
+        "time": 4,
+        "text": "You need to send roughly the same email with a few small changes.",
+        "label": "00:04"
+      },
+      {
+        "time": 8,
+        "text": "You could write a brand new message for each person",
+        "label": "00:08"
+      },
+      {
+        "time": 11,
+        "text": "or you could reuse most of the same message.",
+        "label": "00:11"
+      },
+      {
+        "time": 15,
+        "text": "To do that, you could highlight the similar text, click Edit in the top menu",
+        "label": "00:15"
+      },
+      {
+        "time": 20,
+        "text": "and then copy. Maybe you could highlight the passage, right click and choose copy",
+        "label": "00:20"
+      },
+      {
+        "time": 26,
+        "text": "Or, for maximum quickness, just select and command C.",
+        "label": "00:26"
+      },
+      {
+        "time": 31,
+        "text": "That simple copy action can be successfully carried out in a number of different ways.",
+        "label": "00:31"
+      },
+      {
+        "time": 35,
+        "text": "It's a flexible and efficient process.",
+        "label": "00:35"
+      },
+      {
+        "time": 38,
+        "text": "Heuristic number seven of the ten usability heuristics deals with this idea.",
+        "label": "00:38"
+      },
+      {
+        "time": 43,
+        "text": "Flexible processes can be carried out in different ways",
+        "label": "00:43"
+      },
+      {
+        "time": 47,
+        "text": "so that people can pick whichever method fits them.",
+        "label": "00:47"
+      },
+      {
+        "time": 50,
+        "text": "That flexibility helps people be more efficient.",
+        "label": "00:50"
+      },
+      {
+        "time": 54,
+        "text": "If a system lets me choose my method of interaction,",
+        "label": "00:54"
+      },
+      {
+        "time": 57,
+        "text": "I can get things done in a way that's quick and comfortable for me.",
+        "label": "00:57"
+      },
+      {
+        "time": 61,
+        "text": "That keyboard shortcut, the handy command C is an accelerator.",
+        "label": "01:01"
+      },
+      {
+        "time": 65,
+        "text": "An accelerator is any option or action that speeds up an interaction.",
+        "label": "01:05"
+      },
+      {
+        "time": 70,
+        "text": "Accelerators are there for more experienced users who know a system well",
+        "label": "01:10"
+      },
+      {
+        "time": 75,
+        "text": "and want to make routine tasks go by more quickly.",
+        "label": "01:15"
+      },
+      {
+        "time": 78,
+        "text": "Highly usable systems are flexible enough to be efficient for experts",
+        "label": "01:18"
+      },
+      {
+        "time": 82,
+        "text": "and friendly to newbies. It's important not to overwhelm first-time users with too much information.",
+        "label": "01:22"
+      },
+      {
+        "time": 88,
+        "text": "Don't try to teach them every action on the system in the very first session of use.",
+        "label": "01:28"
+      },
+      {
+        "time": 93,
+        "text": "That's too much to learn all at once.",
+        "label": "01:33"
+      },
+      {
+        "time": 96,
+        "text": "Accelerators are often seen in the wild in work and productivity related applications.",
+        "label": "01:36"
+      },
+      {
+        "time": 101,
+        "text": "If you work in design, you're likely familiar with the many keyboard shortcuts",
+        "label": "01:41"
+      },
+      {
+        "time": 106,
+        "text": "that help you work in your interface design program of choice more quickly.",
+        "label": "01:46"
+      },
+      {
+        "time": 110,
+        "text": "If you work extensively with data analysis you're likely very familiar with macros",
+        "label": "01:50"
+      },
+      {
+        "time": 115,
+        "text": "in Excel or Google sheets.",
+        "label": "01:55"
+      },
+      {
+        "time": 118,
+        "text": "But accelerators can show up just about anywhere.",
+        "label": "01:58"
+      },
+      {
+        "time": 122,
+        "text": "For most of us, Instagram isn't a work-related product,",
+        "label": "02:02"
+      },
+      {
+        "time": 125,
+        "text": "but there's still a hidden accelerator there. If you're a frequent user of the social media app, you may know",
+        "label": "02:05"
+      },
+      {
+        "time": 131,
+        "text": "that you can quickly like a photo by tapping twice on a photo.",
+        "label": "02:11"
+      },
+      {
+        "time": 135,
+        "text": "That's quicker and slightly more efficient than finding and tapping the heart icon.",
+        "label": "02:15"
+      },
+      {
+        "time": 140,
+        "text": "When the 7th heuristic is done well, expert users won't be slowed down",
+        "label": "02:20"
+      },
+      {
+        "time": 145,
+        "text": "by a system that's only built with basic use in mind.",
+        "label": "02:25"
+      },
+      {
+        "time": 149,
+        "text": "New users won't be overwhelmed by an information overload of actions to learn.",
+        "label": "02:29"
+      }
+    ]
+  },
+  "ZgbRmeWDgd0": {
+    "videoId": "ZgbRmeWDgd0",
+    "fetchedAt": "2026-09-04T17:08:34.300Z",
+    "lang": "en",
+    "kind": "manual",
+    "segments": [
+      {
+        "time": 0,
+        "text": "One of Jakob's ten heuristics for interfaces is to use an aesthetic and minimalist design.",
+        "label": "00:00"
+      },
+      {
+        "time": 6,
+        "text": "That heuristic doesn't mean that you have to use a flat design or a monochromatic color palette.",
+        "label": "00:06"
+      },
+      {
+        "time": 11,
+        "text": "It's more about making sure that you're keeping the content",
+        "label": "00:11"
+      },
+      {
+        "time": 14,
+        "text": "and the visual design of your UI focused on the essentials",
+        "label": "00:14"
+      },
+      {
+        "time": 18,
+        "text": "This is closely related to the human-computer interaction concept of a signal-to-noise ratio.",
+        "label": "00:18"
+      },
+      {
+        "time": 24,
+        "text": "The signal-to-noise ratio represents the ratio of relevant to irrelevant information.",
+        "label": "00:24"
+      },
+      {
+        "time": 31,
+        "text": "In a user interface, the information involved in this ratio could be anything:",
+        "label": "00:31"
+      },
+      {
+        "time": 35,
+        "text": "text content, visual elements, or animation.",
+        "label": "00:35"
+      },
+      {
+        "time": 39,
+        "text": "Essentially anything that users have to process could count as signal or noise.",
+        "label": "00:39"
+      },
+      {
+        "time": 45,
+        "text": "To improve the efficiency of communicating information through your designs",
+        "label": "00:45"
+      },
+      {
+        "time": 51,
+        "text": "and to help users complete their tasks, aim for a high signal-to-noise ratio.",
+        "label": "00:51"
+      },
+      {
+        "time": 56,
+        "text": "Every extra unit of information in a UI competes with the relevant units of information",
+        "label": "00:56"
+      },
+      {
+        "time": 62,
+        "text": "and diminishes their relative visibility.",
+        "label": "01:02"
+      },
+      {
+        "time": 65,
+        "text": "As a consequence, it's important to prioritize your content and features.",
+        "label": "01:05"
+      },
+      {
+        "time": 70,
+        "text": "If something would be used infrequently or by a small number of users who don't contribute much to your company's goals,",
+        "label": "01:10"
+      },
+      {
+        "time": 77,
+        "text": "it might be a candidate for removal. It's also important to make sure that the visuals, particularly graphics or photos,",
+        "label": "01:17"
+      },
+      {
+        "time": 84,
+        "text": "support the primary goals of users or your company.",
+        "label": "01:24"
+      },
+      {
+        "time": 87,
+        "text": "In other words, you shouldn't have many visual elements that aren't there for any other reason",
+        "label": "01:27"
+      },
+      {
+        "time": 92,
+        "text": "than to look pretty or to take up space.",
+        "label": "01:32"
+      },
+      {
+        "time": 95,
+        "text": "Communicate, don't decorate.",
+        "label": "01:35"
+      }
+    ]
+  },
+  "yz4g87XapQ0": {
+    "videoId": "yz4g87XapQ0",
+    "fetchedAt": "2026-09-04T17:08:34.729Z",
+    "lang": "en",
+    "kind": "auto",
+    "segments": [
+      {
+        "time": 0,
+        "text": "this is Crazy Eights and the first thing",
+        "label": "00:00"
+      },
+      {
+        "time": 4,
+        "text": "you're gonna want to do is take a piece of a4 paper just like Rob has and fold it three times now you have eight",
+        "label": "00:04"
+      },
+      {
+        "time": 10,
+        "text": "squares you want to set a timer for",
+        "label": "00:10"
+      },
+      {
+        "time": 14,
+        "text": "eight minutes the point of this exercise",
+        "label": "00:14"
+      },
+      {
+        "time": 16,
+        "text": "is to draw one idea eight different",
+        "label": "00:16"
+      },
+      {
+        "time": 20,
+        "text": "times so you're spending one minute",
+        "label": "00:20"
+      },
+      {
+        "time": 23,
+        "text": "within each square of your page and",
+        "label": "00:23"
+      },
+      {
+        "time": 25,
+        "text": "you're trying to take your idea and draw it in as many ways as possible now the moderator is gonna tell you when each minute is up and it doesn't matter where you are you have to move to the next square this actually this exercise",
+        "label": "00:25"
+      },
+      {
+        "time": 38,
+        "text": "is just so great if you have the sort of you don't what we would call maybe writer's block or sketching block and",
+        "label": "00:38"
+      },
+      {
+        "time": 43,
+        "text": "it's just a way to get any idea out on paper one of the ideas would be good and you can record with it it's fast it's",
+        "label": "00:43"
+      },
+      {
+        "time": 52,
+        "text": "fun it's a little bit crazy but you do really want to focus on actually getting something out of this exercise so try",
+        "label": "00:52"
+      },
+      {
+        "time": 59,
+        "text": "not to be too insane with your doodling but just try to always get something down on the page at in every 60 second",
+        "label": "00:59"
+      },
+      {
+        "time": 66,
+        "text": "check that's what's most important this",
+        "label": "01:06"
+      },
+      {
+        "time": 70,
+        "text": "is such a great exercise to use to sketch whether it be an interface a new logo design or even actually some copywriting",
+        "label": "01:10"
+      },
+      {
+        "time": 81,
+        "text": "make sure to always keep writing keep",
+        "label": "01:21"
+      },
+      {
+        "time": 83,
+        "text": "drawing if you can't think of anything just keep your hand moving draw a square",
+        "label": "01:23"
+      },
+      {
+        "time": 88,
+        "text": "around one of the boxes and just just",
+        "label": "01:28"
+      },
+      {
+        "time": 91,
+        "text": "keep moving just keep them so it's",
+        "label": "01:31"
+      },
+      {
+        "time": 97,
+        "text": "important to remember that of course this this piece of paper is yours you",
+        "label": "01:37"
+      },
+      {
+        "time": 101,
+        "text": "don't have to show it to anyone it's just for you to be proud of what you've accomplished and hopefully we've gotten some inspiration so that when you're moving to do your full concept sketch you have something to go off it if",
+        "label": "01:41"
+      },
+      {
+        "time": 114,
+        "text": "you're doing this exercise on your own all you have to do is make sure you have a timer that will fuzz after 60 seconds and you can switch to the next square it's so important to keep this time limit because that's what makes it crazy",
+        "label": "01:54"
+      }
+    ]
+  },
+  "RGajFMYZ0mM": {
+    "videoId": "RGajFMYZ0mM",
+    "fetchedAt": "2026-09-04T17:08:35.137Z",
+    "lang": "en",
+    "kind": "auto",
+    "segments": [
+      {
+        "time": 0,
+        "text": "now we're going to sketch a screen using",
+        "label": "00:00"
+      },
+      {
+        "time": 3,
+        "text": "a an industry standard screen as a",
+        "label": "00:03"
+      },
+      {
+        "time": 7,
+        "text": "reference and I've chose a really",
+        "label": "00:07"
+      },
+      {
+        "time": 12,
+        "text": "popular app to use as my inspiration to",
+        "label": "00:12"
+      },
+      {
+        "time": 16,
+        "text": "pull from because I am creating a social",
+        "label": "00:16"
+      },
+      {
+        "time": 20,
+        "text": "media app for musicians so what I've",
+        "label": "00:20"
+      },
+      {
+        "time": 24,
+        "text": "pulled from is actually a Facebook",
+        "label": "00:24"
+      },
+      {
+        "time": 28,
+        "text": "screen first I'll outline the screen and",
+        "label": "00:28"
+      },
+      {
+        "time": 33,
+        "text": "then I'm gonna start adding in the elements so I put the search bar at the",
+        "label": "00:33"
+      },
+      {
+        "time": 37,
+        "text": "top and I sketch in the nav again",
+        "label": "00:37"
+      },
+      {
+        "time": 41,
+        "text": "referencing the screen on the left I'm",
+        "label": "00:41"
+      },
+      {
+        "time": 45,
+        "text": "just sketching here in a very rough way",
+        "label": "00:45"
+      },
+      {
+        "time": 49,
+        "text": "you can see I'm adding in the different",
+        "label": "00:49"
+      },
+      {
+        "time": 54,
+        "text": "post elements in the center and then at",
+        "label": "00:54"
+      },
+      {
+        "time": 58,
+        "text": "the bottom adding in the tabs for the",
+        "label": "00:58"
+      },
+      {
+        "time": 62,
+        "text": "bottom navigation or what would be the",
+        "label": "01:02"
+      },
+      {
+        "time": 65,
+        "text": "icons it is really important to use",
+        "label": "01:05"
+      },
+      {
+        "time": 70,
+        "text": "industry examples that we know that are",
+        "label": "01:10"
+      },
+      {
+        "time": 73,
+        "text": "successful and really popular to use as",
+        "label": "01:13"
+      },
+      {
+        "time": 77,
+        "text": "a starting point not to copy one for one but to really use as a starting point",
+        "label": "01:17"
+      },
+      {
+        "time": 82,
+        "text": "for how I want to design my screen",
+        "label": "01:22"
+      }
+    ]
+  },
+  "Hq7ohURsQN8": {
+    "videoId": "Hq7ohURsQN8",
+    "fetchedAt": "2026-09-04T17:08:35.538Z",
+    "lang": "en",
+    "kind": "auto",
+    "segments": [
+      {
+        "time": 0,
+        "text": "[Music]",
+        "label": "00:00"
+      },
+      {
+        "time": 13,
+        "text": "every workday starts with some kind of like",
+        "label": "00:13"
+      },
+      {
+        "time": 18,
+        "text": "reflection of the current state of",
+        "label": "00:18"
+      },
+      {
+        "time": 21,
+        "text": "a project i'm working on and i kind of",
+        "label": "00:21"
+      },
+      {
+        "time": 25,
+        "text": "break my day down into like what",
+        "label": "00:25"
+      },
+      {
+        "time": 29,
+        "text": "what like info or insight am i trying to",
+        "label": "00:29"
+      },
+      {
+        "time": 32,
+        "text": "figure out today or gather today who do i need to you know have a coffee chat with to",
+        "label": "00:32"
+      },
+      {
+        "time": 39,
+        "text": "kind of hear a more informal um",
+        "label": "00:39"
+      },
+      {
+        "time": 42,
+        "text": "perspective and this is kind of how i",
+        "label": "00:42"
+      },
+      {
+        "time": 46,
+        "text": "start like just meeting and",
+        "label": "00:46"
+      },
+      {
+        "time": 49,
+        "text": "having dialogues with people to understand to better understand a problem trying to solve my work day always starts in the morning",
+        "label": "00:49"
+      },
+      {
+        "time": 57,
+        "text": "where i have a lot of stand-up meetings",
+        "label": "00:57"
+      },
+      {
+        "time": 60,
+        "text": "um so technically we have our product meetings where i talk to the engineer and the designer but i sometimes also join in with other cross-functional team members so",
+        "label": "01:00"
+      },
+      {
+        "time": 71,
+        "text": "for example i would join in with operations meetings or marketing meetings usually in the afternoon i would block out time to do um",
+        "label": "01:11"
+      },
+      {
+        "time": 81,
+        "text": "things sort of production work that is core to my own job role so for example if",
+        "label": "01:21"
+      },
+      {
+        "time": 88,
+        "text": "it's design i will block out time to focus on just doing design because i cannot um",
+        "label": "01:28"
+      },
+      {
+        "time": 95,
+        "text": "kind of design and be distracted in five different ways so i would block out calendar time just to put on",
+        "label": "01:35"
+      },
+      {
+        "time": 101,
+        "text": "my headphones and do design if that's what i need to do that day so typically i start my day with looking at my schedule for the day",
+        "label": "01:41"
+      },
+      {
+        "time": 110,
+        "text": "what projects am i working on because i'm working on multiple projects at a time i have to figure out how much time can i spend to each one and then i'm also looking at one of the meetings i have when do i get a break so it's really just me like getting like comfortable with what's what's the plan for the day and",
+        "label": "01:50"
+      },
+      {
+        "time": 128,
+        "text": "then after that i'll have a stand-up meeting with my",
+        "label": "02:08"
+      },
+      {
+        "time": 132,
+        "text": "team so we'll just talk about what we did the day before what we plan on doing that day and if there's any roadblocks and then after that i'll start to get into work mode this is",
+        "label": "02:12"
+      },
+      {
+        "time": 143,
+        "text": "the most precious time of the day i'm much more alert at this time so maybe from like 10 a.m",
+        "label": "02:23"
+      },
+      {
+        "time": 149,
+        "text": "to 1 p.m i'm like okay i need to like get",
+        "label": "02:29"
+      },
+      {
+        "time": 153,
+        "text": "into a design file start making changes to my design",
+        "label": "02:33"
+      },
+      {
+        "time": 156,
+        "text": "maybe based on a testing that i had done the day or the week before so i'm just kind of like in the zone maybe listening to some music i have a stand-up desk so i might stand up and try to like you know listen to my tunes and just get into it and then after that i'll have a lunch break i just got a jacuzzi",
+        "label": "02:36"
+      },
+      {
+        "time": 174,
+        "text": "so i'll go into the jacuzzi relax a little bit enjoy my lunch break as full as i can",
+        "label": "02:54"
+      },
+      {
+        "time": 181,
+        "text": "maybe play with my new puppy and then i'll come back to work and at this point i might work on other projects that i have to work on or",
+        "label": "03:01"
+      },
+      {
+        "time": 190,
+        "text": "perhaps i'm working on a presentation",
+        "label": "03:10"
+      },
+      {
+        "time": 193,
+        "text": "that i have to do for a client or a user testing script and so it could",
+        "label": "03:13"
+      },
+      {
+        "time": 198,
+        "text": "kind of vary between every single day and depending on where i'm at with each project as a designer i work really closely with",
+        "label": "03:18"
+      },
+      {
+        "time": 206,
+        "text": "product managers and engineers we work closely as a team to ideate",
+        "label": "03:26"
+      },
+      {
+        "time": 212,
+        "text": "new ways to make the product better and",
+        "label": "03:32"
+      },
+      {
+        "time": 215,
+        "text": "make it more usable for users so low fidelity is just simple sketches",
+        "label": "03:35"
+      },
+      {
+        "time": 221,
+        "text": "it could be drawings on a notepad it",
+        "label": "03:41"
+      },
+      {
+        "time": 224,
+        "text": "could be just placeholders using squares and then",
+        "label": "03:44"
+      },
+      {
+        "time": 228,
+        "text": "high fidelity is more or so like the final product",
+        "label": "03:48"
+      },
+      {
+        "time": 234,
+        "text": "it's really easy for you to see what it",
+        "label": "03:54"
+      },
+      {
+        "time": 236,
+        "text": "looks like at the end and that is more than likely",
+        "label": "03:56"
+      },
+      {
+        "time": 240,
+        "text": "the experience that the user will see as the final product",
+        "label": "04:00"
+      }
+    ]
+  },
+  "qwCEZ1lRkHo": {
+    "videoId": "qwCEZ1lRkHo",
+    "fetchedAt": "2026-09-04T17:08:35.835Z",
+    "lang": "en",
+    "kind": "auto",
+    "segments": [
+      {
+        "time": 0,
+        "text": "[Music]",
+        "label": "00:00"
+      },
+      {
+        "time": 13,
+        "text": "one of the best things about being a",
+        "label": "00:13"
+      },
+      {
+        "time": 16,
+        "text": "designer is actually being able to help people it feels really good and to be able to actually even test with users to",
+        "label": "00:16"
+      },
+      {
+        "time": 25,
+        "text": "validate a solution that you have for",
+        "label": "00:25"
+      },
+      {
+        "time": 28,
+        "text": "them to help potentially improve their lives and for me one of the first",
+        "label": "00:28"
+      },
+      {
+        "time": 33,
+        "text": "projects that I worked on that really",
+        "label": "00:33"
+      },
+      {
+        "time": 35,
+        "text": "made me feel this was when I created a",
+        "label": "00:35"
+      },
+      {
+        "time": 40,
+        "text": "solution to help redistribute clothing",
+        "label": "00:40"
+      },
+      {
+        "time": 44,
+        "text": "to people who are looking for jobs so",
+        "label": "00:44"
+      },
+      {
+        "time": 47,
+        "text": "people who are going on interviews actively seeking jobs we would find ways",
+        "label": "00:47"
+      },
+      {
+        "time": 53,
+        "text": "to get them already in their interview clothes and help them feel like nice and fresh and good before they went into these interviews and one of the problems that we saw was that they were getting all these donations in which they were super happy about sometimes they would get maybe too many on one side like",
+        "label": "00:53"
+      },
+      {
+        "time": 70,
+        "text": "extra large and not enough of small",
+        "label": "01:10"
+      },
+      {
+        "time": 73,
+        "text": "items and then we would go to another donation center and they might have the opposite problem but there was no way to",
+        "label": "01:13"
+      },
+      {
+        "time": 80,
+        "text": "redistribute those donations between",
+        "label": "01:20"
+      },
+      {
+        "time": 83,
+        "text": "those and nonprofits because they were really speaking to one another so our solution was redistributing donations so",
+        "label": "01:23"
+      },
+      {
+        "time": 90,
+        "text": "that nonprofits were getting the goods that they needed when they needed them so I was there when people were getting on their interview suits about ready to go on their interviews and feeling really good and that just made me feel so happy and so satisfied with the",
+        "label": "01:30"
+      },
+      {
+        "time": 104,
+        "text": "solution that we created sometimes there's a lot of pressure and the word creative especially in in a job where",
+        "label": "01:44"
+      },
+      {
+        "time": 110,
+        "text": "that's what you're competing against with other people like who's the most creative person like there's a lot of pressure in that word but I think at the end of the day is really coming down to just having fun with it having fun with the process and having fun with thinking about the",
+        "label": "01:50"
+      },
+      {
+        "time": 125,
+        "text": "possibilities and I think the one thing",
+        "label": "02:05"
+      },
+      {
+        "time": 128,
+        "text": "I really enjoy about UX which is different from architecture is that it's a lot faster when it comes to trying to",
+        "label": "02:08"
+      },
+      {
+        "time": 135,
+        "text": "see the results of your work even before",
+        "label": "02:15"
+      },
+      {
+        "time": 139,
+        "text": "you have fully delivered or shipped the",
+        "label": "02:19"
+      },
+      {
+        "time": 143,
+        "text": "products even an usability test you can",
+        "label": "02:23"
+      },
+      {
+        "time": 146,
+        "text": "already start seeing people interact with it and you can start to hear their voices and and know how they receive",
+        "label": "02:26"
+      },
+      {
+        "time": 153,
+        "text": "what you do and then you can reiterate",
+        "label": "02:33"
+      },
+      {
+        "time": 155,
+        "text": "it on it and then show them again and",
+        "label": "02:35"
+      },
+      {
+        "time": 158,
+        "text": "then the problem that they had before no longer exists so you will be seeing the",
+        "label": "02:38"
+      },
+      {
+        "time": 164,
+        "text": "results of your work a lot faster than",
+        "label": "02:44"
+      },
+      {
+        "time": 166,
+        "text": "in architecture I also really enjoy the",
+        "label": "02:46"
+      },
+      {
+        "time": 169,
+        "text": "part of like I mentioned earlier the process of turning something into",
+        "label": "02:49"
+      },
+      {
+        "time": 174,
+        "text": "reality starting to look into nuts and bolts in UX it's the same thing like if",
+        "label": "02:54"
+      },
+      {
+        "time": 180,
+        "text": "the engineer has trouble doing one thing you might have to come up with an alternative and you're you're it's a it",
+        "label": "03:00"
+      },
+      {
+        "time": 186,
+        "text": "sounds like a tedious process but the but it's them it's the process of turning Pinocchio into a real human",
+        "label": "03:06"
+      },
+      {
+        "time": 193,
+        "text": "being like I always think in my head and I really really enjoy that I love seeing something go from a concept to reality",
+        "label": "03:13"
+      },
+      {
+        "time": 203,
+        "text": "I once saw a pretty you know like",
+        "label": "03:23"
+      },
+      {
+        "time": 211,
+        "text": "Twitter famous or like a famous designer",
+        "label": "03:31"
+      },
+      {
+        "time": 215,
+        "text": "tweet that designers are the way they",
+        "label": "03:35"
+      },
+      {
+        "time": 220,
+        "text": "are because they are never satisfied and",
+        "label": "03:40"
+      },
+      {
+        "time": 223,
+        "text": "it is both their most irritating trait",
+        "label": "03:43"
+      },
+      {
+        "time": 225,
+        "text": "but most valuable trait and I would say that's probably true I would say like on an individual level",
+        "label": "03:45"
+      },
+      {
+        "time": 233,
+        "text": "whether you are like a brand new",
+        "label": "03:53"
+      },
+      {
+        "time": 236,
+        "text": "entering the scene designer or a senior",
+        "label": "03:56"
+      },
+      {
+        "time": 238,
+        "text": "designer while it's rewarding to solve",
+        "label": "03:58"
+      },
+      {
+        "time": 241,
+        "text": "these new problems or complex problems",
+        "label": "04:01"
+      },
+      {
+        "time": 244,
+        "text": "there's only kind of so much you can throw at solving that in a given",
+        "label": "04:04"
+      },
+      {
+        "time": 250,
+        "text": "timeframe knowing where to like take a",
+        "label": "04:10"
+      },
+      {
+        "time": 252,
+        "text": "pause or breather and go for a walk in like think about it from a different angle is pretty challenging because you",
+        "label": "04:12"
+      },
+      {
+        "time": 261,
+        "text": "know other people are dependent on you solving the problem they have deadlines",
+        "label": "04:21"
+      },
+      {
+        "time": 265,
+        "text": "as well and so it's really like trying",
+        "label": "04:25"
+      },
+      {
+        "time": 268,
+        "text": "to understand how to manage like stress",
+        "label": "04:28"
+      },
+      {
+        "time": 272,
+        "text": "or pressure is pretty important as you",
+        "label": "04:32"
+      },
+      {
+        "time": 276,
+        "text": "know especially amongst a solo design",
+        "label": "04:36"
+      },
+      {
+        "time": 278,
+        "text": "team of one which is what I've dealt",
+        "label": "04:38"
+      },
+      {
+        "time": 282,
+        "text": "with for most of my career so far [Music]",
+        "label": "04:42"
+      },
+      {
+        "time": 290,
+        "text": "and equal weights and measures can be",
+        "label": "04:50"
+      },
+      {
+        "time": 294,
+        "text": "really difficult at times he had in his",
+        "label": "04:54"
+      },
+      {
+        "time": 297,
+        "text": "dying so it's hard to measure what did",
+        "label": "04:57"
+      },
+      {
+        "time": 305,
+        "text": "not because you're doing with so many different types of users what works well",
+        "label": "05:05"
+      },
+      {
+        "time": 310,
+        "text": "for one consumer might not necessarily work all right another user now it also",
+        "label": "05:10"
+      },
+      {
+        "time": 314,
+        "text": "depends on the design that you're creating if the design is to increase",
+        "label": "05:14"
+      },
+      {
+        "time": 319,
+        "text": "the number of clips of course a campaign",
+        "label": "05:19"
+      },
+      {
+        "time": 323,
+        "text": "then yeah so I think up some very very",
+        "label": "05:23"
+      },
+      {
+        "time": 338,
+        "text": "different ways",
+        "label": "05:38"
+      },
+      {
+        "time": 348,
+        "text": "you",
+        "label": "05:48"
+      }
+    ]
+  },
+  "ebzQXHIMZu0": {
+    "videoId": "ebzQXHIMZu0",
+    "fetchedAt": "2026-09-04T17:08:36.463Z",
+    "lang": "en",
+    "kind": "auto",
+    "segments": [
+      {
+        "time": 2,
+        "text": "[Music]",
+        "label": "00:02"
+      },
+      {
+        "time": 12,
+        "text": "before I became a UX designer I was a",
+        "label": "00:12"
+      },
+      {
+        "time": 16,
+        "text": "singer/songwriter performing artists",
+        "label": "00:16"
+      },
+      {
+        "time": 18,
+        "text": "that was making really no money doing that so I had to hustle and work as a",
+        "label": "00:18"
+      },
+      {
+        "time": 24,
+        "text": "waitress I had a couple online businesses and I was driving lyft and uber and during this period I had a",
+        "label": "00:24"
+      },
+      {
+        "time": 32,
+        "text": "mid-20 life crisis where I was like I",
+        "label": "00:32"
+      },
+      {
+        "time": 35,
+        "text": "don't think I'm gonna be touring with Lady Gaga anytime soon and I decided to",
+        "label": "00:35"
+      },
+      {
+        "time": 40,
+        "text": "just leave the country and go on a",
+        "label": "00:40"
+      },
+      {
+        "time": 43,
+        "text": "six-month backpacking trip through Southeast Asia I was looking for my",
+        "label": "00:43"
+      },
+      {
+        "time": 48,
+        "text": "eighth frame love experience and while I",
+        "label": "00:48"
+      },
+      {
+        "time": 51,
+        "text": "was traveling there I saw all these people who were did you all know that they were all working and traveling and",
+        "label": "00:51"
+      },
+      {
+        "time": 58,
+        "text": "I was like I want to do that what are you guys doing and fin de lot of them were coders so when I came back from my",
+        "label": "00:58"
+      },
+      {
+        "time": 65,
+        "text": "trip I was interested in going into some",
+        "label": "01:05"
+      },
+      {
+        "time": 68,
+        "text": "sort of coding program and while I was",
+        "label": "01:08"
+      },
+      {
+        "time": 71,
+        "text": "waitressing one of the customers I had",
+        "label": "01:11"
+      },
+      {
+        "time": 74,
+        "text": "said hey there's actually a UX design",
+        "label": "01:14"
+      },
+      {
+        "time": 77,
+        "text": "program just from our conversations you",
+        "label": "01:17"
+      },
+      {
+        "time": 80,
+        "text": "might be a better fit for that no matter what's us so I started to just do a lot",
+        "label": "01:20"
+      },
+      {
+        "time": 85,
+        "text": "of research I went to a bunch of meetup",
+        "label": "01:25"
+      },
+      {
+        "time": 88,
+        "text": "groups I immersed myself in the UX community I read UX books one being a UX strategy",
+        "label": "01:28"
+      },
+      {
+        "time": 95,
+        "text": "buying jaime levy which I absolutely love and I found out that UX is this",
+        "label": "01:35"
+      },
+      {
+        "time": 101,
+        "text": "beautiful blend of being super creative",
+        "label": "01:41"
+      },
+      {
+        "time": 103,
+        "text": "and being a problem solver as well as",
+        "label": "01:43"
+      },
+      {
+        "time": 106,
+        "text": "thinking about business strategy as well",
+        "label": "01:46"
+      },
+      {
+        "time": 109,
+        "text": "and I was like this sounds like the",
+        "label": "01:49"
+      },
+      {
+        "time": 113,
+        "text": "perfect career path for me and what I",
+        "label": "01:53"
+      },
+      {
+        "time": 116,
+        "text": "only have to go through a short bootcamp to do it okay yeah so let's say I first",
+        "label": "01:56"
+      },
+      {
+        "time": 121,
+        "text": "started designing things when I was in",
+        "label": "02:01"
+      },
+      {
+        "time": 124,
+        "text": "high school I taught myself how to use Photoshop how to use InDesign these were like very photography graphic design and",
+        "label": "02:04"
+      },
+      {
+        "time": 132,
+        "text": "print design focused tools and that was",
+        "label": "02:12"
+      },
+      {
+        "time": 136,
+        "text": "what I was really familiar but I think at that time the design",
+        "label": "02:16"
+      },
+      {
+        "time": 142,
+        "text": "career boom in software wasn't even a",
+        "label": "02:22"
+      },
+      {
+        "time": 146,
+        "text": "thing yet and I didn't know that was a career I could pursue so I went to",
+        "label": "02:26"
+      },
+      {
+        "time": 151,
+        "text": "university got a degree in business and",
+        "label": "02:31"
+      },
+      {
+        "time": 156,
+        "text": "you know kind of just continued my life even though I had this skill set that now looking back was quite marketable",
+        "label": "02:36"
+      },
+      {
+        "time": 163,
+        "text": "around 2015 I would say is when I",
+        "label": "02:43"
+      },
+      {
+        "time": 167,
+        "text": "realized like I wanted to you know",
+        "label": "02:47"
+      },
+      {
+        "time": 171,
+        "text": "change careers and one of the things",
+        "label": "02:51"
+      },
+      {
+        "time": 174,
+        "text": "that popped up on my radar from a friend",
+        "label": "02:54"
+      },
+      {
+        "time": 177,
+        "text": "working in Silicon Valley was this concept of the user experience design I",
+        "label": "02:57"
+      },
+      {
+        "time": 182,
+        "text": "googled it I found this company called springboard and it was a design bootcamp",
+        "label": "03:02"
+      },
+      {
+        "time": 187,
+        "text": "that paired you with a mentor that would",
+        "label": "03:07"
+      },
+      {
+        "time": 191,
+        "text": "had kind of helped you through this journey the best part was that they were",
+        "label": "03:11"
+      },
+      {
+        "time": 195,
+        "text": "also a practicing designer that was not",
+        "label": "03:15"
+      },
+      {
+        "time": 198,
+        "text": "like a professor or teacher and lectures",
+        "label": "03:18"
+      },
+      {
+        "time": 201,
+        "text": "those things were really not something I wanted to return to after graduating from college after about maybe three or four months on the program I finished it",
+        "label": "03:21"
+      },
+      {
+        "time": 210,
+        "text": "and started working as a freelancer",
+        "label": "03:30"
+      },
+      {
+        "time": 213,
+        "text": "doing design work I actually was always",
+        "label": "03:33"
+      },
+      {
+        "time": 217,
+        "text": "a designer because I actually studied",
+        "label": "03:37"
+      },
+      {
+        "time": 219,
+        "text": "architecture when I was in college and that's been almost ten years now I was",
+        "label": "03:39"
+      },
+      {
+        "time": 224,
+        "text": "very interested in web design I used to",
+        "label": "03:44"
+      },
+      {
+        "time": 227,
+        "text": "spend all my time after school designing",
+        "label": "03:47"
+      },
+      {
+        "time": 229,
+        "text": "websites I kind of took some time off I guess and then I",
+        "label": "03:49"
+      },
+      {
+        "time": 234,
+        "text": "explored just doing some web design",
+        "label": "03:54"
+      },
+      {
+        "time": 237,
+        "text": "again because it's just almost it's so",
+        "label": "03:57"
+      },
+      {
+        "time": 240,
+        "text": "it wasn't a therapy it was like a hobby I was he was trying to play around with and refresh my memory at that time and",
+        "label": "04:00"
+      },
+      {
+        "time": 246,
+        "text": "then I you know just because I was",
+        "label": "04:06"
+      },
+      {
+        "time": 249,
+        "text": "looking up so much Web Design information and knowledge base that I",
+        "label": "04:09"
+      },
+      {
+        "time": 254,
+        "text": "think it's only occurred to me that UX",
+        "label": "04:14"
+      },
+      {
+        "time": 257,
+        "text": "design was something I might be interested in so I've always wanted to become a designer ever since I was young but my",
+        "label": "04:17"
+      },
+      {
+        "time": 265,
+        "text": "parents push me towards the science route they really wanted me to become a doctor or dentist so that's exactly what",
+        "label": "04:25"
+      },
+      {
+        "time": 272,
+        "text": "I did I went to UC Davis and I major in",
+        "label": "04:32"
+      },
+      {
+        "time": 275,
+        "text": "biology but of course I am still really",
+        "label": "04:35"
+      },
+      {
+        "time": 279,
+        "text": "wanted to become a designer so I just double major in psychology just in case",
+        "label": "04:39"
+      },
+      {
+        "time": 284,
+        "text": "because one it really interests me and two I think it's good to have that psychology background when you wanted to do design so after I graduated from UC",
+        "label": "04:44"
+      },
+      {
+        "time": 294,
+        "text": "Davis I started working at Genentech",
+        "label": "04:54"
+      },
+      {
+        "time": 297,
+        "text": "which is a biotech company I worked",
+        "label": "04:57"
+      },
+      {
+        "time": 300,
+        "text": "there as a biologist for six years and",
+        "label": "05:00"
+      },
+      {
+        "time": 303,
+        "text": "after working six years in the lab I",
+        "label": "05:03"
+      },
+      {
+        "time": 305,
+        "text": "realized that this is exactly what I did",
+        "label": "05:05"
+      },
+      {
+        "time": 308,
+        "text": "not want to do so I went and I told my",
+        "label": "05:08"
+      },
+      {
+        "time": 311,
+        "text": "mom that I wanted to quit my job and",
+        "label": "05:11"
+      },
+      {
+        "time": 314,
+        "text": "become a designer and I completely broke her heart she cried for a few days over it but then after I was able to convince",
+        "label": "05:14"
+      },
+      {
+        "time": 322,
+        "text": "her how much I really wanted to become a",
+        "label": "05:22"
+      },
+      {
+        "time": 325,
+        "text": "designer and how passionate I was she",
+        "label": "05:25"
+      },
+      {
+        "time": 327,
+        "text": "was finally supportive of me so during",
+        "label": "05:27"
+      },
+      {
+        "time": 331,
+        "text": "that time while I was still working at Genentech I took the springboard course and I really liked it because I was able to work full-time as well have learned the things that I wanted to learn after completing the",
+        "label": "05:31"
+      },
+      {
+        "time": 343,
+        "text": "course I felt really confident and I",
+        "label": "05:43"
+      },
+      {
+        "time": 346,
+        "text": "applied to a bunch of jobs",
+        "label": "05:46"
+      },
+      {
+        "time": 354,
+        "text": "as I mentioned learning is a huge kind",
+        "label": "05:54"
+      },
+      {
+        "time": 360,
+        "text": "of lever that designers really rely on and so books naturally are part of that",
+        "label": "06:00"
+      },
+      {
+        "time": 365,
+        "text": "and so I have three books that I",
+        "label": "06:05"
+      },
+      {
+        "time": 368,
+        "text": "recommend almost every designer",
+        "label": "06:08"
+      },
+      {
+        "time": 370,
+        "text": "encounter to read and the first one is",
+        "label": "06:10"
+      },
+      {
+        "time": 375,
+        "text": "the Google design sprint book and this",
+        "label": "06:15"
+      },
+      {
+        "time": 378,
+        "text": "is really to give you a kind of idea of",
+        "label": "06:18"
+      },
+      {
+        "time": 381,
+        "text": "like what has worked in the past for designers and product people and how do",
+        "label": "06:21"
+      },
+      {
+        "time": 387,
+        "text": "they like quickly solve problems that",
+        "label": "06:27"
+      },
+      {
+        "time": 390,
+        "text": "you know some other companies might take",
+        "label": "06:30"
+      },
+      {
+        "time": 394,
+        "text": "like months to solve and the next one is",
+        "label": "06:34"
+      },
+      {
+        "time": 397,
+        "text": "ruined by design I think this is a",
+        "label": "06:37"
+      },
+      {
+        "time": 400,
+        "text": "really important book during these times to make sure that the products you",
+        "label": "06:40"
+      },
+      {
+        "time": 405,
+        "text": "create are ethically designed and that",
+        "label": "06:45"
+      },
+      {
+        "time": 409,
+        "text": "you are responsible for what you put out into the world and then lastly kind of",
+        "label": "06:49"
+      },
+      {
+        "time": 415,
+        "text": "more culture driven but the president of",
+        "label": "06:55"
+      },
+      {
+        "time": 418,
+        "text": "Pixar wrote this book called creativity Inc and he talks about kind of all the",
+        "label": "06:58"
+      },
+      {
+        "time": 425,
+        "text": "learnings he had growing Pixar from like",
+        "label": "07:05"
+      },
+      {
+        "time": 427,
+        "text": "a tiny company to the you know arguably",
+        "label": "07:07"
+      },
+      {
+        "time": 431,
+        "text": "the best animation studio in the world now and I think both there are pieces about",
+        "label": "07:11"
+      },
+      {
+        "time": 438,
+        "text": "design management but more holistic",
+        "label": "07:18"
+      },
+      {
+        "time": 442,
+        "text": "about what a creative culture is at a",
+        "label": "07:22"
+      },
+      {
+        "time": 445,
+        "text": "company",
+        "label": "07:25"
+      }
+    ]
   }
 }
