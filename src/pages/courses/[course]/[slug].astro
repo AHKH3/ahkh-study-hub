@@ -1253,6 +1253,7 @@ const transcriptSegments =
     const spanBox = span.getBoundingClientRect();
     const topPos = Math.max(0, spanBox.top - readingBox.top);
     gutterEl.style.top = `${topPos}px`;
+    cascadeGutterNotes();
 
     gutterEl.innerHTML = `
       <div class="flex items-center justify-between gap-1 text-xs font-mono text-ink/80 dark:text-dark-ink/80 mb-1.5 pb-1 border-b border-ink-border/60 dark:border-dark-border/60">
@@ -1278,6 +1279,19 @@ const transcriptSegments =
     };
   }
 
+  // Stack overlapping gutter sidenotes so close highlights stay legible
+  function cascadeGutterNotes() {
+    const notes = Array.from(document.querySelectorAll('.marginalia-gutter-note'))
+      .filter((n) => n.isConnected && n.style.display !== 'none')
+      .sort((a, b) => parseFloat(a.style.top || '0') - parseFloat(b.style.top || '0'));
+    let floor = 0;
+    notes.forEach((n) => {
+      const top = Math.max(parseFloat(n.style.top || '0'), floor);
+      n.style.top = `${top}px`;
+      floor = top + (n.offsetHeight || 0) + 8;
+    });
+  }
+
   function repositionAllGutterNotes() {
     if (!getReadingContent()) return;
     const readingBox = getReadingContent().getBoundingClientRect();
@@ -1291,6 +1305,7 @@ const transcriptSegments =
         }
       }
     });
+    cascadeGutterNotes();
   }
 
   window.addEventListener('resize', repositionAllGutterNotes, { passive: true, signal: __ahkhSignal });
@@ -1336,9 +1351,13 @@ const transcriptSegments =
     return null;
   }
 
-  // Restore Highlights in DOM on load
+  // Restore Highlights in DOM on load (formatted view first, verbatim transcript second)
   function restoreHighlightsInDOM() {
     if (!getReadingContent()) return;
+
+    const restoreViews = ['formatted-view', 'transcript-view']
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
 
     highlights.forEach(item => {
       if (document.getElementById(item.id)) {
@@ -1346,7 +1365,7 @@ const transcriptSegments =
         return;
       }
 
-      const blocks = getReadingContent().querySelectorAll('p, blockquote, li, h2, h3');
+      const blocks = restoreViews.flatMap((v) => Array.from(v.querySelectorAll('p, blockquote, li, h2, h3, button[data-timestamp]')));
       for (const block of blocks) {
         const range = findRangeForTextInElement(block, item.text);
         if (range) {
@@ -1369,7 +1388,7 @@ const transcriptSegments =
             openHighlightOptions(item, span);
           });
 
-          if (item.note) {
+          if (item.note && span.closest('#formatted-view')) {
             renderGutterNote(item);
           }
           break;
@@ -1451,6 +1470,10 @@ const transcriptSegments =
   window.jumpToHighlight = function(id) {
     const el = document.getElementById(id);
     if (el) {
+      const tv = document.getElementById('transcript-view');
+      if (tv && tv.contains(el) && tv.classList.contains('hidden') && typeof setTranscriptView === 'function') {
+        setTranscriptView('original', false);
+      }
       el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       el.classList.remove('active');
       void el.offsetWidth; // Reflow to re-trigger CSS animation
