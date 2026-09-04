@@ -238,7 +238,6 @@ export const COURSES: Course[] = [
                   </div>
                 </div>
               </div>
-              </div>
 
               <p>
                 To create great experiences across these three levels, professional product teams follow a clear five-stage design process: <strong>User Research</strong>, <strong>Information Architecture</strong>, <strong>Interaction Design</strong>, <strong>Usability Testing</strong>, and <strong>Visual & UI Design</strong>. Let us walk through each phase step-by-step.
