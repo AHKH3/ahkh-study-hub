@@ -1380,9 +1380,114 @@ const { course, lesson } = Astro.props;
     }
   };
 
-  // E. YOUTUBE TRANSCRIPT SYNC
+  // E. YOUTUBE TRANSCRIPT SYNC & INTERACTIVE TIMESTAMPS
   const autoScrollCheckbox = document.getElementById('auto-scroll-sync');
-  const timestampParagraphs = document.querySelectorAll('[data-timestamp]');
+  let ytPlayer = null;
+  let ytSyncTimer = null;
+
+  function initYouTubeSync() {
+    const iframe = document.getElementById('youtube-player');
+    if (!iframe) return;
+
+    function setupPlayer() {
+      if (!window.YT || !window.YT.Player) return;
+      try {
+        ytPlayer = new window.YT.Player('youtube-player', {
+          events: {
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      } catch (err) {
+        console.warn('Could not initialize YouTube Player:', err);
+      }
+    }
+
+    function onPlayerStateChange(event) {
+      // 1 = PLAYING, 2 = PAUSED, 0 = ENDED
+      if (event.data === 1) {
+        startSyncInterval();
+      } else {
+        stopSyncInterval();
+      }
+    }
+
+    function startSyncInterval() {
+      stopSyncInterval();
+      ytSyncTimer = setInterval(() => {
+        if (!ytPlayer || typeof ytPlayer.getCurrentTime !== 'function') return;
+        try {
+          const currentTime = ytPlayer.getCurrentTime();
+          syncTranscript(currentTime);
+        } catch (e) {}
+      }, 250);
+    }
+
+    function stopSyncInterval() {
+      if (ytSyncTimer) {
+        clearInterval(ytSyncTimer);
+        ytSyncTimer = null;
+      }
+    }
+
+    function syncTranscript(currentTime) {
+      const blocks = Array.from(document.querySelectorAll('[data-timestamp]'));
+      if (!blocks.length) return;
+
+      let activeEl = null;
+      for (let i = 0; i < blocks.length; i++) {
+        const timeSec = parseFloat(blocks[i].getAttribute('data-timestamp') || '0');
+        if (currentTime >= timeSec) {
+          activeEl = blocks[i];
+        } else {
+          break;
+        }
+      }
+
+      blocks.forEach(b => {
+        if (b === activeEl) {
+          if (!b.classList.contains('yt-active-paragraph')) {
+            b.classList.add('yt-active-paragraph');
+            if (autoScrollCheckbox && autoScrollCheckbox.checked) {
+              b.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }
+        } else {
+          b.classList.remove('yt-active-paragraph');
+        }
+      });
+    }
+
+    // Attach click handlers to timestamp jump buttons
+    document.querySelectorAll('.timestamp-btn, [data-seek-time], button[data-timestamp]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const seekVal = parseFloat(btn.getAttribute('data-seek-time') || btn.getAttribute('data-timestamp') || '0');
+        if (ytPlayer && typeof ytPlayer.seekTo === 'function') {
+          ytPlayer.seekTo(seekVal, true);
+          if (typeof ytPlayer.playVideo === 'function') {
+            ytPlayer.playVideo();
+          }
+        }
+      });
+    });
+
+    if (window.YT && window.YT.Player) {
+      setupPlayer();
+    } else {
+      const prevCallback = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = function() {
+        if (typeof prevCallback === 'function') prevCallback();
+        setupPlayer();
+      };
+
+      if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag?.parentNode?.insertBefore(tag, firstScriptTag);
+      }
+    }
+  }
 
   // Initialize UI on load
   function initLesson() {
@@ -1427,6 +1532,7 @@ const { course, lesson } = Astro.props;
     updateHeaderCount();
     renderSidebarHighlights();
     restoreHighlightsInDOM();
+    initYouTubeSync();
   }
 
   if (document.readyState === 'loading') {
