@@ -505,6 +505,7 @@ const transcriptSegments =
       <button data-hl-color="sky" title="Sky" aria-label="Sky" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:#0284C7"></button>
       <button data-hl-color="rose" title="Rose" aria-label="Rose" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:#E11D48"></button>
       <button data-hl-color="violet" title="Violet" aria-label="Violet" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:#7C3AED"></button>
+      <button data-hl-color="midnight" title="Midnight" aria-label="Midnight" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:#18181B"></button>
     </div>
   </div>
 
@@ -1018,15 +1019,15 @@ const transcriptSegments =
   }
 
   // User-selected highlight colors (persisted last choice; stored per highlight)
-  const HL_COLORS = ['graphite', 'amber', 'emerald', 'sky', 'rose', 'violet'];
+  const HL_COLORS = ['graphite', 'amber', 'emerald', 'sky', 'rose', 'violet', 'midnight'];
   const HL_COLOR_KEY = 'ahkh_hl_color';
   function getHlColor() {
     try {
       const c = localStorage.getItem(HL_COLOR_KEY);
-      return HL_COLORS.includes(c) ? c : 'graphite';
-    } catch (e) { return 'graphite'; }
+      return HL_COLORS.includes(c) ? c : 'amber';
+    } catch (e) { return 'amber'; }
   }
-  function hlClass(color) { return `ahkh-hl-${HL_COLORS.includes(color) ? color : 'graphite'}`; }
+  function hlClass(color) { return `ahkh-hl-${HL_COLORS.includes(color) ? color : 'amber'}`; }
   function paintHlSwatches() {
     document.querySelectorAll('.hl-swatch').forEach((b) => {
       const on = b.getAttribute('data-hl-color') === getHlColor();
@@ -1287,6 +1288,7 @@ const transcriptSegments =
     if (!getReadingContent()) return;
 
     let gutterEl = document.getElementById(`gutter-note-${item.id}`);
+    if (gutterEl) gutterEl.className = 'marginalia-gutter-note ' + hlClass(item.color);
 
     if (!item.note || !item.note.trim()) {
       if (gutterEl) gutterEl.remove();
@@ -1492,7 +1494,7 @@ const transcriptSegments =
             </button>
           </div>
         </div>
-        <blockquote class="font-serif text-[13px] sm:text-sm italic text-ink dark:text-dark-ink border-l-2 border-ink dark:border-dark-ink pl-2.5 mb-2.5 leading-relaxed line-clamp-3">
+        <blockquote class="font-serif text-[13px] sm:text-sm italic text-ink dark:text-dark-ink border-l-2 pl-2.5 mb-2.5 leading-relaxed line-clamp-3 ${hlClass(item.color)}">
           "${escapeHtml(item.text)}"
         </blockquote>
         ${item.note ? `
