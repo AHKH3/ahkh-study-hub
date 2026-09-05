@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import { path } from '../utils/paths';
+import AhkhStorage from '../components/AhkhStorage.astro';
+import AhkhSyncBridge from '../components/AhkhSyncBridge.astro';
 
 interface Props {
   title: string;
@@ -31,12 +33,15 @@ const {
 
     <ClientRouter fallback="animate" />
 
+    <AhkhStorage />
+    <AhkhSyncBridge />
+
     <!-- Anti-FOUC & Global Theme/Font Initialization -->
     <script is:inline>
       (function() {
         function getSavedTheme() {
           try {
-            return localStorage.getItem('ahkh_theme') || 'system';
+            return window.AhkhStorage.get('ahkh_theme') || 'system';
           } catch (e) {
             return 'system';
           }
@@ -72,10 +77,10 @@ const {
               'sans': "'Geist', -apple-system, BlinkMacSystemFont, sans-serif"
             };
 
-            let savedFont = localStorage.getItem('ahkh_reader_font_family');
+            let savedFont = window.AhkhStorage.get('ahkh_reader_font_family');
             if (!savedFont || savedFont === 'serif' || !fontMap[savedFont]) {
               savedFont = 'merriweather';
-              localStorage.setItem('ahkh_reader_font_family', 'merriweather');
+              window.AhkhStorage.set('ahkh_reader_font_family', 'merriweather');
             }
 
             const val = fontMap[savedFont] || fontMap['merriweather'];
@@ -105,7 +110,7 @@ const {
 
         window.__setTheme = function(theme) {
           try {
-            localStorage.setItem('ahkh_theme', theme);
+            window.AhkhStorage.set('ahkh_theme', theme);
           } catch (e) {}
           applyTheme(theme);
           syncThemeButtons(theme);

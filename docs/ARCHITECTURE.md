@@ -25,7 +25,9 @@ AHKH Study Hub is a **sovereign, local-first editorial study sanctuary**. It rep
 | **Styling** | [Tailwind CSS 3.x](https://tailwindcss.com/) | Design tokens, responsive grid, typography plugin |
 | **Typography** | Newsreader (Serif), Inter (Sans), JetBrains Mono (Mono) | High-legibility editorial rhythm and hierarchy |
 | **Icons** | Custom Inline SVG | Accessible, themeable, zero external icon font bloat |
-| **Persistence** | Browser `localStorage` API | Local-first highlights, notes, and study state |
+| **Persistence** | Browser `localStorage` API via the sovereign adapter (`src/utils/storage.ts`, `window.AhkhStorage`) | Local-first highlights, notes, and study state |
+| **Desktop Shell** | Tauri v2 + native SQLite (`src-tauri/`, `~/.ahkh/study.db`) | Windows-first sovereign executable (ADR-008, ADR-019) |
+| **Sync Bridge** | `window.AhkhSync` snapshot mirror (OPFS + designated file on web) | Continuous last-write-wins durability |
 | **Deployment** | GitHub Pages & GitHub Actions | Automated CI/CD pipeline and automated semantic release workflows |
 
 ---

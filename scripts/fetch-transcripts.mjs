@@ -26,11 +26,25 @@ import { fileURLToPath } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const COURSES_PATH = join(ROOT, 'src', 'data', 'courses.ts');
 const OUT_PATH = join(ROOT, 'src', 'data', 'transcripts.json');
+
+// Minimal .env loader (no dependencies): local builds read YOUTUBE_INNERTUBE_KEY
+// from .env, CI provides it as a real environment variable instead.
+try {
+  const envPath = join(ROOT, '.env');
+  if (!process.env.YOUTUBE_INNERTUBE_KEY && existsSync(envPath)) {
+    for (const line of readFileSync(envPath, 'utf8').split('\n')) {
+      const m = line.match(/^\s*YOUTUBE_INNERTUBE_KEY\s*=\s*(.+?)\s*$/);
+      if (m) process.env.YOUTUBE_INNERTUBE_KEY = m[1];
+    }
+  }
+} catch {}
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
-// Public YouTube web API key shipped inside YouTube's own clients; used only
-// at build time to ask Innertube for a video's public caption-track list.
-const INNERTUBE_KEY = 'AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8';
+// Public YouTube web API key shipped inside YouTube's own clients (the same
+// key bundled in every YouTube app and used by tools like yt-dlp). It only
+// reads public caption tracks, belongs to no account, and bills nobody.
+// It arrives via environment so no key literal ever sits in the repo.
+const INNERTUBE_KEY = process.env.YOUTUBE_INNERTUBE_KEY || '';
 const INNERTUBE_CLIENT = {
   clientName: 'ANDROID',
   clientVersion: '20.10.38',
@@ -156,6 +170,13 @@ async function main() {
     } catch {
       store = {};
     }
+  }
+  if (!INNERTUBE_KEY) {
+    console.warn('[transcripts] YOUTUBE_INNERTUBE_KEY is unset — keeping cached transcripts only');
+    if (!existsSync(OUT_PATH)) {
+      writeFileSync(OUT_PATH, '{}\n');
+    }
+    return;
   }
   let ok = 0;
   let skipped = 0;

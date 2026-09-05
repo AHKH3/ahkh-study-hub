@@ -253,6 +253,54 @@ This file records the key architectural and design decisions made in the develop
      - Collapsible module accordions feature aggregate progress bars, completion counters, and state-reactive styling.
      - The Library index (`/`) and course header dynamically compute and display real-time status badges.
 - **Consequences**:
-  1. Reading progress reflects genuine human intent rather than incidental scrolling.
-  2. High-fidelity scroll position restoration makes long-form study seamless across sessions.
-  3. Clear pedagogical visual hierarchy across courses and modules without jarring high-contrast elements.
+   1. Reading progress reflects genuine human intent rather than incidental scrolling.
+   2. High-fidelity scroll position restoration makes long-form study seamless across sessions.
+   3. Clear pedagogical visual hierarchy across courses and modules without jarring high-contrast elements.
+
+---
+
+## ADR-019: Desktop Execution of ADR-008 (Windows-First Tauri Shell, Continuous Sync, Deferred P2P)
+- **Date**: 2026-09-05
+- **Status**: Accepted
+- **Context**: ADR-008 accepted a sovereign hybrid architecture but shipped zero implementation: persistence lived only in volatile browser `localStorage` across roughly one hundred touchpoints in six surfaces. The owner directed full hybrid execution now, Windows first with other systems later, continuous synchronization rather than one-time import, and explicit deferral of live P2P collaboration (ADR-007).
+- **Decision**:
+  1. **Unified storage entry point**: `src/utils/storage.ts` for TypeScript surfaces and a `window.AhkhStorage` browser global (`src/components/AhkhStorage.astro`, rendered in `BaseLayout`) for all inline reader scripts, with write hooks for mirror synchronization. Live behavior stays identical to previous `localStorage` semantics.
+  2. **Continuous sync bridge** (`src/components/AhkhSyncBridge.astro`): versioned JSON snapshots of every `ahkh_*` key with per-key timestamps, last-write-wins reconciliation per lesson, debounced background push, pull on visibility return and ClientRouter navigation, first-run automatic import from any durable mirror.
+  3. **Tauri v2 desktop shell** (`src-tauri/`): native SQLite mirror at `~/.ahkh/study.db` through two stable commands (`ahkh_load_snapshot`, `ahkh_store_snapshot`), Windows bundle targets NSIS and MSI, existing Astro `dist/` output reused as the frontend with zero visual changes.
+  4. **Web durability**: automatic OPFS snapshot (`ahkh-study.json`) plus a one-click designated study file in the Commonplace Book for browsers supporting File System Access.
+  5. **Scope boundaries**: P2P live rooms stay deferred; the designated file handle persists per session with OPFS as the durable fallback; building the desktop installer additionally requires a stable Rust toolchain plus VS Build Tools on Windows.
+- **Consequences**:
+  1. Study artifacts survive cache clears and browser switches on both desktop and web.
+  2. The static GitHub Pages deployment keeps byte-identical behavior with no new runtime dependencies.
+  3. Future backends plug behind the same adapter without touching reader code.
+
+---
+
+## ADR-020: Desktop Release Pipeline (Signed Auto-Updates, Public Downloads, Tag-Driven CI)
+- **Date**: 2026-09-05
+- **Status**: Accepted
+- **Context**: The desktop shell needed signed in-place updates, a public download surface, and unattended builds per release without disturbing the existing web `v*` release flow.
+- **Decision**:
+  1. **Passwordless-by-choice signing**: updater keypair generated locally with a random stored password (owner chose no memorized password); private key plus password live only in `C:\Users\abdel\.tauri\` and as the `TAURI_SIGNING_PRIVATE_KEY` secrets in GitHub; public key baked into `src-tauri/tauri.conf.json` with the updater dialog enabled.
+  2. **Public downloads page** (`/downloads`): latest `app-v*` release baked at build time by `scripts/fetch-releases.mjs`, quiet older-version rows, empty state before the first release, linked from the main header.
+  3. **Tag-driven CI** (`.github/workflows/desktop.yml`): `app-v*` tags build NSIS plus MSI on `windows-latest` via `tauri-action`, verify tag-to-version parity, and publish signed updater artifacts; macOS and Linux rows slot into the same matrix later.
+  4. **One-command releases**: `node scripts/desktop-release.mjs <patch|minor|major>` bumps, syncs `tauri.conf.json` and `Cargo.toml` via `scripts/sync-desktop-version.mjs`, commits, tags, and pushes from a clean tree.
+  5. **Local toolchain note**: on this machine the managed Git `usr\bin\link.exe` shadows the MSVC linker, so local builds run through a vcvars-initialized wrapper; CI runners are unaffected.
+- **Consequences**:
+  1. Installed apps update themselves in place with signature verification; the downloads page stays fresh with zero manual edits.
+  2. Web and desktop versions share one `package.json` version with enforced parity at release time.
+  3. First `app-v*` release must be smoke-checked for `latest.json` presence before announcing.
+
+---
+
+## ADR-021: Root Base for the Desktop Frontend Bundle
+- **Date**: 2026-09-05
+- **Status**: Accepted
+- **Context**: The first local desktop build launched with unstyled content and broken images: the web frontend is built with the `/ahkh-study-hub` GitHub Pages subpath, which does not resolve inside the Tauri custom-protocol webview.
+- **Decision**:
+  1. `astro.config.mjs` reads its base from `AHKH_BASE`, defaulting to `/ahkh-study-hub` for web.
+  2. `scripts/build-desktop.mjs` (`npm run build:desktop`) builds with `AHKH_BASE=/`, and `src-tauri/tauri.conf.json` uses it as its `beforeBuildCommand`; CI inherits the same path automatically.
+  3. All internal links keep using `path()`, which already adapts to `BASE_URL`, so one codebase serves both surfaces.
+- **Consequences**:
+  1. Desktop bundles resolve CSS, scripts, and images with zero `/ahkh-study-hub` leaks (verified: zero matches in desktop `dist/`).
+  2. Web builds and constitutional `verify-dist` checks are unaffected.

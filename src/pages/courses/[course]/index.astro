@@ -306,7 +306,7 @@ const statusMeta = STATUS_CONFIG[course.status];
       const storageKey = `ahkh_course_collapsed_${courseSlug}`;
       let collapsedModules = new Set();
       try {
-        const stored = localStorage.getItem(storageKey);
+        const stored = AhkhStorage.get(storageKey);
         if (stored) {
           collapsedModules = new Set(JSON.parse(stored));
         }
@@ -337,7 +337,7 @@ const statusMeta = STATUS_CONFIG[course.status];
           collapsedModules.delete(moduleId);
         }
         try {
-          localStorage.setItem(storageKey, JSON.stringify([...collapsedModules]));
+          AhkhStorage.set(storageKey, JSON.stringify([...collapsedModules]));
         } catch (e) {}
         updateToggleAllButtonState();
       }
@@ -458,13 +458,13 @@ const statusMeta = STATUS_CONFIG[course.status];
             const progressBar = el.querySelector('[data-lesson-progress-bar]');
             if (!slug) return;
 
-            const isCompleted = localStorage.getItem(`ahkh_read_${courseId}_${slug}`) !== null;
-            const isReading = !isCompleted && localStorage.getItem(`ahkh_reading_${courseId}_${slug}`) !== null;
-            const isExplored = !isCompleted && !isReading && localStorage.getItem(`ahkh_opened_${courseId}_${slug}`) !== null;
+            const isCompleted = AhkhStorage.get(`ahkh_read_${courseId}_${slug}`) !== null;
+            const isReading = !isCompleted && AhkhStorage.get(`ahkh_reading_${courseId}_${slug}`) !== null;
+            const isExplored = !isCompleted && !isReading && AhkhStorage.get(`ahkh_opened_${courseId}_${slug}`) !== null;
 
             let scrollPct = 0;
             try {
-              const scrollData = JSON.parse(localStorage.getItem(`ahkh_scroll_${courseId}_${slug}`) || 'null');
+              const scrollData = JSON.parse(AhkhStorage.get(`ahkh_scroll_${courseId}_${slug}`) || 'null');
               if (scrollData && typeof scrollData.percent === 'number') {
                 scrollPct = Math.min(100, Math.max(0, scrollData.percent));
               }
@@ -528,9 +528,9 @@ const statusMeta = STATUS_CONFIG[course.status];
 
             modLessonEls.forEach((el) => {
               const slug = el.getAttribute('data-lesson-slug');
-              if (localStorage.getItem(`ahkh_read_${courseId}_${slug}`) !== null) modCompleted++;
-              else if (localStorage.getItem(`ahkh_reading_${courseId}_${slug}`) !== null) modReading++;
-              else if (localStorage.getItem(`ahkh_opened_${courseId}_${slug}`) !== null) modExplored++;
+              if (AhkhStorage.get(`ahkh_read_${courseId}_${slug}`) !== null) modCompleted++;
+              else if (AhkhStorage.get(`ahkh_reading_${courseId}_${slug}`) !== null) modReading++;
+              else if (AhkhStorage.get(`ahkh_opened_${courseId}_${slug}`) !== null) modExplored++;
             });
 
             const modPercent = Math.round((modCompleted / modTotal) * 100);

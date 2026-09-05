@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "AHKH Study Hub",
+  "version": "1.0.0",
+  "identifier": "hub.ahkh.study",
+  "build": {
+    "devUrl": "http://localhost:4321/ahkh-study-hub/",
+    "beforeDevCommand": "npm run dev",
+    "frontendDist": "../dist",
+    "beforeBuildCommand": "npm run build:desktop"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "AHKH Study Hub",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 960,
+        "minHeight": 600
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "plugins": {
+    "updater": {
+      "active": true,
+      "dialog": true,
+      "endpoints": [
+        "https://github.com/AHKH3/ahkh-study-hub/releases/latest/download/latest.json"
+      ],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDZDOTBGQzMxRkE2N0Y3QTQKUldTazkyZjZNZnlRYkQ5ZXAyNE80QVloMmFaSmJIcmp3R0EyaGkxak9KbkNyVzRibXJRcytOQ1AK"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis",
+      "msi"
+    ],
+    "icon": [
+      "icons/icon.ico",
+      "icons/icon.png"
+    ],
+    "category": "Education"
+  }
+}

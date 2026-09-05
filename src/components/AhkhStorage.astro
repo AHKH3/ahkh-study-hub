@@ -1,0 +1,145 @@
+---
+/*
+ * AhkhStorage browser global (ADR-008, Phase 0).
+ * Rendered once in BaseLayout head so every inline reader script shares one
+ * persistence entry point. Backed by localStorage today; Tauri SQLite and
+ * the web file-system mirror register behind the same interface later.
+ */
+---
+
+<script is:inline>
+  (function () {
+    if (window.AhkhStorage) return;
+
+    var memory = {};
+    function hasLocal() {
+      try {
+        return typeof window.localStorage !== 'undefined';
+      } catch (e) {
+        return false;
+      }
+    }
+
+    var overrideBackend = null;
+    var writeHooks = [];
+
+    function primary() {
+      return overrideBackend || null;
+    }
+
+    function notifyHooks(op, key) {
+      for (var h = 0; h < writeHooks.length; h++) {
+        try {
+          writeHooks[h](op, key);
+        } catch (e) {}
+      }
+    }
+
+    var api = {
+      backendName: function () {
+        if (overrideBackend && overrideBackend.name) return overrideBackend.name;
+        return hasLocal() ? 'localStorage' : 'memory';
+      },
+      registerBackend: function (backend) {
+        overrideBackend = backend || null;
+      },
+      addWriteHook: function (fn) {
+        if (typeof fn === 'function') writeHooks.push(fn);
+      },
+      removeWriteHook: function (fn) {
+        for (var i = writeHooks.length - 1; i >= 0; i--) {
+          if (writeHooks[i] === fn) writeHooks.splice(i, 1);
+        }
+      },
+      get: function (key) {
+        try {
+          if (primary() && primary().get) {
+            var v = primary().get(key);
+            return typeof v === 'undefined' ? null : v;
+          }
+          if (hasLocal()) return window.localStorage.getItem(key);
+          return Object.prototype.hasOwnProperty.call(memory, key) ? memory[key] : null;
+        } catch (e) {
+          return null;
+        }
+      },
+      set: function (key, value) {
+        try {
+          if (primary() && primary().set) {
+            primary().set(key, value);
+            notifyHooks('set', key);
+            return;
+          }
+          if (hasLocal()) {
+            window.localStorage.setItem(key, value);
+            notifyHooks('set', key);
+            return;
+          }
+          memory[key] = String(value);
+          notifyHooks('set', key);
+        } catch (e) {}
+      },
+      remove: function (key) {
+        try {
+          if (primary() && primary().remove) {
+            primary().remove(key);
+            notifyHooks('remove', key);
+            return;
+          }
+          if (hasLocal()) {
+            window.localStorage.removeItem(key);
+            notifyHooks('remove', key);
+            return;
+          }
+          delete memory[key];
+          notifyHooks('remove', key);
+        } catch (e) {}
+      },
+      has: function (key) {
+        return api.get(key) !== null;
+      },
+      scan: function (prefix) {
+        var found = [];
+        try {
+          if (primary() && primary().scan) {
+            var listed = primary().scan(prefix) || [];
+            for (var s = 0; s < listed.length; s++) found.push(listed[s]);
+            return found;
+          }
+          if (hasLocal()) {
+            for (var i = 0; i < window.localStorage.length; i++) {
+              var k = window.localStorage.key(i);
+              if (k && k.indexOf(prefix) === 0) found.push(k);
+            }
+            return found;
+          }
+          for (var m in memory) {
+            if (Object.prototype.hasOwnProperty.call(memory, m) && m.indexOf(prefix) === 0) found.push(m);
+          }
+        } catch (e) {}
+        return found;
+      },
+      getJson: function (key, fallback) {
+        var raw = api.get(key);
+        if (raw === null) return fallback;
+        try {
+          return JSON.parse(raw);
+        } catch (e) {
+          return fallback;
+        }
+      },
+      setJson: function (key, value) {
+        try {
+          api.set(key, JSON.stringify(value));
+        } catch (e) {}
+      },
+      HL_PREFIX: 'ahkh_hl_',
+      HL_COLOR_KEY: 'ahkh_hl_color',
+      hlKey: function (courseId, lessonId) {
+        return 'ahkh_hl_' + courseId + '_' + lessonId;
+      }
+    };
+
+    window.AhkhStorage = api;
+  })();
+</script>

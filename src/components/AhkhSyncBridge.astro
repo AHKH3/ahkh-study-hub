@@ -1,0 +1,325 @@
+---
+/*
+ * AhkhSyncBridge (ADR-008, hybrid persistence).
+ * Continuous last-write-wins sync between the live store (AhkhStorage) and
+ * durable mirrors: Tauri SQLite (~/.ahkh/study.db) inside the desktop app,
+ * OPFS snapshot plus an optional user-designated file in web browsers.
+ * The live store stays synchronous; mirrors sync debounced in background.
+ */
+---
+
+<script is:inline>
+  (function () {
+    if (window.AhkhSync) return;
+
+    var SYNC_PREFIX = 'ahkh_';
+    var STAMPS_KEY = 'ahkh_sync_stamps';
+    var OPFS_NAME = 'ahkh-study.json';
+    var PUSH_DEBOUNCE_MS = 800;
+
+    var stamps = {};
+    var pushTimer = null;
+    var lastSyncAt = null;
+    var fileHandle = null;
+    var tauriAvailable = false;
+
+    function store() {
+      return window.AhkhStorage || null;
+    }
+
+    function nowIso() {
+      return new Date().toISOString();
+    }
+
+    function loadStamps() {
+      try {
+        var s = store();
+        var raw = s ? s.get(STAMPS_KEY) : null;
+        stamps = raw ? JSON.parse(raw) : {};
+        if (!stamps || typeof stamps !== 'object') stamps = {};
+      } catch (e) {
+        stamps = {};
+      }
+    }
+
+    function saveStamps() {
+      try {
+        var s = store();
+        if (s) s.set(STAMPS_KEY, JSON.stringify(stamps));
+      } catch (e) {}
+    }
+
+    function collectLocal() {
+      var s = store();
+      var out = {};
+      if (!s) return out;
+      var keys = s.scan(SYNC_PREFIX);
+      for (var i = 0; i < keys.length; i++) {
+        var k = keys[i];
+        if (k === STAMPS_KEY) continue;
+        out[k] = { value: s.get(k), updatedAt: stamps[k] || null };
+      }
+      return out;
+    }
+
+    function applySnapshot(snapshot) {
+      if (!snapshot || !snapshot.keys) return 0;
+      var s = store();
+      if (!s) return 0;
+      var adopted = 0;
+      var names = Object.keys(snapshot.keys);
+      for (var i = 0; i < names.length; i++) {
+        var k = names[i];
+        if (k === STAMPS_KEY) continue;
+        var entry = snapshot.keys[k] || {};
+        var mirrorStamp = entry.updatedAt || null;
+        var localStamp = stamps[k] || null;
+        var localValue = s.get(k);
+        var mirrorNewer =
+          mirrorStamp && (!localStamp || mirrorStamp > localStamp);
+        if (localValue === null && typeof entry.value === 'string') {
+          s.set(k, entry.value);
+          stamps[k] = mirrorStamp || nowIso();
+          adopted++;
+        } else if (mirrorNewer && typeof entry.value === 'string') {
+          s.set(k, entry.value);
+          stamps[k] = mirrorStamp;
+          adopted++;
+        } else if (localValue !== null && !localStamp) {
+          stamps[k] = nowIso();
+        }
+      }
+      saveStamps();
+      return adopted;
+    }
+
+    function buildSnapshot() {
+      var s = store();
+      var keys = {};
+      if (s) {
+        var names = s.scan(SYNC_PREFIX);
+        for (var i = 0; i < names.length; i++) {
+          var k = names[i];
+          if (k === STAMPS_KEY) continue;
+          if (!stamps[k]) stamps[k] = nowIso();
+          keys[k] = { value: s.get(k), updatedAt: stamps[k] };
+        }
+        saveStamps();
+      }
+      return { v: 1, exportedAt: nowIso(), keys: keys };
+    }
+
+    function detectTauri() {
+      try {
+        tauriAvailable = !!(window.__TAURI_INTERNALS__ && window.__TAURI_INTERNALS__.invoke);
+      } catch (e) {
+        tauriAvailable = false;
+      }
+      return tauriAvailable;
+    }
+
+    function tauriInvoke(cmd, args) {
+      try {
+        return window.__TAURI_INTERNALS__.invoke(cmd, args || {});
+      } catch (e) {
+        return Promise.reject(e);
+      }
+    }
+
+    function tauriLoad() {
+      return tauriInvoke('ahkh_load_snapshot').then(function (raw) {
+        if (!raw) return null;
+        try {
+          return JSON.parse(raw);
+        } catch (e) {
+          return null;
+        }
+      });
+    }
+
+    function tauriStore(snapshot) {
+      return tauriInvoke('ahkh_store_snapshot', { snapshot: JSON.stringify(snapshot) }).then(function () {
+        return true;
+      });
+    }
+
+    function opfsFile(mode) {
+      if (!navigator.storage || !navigator.storage.getDirectory) {
+        return Promise.reject(new Error('opfs-unavailable'));
+      }
+      return navigator.storage
+        .getDirectory()
+        .then(function (dir) {
+          return dir.getFileHandle(OPFS_NAME, { create: mode !== 'read' });
+        })
+        .then(function (handle) {
+          if (mode === 'read') return handle.getFile();
+          return handle;
+        });
+    }
+
+    function opfsLoad() {
+      return opfsFile('read')
+        .then(function (file) {
+          return file.text();
+        })
+        .then(function (text) {
+          try {
+            return JSON.parse(text);
+          } catch (e) {
+            return null;
+          }
+        })
+        .catch(function () {
+          return null;
+        });
+    }
+
+    function opfsStore(snapshot) {
+      var payload = JSON.stringify(snapshot);
+      return opfsFile('write')
+        .then(function (handle) {
+          return handle.createWritable().then(function (w) {
+            return w.write(payload).then(function () {
+              return w.close();
+            });
+          });
+        })
+        .then(function () {
+          return true;
+        })
+        .catch(function () {
+          return false;
+        });
+    }
+
+    function designatedStore(snapshot) {
+      if (!fileHandle || !fileHandle.createWritable) return Promise.resolve(false);
+      var payload = JSON.stringify(snapshot, null, 2);
+      return fileHandle
+        .createWritable()
+        .then(function (w) {
+          return w.write(payload).then(function () {
+            return w.close();
+          });
+        })
+        .then(function () {
+          return true;
+        })
+        .catch(function () {
+          return false;
+        });
+    }
+
+    function pushNow() {
+      var snapshot = buildSnapshot();
+      var jobs = [];
+      if (tauriAvailable) {
+        jobs.push(
+          tauriStore(snapshot).catch(function () {
+            return false;
+          })
+        );
+      } else {
+        jobs.push(opfsStore(snapshot));
+        jobs.push(designatedStore(snapshot));
+      }
+      return Promise.all(jobs).then(function () {
+        lastSyncAt = nowIso();
+        return true;
+      });
+    }
+
+    function schedulePush() {
+      if (pushTimer) clearTimeout(pushTimer);
+      pushTimer = setTimeout(function () {
+        pushTimer = null;
+        pushNow();
+      }, PUSH_DEBOUNCE_MS);
+    }
+
+    function pullNow() {
+      var loader = tauriAvailable ? tauriLoad() : opfsLoad();
+      return loader.then(function (snapshot) {
+        var adopted = applySnapshot(snapshot);
+        if (adopted > 0) {
+          try {
+            if (typeof window.updateGlobalBadge === 'function') window.updateGlobalBadge();
+          } catch (e) {}
+        }
+        lastSyncAt = nowIso();
+        return adopted;
+      });
+    }
+
+    function boot() {
+      var s = store();
+      if (!s) return;
+      loadStamps();
+      detectTauri();
+      if (typeof s.addWriteHook === 'function') {
+        s.addWriteHook(function () {
+          schedulePush();
+        });
+      }
+      pullNow().then(function () {
+        schedulePush();
+      });
+      document.addEventListener('visibilitychange', function () {
+        if (!document.hidden) pullNow();
+      });
+      document.addEventListener('astro:page-load', function () {
+        loadStamps();
+        pullNow();
+      });
+    }
+
+    window.AhkhSync = {
+      boot: boot,
+      pull: pullNow,
+      push: pushNow,
+      isTauri: function () {
+        return detectTauri();
+      },
+      status: function () {
+        return {
+          tauri: tauriAvailable,
+          designatedFile: !!fileHandle,
+          lastSyncAt: lastSyncAt,
+          backend: store() ? store().backendName() : 'none'
+        };
+      },
+      designateFile: function () {
+        if (window.showSaveFilePicker) {
+          return window
+            .showSaveFilePicker({
+              suggestedName: OPFS_NAME,
+              types: [{ description: 'AHKH study file', accept: { 'application/json': ['.json'] } }]
+            })
+            .then(function (handle) {
+              fileHandle = handle;
+              return pushNow().then(function () {
+                return true;
+              });
+            })
+            .catch(function () {
+              return false;
+            });
+        }
+        return Promise.resolve(false);
+      }
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', boot, { once: true });
+    } else {
+      boot();
+    }
+    document.addEventListener('astro:page-load', function () {
+      if (store()) {
+        loadStamps();
+        detectTauri();
+      }
+    });
+  })();
+</script>

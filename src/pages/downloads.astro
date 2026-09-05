@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HubHeader from '../components/HubHeader.astro';
+import { path } from '../utils/paths';
+import releasesData from '../data/releases.json';
+
+interface ReleaseAsset {
+  name: string;
+  url: string;
+  size: number;
+}
+
+interface DesktopRelease {
+  tag: string;
+  version: string;
+  name: string;
+  publishedAt: string | null;
+  prerelease: boolean;
+  notes: string;
+  url: string;
+  setup: ReleaseAsset | null;
+  msi: ReleaseAsset | null;
+  updater: boolean;
+}
+
+const releases = (releasesData.releases || []) as DesktopRelease[];
+const stable = releases.filter((r) => !r.prerelease);
+const latest = stable[0] || null;
+const older = stable.slice(1);
+
+function formatSize(bytes: number): string {
+  if (!bytes) return '';
+  const mb = bytes / (1024 * 1024);
+  return mb >= 1 ? `${mb.toFixed(1)} MB` : `${Math.max(1, Math.round(bytes / 1024))} KB`;
+}
+
+function formatDate(iso: string | null): string {
+  if (!iso) return '';
+  try {
+    return new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  } catch (e) {
+    return '';
+  }
+}
+---
+
+<BaseLayout
+  title="Downloads — AHKH Study Hub"
+  description="Download the sovereign AHKH Study Hub desktop application for Windows."
+>
+  <HubHeader activeTab="downloads" />
+
+  <main class="flex-1 max-w-reading w-full mx-auto px-6 py-12">
+    <header class="mb-10 pb-6 border-b border-ink-border dark:border-dark-border">
+      <h1 class="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-ink dark:text-dark-ink mb-3">
+        Downloads
+      </h1>
+      <p class="font-serif text-sm sm:text-base text-ink-muted dark:text-dark-muted leading-relaxed max-w-xl">
+        The sovereign desktop reader for Windows. Your highlights and reading progress live in a local database on your own disk, and every release updates itself in place.
+      </p>
+    </header>
+
+    {latest ? (
+      <section class="mb-12 p-6 sm:p-8 rounded-xs bg-paper-100 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
+        <div class="flex items-center gap-2 font-mono text-xs text-ink-muted dark:text-dark-muted mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400" aria-hidden="true"></span>
+          <span>Latest</span>
+          <span aria-hidden="true">•</span>
+          <span>v{latest.version}</span>
+          {formatDate(latest.publishedAt) && (
+            <>
+              <span aria-hidden="true">•</span>
+              <span>{formatDate(latest.publishedAt)}</span>
+            </>
+          )}
+          <span aria-hidden="true">•</span>
+          <span>Windows 10 / 11</span>
+        </div>
+        <h2 class="font-sans text-xl sm:text-2xl font-semibold tracking-tight text-ink dark:text-dark-ink mb-2">
+          {latest.name}
+        </h2>
+        <p class="font-sans text-xs text-ink-muted dark:text-dark-muted mb-6">
+          Self-updating. WebView2 is already present on Windows 10 and 11, no extra runtime needed.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          {latest.setup && (
+            <a
+              href={latest.setup.url}
+              class="inline-flex items-center justify-center gap-2 text-sm font-ui font-medium px-5 py-3 rounded-xs bg-ink dark:bg-dark-ink text-white dark:text-dark-bg transition-colors"
+            >
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+              </svg>
+              <span>Download Setup{formatSize(latest.setup.size) ? ` (${formatSize(latest.setup.size)})` : ''}</span>
+            </a>
+          )}
+          {latest.msi && (
+            <a
+              href={latest.msi.url}
+              class="inline-flex items-center justify-center gap-2 text-sm font-ui font-medium px-5 py-3 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-bg text-ink dark:text-dark-ink hover:bg-paper-200 dark:hover:bg-dark-border/60 transition-colors"
+            >
+              <span>MSI Package{formatSize(latest.msi.size) ? ` (${formatSize(latest.msi.size)})` : ''}</span>
+            </a>
+          )}
+        </div>
+      </section>
+    ) : (
+      <section class="mb-12 p-6 sm:p-8 rounded-xs bg-paper-100 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs text-center">
+        <h2 class="font-serif text-xl font-medium text-ink dark:text-dark-ink mb-2">
+          First desktop release is being prepared
+        </h2>
+        <p class="font-serif text-sm text-ink-muted dark:text-dark-muted leading-relaxed max-w-md mx-auto">
+          The Windows application is built automatically with every release. Meanwhile the full library remains available in your browser.
+        </p>
+        <a href={path('/')} class="inline-flex items-center gap-2 mt-6 text-sm font-ui font-medium px-5 py-3 rounded-xs bg-ink dark:bg-dark-ink text-white dark:text-dark-bg transition-colors">
+          <span>Open the Library</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </section>
+    )}
+
+    {older.length > 0 && (
+      <section class="mb-12">
+        <div class="divide-y divide-ink-border/60 dark:divide-dark-border/60 border-t border-b border-ink-border/60 dark:border-dark-border/60">
+          {older.map((r) => (
+            <div class="py-4 flex items-center justify-between gap-4">
+              <div class="min-w-0">
+                <div class="font-sans text-sm font-medium text-ink dark:text-dark-ink truncate">
+                  v{r.version}
+                </div>
+                <div class="font-mono text-xs text-ink-muted dark:text-dark-muted mt-0.5">
+                  {formatDate(r.publishedAt)}
+                </div>
+              </div>
+              <div class="flex items-center gap-4 shrink-0 font-sans text-xs">
+                {r.setup && <a href={r.setup.url} class="text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink underline underline-offset-4 transition-colors">Setup</a>}
+                {r.msi && <a href={r.msi.url} class="text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink underline underline-offset-4 transition-colors">MSI</a>}
+                <a href={r.url} class="text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink underline underline-offset-4 transition-colors">Notes</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="pt-2">
+      <a
+        href="https://github.com/AHKH3/ahkh-study-hub/releases"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex items-center gap-1.5 font-sans text-xs text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink underline underline-offset-4 transition-colors"
+      >
+        <span>All releases on GitHub</span>
+        <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 17 17 7M7 7h10v10"/>
+        </svg>
+      </a>
+    </section>
+  </main>
+</BaseLayout>

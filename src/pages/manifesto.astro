@@ -450,7 +450,7 @@ import { path } from '../utils/paths';
 
       function loadHighlights() {
         try {
-          const items = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+          const items = JSON.parse(AhkhStorage.get(STORAGE_KEY) || '[]');
           if (!Array.isArray(items) || items.length === 0) return;
 
           const blocks = Array.from(content.querySelectorAll('p, blockquote, li, h2, h3, h4'));
@@ -562,7 +562,7 @@ import { path } from '../utils/paths';
             currentSelection.range.insertNode(span);
           }
 
-          const items = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+          const items = JSON.parse(AhkhStorage.get(STORAGE_KEY) || '[]');
           items.push({
             id: hlId,
             text: currentSelection.text,
@@ -572,7 +572,7 @@ import { path } from '../utils/paths';
             url: window.location.pathname,
             createdAt: new Date().toISOString()
           });
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+          AhkhStorage.set(STORAGE_KEY, JSON.stringify(items));
 
           window.getSelection()?.removeAllRanges();
           popover?.classList.add('hidden');
@@ -588,9 +588,9 @@ import { path } from '../utils/paths';
       removeBtn?.addEventListener('click', () => {
         if (!activeHighlightId) return;
         try {
-          const items = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+          const items = JSON.parse(AhkhStorage.get(STORAGE_KEY) || '[]');
           const updated = items.filter(h => h.id !== activeHighlightId);
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+          AhkhStorage.set(STORAGE_KEY, JSON.stringify(updated));
 
           const span = document.querySelector(`[data-highlight-id="${activeHighlightId}"], #${activeHighlightId}`);
           if (span && span.parentNode) {

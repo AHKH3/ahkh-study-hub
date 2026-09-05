@@ -1,4 +1,5 @@
 import type { Course } from '../data/courses';
+import { storageHas } from './storage';
 
 export function countLessons(course: Course): number {
   return course.modules.reduce((sum, mod) => sum + mod.lessons.length, 0);
@@ -82,25 +83,21 @@ export const LESSON_STATE_META: Record<LessonState, {
 };
 
 export function getLessonState(courseId: string, lessonSlug: string): LessonState {
-  if (typeof localStorage === 'undefined') return 'new';
   try {
-    if (localStorage.getItem(readKey(courseId, lessonSlug)) !== null) return 'completed';
-    if (localStorage.getItem(readingKey(courseId, lessonSlug)) !== null) return 'reading';
-    if (localStorage.getItem(openedKey(courseId, lessonSlug)) !== null) return 'explored';
+    if (storageHas(readKey(courseId, lessonSlug))) return 'completed';
+    if (storageHas(readingKey(courseId, lessonSlug))) return 'reading';
+    if (storageHas(openedKey(courseId, lessonSlug))) return 'explored';
   } catch (e) {}
   return 'new';
 }
 
 export function courseProgress(course: Course): { read: number; total: number; percent: number } {
   const total = countLessons(course);
-  if (typeof localStorage === 'undefined') {
-    return { read: 0, total, percent: 0 };
-  }
   let read = 0;
   try {
     for (const mod of course.modules) {
       for (const lesson of mod.lessons) {
-        if (localStorage.getItem(readKey(course.id, lesson.slug)) !== null) {
+        if (storageHas(readKey(course.id, lesson.slug))) {
           read += 1;
         }
       }

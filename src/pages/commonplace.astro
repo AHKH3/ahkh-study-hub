@@ -44,6 +44,17 @@ const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
           </svg>
           <span>Readwise (CSV)</span>
         </button>
+
+        <button 
+          id="study-file-btn"
+          class="px-3.5 py-2 text-xs font-ui font-medium rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-100 dark:hover:bg-dark-border/40 text-ink-muted dark:text-dark-muted transition-colors items-center gap-2 shadow-2xs cursor-pointer hidden"
+          title="Designate a local study file for continuous sovereign backup"
+        >
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/>
+          </svg>
+          <span>Study File</span>
+        </button>
       </div>
     </header>
 
@@ -270,11 +281,13 @@ const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 
     function getAllHighlights() {
       const all = [];
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key && key.startsWith('ahkh_hl_') && key !== 'ahkh_hl_color') {
+      const store = window.AhkhStorage;
+      const keys = store ? store.scan('ahkh_hl_') : [];
+      for (let i = 0; i < keys.length; i++) {
+        const key = keys[i];
+        if (key !== 'ahkh_hl_color') {
           try {
-            const list = JSON.parse(localStorage.getItem(key) || '[]');
+            const list = JSON.parse(store.get(key) || '[]');
             if (Array.isArray(list)) {
               list.forEach(item => {
                 if (item && item.text) {
@@ -586,11 +599,13 @@ const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
       let foundKey = null;
       let foundIndex = -1;
 
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key && key.startsWith('ahkh_hl_') && key !== 'ahkh_hl_color') {
+      const store = window.AhkhStorage;
+      const keys = store ? store.scan('ahkh_hl_') : [];
+      for (let i = 0; i < keys.length; i++) {
+        const key = keys[i];
+        if (key !== 'ahkh_hl_color') {
           try {
-            const list = JSON.parse(localStorage.getItem(key) || '[]');
+            const list = JSON.parse(store.get(key) || '[]');
             const idx = list.findIndex(h => h.id === id);
             if (idx !== -1) {
               foundItem = list[idx];
@@ -604,11 +619,11 @@ const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 
       if (!foundItem) return;
 
-      // Temporarily remove from localStorage to reflect in memory
+      // Temporarily remove from the sovereign store to reflect in memory
       try {
-        const list = JSON.parse(localStorage.getItem(foundKey) || '[]');
+        const list = JSON.parse(AhkhStorage.get(foundKey) || '[]');
         const updated = list.filter(h => h.id !== id);
-        localStorage.setItem(foundKey, JSON.stringify(updated));
+        AhkhStorage.set(foundKey, JSON.stringify(updated));
       } catch (e) {}
 
       // Show Undo Toast
@@ -656,9 +671,9 @@ const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
       const { item, key, index } = pendingDeletion;
 
       try {
-        const list = JSON.parse(localStorage.getItem(key) || '[]');
+        const list = JSON.parse(AhkhStorage.get(key) || '[]');
         list.splice(index, 0, item);
-        localStorage.setItem(key, JSON.stringify(list));
+        AhkhStorage.set(key, JSON.stringify(list));
       } catch (e) {
         console.warn('Could not restore item:', e);
       }
@@ -865,6 +880,23 @@ const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 
       document.getElementById('export-readwise-btn')?.addEventListener('click', exportReadwiseCsv, { signal: __ahkhSignal });
       document.getElementById('export-markdown-btn')?.addEventListener('click', exportMarkdown, { signal: __ahkhSignal });
+
+      const studyFileBtn = document.getElementById('study-file-btn');
+      if (studyFileBtn) {
+        const sync = window.AhkhSync || null;
+        const canDesignate = !!window.showSaveFilePicker && (!sync || !sync.isTauri());
+        if (canDesignate) {
+          studyFileBtn.classList.remove('hidden');
+          studyFileBtn.classList.add('inline-flex');
+        }
+        studyFileBtn.addEventListener('click', () => {
+          if (sync && sync.designateFile) {
+            sync.designateFile().then((ok) => {
+              if (ok) triggerButtonFeedback(studyFileBtn, 'Linked');
+            });
+          }
+        }, { signal: __ahkhSignal });
+      }
     }
 
     // Single boot path: ClientRouter (always enabled in BaseLayout) fires

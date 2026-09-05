@@ -3,7 +3,7 @@ import { path } from '../utils/paths';
 import ThemeSwitcher from './ThemeSwitcher.astro';
 
 interface Props {
-  activeTab?: 'library' | 'manifesto' | 'commonplace';
+  activeTab?: 'library' | 'manifesto' | 'commonplace' | 'downloads';
 }
 
 const { activeTab = 'library' } = Astro.props;
@@ -31,7 +31,7 @@ const { activeTab = 'library' } = Astro.props;
 
     <!-- Navigation Links & Theme Controls -->
     <div class="flex items-center gap-2 sm:gap-3">
-      <nav class="flex items-center gap-1 sm:gap-2 text-sm font-ui">
+      <nav class="flex flex-wrap items-center gap-1 sm:gap-2 text-sm font-ui">
         <a 
           href={path('/')} 
           class:list={[
@@ -68,6 +68,17 @@ const { activeTab = 'library' } = Astro.props;
             0
           </span>
         </a>
+        <a 
+          href={path('/downloads')} 
+          class:list={[
+            "px-3 py-1.5 rounded-sm transition-colors border",
+            activeTab === 'downloads' 
+              ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border-ink-border/60 dark:border-dark-border" 
+              : "border-transparent text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
+          ]}
+        >
+          Downloads
+        </a>
       </nav>
 
       <div class="h-4 w-px bg-ink-border/60 dark:bg-dark-border" aria-hidden="true"></div>
@@ -81,11 +92,14 @@ const { activeTab = 'library' } = Astro.props;
   // Calculate total highlights count for the commonplace badge
   window.updateGlobalBadge = function() {
     let total = 0;
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key && key.startsWith('ahkh_hl_') && key !== 'ahkh_hl_color') {
+    const store = window.AhkhStorage;
+    if (!store) return;
+    const keys = store.scan('ahkh_hl_');
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i];
+      if (key !== 'ahkh_hl_color') {
         try {
-          const items = JSON.parse(localStorage.getItem(key) || '[]');
+          const items = JSON.parse(store.get(key) || '[]');
           if (Array.isArray(items)) {
             total += items.length;
           }
