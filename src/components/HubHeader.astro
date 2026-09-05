@@ -83,7 +83,7 @@ const { activeTab = 'library' } = Astro.props;
     let total = 0;
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
-      if (key && key.startsWith('ahkh_hl_')) {
+      if (key && key.startsWith('ahkh_hl_') && key !== 'ahkh_hl_color') {
         try {
           const items = JSON.parse(localStorage.getItem(key) || '[]');
           if (Array.isArray(items)) {

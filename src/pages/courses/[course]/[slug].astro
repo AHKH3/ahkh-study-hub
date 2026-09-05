@@ -9,19 +9,39 @@ import { PanelLeft, PanelRight, ChevronLeft, Sun, Moon, RotateCcw } from '@lucid
 export function getStaticPaths() {
   const paths: any[] = [];
   COURSES.forEach((course) => {
+    const allLessons: any[] = [];
     course.modules.forEach((mod) => {
       mod.lessons.forEach((lesson) => {
-        paths.push({
-          params: { course: course.slug, slug: lesson.slug },
-          props: { course, lesson },
-        });
+        allLessons.push(lesson);
+      });
+    });
+
+    allLessons.forEach((lesson, index) => {
+      const prevLesson = index > 0 ? {
+        slug: allLessons[index - 1].slug,
+        title: allLessons[index - 1].title,
+        lessonNumber: allLessons[index - 1].lessonNumber,
+        type: allLessons[index - 1].type,
+        readTime: allLessons[index - 1].readTime,
+      } : null;
+      const nextLesson = index < allLessons.length - 1 ? {
+        slug: allLessons[index + 1].slug,
+        title: allLessons[index + 1].title,
+        lessonNumber: allLessons[index + 1].lessonNumber,
+        type: allLessons[index + 1].type,
+        readTime: allLessons[index + 1].readTime,
+      } : null;
+
+      paths.push({
+        params: { course: course.slug, slug: lesson.slug },
+        props: { course, lesson, prevLesson, nextLesson },
       });
     });
   });
   return paths;
 }
 
-const { course, lesson } = Astro.props;
+const { course, lesson, prevLesson, nextLesson } = Astro.props;
 // Auto-ingested verbatim cues for this video (if any), baked at build time by scripts/fetch-transcripts.mjs
 const transcriptSegments =
   lesson.youtubeId && TRANSCRIPTS[lesson.youtubeId]?.segments?.length
@@ -77,7 +97,7 @@ const transcriptSegments =
         </div>
       </div>
 
-      <!-- Right Controls: Display Settings + Highlights Drawer Toggle -->
+      <!-- Right Controls: Display Settings + Zen Mode + Highlights Drawer Toggle -->
       <div class="flex items-center gap-2 shrink-0">
         <!-- Display Settings Button (Aa) -->
         <button 
@@ -89,6 +109,18 @@ const transcriptSegments =
           aria-haspopup="true"
         >
           Aa
+        </button>
+
+        <!-- Zen Mode Button (Maximize Canvas) -->
+        <button 
+          id="toggle-zen-mode"
+          class="w-8 h-8 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hidden md:flex items-center justify-center transition-all active:scale-95 duration-150 cursor-pointer"
+          title="Toggle Zen Focus Mode [ Z ]"
+          aria-label="Toggle Zen Focus Mode"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+          </svg>
         </button>
 
         <!-- Right Highlights Sidebar Toggle Icon Button -->
@@ -116,7 +148,7 @@ const transcriptSegments =
     id="display-settings-menu"
     role="dialog"
     aria-label="Reading Typography and Comfort Settings"
-    class="hidden fixed top-16 right-4 sm:right-6 w-80 sm:w-84 max-h-[88vh] overflow-y-auto p-4 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50/98 dark:bg-dark-card/98 backdrop-blur-md shadow-xl shadow-ink/5 dark:shadow-black/50 z-50 text-xs font-sans space-y-4 text-ink dark:text-dark-ink"
+    class="hidden fixed top-16 right-4 sm:right-6 w-80 sm:w-84 max-h-[88vh] overflow-y-auto p-4 sm:p-5 rounded-xs border border-ink-border dark:border-dark-border/80 bg-paper-50/98 dark:bg-dark-card/98 backdrop-blur-xl shadow-2xl shadow-ink/5 dark:shadow-black/80 ring-1 ring-ink/5 dark:ring-white/5 z-50 text-xs font-sans space-y-5 text-ink dark:text-dark-ink"
   >
     <!-- Header: Title + Reset -->
     <div class="flex items-center justify-between pb-2 border-b border-ink-border/60 dark:border-dark-border/60">
@@ -209,7 +241,7 @@ const transcriptSegments =
         <button 
           data-font-id="geist" 
           class="font-family-btn w-full py-2 px-3 rounded-xs text-left transition-all cursor-pointer flex items-center justify-between"
-          style="font-family: 'Geist', sans-serif;"
+          style="font-family: 'Geist', sans-serif; /* impeccable-disable-line overused-font -- preview option */"
         >
           <span class="text-[13px] font-medium text-ink dark:text-dark-ink">Geist Sans</span>
           <span class="text-[10px] font-mono font-medium text-ink/75 dark:text-dark-ink/75">Clean Minimalist</span>
@@ -218,7 +250,7 @@ const transcriptSegments =
         <button 
           data-font-id="inter" 
           class="font-family-btn w-full py-2 px-3 rounded-xs text-left transition-all cursor-pointer flex items-center justify-between"
-          style="font-family: 'Inter', sans-serif;"
+          style="font-family: 'Inter', sans-serif; /* impeccable-disable-line overused-font -- preview option */"
         >
           <span class="text-[13px] font-medium text-ink dark:text-dark-ink">Inter</span>
           <span class="text-[10px] font-mono font-medium text-ink/75 dark:text-dark-ink/75">Interface Sans</span>
@@ -273,6 +305,39 @@ const transcriptSegments =
       class="sidebar-drawer shrink-0 border-r border-ink-border/80 dark:border-dark-border bg-paper-100/95 dark:bg-dark-bg/95 backdrop-blur-md sticky overflow-y-auto overflow-x-hidden p-6"
     >
       <div class="w-52 min-w-[13rem]">
+        <!-- Study Mode & Reading Status Card -->
+        <div id="sidebar-study-card" class="mb-5 pb-4 border-b border-ink-border/60 dark:border-dark-border">
+          <div class="flex items-center justify-between gap-2 mb-2.5">
+            <span class="font-mono text-[10px] uppercase tracking-widest text-ink-muted dark:text-dark-muted font-semibold">Reading State</span>
+            <span id="lesson-status-badge" class="inline-flex items-center gap-1.5 font-mono text-[11px] font-medium tracking-wide text-purple-700 dark:text-purple-400">
+              <span id="lesson-status-dot" class="w-1.5 h-1.5 rounded-full bg-purple-600 dark:bg-purple-400"></span>
+              <span id="lesson-status-text">Exploring</span>
+            </span>
+          </div>
+
+          <!-- Start Reading Action Button (shown in Exploring state) -->
+          <button
+            type="button"
+            id="start-reading-btn"
+            class="w-full font-ui text-xs font-medium py-1.5 px-2.5 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink transition-colors cursor-pointer flex items-center justify-center gap-1.5 shadow-2xs"
+          >
+            <svg class="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+            <span>Start Reading</span>
+          </button>
+
+          <!-- Reading Timestamp (shown when reading or completed) -->
+          <div id="reading-timestamp-display" class="hidden font-mono text-[11px] text-ink-muted dark:text-dark-muted flex items-center justify-center gap-1.5 py-1">
+            <svg class="w-3 h-3 text-amber-600 dark:text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span id="reading-timestamp-text"></span>
+          </div>
+        </div>
+
         <div class="font-mono text-[11px] uppercase tracking-widest text-ink dark:text-dark-ink font-semibold mb-4 pb-2 border-b border-ink-border/60 dark:border-dark-border/60">
           Document Outline
         </div>
@@ -281,8 +346,8 @@ const transcriptSegments =
             <a 
               href={`#${item.id}`}
               class:list={[
-                "block text-ink/80 dark:text-dark-ink/80 hover:text-ink dark:hover:text-dark-ink transition-colors line-clamp-1 py-1 px-1.5 rounded-xs hover:bg-paper-200/60 dark:hover:bg-dark-card/60",
-                item.level === 3 ? "pl-4 text-[11px]" : "font-medium"
+                "block text-ink/70 dark:text-dark-ink/70 hover:text-ink dark:hover:text-dark-ink transition-all duration-200 line-clamp-1 py-1.5 px-2 hover:bg-paper-100 dark:hover:bg-dark-surface border-l-[2px] border-transparent hover:border-ink-muted dark:hover:border-dark-muted",
+                item.level === 3 ? "ml-3 text-[11px]" : "font-medium"
               ]}
             >
               {item.title}
@@ -319,11 +384,11 @@ const transcriptSegments =
           <span>{lesson.readTime} read</span>
         </div>
 
-        <h1 class="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-ink dark:text-dark-ink mb-4 leading-tight">
+        <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tighter text-ink dark:text-dark-ink mb-5 leading-[1.15]">
           {lesson.title}
         </h1>
 
-        <p class="font-serif text-base sm:text-lg text-ink dark:text-dark-ink italic leading-relaxed border-l-2 border-ink dark:border-dark-ink pl-4 py-1">
+        <p class="font-serif text-base sm:text-lg lg:text-xl text-ink/85 dark:text-dark-ink/85 italic leading-relaxed border-l-[3px] border-ink-border dark:border-dark-border pl-5 py-1">
           "{lesson.summaryQuote}"
         </p>
       </div>
@@ -348,7 +413,7 @@ const transcriptSegments =
               </div>
               <div class="p-2.5 bg-paper-200/90 dark:bg-dark-card border-t border-ink-border dark:border-dark-border flex flex-wrap items-center justify-between gap-3 text-xs font-sans">
                 <span class="text-ink-muted dark:text-dark-muted flex items-center gap-1.5 font-medium">
-                  <span class="w-2 h-2 rounded-full bg-rose-600 dark:bg-rose-400 animate-pulse"></span>
+                  <span class="w-2 h-2 rounded-full bg-rose-600 dark:bg-rose-400"></span>
                   <span>Video Lecture & Synced Transcript</span>
                 </span>
                 <div class="flex items-center gap-2.5">
@@ -445,7 +510,7 @@ const transcriptSegments =
                       data-seek-time={cue.time}
                       title={`Play lecture from ${cue.label}`}
                     >
-                      <svg class="cue-playing-icon w-3 h-3 text-rose-600 dark:text-rose-400 hidden shrink-0 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <svg class="cue-playing-icon w-3 h-3 text-rose-600 dark:text-rose-400 hidden shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <polygon points="6 3 20 12 6 21 6 3" fill="currentColor"/>
                       </svg>
                       <span>{cue.label}</span>
@@ -465,22 +530,138 @@ const transcriptSegments =
         </div>
       )}
 
-      <!-- BOTTOM NAVIGATION (Next / Previous Lesson) -->
-      <div class="mt-16 pt-8 border-t border-ink-border/80 dark:border-dark-border flex items-center justify-between gap-4 font-ui text-xs">
-        <a 
-          href={path(`/courses/${course.slug}`)}
-          class="text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink flex items-center gap-1 font-medium transition-colors"
-        >
-          &larr; Back to Journey
-        </a>
+      <!-- EDITORIAL READER FOOTER: Milestone Utility Bar + Sequential Continuation Cards -->
+      <footer class="mt-20 pt-8 border-t border-ink-border/80 dark:border-dark-border">
+        <!-- Tier 1: Lesson Milestone Action Bar (Roadmap, Status, Back to Top) -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 text-xs font-ui">
+          <!-- Left: Return to Curriculum Roadmap -->
+          <a 
+            href={path(`/courses/${course.slug}`)}
+            class="inline-flex items-center gap-2 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink transition-colors group"
+            title="Return to Course Journey"
+          >
+            <svg class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+            <span class="font-medium">Curriculum Roadmap</span>
+          </a>
 
-        <button 
-          onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-          class="text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink font-mono transition-colors"
-        >
-          Top ↑
-        </button>
-      </div>
+          <!-- Center: Mark as Complete Toggle -->
+          <div class="flex items-center justify-start sm:justify-center">
+            <button
+              id="toggle-lesson-completed-btn"
+              type="button"
+              class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-100 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink text-xs font-medium transition-colors cursor-pointer shadow-2xs"
+              title="Toggle lesson completion status"
+            >
+              <span id="lesson-completed-icon" class="flex items-center text-ink-muted dark:text-dark-muted">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                </svg>
+              </span>
+              <span id="lesson-completed-label">Mark as complete</span>
+            </button>
+          </div>
+
+          <!-- Right: Return to Top -->
+          <div class="flex items-center justify-start sm:justify-end">
+            <button 
+              type="button"
+              onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+              class="inline-flex items-center gap-1.5 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink font-mono text-xs transition-colors cursor-pointer"
+              title="Scroll to top of lesson"
+            >
+              <span>Top</span>
+              <span aria-hidden="true">&uarr;</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tier 2: Dual Sequential Continuation Cards (Low-Contrast Quiet Editorial Layout) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-8 border-t border-ink-border/50 dark:border-dark-border/50">
+          {prevLesson ? (
+            <a 
+              id="prev-lesson-card-btn"
+              href={path(`/courses/${course.slug}/${prevLesson.slug}`)}
+              class="group block p-4 sm:p-5 rounded-xs border border-ink-border/50 dark:border-dark-border/50 bg-transparent hover:bg-paper-50/60 dark:hover:bg-dark-card/30 hover:border-ink-border/80 dark:hover:border-dark-border/80 transition-all"
+              title={`Previous: ${prevLesson.title}`}
+            >
+              <div class="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-ink-muted/80 dark:text-dark-muted/80 mb-2">
+                <svg class="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m15 18-6-6 6-6"/>
+                </svg>
+                <span>Previous Lesson</span>
+                <span>·</span>
+                <span>{prevLesson.lessonNumber}</span>
+              </div>
+              <h4 class="font-serif text-sm sm:text-base font-medium text-ink/90 dark:text-dark-ink/90 group-hover:text-ink dark:group-hover:text-dark-ink transition-colors line-clamp-2 leading-snug mb-2">
+                {prevLesson.title}
+              </h4>
+              <div class="flex items-center gap-2 font-mono text-xs text-ink-muted/80 dark:text-dark-muted/80">
+                <span class={`font-medium ${getFormatColor(prevLesson.type)}`}>
+                  {prevLesson.type === 'video' ? 'Video' : prevLesson.type === 'pdf' ? 'PDF' : 'Article'}
+                </span>
+                <span>·</span>
+                <span>{prevLesson.readTime}</span>
+              </div>
+            </a>
+          ) : (
+            <div class="p-4 sm:p-5 rounded-xs border border-dashed border-ink-border/40 dark:border-dark-border/40 bg-paper-50/20 dark:bg-dark-card/10 flex flex-col justify-center">
+              <div class="font-mono text-[11px] uppercase tracking-wider text-ink-muted/70 dark:text-dark-muted/70 mb-1">
+                Curriculum Inception
+              </div>
+              <p class="font-serif text-xs sm:text-sm text-ink-muted/80 dark:text-dark-muted/80">
+                This is the foundational monograph for this track.
+              </p>
+            </div>
+          )}
+
+          {nextLesson ? (
+            <a 
+              id="next-lesson-card-btn"
+              href={path(`/courses/${course.slug}/${nextLesson.slug}`)}
+              class="group block p-4 sm:p-5 rounded-xs border border-ink-border/50 dark:border-dark-border/50 bg-transparent hover:bg-paper-50/60 dark:hover:bg-dark-card/30 hover:border-ink-border/80 dark:hover:border-dark-border/80 transition-all sm:text-right"
+              title={`Next: ${nextLesson.title}`}
+            >
+              <div class="flex items-center sm:justify-end gap-1.5 font-mono text-[11px] uppercase tracking-wider text-ink-muted/80 dark:text-dark-muted/80 mb-2">
+                <span>{nextLesson.lessonNumber}</span>
+                <span>·</span>
+                <span>Next Lesson</span>
+                <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </div>
+              <h4 class="font-serif text-sm sm:text-base font-medium text-ink/90 dark:text-dark-ink/90 group-hover:text-ink dark:group-hover:text-dark-ink transition-colors line-clamp-2 leading-snug mb-2">
+                {nextLesson.title}
+              </h4>
+              <div class="flex items-center sm:justify-end gap-2 font-mono text-xs text-ink-muted/80 dark:text-dark-muted/80">
+                <span class={`font-medium ${getFormatColor(nextLesson.type)}`}>
+                  {nextLesson.type === 'video' ? 'Video' : nextLesson.type === 'pdf' ? 'PDF' : 'Article'}
+                </span>
+                <span>·</span>
+                <span>{nextLesson.readTime}</span>
+              </div>
+            </a>
+          ) : (
+            <div class="p-4 sm:p-5 rounded-xs border border-ink-border/50 dark:border-dark-border/50 bg-paper-50/30 dark:bg-dark-card/20 flex flex-col justify-center sm:text-right">
+              <div class="font-mono text-[11px] uppercase tracking-wider text-emerald-700/90 dark:text-emerald-400/90 font-medium mb-1">
+                Track Completed
+              </div>
+              <p class="font-serif text-xs sm:text-sm text-ink-muted/80 dark:text-dark-muted/80 mb-2">
+                You have finished all monographs in this curriculum.
+              </p>
+              <div>
+                <a 
+                  href={path('/commonplace')} 
+                  class="inline-flex items-center gap-1 text-xs font-ui font-medium text-ink-muted hover:text-ink dark:text-dark-muted dark:hover:text-dark-ink underline underline-offset-4 transition-colors"
+                >
+                  Review The Commonplace Book &rarr;
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+      </footer>
 
     </main>
 
@@ -598,6 +779,24 @@ const transcriptSegments =
       </div>
     </div>
   </div>
+
+  <!-- 6. EXPLORED HIGHLIGHT REMINDER TOAST -->
+  <div 
+    id="explored-reminder-toast" 
+    class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-lg shadow-black/5 dark:shadow-black/40 rounded-xs py-2 px-3.5 flex items-center gap-3 text-xs font-sans pointer-events-auto transition-opacity duration-300"
+    role="status"
+    aria-live="polite"
+  >
+    <span class="w-1.5 h-1.5 rounded-full bg-purple-600 dark:bg-purple-400 shrink-0"></span>
+    <span class="text-ink dark:text-dark-ink">Highlight saved. Note: You haven't started reading this lesson yet.</span>
+    <button 
+      id="toast-start-reading-btn" 
+      type="button" 
+      class="font-ui text-xs font-semibold text-amber-700 dark:text-amber-400 hover:underline cursor-pointer ml-1"
+    >
+      Start Reading
+    </button>
+  </div>
 </BaseLayout>
 
 <!-- CLIENT SCRIPT: Smart Header, Highlights, Marginalia, YouTube Sync -->
@@ -616,8 +815,30 @@ const transcriptSegments =
   const smartHeader = document.getElementById('smart-header');
   const progressFill = document.getElementById('top-progress-fill');
   const displayMenu = document.getElementById('display-settings-menu');
+  const displayBtn = document.getElementById('toggle-display-settings');
+  // Helper for scroll depth tracking & persistence
+  let scrollSaveTimer = null;
+  function saveScrollDepth(currentY, maxScroll) {
+    if (maxScroll <= 0) return;
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = setTimeout(() => {
+      try {
+        const pct = Math.min(100, Math.max(0, Math.round((currentY / maxScroll) * 100)));
+        const data = {
+          percent: pct,
+          scrollY: Math.round(currentY),
+          updatedAt: new Date().toISOString()
+        };
+        localStorage.setItem(`ahkh_scroll_${courseId}_${lessonSlug}`, JSON.stringify(data));
+      } catch (e) {}
+    }, 150);
+  }
 
-  window.__ahkhMarkedRead = false;
+  function updateScrollDepthLabel(pct) {
+    const label = document.getElementById('lesson-scroll-depth-label');
+    if (label) label.textContent = `${Math.round(pct)}% depth`;
+  }
+
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -626,32 +847,24 @@ const transcriptSegments =
     if (maxScroll > 0 && progressFill) {
       const pct = Math.min(100, Math.max(0, (currentScrollY / maxScroll) * 100));
       progressFill.style.width = pct + '%';
-    }
-
-    // Mark lesson read at >=90% depth (drives real course progress)
-    if (maxScroll > 0 && !window.__ahkhMarkedRead && (currentScrollY / maxScroll) >= 0.9) {
-      window.__ahkhMarkedRead = true;
-      try { localStorage.setItem(`ahkh_read_${courseId}_${lessonSlug}`, new Date().toISOString()); } catch (e) {}
+      updateScrollDepthLabel(pct);
+      saveScrollDepth(currentScrollY, maxScroll);
     }
 
     // Auto-hide header on scroll down, reveal on scroll up
     if (smartHeader) {
-      if (currentScrollY > 60) {
-        if (currentScrollY > lastScrollY && currentScrollY - lastScrollY > 6) {
-          // Scrolling DOWN -> hide header & close popovers
-          smartHeader.style.transform = 'translateY(-100%)';
-          document.body.setAttribute('data-header-hidden', 'true');
-          displayMenu?.classList.add('hidden');
-          displayBtn?.setAttribute('aria-expanded', 'false');
-          displayBtn?.classList.remove('bg-paper-200/90', 'dark:bg-dark-border/80', 'text-ink', 'dark:text-dark-ink');
-          displayBtn?.classList.add('text-ink-muted', 'dark:text-dark-muted');
-          hidePopover();
-        } else if (lastScrollY - currentScrollY > 6) {
-          // Scrolling UP -> reveal header
-          smartHeader.style.transform = 'translateY(0)';
-          document.body.removeAttribute('data-header-hidden');
-        }
-      } else {
+      const delta = currentScrollY - lastScrollY;
+      if (currentScrollY <= 60) {
+        smartHeader.style.transform = 'translateY(0)';
+        document.body.removeAttribute('data-header-hidden');
+      } else if (delta > 4) {
+        // Scrolling DOWN -> hide header & close popovers
+        smartHeader.style.transform = 'translateY(-100%)';
+        document.body.setAttribute('data-header-hidden', 'true');
+        closeDisplayMenu();
+        hidePopover();
+      } else if (delta < -2) {
+        // Scrolling UP -> reveal header immediately
         smartHeader.style.transform = 'translateY(0)';
         document.body.removeAttribute('data-header-hidden');
       }
@@ -660,11 +873,130 @@ const transcriptSegments =
     lastScrollY = currentScrollY;
   }, { passive: true, signal: __ahkhSignal });
 
+  // A2. LESSON LIFECYCLE, READING START, SCROLL TRACKING & RESTORATION
+  function getStoredLessonState() {
+    try {
+      if (localStorage.getItem(`ahkh_read_${courseId}_${lessonSlug}`) !== null) return 'completed';
+      if (localStorage.getItem(`ahkh_reading_${courseId}_${lessonSlug}`) !== null) return 'reading';
+      if (localStorage.getItem(`ahkh_opened_${courseId}_${lessonSlug}`) !== null) return 'explored';
+    } catch (e) {}
+    return 'explored';
+  }
+
+  function formatReadingTimestamp(isoStr) {
+    try {
+      const d = new Date(isoStr);
+      if (isNaN(d.getTime())) return '';
+      return d.toLocaleDateString(undefined, {
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function updateLessonStatusUI() {
+    const state = getStoredLessonState();
+    const badge = document.getElementById('lesson-status-badge');
+    const dot = document.getElementById('lesson-status-dot');
+    const text = document.getElementById('lesson-status-text');
+    const startBtn = document.getElementById('start-reading-btn');
+    const timeDisplay = document.getElementById('reading-timestamp-display');
+    const timeText = document.getElementById('reading-timestamp-text');
+
+    if (!badge || !dot || !text) return;
+
+    const ALL_TEXT_COLORS = ['text-blue-700', 'dark:text-blue-400', 'text-purple-700', 'dark:text-purple-400', 'text-amber-700', 'dark:text-amber-400', 'text-emerald-700', 'dark:text-emerald-400'];
+    const ALL_DOT_COLORS = ['bg-blue-600', 'dark:bg-blue-400', 'bg-purple-600', 'dark:bg-purple-400', 'bg-amber-600', 'dark:bg-amber-400', 'bg-emerald-600', 'dark:bg-emerald-400'];
+    ALL_TEXT_COLORS.forEach(c => badge.classList.remove(c));
+    ALL_DOT_COLORS.forEach(c => dot.classList.remove(c));
+
+    if (state === 'completed') {
+      badge.classList.add('text-emerald-700', 'dark:text-emerald-400');
+      dot.classList.add('bg-emerald-600', 'dark:bg-emerald-400');
+      text.textContent = 'Completed';
+      startBtn?.classList.add('hidden');
+      timeDisplay?.classList.remove('hidden');
+      const startIso = localStorage.getItem(`ahkh_reading_${courseId}_${lessonSlug}`);
+      if (startIso && timeText) {
+        timeText.textContent = `Started ${formatReadingTimestamp(startIso)}`;
+      } else if (timeText) {
+        const readIso = localStorage.getItem(`ahkh_read_${courseId}_${lessonSlug}`);
+        timeText.textContent = readIso ? `Completed ${formatReadingTimestamp(readIso)}` : 'Completed';
+      }
+    } else if (state === 'reading') {
+      badge.classList.add('text-amber-700', 'dark:text-amber-400');
+      dot.classList.add('bg-amber-600', 'dark:bg-amber-400');
+      text.textContent = 'Reading';
+      startBtn?.classList.add('hidden');
+      timeDisplay?.classList.remove('hidden');
+      const startIso = localStorage.getItem(`ahkh_reading_${courseId}_${lessonSlug}`);
+      if (timeText) {
+        timeText.textContent = startIso ? `Started ${formatReadingTimestamp(startIso)}` : 'Reading';
+      }
+    } else { // explored
+      badge.classList.add('text-purple-700', 'dark:text-purple-400');
+      dot.classList.add('bg-purple-600', 'dark:bg-purple-400');
+      text.textContent = 'Exploring';
+      startBtn?.classList.remove('hidden');
+      timeDisplay?.classList.add('hidden');
+    }
+  }
+
+  function startReading() {
+    try {
+      localStorage.setItem(`ahkh_reading_${courseId}_${lessonSlug}`, new Date().toISOString());
+    } catch (e) {}
+    updateLessonStatusUI();
+    hideExploredReminderToast();
+  }
+
+  let reminderToastTimeout = null;
+  function showExploredReminderToast() {
+    const toast = document.getElementById('explored-reminder-toast');
+    if (!toast) return;
+    toast.classList.remove('hidden');
+    clearTimeout(reminderToastTimeout);
+    reminderToastTimeout = setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 6000);
+  }
+
+  function hideExploredReminderToast() {
+    clearTimeout(reminderToastTimeout);
+    const toast = document.getElementById('explored-reminder-toast');
+    toast?.classList.add('hidden');
+  }
+
+  function restoreSavedScrollPosition() {
+    try {
+      const savedStr = localStorage.getItem(`ahkh_scroll_${courseId}_${lessonSlug}`);
+      if (!savedStr) return;
+      const saved = JSON.parse(savedStr);
+      if (saved && typeof saved.scrollY === 'number' && saved.scrollY > 40) {
+        if (window.location.hash && window.location.hash.startsWith('#')) return;
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: saved.scrollY, behavior: 'instant' });
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+          if (maxScroll > 0 && progressFill) {
+            const pct = Math.min(100, Math.max(0, (saved.scrollY / maxScroll) * 100));
+            progressFill.style.width = pct + '%';
+            updateScrollDepthLabel(pct);
+          }
+        });
+      }
+    } catch (e) {}
+  }
+
   // B. SIDEBAR TOGGLES & ANIMATED DRAWERS
   const leftSidebar = document.getElementById('left-sidebar');
   const rightSidebar = document.getElementById('right-sidebar');
   const toggleLeftBtn = document.getElementById('toggle-left-sidebar');
   const toggleRightBtn = document.getElementById('toggle-right-sidebar');
+  const toggleZenBtn = document.getElementById('toggle-zen-mode');
   const sidebarBackdrop = document.getElementById('sidebar-backdrop');
 
   function showBackdrop() {
@@ -715,6 +1047,17 @@ const transcriptSegments =
       } else {
         toggleRightBtn.classList.remove('bg-paper-200/90', 'dark:bg-dark-border/80', 'text-ink', 'dark:text-dark-ink');
         toggleRightBtn.classList.add('text-ink-muted', 'dark:text-dark-muted');
+      }
+    }
+
+    if (toggleZenBtn) {
+      const isZen = leftSidebar?.getAttribute('data-collapsed') === 'true' && rightSidebar?.getAttribute('data-collapsed') === 'true';
+      if (isZen) {
+        toggleZenBtn.classList.add('bg-paper-200/90', 'dark:bg-dark-border/80', 'text-ink', 'dark:text-dark-ink');
+        toggleZenBtn.classList.remove('text-ink-muted', 'dark:text-dark-muted');
+      } else {
+        toggleZenBtn.classList.remove('bg-paper-200/90', 'dark:bg-dark-border/80', 'text-ink', 'dark:text-dark-ink');
+        toggleZenBtn.classList.add('text-ink-muted', 'dark:text-dark-muted');
       }
     }
   }
@@ -773,12 +1116,37 @@ const transcriptSegments =
     }
   }
 
-  toggleLeftBtn?.addEventListener('click', toggleLeftSidebar);
-  toggleRightBtn?.addEventListener('click', toggleRightSidebar);
-  sidebarBackdrop?.addEventListener('click', closeMobileDrawers);
+  function toggleZenMode() {
+    if (window.innerWidth < 768) {
+      closeMobileDrawers();
+      return;
+    }
+    const leftCollapsed = leftSidebar?.getAttribute('data-collapsed') === 'true';
+    const rightCollapsed = rightSidebar?.getAttribute('data-collapsed') === 'true';
+    const isZen = leftCollapsed && rightCollapsed;
+
+    if (isZen) {
+      leftSidebar?.removeAttribute('data-collapsed');
+      localStorage.setItem('ahkh_left_sidebar_collapsed', 'false');
+      rightSidebar?.removeAttribute('data-collapsed');
+      document.body.removeAttribute('data-right-collapsed');
+      localStorage.setItem('ahkh_right_sidebar_collapsed', 'false');
+    } else {
+      leftSidebar?.setAttribute('data-collapsed', 'true');
+      localStorage.setItem('ahkh_left_sidebar_collapsed', 'true');
+      rightSidebar?.setAttribute('data-collapsed', 'true');
+      document.body.setAttribute('data-right-collapsed', 'true');
+      localStorage.setItem('ahkh_right_sidebar_collapsed', 'true');
+    }
+    updateSidebarButtons();
+  }
+
+  toggleLeftBtn?.addEventListener('click', toggleLeftSidebar, { signal: __ahkhSignal });
+  toggleRightBtn?.addEventListener('click', toggleRightSidebar, { signal: __ahkhSignal });
+  toggleZenBtn?.addEventListener('click', toggleZenMode, { signal: __ahkhSignal });
+  sidebarBackdrop?.addEventListener('click', closeMobileDrawers, { signal: __ahkhSignal });
 
   // C. DISPLAY SETTINGS CONTROLLER (Swiss Editorial Polish)
-  const displayBtn = document.getElementById('toggle-display-settings');
   // Active reading surface: formatted study view by default, verbatim transcript view when selected on video lessons
   function getReadingContent() {
     const transcriptView = document.getElementById('transcript-view');
@@ -812,6 +1180,7 @@ const transcriptSegments =
     });
 
     if (persist) localStorage.setItem('ahkh_reader_font_size', sz);
+    requestAnimationFrame(() => repositionAllGutterNotes());
   }
 
   const FONT_MAP = {
@@ -851,6 +1220,7 @@ const transcriptSegments =
     });
 
     if (persist) localStorage.setItem('ahkh_reader_font_family', resolvedFam);
+    requestAnimationFrame(() => repositionAllGutterNotes());
   }
 
   function applyReadingMeasure(measure, persist = true) {
@@ -883,6 +1253,7 @@ const transcriptSegments =
     }
 
     if (persist) localStorage.setItem('ahkh_reader_measure', measure);
+    requestAnimationFrame(() => repositionAllGutterNotes());
   }
 
   function applyTheme(theme, persist = true) {
@@ -921,6 +1292,14 @@ const transcriptSegments =
   }
 
   // Popover toggle
+  function closeDisplayMenu() {
+    if (!displayMenu || displayMenu.classList.contains('hidden')) return;
+    displayMenu.classList.add('hidden');
+    displayBtn?.setAttribute('aria-expanded', 'false');
+    displayBtn?.classList.remove('bg-paper-200/90', 'dark:bg-dark-border/80', 'text-ink', 'dark:text-dark-ink');
+    displayBtn?.classList.add('text-ink-muted', 'dark:text-dark-muted');
+  }
+
   function toggleDisplayMenu() {
     if (!displayMenu) return;
     const isHidden = displayMenu.classList.contains('hidden');
@@ -930,36 +1309,27 @@ const transcriptSegments =
       displayBtn?.classList.add('bg-paper-200/90', 'dark:bg-dark-border/80', 'text-ink', 'dark:text-dark-ink');
       displayBtn?.classList.remove('text-ink-muted', 'dark:text-dark-muted');
     } else {
-      displayMenu.classList.add('hidden');
-      displayBtn?.setAttribute('aria-expanded', 'false');
-      displayBtn?.classList.remove('bg-paper-200/90', 'dark:bg-dark-border/80', 'text-ink', 'dark:text-dark-ink');
-      displayBtn?.classList.add('text-ink-muted', 'dark:text-dark-muted');
+      closeDisplayMenu();
     }
   }
 
   displayBtn?.addEventListener('click', (e) => {
     e.stopPropagation();
     toggleDisplayMenu();
-  });
+  }, { signal: __ahkhSignal });
 
   document.addEventListener('click', (e) => {
     if (displayMenu && !displayMenu.classList.contains('hidden') && !displayMenu.contains(e.target) && e.target !== displayBtn) {
-      displayMenu.classList.add('hidden');
-      displayBtn?.setAttribute('aria-expanded', 'false');
-      displayBtn?.classList.remove('bg-paper-200', 'dark:bg-dark-border');
+      closeDisplayMenu();
     }
   }, { signal: __ahkhSignal });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      if (displayMenu && !displayMenu.classList.contains('hidden')) {
-        displayMenu.classList.add('hidden');
-        displayBtn?.setAttribute('aria-expanded', 'false');
-        displayBtn?.classList.remove('bg-paper-200', 'dark:bg-dark-border');
-      }
+      closeDisplayMenu();
       closeMobileDrawers();
     }
-    // Keyboard shortcuts: '[' for left sidebar, ']' for right sidebar
+    // Keyboard shortcuts: '[' for left sidebar, ']' for right sidebar, 'z' for zen mode, Alt+ArrowRight for next, Alt+ArrowLeft for previous
     if (!['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
       if (e.key === '[') {
         e.preventDefault();
@@ -967,6 +1337,21 @@ const transcriptSegments =
       } else if (e.key === ']') {
         e.preventDefault();
         toggleRightSidebar();
+      } else if (e.key.toLowerCase() === 'z' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        e.preventDefault();
+        toggleZenMode();
+      } else if (e.altKey && e.key === 'ArrowRight') {
+        const nextCard = document.getElementById('next-lesson-card-btn');
+        if (nextCard) {
+          e.preventDefault();
+          nextCard.click();
+        }
+      } else if (e.altKey && e.key === 'ArrowLeft') {
+        const prevCard = document.getElementById('prev-lesson-card-btn');
+        if (prevCard) {
+          e.preventDefault();
+          prevCard.click();
+        }
       }
     }
   }, { signal: __ahkhSignal });
@@ -976,7 +1361,7 @@ const transcriptSegments =
     btn.addEventListener('click', () => {
       const sz = btn.getAttribute('data-size');
       if (sz) applyFontSize(sz, true);
-    });
+    }, { signal: __ahkhSignal });
   });
 
   // Font buttons listeners
@@ -984,25 +1369,24 @@ const transcriptSegments =
     btn.addEventListener('click', () => {
       const fontId = btn.getAttribute('data-font-id');
       if (fontId) applyFontFamily(fontId, true);
-    });
+    }, { signal: __ahkhSignal });
   });
 
   // Measure buttons listeners
-  document.getElementById('measure-standard-btn')?.addEventListener('click', () => applyReadingMeasure('standard', true));
-  document.getElementById('measure-wide-btn')?.addEventListener('click', () => applyReadingMeasure('wide', true));
+  document.getElementById('measure-standard-btn')?.addEventListener('click', () => applyReadingMeasure('standard', true), { signal: __ahkhSignal });
+  document.getElementById('measure-wide-btn')?.addEventListener('click', () => applyReadingMeasure('wide', true), { signal: __ahkhSignal });
 
   // Theme buttons listeners
-  document.getElementById('theme-light-btn')?.addEventListener('click', () => applyTheme('light', true));
-  document.getElementById('theme-dark-btn')?.addEventListener('click', () => applyTheme('dark', true));
+  document.getElementById('theme-light-btn')?.addEventListener('click', () => applyTheme('light', true), { signal: __ahkhSignal });
+  document.getElementById('theme-dark-btn')?.addEventListener('click', () => applyTheme('dark', true), { signal: __ahkhSignal });
 
   // Theme change listener for reader UI sync
   window.addEventListener('ahkh-theme-change', () => {
     applyTheme(null, false);
   }, { signal: __ahkhSignal });
 
-
   // Reset button listener
-  document.getElementById('reset-display-btn')?.addEventListener('click', resetDisplaySettings);
+  document.getElementById('reset-display-btn')?.addEventListener('click', resetDisplaySettings, { signal: __ahkhSignal });
 
   // D. HIGHLIGHTING & MARGINALIA ENGINE
   const storageKey = `ahkh_hl_${courseId}_${lessonId}`;
@@ -1105,6 +1489,8 @@ const transcriptSegments =
   function initHlSwatches() {
     paintHlSwatches();
     document.querySelectorAll('.hl-swatch').forEach((b) => {
+      if (b.dataset.bound) return;
+      b.dataset.bound = 'true';
       b.addEventListener('click', (e) => {
         e.stopPropagation();
         const c = b.getAttribute('data-hl-color') || 'graphite';
@@ -1116,7 +1502,7 @@ const transcriptSegments =
           if (span) span.className = `ahkh-highlight ${hlClass(c)}`;
           saveHighlights();
         }
-      });
+      }, { signal: __ahkhSignal });
     });
   }
 
@@ -1222,6 +1608,10 @@ const transcriptSegments =
     window.getSelection()?.removeAllRanges();
     currentSelectionRange = null;
 
+    if (getStoredLessonState() === 'explored') {
+      showExploredReminderToast();
+    }
+
     return newItem;
   }
 
@@ -1241,7 +1631,7 @@ const transcriptSegments =
     } else if (currentSelectionRange) {
       createHighlightFromSelection();
     }
-  });
+  }, { signal: __ahkhSignal });
 
   popoverNoteBtn?.addEventListener('click', () => {
     if (activeExistingHighlight) {
@@ -1254,7 +1644,7 @@ const transcriptSegments =
         openNoteModal(created.id, created.text, '');
       }
     }
-  });
+  }, { signal: __ahkhSignal });
 
   popoverCopyBtn?.addEventListener('click', () => {
     const textToCopy = activeExistingHighlight 
@@ -1287,17 +1677,21 @@ const transcriptSegments =
         hidePopover();
       }, 900);
     });
-  });
+  }, { signal: __ahkhSignal });
 
   // Remove highlight
   function removeHighlight(id) {
     highlights = highlights.filter(h => h.id !== id);
     const spanEl = document.getElementById(id);
     if (spanEl && spanEl.parentNode) {
-      spanEl.replaceWith(document.createTextNode(spanEl.textContent || ''));
+      while (spanEl.firstChild) {
+        spanEl.parentNode.insertBefore(spanEl.firstChild, spanEl);
+      }
+      spanEl.remove();
     }
     const gutterEl = document.getElementById(`gutter-note-${id}`);
     if (gutterEl) gutterEl.remove();
+    repositionAllGutterNotes();
     saveHighlights();
   }
 
@@ -1317,13 +1711,13 @@ const transcriptSegments =
     activeHighlightIdForNote = null;
   }
 
-  document.getElementById('close-note-dialog-btn')?.addEventListener('click', closeNoteModal);
-  document.getElementById('cancel-note-btn')?.addEventListener('click', closeNoteModal);
+  document.getElementById('close-note-dialog-btn')?.addEventListener('click', closeNoteModal, { signal: __ahkhSignal });
+  document.getElementById('cancel-note-btn')?.addEventListener('click', closeNoteModal, { signal: __ahkhSignal });
 
-  document.getElementById('save-note-btn')?.addEventListener('click', saveNoteAction);
+  document.getElementById('save-note-btn')?.addEventListener('click', saveNoteAction, { signal: __ahkhSignal });
   document.getElementById('note-dialog')?.addEventListener('mousedown', (e) => {
     if (e.target && e.target.id === 'note-dialog') closeNoteModal();
-  });
+  }, { signal: __ahkhSignal });
 
   function saveNoteAction() {
     if (!activeHighlightIdForNote || !noteInput) return;
@@ -1369,6 +1763,12 @@ const transcriptSegments =
       gutterEl.style.setProperty('--course-accent', courseAccent);
       getReadingContent().appendChild(gutterEl);
     }
+
+    if (span.closest('.hidden') || span.offsetParent === null) {
+      gutterEl.style.display = 'none';
+      return;
+    }
+    gutterEl.style.display = '';
 
     const readingBox = getReadingContent().getBoundingClientRect();
     const spanBox = span.getBoundingClientRect();
@@ -1421,8 +1821,13 @@ const transcriptSegments =
         const span = document.getElementById(item.id);
         const gutterEl = document.getElementById(`gutter-note-${item.id}`);
         if (span && gutterEl) {
-          const spanBox = span.getBoundingClientRect();
-          gutterEl.style.top = `${Math.max(0, spanBox.top - readingBox.top)}px`;
+          if (span.closest('.hidden') || span.offsetParent === null) {
+            gutterEl.style.display = 'none';
+          } else {
+            gutterEl.style.display = '';
+            const spanBox = span.getBoundingClientRect();
+            gutterEl.style.top = `${Math.max(0, spanBox.top - readingBox.top)}px`;
+          }
         }
       }
     });
@@ -1431,43 +1836,66 @@ const transcriptSegments =
 
   window.addEventListener('resize', repositionAllGutterNotes, { passive: true, signal: __ahkhSignal });
 
-  // DOM Text Range Search for Highlighting Restoration
+  // DOM Text Range Search for Highlighting Restoration (Multi-occurrence & Overlap-Safe)
   function findRangeForTextInElement(element, searchText) {
     const fullText = element.textContent || '';
-    const startChar = fullText.indexOf(searchText);
-    if (startChar === -1) return null;
-    const endChar = startChar + searchText.length;
+    if (!fullText || !searchText) return null;
 
-    let currentChar = 0;
-    let startNode = null;
-    let startOffset = 0;
-    let endNode = null;
-    let endOffset = 0;
+    let searchFrom = 0;
+    while (searchFrom < fullText.length) {
+      let startChar = fullText.indexOf(searchText, searchFrom);
+      let searchLen = searchText.length;
 
-    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null);
-    let textNode;
-
-    while ((textNode = walker.nextNode())) {
-      const len = (textNode.nodeValue || '').length;
-      const nextChar = currentChar + len;
-
-      if (!startNode && startChar >= currentChar && startChar < nextChar) {
-        startNode = textNode;
-        startOffset = startChar - currentChar;
+      if (startChar === -1) {
+        if (searchFrom > 0) break;
+        const normSearch = searchText.replace(/\s+/g, ' ').trim();
+        if (!normSearch) return null;
+        const words = normSearch.split(' ').map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+        const pattern = new RegExp(words.join('\\s+'));
+        const match = pattern.exec(fullText);
+        if (!match) return null;
+        startChar = match.index;
+        searchLen = match[0].length;
       }
-      if (!endNode && endChar > currentChar && endChar <= nextChar) {
-        endNode = textNode;
-        endOffset = endChar - currentChar;
-        break;
-      }
-      currentChar = nextChar;
-    }
 
-    if (startNode && endNode) {
-      const range = document.createRange();
-      range.setStart(startNode, startOffset);
-      range.setEnd(endNode, endOffset);
-      return range;
+      const endChar = startChar + searchLen;
+      let currentChar = 0;
+      let startNode = null;
+      let startOffset = 0;
+      let endNode = null;
+      let endOffset = 0;
+
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null);
+      let textNode;
+
+      while ((textNode = walker.nextNode())) {
+        const len = (textNode.nodeValue || '').length;
+        const nextChar = currentChar + len;
+
+        if (!startNode && startChar >= currentChar && startChar < nextChar) {
+          startNode = textNode;
+          startOffset = startChar - currentChar;
+        }
+        if (!endNode && endChar > currentChar && endChar <= nextChar) {
+          endNode = textNode;
+          endOffset = endChar - currentChar;
+          break;
+        }
+        currentChar = nextChar;
+      }
+
+      if (startNode && endNode) {
+        const isAlreadyInsideHighlight = (startNode.parentElement && startNode.parentElement.closest('.ahkh-highlight')) ||
+                                         (endNode.parentElement && endNode.parentElement.closest('.ahkh-highlight'));
+        if (!isAlreadyInsideHighlight) {
+          const range = document.createRange();
+          range.setStart(startNode, startOffset);
+          range.setEnd(endNode, endOffset);
+          return range;
+        }
+      }
+
+      searchFrom = startChar + 1;
     }
     return null;
   }
@@ -1486,7 +1914,7 @@ const transcriptSegments =
         return;
       }
 
-      const blocks = restoreViews.flatMap((v) => Array.from(v.querySelectorAll('p, blockquote, li, h2, h3, .cue-text, [data-timestamp] p')));
+      const blocks = restoreViews.flatMap((v) => Array.from(v.querySelectorAll('p, blockquote, li, h2, h3, h4, td, th, figcaption, .cue-text, [data-timestamp] p')));
       for (const block of blocks) {
         const range = findRangeForTextInElement(block, item.text);
         if (range) {
@@ -1525,8 +1953,16 @@ const transcriptSegments =
 
     if (highlights.length === 0) {
       listEl.innerHTML = `
-        <div class="text-[11px] font-sans text-ink-faint text-center py-8">
-          No highlights yet in this lesson.
+        <div class="text-center py-8 px-3 border border-dashed border-ink-border/60 dark:border-dark-border/60 rounded-xs bg-paper-50/50 dark:bg-dark-card/30 animate-in fade-in duration-300">
+          <div class="w-7 h-7 mx-auto mb-2 rounded-full bg-paper-200/70 dark:bg-dark-border/50 text-ink-muted dark:text-dark-muted flex items-center justify-center">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+          </div>
+          <p class="font-serif text-xs font-medium text-ink dark:text-dark-ink mb-1">No Highlights Yet</p>
+          <p class="text-[11px] font-sans text-ink-muted dark:text-dark-muted leading-relaxed">
+            Select any text passage to highlight and record marginal thoughts.
+          </p>
         </div>
       `;
       return;
@@ -1534,7 +1970,7 @@ const transcriptSegments =
 
     listEl.innerHTML = highlights.map(item => `
       <article 
-        class="p-3.5 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-100 dark:hover:bg-dark-border/40 transition-colors cursor-pointer group"
+        class="p-3.5 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-100 dark:hover:bg-dark-border/40 transition-all duration-200 cursor-pointer group shadow-2xs animate-in fade-in duration-200"
         onclick="jumpToHighlight('${item.id}')"
       >
         <div class="flex items-center justify-between mb-2 text-xs font-mono text-ink/80 dark:text-dark-ink/80">
@@ -1562,8 +1998,9 @@ const transcriptSegments =
           "${escapeHtml(item.text)}"
         </blockquote>
         ${item.note ? `
-          <div class="text-xs font-sans text-ink dark:text-dark-ink bg-paper-200/80 dark:bg-dark-border/60 p-2 rounded-xs border-l-2 border-ink dark:border-dark-ink leading-relaxed">
-            ${escapeHtml(item.note)}
+          <div class="text-xs font-sans text-ink dark:text-dark-ink bg-paper-100 dark:bg-dark-card p-2.5 rounded-xs border border-ink-border dark:border-dark-border leading-relaxed space-y-1">
+            <div class="font-mono text-[10px] uppercase tracking-wider text-ink-muted dark:text-dark-muted font-medium">Marginalia</div>
+            <p>${escapeHtml(item.note)}</p>
           </div>
         ` : `
           <button 
@@ -1589,11 +2026,16 @@ const transcriptSegments =
   };
 
   window.jumpToHighlight = function(id) {
+    closeMobileDrawers();
     const el = document.getElementById(id);
     if (el) {
       const tv = document.getElementById('transcript-view');
       if (tv && tv.contains(el) && tv.classList.contains('hidden') && typeof setTranscriptView === 'function') {
         setTranscriptView('original', false);
+      }
+      const fv = document.getElementById('formatted-view');
+      if (fv && fv.contains(el) && fv.classList.contains('hidden') && typeof setTranscriptView === 'function') {
+        setTranscriptView('formatted', false);
       }
       scrollActiveCueIntoView(el, true);
       el.classList.remove('active');
@@ -1759,6 +2201,8 @@ const transcriptSegments =
 
     // Attach click handlers to timestamp jump buttons
     document.querySelectorAll('.timestamp-btn, [data-seek-time], button[data-timestamp]').forEach(btn => {
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = 'true';
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         const seekVal = parseFloat(btn.getAttribute('data-seek-time') || btn.getAttribute('data-timestamp') || '0');
@@ -1772,7 +2216,7 @@ const transcriptSegments =
         if (targetCue) {
           scrollActiveCueIntoView(targetCue, true);
         }
-      });
+      }, { signal: __ahkhSignal });
     });
 
     if (window.YT && window.YT.Player) {
@@ -1851,27 +2295,33 @@ const transcriptSegments =
       }
     }
 
-    pinBtn?.addEventListener('click', (e) => {
-      e.preventDefault();
-      isPinned = !isPinned;
-      try { localStorage.setItem('ahkh_video_pinned', isPinned.toString()); } catch (err) {}
-      applyPinState();
-      setTimeout(() => {
-        const active = document.querySelector('.yt-active-paragraph');
-        if (active) scrollActiveCueIntoView(active, true);
-      }, 320);
-    });
+    if (pinBtn && !pinBtn.dataset.bound) {
+      pinBtn.dataset.bound = 'true';
+      pinBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        isPinned = !isPinned;
+        try { localStorage.setItem('ahkh_video_pinned', isPinned.toString()); } catch (err) {}
+        applyPinState();
+        setTimeout(() => {
+          const active = document.querySelector('.yt-active-paragraph');
+          if (active) scrollActiveCueIntoView(active, true);
+        }, 320);
+      }, { signal: __ahkhSignal });
+    }
 
-    compactBtn?.addEventListener('click', (e) => {
-      e.preventDefault();
-      isCompact = !isCompact;
-      try { localStorage.setItem('ahkh_video_compact', isCompact.toString()); } catch (err) {}
-      applyCompactState();
-      setTimeout(() => {
-        const active = document.querySelector('.yt-active-paragraph');
-        if (active) scrollActiveCueIntoView(active, true);
-      }, 320);
-    });
+    if (compactBtn && !compactBtn.dataset.bound) {
+      compactBtn.dataset.bound = 'true';
+      compactBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        isCompact = !isCompact;
+        try { localStorage.setItem('ahkh_video_compact', isCompact.toString()); } catch (err) {}
+        applyCompactState();
+        setTimeout(() => {
+          const active = document.querySelector('.yt-active-paragraph');
+          if (active) scrollActiveCueIntoView(active, true);
+        }, 320);
+      }, { signal: __ahkhSignal });
+    }
 
     applyPinState();
     applyCompactState();
@@ -1938,9 +2388,127 @@ const transcriptSegments =
     try { saved = localStorage.getItem(TRANSCRIPT_VIEW_KEY) || 'formatted'; } catch (e) {}
     if (saved !== 'original' && saved !== 'formatted') saved = 'formatted';
     tabs.forEach((btn) => {
-      btn.addEventListener('click', () => setTranscriptView(btn.getAttribute('data-transcript-view') || 'formatted'));
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = 'true';
+      btn.addEventListener('click', () => setTranscriptView(btn.getAttribute('data-transcript-view') || 'formatted'), { signal: __ahkhSignal });
     });
     setTranscriptView(saved, false);
+  }
+
+  // Completion Toggle Controller
+  function updateCompletionButton(isCompleted) {
+    const btn = document.getElementById('toggle-lesson-completed-btn');
+    const icon = document.getElementById('lesson-completed-icon');
+    const label = document.getElementById('lesson-completed-label');
+    if (!btn || !icon || !label) return;
+
+    if (isCompleted) {
+      icon.className = 'flex items-center text-emerald-600 dark:text-emerald-400';
+      icon.innerHTML = `
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      `;
+      label.textContent = 'Completed';
+      btn.classList.add('border-emerald-200/80', 'dark:border-emerald-800/40', 'bg-emerald-50/40', 'dark:bg-emerald-950/20');
+      btn.classList.remove('border-ink-border', 'dark:border-dark-border', 'bg-paper-50', 'dark:bg-dark-card');
+    } else {
+      icon.className = 'flex items-center text-ink-muted dark:text-dark-muted';
+      icon.innerHTML = `
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+        </svg>
+      `;
+      label.textContent = 'Mark as complete';
+      btn.classList.remove('border-emerald-200/80', 'dark:border-emerald-800/40', 'bg-emerald-50/40', 'dark:bg-emerald-950/20');
+      btn.classList.add('border-ink-border', 'dark:border-dark-border', 'bg-paper-50', 'dark:bg-dark-card');
+    }
+  }
+
+  function initCompletionToggle() {
+    const btn = document.getElementById('toggle-lesson-completed-btn');
+    if (!btn) return;
+
+    if (!btn.dataset.initialized) {
+      btn.dataset.initialized = 'true';
+      btn.addEventListener('click', () => {
+        const readKey = `ahkh_read_${courseId}_${lessonSlug}`;
+        const isCurrentlyRead = localStorage.getItem(readKey) !== null;
+        if (isCurrentlyRead) {
+          try { localStorage.removeItem(readKey); } catch (e) {}
+          updateCompletionButton(false);
+          updateLessonStatusUI();
+        } else {
+          try { localStorage.setItem(readKey, new Date().toISOString()); } catch (e) {}
+          updateCompletionButton(true);
+          updateLessonStatusUI();
+          if (progressFill) progressFill.style.width = '100%';
+        }
+      }, { signal: __ahkhSignal });
+    }
+
+    const isRead = localStorage.getItem(`ahkh_read_${courseId}_${lessonSlug}`) !== null;
+    updateCompletionButton(isRead);
+  }
+
+  // Document Outline Scrollspy & Mobile Drawer Handling
+  function initOutlineScrollspy() {
+    const outlineLinks = Array.from(document.querySelectorAll('#left-sidebar nav a[href^="#"]'));
+    if (!outlineLinks.length) return;
+
+    outlineLinks.forEach((link) => {
+      if (!link.dataset.drawerBound) {
+        link.dataset.drawerBound = 'true';
+        link.addEventListener('click', () => {
+          closeMobileDrawers();
+        }, { signal: __ahkhSignal });
+      }
+    });
+
+    const headings = outlineLinks
+      .map((a) => {
+        const id = a.getAttribute('href')?.slice(1);
+        return id ? document.getElementById(id) : null;
+      })
+      .filter(Boolean);
+
+    if (!headings.length) return;
+
+    function updateActiveHeading() {
+      const topOffset = 120;
+      let activeHeadingId = null;
+
+      for (const h of headings) {
+        const rect = h.getBoundingClientRect();
+        if (rect.top <= topOffset) {
+          activeHeadingId = h.id;
+        } else {
+          break;
+        }
+      }
+
+      if (!activeHeadingId && headings.length > 0) {
+        activeHeadingId = headings[0].id;
+      }
+
+      outlineLinks.forEach((link) => {
+        const targetId = link.getAttribute('href')?.slice(1);
+        const isActive = targetId === activeHeadingId;
+        if (isActive) {
+          link.classList.add('text-ink', 'dark:text-dark-ink', 'border-ink', 'dark:border-dark-ink', 'bg-paper-100', 'dark:bg-dark-surface', 'font-medium');
+          link.classList.remove('text-ink/70', 'dark:text-dark-ink/70', 'border-transparent');
+        } else {
+          link.classList.remove('text-ink', 'dark:text-dark-ink', 'border-ink', 'dark:border-dark-ink', 'bg-paper-100', 'dark:bg-dark-surface');
+          link.classList.add('text-ink/70', 'dark:text-dark-ink/70', 'border-transparent');
+        }
+      });
+    }
+
+    if (!window.__ahkhOutlineSpyBound) {
+      window.__ahkhOutlineSpyBound = true;
+      window.addEventListener('scroll', updateActiveHeading, { passive: true, signal: __ahkhSignal });
+    }
+    updateActiveHeading();
   }
 
   // Initialize UI on load
@@ -1977,6 +2545,22 @@ const transcriptSegments =
     updateSidebarButtons();
     try { localStorage.setItem(`ahkh_opened_${courseId}_${lessonSlug}`, new Date().toISOString()); } catch (e) {}
 
+    // Wire up Start Reading buttons
+    const startBtn = document.getElementById('start-reading-btn');
+    if (startBtn && !startBtn.dataset.initialized) {
+      startBtn.dataset.initialized = 'true';
+      startBtn.addEventListener('click', startReading, { signal: __ahkhSignal });
+    }
+    const toastStartBtn = document.getElementById('toast-start-reading-btn');
+    if (toastStartBtn && !toastStartBtn.dataset.initialized) {
+      toastStartBtn.dataset.initialized = 'true';
+      toastStartBtn.addEventListener('click', startReading, { signal: __ahkhSignal });
+    }
+
+    // Initial status UI & scroll restoration
+    updateLessonStatusUI();
+    restoreSavedScrollPosition();
+
     // Re-enable smooth transitions on the next frame
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
@@ -1987,6 +2571,31 @@ const transcriptSegments =
     updateHeaderCount();
     renderSidebarHighlights();
     restoreHighlightsInDOM();
+    initCompletionToggle();
+    initOutlineScrollspy();
+
+    // If deep-linked directly to a saved highlight anchor (#hl_...), scroll smoothly and pulse
+    if (window.location.hash && window.location.hash.startsWith('#hl_')) {
+      const targetId = window.location.hash.slice(1);
+      setTimeout(() => {
+        if (typeof window.jumpToHighlight === 'function') {
+          window.jumpToHighlight(targetId);
+        }
+      }, 150);
+    }
+
+    if (!window.__ahkhHashChangeBound) {
+      window.__ahkhHashChangeBound = true;
+      window.addEventListener('hashchange', () => {
+        if (window.location.hash && window.location.hash.startsWith('#hl_')) {
+          const targetId = window.location.hash.slice(1);
+          if (typeof window.jumpToHighlight === 'function') {
+            window.jumpToHighlight(targetId);
+          }
+        }
+      }, { signal: __ahkhSignal });
+    }
+
     initYouTubeSync();
     initStickyVideo();
     initTranscriptToggle();
@@ -1995,5 +2604,16 @@ const transcriptSegments =
 
   // Single boot path: ClientRouter (always enabled in BaseLayout) fires
   // astro:page-load on initial load and on every navigation.
-  document.addEventListener('astro:page-load', initLesson, { signal: __ahkhSignal });
+  let __ahkhLessonBooted = false;
+  function safeBootLesson() {
+    if (__ahkhLessonBooted) return;
+    __ahkhLessonBooted = true;
+    initLesson();
+  }
+  document.addEventListener('astro:page-load', safeBootLesson, { signal: __ahkhSignal });
+
+  // Fallback in case script executed after astro:page-load has already completed
+  if (document.readyState === 'complete') {
+    safeBootLesson();
+  }
 </script>

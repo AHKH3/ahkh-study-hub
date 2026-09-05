@@ -49,10 +49,10 @@ All courses in AHKH Study Hub adhere strictly to the **Unified Global Design Sys
   - Strict tone rule: Calibrated 600–700 hues in light mode, calibrated 400 hues in dark mode. Pure text color only; zero colored background cards or pills.
   - Never hardcode or inject orange/terracotta as a default or universal course theme.
 - **Status Badge Color Taxonomy**:
-  - `active`: Emerald (`text-emerald-700 bg-emerald-50 border-emerald-200`)
-  - `new`: Blue (`text-blue-700 bg-blue-50 border-blue-200`)
-  - `explored`: Purple (`text-purple-700 bg-purple-50 border-purple-200`)
-  - `completed`: Pink (`text-pink-700 bg-pink-50 border-pink-200`)
+  - `active`: Emerald (`text-emerald-700 bg-emerald-50 border-emerald-200`, dot `bg-emerald-600 dark:bg-emerald-400`)
+  - `new`: Blue (`text-blue-700 bg-blue-50 border-blue-200`, dot `bg-blue-600 dark:bg-blue-400`)
+  - `explored`: Purple (`text-purple-700 bg-purple-50 border-purple-200`, dot `bg-purple-600 dark:bg-purple-400`)
+  - `completed`: Slate (`text-slate-600 dark:text-slate-400`, dot `bg-slate-500 dark:bg-slate-400`)
 - **Absolute Ban on AI Slop & Synthetic Crutches (Zero Slashes `//` & Zero Emojis)**:
   - Strictly ZERO emojis and ZERO double-slashes (`//`) in the codebase, UI, lesson text, badges, cards, or markdown files.
   - Never use `//` or programming syntax as a fake "technical" or "editorial" costume.
@@ -60,7 +60,13 @@ All courses in AHKH Study Hub adhere strictly to the **Unified Global Design Sys
   - Use clean, bespoke inline SVG icons and dignified typographical punctuation (`—`, `•`) exclusively.
 - **Verbatim Text Preservation**: Content from articles, video transcripts, or PDFs must be ingested with 100% fidelity. Never summarize, truncate, or rewrite text unless explicitly instructed by the user.
 - **Local Sovereignty**: All reader highlights and marginal notes persist exclusively in browser `localStorage` under `ahkh_hl_${courseId}_${lessonId}`. Never add remote servers, databases, or tracking telemetry.
-- **Low-Contrast Tactile Active States & Overlays (No Inverted Black Blocks)**: Never invert active buttons, segmented controls, floating menus, or selection popovers into solid jet-black blocks (`bg-ink`) or heavy black borders (`border-ink`). Active states on light surfaces must use subtle recessed neutral fills (`bg-paper-200/90` or `bg-white` with `shadow-2xs`) and maintain standard neutral zinc borders (`border-ink-border`). Floating popovers and toasts must float on pure white (`bg-white`) or clean off-white surfaces with delicate soft shadows.
+- **Low-Contrast Tactile Active States & Overlays (Universal Prohibition of High-Contrast Harshness)**: Never invert active buttons, segmented controls, floating menus, or selection popovers into solid jet-black blocks (`bg-ink`, `bg-black`) or heavy black borders (`border-ink`, `border-black`). Never use stark hover text color jumps (`text-black`, `text-white`). Active states on light surfaces must use subtle recessed neutral fills (`bg-paper-200/90` or `bg-white` with `shadow-2xs`) and maintain standard neutral zinc borders (`border-ink-border`). All cards, navigation affordances, and interactive surfaces must remain low-contrast, serene, and calm, integrating peacefully into the paper medium.
+- **Universal Prohibition of Whole-Element Movement on Hover (ADR-017)**: Entire elements (cards, buttons, containers, articles, rows) must NEVER physically move, translate, or scale on hover (`hover:translate-`, `hover:-translate-`, `hover:scale-`). Movement is permitted exclusively as directional micro-interactions on nested SVG icon elements (e.g., an arrow chevron nudging slightly on link hover: `group-hover:translate-x-1` / `group-hover:-translate-x-0.5`). Cards, buttons, and rows communicate hover affordance purely via subtle low-contrast background washes (`hover:bg-paper-50 dark:hover:bg-dark-card/40`) and text decoration (`group-hover:underline`), remaining firmly grounded on the paper canvas with zero hover elevation shadows.
+- **Intentional Reading Lifecycle & Explicit Completion (ADR-018)**:
+  - Lessons adhere to a strict 4-state lifecycle: `new` (blue dot), `explored` (purple dot), `reading` (amber dot), `completed` (emerald dot).
+  - NEVER trigger reading completion implicitly via scroll depth (such as reaching 90% or the page bottom) or short lesson length. Completion requires an explicit user action on the bottom completion button.
+  - Entering study mode requires clicking "Start Reading", which records the start timestamp and switches the state to `reading`. Highlighting while in `explored` state preserves the highlight but triggers a polite reminder toast.
+  - Continuous vertical scroll position and depth percentage must be stored locally (`ahkh_scroll_...`) and faithfully restored upon opening any lesson.
 - **Base URL Awareness**: All internal links and static assets must wrap their paths with `path()` from `src/utils/paths.ts` to ensure flawless routing on GitHub Pages (`/ahkh-study-hub`).
 
 ## 3. Visual Reproduction, Synthetic Assets & Course Source Protocol (دستور إعادة إنتاج الدروس والأصول البصرية)

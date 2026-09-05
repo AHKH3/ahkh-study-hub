@@ -10,6 +10,8 @@
     "dev": "astro dev",
     "transcripts": "node scripts/fetch-transcripts.mjs",
     "verify:scripts": "node scripts/check-inline-scripts.mjs",
+    "verify:dist": "node scripts/verify-dist.mjs",
+    "verify": "npm run verify:scripts && npm run verify:dist",
     "prebuild": "node scripts/fetch-transcripts.mjs",
     "build": "astro build",
     "preview": "astro preview"

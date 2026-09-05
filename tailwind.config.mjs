@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        ui: ['"Playfair Display"', 'Georgia', 'serif'],
+        ui: ['Geist', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         serif: ['var(--reader-font-family, Merriweather)', 'Merriweather', 'Georgia', 'serif'],
         sans: ['Geist', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
@@ -15,11 +15,11 @@ export default {
       colors: {
         canvas: {
           light: '#FFFFFF',
-          dark: '#121214',
+          dark: '#09090B',
         },
         surface: {
           light: '#FAFAFA',
-          dark: '#18181B',
+          dark: '#121215',
         },
         paper: {
           50: '#FFFFFF',
@@ -34,11 +34,11 @@ export default {
           border: '#E4E4E7',
         },
         dark: {
-          bg: '#121214',
-          surface: '#18181B',
-          card: '#1E1E22',
+          bg: '#09090B',
+          surface: '#121215',
+          card: '#18181B',
           border: '#27272A',
-          ink: '#D4D4D8',
+          ink: '#F4F4F5',
           muted: '#A1A1AA',
           faint: '#52525B',
         }

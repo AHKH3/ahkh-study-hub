@@ -22,19 +22,19 @@ const STATUS_CONFIG: Record<string, { label: string; dotClass: string; textClass
     textClass: 'text-emerald-700 dark:text-emerald-400',
   },
   new: {
-    label: 'New Track',
+    label: 'New',
     dotClass: 'bg-blue-600 dark:bg-blue-400',
     textClass: 'text-blue-700 dark:text-blue-400',
   },
   explored: {
-    label: 'Explored',
+    label: 'Exploring',
     dotClass: 'bg-purple-600 dark:bg-purple-400',
     textClass: 'text-purple-700 dark:text-purple-400',
   },
   completed: {
     label: 'Completed',
-    dotClass: 'bg-pink-600 dark:bg-pink-400',
-    textClass: 'text-pink-700 dark:text-pink-400',
+    dotClass: 'bg-slate-500 dark:bg-slate-400',
+    textClass: 'text-slate-600 dark:text-slate-400',
   },
 };
 
@@ -42,9 +42,12 @@ const statusMeta = STATUS_CONFIG[course.status];
 ---
 
 <BaseLayout title={`${course.title} — Learning Journey`} description={course.description}>
-  <!-- Minimal Top Header for Course -->
-  <header class="w-full border-b border-ink-border/80 dark:border-dark-border bg-paper-100/90 dark:bg-dark-bg/90 backdrop-blur-sm sticky top-0 z-30 transition-colors">
-    <div class="max-w-hub mx-auto px-6 h-14 flex items-center justify-between">
+  <!-- Minimal Top Header for Course (Harmonized with HubHeader) -->
+  <header 
+    transition:name="hub-header"
+    class="hub-header w-full border-b border-ink-border/60 dark:border-dark-border bg-paper-100/90 dark:bg-dark-bg/90 backdrop-blur-sm sticky top-0 z-30 transition-colors"
+  >
+    <div class="max-w-hub mx-auto px-6 h-16 flex items-center justify-between gap-4">
       <a href={path('/')} class="flex items-center gap-2 text-xs font-ui font-medium text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink transition-colors group">
         <svg class="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m15 18-6-6 6-6"/>
@@ -56,20 +59,20 @@ const statusMeta = STATUS_CONFIG[course.status];
         <span id="journey-progress-label" class="font-mono text-xs text-ink-muted dark:text-dark-muted">
           Progress: {course.progressPercent}%
         </span>
-        <div class="w-20 h-1.5 bg-paper-300 dark:bg-dark-border rounded-full overflow-hidden">
+        <div class="w-20 h-[3px] bg-paper-300 dark:bg-dark-border rounded-none overflow-hidden">
           <div 
             id="journey-progress-fill"
-            class="h-full bg-ink dark:bg-dark-ink transition-all" 
+            class="h-full bg-ink dark:bg-dark-ink transition-all duration-700 ease-out" 
             style={`width: ${course.progressPercent}%`}
           ></div>
         </div>
-        <div class="h-4 w-px bg-ink-border/60 dark:border-dark-border" aria-hidden="true"></div>
+        <div class="h-4 w-px bg-ink-border/60 dark:bg-dark-border" aria-hidden="true"></div>
         <ThemeSwitcher />
       </div>
     </div>
   </header>
 
-  <main class="flex-1 max-w-reading w-full mx-auto px-6 py-12" data-course-id={course.slug} data-total={countLessons(course)}>
+  <main class="flex-1 max-w-reading w-full mx-auto px-6 py-12" data-course-id={course.id} data-total={countLessons(course)}>
     <!-- Course Title & Metadata (Library-Aligned Monograph) -->
     <div class="mb-14 pb-8 border-b border-ink-border/80 dark:border-dark-border">
       <div class="flex flex-wrap items-center gap-3 mb-3">
@@ -89,7 +92,7 @@ const statusMeta = STATUS_CONFIG[course.status];
       </h1>
 
       {course.description && (
-        <p class="font-serif text-base sm:text-lg text-ink/80 dark:text-dark-ink/80 max-w-3xl leading-relaxed">
+        <p class="font-serif text-base sm:text-lg text-ink-muted dark:text-dark-muted max-w-3xl leading-relaxed">
           {course.description}
         </p>
       )}
@@ -122,32 +125,43 @@ const statusMeta = STATUS_CONFIG[course.status];
           <!-- Modules List -->
           <div class="space-y-6">
             {course.modules.map((mod) => (
-              <section class="border border-ink-border/80 dark:border-dark-border rounded-xs bg-white dark:bg-dark-card overflow-hidden transition-colors">
+              <section data-module-section={mod.id} class="border border-ink-border/80 dark:border-dark-border rounded-xs bg-white dark:bg-dark-card overflow-hidden transition-colors">
                 <!-- Module Milestone Header (Interactive Accordion Trigger) -->
                 <button
                   type="button"
-                  class="module-toggle-btn w-full flex items-start justify-between gap-4 p-4 hover:bg-paper-100/60 dark:hover:bg-dark-border/30 transition-colors text-left group cursor-pointer focus:outline-hidden"
+                  class="module-toggle-btn w-full flex items-start justify-between gap-5 p-5 hover:bg-transparent transition-colors text-left group cursor-pointer focus:outline-hidden"
                   data-module-id={mod.id}
                   aria-expanded="true"
                 >
-                  <div class="flex items-start gap-3.5 min-w-0">
+                  <div class="flex items-start gap-4 min-w-0">
                     <!-- Concise Coordinate Badge: ONLY U1, U2 -->
-                    <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded-xs border border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-card text-ink dark:text-dark-ink shrink-0 group-hover:border-ink-muted/60 transition-colors shadow-2xs">
+                    <span class="font-mono text-xs font-bold px-2.5 py-1 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-100 dark:bg-dark-surface text-ink-muted dark:text-dark-muted shrink-0 transition-colors shadow-2xs group-hover:text-ink dark:group-hover:text-dark-ink">
                       U{mod.number}
                     </span>
 
-                    <div class="min-w-0 pt-0.5">
+                    <div class="min-w-0 pt-[1px]">
                       <!-- Module Title - Clean and direct without redundant copy or underlines -->
-                      <h2 class="font-serif text-lg sm:text-xl font-medium text-ink dark:text-dark-ink transition-colors">
+                      <h2 class="font-serif text-lg sm:text-xl font-medium text-ink dark:text-dark-ink group-hover:text-ink-muted dark:group-hover:text-dark-muted transition-colors leading-snug">
                         {mod.title}
                       </h2>
                     </div>
                   </div>
 
-                  <div class="flex items-center gap-2.5 shrink-0 pt-1 text-ink-muted dark:text-dark-muted group-hover:text-ink dark:group-hover:text-dark-ink transition-colors">
-                    <span class="font-mono text-[11px]">
+                  <div class="flex items-center gap-3 shrink-0 pt-1 text-ink-muted dark:text-dark-muted group-hover:text-ink dark:group-hover:text-dark-ink transition-colors">
+                    <span class="font-mono text-[11px]" data-module-stats={mod.id}>
                       {mod.lessons.length} {mod.lessons.length === 1 ? 'lesson' : 'lessons'}
                     </span>
+                    <!-- Module progress bar -->
+                    <div class="hidden sm:flex items-center gap-2 font-mono text-[11px]">
+                      <div class="w-16 sm:w-20 h-[3px] bg-paper-300 dark:bg-dark-border rounded-none overflow-hidden">
+                        <div 
+                          class="h-full bg-paper-400 dark:bg-dark-border transition-all duration-500 ease-out"
+                          data-module-fill={mod.id}
+                          style="width: 0%"
+                        ></div>
+                      </div>
+                      <span class="w-8 text-right font-medium text-ink-muted dark:text-dark-muted" data-module-pct={mod.id}>0%</span>
+                    </div>
                     <svg 
                       class="w-4 h-4 transform transition-transform duration-200 chevron-icon rotate-180" 
                       viewBox="0 0 24 24" 
@@ -206,7 +220,7 @@ const statusMeta = STATUS_CONFIG[course.status];
                             />
 
                             <!-- Editorial Lesson Row Surface -->
-                            <article data-lesson-slug={lesson.slug} class="relative rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50/70 dark:bg-dark-bg/60 hover:bg-white dark:hover:bg-dark-card hover:border-ink-border dark:hover:border-dark-border transition-all p-3 sm:p-3.5 shadow-2xs">
+                            <article data-lesson-slug={lesson.slug} class="relative overflow-hidden rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50/70 dark:bg-dark-bg/60 hover:bg-white dark:hover:bg-dark-card hover:border-ink-border dark:hover:border-dark-border transition-colors duration-200 p-3 sm:p-3.5 shadow-2xs">
                               <a href={path(`/courses/${course.slug}/${lesson.slug}`)} class="block focus:outline-hidden">
                                 <div class="flex items-center justify-between gap-4">
                                   
@@ -239,16 +253,25 @@ const statusMeta = STATUS_CONFIG[course.status];
                                     </div>
                                   </div>
 
-                                  <!-- Right Arrow Indicator (No 'Study' label) -->
-                                  <div class="shrink-0 flex items-center justify-center w-6 h-6 rounded-xs text-ink-muted/60 dark:text-dark-muted/60 group-hover:text-ink dark:group-hover:text-dark-ink transition-colors">
-                                    <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                      <path d="M5 12h14M12 5l7 7-7 7"/>
-                                    </svg>
-                                    <span class="read-tick hidden font-mono text-[10px]" data-read-tick></span>
+                                  <!-- Right Arrow & Read State Indicator -->
+                                  <div class="shrink-0 flex items-center gap-2.5 text-ink-muted/60 dark:text-dark-muted/60 group-hover:text-ink dark:group-hover:text-dark-ink transition-colors">
+                                    <span class="font-mono text-[10px] text-ink-muted dark:text-dark-muted" data-scroll-pct>0%</span>
+                                    <span class="read-tick font-mono text-[11px] font-medium tracking-wide" data-read-tick>• New</span>
+                                    <div class="w-6 h-6 flex items-center justify-center rounded-xs">
+                                      <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                                      </svg>
+                                    </div>
                                   </div>
 
                                 </div>
                               </a>
+                              <!-- Lesson Bottom Scroll Progress Bar -->
+                              <div 
+                                class="absolute bottom-0 left-0 h-[2.5px] transition-all duration-500 pointer-events-none"
+                                data-lesson-progress-bar
+                                style="width: 0%"
+                              ></div>
                             </article>
                           </div>
                         );
@@ -346,6 +369,8 @@ const statusMeta = STATUS_CONFIG[course.status];
 
       // Handle individual accordion clicks
       moduleToggles.forEach((btn) => {
+        if (btn.dataset.bound) return;
+        btn.dataset.bound = 'true';
         btn.addEventListener('click', () => {
           const moduleId = btn.getAttribute('data-module-id');
           if (!moduleId) return;
@@ -355,30 +380,60 @@ const statusMeta = STATUS_CONFIG[course.status];
       });
 
       // Handle Toggle-All button
-      toggleAllBtn?.addEventListener('click', () => {
-        const currentAction = toggleAllBtn.getAttribute('data-action');
-        const shouldCollapse = currentAction === 'collapse';
-        moduleToggles.forEach((btn) => {
-          const moduleId = btn.getAttribute('data-module-id');
-          if (moduleId) {
-            setModuleState(moduleId, shouldCollapse);
-          }
+      if (toggleAllBtn && !toggleAllBtn.dataset.bound) {
+        toggleAllBtn.dataset.bound = 'true';
+        toggleAllBtn.addEventListener('click', () => {
+          const currentAction = toggleAllBtn.getAttribute('data-action');
+          const shouldCollapse = currentAction === 'collapse';
+          moduleToggles.forEach((btn) => {
+            const moduleId = btn.getAttribute('data-module-id');
+            if (moduleId) {
+              setModuleState(moduleId, shouldCollapse);
+            }
+          });
         });
-      });
+      }
     }
 
     // Single boot path: ClientRouter (always enabled in BaseLayout) fires
     // astro:page-load on initial load and on every navigation.
     document.addEventListener('astro:page-load', initModuleAccordions);
+    if (document.readyState === 'complete') {
+      initModuleAccordions();
+    }
   </script>
 
   <script is:inline>
     const STATUS_META = {
       active: { label: 'Active', dot: 'bg-emerald-600 dark:bg-emerald-400', text: 'text-emerald-700 dark:text-emerald-400' },
       new: { label: 'New', dot: 'bg-blue-600 dark:bg-blue-400', text: 'text-blue-700 dark:text-blue-400' },
-      explored: { label: 'Explored', dot: 'bg-purple-600 dark:bg-purple-400', text: 'text-purple-700 dark:text-purple-400' },
-      completed: { label: 'Completed', dot: 'bg-pink-600 dark:bg-pink-400', text: 'text-pink-700 dark:text-pink-400' }
+      explored: { label: 'Exploring', dot: 'bg-purple-600 dark:bg-purple-400', text: 'text-purple-700 dark:text-purple-400' },
+      completed: { label: 'Completed', dot: 'bg-slate-500 dark:bg-slate-400', text: 'text-slate-600 dark:text-slate-400' }
     };
+
+    const LESSON_COLOR_CLASSES = {
+      new: { text: 'text-blue-700 dark:text-blue-400', bar: 'bg-blue-600 dark:bg-blue-400' },
+      explored: { text: 'text-purple-700 dark:text-purple-400', bar: 'bg-purple-600 dark:bg-purple-400' },
+      reading: { text: 'text-amber-700 dark:text-amber-400', bar: 'bg-amber-600 dark:bg-amber-400' },
+      completed: { text: 'text-emerald-700 dark:text-emerald-400', bar: 'bg-emerald-600 dark:bg-emerald-400' },
+    };
+
+    const ALL_LESSON_TEXT_CLASSES = [
+      'text-blue-700', 'dark:text-blue-400',
+      'text-purple-700', 'dark:text-purple-400',
+      'text-amber-700', 'dark:text-amber-400',
+      'text-emerald-700', 'dark:text-emerald-400',
+      'text-slate-600', 'dark:text-slate-400'
+    ];
+
+    const ALL_BAR_CLASSES = [
+      'bg-blue-600', 'dark:bg-blue-400',
+      'bg-purple-600', 'dark:bg-purple-400',
+      'bg-amber-600', 'dark:bg-amber-400',
+      'bg-emerald-600', 'dark:bg-emerald-400',
+      'bg-paper-400', 'dark:bg-dark-border'
+    ];
+
     function refreshJourneyProgress() {
       try {
         if (typeof localStorage === 'undefined') return;
@@ -389,49 +444,146 @@ const statusMeta = STATUS_CONFIG[course.status];
         const lessonEls = Array.from(document.querySelectorAll('[data-lesson-slug]'));
         const slugs = lessonEls.map((el) => el.getAttribute('data-lesson-slug')).filter(Boolean);
         const total = totalAttr ? parseInt(totalAttr, 10) : slugs.length;
-        const readSet = new Set();
-        try {
-          slugs.forEach((slug) => {
-            if (localStorage.getItem(`ahkh_read_${courseId}_${slug}`) !== null) readSet.add(slug);
-          });
-        } catch (e) {}
-        const percent = total ? Math.round((readSet.size / total) * 100) : 0;
-        const fill = document.getElementById('journey-progress-fill');
-        if (fill) fill.style.width = percent + '%';
-        const label = document.getElementById('journey-progress-label');
-        if (label) label.textContent = `Progress: ${percent}%`;
-        const READ_ON = ['text-emerald-700', 'dark:text-emerald-400'];
-        const READING_ON = ['text-amber-700', 'dark:text-amber-400'];
+
+        let totalCompleted = 0;
+        let totalReading = 0;
+        let totalExplored = 0;
+
+        // 1. Process Individual Lessons
         lessonEls.forEach((el) => {
           try {
             const slug = el.getAttribute('data-lesson-slug');
             const tick = el.querySelector('[data-read-tick]');
-            if (!tick || !slug) return;
-            tick.classList.remove('hidden');
-            if (readSet.has(slug)) {
-              tick.textContent = 'Read';
-              READING_ON.forEach((c) => tick.classList.remove(c));
-              READ_ON.forEach((c) => tick.classList.add(c));
-            } else {
-              let opened = false;
-              try { opened = localStorage.getItem(`ahkh_opened_${courseId}_${slug}`) !== null; } catch (e) {}
-              if (opened) {
-                tick.textContent = 'Reading';
-                READ_ON.forEach((c) => tick.classList.remove(c));
-                READING_ON.forEach((c) => tick.classList.add(c));
+            const scrollLabel = el.querySelector('[data-scroll-pct]');
+            const progressBar = el.querySelector('[data-lesson-progress-bar]');
+            if (!slug) return;
+
+            const isCompleted = localStorage.getItem(`ahkh_read_${courseId}_${slug}`) !== null;
+            const isReading = !isCompleted && localStorage.getItem(`ahkh_reading_${courseId}_${slug}`) !== null;
+            const isExplored = !isCompleted && !isReading && localStorage.getItem(`ahkh_opened_${courseId}_${slug}`) !== null;
+
+            let scrollPct = 0;
+            try {
+              const scrollData = JSON.parse(localStorage.getItem(`ahkh_scroll_${courseId}_${slug}`) || 'null');
+              if (scrollData && typeof scrollData.percent === 'number') {
+                scrollPct = Math.min(100, Math.max(0, scrollData.percent));
+              }
+            } catch (e) {}
+
+            let state = 'new';
+            let labelText = '• New';
+            let barWidth = '0%';
+
+            if (isCompleted) {
+              state = 'completed';
+              labelText = '• Completed';
+              barWidth = '100%';
+              scrollPct = 100;
+              totalCompleted++;
+            } else if (isReading) {
+              state = 'reading';
+              labelText = '• Reading';
+              barWidth = `${scrollPct}%`;
+              totalReading++;
+            } else if (isExplored) {
+              state = 'explored';
+              labelText = '• Exploring';
+              barWidth = `${scrollPct}%`;
+              totalExplored++;
+            }
+
+            // Update tick
+            if (tick) {
+              tick.textContent = labelText;
+              ALL_LESSON_TEXT_CLASSES.forEach((c) => tick.classList.remove(c));
+              LESSON_COLOR_CLASSES[state].text.split(' ').forEach((c) => tick.classList.add(c));
+            }
+
+            // Update scroll label
+            if (scrollLabel) {
+              scrollLabel.textContent = `${scrollPct}%`;
+            }
+
+            // Update bottom progress line
+            if (progressBar) {
+              progressBar.style.width = barWidth;
+              ALL_BAR_CLASSES.forEach((c) => progressBar.classList.remove(c));
+              LESSON_COLOR_CLASSES[state].bar.split(' ').forEach((c) => progressBar.classList.add(c));
+            }
+          } catch (e) {}
+        });
+
+        // 2. Process Modules (Units)
+        const moduleSections = Array.from(document.querySelectorAll('section[data-module-section]'));
+        moduleSections.forEach((section) => {
+          try {
+            const modId = section.getAttribute('data-module-section');
+            const modLessonEls = Array.from(section.querySelectorAll('[data-lesson-slug]'));
+            const modTotal = modLessonEls.length;
+            if (!modTotal) return;
+
+            let modCompleted = 0;
+            let modReading = 0;
+            let modExplored = 0;
+
+            modLessonEls.forEach((el) => {
+              const slug = el.getAttribute('data-lesson-slug');
+              if (localStorage.getItem(`ahkh_read_${courseId}_${slug}`) !== null) modCompleted++;
+              else if (localStorage.getItem(`ahkh_reading_${courseId}_${slug}`) !== null) modReading++;
+              else if (localStorage.getItem(`ahkh_opened_${courseId}_${slug}`) !== null) modExplored++;
+            });
+
+            const modPercent = Math.round((modCompleted / modTotal) * 100);
+            const statsEl = section.querySelector(`[data-module-stats="${modId}"]`);
+            const pctEl = section.querySelector(`[data-module-pct="${modId}"]`);
+            const fillEl = section.querySelector(`[data-module-fill="${modId}"]`);
+
+            if (statsEl) {
+              statsEl.textContent = `${modCompleted}/${modTotal} completed`;
+            }
+            if (pctEl) {
+              pctEl.textContent = `${modPercent}%`;
+            }
+            if (fillEl) {
+              fillEl.style.width = `${modPercent}%`;
+              ALL_BAR_CLASSES.forEach((c) => fillEl.classList.remove(c));
+              if (modPercent === 100) {
+                LESSON_COLOR_CLASSES.completed.bar.split(' ').forEach((c) => fillEl.classList.add(c));
+              } else if (modReading > 0) {
+                LESSON_COLOR_CLASSES.reading.bar.split(' ').forEach((c) => fillEl.classList.add(c));
+              } else if (modExplored > 0) {
+                LESSON_COLOR_CLASSES.explored.bar.split(' ').forEach((c) => fillEl.classList.add(c));
               } else {
-                tick.classList.add('hidden');
+                ['bg-paper-400', 'dark:bg-dark-border'].forEach((c) => fillEl.classList.add(c));
               }
             }
           } catch (e) {}
         });
-        if (percent === 100) {
-          const badge = document.getElementById('journey-status-badge');
-          const meta = STATUS_META.completed;
-          if (badge && meta) {
+
+        // 3. Process Overall Course Progress
+        const percent = total ? Math.round((totalCompleted / total) * 100) : 0;
+        const fill = document.getElementById('journey-progress-fill');
+        if (fill) fill.style.width = percent + '%';
+        const label = document.getElementById('journey-progress-label');
+        if (label) label.textContent = `Progress: ${percent}%`;
+
+        // 4. Update Course Status Badge
+        const badge = document.getElementById('journey-status-badge');
+        if (badge) {
+          let chosenState = 'new';
+          if (percent === 100) {
+            chosenState = 'completed';
+          } else if (totalCompleted > 0 || totalReading > 0) {
+            chosenState = 'active';
+          } else if (totalExplored > 0) {
+            chosenState = 'explored';
+          }
+
+          const meta = STATUS_META[chosenState];
+          if (meta) {
             const dot = badge.querySelector('[data-statusdot]');
             if (dot) dot.className = `w-1.5 h-1.5 rounded-full ${meta.dot}`;
-            ['text-emerald-700', 'dark:text-emerald-400', 'text-blue-700', 'dark:text-blue-400', 'text-purple-700', 'dark:text-purple-400', 'text-pink-700', 'dark:text-pink-400'].forEach((c) => badge.classList.remove(c));
+            ['text-emerald-700', 'dark:text-emerald-400', 'text-blue-700', 'dark:text-blue-400', 'text-purple-700', 'dark:text-purple-400', 'text-slate-600', 'dark:text-slate-400'].forEach((c) => badge.classList.remove(c));
             meta.text.split(' ').forEach((c) => badge.classList.add(c));
             const textNode = Array.from(badge.childNodes).find((n) => n.nodeType === 3 && n.textContent.trim() !== '');
             if (textNode) textNode.textContent = ` ${meta.label}`;
@@ -440,10 +592,13 @@ const statusMeta = STATUS_CONFIG[course.status];
         }
       } catch (e) {}
     }
-    refreshJourneyProgress();
+
     if (!window.__ahkhJourneyBoot) {
       window.__ahkhJourneyBoot = true;
       document.addEventListener('astro:page-load', refreshJourneyProgress);
+    }
+    if (document.readyState === 'complete') {
+      refreshJourneyProgress();
     }
   </script>
 </BaseLayout>

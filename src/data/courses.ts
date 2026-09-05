@@ -100,7 +100,7 @@ export const COURSES: Course[] = [
             lessonNumber: '1.0',
             type: 'pdf',
             readTime: '18 min',
-            originalSourceUrl: 'https://eadwise.io/reader/document_raw_content/490658744',
+            originalSourceUrl: 'https://readwise.io/reader/document_raw_content/490658744',
             originalSourceLabel: 'Laurel Hechanova (Goodmaker / Springboard Foundations)',
             
             summaryQuote: 'User experience is what someone feels, what they do, and what they understand when using a product. Good design begins with understanding real human needs.',
@@ -172,7 +172,7 @@ export const COURSES: Course[] = [
               </p>
 
               <!-- Pullout Axiom with Calibrated Terracotta Accent -->
-              <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
+              <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
                 <p>"Good design does not begin with graphics or code. It begins with curiosity about how real people live, where they struggle, and how a thoughtful tool can make their day easier."</p>
                 <footer class="mt-3 flex items-center gap-2 text-xs font-sans not-italic text-amber-800 dark:text-amber-400 font-semibold tracking-wide uppercase">
                   <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
@@ -334,7 +334,7 @@ export const COURSES: Course[] = [
                   <!-- 4 Color-Coordinated Zones & Hierarchy -->
                   <div class="lg:col-span-7 space-y-4">
                     <!-- Zone 1 -->
-                    <div class="p-4 rounded-xs border-l-2 border-sky-500 bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border">
+                    <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
                       <div class="flex items-center justify-between mb-1.5">
                         <h4 class="font-sans font-bold text-base text-sky-800 dark:text-sky-400">1. Header Utility Bar</h4>
                         <span class="text-xs font-mono font-bold text-sky-800 dark:text-sky-400">Top Navigation</span>
@@ -345,7 +345,7 @@ export const COURSES: Course[] = [
                     </div>
 
                     <!-- Zone 2 -->
-                    <div class="p-4 rounded-xs border-l-2 border-amber-500 bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border">
+                    <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
                       <div class="flex items-center justify-between mb-1.5">
                         <h4 class="font-sans font-bold text-base text-amber-800 dark:text-amber-400">2. Ephemeral Stories Carousel</h4>
                         <span class="text-xs font-mono font-bold text-amber-800 dark:text-amber-400">Horizontal Rail</span>
@@ -356,7 +356,7 @@ export const COURSES: Course[] = [
                     </div>
 
                     <!-- Zone 3 -->
-                    <div class="p-4 rounded-xs border-l-2 border-indigo-500 bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border">
+                    <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
                       <div class="flex items-center justify-between mb-1.5">
                         <h4 class="font-sans font-bold text-base text-indigo-800 dark:text-indigo-400">3. Primary Consumption Feed</h4>
                         <span class="text-xs font-mono font-bold text-indigo-800 dark:text-indigo-400">Vertical Canvas</span>
@@ -367,7 +367,7 @@ export const COURSES: Course[] = [
                     </div>
 
                     <!-- Zone 4 -->
-                    <div class="p-4 rounded-xs border-l-2 border-emerald-500 bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border">
+                    <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
                       <div class="flex items-center justify-between mb-1.5">
                         <h4 class="font-sans font-bold text-base text-emerald-800 dark:text-emerald-400">4. Bottom Navigation Bar</h4>
                         <span class="text-xs font-mono font-bold text-emerald-800 dark:text-emerald-400">Persistent Dock</span>
@@ -466,7 +466,7 @@ export const COURSES: Course[] = [
                   </div>
 
                   <!-- Stage 2 -->
-                  <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-surface border-2 border-amber-500 shadow-xs">
+                  <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
                     <div class="flex items-center justify-between mb-2">
                       <span class="text-xs font-sans text-amber-800 dark:text-amber-400 font-bold uppercase">Stage 2</span>
                       <svg class="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="m13 13 6 6"/></svg>
@@ -625,7 +625,7 @@ export const COURSES: Course[] = [
                   </div>
                 </div>
                 <a 
-                  href="https://eadwise.io/reader/document_raw_content/490658744" 
+                  href="https://readwise.io/reader/document_raw_content/490658744" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   class="font-ui font-medium text-xs text-ink dark:text-dark-ink hover:underline underline-offset-4 shrink-0 flex items-center gap-1 border border-ink-border dark:border-dark-border px-3 py-1.5 rounded-xs bg-paper-50 dark:bg-dark-card hover:bg-paper-100 dark:hover:bg-dark-surface"
@@ -646,7 +646,7 @@ export const COURSES: Course[] = [
             lessonNumber: '1.1',
             type: 'article',
             readTime: '24 min',
-            originalSourceUrl: 'https://ww.springboard.com/blog/design/ux-design-process/',
+            originalSourceUrl: 'https://www.springboard.com/blog/design/ux-design-process/',
             originalSourceLabel: 'Sakshi Gupta (Design Researcher & Strategist)',
             
             summaryQuote: 'The UX design process is a disciplined journey from an ambiguous problem to a validated digital solution, grounding every interface choice in real human behavior.',
@@ -766,7 +766,7 @@ export const COURSES: Course[] = [
     </ul>
 
     <!-- Pullout Axiom -->
-    <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
+    <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"UX design goes far beyond cosmetic styling; it anchors technical decisions in observable human behavior, ensuring that human goals and business objectives converge effortlessly."</p>
       <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
         Core Philosophy &mdash; Sakshi Gupta
@@ -827,7 +827,7 @@ export const COURSES: Course[] = [
     </p>
 
     <div class="my-8 space-y-4 not-prose">
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-2 border-l-amber-500 shadow-2xs">
+      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <div class="flex items-center justify-between mb-1.5">
           <span class="font-mono text-xs font-bold text-amber-800 dark:text-amber-400 uppercase">Stage 01 Define</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Alignment & Scope</span>
@@ -838,7 +838,7 @@ export const COURSES: Course[] = [
         </p>
       </div>
 
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-2 border-l-teal-500 shadow-2xs">
+      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <div class="flex items-center justify-between mb-1.5">
           <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase">Stage 02 Research</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Contextual Inquiry</span>
@@ -849,7 +849,7 @@ export const COURSES: Course[] = [
         </p>
       </div>
 
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-2 border-l-sky-500 shadow-2xs">
+      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <div class="flex items-center justify-between mb-1.5">
           <span class="font-mono text-xs font-bold text-sky-800 dark:text-sky-400 uppercase">Stage 03 Analyze</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Synthesis & Scenarios</span>
@@ -860,7 +860,7 @@ export const COURSES: Course[] = [
         </p>
       </div>
 
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-2 border-l-indigo-500 shadow-2xs">
+      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <div class="flex items-center justify-between mb-1.5">
           <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase">Stage 04 Design</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Architecture & Prototypes</span>
@@ -871,7 +871,7 @@ export const COURSES: Course[] = [
         </p>
       </div>
 
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-2 border-l-rose-500 shadow-2xs">
+      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <div class="flex items-center justify-between mb-1.5">
           <span class="font-mono text-xs font-bold text-rose-800 dark:text-rose-400 uppercase">Stage 05 Validate</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Empirical Testing</span>
@@ -909,7 +909,7 @@ export const COURSES: Course[] = [
     <p>
       Never design in a vacuum. A thorough competitor audit reveals established user expectations and gaps in the market that your product can exploit.
     </p>
-    <div class="my-6 p-4 rounded-xs bg-paper-100 dark:bg-dark-card border-l-3 border-sky-600 dark:border-sky-500 font-serif text-sm text-ink dark:text-dark-ink">
+    <div class="my-6 p-4 rounded-xs bg-paper-100 dark:bg-dark-card border border-ink-border dark:border-dark-border font-serif text-sm text-ink dark:text-dark-ink">
       <strong class="font-bold block mb-1">Direct vs. Indirect Competitors:</strong>
       Direct competitors offer the same solution in your exact market (e.g., Uber vs. Lyft). Indirect competitors satisfy the underlying human need through different mechanisms (e.g., Uber vs. public subways vs. walking). Studying indirect competitors often generates your most breakthrough UX insights.
     </div>
@@ -944,7 +944,7 @@ export const COURSES: Course[] = [
     </p>
 
     <!-- Socratic Callout -->
-    <aside class="my-10 p-5 rounded-xs border-l-3 border-teal-600 dark:border-teal-500 bg-teal-500/5 text-ink dark:text-dark-ink space-y-2 not-prose">
+    <aside class="my-10 p-5 rounded-xs bg-paper-100 dark:bg-dark-card border border-ink-border dark:border-dark-border text-ink dark:text-dark-ink space-y-2 not-prose">
       <p class="font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-400 tracking-wider">Reflection Inquiry</p>
       <p class="font-serif text-sm sm:text-base leading-relaxed">
         Why is it dangerous to treat the UX design process as a strict linear conveyor belt? How does circling back between prototyping and user research actually save engineering capital?
@@ -979,10 +979,10 @@ export const COURSES: Course[] = [
           This comprehensive editorial study guide is synthesized from the official curriculum publication <em>"What Is the UX Design Process? 8 Steps Explained in Detail"</em> by Sakshi Gupta at Springboard.
         </p>
         <a 
-          href="https://ww.springboard.com/blog/design/ux-design-process/" 
+          href="https://www.springboard.com/blog/design/ux-design-process/" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:text-black dark:hover:text-white"
+          class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:opacity-80 transition-opacity"
         >
           <span>View original publication on Springboard Blog</span>
           <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
@@ -1001,7 +1001,7 @@ export const COURSES: Course[] = [
             lessonNumber: '1.2',
             type: 'article',
             readTime: '20 min',
-            originalSourceUrl: 'https://ww.springboard.com/blog/design/ux-vs-ui/',
+            originalSourceUrl: 'https://www.springboard.com/blog/design/ux-vs-ui/',
             originalSourceLabel: 'Jesse James Garrett & Don Norman (Foundations of HCI)',
             
             summaryQuote: 'UX design builds the structural architecture and behavioral pathways; UI design crafts the sensory affordances and visual surface.',
@@ -1071,7 +1071,7 @@ export const COURSES: Course[] = [
     </p>
 
     <!-- Pullout Axiom -->
-    <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
+    <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"UI is the saddle, the stirrups, and the reins; UX is the feeling you have being able to ride the horse with mastery, comfort, and confidence."</p>
       <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
         Classic Design Axiom &mdash; Dain Miller
@@ -1265,10 +1265,10 @@ export const COURSES: Course[] = [
           Synthesized from the foundational curriculum publication <em>"UX vs. UI: The Difference Between UX and UI Design(ers)"</em> by the Springboard Editorial Team.
         </p>
         <a 
-          href="https://ww.springboard.com/blog/design/ux-vs-ui/" 
+          href="https://www.springboard.com/blog/design/ux-vs-ui/" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:text-black dark:hover:text-white"
+          class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:opacity-80 transition-opacity"
         >
           <span>View original publication on Springboard Blog</span>
           <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
@@ -1287,7 +1287,7 @@ export const COURSES: Course[] = [
             lessonNumber: '1.3',
             type: 'video',
             readTime: '18 min',
-            originalSourceUrl: 'https://ww.nngroup.com/videos/design-thinking-101/',
+            originalSourceUrl: 'https://www.nngroup.com/videos/design-thinking-101/',
             originalSourceLabel: 'Sarah Gibbons (Chief Designer, Nielsen Norman Group)',
             youtubeId: '6lmvCqvmjfE',
             summaryQuote: 'Design thinking is not a rigid linear checklist; it is an iterative mindset grounded in deep empathy and divergent-convergent exploration.',
@@ -1381,30 +1381,30 @@ export const COURSES: Course[] = [
 
     <!-- The 5 Stages Visual Grid -->
     <div class="my-10 grid grid-cols-1 sm:grid-cols-5 gap-3 not-prose text-center">
-      <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-teal-500">
+      <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <div class="font-mono text-xs text-teal-800 dark:text-teal-400 font-bold mb-1">01</div>
         <div class="font-bold text-sm text-ink dark:text-dark-ink">Empathize</div>
-        <div class="text-xs text-ink/80 dark:text-dark-ink/80 mt-1">Listen & observe</div>
+        <div class="text-xs text-ink-muted dark:text-dark-muted mt-1">Listen & observe</div>
       </div>
-      <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-blue-500">
+      <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <div class="font-mono text-xs text-blue-800 dark:text-blue-400 font-bold mb-1">02</div>
         <div class="font-bold text-sm text-ink dark:text-dark-ink">Define</div>
-        <div class="text-xs text-ink/80 dark:text-dark-ink/80 mt-1">Frame the friction</div>
+        <div class="text-xs text-ink-muted dark:text-dark-muted mt-1">Frame the friction</div>
       </div>
-      <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-amber-500">
+      <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <div class="font-mono text-xs text-amber-800 dark:text-amber-400 font-bold mb-1">03</div>
         <div class="font-bold text-sm text-ink dark:text-dark-ink">Ideate</div>
-        <div class="text-xs text-ink/80 dark:text-dark-ink/80 mt-1">Brainstorm widely</div>
+        <div class="text-xs text-ink-muted dark:text-dark-muted mt-1">Brainstorm widely</div>
       </div>
-      <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-indigo-500">
+      <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <div class="font-mono text-xs text-indigo-800 dark:text-indigo-400 font-bold mb-1">04</div>
         <div class="font-bold text-sm text-ink dark:text-dark-ink">Prototype</div>
-        <div class="text-xs text-ink/80 dark:text-dark-ink/80 mt-1">Build test models</div>
+        <div class="text-xs text-ink-muted dark:text-dark-muted mt-1">Build test models</div>
       </div>
-      <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-rose-500">
+      <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <div class="font-mono text-xs text-rose-800 dark:text-rose-400 font-bold mb-1">05</div>
         <div class="font-bold text-sm text-ink dark:text-dark-ink">Test</div>
-        <div class="text-xs text-ink/80 dark:text-dark-ink/80 mt-1">Validate with users</div>
+        <div class="text-xs text-ink-muted dark:text-dark-muted mt-1">Validate with users</div>
       </div>
     </div>
 
@@ -1481,7 +1481,7 @@ export const COURSES: Course[] = [
     </div>
 
     <!-- Pullout Axiom -->
-    <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
+    <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"Fail early, fail cheaply, and fail in a mockup rather than in production code. A prototype is a conversation piece with the user's subconscious mind."</p>
       <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
         Sarah Gibbons &mdash; Nielsen Norman Group
@@ -1537,10 +1537,10 @@ export const COURSES: Course[] = [
           Synthesized from the definitive video masterclass and publication <em>"Design Thinking 101"</em> by Sarah Gibbons at Nielsen Norman Group.
         </p>
         <a 
-          href="https://ww.nngroup.com/articles/design-thinking/" 
+          href="https://www.nngroup.com/articles/design-thinking/" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:text-black dark:hover:text-white"
+          class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:opacity-80 transition-opacity"
         >
           <span>View original publication on Nielsen Norman Group</span>
           <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
@@ -1559,7 +1559,7 @@ export const COURSES: Course[] = [
             lessonNumber: '1.4',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://ww.youtube.com/watch?v=TtgegZfk5ZU',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=TtgegZfk5ZU',
             originalSourceLabel: 'The Strategy Group (Innovation & Design Strategy)',
             youtubeId: 'TtgegZfk5ZU',
             summaryQuote: 'Design thinking balances human desirability, technical feasibility, and business viability to create products people genuinely love.',
@@ -1681,7 +1681,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>What is Design Thinking?</em> by <strong>The Strategy Group</strong>.</span>
     </div>
-    <a href="https://ww.youtube.com/watch?v=TtgegZfk5ZU" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
+    <a href="https://www.youtube.com/watch?v=TtgegZfk5ZU" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
       Original Lecture ↗
     </a>
   </div>
@@ -1698,7 +1698,7 @@ export const COURSES: Course[] = [
             lessonNumber: '1.5',
             type: 'article',
             readTime: '26 min study',
-            originalSourceUrl: 'https://ww.nngroup.com/articles/design-thinking/',
+            originalSourceUrl: 'https://www.nngroup.com/articles/design-thinking/',
             originalSourceLabel: 'Sarah Gibbons (Chief Designer, Nielsen Norman Group)',
             
             summaryQuote: 'Design thinking provides a common vocabulary and unified framework for multidisciplinary teams to tackle ambiguous problems together.',
@@ -1855,7 +1855,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Design Thinking 101</em> by <strong>Sarah Gibbons</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://ww.nngroup.com/articles/design-thinking/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
+    <a href="https://www.nngroup.com/articles/design-thinking/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
       Original Guide ↗
     </a>
   </div>
@@ -1880,7 +1880,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.1',
             type: 'article',
             readTime: '25 min',
-            originalSourceUrl: 'https://xplanet.org/ultimate-guide-to-user-research-bed4a57d260',
+            originalSourceUrl: 'https://uxplanet.org/ultimate-guide-to-user-research-bed4a57d260',
             originalSourceLabel: 'Mona Yang (UX Researcher & Product Strategist)',
             
             summaryQuote: 'Observing authentic user behavior in their natural habitat reveals the unspoken truths that surveys and focus groups completely conceal.',
@@ -1940,7 +1940,7 @@ export const COURSES: Course[] = [
     </p>
 
     <!-- Pullout Axiom -->
-    <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
+    <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"User research is not about validating your existing opinions; it is about systematically dismantling your assumptions before engineers write a single line of code."</p>
       <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
         Mona Yang &mdash; UX Planet
@@ -1952,7 +1952,7 @@ export const COURSES: Course[] = [
       User research activities fall into two distinct phases of the product lifecycle:
     </p>
     <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
-      <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-2 border-l-teal-500 shadow-2xs">
+      <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase block mb-1">Phase A Discovery</span>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">Generative (Exploratory) Research</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed mb-3">
@@ -1963,7 +1963,7 @@ export const COURSES: Course[] = [
         </div>
       </div>
 
-      <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-l-2 border-l-indigo-500 shadow-2xs">
+      <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase block mb-1">Phase B Validation</span>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">Evaluative (Testing) Research</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed mb-3">
@@ -2086,10 +2086,10 @@ export const COURSES: Course[] = [
           Synthesized from the comprehensive research publication <em>"The Essential Guide to User Research & Field Inquiry"</em> by Mona Yang on UX Planet.
         </p>
         <a 
-          href="https://xplanet.org/ultimate-guide-to-user-research-bed4a57d260" 
+          href="https://uxplanet.org/ultimate-guide-to-user-research-bed4a57d260" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:text-black dark:hover:text-white"
+          class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:opacity-80 transition-opacity"
         >
           <span>View original publication on UX Planet</span>
           <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
@@ -2108,7 +2108,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.2',
             type: 'article',
             readTime: '22 min study',
-            originalSourceUrl: 'https://ww.nngroup.com/articles/personas-jobs-be-done/',
+            originalSourceUrl: 'https://www.nngroup.com/articles/personas-jobs-be-done/',
             originalSourceLabel: 'Page Laubheimer (Senior User Experience Specialist, NN/g)',
             
             summaryQuote: 'Personas build human empathy for who you are designing for; Jobs-to-Be-Done clarifies what functional outcome they are trying to achieve.',
@@ -2271,7 +2271,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Personas vs. Jobs-to-Be-Done</em> by <strong>Page Laubheimer</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://ww.nngroup.com/articles/personas-jobs-be-done/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
+    <a href="https://www.nngroup.com/articles/personas-jobs-be-done/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
       Original Article ↗
     </a>
   </div>
@@ -2288,7 +2288,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.3',
             type: 'article',
             readTime: '24 min study',
-            originalSourceUrl: 'https://ww.nngroup.com/articles/affinity-diagram/',
+            originalSourceUrl: 'https://www.nngroup.com/articles/affinity-diagram/',
             originalSourceLabel: 'Rachel Krause (User Experience Specialist, NN/g)',
             
             summaryQuote: 'Affinity diagramming turns hundreds of fragmented user research observations into coherent thematic clusters through inductive, bottom-up sorting.',
@@ -2459,7 +2459,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Affinity Diagramming for Sorting UX Findings</em> by <strong>Rachel Krause</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://ww.nngroup.com/articles/affinity-diagram/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
+    <a href="https://www.nngroup.com/articles/affinity-diagram/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
       Original Guide ↗
     </a>
   </div>
@@ -2476,7 +2476,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.4',
             type: 'article',
             readTime: '30 min',
-            originalSourceUrl: 'https://ww.nngroup.com/articles/ten-usability-heuristics/',
+            originalSourceUrl: 'https://www.nngroup.com/articles/ten-usability-heuristics/',
             originalSourceLabel: 'Jakob Nielsen (Nielsen Norman Group)',
             
             summaryQuote: 'Jakob Nielsen\'s ten heuristics provide a timeless diagnostic toolkit for auditing digital interfaces and eliminating cognitive friction.',
@@ -2727,10 +2727,10 @@ export const COURSES: Course[] = [
           Synthesized from the definitive foundational usability text <em>"10 Usability Heuristics for User Interface Design"</em> by Dr. Jakob Nielsen at Nielsen Norman Group.
         </p>
         <a 
-          href="https://ww.nngroup.com/articles/ten-usability-heuristics/" 
+          href="https://www.nngroup.com/articles/ten-usability-heuristics/" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:text-black dark:hover:text-white"
+          class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:opacity-80 transition-opacity"
         >
           <span>View original publication on Nielsen Norman Group</span>
           <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
@@ -2749,7 +2749,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.5',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://ww.youtube.com/watch?v=cTtc90jCULU',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=cTtc90jCULU',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: 'cTtc90jCULU',
             summaryQuote: 'The design should always keep users informed about what is going on, through appropriate feedback within a reasonable time.',
@@ -2807,7 +2807,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Visibility of System Status</strong>.</span>
     </div>
-    <a href="https://ww.youtube.com/watch?v=cTtc90jCULU" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=cTtc90jCULU" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -2822,7 +2822,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.6',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://ww.youtube.com/watch?v=0TAt9Pln51g',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=0TAt9Pln51g',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: '0TAt9Pln51g',
             summaryQuote: 'The design should speak the users\' language, with words, phrases, and concepts familiar to the user, rather than system-oriented terms.',
@@ -2878,7 +2878,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Match Between System & Real World</strong>.</span>
     </div>
-    <a href="https://ww.youtube.com/watch?v=0TAt9Pln51g" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=0TAt9Pln51g" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -2893,7 +2893,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.7',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://ww.youtube.com/watch?v=MXuk-fdbr0A',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=MXuk-fdbr0A',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: 'MXuk-fdbr0A',
             summaryQuote: 'Users often choose system functions by mistake and will need a clearly marked emergency exit to leave the unwanted state without an extended dialogue.',
@@ -2940,7 +2940,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>User Control & Freedom</strong>.</span>
     </div>
-    <a href="https://ww.youtube.com/watch?v=MXuk-fdbr0A" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=MXuk-fdbr0A" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -2955,7 +2955,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.8',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://ww.youtube.com/watch?v=Ibndy9KLOSQ',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=Ibndy9KLOSQ',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: 'Ibndy9KLOSQ',
             summaryQuote: 'Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions.',
@@ -3003,7 +3003,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Consistency & Standards</strong>.</span>
     </div>
-    <a href="https://ww.youtube.com/watch?v=Ibndy9KLOSQ" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=Ibndy9KLOSQ" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3018,7 +3018,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.9',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://ww.youtube.com/watch?v=imS9s1DUY-I',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=imS9s1DUY-I',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: 'imS9s1DUY-I',
             summaryQuote: 'Even better than good error messages is a careful design which prevents a problem from occurring in the first place.',
@@ -3066,7 +3066,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Error Prevention</strong>.</span>
     </div>
-    <a href="https://ww.youtube.com/watch?v=imS9s1DUY-I" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=imS9s1DUY-I" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3081,7 +3081,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.10',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://ww.youtube.com/watch?v=6glQPp6q4Jc',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=6glQPp6q4Jc',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: '6glQPp6q4Jc',
             summaryQuote: 'Minimize the user\'s memory load by making elements, actions, and options visible. The user should not have to remember information from one part of the interface to another.',
@@ -3128,7 +3128,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Recognition Rather Than Recall</strong>.</span>
     </div>
-    <a href="https://ww.youtube.com/watch?v=6glQPp6q4Jc" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=6glQPp6q4Jc" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3143,7 +3143,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.11',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://ww.youtube.com/watch?v=LoTdRTBB8BQ',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=LoTdRTBB8BQ',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: 'LoTdRTBB8BQ',
             summaryQuote: 'Shortcuts—unseen by the novice user—may often speed up the interaction for the expert user such that the design caters to both inexperienced and experienced users.',
@@ -3190,7 +3190,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Flexibility & Efficiency of Use</strong>.</span>
     </div>
-    <a href="https://ww.youtube.com/watch?v=LoTdRTBB8BQ" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=LoTdRTBB8BQ" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3205,7 +3205,7 @@ export const COURSES: Course[] = [
             lessonNumber: '2.12',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://ww.youtube.com/watch?v=ZgbRmeWDgd0',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=ZgbRmeWDgd0',
             originalSourceLabel: 'Nielsen Norman Group Heuristic Series',
             youtubeId: 'ZgbRmeWDgd0',
             summaryQuote: 'Interfaces should not contain information that is irrelevant or rarely needed. Every extra unit of information in an interface competes with the relevant units of information.',
@@ -3252,7 +3252,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Aesthetic & Minimalist Design</strong>.</span>
     </div>
-    <a href="https://ww.youtube.com/watch?v=ZgbRmeWDgd0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=ZgbRmeWDgd0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3275,7 +3275,7 @@ export const COURSES: Course[] = [
             lessonNumber: '3.1',
             type: 'article',
             readTime: '28 min study',
-            originalSourceUrl: 'https://ww.nngroup.com/articles/ia-study-guide/',
+            originalSourceUrl: 'https://www.nngroup.com/articles/ia-study-guide/',
             originalSourceLabel: 'Page Laubheimer (Information Architecture Specialist, NN/g)',
             
             summaryQuote: 'Information Architecture creates order out of chaos, structuring mental models so users intuitively find what they need without cognitive strain.',
@@ -3426,7 +3426,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Information Architecture Study Guide</em> by <strong>Page Laubheimer</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://ww.nngroup.com/articles/ia-study-guide/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
+    <a href="https://www.nngroup.com/articles/ia-study-guide/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
       Original Guide ↗
     </a>
   </div>
@@ -3451,7 +3451,7 @@ export const COURSES: Course[] = [
             lessonNumber: '4.1',
             type: 'article',
             readTime: '22 min',
-            originalSourceUrl: 'https://ww.smashingmagazine.com/2011/12/the-messy-art-of-ux-sketching/',
+            originalSourceUrl: 'https://www.smashingmagazine.com/2011/12/the-messy-art-of-ux-sketching/',
             originalSourceLabel: 'Peiter Buick (Senior Designer & Smashing Magazine Contributor)',
             
             summaryQuote: 'Sketching on paper removes perfectionism, allowing designers to iterate ideas at the speed of thought before committing to digital pixels.',
@@ -3506,7 +3506,7 @@ export const COURSES: Course[] = [
     </p>
 
     <!-- Pullout Axiom -->
-    <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
+    <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"The primary value of a sketch is not the artifact on the page; it is the mental clarity gained by the designer while making the marks."</p>
       <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
         Peiter Buick &mdash; Smashing Magazine
@@ -3593,10 +3593,10 @@ export const COURSES: Course[] = [
           Synthesized from the foundational sketching masterclass <em>"The Messy Art Of UX Sketching"</em> by Peiter Buick on Smashing Magazine.
         </p>
         <a 
-          href="https://ww.smashingmagazine.com/2011/12/the-messy-art-of-ux-sketching/" 
+          href="https://www.smashingmagazine.com/2011/12/the-messy-art-of-ux-sketching/" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:text-black dark:hover:text-white"
+          class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:opacity-80 transition-opacity"
         >
           <span>View original publication on Smashing Magazine</span>
           <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
@@ -3615,7 +3615,7 @@ export const COURSES: Course[] = [
             lessonNumber: '4.2',
             type: 'video',
             readTime: '20 min study',
-            originalSourceUrl: 'https://ww.youtube.com/watch?v=yz4g87XapQ0',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=yz4g87XapQ0',
             originalSourceLabel: 'AJ&Smart (Official Google Ventures Sprint Partner)',
             youtubeId: 'yz4g87XapQ0',
             summaryQuote: 'Crazy 8s is a core Design Sprint method that forces your brain past obvious first solutions by generating eight distinct variations under strict time pressure.',
@@ -3759,7 +3759,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Design Sprint Crazy 8s</em> by <strong>AJ&Smart</strong>.</span>
     </div>
-    <a href="https://ww.youtube.com/watch?v=yz4g87XapQ0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=yz4g87XapQ0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3774,7 +3774,7 @@ export const COURSES: Course[] = [
             lessonNumber: '4.3',
             type: 'article',
             readTime: '24 min study',
-            originalSourceUrl: 'https://ww.uxpin.com/studio/blog/great-artists-reuse-reusable-patterns-product-design/',
+            originalSourceUrl: 'https://www.uxpin.com/studio/blog/great-artists-reuse-reusable-patterns-product-design/',
             originalSourceLabel: 'Marcin Treder (CEO & Product Designer, UXPin)',
             
             summaryQuote: 'Designers should not reinvent the wheel for routine interactions. Reusing standardized patterns frees up creative energy to solve truly unique domain challenges.',
@@ -3838,7 +3838,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Great Artists Reuse</em> by <strong>Marcin Treder</strong> (UXPin).</span>
     </div>
-    <a href="https://ww.uxpin.com/studio/blog/great-artists-reuse-reusable-patterns-product-design/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Article ↗</a>
+    <a href="https://www.uxpin.com/studio/blog/great-artists-reuse-reusable-patterns-product-design/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Article ↗</a>
   </div>
 </section>
 
@@ -3853,7 +3853,7 @@ export const COURSES: Course[] = [
             lessonNumber: '4.4',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://ww.youtube.com/watch?v=RGajFMYZ0mM',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=RGajFMYZ0mM',
             originalSourceLabel: 'Springboard Design Curriculum Team',
             youtubeId: 'RGajFMYZ0mM',
             summaryQuote: 'Watch how experienced designers assemble proven UI patterns onto a paper grid to create a cohesive screen in minutes.',
@@ -3891,7 +3891,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Springboard Masterclass: <strong>Sketching a Screen with Existing Patterns</strong>.</span>
     </div>
-    <a href="https://ww.youtube.com/watch?v=RGajFMYZ0mM" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=RGajFMYZ0mM" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3906,7 +3906,7 @@ export const COURSES: Course[] = [
             lessonNumber: '4.5',
             type: 'article',
             readTime: '20 min study',
-            originalSourceUrl: 'https://hedaylightstudio.com/wireframes-at-daylight/',
+            originalSourceUrl: 'https://thedaylightstudio.com/wireframes-at-daylight/',
             originalSourceLabel: 'Daylight Design Studio',
             
             summaryQuote: 'A wireframe is a contractual blueprint between content, functionality, and user intent, stripping away color and decoration to test raw usability.',
@@ -3947,7 +3947,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Wireframes at Daylight</em> by <strong>Daylight Studio</strong>.</span>
     </div>
-    <a href="https://hedaylightstudio.com/wireframes-at-daylight/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
+    <a href="https://thedaylightstudio.com/wireframes-at-daylight/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -3970,7 +3970,7 @@ export const COURSES: Course[] = [
             lessonNumber: '5.1',
             type: 'article',
             readTime: '26 min',
-            originalSourceUrl: 'https://elp.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma',
+            originalSourceUrl: 'https://help.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma',
             originalSourceLabel: 'Figma Learn Documentation Team',
             
             summaryQuote: 'A prototype turns abstract debate into concrete physical reality, validating workflows before expensive engineering development begins.',
@@ -4028,7 +4028,7 @@ export const COURSES: Course[] = [
     </p>
 
     <!-- Pullout Axiom -->
-    <blockquote class="my-10 pl-6 border-l-3 border-amber-600 dark:border-amber-500 font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed bg-amber-500/5 py-4 pr-4 rounded-r-xs">
+    <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"If a picture is worth a thousand words, an interactive prototype is worth a thousand meetings."</p>
       <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
         IDEO Prototyping Canon
@@ -4040,7 +4040,7 @@ export const COURSES: Course[] = [
       Every interaction in tools like Figma is composed of three interconnected parts:
     </p>
     <div class="my-8 grid grid-cols-1 md:grid-cols-3 gap-5 not-prose">
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-teal-500 shadow-2xs">
+      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase block mb-1">Part 01</span>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Trigger</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
@@ -4048,7 +4048,7 @@ export const COURSES: Course[] = [
         </p>
       </div>
 
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-blue-500 shadow-2xs">
+      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <span class="font-mono text-xs font-bold text-blue-800 dark:text-blue-400 uppercase block mb-1">Part 02</span>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Action</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
@@ -4056,7 +4056,7 @@ export const COURSES: Course[] = [
         </p>
       </div>
 
-      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border border-t-3 border-t-indigo-500 shadow-2xs">
+      <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase block mb-1">Part 03</span>
         <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Transition & Easing</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
@@ -4069,7 +4069,7 @@ export const COURSES: Course[] = [
     <p>
       Figma's <strong>Smart Animate</strong> engine calculates the delta between two artboards and automatically interpolates differences in position, scale, opacity, corner radius, and fill color.
     </p>
-    <div class="my-6 p-4 rounded-xs bg-paper-100 dark:bg-dark-card border-l-3 border-indigo-600 dark:border-indigo-500 font-serif text-sm text-ink dark:text-dark-ink">
+    <div class="my-6 p-4 rounded-xs bg-paper-100 dark:bg-dark-card border border-ink-border dark:border-dark-border font-serif text-sm text-ink dark:text-dark-ink">
       <strong class="font-bold block mb-1">The Golden Rule of Smart Animate:</strong>
       Smart Animate relies entirely on matching <strong>Layer Names</strong> and hierarchy. If a button is named <em>"Primary CTA"</em> on Frame 1, it must be named <em>"Primary CTA"</em> on Frame 2. If you rename it to <em>"Primary CTA Active"</em>, Figma will treat them as two completely separate objects, causing a harsh crossfade rather than a smooth spatial transition.
     </div>
@@ -4116,10 +4116,10 @@ export const COURSES: Course[] = [
           Synthesized from the definitive prototyping curriculum and documentation published by the Figma Education & Community Team.
         </p>
         <a 
-          href="https://elp.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma" 
+          href="https://help.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:text-black dark:hover:text-white"
+          class="inline-flex items-center gap-1 mt-2 text-ink dark:text-dark-ink font-sans font-medium underline underline-offset-2 hover:opacity-80 transition-opacity"
         >
           <span>View original documentation on Figma Help Center</span>
           <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
@@ -4138,7 +4138,7 @@ export const COURSES: Course[] = [
             lessonNumber: '5.2',
             type: 'article',
             readTime: '18 min study',
-            originalSourceUrl: 'https://ww.sketch.com/docs/prototyping/',
+            originalSourceUrl: 'https://www.sketch.com/docs/prototyping/',
             originalSourceLabel: 'Sketch Documentation Team',
             
             summaryQuote: 'Prototyping in Sketch connects visual artboards with interactive hotspots, transitions, and fixed elements to simulate real device software.',
@@ -4179,7 +4179,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Prototyping in Sketch</em> by <strong>Sketch Docs</strong>.</span>
     </div>
-    <a href="https://ww.sketch.com/docs/prototyping/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
+    <a href="https://www.sketch.com/docs/prototyping/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -4202,7 +4202,7 @@ export const COURSES: Course[] = [
             lessonNumber: '6.1',
             type: 'article',
             readTime: '25 min',
-            originalSourceUrl: 'https://ribbble.com/stories/2018/12/19/choosing-colors-for-web-design-a-practical-ui-color-application-guide',
+            originalSourceUrl: 'https://dribbble.com/stories/2018/12/19/choosing-colors-for-web-design-a-practical-ui-color-application-guide',
             originalSourceLabel: 'Stefano Peschiera (Lead Product Designer, Dribbble Guide)',
             
             summaryQuote: 'Visual design in product software is functional architecture: guiding user attention effortlessly through contrast, scale, and spatial rhythm.',
@@ -4412,7 +4412,7 @@ export const COURSES: Course[] = [
             lessonNumber: '6.2',
             type: 'article',
             readTime: '28 min study',
-            originalSourceUrl: 'https://ww.smashingmagazine.com/2018/06/reference-guide-typography-mobile-web-design/',
+            originalSourceUrl: 'https://www.smashingmagazine.com/2018/06/reference-guide-typography-mobile-web-design/',
             originalSourceLabel: 'Suzanne Scacca (Smashing Magazine Typography Fellow)',
             
             summaryQuote: 'Mobile typography must balance small glass screens with human vision limits, maintaining legibility across daylight glare and thumb scroll speeds.',
@@ -4470,7 +4470,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Typography in Mobile Web Design</em> by <strong>Suzanne Scacca</strong> (Smashing Magazine).</span>
     </div>
-    <a href="https://ww.smashingmagazine.com/2018/06/reference-guide-typography-mobile-web-design/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
+    <a href="https://www.smashingmagazine.com/2018/06/reference-guide-typography-mobile-web-design/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -4485,7 +4485,7 @@ export const COURSES: Course[] = [
             lessonNumber: '6.3',
             type: 'article',
             readTime: '24 min study',
-            originalSourceUrl: 'https://ww.nngroup.com/articles/visual-design-in-ux-study-guide/',
+            originalSourceUrl: 'https://www.nngroup.com/articles/visual-design-in-ux-study-guide/',
             originalSourceLabel: 'Kelley Gordon (Visual Design Specialist, NN/g)',
             
             summaryQuote: 'Visual design in UX is the disciplined orchestration of scale, visual hierarchy, balance, and contrast to communicate system architecture.',
@@ -4526,7 +4526,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Visual Design in UX Study Guide</em> by <strong>Kelley Gordon</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://ww.nngroup.com/articles/visual-design-in-ux-study-guide/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
+    <a href="https://www.nngroup.com/articles/visual-design-in-ux-study-guide/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -4549,7 +4549,7 @@ export const COURSES: Course[] = [
             lessonNumber: '7.1',
             type: 'video',
             readTime: '25 min study',
-            originalSourceUrl: 'https://ww.youtube.com/watch?v=U9ZG19XTbd4',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=U9ZG19XTbd4',
             originalSourceLabel: 'Michael Margolis & Jake Knapp (Google Ventures Design Sprint)',
             youtubeId: 'U9ZG19XTbd4',
             summaryQuote: 'Watching just five real customers interact with your prototype uncovers 85% of all usability problems before writing production code.',
@@ -4793,7 +4793,7 @@ export const COURSES: Course[] = [
             lessonNumber: '7.2',
             type: 'article',
             readTime: '26 min study',
-            originalSourceUrl: 'https://ww.nngroup.com/articles/usability-testing-101/',
+            originalSourceUrl: 'https://www.nngroup.com/articles/usability-testing-101/',
             originalSourceLabel: 'Kate Moran (Vice President, Nielsen Norman Group)',
             
             summaryQuote: 'Usability testing evaluates a product by testing it on real users, measuring task completion, error frequency, and subjective satisfaction.',
@@ -4840,7 +4840,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Usability Testing 101</em> by <strong>Kate Moran</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://ww.nngroup.com/articles/usability-testing-101/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
+    <a href="https://www.nngroup.com/articles/usability-testing-101/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -4855,7 +4855,7 @@ export const COURSES: Course[] = [
             lessonNumber: '7.3',
             type: 'article',
             readTime: '20 min study',
-            originalSourceUrl: 'https://ww.nngroup.com/videos/user-testing-jakob-nielsen/',
+            originalSourceUrl: 'https://www.nngroup.com/videos/user-testing-jakob-nielsen/',
             originalSourceLabel: 'Jakob Nielsen (Pioneer of Discount Usability Engineering)',
             
             summaryQuote: 'Discount usability engineering is about running fast, cheap, frequent tests rather than rare, expensive laboratory experiments.',
@@ -4887,7 +4887,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>User Testing: Why & How</em> by <strong>Jakob Nielsen</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://ww.nngroup.com/videos/user-testing-jakob-nielsen/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Article ↗</a>
+    <a href="https://www.nngroup.com/videos/user-testing-jakob-nielsen/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Article ↗</a>
   </div>
 </section>
 
@@ -4902,7 +4902,7 @@ export const COURSES: Course[] = [
             lessonNumber: '7.4',
             type: 'article',
             readTime: '24 min study',
-            originalSourceUrl: 'https://ontentsquare.com/guides/usability-testing/moderated/',
+            originalSourceUrl: 'https://contentsquare.com/guides/usability-testing/moderated/',
             originalSourceLabel: 'Contentsquare User Research Academy',
             
             summaryQuote: 'Moderated testing allows researchers to probe unexpected behaviors live, asking \'why\' the moment a user pauses or shows surprise.',
@@ -4943,7 +4943,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Moderated Usability Testing Guide</em> by <strong>Contentsquare</strong>.</span>
     </div>
-    <a href="https://ontentsquare.com/guides/usability-testing/moderated/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
+    <a href="https://contentsquare.com/guides/usability-testing/moderated/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -4966,7 +4966,7 @@ export const COURSES: Course[] = [
             lessonNumber: '8.1',
             type: 'article',
             readTime: '28 min',
-            originalSourceUrl: 'https://ww.springboard.com/blog/design/ux-design-portfolio-guide/',
+            originalSourceUrl: 'https://www.springboard.com/blog/design/ux-design-portfolio-guide/',
             originalSourceLabel: 'Springboard Design Mentorship Board & Principal Design Leaders',
             
             summaryQuote: 'Standout UX portfolios do not showcase decorative mockups; they prove business acumen, constraint management, and rigorous human-centered validation.',
@@ -5145,7 +5145,7 @@ export const COURSES: Course[] = [
             lessonNumber: '8.2',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://ww.youtube.com/watch?v=Hq7ohURsQN8',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=Hq7ohURsQN8',
             originalSourceLabel: 'Springboard Career Series',
             youtubeId: 'Hq7ohURsQN8',
             summaryQuote: 'What does a UX designer actually do on a typical Tuesday? Explore standups, user testing reviews, cross-functional engineering alignment, and design critiques.',
@@ -5192,7 +5192,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Springboard Career Series: <strong>A Day in the Life of a Designer</strong>.</span>
     </div>
-    <a href="https://ww.youtube.com/watch?v=Hq7ohURsQN8" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=Hq7ohURsQN8" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -5207,7 +5207,7 @@ export const COURSES: Course[] = [
             lessonNumber: '8.3',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://ww.youtube.com/watch?v=qwCEZ1lRkHo',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=qwCEZ1lRkHo',
             originalSourceLabel: 'Springboard Career Series',
             youtubeId: 'qwCEZ1lRkHo',
             summaryQuote: 'An honest evaluation of the product design profession: the immense thrill of launching products versus navigating corporate politics and technical constraints.',
@@ -5254,7 +5254,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Springboard Career Series: <strong>The Good and Bad of Working as a Designer</strong>.</span>
     </div>
-    <a href="https://ww.youtube.com/watch?v=qwCEZ1lRkHo" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=qwCEZ1lRkHo" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -5269,7 +5269,7 @@ export const COURSES: Course[] = [
             lessonNumber: '8.4',
             type: 'video',
             readTime: '15 min study',
-            originalSourceUrl: 'https://ww.youtube.com/watch?v=ebzQXHIMZu0',
+            originalSourceUrl: 'https://www.youtube.com/watch?v=ebzQXHIMZu0',
             originalSourceLabel: 'Springboard Career Series',
             youtubeId: 'ebzQXHIMZu0',
             summaryQuote: 'Transitioning from psychology, graphic design, architecture, or customer service: how to position your prior background as your ultimate unfair advantage.',
@@ -5315,7 +5315,7 @@ export const COURSES: Course[] = [
       <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Springboard Career Series: <strong>How Do You Get into Design?</strong></span>
     </div>
-    <a href="https://ww.youtube.com/watch?v=ebzQXHIMZu0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=ebzQXHIMZu0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 

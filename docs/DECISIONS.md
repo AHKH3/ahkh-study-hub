@@ -196,4 +196,63 @@ This file records the key architectural and design decisions made in the develop
   2. Zero runtime network calls, zero servers, zero API keys — the static/local-first architecture is fully preserved.
   3. Transcript text is never hand-edited into lesson data, eliminating fabrication risk.
 
+---
 
+## ADR-016: Universal Prohibition of High-Contrast UI Elements, Harsh Text Jumps & Heavy Outlines
+- **Date**: 2026-09-05
+- **Status**: Accepted
+- **Context**: The user explicitly prohibited high-contrast UI designs, stark text color jumps on hover (e.g. `text-black`, `text-white`), rigid heavy borders (`border-ink`, `border-black`), and high-contrast boxed cards across the reader and platform. Such elements create visual harshness, disrupt the reading flow, and contradict the calm, publication-grade Swiss editorial sanctuary.
+- **Decision**:
+  1. **Strict Prohibition of High-Contrast Jumps**: Ban `text-black`, `text-white`, `border-black`, `border-ink`, `bg-black`, and `bg-ink` on interactive surfaces, cards, buttons, and navigation blocks.
+  2. **Low-Contrast Quiet Editorial Surfaces**: Standardize all cards and navigation components on subtle neutral surfaces (`bg-transparent` or `bg-paper-50/50`), delicate borders (`border-ink-border/40` or `border-ink-border/60`), and restrained ink typography (`text-ink/85` transitioning quietly to `text-ink` without pitch-black jumps).
+  3. **Automated Verification Enforcement**: Add an automated constitutional check in `scripts/verify-dist.mjs` that scans all built HTML pages in `dist/` and fails the build if any forbidden high-contrast class patterns are detected.
+- **Consequences**:
+  1. Complete elimination of visual glare and high-contrast distraction across the reading experience.
+  2. A serene, quiet, publication-grade typographical environment.
+  3. Invariant CI-level enforcement preventing regressions.
+
+---
+
+## ADR-017: Universal Prohibition of Whole-Element Movement on Hover
+- **Date**: 2026-09-05
+- **Status**: Accepted
+- **Context**: The user observed unexpected card movement (`hover:-translate-y-[1px]` and hover shadow lift) when hovering over course rows in the Library index (`/`). Whole-element movement (cards, buttons, containers, or articles shifting physical position on hover) directly violates the Swiss Modernist editorial philosophy of the platform, creating visual restlessness, motion fatigue, and gimmicky SaaS aesthetic.
+- **Decision**:
+  1. **Strict Prohibition of Whole-Element Motion on Hover**: Ban `hover:translate-`, `hover:-translate-`, `hover:scale-`, and all displacement transforms on entire cards, buttons, containers, articles, and interactive surfaces.
+  2. **Calm, Grounded Paper Interaction**: Interactive containers and cards must remain physically stationary on hover, communicating affordance exclusively through subtle neutral background washes (`hover:bg-paper-50 dark:hover:bg-dark-card/40`) and typographic accents (`group-hover:underline`), with zero physical translation or simulated drop shadow lift.
+  3. **Directional Micro-Interactions Permitted on SVG Icons Exclusively**: Positional translation on hover is permitted exclusively on nested directional SVG icons (such as an arrow chevron nudging slightly to indicate wayfinding: `group-hover:translate-x-1` / `group-hover:-translate-x-0.5`). The enclosing button, link, or card must stay completely stationary.
+  4. **Automated Verification Enforcement**: Codified Check 5 into `scripts/verify-dist.mjs` to inspect all built HTML pages in `dist/` and fail the build if any non-SVG element contains hover translation or scale classes.
+- **Consequences**:
+  1. Anchored, bookish dignity matching fine print monographs.
+  2. Complete elimination of floating or moving cards across library indices and navigation surfaces.
+  3. Clear architectural boundary between container stability and icon-level wayfinding micro-interactions.
+  4. Permanent automated CI protection against future regressions.
+
+---
+
+## ADR-018: Intentional Reading Lifecycle, Explicit Completion & State-Calibrated Scroll Progress
+- **Date**: 2026-09-05
+- **Status**: Accepted
+- **Context**: Previously, reading completion was implicitly recorded whenever a user scrolled past 90% depth or viewed short lessons. The user mandated an intentional study philosophy: reaching the bottom of a page does not signify study completion. Entering study mode requires an intentional start, completion requires an explicit user click at the bottom, and browsing without starting constitutes an exploratory visit.
+- **Decision**:
+  1. **Strict Removal of Auto-Completion**: Eliminated all implicit completion mechanisms (scroll-depth triggers and short-lesson auto-marks). Completion occurs strictly when the user clicks the explicit completion toggle (`#complete-lesson-btn`) at the conclusion of the lesson.
+  2. **Four-Tier Study Lifecycle**:
+     - `new` (Blue): Unopened lesson (`text-blue-700 dark:text-blue-400`, `bg-blue-600 dark:bg-blue-400`).
+     - `explored` (Purple): Opened and browsed without clicking "Start Reading" (`text-purple-700 dark:text-purple-400`, `bg-purple-600 dark:bg-purple-400`).
+     - `reading` (Amber): Explicit study mode initiated by clicking "Start Reading" (`text-amber-700 dark:text-amber-400`, `bg-amber-600 dark:bg-amber-400`). Records start timestamp.
+     - `completed` (Emerald): Deliberately marked complete via bottom button (`text-emerald-700 dark:text-emerald-400`, `bg-emerald-600 dark:bg-emerald-400`).
+  3. **Local Storage Schema**:
+     - `ahkh_opened_${courseId}_${slug}`: ISO timestamp of exploratory visit.
+     - `ahkh_reading_${courseId}_${slug}`: ISO timestamp when "Start reading" was clicked.
+     - `ahkh_read_${courseId}_${slug}`: ISO timestamp when "Mark as complete" was clicked.
+     - `ahkh_scroll_${courseId}_${slug}`: JSON object `{ percent: number, scrollY: number, updatedAt: string }`.
+  4. **Exploratory Highlighting Reminder**: Highlighting text while in `explored` state is preserved with full fidelity, but triggers a calm, non-blocking reminder toast noting that reading mode has not yet been initiated.
+  5. **Scroll Depth Tracking & Automatic Restoration**: Vertical scroll position and reading depth percentage are saved continuously and automatically restored upon navigating to any lesson.
+  6. **Calibrated Curriculum Progress Affordances**:
+     - Course page lesson cards display a subtle bottom hairline progress bar (`h-[2.5px]`) dynamically filled to the user's scroll percentage and colored according to the lesson's active lifecycle state.
+     - Collapsible module accordions feature aggregate progress bars, completion counters, and state-reactive styling.
+     - The Library index (`/`) and course header dynamically compute and display real-time status badges.
+- **Consequences**:
+  1. Reading progress reflects genuine human intent rather than incidental scrolling.
+  2. High-fidelity scroll position restoration makes long-form study seamless across sessions.
+  3. Clear pedagogical visual hierarchy across courses and modules without jarring high-contrast elements.

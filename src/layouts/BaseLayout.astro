@@ -27,10 +27,7 @@ const {
     <!-- Google Fonts Preconnect & Stylesheet for Instant Bulletproof Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link 
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" 
-      rel="stylesheet" 
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" /> <!-- impeccable-disable-line overused-font -- reader selectable fonts -->
 
     <ClientRouter fallback="animate" />
 
@@ -76,7 +73,7 @@ const {
             };
 
             let savedFont = localStorage.getItem('ahkh_reader_font_family');
-            if (!savedFont || savedFont === 'serif' || savedFont === 'newsreader' || savedFont === 'source-serif' || !fontMap[savedFont]) {
+            if (!savedFont || savedFont === 'serif' || !fontMap[savedFont]) {
               savedFont = 'merriweather';
               localStorage.setItem('ahkh_reader_font_family', 'merriweather');
             }
@@ -152,7 +149,7 @@ const {
           }
         });
 
-        // View Transitions: seamlessly preserve theme state to eliminate any light/dark flash during page swaps
+        /* View Transitions: seamlessly preserve theme state to eliminate any light/dark flash during page swaps */
         document.addEventListener('astro:before-swap', function(e) {
           const currentTheme = getSavedTheme();
           const isDark = resolveEffectiveDark(currentTheme);
@@ -163,7 +160,7 @@ const {
           }
           e.newDocument.documentElement.setAttribute('data-theme-setting', currentTheme);
 
-          // Synchronize badge state so the incoming header snapshot matches the current header perfectly
+          /* Synchronize badge state so the incoming header snapshot matches the current header perfectly */
           const currentBadge = document.getElementById('global-highlight-badge');
           const newBadge = e.newDocument.getElementById('global-highlight-badge');
           if (currentBadge && newBadge) {
@@ -180,10 +177,56 @@ const {
           applyTheme(getSavedTheme());
           applyGlobalFont();
         });
+
+        /* Global Route Navigation Progress Bar */
+        var routeProgressTimer = null;
+        document.addEventListener('astro:before-preparation', function() {
+          var bar = document.getElementById('route-loading-bar');
+          if (!bar) return;
+          clearTimeout(routeProgressTimer);
+          bar.classList.remove('is-loaded');
+          bar.classList.add('is-loading');
+          bar.style.width = '35%';
+          routeProgressTimer = setTimeout(function() {
+            bar.style.width = '75%';
+          }, 150);
+        });
+
+        document.addEventListener('astro:page-load', function() {
+          var bar = document.getElementById('route-loading-bar');
+          if (bar) {
+            clearTimeout(routeProgressTimer);
+            if (bar.classList.contains('is-loading')) {
+              bar.style.width = '100%';
+              bar.classList.add('is-loaded');
+              routeProgressTimer = setTimeout(function() {
+                bar.classList.remove('is-loading', 'is-loaded');
+                bar.style.width = '0%';
+              }, 350);
+            }
+          }
+
+          /* Progressive image loading enhancement */
+          var imgs = document.querySelectorAll('img:not(.ahkh-img-loaded)');
+          for (var i = 0; i < imgs.length; i++) {
+            var img = imgs[i];
+            if (img.complete) {
+              img.classList.add('ahkh-img-loaded');
+              img.classList.remove('ahkh-img-loading');
+            } else {
+              img.classList.add('ahkh-img-loading');
+              img.addEventListener('load', function() {
+                this.classList.add('ahkh-img-loaded');
+                this.classList.remove('ahkh-img-loading');
+              }, { once: true });
+            }
+          }
+        });
       })();
     </script>
   </head>
   <body class="bg-white dark:bg-dark-bg text-ink dark:text-dark-ink min-h-screen flex flex-col selection:bg-paper-200 dark:selection:bg-dark-border selection:text-ink dark:selection:text-dark-ink transition-colors duration-150">
+    <div id="route-loading-bar" aria-hidden="true"></div>
     <slot />
   </body>
 </html>
