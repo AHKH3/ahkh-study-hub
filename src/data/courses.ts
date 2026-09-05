@@ -174,7 +174,7 @@ export const COURSES: Course[] = [
               <!-- Pullout Axiom with Calibrated Terracotta Accent -->
               <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
                 <p>"Good design does not begin with graphics or code. It begins with curiosity about how real people live, where they struggle, and how a thoughtful tool can make their day easier."</p>
-                <footer class="mt-3 flex items-center gap-2 text-xs font-sans not-italic text-amber-800 dark:text-amber-400 font-semibold tracking-wide uppercase">
+                <footer class="mt-3 flex items-center gap-2 text-xs font-sans not-italic text-amber-800 dark:text-amber-400 font-semibold tracking-widest uppercase">
                   <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
                   <span>Core Design Axiom</span>
                 </footer>
@@ -188,7 +188,7 @@ export const COURSES: Course[] = [
               <!-- The Three Levels - Architectural Continuum -->
               <div class="my-8 border border-ink-border rounded-xs bg-paper-50 dark:bg-dark-card overflow-hidden not-prose dark:border-dark-border">
                 <div class="px-6 py-4 border-b border-ink-border bg-white dark:bg-dark-bg flex items-center justify-between dark:border-dark-border">
-                  <span class="text-xs font-mono font-bold uppercase tracking-wider text-ink-muted dark:text-dark-muted">Architectural Continuum &mdash; The Three Levels of Experience</span>
+                  <span class="text-xs font-mono font-bold uppercase tracking-widest text-ink-muted dark:text-dark-muted">Architectural Continuum &mdash; The Three Levels of Experience</span>
                   <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Micro to Macro Scope</span>
                 </div>
                 <div class="divide-y divide-ink-border dark:divide-dark-border">
@@ -196,7 +196,7 @@ export const COURSES: Course[] = [
                   <div class="p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-start bg-paper-100/50 dark:bg-dark-card/50">
                     <div class="md:col-span-3">
                       <span class="text-xs font-mono font-bold uppercase text-purple-800 dark:text-purple-400 block">Level 3 &bull; Macro</span>
-                      <h4 class="font-sans font-bold text-lg text-ink dark:text-dark-ink mt-0.5">The System</h4>
+                      <h4 class="font-sans font-semibold text-lg text-ink dark:text-dark-ink mt-0.5">The System</h4>
                     </div>
                     <div class="md:col-span-5 text-sm text-ink dark:text-dark-ink leading-relaxed">
                       The underlying engine, network, and data policies connecting multiple tools, institutions, and infrastructure together into a cohesive ecosystem.
@@ -211,7 +211,7 @@ export const COURSES: Course[] = [
                   <div class="p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-start bg-paper-50 dark:bg-dark-bg/60">
                     <div class="md:col-span-3">
                       <span class="text-xs font-mono font-bold uppercase text-amber-800 dark:text-amber-400 block">Level 2 &bull; Meso</span>
-                      <h4 class="font-sans font-bold text-lg text-ink dark:text-dark-ink mt-0.5">The Service</h4>
+                      <h4 class="font-sans font-semibold text-lg text-ink dark:text-dark-ink mt-0.5">The Service</h4>
                     </div>
                     <div class="md:col-span-5 text-sm text-ink dark:text-dark-ink leading-relaxed">
                       The complete temporal journey: accomplishing an objective across physical and digital touchpoints, people, and time.
@@ -226,7 +226,7 @@ export const COURSES: Course[] = [
                   <div class="p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-start bg-white dark:bg-dark-surface">
                     <div class="md:col-span-3">
                       <span class="text-xs font-mono font-bold uppercase text-sky-800 dark:text-sky-400 block">Level 1 &bull; Micro</span>
-                      <h4 class="font-sans font-bold text-lg text-ink dark:text-dark-ink mt-0.5">The Product</h4>
+                      <h4 class="font-sans font-semibold text-lg text-ink dark:text-dark-ink mt-0.5">The Product</h4>
                     </div>
                     <div class="md:col-span-5 text-sm text-ink dark:text-dark-ink leading-relaxed">
                       The direct sensory object in front of the human being: the screen, hardware controls, button affordances, and immediate feedback loop.
@@ -259,7 +259,7 @@ export const COURSES: Course[] = [
               <div class="my-8 border-y border-ink-border dark:border-dark-border not-prose overflow-x-auto">
                 <table class="w-full text-left text-sm font-sans border-collapse">
                   <thead>
-                    <tr class="border-b border-ink dark:border-dark-border text-xs font-mono uppercase tracking-wider text-ink dark:text-dark-ink font-bold bg-paper-100 dark:bg-dark-card">
+                    <tr class="border-b border-ink dark:border-dark-border text-xs font-mono uppercase tracking-widest text-ink dark:text-dark-ink font-bold bg-paper-100 dark:bg-dark-card">
                       <th class="py-3 px-4 w-12 text-center">#</th>
                       <th class="py-3 px-4 w-1/3">The Diagnostic Question</th>
                       <th class="py-3 px-4">What It Uncovers in User Reality</th>
@@ -311,7 +311,7 @@ export const COURSES: Course[] = [
 
               <div class="my-10 p-6 sm:p-8 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose shadow-xs">
                 <div class="flex items-center justify-between pb-4 mb-6 border-b border-ink-border dark:border-dark-border">
-                  <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-wider text-blue-800 dark:text-blue-400 font-bold">
+                  <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-blue-800 dark:text-blue-400 font-bold">
                     <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                     <span>Case Study &mdash; Structural Breakdown</span>
                   </div>
@@ -336,10 +336,10 @@ export const COURSES: Course[] = [
                     <!-- Zone 1 -->
                     <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
                       <div class="flex items-center justify-between mb-1.5">
-                        <h4 class="font-sans font-bold text-base text-sky-800 dark:text-sky-400">1. Header Utility Bar</h4>
+                        <h4 class="font-sans font-semibold text-base text-sky-800 dark:text-sky-400">1. Header Utility Bar</h4>
                         <span class="text-xs font-mono font-bold text-sky-800 dark:text-sky-400">Top Navigation</span>
                       </div>
-                      <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed">
+                      <p class="text-sm sm:text-base text-ink dark:text-dark-ink leading-relaxed">
                         Dedicated to quick actions: camera capture on the left, brand logo in the center, and private direct messages on the right.
                       </p>
                     </div>
@@ -347,10 +347,10 @@ export const COURSES: Course[] = [
                     <!-- Zone 2 -->
                     <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
                       <div class="flex items-center justify-between mb-1.5">
-                        <h4 class="font-sans font-bold text-base text-amber-800 dark:text-amber-400">2. Ephemeral Stories Carousel</h4>
+                        <h4 class="font-sans font-semibold text-base text-amber-800 dark:text-amber-400">2. Ephemeral Stories Carousel</h4>
                         <span class="text-xs font-mono font-bold text-amber-800 dark:text-amber-400">Horizontal Rail</span>
                       </div>
-                      <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed">
+                      <p class="text-sm sm:text-base text-ink dark:text-dark-ink leading-relaxed">
                         Houses 24-hour casual media in a horizontal scroll rail, intentionally separated so it does not interrupt the permanent vertical feed below.
                       </p>
                     </div>
@@ -358,10 +358,10 @@ export const COURSES: Course[] = [
                     <!-- Zone 3 -->
                     <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
                       <div class="flex items-center justify-between mb-1.5">
-                        <h4 class="font-sans font-bold text-base text-indigo-800 dark:text-indigo-400">3. Primary Consumption Feed</h4>
+                        <h4 class="font-sans font-semibold text-base text-indigo-800 dark:text-indigo-400">3. Primary Consumption Feed</h4>
                         <span class="text-xs font-mono font-bold text-indigo-800 dark:text-indigo-400">Vertical Canvas</span>
                       </div>
-                      <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed">
+                      <p class="text-sm sm:text-base text-ink dark:text-dark-ink leading-relaxed">
                         The core reason users open the app: an infinite vertical stream of photos, videos, and comments from followed creators.
                       </p>
                     </div>
@@ -369,17 +369,17 @@ export const COURSES: Course[] = [
                     <!-- Zone 4 -->
                     <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
                       <div class="flex items-center justify-between mb-1.5">
-                        <h4 class="font-sans font-bold text-base text-emerald-800 dark:text-emerald-400">4. Bottom Navigation Bar</h4>
+                        <h4 class="font-sans font-semibold text-base text-emerald-800 dark:text-emerald-400">4. Bottom Navigation Bar</h4>
                         <span class="text-xs font-mono font-bold text-emerald-800 dark:text-emerald-400">Persistent Dock</span>
                       </div>
-                      <p class="text-sm sm:text-[15px] text-ink dark:text-dark-ink leading-relaxed">
+                      <p class="text-sm sm:text-base text-ink dark:text-dark-ink leading-relaxed">
                         The five core product destinations (Home, Search, Create, Activity, and Profile), permanently anchored within comfortable thumb reach.
                       </p>
                     </div>
 
                     <!-- Architectural Tree View -->
                     <div class="pt-4 border-t border-ink-border dark:border-dark-border">
-                      <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-wider text-ink dark:text-dark-ink font-bold mb-2.5">
+                      <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-ink dark:text-dark-ink font-bold mb-2.5">
                         <svg class="w-3.5 h-3.5 text-sky-600 dark:text-sky-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
                         <span>Hierarchical Tree Representation</span>
                       </div>
@@ -442,7 +442,7 @@ export const COURSES: Course[] = [
               <!-- Cost of Change Comparison Matrix -->
               <div class="my-8 p-6 sm:p-8 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose shadow-xs">
                 <div class="flex items-center justify-between pb-4 mb-5 border-b border-ink-border dark:border-dark-border">
-                  <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-wider text-amber-800 dark:text-amber-400 font-bold">
+                  <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-amber-800 dark:text-amber-400 font-bold">
                     <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     <span>The Law of Iteration Economics</span>
                   </div>
@@ -456,7 +456,7 @@ export const COURSES: Course[] = [
                       <span class="text-xs font-sans text-emerald-800 dark:text-emerald-400 font-bold uppercase">Stage 1</span>
                       <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
                     </div>
-                    <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1.5">Sketches & Paper</h4>
+                    <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1.5">Sketches & Paper</h4>
                     <p class="text-sm text-ink dark:text-dark-ink mb-3 leading-relaxed">
                       Rough pen-and-paper diagrams testing basic structural concepts.
                     </p>
@@ -471,7 +471,7 @@ export const COURSES: Course[] = [
                       <span class="text-xs font-sans text-amber-800 dark:text-amber-400 font-bold uppercase">Stage 2</span>
                       <svg class="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="m13 13 6 6"/></svg>
                     </div>
-                    <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1.5">Clickable Prototypes</h4>
+                    <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1.5">Clickable Prototypes</h4>
                     <p class="text-sm text-ink dark:text-dark-ink mb-3 leading-relaxed">
                       Interactive wireframes evaluated directly with real end-users.
                     </p>
@@ -486,7 +486,7 @@ export const COURSES: Course[] = [
                       <span class="text-xs font-sans text-rose-800 dark:text-rose-400 font-bold uppercase">Stage 3</span>
                       <svg class="w-3.5 h-3.5 text-rose-600 dark:text-rose-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                     </div>
-                    <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1.5">Production Code</h4>
+                    <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1.5">Production Code</h4>
                     <p class="text-sm text-ink dark:text-dark-ink mb-3 leading-relaxed">
                       Fully engineered software running on live production servers.
                     </p>
@@ -529,9 +529,9 @@ export const COURSES: Course[] = [
 
               <!-- Career Paths Comparative Matrix - Clear Black High Contrast -->
               <div class="my-8 overflow-x-auto not-prose">
-                <table class="w-full text-left text-sm sm:text-[15px] font-sans border-collapse border-y border-ink-border dark:border-dark-border">
+                <table class="w-full text-left text-sm sm:text-base font-sans border-collapse border-y border-ink-border dark:border-dark-border">
                   <thead>
-                    <tr class="border-b border-ink-border dark:border-dark-border text-xs sm:text-sm font-mono uppercase tracking-wider text-ink dark:text-dark-ink font-bold">
+                    <tr class="border-b border-ink-border dark:border-dark-border text-xs sm:text-sm font-mono uppercase tracking-widest text-ink dark:text-dark-ink font-bold">
                       <th class="py-3.5 pr-4">Career Archetype</th>
                       <th class="py-3.5 px-4">Core Responsibility</th>
                       <th class="py-3.5 px-4">Ideal Environment</th>
@@ -617,7 +617,7 @@ export const COURSES: Course[] = [
                     class="w-12 h-12 rounded-full object-cover border border-ink-border dark:border-dark-border shrink-0" 
                   />
                   <div>
-                    <div class="flex items-center gap-1.5 font-sans text-xs uppercase tracking-wider text-teal-800 dark:text-teal-400 font-bold mb-0.5">
+                    <div class="flex items-center gap-1.5 font-sans text-xs uppercase tracking-widest text-teal-800 dark:text-teal-400 font-bold mb-0.5">
                       <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
                       <span>Curriculum Citation</span>
                     </div>
@@ -734,7 +734,7 @@ export const COURSES: Course[] = [
 
     <!-- Industry Metrics Card -->
     <div class="my-10 p-6 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-4">
-      <div class="flex items-center gap-2 font-mono text-xs text-amber-800 dark:text-amber-400 font-bold uppercase tracking-wider">
+      <div class="flex items-center gap-2 font-mono text-xs text-amber-800 dark:text-amber-400 font-bold uppercase tracking-widest">
         <span>Industry Benchmarks & Economic Value</span>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
@@ -768,7 +768,7 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"UX design goes far beyond cosmetic styling; it anchors technical decisions in observable human behavior, ensuring that human goals and business objectives converge effortlessly."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-widest uppercase">
         Core Philosophy &mdash; Sakshi Gupta
       </footer>
     </blockquote>
@@ -832,7 +832,7 @@ export const COURSES: Course[] = [
           <span class="font-mono text-xs font-bold text-amber-800 dark:text-amber-400 uppercase">Stage 01 Define</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Alignment & Scope</span>
         </div>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Define the Core Challenge</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Define the Core Challenge</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           State the fundamental business objectives, user targets, and technical constraints before spending engineering hours.
         </p>
@@ -843,7 +843,7 @@ export const COURSES: Course[] = [
           <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase">Stage 02 Research</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Contextual Inquiry</span>
         </div>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Discover User Realities</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Discover User Realities</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           Conduct qualitative user interviews and field inquiries to learn what people actually do rather than what they claim they do.
         </p>
@@ -854,7 +854,7 @@ export const COURSES: Course[] = [
           <span class="font-mono text-xs font-bold text-sky-800 dark:text-sky-400 uppercase">Stage 03 Analyze</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Synthesis & Scenarios</span>
         </div>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Map Personas and Journeys</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Map Personas and Journeys</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           Synthesize field interviews into behavioral archetypes (personas) and diagram step-by-step user journey maps identifying drop-offs.
         </p>
@@ -865,7 +865,7 @@ export const COURSES: Course[] = [
           <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase">Stage 04 Design</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Architecture & Prototypes</span>
         </div>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Construct Wireframes & Interactive Prototypes</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Construct Wireframes & Interactive Prototypes</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           Evolve concepts from rough paper sketches to structural wireframes, interactive Figma components, and cohesive design systems.
         </p>
@@ -876,7 +876,7 @@ export const COURSES: Course[] = [
           <span class="font-mono text-xs font-bold text-rose-800 dark:text-rose-400 uppercase">Stage 05 Validate</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Empirical Testing</span>
         </div>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Test with Real Participants</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Test with Real Participants</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           Put interactive prototypes in front of real users, record qualitative friction points, and iteratively refine prior to release.
         </p>
@@ -945,7 +945,7 @@ export const COURSES: Course[] = [
 
     <!-- Socratic Callout -->
     <aside class="my-10 p-5 rounded-xs bg-paper-100 dark:bg-dark-card border border-ink-border dark:border-dark-border text-ink dark:text-dark-ink space-y-2 not-prose">
-      <p class="font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-400 tracking-wider">Reflection Inquiry</p>
+      <p class="font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-400 tracking-widest">Reflection Inquiry</p>
       <p class="font-serif text-sm sm:text-base leading-relaxed">
         Why is it dangerous to treat the UX design process as a strict linear conveyor belt? How does circling back between prototyping and user research actually save engineering capital?
       </p>
@@ -954,14 +954,14 @@ export const COURSES: Course[] = [
     <h2 id="sec-faqs">13. Frequently Asked Questions & Core Takeaways</h2>
     <div class="space-y-6 my-8 not-prose">
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1.5">Who participates in the UX design process?</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1.5">Who participates in the UX design process?</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           While led by UX designers and researchers, successful execution requires continuous collaboration with product managers (defining business scope), software engineers (evaluating technical feasibility), and customer success teams (surfacing daily user complaints).
         </p>
       </div>
 
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1.5">Are there faster alternatives like Lean UX or Google Design Sprints?</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1.5">Are there faster alternatives like Lean UX or Google Design Sprints?</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           Yes. Frameworks like Lean UX and Google's 5-day Design Sprint condense these stages into rapid cycles. However, even the most accelerated sprint still contains the foundational core: problem framing, rapid prototyping, and empirical user testing.
         </p>
@@ -1073,7 +1073,7 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"UI is the saddle, the stirrups, and the reins; UX is the feeling you have being able to ride the horse with mastery, comfort, and confidence."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-widest uppercase">
         Classic Design Axiom &mdash; Dain Miller
       </footer>
     </blockquote>
@@ -1107,7 +1107,7 @@ export const COURSES: Course[] = [
     <div class="my-8 border-y border-ink-border not-prose overflow-x-auto dark:border-dark-border">
       <table class="w-full text-left text-sm font-sans border-collapse">
         <thead>
-          <tr class="border-b border-ink-border text-xs font-mono uppercase tracking-wider text-ink font-bold bg-paper-100 dark:bg-dark-surface dark:text-dark-ink dark:border-dark-border">
+          <tr class="border-b border-ink-border text-xs font-mono uppercase tracking-widest text-ink font-bold bg-paper-100 dark:bg-dark-surface dark:text-dark-ink dark:border-dark-border">
             <th class="py-3 px-4 w-12 text-center">Plane</th>
             <th class="py-3 px-4 w-1/4">Architectural Level</th>
             <th class="py-3 px-4">Core Deliverables & Specifications</th>
@@ -1158,25 +1158,25 @@ export const COURSES: Course[] = [
     </p>
     <div class="my-8 grid grid-cols-1 sm:grid-cols-2 gap-5 not-prose">
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">1. Typographic Hierarchy</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">1. Typographic Hierarchy</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           Selecting harmonious typefaces, establishing modular scale ratios (16px base, 20px subhead, 32px title), and setting line height and measure for effortless reading.
         </p>
       </div>
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">2. Color Theory & Accessibility</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">2. Color Theory & Accessibility</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           Creating semantic token systems (Primary, Surface, Error, Muted) that meet WCAG AAA contrast standards (7:1 for normal text) across Light and Dark surfaces.
         </p>
       </div>
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">3. Spatial Rhythm & Layout</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">3. Spatial Rhythm & Layout</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           Applying an 8-point spatial grid system across margins, padding, and layout components to produce unconscious visual order and rhythm.
         </p>
       </div>
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">4. Interaction & Motion</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">4. Interaction & Motion</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           Choreographing button states (Default, Hover, Active, Disabled, Loading) and easing curves that communicate physical weight and spatial continuity.
         </p>
@@ -1232,14 +1232,14 @@ export const COURSES: Course[] = [
     <h2 id="sec-misconceptions">7. Common Industry Misconceptions</h2>
     <div class="space-y-4 my-8 not-prose">
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Myth 1: "UI is just making UX pretty."</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Myth 1: "UI is just making UX pretty."</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           Visual design is not superficial decoration. Clear typography, intentional whitespace, and distinct color hierarchy actively guide human attention and reduce cognitive load. Great UI makes complex functionality immediately intelligible.
         </p>
       </div>
 
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Myth 2: "UX is purely subjective opinion."</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Myth 2: "UX is purely subjective opinion."</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           True UX is grounded in empirical observation and behavioral science. When five independent users all fail to find the cancel button on a screen, that is not an opinion; it is an objective, measurable usability flaw.
         </p>
@@ -1483,7 +1483,7 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"Fail early, fail cheaply, and fail in a mockup rather than in production code. A prototype is a conversation piece with the user's subconscious mind."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-widest uppercase">
         Sarah Gibbons &mdash; Nielsen Norman Group
       </footer>
     </blockquote>
@@ -1506,7 +1506,7 @@ export const COURSES: Course[] = [
     <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase block mb-1">Diamond 01 Problem Space</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">Discover & Define</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-2">Discover & Define</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           You first expand outward (diverge) to explore all possible facets of user pain, then focus inward (converge) onto the single high-impact problem to solve.
         </p>
@@ -1514,7 +1514,7 @@ export const COURSES: Course[] = [
 
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase block mb-1">Diamond 02 Solution Space</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">Develop & Deliver</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-2">Develop & Deliver</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           You expand outward again (diverge) to generate dozens of radical solution prototypes, then converge onto the validated design that will be handed off to engineering.
         </p>
@@ -1784,7 +1784,7 @@ export const COURSES: Course[] = [
     <!-- Header -->
     <div class="flex items-center justify-between pb-3 border-b border-ink-border dark:border-dark-border">
       <span class="w-5 h-5 bg-paper-200 border border-ink-border rounded-xs inline-block dark:bg-dark-border dark:border-dark-border"></span>
-      <span class="font-bold tracking-wider text-ink dark:text-dark-ink">APP_HEADER</span>
+      <span class="font-bold tracking-widest text-ink dark:text-dark-ink">APP_HEADER</span>
       <span class="w-5 h-5 bg-paper-200 border border-ink-border rounded-xs inline-block dark:bg-dark-border dark:border-dark-border"></span>
     </div>
 
@@ -1942,7 +1942,7 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"User research is not about validating your existing opinions; it is about systematically dismantling your assumptions before engineers write a single line of code."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-widest uppercase">
         Mona Yang &mdash; UX Planet
       </footer>
     </blockquote>
@@ -1954,7 +1954,7 @@ export const COURSES: Course[] = [
     <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase block mb-1">Phase A Discovery</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">Generative (Exploratory) Research</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-2">Generative (Exploratory) Research</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed mb-3">
           Conducted <em>before</em> any solution is imagined. Its goal is to uncover unmet human needs, emotional pain points, and current broken habits.
         </p>
@@ -1965,7 +1965,7 @@ export const COURSES: Course[] = [
 
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase block mb-1">Phase B Validation</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">Evaluative (Testing) Research</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-2">Evaluative (Testing) Research</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed mb-3">
           Conducted <em>during and after</em> designs are produced. Its goal is to test whether the proposed interface functions intuitively in real hands.
         </p>
@@ -2023,7 +2023,7 @@ export const COURSES: Course[] = [
     <!-- Good vs Bad Interviewing Matrix -->
     <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
       <div class="p-5 rounded-xs bg-rose-50/50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900/40">
-        <h4 class="font-sans font-bold text-rose-800 dark:text-rose-400 text-sm mb-2 flex items-center gap-1.5">
+        <h4 class="font-sans font-semibold text-rose-800 dark:text-rose-400 text-sm mb-2 flex items-center gap-1.5">
           <span>&times;</span> Leading Questions (Biased & Useless)
         </h4>
         <ul class="space-y-2 text-xs font-serif text-ink dark:text-dark-ink">
@@ -2034,7 +2034,7 @@ export const COURSES: Course[] = [
       </div>
 
       <div class="p-5 rounded-xs bg-teal-50/50 dark:bg-teal-950/20 border border-teal-200 dark:border-teal-900/40">
-        <h4 class="font-sans font-bold text-teal-800 dark:text-teal-400 text-sm mb-2 flex items-center gap-1.5">
+        <h4 class="font-sans font-semibold text-teal-800 dark:text-teal-400 text-sm mb-2 flex items-center gap-1.5">
           <span>&check;</span> Non-Leading Questions (Behavioral & Reliable)
         </h4>
         <ul class="space-y-2 text-xs font-serif text-ink dark:text-dark-ink">
@@ -2188,7 +2188,7 @@ export const COURSES: Course[] = [
   <div class="my-6 overflow-x-auto not-prose">
     <table class="w-full text-left text-sm font-sans border-collapse border border-ink-border dark:border-dark-border">
       <thead>
-        <tr class="bg-paper-100 border-b border-ink-border text-xs font-mono uppercase tracking-wider text-ink font-bold dark:bg-dark-surface dark:text-dark-ink dark:border-dark-border">
+        <tr class="bg-paper-100 border-b border-ink-border text-xs font-mono uppercase tracking-widest text-ink font-bold dark:bg-dark-surface dark:text-dark-ink dark:border-dark-border">
           <th class="p-3">Evaluation Dimension</th>
           <th class="p-3">User Personas</th>
           <th class="p-3">Jobs-to-Be-Done</th>
@@ -2236,12 +2236,12 @@ export const COURSES: Course[] = [
 
     <div class="my-4 space-y-3 text-xs">
       <div>
-        <strong class="font-mono text-ink block mb-1 uppercase tracking-wider dark:text-dark-ink">Cognitive Environment & Mental Model</strong>
+        <strong class="font-mono text-ink block mb-1 uppercase tracking-widest dark:text-dark-ink">Cognitive Environment & Mental Model</strong>
         <p class="text-ink-muted leading-relaxed dark:text-dark-muted">Operates under severe time pressure across 3 monitors simultaneously. Highly intolerant of multi-step modals; relies strictly on keyboard shortcuts.</p>
       </div>
 
       <div class="p-3 bg-paper-50 border border-ink-border rounded-xs dark:bg-dark-card dark:border-dark-border">
-        <strong class="font-mono text-indigo-800 block mb-1 uppercase tracking-wider dark:text-indigo-400">Primary Job-to-Be-Done</strong>
+        <strong class="font-mono text-indigo-800 block mb-1 uppercase tracking-widest dark:text-indigo-400">Primary Job-to-Be-Done</strong>
         <p class="text-ink italic dark:text-dark-ink">
           "When an urgent delivery route is blocked by weather, I want to reroute 40 drivers in bulk with one confirmation step, so that customer shipments are not delayed and our SLA penalty is avoided."
         </p>
@@ -3508,7 +3508,7 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"The primary value of a sketch is not the artifact on the page; it is the mental clarity gained by the designer while making the marks."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-widest uppercase">
         Peiter Buick &mdash; Smashing Magazine
       </footer>
     </blockquote>
@@ -3520,7 +3520,7 @@ export const COURSES: Course[] = [
     <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <span class="font-mono text-xs font-bold text-rose-800 dark:text-rose-400 uppercase block mb-1">High-Fidelity Mockup</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">Triggers Superficial Feedback</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-2">Triggers Superficial Feedback</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           When stakeholders see a polished screen with photos and colors, they assume the architectural decisions are finished. They debate button colors, font sizes, and hero image models while ignoring broken task flows.
         </p>
@@ -3528,7 +3528,7 @@ export const COURSES: Course[] = [
 
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase block mb-1">Rough Pen Sketch</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-2">Triggers Structural Feedback</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-2">Triggers Structural Feedback</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           When stakeholders see hand-drawn boxes and squiggly lines, they immediately recognize the work is in-progress. They feel invited to grab a marker, point out missing steps, and debate the core business logic.
         </p>
@@ -3697,38 +3697,38 @@ export const COURSES: Course[] = [
       <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center dark:bg-dark-card dark:border-dark-border">
         <span class="text-[10px] font-bold text-ink-muted dark:text-dark-muted">Box 01 Tab List</span>
         <div class="h-2 bg-paper-200 w-3/4 mx-auto dark:bg-dark-border"></div>
-        <div class="h-10 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted dark:bg-dark-card dark:text-dark-muted dark:border-dark-border">Vertical List</div>
+        <div class="h-10 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[10px] text-ink-muted dark:bg-dark-card dark:text-dark-muted dark:border-dark-border">Vertical List</div>
         <div class="h-2 bg-paper-200 w-1/2 mx-auto dark:bg-dark-border"></div>
       </div>
       <!-- Box 2 -->
       <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center dark:bg-dark-card dark:border-dark-border">
         <span class="text-[10px] font-bold text-ink-muted dark:text-dark-muted">Box 02 Swipe Cards</span>
         <div class="h-2 bg-paper-200 w-3/4 mx-auto dark:bg-dark-border"></div>
-        <div class="h-10 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted dark:bg-dark-card dark:text-dark-muted dark:border-dark-border">Tinder Card Deck</div>
+        <div class="h-10 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[10px] text-ink-muted dark:bg-dark-card dark:text-dark-muted dark:border-dark-border">Tinder Card Deck</div>
         <div class="h-2 bg-paper-200 w-1/2 mx-auto dark:bg-dark-border"></div>
       </div>
       <!-- Box 3 -->
       <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center dark:bg-dark-card dark:border-dark-border">
         <span class="text-[10px] font-bold text-ink-muted dark:text-dark-muted">Box 03 Search First</span>
-        <div class="h-4 bg-paper-100 border border-ink-border flex items-center justify-center text-[9px] text-ink-muted dark:bg-dark-surface dark:text-dark-muted dark:border-dark-border">Search Modal</div>
-        <div class="h-8 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted dark:bg-dark-card dark:text-dark-muted dark:border-dark-border">Instant Results</div>
+        <div class="h-4 bg-paper-100 border border-ink-border flex items-center justify-center text-[10px] text-ink-muted dark:bg-dark-surface dark:text-dark-muted dark:border-dark-border">Search Modal</div>
+        <div class="h-8 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[10px] text-ink-muted dark:bg-dark-card dark:text-dark-muted dark:border-dark-border">Instant Results</div>
       </div>
       <!-- Box 4 -->
       <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center dark:bg-dark-card dark:border-dark-border">
         <span class="text-[10px] font-bold text-ink-muted dark:text-dark-muted">Box 04 Bottom Sheet</span>
         <div class="h-6 bg-paper-200 w-full dark:bg-dark-border"></div>
-        <div class="h-6 bg-ink text-white flex items-center justify-center text-[9px] font-bold">Drawer Sheet</div>
+        <div class="h-6 bg-ink text-white flex items-center justify-center text-[10px] font-bold">Drawer Sheet</div>
       </div>
       <!-- Box 5 -->
       <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center dark:bg-dark-card dark:border-dark-border">
         <span class="text-[10px] font-bold text-ink-muted dark:text-dark-muted">Box 05 Conversational</span>
-        <div class="h-12 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[9px] text-ink-muted dark:bg-dark-card dark:text-dark-muted dark:border-dark-border">Chat Dialogue UI</div>
+        <div class="h-12 bg-paper-50 border border-dashed border-ink-border flex items-center justify-center text-[10px] text-ink-muted dark:bg-dark-card dark:text-dark-muted dark:border-dark-border">Chat Dialogue UI</div>
       </div>
       <!-- Box 6 -->
       <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center dark:bg-dark-card dark:border-dark-border">
         <span class="text-[10px] font-bold text-ink-muted dark:text-dark-muted">Box 06 Stepper Wizard</span>
         <div class="flex justify-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-ink"></span><span class="w-1.5 h-1.5 rounded-full bg-paper-200 dark:bg-dark-border"></span><span class="w-1.5 h-1.5 rounded-full bg-paper-200 dark:bg-dark-border"></span></div>
-        <div class="h-8 bg-paper-50 border border-ink-border flex items-center justify-center text-[9px] text-ink-muted dark:bg-dark-card dark:text-dark-muted dark:border-dark-border">Step 1 of 3</div>
+        <div class="h-8 bg-paper-50 border border-ink-border flex items-center justify-center text-[10px] text-ink-muted dark:bg-dark-card dark:text-dark-muted dark:border-dark-border">Step 1 of 3</div>
       </div>
       <!-- Box 7 -->
       <div class="p-3 bg-white border border-ink-border rounded-xs space-y-1.5 text-center dark:bg-dark-card dark:border-dark-border">
@@ -3741,7 +3741,7 @@ export const COURSES: Course[] = [
       <!-- Box 8 -->
       <div class="p-3 bg-white border-2 border-teal-600 rounded-xs space-y-1.5 text-center dark:bg-dark-card">
         <span class="text-[10px] font-bold text-teal-800 dark:text-teal-400">Box 08 Winner *</span>
-        <div class="h-10 bg-teal-50 border border-teal-300 flex items-center justify-center text-[9px] text-teal-900 font-bold">Hybrid Grid + Tab</div>
+        <div class="h-10 bg-teal-50 border border-teal-300 flex items-center justify-center text-[10px] text-teal-900 font-bold">Hybrid Grid + Tab</div>
       </div>
     </div>
   </div>
@@ -4030,7 +4030,7 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"If a picture is worth a thousand words, an interactive prototype is worth a thousand meetings."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-wide uppercase">
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-widest uppercase">
         IDEO Prototyping Canon
       </footer>
     </blockquote>
@@ -4042,7 +4042,7 @@ export const COURSES: Course[] = [
     <div class="my-8 grid grid-cols-1 md:grid-cols-3 gap-5 not-prose">
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase block mb-1">Part 01</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Trigger</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Trigger</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           The physical user gesture that initiates the event: <em>On Click, While Hovering, While Pressing, On Drag, or After Delay</em>.
         </p>
@@ -4050,7 +4050,7 @@ export const COURSES: Course[] = [
 
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <span class="font-mono text-xs font-bold text-blue-800 dark:text-blue-400 uppercase block mb-1">Part 02</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Action</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Action</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           What the system does in response: <em>Navigate to screen, Open overlay, Swap variant, Scroll to anchor, or Set variable</em>.
         </p>
@@ -4058,7 +4058,7 @@ export const COURSES: Course[] = [
 
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase block mb-1">Part 03</span>
-        <h4 class="font-sans font-bold text-base text-ink dark:text-dark-ink mb-1">Transition & Easing</h4>
+        <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Transition & Easing</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           The temporal physics of the movement: <em>Instant, Dissolve, Smart Animate, Slide In, or Push</em>, tuned with cubic-bezier curves (e.g., 300ms ease-out).
         </p>
@@ -4288,10 +4288,10 @@ export const COURSES: Course[] = [
     <table class="w-full text-left text-sm border-collapse border border-ink-border dark:border-dark-border">
       <thead>
         <tr class="bg-paper-100 border-b border-ink-border dark:bg-dark-surface dark:border-dark-border">
-          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink dark:text-dark-ink">Token</th>
-          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink dark:text-dark-ink">Computed Size</th>
-          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink dark:text-dark-ink">Line Height</th>
-          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink dark:text-dark-ink">Target Usage</th>
+          <th class="p-3 font-mono text-xs uppercase tracking-widest text-ink dark:text-dark-ink">Token</th>
+          <th class="p-3 font-mono text-xs uppercase tracking-widest text-ink dark:text-dark-ink">Computed Size</th>
+          <th class="p-3 font-mono text-xs uppercase tracking-widest text-ink dark:text-dark-ink">Line Height</th>
+          <th class="p-3 font-mono text-xs uppercase tracking-widest text-ink dark:text-dark-ink">Target Usage</th>
         </tr>
       </thead>
       <tbody class="divide-y divide-ink-border dark:divide-dark-border">
@@ -5063,9 +5063,9 @@ export const COURSES: Course[] = [
     <table class="w-full text-left text-sm border-collapse border border-ink-border dark:border-dark-border">
       <thead>
         <tr class="bg-paper-100 border-b border-ink-border dark:bg-dark-surface dark:border-dark-border">
-          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink dark:text-dark-ink">Step</th>
-          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink dark:text-dark-ink">Time Allocation</th>
-          <th class="p-3 font-mono text-xs uppercase tracking-wider text-ink dark:text-dark-ink">Core Action & Questions</th>
+          <th class="p-3 font-mono text-xs uppercase tracking-widest text-ink dark:text-dark-ink">Step</th>
+          <th class="p-3 font-mono text-xs uppercase tracking-widest text-ink dark:text-dark-ink">Time Allocation</th>
+          <th class="p-3 font-mono text-xs uppercase tracking-widest text-ink dark:text-dark-ink">Core Action & Questions</th>
         </tr>
       </thead>
       <tbody class="divide-y divide-ink-border dark:divide-dark-border">

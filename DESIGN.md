@@ -105,27 +105,23 @@ To preserve the serene editorial quality of the reading sanctuary, active states
 
 ---
 
-## 4. Typography Hierarchy
+## 4. Typography Hierarchy & Type Discipline
 
-The platform employs a three-tier typographic system:
+The platform uses exactly **three systemic font voices** — no other family may appear in chrome or default content:
 
-### 4.1. Longform Editorial Prose (`font-serif`)
-- **Typeface:** `Merriweather` (weights 300/400/700/900 + italics — the canonical body face on every surface, wired as `font-serif` and `--reader-font-family`), fallback to `Georgia`. `Newsreader` remains available only as an opt-in reader preference in the Display popover, never as a default.
-- **Body Styling:** `text-[17px] sm:text-[18px]`, `leading-[1.8]`, `tracking-normal`, `text-ink dark:text-dark-ink`.
-- **Optimal Measure:** `max-w-reading` (68 characters per line / 680px).
-- **Paragraph Spacing:** `margin-bottom: 1.5em` between prose blocks.
+| Voice | Family | Role |
+|---|---|---|
+| Reading & body | `Merriweather` (default; reader-switchable, see §6) | Lesson prose, descriptions, display H1 titles |
+| Interface & structure | `Geist Sans` | Buttons, nav, footer, structural headings (H2–H4), controls |
+| Precision data | `JetBrains Mono` | Timestamps, counters, kickers, badges, code |
 
-### 4.2. Structural UI, Headings & Wayfinding (`font-sans`)
-- **Typeface:** `Geist Sans` / `Inter`, fallback to system sans.
-- **Application:** Page headers, course monograph titles, navigation links, buttons, tab switchers, and roadmap milestone titles.
-- **Headings:**
-  - `H1`: `font-serif text-3xl sm:text-4xl font-medium tracking-tight text-ink dark:text-dark-ink mb-6`
-  - `H2`: `font-sans text-xl sm:text-2xl font-semibold tracking-tight text-ink dark:text-dark-ink mt-10 mb-4 pb-2 border-b border-subtle`
-  - `H3`: `font-sans text-lg font-medium text-ink dark:text-dark-ink mt-8 mb-3`
-
-### 4.3. Precision Data & Code (`font-mono`)
-- **Typeface:** `JetBrains Mono`
-- **Application:** Video player timestamps (`04:12`), lesson counters (`LESSON 02.04`), keyboard shortcuts (`/`), and code blocks.
+- **Single loading source:** fonts load once via `<link>` in `BaseLayout.astro`. Never add `@import` font URLs in CSS.
+- **Reader options are the only exception:** Source Serif 4, Literata, Lora, Newsreader, and Geist Sans remain user-selectable reading typefaces in the Display popover (§6.4). They never leak into chrome or components.
+- **Role rule:** chrome (buttons/nav/footer) is always Geist; data (numbers/badges/kickers) is always Mono; prose and display headings follow the reader font. A button inside a Mono row keeps `font-ui` explicitly — controls never inherit data fonts.
+- **Scale lock:** sizes are Tailwind `xs/sm/base/lg/xl/2xl/3xl/4xl(/5xl for display H1)` plus `10px` (badge counters only) and `11px` (micro-labels only). Banned: `text-[9px]`, `text-[13px]`, `text-[15px]`, weights `thin/extralight/extrabold/black`.
+- **Weight lock:** chrome caps at `medium`; card/section headings are `semibold`; lesson H4 titles are `semibold`; stat numerals may be `bold`; prose stays regular with `light` reserved for Lead intros.
+- **Tracking lock:** all uppercase micro-labels and kickers use `tracking-widest`; display H1 uses `tracking-tight`; prose uses `leading-relaxed`.
+- **Enforcement:** `scripts/verify-dist.mjs` (Check 7) fails the build on any banned family, size, weight, or tracking token.
 
 ---
 

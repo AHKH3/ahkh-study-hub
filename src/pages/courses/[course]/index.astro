@@ -76,11 +76,11 @@ const statusMeta = STATUS_CONFIG[course.status];
     <!-- Course Title & Metadata (Library-Aligned Monograph) -->
     <div class="mb-14 pb-8 border-b border-ink-border/80 dark:border-dark-border">
       <div class="flex flex-wrap items-center gap-3 mb-3">
-        <span class={`text-xs font-mono tracking-wider uppercase font-medium ${getCategoryColor(course.category)}`}>
+        <span class={`text-xs font-mono tracking-widest uppercase font-medium ${getCategoryColor(course.category)}`}>
           {course.category}
         </span>
         {statusMeta && (
-          <span id="journey-status-badge" data-status={course.status} data-statusbadge class={`inline-flex items-center gap-1.5 text-[11px] font-mono tracking-wide ${statusMeta.textClass}`}>
+          <span id="journey-status-badge" data-status={course.status} data-statusbadge class={`inline-flex items-center gap-1.5 text-[11px] font-mono tracking-widest ${statusMeta.textClass}`}>
             <span id="journey-status-dot" data-statusdot class={`w-1.5 h-1.5 rounded-full ${statusMeta.dotClass}`}></span>
             {statusMeta.label}
           </span>
@@ -114,7 +114,7 @@ const statusMeta = STATUS_CONFIG[course.status];
             </span>
             <button 
               id="toggle-all-modules-btn" 
-              class="hover:text-ink dark:hover:text-dark-ink transition-colors cursor-pointer flex items-center gap-1.5 focus:outline-hidden"
+              class="font-ui hover:text-ink dark:hover:text-dark-ink transition-colors cursor-pointer flex items-center gap-1.5 focus:outline-hidden"
               data-action="collapse"
               title="Toggle all units"
             >
@@ -231,7 +231,7 @@ const statusMeta = STATUS_CONFIG[course.status];
                                     </span>
 
                                     <div class="min-w-0">
-                                      <h3 class="font-serif text-base sm:text-lg font-medium text-ink dark:text-dark-ink transition-colors truncate">
+                                      <h3 class="font-serif text-base sm:text-lg font-semibold text-ink dark:text-dark-ink transition-colors truncate">
                                         {lesson.title}
                                       </h3>
 
@@ -256,7 +256,7 @@ const statusMeta = STATUS_CONFIG[course.status];
                                   <!-- Right Arrow & Read State Indicator -->
                                   <div class="shrink-0 flex items-center gap-2.5 text-ink-muted/60 dark:text-dark-muted/60 group-hover:text-ink dark:group-hover:text-dark-ink transition-colors">
                                     <span class="font-mono text-[10px] text-ink-muted dark:text-dark-muted" data-scroll-pct>0%</span>
-                                    <span class="read-tick font-mono text-[11px] font-medium tracking-wide" data-read-tick>• New</span>
+                                    <span class="read-tick font-mono text-[11px] font-medium tracking-widest" data-read-tick>• New</span>
                                     <div class="w-6 h-6 flex items-center justify-center rounded-xs">
                                       <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                         <path d="M5 12h14M12 5l7 7-7 7"/>

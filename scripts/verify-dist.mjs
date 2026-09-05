@@ -20,6 +20,7 @@ let emojiErrors = 0;
 let slashSlashErrors = 0;
 let contrastErrors = 0;
 let motionErrors = 0;
+let fontErrors = 0;
 
 // Emoji regex range
 const emojiRegex = /[\u{1F300}-\u{1FAFF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
@@ -108,6 +109,23 @@ for (const file of files) {
       linkErrors++;
     }
   }
+  // Check 7: Type System Discipline (3 systemic fonts + locked scale).
+  // Bans: dead font families, off-scale arbitrary sizes, non-system weights.
+  const forbiddenFontPatterns = [
+    /\bPlayfair\b/,
+    /family=Inter\b/,
+    /\btext-\[9px\]/,
+    /\btext-\[13px\]/,
+    /\btext-\[15px\]/,
+    /\bfont-(thin|extralight|extrabold|black)\b/,
+    /tracking-widestst/,
+  ];
+  for (const pattern of forbiddenFontPatterns) {
+    if (pattern.test(content)) {
+      console.error(`[TYPE SYSTEM VIOLATION] in ${relPath}: matches ${pattern}`);
+      fontErrors++;
+    }
+  }
 }
 
 console.log(`--- Summary ---`);
@@ -117,8 +135,9 @@ console.log(`Emoji violations: ${emojiErrors}`);
 console.log(`Double slash violations: ${slashSlashErrors}`);
 console.log(`High-contrast violations: ${contrastErrors}`);
 console.log(`Hover motion violations: ${motionErrors}`);
+console.log(`Type system violations: ${fontErrors}`);
 
-if (linkErrors === 0 && emojiErrors === 0 && slashSlashErrors === 0 && contrastErrors === 0 && motionErrors === 0) {
+if (linkErrors === 0 && emojiErrors === 0 && slashSlashErrors === 0 && contrastErrors === 0 && motionErrors === 0 && fontErrors === 0) {
   console.log('SUCCESS: All generated pages comply 100% with constitutional standards!');
   process.exit(0);
 } else {

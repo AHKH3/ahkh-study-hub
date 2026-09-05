@@ -61,7 +61,7 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
                   </span>
                   <div>
                     <div class="mb-1">
-                      <span class={`font-mono text-[10px] sm:text-[11px] uppercase tracking-wider font-medium ${getCategoryColor(course.category)}`}>
+                      <span class={`font-mono text-[10px] sm:text-[11px] uppercase tracking-widest font-medium ${getCategoryColor(course.category)}`}>
                         {course.category}
                       </span>
                     </div>
@@ -70,7 +70,7 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
                         {course.title}
                       </h2>
                       {statusMeta && (
-                        <span class={`inline-flex items-center gap-1.5 text-[11px] font-mono tracking-wide ${statusMeta.textClass}`} data-statusbadge>
+                        <span class={`inline-flex items-center gap-1.5 text-[11px] font-mono tracking-widest ${statusMeta.textClass}`} data-statusbadge>
                           <span class={`w-1.5 h-1.5 rounded-full ${statusMeta.dotClass}`} data-statusdot></span>
                           {statusMeta.label}
                         </span>
