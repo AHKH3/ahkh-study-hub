@@ -304,3 +304,44 @@ This file records the key architectural and design decisions made in the develop
 - **Consequences**:
   1. Desktop bundles resolve CSS, scripts, and images with zero `/ahkh-study-hub` leaks (verified: zero matches in desktop `dist/`).
   2. Web builds and constitutional `verify-dist` checks are unaffected.
+
+---
+
+## ADR-022: Sovereign Desktop Surfaces (Hidden Manifesto and Downloads, In-App Update Check, Bespoke Frame)
+- **Date**: 2026-09-05
+- **Status**: Accepted
+- **Context**: The desktop app is an installed reader, not a marketing site: the Manifesto mission page and the web Downloads page have no role inside it, while the OS default window chrome contradicts the sanctuary aesthetic. The owner directed hiding both pages in the app, replacing Downloads with an update check, and shipping a bespoke frame, inviting objection on the Manifesto removal.
+- **Decision**:
+  1. **Host flag**: the first head script marks `document.documentElement.dataset.ahkhHost` as `tauri` or `web`; all surface differences key off CSS rules so one codebase serves both hosts with zero web impact.
+  2. **Hidden in app only**: Manifesto and Downloads nav links hide under the Tauri host, and the Downloads route redirects to the library inside the app. Both pages stay fully live on the web.
+  3. **Update button**: a quiet header button, visible only in the app, invokes the signed updater check and reports Checking, Updating (built-in dialog takes over), Up to date, or Unavailable without ever leaving the reader.
+  4. **Bespoke frame** (`src/components/AppFrame.astro`): the OS window runs undecorated while a 40px paper bar carries the brand mark, drag region, and tactile minimize, maximize-or-restore, and close controls wired to the Tauri window API.
+- **Consequences**:
+  1. The installed app reads as a calm native citizen; the website keeps its complete sanctuary including Manifesto and Downloads.
+  2. Update verification completes on the first published `app-v*` release alongside the `latest.json` checklist.
+  3. Recorded dissent: hiding the Manifesto removes the mission statement from desktop users and splits the product narrative; accepted by the owner regardless.
+
+---
+
+## ADR-023: Desktop (Tauri) Freeze — Web-Only Surface Until Course Completion
+- **Date**: 2026-09-06
+- **Status**: Accepted
+- **Context**: The owner redirected the project to a personal study tool until the Springboard course ends (2026-09-19). The desktop shell doubles maintenance (dual-base builds, signing, release pipeline) with zero study benefit now.
+- **Decision**:
+  1. desktop CI kept off the remote (no desktop workflow exists on origin, local file excluded from pushes): no CI builds, no `app-v*` releases until further notice.
+  2. `src-tauri/`, desktop scripts, and Tauri npm scripts stay in the repo untouched: no builds, no fixes, no version bumps.
+  3. GitHub Pages web build is the only live surface (desktop + mobile browsers).
+  4. Revisit only after 2026-09-19 and only on the owner's explicit order.
+- **Consequences**:
+  1. Zero desktop maintenance cost during the study period.
+  2. The `/downloads` page remains as-is (bakes releases at build time; empty state when no releases exist).
+  3. Web/desktop version-parity checks are dormant while frozen.
+
+---
+
+## ADR-024: Lesson Production Framework (docs/FRAMEWORK.md)
+- **Date**: 2026-09-06
+- **Status**: Accepted
+- **Context**: Lesson authoring moves to message-driven agent production (owner sends source, agent delivers). Two specialist drafts (writing/pedagogy, visual/UX) needed unification into one binding contract.
+- **Decision**: `docs/FRAMEWORK.md` is the single authoring contract: fixed lesson spine (Lead → Axiom 0–2 → faithful body → synthesis 1–3 → matrix 0–2 → socratic 0–1 → one Self-Test section 2–4 Qs → footer), faithful/synthesized text labeling, doodle illustration style (rough black marker + single warm orange ≤15%, lesson canvas only), locked image-gen preset + negatives, photo treatment, provenance registry, and an 18-point validator (one FAIL = reject). Conflict resolutions: single end Self-Test (not scattered blocks), Socratic 0–1, synthesis mandatory 1–3.
+- **Consequences**: Any authoring agent (Katib, Musammim, Noir, external CLIs) validates against FRAMEWORK.md before delivery; AGENTS.md invariants keep precedence on conflict.

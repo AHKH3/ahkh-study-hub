@@ -158,9 +158,8 @@ export const COURSES: Course[] = [
 ],
             
             contentHtml: `
-
 <p class="lead text-lg sm:text-xl font-serif text-ink dark:text-dark-ink mb-8 leading-relaxed">
-                Even if you have never studied design before, you experience user experience dozens of times every single day. Every time you find a search bar without squinting, buy a train ticket on your phone in three taps, or rent a room without getting lost, you are benefiting from the work of a UX designer.
+                خلاصة المحرر: ما تصميم تجربة المستخدم؟ وما المراحل الخمس التي تأخذ المنتج من سؤال بحثي إلى شاشة مصقولة ثم إلى مسار مهني؟
               </p>
 
               <h2 id="sec-what-is-ux">1. What UX Design Really Means</h2>
@@ -171,76 +170,56 @@ export const COURSES: Course[] = [
                 At its heart, <strong>user experience is simply what someone feels, what they do, and what they understand when they interact with a tool or digital product.</strong> Because digital tools now touch almost every part of our daily lives, UX design has grown into one of the most exciting and rewarding paths in technology, offering career growth all the way to executive leadership.
               </p>
 
-              <!-- Pullout Axiom with Calibrated Terracotta Accent -->
               <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
                 <p>"Good design does not begin with graphics or code. It begins with curiosity about how real people live, where they struggle, and how a thoughtful tool can make their day easier."</p>
                 <footer class="mt-3 flex items-center gap-2 text-xs font-sans not-italic text-amber-800 dark:text-amber-400 font-semibold tracking-widest uppercase">
                   <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                  <span>Core Design Axiom</span>
+                  <span>— Laurel Hechanova, Springboard Foundations</span>
                 </footer>
               </blockquote>
+
+              <div class="my-8 p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose">
+                <div class="font-mono text-xs font-bold uppercase tracking-wider text-teal-800 dark:text-teal-400">Key Principle 01</div>
+                <h4 class="font-sans font-semibold text-base mt-1">خلاصة المحرر: تعريف التجربة</h4>
+                <p class="font-serif text-sm leading-relaxed mt-2">تجربة المستخدم (User Experience) هي ما يشعر به الإنسان وما يفعله وما يفهمه عند التعامل مع المنتج. القاعدة العملية: تجاهل الاحتياج الحقيقي يساوي منتجًا فاشلًا مهما كانت جودة التنفيذ.</p>
+              </div>
 
               <h2 id="sec-triad">2. The Three Levels: Product, Service, and System</h2>
               <p>
                 When most people hear the word "experience," they usually picture an app on a smartphone screen. But user experience actually operates at three connected levels:
               </p>
 
-              <!-- The Three Levels - Architectural Continuum -->
-              <div class="my-8 border border-ink-border rounded-xs bg-paper-50 dark:bg-dark-card overflow-hidden not-prose dark:border-dark-border">
-                <div class="px-6 py-4 border-b border-ink-border bg-white dark:bg-dark-bg flex items-center justify-between dark:border-dark-border">
-                  <span class="text-xs font-mono font-bold uppercase tracking-widest text-ink-muted dark:text-dark-muted">Architectural Continuum &mdash; The Three Levels of Experience</span>
-                  <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Micro to Macro Scope</span>
-                </div>
-                <div class="divide-y divide-ink-border dark:divide-dark-border">
-                  <!-- Level 3: System (The Foundation) -->
-                  <div class="p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-start bg-paper-100/50 dark:bg-dark-card/50">
-                    <div class="md:col-span-3">
-                      <span class="text-xs font-mono font-bold uppercase text-purple-800 dark:text-purple-400 block">Level 3 &bull; Macro</span>
-                      <h4 class="font-sans font-semibold text-lg text-ink dark:text-dark-ink mt-0.5">The System</h4>
-                    </div>
-                    <div class="md:col-span-5 text-sm text-ink dark:text-dark-ink leading-relaxed">
-                      The underlying engine, network, and data policies connecting multiple tools, institutions, and infrastructure together into a cohesive ecosystem.
-                    </div>
-                    <div class="md:col-span-4 text-xs font-mono text-ink-muted dark:text-dark-muted bg-white dark:bg-dark-bg p-3 border border-ink-border rounded-xs dark:border-dark-border">
-                      <strong class="text-ink dark:text-dark-ink block mb-1">Ecosystem Manifestation:</strong>
-                      Global payment networks (Visa/Stripe), municipal transit APIs, interconnected health records.
-                    </div>
-                  </div>
-
-                  <!-- Level 2: Service (The Journey) -->
-                  <div class="p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-start bg-paper-50 dark:bg-dark-bg/60">
-                    <div class="md:col-span-3">
-                      <span class="text-xs font-mono font-bold uppercase text-amber-800 dark:text-amber-400 block">Level 2 &bull; Meso</span>
-                      <h4 class="font-sans font-semibold text-lg text-ink dark:text-dark-ink mt-0.5">The Service</h4>
-                    </div>
-                    <div class="md:col-span-5 text-sm text-ink dark:text-dark-ink leading-relaxed">
-                      The complete temporal journey: accomplishing an objective across physical and digital touchpoints, people, and time.
-                    </div>
-                    <div class="md:col-span-4 text-xs font-mono text-ink-muted dark:text-dark-muted bg-white dark:bg-dark-bg p-3 border border-ink-border rounded-xs dark:border-dark-border">
-                      <strong class="text-ink dark:text-dark-ink block mb-1">Ecosystem Manifestation:</strong>
-                      Hailing, riding, and splitting a fare in Uber; booking, checking into, and reviewing a hotel stay.
-                    </div>
-                  </div>
-
-                  <!-- Level 1: Product (The Interface) -->
-                  <div class="p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-start bg-white dark:bg-dark-surface">
-                    <div class="md:col-span-3">
-                      <span class="text-xs font-mono font-bold uppercase text-sky-800 dark:text-sky-400 block">Level 1 &bull; Micro</span>
-                      <h4 class="font-sans font-semibold text-lg text-ink dark:text-dark-ink mt-0.5">The Product</h4>
-                    </div>
-                    <div class="md:col-span-5 text-sm text-ink dark:text-dark-ink leading-relaxed">
-                      The direct sensory object in front of the human being: the screen, hardware controls, button affordances, and immediate feedback loop.
-                    </div>
-                    <div class="md:col-span-4 text-xs font-mono text-ink-muted dark:text-dark-muted bg-paper-50 dark:bg-dark-card p-3 border border-ink-border rounded-xs dark:border-dark-border">
-                      <strong class="text-ink dark:text-dark-ink block mb-1">Ecosystem Manifestation:</strong>
-                      A smartphone screen, an ATM touch panel, an electric kettle thermostat switch.
-                    </div>
-                  </div>
-                </div>
+              <div class="my-8 overflow-x-auto not-prose" data-provenance="generated">
+                <table class="w-full text-left text-sm font-sans border-t border-b border-ink-border dark:border-dark-border">
+                  <thead>
+                    <tr class="border-b border-ink-border dark:border-dark-border">
+                      <th class="py-3 pr-4 font-semibold">المستوى</th>
+                      <th class="py-3 px-4 font-semibold">التعريف</th>
+                      <th class="py-3 pl-4 font-semibold">مثال</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-ink-border dark:divide-dark-border text-ink dark:text-dark-ink">
+                    <tr>
+                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">System · Macro</td>
+                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">The underlying engine, network, and data policies connecting multiple tools, institutions, and infrastructure into a cohesive ecosystem.</td>
+                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Global payment networks (Visa/Stripe), municipal transit APIs, interconnected health records.</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Service · Meso</td>
+                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">The complete temporal journey: accomplishing an objective across physical and digital touchpoints, people, and time.</td>
+                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Hailing, riding, and splitting a fare in Uber; booking, checking into, and reviewing a hotel stay.</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Product · Micro</td>
+                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">The direct sensory object in front of the human being: the screen, hardware controls, button affordances, and immediate feedback loop.</td>
+                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">A smartphone screen, an ATM touch panel, an electric kettle thermostat switch.</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
 
               <p>
-                To create great experiences across these three levels, professional product teams follow a clear five-stage design process: <strong>User Research</strong>, <strong>Information Architecture</strong>, <strong>Interaction Design</strong>, <strong>Usability Testing</strong>, and <strong>Visual & UI Design</strong>. Let us walk through each phase step-by-step.
+                ربط المحرر: تمر المراحل الخمس التالية بالترتيب: بحث المستخدم (User Research)، وهيكلة المعلومات (Information Architecture)، وتصميم التفاعل (Interaction Design)، واختبار قابلية الاستخدام (Usability Testing)، ثم التصميم البصري (Visual Design).
               </p>
 
               <h2 id="sec-research">3. Phase 1: User Research (Asking the Right Questions)</h2>
@@ -254,46 +233,12 @@ export const COURSES: Course[] = [
                 User research helps you discover solutions that match how people actually think and act. Researchers talk to real people and focus on four essential questions:
               </p>
 
-              <!-- 4 Research Questions - High Contrast Clear Reading Cards -->
-              <!-- 4 Research Questions - Field Diagnostic Matrix -->
-              <div class="my-8 border-y border-ink-border dark:border-dark-border not-prose overflow-x-auto">
-                <table class="w-full text-left text-sm font-sans border-collapse">
-                  <thead>
-                    <tr class="border-b border-ink dark:border-dark-border text-xs font-mono uppercase tracking-widest text-ink dark:text-dark-ink font-bold bg-paper-100 dark:bg-dark-card">
-                      <th class="py-3 px-4 w-12 text-center">#</th>
-                      <th class="py-3 px-4 w-1/3">The Diagnostic Question</th>
-                      <th class="py-3 px-4">What It Uncovers in User Reality</th>
-                      <th class="py-3 px-4 w-1/4">Product Implication</th>
-                    </tr>
-                  </thead>
-                  <tbody class="divide-y divide-ink-border dark:divide-dark-border text-ink dark:text-dark-ink">
-                    <tr>
-                      <td class="py-3.5 px-4 font-mono font-bold text-teal-800 dark:text-teal-400 text-center">01</td>
-                      <td class="py-3.5 px-4 font-semibold">What concrete difficulties do people face?</td>
-                      <td class="py-3.5 px-4 text-sm leading-relaxed">The exact friction points, delays, errors, or anxieties that disrupt their daily routine.</td>
-                      <td class="py-3.5 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Identifies the core job-to-be-done.</td>
-                    </tr>
-                    <tr>
-                      <td class="py-3.5 px-4 font-mono font-bold text-blue-800 dark:text-blue-400 text-center">02</td>
-                      <td class="py-3.5 px-4 font-semibold">Who, specifically, encounters this friction?</td>
-                      <td class="py-3.5 px-4 text-sm leading-relaxed">The distinct demographic, role, context, or cognitive profile. Designing for "everyone" creates bloated products that satisfy no one.</td>
-                      <td class="py-3.5 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Defines target personas and boundary constraints.</td>
-                    </tr>
-                    <tr>
-                      <td class="py-3.5 px-4 font-mono font-bold text-amber-800 dark:text-amber-400 text-center">03</td>
-                      <td class="py-3.5 px-4 font-semibold">What workarounds are they using right now?</td>
-                      <td class="py-3.5 px-4 text-sm leading-relaxed">People rarely wait idle; they invent improvised solutions using spreadsheets, scrap paper, sticky notes, or WhatsApp groups.</td>
-                      <td class="py-3.5 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Reveals existing behavioral habits and mental models.</td>
-                    </tr>
-                    <tr>
-                      <td class="py-3.5 px-4 font-mono font-bold text-rose-800 dark:text-rose-400 text-center">04</td>
-                      <td class="py-3.5 px-4 font-semibold">Where do those workarounds break down?</td>
-                      <td class="py-3.5 px-4 text-sm leading-relaxed">The exact points where improvised habits become brittle, error-prone, insecure, or costly.</td>
-                      <td class="py-3.5 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Pinpoints the commercial product opportunity.</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <ol class="my-6 space-y-4">
+                <li><strong>What concrete difficulties do people face?</strong> The exact friction points, delays, errors, or anxieties that disrupt their daily routine. Product implication: identifies the core job-to-be-done.</li>
+                <li><strong>Who, specifically, encounters this friction?</strong> The distinct demographic, role, context, or cognitive profile. Designing for "everyone" creates bloated products that satisfy no one. Product implication: defines target personas and boundary constraints.</li>
+                <li><strong>What workarounds are they using right now?</strong> People rarely wait idle; they invent improvised solutions using spreadsheets, scrap paper, sticky notes, or WhatsApp groups. Product implication: reveals existing behavioral habits and mental models.</li>
+                <li><strong>Where do those workarounds break down?</strong> The exact points where improvised habits become brittle, error-prone, insecure, or costly. Product implication: pinpoints the commercial product opportunity.</li>
+              </ol>
 
               <h2 id="sec-ia">4. Phase 2: Information Architecture (Organizing the App)</h2>
               <p>
@@ -303,97 +248,60 @@ export const COURSES: Course[] = [
                 Without clear architecture, an application turns into a confusing maze of buttons. Good IA groups related information together logically, creating intuitive pathways that match how users naturally think about their goals.
               </p>
 
-              <!-- Case Study: Instagram Navigation Breakdown -->
               <h2 id="sec-case-study">5. Case Study: Instagram Navigation Breakdown</h2>
               <p>
                 Let us look at a real-world example from the original course material: the navigation structure of the Instagram iOS app.
               </p>
 
-              <div class="my-10 p-6 sm:p-8 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose shadow-xs">
-                <div class="flex items-center justify-between pb-4 mb-6 border-b border-ink-border dark:border-dark-border">
-                  <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-blue-800 dark:text-blue-400 font-bold">
-                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                    <span>Case Study &mdash; Structural Breakdown</span>
-                  </div>
-                  <span class="text-xs sm:text-sm font-mono font-semibold text-ink dark:text-dark-ink">Instagram iOS App</span>
-                </div>
+              <figure class="my-8 not-prose" data-provenance="curated">
+                <img
+                  src="${path('/images/lessons/sb-1-0/page_3_img_2.png')}"
+                  alt="Historical Instagram iOS interface screenshot demonstrating information architecture"
+                  class="max-w-[270px] mx-auto rounded-xl border border-ink-border dark:border-dark-border"
+                />
+                <p class="text-xs sm:text-sm font-sans font-medium text-ink-muted dark:text-dark-muted mt-2.5 text-center">
+                  Figure 01: The historical Instagram iOS home view, illustrating four distinct structural zones. (Source: Springboard course material)
+                </p>
+              </figure>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                  <!-- Screenshot Figure -->
-                  <div class="lg:col-span-5 text-center">
-                    <img 
-                      src="${path('/images/lessons/sb-1-0/page_3_img_2.png')}" 
-                      alt="Historical Instagram iOS interface screenshot demonstrating information architecture" 
-                      class="max-w-[270px] mx-auto rounded-xl shadow-md border border-ink-border dark:border-dark-border"
-                    />
-                    <p class="text-xs sm:text-sm font-sans font-medium text-ink dark:text-dark-ink mt-3">
-                      Figure 1: The historical Instagram iOS home view, illustrating four distinct structural zones.
-                    </p>
-                  </div>
-
-                  <!-- 4 Color-Coordinated Zones & Hierarchy -->
-                  <div class="lg:col-span-7 space-y-4">
-                    <!-- Zone 1 -->
-                    <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
-                      <div class="flex items-center justify-between mb-1.5">
-                        <h4 class="font-sans font-semibold text-base text-sky-800 dark:text-sky-400">1. Header Utility Bar</h4>
-                        <span class="text-xs font-mono font-bold text-sky-800 dark:text-sky-400">Top Navigation</span>
-                      </div>
-                      <p class="text-sm sm:text-base text-ink dark:text-dark-ink leading-relaxed">
-                        Dedicated to quick actions: camera capture on the left, brand logo in the center, and private direct messages on the right.
-                      </p>
-                    </div>
-
-                    <!-- Zone 2 -->
-                    <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
-                      <div class="flex items-center justify-between mb-1.5">
-                        <h4 class="font-sans font-semibold text-base text-amber-800 dark:text-amber-400">2. Ephemeral Stories Carousel</h4>
-                        <span class="text-xs font-mono font-bold text-amber-800 dark:text-amber-400">Horizontal Rail</span>
-                      </div>
-                      <p class="text-sm sm:text-base text-ink dark:text-dark-ink leading-relaxed">
-                        Houses 24-hour casual media in a horizontal scroll rail, intentionally separated so it does not interrupt the permanent vertical feed below.
-                      </p>
-                    </div>
-
-                    <!-- Zone 3 -->
-                    <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
-                      <div class="flex items-center justify-between mb-1.5">
-                        <h4 class="font-sans font-semibold text-base text-indigo-800 dark:text-indigo-400">3. Primary Consumption Feed</h4>
-                        <span class="text-xs font-mono font-bold text-indigo-800 dark:text-indigo-400">Vertical Canvas</span>
-                      </div>
-                      <p class="text-sm sm:text-base text-ink dark:text-dark-ink leading-relaxed">
-                        The core reason users open the app: an infinite vertical stream of photos, videos, and comments from followed creators.
-                      </p>
-                    </div>
-
-                    <!-- Zone 4 -->
-                    <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
-                      <div class="flex items-center justify-between mb-1.5">
-                        <h4 class="font-sans font-semibold text-base text-emerald-800 dark:text-emerald-400">4. Bottom Navigation Bar</h4>
-                        <span class="text-xs font-mono font-bold text-emerald-800 dark:text-emerald-400">Persistent Dock</span>
-                      </div>
-                      <p class="text-sm sm:text-base text-ink dark:text-dark-ink leading-relaxed">
-                        The five core product destinations (Home, Search, Create, Activity, and Profile), permanently anchored within comfortable thumb reach.
-                      </p>
-                    </div>
-
-                    <!-- Architectural Tree View -->
-                    <div class="pt-4 border-t border-ink-border dark:border-dark-border">
-                      <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-ink dark:text-dark-ink font-bold mb-2.5">
-                        <svg class="w-3.5 h-3.5 text-sky-600 dark:text-sky-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
-                        <span>Hierarchical Tree Representation</span>
-                      </div>
-                      <div class="p-3.5 rounded-xs bg-paper-100 dark:bg-dark-surface border border-ink-border dark:border-dark-border font-mono text-sm space-y-1.5 text-ink dark:text-dark-ink">
-                        <div class="text-sky-800 dark:text-sky-400 font-bold">1. Header (Camera, IGTV, Direct Messages)</div>
-                        <div class="text-amber-800 dark:text-amber-400 font-bold">2. Stories Carousel (Your Story, Following)</div>
-                        <div class="text-indigo-800 dark:text-indigo-400 font-bold">3. Main Stream (Media Card, Social Actions)</div>
-                        <div class="text-emerald-800 dark:text-emerald-400 font-bold">4. Global Tab Dock</div>
-                        <div class="pl-4 font-sans text-xs sm:text-sm font-medium text-ink dark:text-dark-ink">4.1 Home &bull; 4.2 Explore &bull; 4.3 Post &bull; 4.4 Activity (Following / You) &bull; 4.5 Profile</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="my-8 overflow-x-auto not-prose" data-provenance="generated">
+                <table class="w-full text-left text-sm font-sans border-t border-b border-ink-border dark:border-dark-border">
+                  <thead>
+                    <tr class="border-b border-ink-border dark:border-dark-border">
+                      <th class="py-3 pr-4 font-semibold">المنطقة</th>
+                      <th class="py-3 px-4 font-semibold">الدور</th>
+                      <th class="py-3 pl-4 font-semibold">الوصف</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-ink-border dark:divide-dark-border text-ink dark:text-dark-ink">
+                    <tr>
+                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Header Utility Bar</td>
+                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Top Navigation</td>
+                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Quick actions: camera capture on the left, brand logo in the center, private direct messages on the right.</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Stories Carousel</td>
+                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Horizontal Rail</td>
+                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">24-hour casual media in a horizontal scroll rail, separated so it does not interrupt the permanent vertical feed.</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Consumption Feed</td>
+                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Vertical Canvas</td>
+                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">The core reason users open the app: an infinite vertical stream of photos, videos, and comments from followed creators.</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Bottom Navigation</td>
+                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Persistent Dock</td>
+                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Five destinations (Home, Search, Create, Activity, Profile) anchored within thumb reach: 4.1 Home • 4.2 Explore • 4.3 Post • 4.4 Activity • 4.5 Profile.</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
+              <aside class="my-8 p-5 sm:p-6 rounded-xs bg-paper-100 dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose space-y-2">
+                <div class="font-mono text-xs font-bold uppercase tracking-wider text-teal-800 dark:text-teal-400">Inquiry for Reflection</div>
+                <p class="font-serif text-sm sm:text-base">سؤال المحرر: لو أعدت ترتيب الشريط السفلي بحيث يبقى زر الإنشاء في المنتصف دائمًا، من المستفيد ومن المتضرر — وكيف تتحقق من قرارك قبل الشحن؟</p>
+              </aside>
 
               <h2 id="sec-ixd">6. Phase 3: Interaction Design (Sketches & Wireframes)</h2>
               <p>
@@ -406,30 +314,27 @@ export const COURSES: Course[] = [
                 <strong>Important Tip:</strong> Keep things fast and flexible in this phase. Do not spend hours picking colors, drop shadows, or brand logos yet. Start with <strong>rough whiteboard sketches and wireframes</strong>. If an idea does not work, you can erase a whiteboard or toss out a sketch in five seconds without wasting effort.
               </p>
 
-              <!-- Side-by-Side Exhibits: Sketches & Wireframes -->
-              <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
-                <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center shadow-2xs">
-                  <img 
-                    src="${path('/images/lessons/sb-1-0/whiteboard_wireframe_sketch.jpg')}" 
-                    alt="High-fidelity whiteboard sketch showing early web layout ideation and divergent thinking" 
-                    class="w-full h-56 object-contain mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
-                  />
-                  <p class="text-xs sm:text-sm font-sans font-medium text-ink dark:text-dark-ink mt-3">
-                    Figure 2: Rapid whiteboard sketching for exploring layout options quickly.
-                  </p>
-                </div>
+              <figure class="my-8 not-prose" data-provenance="curated">
+                <img
+                  src="${path('/images/lessons/sb-1-0/whiteboard_wireframe_sketch.jpg')}"
+                  alt="High-fidelity whiteboard sketch showing early web layout ideation and divergent thinking"
+                  class="w-full mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
+                />
+                <p class="text-xs sm:text-sm font-sans font-medium text-ink-muted dark:text-dark-muted mt-2.5 text-center">
+                  Figure 02: Rapid whiteboard sketching for exploring layout options quickly. (Source: Springboard course material)
+                </p>
+              </figure>
 
-                <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center shadow-2xs">
-                  <img 
-                    src="${path('/images/lessons/sb-1-0/mobile_wireframe_screens.jpg')}" 
-                    alt="Structured mobile wireframe flow illustrating content hierarchy and touch targets" 
-                    class="w-full h-56 object-contain mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
-                  />
-                  <p class="text-xs sm:text-sm font-sans font-medium text-ink dark:text-dark-ink mt-3">
-                    Figure 3: Structured digital wireframe outlining hierarchy before applying visual styling.
-                  </p>
-                </div>
-              </div>
+              <figure class="my-8 not-prose" data-provenance="curated">
+                <img
+                  src="${path('/images/lessons/sb-1-0/mobile_wireframe_screens.jpg')}"
+                  alt="Structured mobile wireframe flow illustrating content hierarchy and touch targets"
+                  class="w-full mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
+                />
+                <p class="text-xs sm:text-sm font-sans font-medium text-ink-muted dark:text-dark-muted mt-2.5 text-center">
+                  Figure 03: Structured digital wireframe outlining hierarchy before applying visual styling. (Source: Springboard course material)
+                </p>
+              </figure>
 
               <h2 id="sec-testing">7. Phase 4: Usability Testing (Catching Mistakes Early)</h2>
               <p>
@@ -439,62 +344,16 @@ export const COURSES: Course[] = [
                 <strong>The golden rule of product design: test as early as possible.</strong> Catching a structural flaw on paper takes ten seconds to erase with a pencil. Catching the same flaw after engineering has written the database and frontend code requires weeks of painful rework and thousands of dollars.
               </p>
 
-              <!-- Cost of Change Comparison Matrix -->
-              <div class="my-8 p-6 sm:p-8 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose shadow-xs">
-                <div class="flex items-center justify-between pb-4 mb-5 border-b border-ink-border dark:border-dark-border">
-                  <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-amber-800 dark:text-amber-400 font-bold">
-                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    <span>The Law of Iteration Economics</span>
-                  </div>
-                  <span class="text-xs sm:text-sm font-mono font-bold text-ink dark:text-dark-ink">Why Early Testing Wins</span>
-                </div>
+              <ol class="my-6 space-y-4">
+                <li><strong>Stage 1 — Sketches & Paper.</strong> Rough pen-and-paper diagrams testing basic structural concepts. Cost to revise: minutes.</li>
+                <li><strong>Stage 2 — Clickable Prototypes.</strong> Interactive wireframes evaluated directly with real end-users. The ideal window to catch flaws.</li>
+                <li><strong>Stage 3 — Production Code.</strong> Fully engineered software on live servers. Cost to revise: weeks and high budget.</li>
+              </ol>
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                  <!-- Stage 1 -->
-                  <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
-                    <div class="flex items-center justify-between mb-2">
-                      <span class="text-xs font-sans text-emerald-800 dark:text-emerald-400 font-bold uppercase">Stage 1</span>
-                      <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
-                    </div>
-                    <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1.5">Sketches & Paper</h4>
-                    <p class="text-sm text-ink dark:text-dark-ink mb-3 leading-relaxed">
-                      Rough pen-and-paper diagrams testing basic structural concepts.
-                    </p>
-                    <div class="text-sm font-mono font-bold text-emerald-800 dark:text-emerald-400 pt-2.5 border-t border-ink-border dark:border-dark-border">
-                      Cost to revise: Minutes
-                    </div>
-                  </div>
-
-                  <!-- Stage 2 -->
-                  <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
-                    <div class="flex items-center justify-between mb-2">
-                      <span class="text-xs font-sans text-amber-800 dark:text-amber-400 font-bold uppercase">Stage 2</span>
-                      <svg class="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="m13 13 6 6"/></svg>
-                    </div>
-                    <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1.5">Clickable Prototypes</h4>
-                    <p class="text-sm text-ink dark:text-dark-ink mb-3 leading-relaxed">
-                      Interactive wireframes evaluated directly with real end-users.
-                    </p>
-                    <div class="text-sm font-mono font-bold text-amber-800 dark:text-amber-400 pt-2.5 border-t border-ink-border dark:border-dark-border">
-                      Ideal Window to Catch Flaws
-                    </div>
-                  </div>
-
-                  <!-- Stage 3 -->
-                  <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
-                    <div class="flex items-center justify-between mb-2">
-                      <span class="text-xs font-sans text-rose-800 dark:text-rose-400 font-bold uppercase">Stage 3</span>
-                      <svg class="w-3.5 h-3.5 text-rose-600 dark:text-rose-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                    </div>
-                    <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1.5">Production Code</h4>
-                    <p class="text-sm text-ink dark:text-dark-ink mb-3 leading-relaxed">
-                      Fully engineered software running on live production servers.
-                    </p>
-                    <div class="text-sm font-mono font-bold text-rose-800 dark:text-rose-400 pt-2.5 border-t border-ink-border dark:border-dark-border">
-                      Cost to revise: Weeks & High Budget
-                    </div>
-                  </div>
-                </div>
+              <div class="my-8 p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose">
+                <div class="font-mono text-xs font-bold uppercase tracking-wider text-teal-800 dark:text-teal-400">Key Principle 02</div>
+                <h4 class="font-sans font-semibold text-base mt-1">خلاصة المحرر: اقتصاديات التكرار</h4>
+                <p class="font-serif text-sm leading-relaxed mt-2">تكلفة إصلاح الخطأ دقائق على الورق وأسابيع بعد الشحن. القاعدة العملية: اختبر على أرخص نموذج ممكن وفي أبكر لحظة ممكنة.</p>
               </div>
 
               <h2 id="sec-visual">8. Phase 5: Visual & UI Design (Design Systems & Voice UI)</h2>
@@ -505,101 +364,66 @@ export const COURSES: Course[] = [
                 Modern teams collect their styles into a shared <strong>Design System</strong>: a centralized library of reusable components (like buttons, modal sheets, and text inputs) that ensures engineers build cohesive, unified interfaces across mobile and web.
               </p>
 
-              <!-- Design System Exhibit -->
-              <div class="my-8 p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center not-prose shadow-2xs">
-                <img 
-                  src="${path('/images/lessons/sb-1-0/design_system_spec.jpg')}" 
-                  alt="Design system specification illustrating component states, color tokens, and typography" 
-                  class="max-w-md mx-auto rounded-xs border border-ink-border dark:border-dark-border shadow-xs"
+              <figure class="my-8 not-prose" data-provenance="curated">
+                <img
+                  src="${path('/images/lessons/sb-1-0/design_system_spec.jpg')}"
+                  alt="Design system specification illustrating component states, color tokens, and typography"
+                  class="max-w-md mx-auto rounded-xs border border-ink-border dark:border-dark-border"
                 />
-                <p class="text-xs sm:text-sm font-sans font-medium text-ink dark:text-dark-ink mt-3">
-                  Figure 4: A foundational design system component sheet ensuring visual consistency across products.
+                <p class="text-xs sm:text-sm font-sans font-medium text-ink-muted dark:text-dark-muted mt-2.5 text-center">
+                  Figure 04: A foundational design system component sheet ensuring visual consistency across products. (Source: Springboard course material)
                 </p>
-              </div>
+              </figure>
 
               <p>
                 Interfaces are also expanding beyond glass touchscreens. With smart speakers like Google Home and Amazon Echo, the interface is a microphone and speaker. <strong>Voice User Interface (VUI)</strong> designers craft clear, engaging, and natural spoken dialogue instead of arranging visual buttons.
               </p>
 
-              <!-- Career Directions -->
+              <div class="my-8 p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose">
+                <div class="font-mono text-xs font-bold uppercase tracking-wider text-teal-800 dark:text-teal-400">Key Principle 03</div>
+                <h4 class="font-sans font-semibold text-base mt-1">خلاصة المحرر: النظام قبل الزخرفة</h4>
+                <p class="font-serif text-sm leading-relaxed mt-2">نظام التصميم (Design System) مكتبة مكونات مشتركة تضمن الاتساق عبر المنتجات. والواجهة لم تعد شاشة فقط: واجهة الصوت (VUI) تصمم حوارًا منطوقًا لا أزرارًا مرئية.</p>
+              </div>
+
               <h2 id="sec-careers">9. Career Paths: Generalist, Specialist, T-Shaped, or M-Shaped?</h2>
               <p>
                 Having seen the entire UX journey from discovery interviews to polished pixels, which role matches your personal strengths? In the tech industry, design careers generally follow four models:
               </p>
 
-              <!-- Career Paths Comparative Matrix - Clear Black High Contrast -->
-              <div class="my-8 overflow-x-auto not-prose">
-                <table class="w-full text-left text-sm sm:text-base font-sans border-collapse border-y border-ink-border dark:border-dark-border">
+              <div class="my-8 overflow-x-auto not-prose" data-provenance="generated">
+                <table class="w-full text-left text-sm font-sans border-t border-b border-ink-border dark:border-dark-border">
                   <thead>
-                    <tr class="border-b border-ink-border dark:border-dark-border text-xs sm:text-sm font-mono uppercase tracking-widest text-ink dark:text-dark-ink font-bold">
-                      <th class="py-3.5 pr-4">Career Archetype</th>
-                      <th class="py-3.5 px-4">Core Responsibility</th>
-                      <th class="py-3.5 px-4">Ideal Environment</th>
-                      <th class="py-3.5 pl-4">Primary Tradeoff</th>
+                    <tr class="border-b border-ink-border dark:border-dark-border">
+                      <th class="py-3 pr-4 font-semibold">النموذج</th>
+                      <th class="py-3 px-4 font-semibold">المسؤولية الأساسية</th>
+                      <th class="py-3 pl-4 font-semibold">المقايضة</th>
                     </tr>
                   </thead>
                   <tbody class="divide-y divide-ink-border dark:divide-dark-border text-ink dark:text-dark-ink">
                     <tr>
-                      <td class="py-4 pr-4 font-mono font-bold text-blue-800 dark:text-blue-400">
-                        Generalist
-                      </td>
-                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
-                        Handles the complete lifecycle from early discovery interviews to wireframes and UI polish.
-                      </td>
-                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-medium">
-                        Early-stage startups and small teams needing one versatile person to do everything.
-                      </td>
-                      <td class="py-4 pl-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
-                        Challenging to achieve deep world-class expertise in every single sub-discipline.
-                      </td>
+                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Generalist</td>
+                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Handles the complete lifecycle from discovery interviews to wireframes and UI polish. Fits early-stage startups and small teams needing one versatile person.</td>
+                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Hard to reach world-class depth in every sub-discipline.</td>
                     </tr>
                     <tr>
-                      <td class="py-4 pr-4 font-mono font-bold text-violet-800 dark:text-violet-400">
-                        Specialist
-                      </td>
-                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
-                        Focuses entirely on one specialized area (such as a dedicated User Researcher or pure Motion Designer).
-                      </td>
-                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-medium">
-                        Large tech companies and mature design departments with deep organizational teams.
-                      </td>
-                      <td class="py-4 pl-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
-                        Risk of losing sight of cross-functional product context outside their specialty.
-                      </td>
+                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Specialist</td>
+                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Focuses entirely on one area (dedicated User Researcher, pure Motion Designer). Fits large tech companies with deep teams.</td>
+                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Risk of losing cross-functional product context outside the specialty.</td>
                     </tr>
                     <tr>
-                      <td class="py-4 pr-4 font-mono font-bold text-emerald-800 dark:text-emerald-400">
-                        T-Shaped
-                      </td>
-                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
-                        Has broad fluency across all UX phases, paired with deep expertise in one primary superpower.
-                      </td>
-                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-medium">
-                        High-growth tech companies, modern product squads, and senior leadership tracks.
-                      </td>
-                      <td class="py-4 pl-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
-                        Requires ongoing effort to keep secondary skills updated alongside the main specialty.
-                      </td>
+                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">T-Shaped</td>
+                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Broad fluency across all UX phases plus deep expertise in one superpower. Fits high-growth companies and senior leadership tracks.</td>
+                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Requires ongoing effort to keep secondary skills updated.</td>
                     </tr>
                     <tr>
-                      <td class="py-4 pr-4 font-mono font-bold text-amber-800 dark:text-amber-400">
-                        M-Shaped
-                      </td>
-                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
-                        Combines multiple deep proficiencies across adjacent fields (like UX design plus frontend code or technical writing).
-                      </td>
-                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-medium">
-                        Autonomous product squads, founding designer roles, and rapid prototyping labs.
-                      </td>
-                      <td class="py-4 pl-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
-                        Frequent context-switching between code logic and design empathy can cause fatigue.
-                      </td>
+                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">M-Shaped</td>
+                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Multiple deep proficiencies across adjacent fields (UX plus frontend code or writing). Fits founding designer roles and prototyping labs.</td>
+                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Context-switching between code logic and design empathy causes fatigue.</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
 
-              <!-- Looking Ahead: AI & UX -->
               <h2 id="sec-outlook">10. The Future: Designing in the Age of AI</h2>
               <p>
                 Product design is always evolving to keep up with technology. As machine learning and generative artificial intelligence become part of everyday apps, the way people find information, make decisions, and interact with software is shifting fast.
@@ -608,31 +432,36 @@ export const COURSES: Course[] = [
                 In this new era, UX designers do not just arrange buttons on a grid. We help shape how intelligent tools interact with human beings, making sure that technology remains transparent, respectful, and genuinely helpful. There has never been a more exciting or critical moment to champion human-centered design.
               </p>
 
-              <!-- Derivative Attribution Footer (ADR-009) -->
-              <div class="mt-14 pt-6 border-t border-ink-border dark:border-dark-border flex flex-col sm:flex-row items-start sm:items-center justify-between text-sm font-sans text-ink dark:text-dark-ink gap-4 not-prose">
-                <div class="flex items-center gap-3.5">
-                  <img 
-                    src="${path('/images/lessons/sb-1-0/page_8_img_2.png')}" 
-                    alt="Laurel Hechanova" 
-                    class="w-12 h-12 rounded-full object-cover border border-ink-border dark:border-dark-border shrink-0" 
-                  />
-                  <div>
-                    <div class="flex items-center gap-1.5 font-sans text-xs uppercase tracking-widest text-teal-800 dark:text-teal-400 font-bold mb-0.5">
-                      <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
-                      <span>Curriculum Citation</span>
-                    </div>
-                    <span class="text-ink dark:text-dark-ink font-medium">Adapted for sovereign study inspired by <em>Introduction to UX Design</em> by <strong>Laurel Hechanova</strong> (Co-founder of Goodmaker, Springboard UX Track).</span>
-                  </div>
-                </div>
-                <a 
-                  href="https://readwise.io/reader/document_raw_content/490658744" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  class="font-ui font-medium text-xs text-ink dark:text-dark-ink hover:underline underline-offset-4 shrink-0 flex items-center gap-1 border border-ink-border dark:border-dark-border px-3 py-1.5 rounded-xs bg-paper-50 dark:bg-dark-card hover:bg-paper-100 dark:hover:bg-dark-surface"
-                >
-                  <span>Original Source</span>
-                  <span>↗</span>
-                </a>
+              <div class="my-8 p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose">
+                <div class="font-mono text-xs font-bold uppercase tracking-wider text-ink-muted dark:text-dark-muted">Self-Test 01 · تذكر</div>
+                <p class="font-sans font-medium text-sm sm:text-base mt-2">سؤال المحرر: عرّف تجربة المستخدم بعناصرها الثلاثة كما وردت في هذا الدرس.</p>
+                <details class="mt-3">
+                  <summary class="font-mono text-xs underline underline-offset-4 cursor-pointer">Show answer</summary>
+                  <div class="font-serif text-sm mt-2">تجربة المستخدم هي ما يشعر به الإنسان وما يفعله وما يفهمه عند التعامل مع المنتج. إجابتك سليمة لو ذكرت العناصر الثلاثة: الشعور والفعل والفهم.</div>
+                </details>
+              </div>
+
+              <div class="my-8 p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose">
+                <div class="font-mono text-xs font-bold uppercase tracking-wider text-ink-muted dark:text-dark-muted">Self-Test 02 · فهم</div>
+                <p class="font-sans font-medium text-sm sm:text-base mt-2">سؤال المحرر: ما الفرق بين مستوى المنتج (Product) ومستوى الخدمة (Service)؟ واذكر مثالًا لكل منهما من الدرس.</p>
+                <details class="mt-3">
+                  <summary class="font-mono text-xs underline underline-offset-4 cursor-pointer">Show answer</summary>
+                  <div class="font-serif text-sm mt-2">المنتج هو الشيء المباشر أمام الإنسان (شاشة أو زر)، مثل شاشة الهاتف. الخدمة هي الرحلة الكاملة عبر الزمن ونقاط التماس (مثل طلب الرحلة وركوبها وتقسيم الأجرة في Uber). إجابتك سليمة لو فرقت بين الشيء المباشر والرحلة الزمنية مع مثال صحيح لكل منهما.</div>
+                </details>
+              </div>
+
+              <div class="my-8 p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose">
+                <div class="font-mono text-xs font-bold uppercase tracking-wider text-ink-muted dark:text-dark-muted">Self-Test 03 · تطبيق</div>
+                <p class="font-sans font-medium text-sm sm:text-base mt-2">سؤال المحرر: تطبيق توصيل طعام واجهته سهلة لكن تقييمه منخفض بسبب تأخر السائقين وضياع الطلبات. في أي مستوى تكمن المشكلة؟ وما أول خطوة تفعلها وفق منهج هذا الدرس؟</p>
+                <details class="mt-3">
+                  <summary class="font-mono text-xs underline underline-offset-4 cursor-pointer">Show answer</summary>
+                  <div class="font-serif text-sm mt-2">المشكلة في مستوى الخدمة (الرحلة الكاملة) لا مستوى المنتج (الواجهة). أول خطوة هي بحث المستخدم: مقابلة العملاء والسائقين لاكتشاف أين تنكسر الرحلة. إجابتك سليمة لو حددت مستوى الخدمة وبدأت بالبحث قبل إعادة التصميم.</div>
+                </details>
+              </div>
+
+              <div class="mt-16 pt-8 border-t border-ink-border/80 dark:border-dark-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted">
+                <span>Source: Laurel Hechanova (Springboard Foundations, Introduction to UX Design)</span>
+                <a href="https://readwise.io/reader/document_raw_content/490658744" target="_blank" rel="noopener noreferrer">Read original source</a>
               </div>
 
             `,
