@@ -15,7 +15,7 @@ const {
   <button
     type="button"
     class:list={[
-      "theme-dropdown-btn rounded-xs border border-ink-border/70 dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink transition-colors cursor-pointer flex items-center justify-center shadow-2xs focus:outline-hidden",
+      "theme-dropdown-btn rounded-xs border border-ink-border/70 dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink transition-colors cursor-pointer flex items-center justify-center shadow-2xs focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 dark:focus-visible:ring-dark-ink/40 focus-visible:ring-offset-1 dark:focus-visible:ring-offset-dark-bg",
       size === 'sm' ? "w-8 h-8 p-1.5" : "w-9 h-9 p-2"
     ]}
     aria-label="Toggle theme menu"
@@ -51,7 +51,7 @@ const {
       type="button"
       data-theme-value="light"
       role="menuitem"
-      class="theme-btn w-full px-3 py-2 text-left flex items-center justify-between gap-2 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-100 dark:hover:bg-dark-border/40 transition-colors cursor-pointer"
+      class="theme-btn w-full px-3 py-2 text-left flex items-center justify-between gap-2 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-100 dark:hover:bg-dark-border/40 focus-visible:bg-paper-100 dark:focus-visible:bg-dark-border/40 focus-visible:text-ink dark:focus-visible:text-dark-ink focus:outline-none transition-colors cursor-pointer"
     >
       <div class="flex items-center gap-2">
         <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -70,7 +70,7 @@ const {
       type="button"
       data-theme-value="system"
       role="menuitem"
-      class="theme-btn w-full px-3 py-2 text-left flex items-center justify-between gap-2 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-100 dark:hover:bg-dark-border/40 transition-colors cursor-pointer"
+      class="theme-btn w-full px-3 py-2 text-left flex items-center justify-between gap-2 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-100 dark:hover:bg-dark-border/40 focus-visible:bg-paper-100 dark:focus-visible:bg-dark-border/40 focus-visible:text-ink dark:focus-visible:text-dark-ink focus:outline-none transition-colors cursor-pointer"
     >
       <div class="flex items-center gap-2">
         <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -90,7 +90,7 @@ const {
       type="button"
       data-theme-value="dark"
       role="menuitem"
-      class="theme-btn w-full px-3 py-2 text-left flex items-center justify-between gap-2 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-100 dark:hover:bg-dark-border/40 transition-colors cursor-pointer"
+      class="theme-btn w-full px-3 py-2 text-left flex items-center justify-between gap-2 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-100 dark:hover:bg-dark-border/40 focus-visible:bg-paper-100 dark:focus-visible:bg-dark-border/40 focus-visible:text-ink dark:focus-visible:text-dark-ink focus:outline-none transition-colors cursor-pointer"
     >
       <div class="flex items-center gap-2">
         <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -121,17 +121,36 @@ const {
       const menu = wrapper.querySelector<HTMLDivElement>('.theme-dropdown-menu');
       if (!btn || !menu) return;
 
+      const items = Array.from(menu.querySelectorAll<HTMLButtonElement>('.theme-btn'));
+
+      const openMenu = () => {
+        closeAllThemeMenus();
+        menu.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        const activeItem = menu.querySelector<HTMLButtonElement>('.theme-btn[aria-pressed="true"]') || items[0];
+        activeItem?.focus();
+      };
+
       btn.onclick = (e) => {
         e.stopPropagation();
         const isHidden = menu.classList.contains('hidden');
-        closeAllThemeMenus();
         if (isHidden) {
-          menu.classList.remove('hidden');
-          btn.setAttribute('aria-expanded', 'true');
+          openMenu();
+        } else {
+          closeAllThemeMenus();
         }
       };
 
-      menu.querySelectorAll<HTMLButtonElement>('.theme-btn').forEach((item) => {
+      btn.onkeydown = (e) => {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          if (menu.classList.contains('hidden')) {
+            e.preventDefault();
+            openMenu();
+          }
+        }
+      };
+
+      items.forEach((item, idx) => {
         item.onclick = (e) => {
           e.stopPropagation();
           const target = item.getAttribute('data-theme-value');
@@ -139,6 +158,27 @@ const {
             (window as any).__setTheme(target);
           }
           closeAllThemeMenus();
+          btn.focus();
+        };
+
+        item.onkeydown = (e) => {
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            items[(idx + 1) % items.length].focus();
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            items[(idx - 1 + items.length) % items.length].focus();
+          } else if (e.key === 'Home') {
+            e.preventDefault();
+            items[0].focus();
+          } else if (e.key === 'End') {
+            e.preventDefault();
+            items[items.length - 1].focus();
+          } else if (e.key === 'Escape') {
+            e.preventDefault();
+            closeAllThemeMenus();
+            btn.focus();
+          }
         };
       });
     });
