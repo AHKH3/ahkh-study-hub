@@ -31,7 +31,7 @@ const { activeTab = 'library' } = Astro.props;
 
     <!-- Navigation Links & Theme Controls -->
     <div class="flex items-center gap-2 sm:gap-3">
-      <nav class="flex items-center gap-1 sm:gap-2 text-sm font-ui">
+      <nav class="flex items-center gap-1 sm:gap-2 text-sm font-ui" aria-label="Main navigation">
         <a 
           href={path('/')} 
           class:list={[
@@ -40,6 +40,7 @@ const { activeTab = 'library' } = Astro.props;
               ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border-ink-border/60 dark:border-dark-border" 
               : "border-transparent text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
           ]}
+          aria-current={activeTab === 'library' ? 'page' : undefined}
         >
           Library
         </a>
@@ -51,6 +52,7 @@ const { activeTab = 'library' } = Astro.props;
               ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border-ink-border/60 dark:border-dark-border" 
               : "border-transparent text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
           ]}
+          aria-current={activeTab === 'manifesto' ? 'page' : undefined}
         >
           Manifesto
         </a>
@@ -62,6 +64,7 @@ const { activeTab = 'library' } = Astro.props;
               ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border-ink-border/60 dark:border-dark-border" 
               : "border-transparent text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
           ]}
+          aria-current={activeTab === 'commonplace' ? 'page' : undefined}
         >
           Commonplace
           <span id="global-highlight-badge" class="hidden font-mono text-[11px] px-1.5 py-0.5 rounded-full bg-ink/10 dark:bg-dark-border text-ink dark:text-dark-ink">
