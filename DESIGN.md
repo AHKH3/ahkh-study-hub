@@ -112,7 +112,7 @@ To preserve the serene editorial quality of the reading sanctuary, active states
 - **Spacing:** canonical card `p-6` (`p-5 sm:p-6` responsive pair allowed), section rhythm `my-8`, page `py-12`; padding/margin/gap values from the Tailwind scale only, arbitrary brackets banned there (functional `h-/w-/top-` dimensions like progress thickness are exempt).
 - **Icon law:** icons inherit their text color. A colored icon is permitted only when sitting on an already-colored signal, matching it exactly (video pin, playing cue, copied check). Action buttons carry zero icons unless the icon adds wayfinding (chevrons may nudge via `group-hover:translate-x-1`).
 - **User-expression exception:** reader highlight pens (amber/graphite/emerald/sky/rose/violet/midnight washes) and literal artifact depictions (§7.8) are the user's/content's own colors, not system semantics — governed by their own documented contracts, never reused for chrome meaning.
-- **Sanctioned completed-state wash:** the lesson completion toggle's completed state (soft emerald wash + tint, wired in `reader.js`) is the owner's approved design. Never flatten it to border-only or recolor it — restoring it verbatim is the only permitted change.
+- **Completion toggle law:** the lesson completion button keeps byte-identical chrome in both states (same `bg-paper-50`, same `border-ink-border`). State change swaps inner content only: muted circle to emerald check, `Mark as complete` to `Completed`. Never restyle the button body per state.
 
 ---
 
