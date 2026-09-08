@@ -11,6 +11,7 @@
 4. إذا أصرّ المستخدم: سجّل القرار في `docs/DECISIONS.md` (تاريخ + طلب + قرار + تأثير) وكـ ADR في الجراف (`manage_adr`) ثم أعد الفهرسة.
 5. لا تعدّل القرارات المسجلة أو تعريف النطاق أو الدستور بدون إذن صريح.
 6. افهم المشروع عبر جراف الكود (`codebase-memory-mcp`) بدل قراءة كل الملفات: `index_repository` ثم `get_architecture` / `search_graph` / `trace_path`.
+7. بعد أي جولة تعديلات (كبيرة أو صغيرة، منك أو من غيرك): اعمل `commit` لكل التغييرات في المشروع فور انتهائها ونجاح البناء/التحقق. الكوميت عند المالك وسيلة حفظ شغل لا تنظيم — فقدان الشغل مرفوض، والتأخير ممنوع. لا `push` إلا بأمر صريح.
 <!-- CONSTITUTION:END -->
 
 ---
@@ -43,16 +44,18 @@ All courses in AHKH Study Hub adhere strictly to the **Unified Global Design Sys
   - NEVER use `#FDFCFA`, warm ivory, cream, or beige tints for the background.
   - Secondary structural surfaces (Header, Sidebars, Drawers) use Clean Modern Off-White (`#FAFAFA` / `bg-paper-100`) separated by neutral zinc-200 rules (`#E4E4E7`, zero yellow tint).
   - Any AI agent that changes the canvas to warm ivory or beige is in direct violation of project constitution.
-- **Color Accent & Theme Discipline (The Calibrated Tone Invariant)**:
+- **Color Accent & Theme Discipline (The Seven Signal Hues — ADR-030)**:
   - The default canvas is strictly Swiss Modernist Monochrome (`#18181B` carbon ink / `#FFFFFF` pure white canvas).
-  - To eliminate monochrome blindness, small metadata text (`font-mono text-xs` / `font-sans text-xs` for domains, format keywords `Video`/`Article`/`PDF`, and metrics) uses the **Extensible Tone-Calibrated Color System** (`src/utils/categoryColors.ts`).
+  - Exactly seven hues exist, each with ONE locked meaning (text-only, 600–700 light / 400 dark; zero background fills): Blue = NEW, Purple = EXPLORED, Amber = READING/in-progress, Emerald = COMPLETED/success, Rose = VIDEO/destructive, Sky = ARTICLE/info, Teal = inquiry/editorial accent.
+  - Banned outright: `indigo`, `orange`, `red`, light grades `800/900/950`, `bg-*-*` fills (sole exception: the ADR-014 soft-destructive pattern), `animate-in/fade-in` (no plugin), `transition-all`, phantom tokens (anything absent from `tailwind.config.mjs` + Tailwind v3 defaults).
+  - Domain hues live ONLY on the category kicker line; icons inherit text color and never introduce hue (Start Reading button is text-only, zero icons).
   - Strict tone rule: Calibrated 600–700 hues in light mode, calibrated 400 hues in dark mode. Pure text color only; zero colored background cards or pills.
   - Never hardcode or inject orange/terracotta as a default or universal course theme.
-- **Status Badge Color Taxonomy**:
-  - `active`: Emerald (`text-emerald-700 bg-emerald-50 border-emerald-200`, dot `bg-emerald-600 dark:bg-emerald-400`)
-  - `new`: Blue (`text-blue-700 bg-blue-50 border-blue-200`, dot `bg-blue-600 dark:bg-blue-400`)
-  - `explored`: Purple (`text-purple-700 bg-purple-50 border-purple-200`, dot `bg-purple-600 dark:bg-purple-400`)
-  - `completed`: Slate (`text-slate-600 dark:text-slate-400`, dot `bg-slate-500 dark:bg-slate-400`)
+- **Status Badge Color Taxonomy (dot + mono text only, zero pill backgrounds)**:
+  - `active`: Amber (`text-amber-700 dark:text-amber-400`, dot `bg-amber-600 dark:bg-amber-400`)
+  - `new`: Blue (`text-blue-700 dark:text-blue-400`, dot `bg-blue-600 dark:bg-blue-400`)
+  - `explored`: Purple (`text-purple-700 dark:text-purple-400`, dot `bg-purple-600 dark:bg-purple-400`)
+  - `completed`: Emerald (`text-emerald-700 dark:text-emerald-400`, dot `bg-emerald-600 dark:bg-emerald-400`)
 - **Absolute Ban on AI Slop & Synthetic Crutches (Zero Slashes `//` & Zero Emojis)**:
   - Strictly ZERO emojis and ZERO double-slashes (`//`) in the codebase, UI, lesson text, badges, cards, or markdown files.
   - Never use `//` or programming syntax as a fake "technical" or "editorial" costume.
@@ -67,6 +70,10 @@ All courses in AHKH Study Hub adhere strictly to the **Unified Global Design Sys
   - NEVER trigger reading completion implicitly via scroll depth (such as reaching 90% or the page bottom) or short lesson length. Completion requires an explicit user action on the bottom completion button.
   - Entering study mode requires clicking "Start Reading", which records the start timestamp and switches the state to `reading`. Highlighting while in `explored` state preserves the highlight but triggers a polite reminder toast.
   - Continuous vertical scroll position and depth percentage must be stored locally (`ahkh_scroll_...`) and faithfully restored upon opening any lesson.
+- **Motion, Border, Layer & Spacing Locks (ADR-031)**:
+  - Motion: `duration-150` micro, `duration-300` spatial, `duration-700` progress-fills only; `ease-out` only; `transition-all` banned (use `transition-colors` / `transition-[width]` / `transition-transform`).
+  - Radius: `rounded-xs` (2px) / `rounded-2xs` (1px) / `rounded-full` (dots) only; shadows: `shadow-2xs` buttons / `shadow-lg` floating overlays only.
+  - Borders: cards solid `border-ink-border`, section dividers `/60`, chrome/header rules `/80`; layers: `z-30` headers, `z-40` menus, `z-50` progress/popover/toast. Padding/margin/gap from scale only, no arbitrary brackets there.
 - **Base URL Awareness**: All internal links and static assets must wrap their paths with `path()` from `src/utils/paths.ts` to ensure flawless routing on GitHub Pages (`/ahkh-study-hub`).
 
 ## 3. Visual Reproduction, Synthetic Assets & Course Source Protocol (دستور إعادة إنتاج الدروس والأصول البصرية)

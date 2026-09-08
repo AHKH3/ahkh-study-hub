@@ -75,26 +75,26 @@ Status is indicated with minimal typographic indicator dots (`• Label`), never
 - **Explored:** Purple dot (`#7C3AED` light / `#A78BFA` dark)
 - **Completed:** Slate dot (`#64748B` light / `#94A3B8` dark)
 
-### 3.4. Extensible Tone-Calibrated Domain & Metadata Color System (Information Scent)
-To eliminate "monochrome blindness" while strictly protecting the quiet paper/carbon canvas, small metadata text (`font-mono text-xs` / `font-sans text-xs`) receives gentle, tone-calibrated typographic color accents:
+### 3.4. The Seven Signal Hues (ADR-030) — One Hue, One Meaning
+To eliminate "monochrome blindness" while strictly protecting the quiet paper/carbon canvas, exactly seven hues exist. Each hue has ONE locked meaning, applied as pure text color only (600–700 light / 400 dark). Zero background fills anywhere (sole exception: the ADR-014 soft-destructive pattern).
 - **Strict Tone Calibration Invariant**:
   - Light Mode: Calibrated 600–700 hues (`text-{color}-600/700`) for high contrast, soft legibility without harsh neon brightness.
   - Dark Mode: Calibrated 400 hues (`dark:text-{color}-400`) for gentle, glowing clarity against dark surfaces.
-  - **Zero Background Changes**: Colors are applied exclusively to text classes (`text-...`). Never wrap metadata in filled colored background cards or pills.
-- **Domain / Category Mappings**:
-  - **AI & Machine Learning**: Fuchsia / Violet (`text-fuchsia-600 dark:text-fuchsia-400`)
-  - **Software & Systems Engineering**: Sky Blue (`text-sky-600 dark:text-sky-400`)
-  - **Product Design & UX/HCI**: Teal (`text-teal-600 dark:text-teal-400`)
-  - **Cognitive Science & Psychology**: Purple (`text-purple-600 dark:text-purple-400`)
-  - **Typography & Book Arts**: Amber (`text-amber-700 dark:text-amber-400`)
-  - **Philosophy & Ethics**: Rose (`text-rose-600 dark:text-rose-400`)
-  - **Mathematics & Algorithms**: Cyan (`text-cyan-600 dark:text-cyan-400`)
-  - **Business & Strategy**: Emerald (`text-emerald-600 dark:text-emerald-400`)
-- **Format Keywords**:
+  - Banned outright: light grades `800/900/950`, and the hues `indigo`, `orange`, `red` (remap to zinc or the owning hue below).
+  - **Zero Background Changes**: Colors are applied exclusively to text classes (`text-...`). Never wrap metadata in filled colored background cards or pills. `bg-*-*` is banned and CI-verified — with exactly two sanctioned hover-only exceptions: remove-action hovers and the desktop window-close hover (`hover:bg-rose-50 dark:hover:bg-rose-950/40`), where the rose wash signals destructive intent on hover alone.
+- **The Seven Locked Meanings**:
+  - **Blue** (`text-blue-700 dark:text-blue-400`): state NEW — dot + label badges only.
+  - **Purple** (`text-purple-700 dark:text-purple-400`): state EXPLORED — dot + label badges only.
+  - **Amber** (`text-amber-700 dark:text-amber-400`): state READING + reading progress — badges and progress fills only.
+  - **Emerald** (`text-emerald-700 dark:text-emerald-400`): COMPLETED + success confirmations — badges and `Copied` checks only.
+  - **Rose** (`text-rose-700 dark:text-rose-400`): VIDEO + destructive — the `Video` keyword, video chrome (pin/playing cue), and remove actions only.
+  - **Sky** (`text-sky-700 dark:text-sky-400`): ARTICLE + info — the `Article` keyword and informational accents only.
+  - **Teal** (`text-teal-700 dark:text-teal-400`): Socratic inquiry + the single editorial accent — callout headers and all enumerative labels (Stage/Level/Step numbers) only.
+- **Domain Quarantine**: course-category hues (Fuchsia AI, Sky Systems, Teal Design, Purple Cognition, Amber Typography, Rose Philosophy, Cyan Math, Emerald Business) live in exactly ONE position: the category kicker line on library rows and course headers (`src/utils/categoryColors.ts` is the single source of truth). Never in badges, titles, icons, or callouts.
+- **Format Keywords** (bare keyword inside meta lines, never badges):
   - `Video`: Rose (`text-rose-600 dark:text-rose-400 font-medium`)
   - `Article`: Sky (`text-sky-600 dark:text-sky-400 font-medium`)
-  - `PDF`: Amber (`text-amber-700 dark:text-amber-400 font-medium`)
-  - `Audio`: Violet (`text-violet-600 dark:text-violet-400 font-medium`)
+  - `PDF` / `Audio`: neutral muted (no hue; they are quiet formats).
 
 ### 3.5. Tactile Low-Contrast Active States & Overlays (No Inverted Black Blocks)
 To preserve the serene editorial quality of the reading sanctuary, active states and overlays must never produce harsh visual contrast:
@@ -102,6 +102,16 @@ To preserve the serene editorial quality of the reading sanctuary, active states
 - **Floating Overlays & Popovers**: Floating menus (such as the text selection popover, display comfort popover, and undo toast) must float on pure white or subtle off-white paper (`bg-white` light / `dark:bg-dark-card` dark) with gentle drop shadows (`shadow-lg shadow-black/5`) and neutral zinc borders (`border-ink-border`). Never use stark black cards (`bg-ink`) for floating menus.
 - **Destructive/Remove Actions**: Removal or destructive states use soft tone-calibrated rose (`text-rose-700 bg-rose-50 border-rose-200/80` light / `dark:text-rose-400 dark:bg-rose-950/40 dark:border-rose-900/50`) instead of aggressive solid crimson blocks (`bg-red-600 text-white`).
 - **Primary calls-to-action stay solid:** Export, Explore, Return, and Back-to-Library buttons may use solid ink (`bg-ink`); the inversion ban covers active/selected states, segmented controls, floating overlays, and destructive blocks only.
+
+### 3.6. Token, Motion, Border, Layer & Spacing Locks (ADR-031)
+- **Radius:** `rounded-2xs` (1px), `rounded-xs` (2px), `rounded-full` (status dots, swatches) — all three defined in `tailwind.config.mjs`. No other radii anywhere.
+- **Shadow:** `shadow-2xs` (tactile buttons) and `shadow-lg` (floating overlays, popovers, toasts, menus) only.
+- **Motion:** `duration-150` micro-interactions, `duration-300` spatial (drawers, header, toasts), `duration-700` progress fills only; `ease-out` only; `transition-all` banned (use `transition-colors`, `transition-[width]`, `transition-transform`). The single sanctioned keyframe is the ClientRouter page wipe (`ahkh-rule-reveal`, ~280ms); skeleton/shimmer systems are deleted.
+- **Borders:** cards solid `border-ink-border`; section dividers and list rules `/60`; sticky/chrome header rules `/80`.
+- **Layers:** `z-30` sticky headers, `z-40` dropdown menus, `z-50` reading progress bar, selection popover, and toasts. Nothing above 50.
+- **Spacing:** canonical card `p-6` (`p-5 sm:p-6` responsive pair allowed), section rhythm `my-8`, page `py-12`; padding/margin/gap values from the Tailwind scale only, arbitrary brackets banned there (functional `h-/w-/top-` dimensions like progress thickness are exempt).
+- **Icon law:** icons inherit their text color. A colored icon is permitted only when sitting on an already-colored signal, matching it exactly (video pin, playing cue, copied check). Action buttons carry zero icons unless the icon adds wayfinding (chevrons may nudge via `group-hover:translate-x-1`).
+- **User-expression exception:** reader highlight pens (amber/graphite/emerald/sky/rose/violet/midnight washes) and literal artifact depictions (§7.8) are the user's/content's own colors, not system semantics — governed by their own documented contracts, never reused for chrome meaning.
 
 ---
 
@@ -161,7 +171,7 @@ Used for summarizing critical takeaways, definitions, mental models, or heuristi
 Used for critical inquiry, self-testing, and reflective exercises.
 ```html
 <aside class="my-8 p-5 sm:p-6 rounded-xs bg-paper-100 dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose space-y-2">
-  <div class="text-xs font-mono font-bold uppercase tracking-wider text-teal-800 dark:text-teal-400 flex items-center gap-2">
+  <div class="text-xs font-mono font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 flex items-center gap-2">
     Inquiry for Reflection
   </div>
   <p class="font-serif text-sm sm:text-base leading-relaxed text-ink dark:text-dark-ink">
@@ -215,22 +225,23 @@ All courses share the same interaction model:
 4. **Display & Comfort Popover:** Tactile typography controls (font size, serif/sans typeface, reading measure, and light/dark theme) persisting locally.
 5. **Floating Selection Popover:** Appears on text selection with Highlight, Sidenote, and Copy Citation actions.
 6. **Local Persistence:** Instant client-side persistence in browser `localStorage`.
-7. **ClientRouter-safe boot:** ClientRouter is always enabled, so every inline script uses a single `astro:page-load` subscription (it fires on initial load and navigation — never pair it with `DOMContentLoaded`). Document/window listeners carry a per-run `AbortController` signal, and the YouTube player handle plus sync timer are mirrored on `window` for teardown, so stale runs can never touch the new document or corrupt another lesson's storage.
+7. **ClientRouter-safe boot (ADR-027):** ClientRouter is always enabled. The reader library (`public/scripts/reader.js`, defining `window.__ahkhBootReader`) loads once per session via `BaseLayout` (`readerLib` pages only). Each lesson page carries its seven vars as `data-*` attributes on `#study-desk` plus one tiny inline boot script that calls the library — inline scripts re-execute on every ClientRouter navigation while the library stays cached. Document/window listeners carry a per-run `AbortController` signal, and the YouTube player handle plus sync timer are mirrored on `window` for teardown, so stale runs can never touch the new document or corrupt another lesson's storage.
 8. **Intentional Lesson Lifecycle (ADR-018):** Four distinct states: `new` (blue dot / unread), `explored` (purple dot / opened without starting reading), `reading` (amber dot / user clicked "Start Reading", recording start timestamp), and `completed` (emerald dot / user explicitly clicked "Mark as complete" at the bottom). Zero implicit completion via scroll depth. Scroll depth and vertical position are continuously saved to `localStorage` and faithfully restored on page load.
 
 ---
 
 ## 7. Applied Lesson Patterns Inventory (Observed & Canonical)
 
-Recipes below are extracted verbatim from the shipped lessons in `src/data/courses.ts`. All future lessons must reuse these exact recipes instead of inventing new ones. Every recipe ships with both `light` and `dark:` variants; washes never exceed the stated opacity caps.
+Recipes below are the canonical, law-compliant forms. All future lessons must reuse these exact recipes instead of inventing new ones. Every recipe ships with both `light` and `dark:` variants. Enumerative labels use the single teal editorial accent; quote attribution is always muted, never hued.
 
-1. **The Pullout Axiom (Blockquote):** `my-8 sm:my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed`, closed by a dignified footer (`mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold uppercase tracking-wide`) carrying author/source attribution (e.g., `— Dieter Rams`). Reserved for foundational axioms only, max 1–2 per lesson.
-2. **Swiss Editorial Synthesis Cards:** `p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs not-prose`. Information scent is carried by the top metadata kicker (`font-mono text-xs font-bold uppercase tracking-wider text-{hue}-800 dark:text-{hue}-400`), never by thick side-tab borders on rounded corners.
-3. **Tinted Compare Pair:** `bg-rose-50/50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900/40 rounded-xs p-5` versus `bg-teal-50/50 dark:bg-teal-950/20 border border-teal-200 dark:border-teal-900/40 rounded-xs p-5`. Reserved strictly for before/after or contrast pairs, never for generic emphasis.
-4. **Stat / Step / Stage Grids:** `grid ... not-prose text-center` with cells `p-4 sm:p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs`. Numbers are rendered in prominent monospace (`font-mono text-xs sm:text-sm font-bold text-{hue}-800 dark:text-{hue}-400 mb-1`), with zero top-border stripes.
-5. **Transcript Timestamp Blocks (required for every video lesson):** `data-timestamp="{seconds}"` on `my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all`. When active during playback, the container receives `yt-active-paragraph` (`border-rose-600 shadow-[0_0_0_1px_#E11D48]`). Without these blocks the YouTube transcript-sync engine has no targets and the lesson ships silent.
+1. **The Pullout Axiom (Blockquote):** `my-8 sm:my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed`, closed by a dignified muted footer (`mt-2 text-xs sm:text-sm font-mono not-italic text-ink-muted dark:text-dark-muted font-bold uppercase tracking-wide`) carrying author/source attribution (e.g., `— Dieter Rams`). Reserved for foundational axioms only, max 1–2 per lesson.
+2. **Swiss Editorial Synthesis Cards:** `p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs not-prose`. Information scent is carried by the top metadata kicker (`font-mono text-xs font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400`), never by thick side-tab borders on rounded corners.
+3. **Contrast Pair:** two neutral cards (`bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border rounded-xs p-5`); the before/after meaning is carried by rose-700 / teal-700 header text, never by tinted fills. Reserved strictly for before/after or contrast pairs, never for generic emphasis.
+4. **Stat / Step / Stage Grids:** `grid ... not-prose text-center` with cells `p-4 sm:p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs`. Numbers are rendered in prominent monospace (`font-mono text-xs sm:text-sm font-bold text-teal-700 dark:text-teal-400 mb-1`), with zero top-border stripes.
+5. **Transcript Timestamp Blocks (required for every video lesson):** `data-timestamp="{seconds}"` on `my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-colors`. When active during playback, the container receives `yt-active-paragraph` (`border-rose-600 shadow-[0_0_0_1px_#E11D48]`). Without these blocks the YouTube transcript-sync engine has no targets and the lesson ships silent.
 6. **Attribution Footer:** `mt-16 pt-8 border-t border-ink-border/80 dark:border-dark-border not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted` with the source label plus an original-link button.
-7. **Prose Isolation Rule:** Every non-prose block inside `contentHtml` carries `not-prose`; the reader renders content inside a prose container, so a missing `not-prose` leaks typography styles into cards and grids.
+7. **Prose Isolation Rule:** Every non-prose block inside lesson content carries `not-prose`; the reader renders content inside a prose container, so a missing `not-prose` leaks typography styles into cards and grids.
+8. **Depiction Exception:** boxes that literally depict colored artifacts (sticky-note grids, wireframe mock cells, DO/DON'T verdict boxes) may carry muted hue fills (`-50` light, no dark fill) with `*-200` borders — the fill IS the content. Mark every such element with `data-allow-fill` (CI exempts marked elements from the fill ban, nothing else). BAD/GOOD verdict text uses rose-700 / emerald-700. Nothing else may use hue fills.
 
 ---
 
@@ -242,12 +253,12 @@ Agents have unlimited creative and technical capabilities to produce visual mode
 When illustrating layout wireframes, card sorting, or interaction patterns, build clean, responsive wireframes directly using Tailwind classes:
 - **Wireframe Viewport Frame:** A minimal device frame with subtle neutral zinc borders (`border border-ink-border bg-white dark:bg-dark-card p-4 rounded-xs shadow-2xs`).
 - **Placeholder Blocks (Wireframe Skeletons):** Use neutral tinted blocks (`bg-paper-200 dark:bg-dark-border/60`) with dashed or solid 1px borders to represent images, search inputs, and button hit targets.
-- **Annotated Callouts:** Floating numeric badges (`w-6 h-6 rounded-full bg-ink text-paper-50 font-mono text-xs`) pointing to specific interface zones.
+- **Annotated Callouts:** Floating numeric badges (`w-6 h-6 rounded-full border border-ink/40 dark:border-dark-ink/40 text-ink dark:text-dark-ink font-mono text-xs`) pointing to specific interface zones.
 
 ### 8.2. Synthetic Image Generation Protocol
 - If a lesson requires visual demonstration (e.g. 3D device ergonomics, realistic mobile interfaces, conceptual illustrations) and no authentic public screenshot exists:
   - Generate a crisp, publication-grade asset using the `generate_image` tool.
-  - Save generated assets to `public/images/lessons/[lesson-id]/` with descriptive filenames.
+  - Save generated assets inside the lesson's own folder (ADR-026 co-location: `src/content/courses/<course>/<module>/<slug>/` alongside `index.mdx`; for legacy `courses.ts` lessons, `public/images/lessons/[lesson-id]/`) with descriptive filenames.
   - Embed with dignified figure captions: `<p class="text-xs sm:text-sm font-sans font-medium text-ink-muted mt-2.5 text-center">Figure X: Descriptive analytical explanation</p>`.
 
 ### 8.3. Anti-Marketing & Sovereign Academic Purity

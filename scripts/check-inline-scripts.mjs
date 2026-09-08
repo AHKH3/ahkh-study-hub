@@ -39,4 +39,13 @@ for (const f of files) {
   });
 }
 console.log(fail ? `RESULT: ${fail} failure(s)` : 'RESULT: all syntax checks passed');
+// ADR-027: the shared reader library lives outside markup — syntax-check it too.
+try {
+  execSync(`node --check "${join(ROOT, 'public', 'scripts', 'reader.js')}"`, { stdio: 'pipe' });
+  console.log('public/scripts/reader.js: OK');
+} catch (e) {
+  fail++;
+  console.log('public/scripts/reader.js: SYNTAX FAIL');
+}
+console.log(fail ? `FINAL: ${fail} failure(s)` : 'FINAL: all syntax checks passed');
 process.exitCode = fail ? 1 : 0;

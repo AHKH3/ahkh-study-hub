@@ -158,8 +158,9 @@ export const COURSES: Course[] = [
 ],
             
             contentHtml: `
+
 <p class="lead text-lg sm:text-xl font-serif text-ink dark:text-dark-ink mb-8 leading-relaxed">
-                خلاصة المحرر: ما تصميم تجربة المستخدم؟ وما المراحل الخمس التي تأخذ المنتج من سؤال بحثي إلى شاشة مصقولة ثم إلى مسار مهني؟
+                Even if you have never studied design before, you experience user experience dozens of times every single day. Every time you find a search bar without squinting, buy a train ticket on your phone in three taps, or rent a room without getting lost, you are benefiting from the work of a UX designer.
               </p>
 
               <h2 id="sec-what-is-ux">1. What UX Design Really Means</h2>
@@ -170,56 +171,76 @@ export const COURSES: Course[] = [
                 At its heart, <strong>user experience is simply what someone feels, what they do, and what they understand when they interact with a tool or digital product.</strong> Because digital tools now touch almost every part of our daily lives, UX design has grown into one of the most exciting and rewarding paths in technology, offering career growth all the way to executive leadership.
               </p>
 
+              <!-- Pullout Axiom with Calibrated Terracotta Accent -->
               <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
                 <p>"Good design does not begin with graphics or code. It begins with curiosity about how real people live, where they struggle, and how a thoughtful tool can make their day easier."</p>
-                <footer class="mt-3 flex items-center gap-2 text-xs font-sans not-italic text-amber-800 dark:text-amber-400 font-semibold tracking-widest uppercase">
+                <footer class="mt-3 flex items-center gap-2 text-xs font-sans not-italic text-ink-muted dark:text-dark-muted font-semibold tracking-widest uppercase">
                   <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                  <span>— Laurel Hechanova, Springboard Foundations</span>
+                  <span>Core Design Axiom</span>
                 </footer>
               </blockquote>
-
-              <div class="my-8 p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose">
-                <div class="font-mono text-xs font-bold uppercase tracking-wider text-teal-800 dark:text-teal-400">Key Principle 01</div>
-                <h4 class="font-sans font-semibold text-base mt-1">خلاصة المحرر: تعريف التجربة</h4>
-                <p class="font-serif text-sm leading-relaxed mt-2">تجربة المستخدم (User Experience) هي ما يشعر به الإنسان وما يفعله وما يفهمه عند التعامل مع المنتج. القاعدة العملية: تجاهل الاحتياج الحقيقي يساوي منتجًا فاشلًا مهما كانت جودة التنفيذ.</p>
-              </div>
 
               <h2 id="sec-triad">2. The Three Levels: Product, Service, and System</h2>
               <p>
                 When most people hear the word "experience," they usually picture an app on a smartphone screen. But user experience actually operates at three connected levels:
               </p>
 
-              <div class="my-8 overflow-x-auto not-prose" data-provenance="generated">
-                <table class="w-full text-left text-sm font-sans border-t border-b border-ink-border dark:border-dark-border">
-                  <thead>
-                    <tr class="border-b border-ink-border dark:border-dark-border">
-                      <th class="py-3 pr-4 font-semibold">المستوى</th>
-                      <th class="py-3 px-4 font-semibold">التعريف</th>
-                      <th class="py-3 pl-4 font-semibold">مثال</th>
-                    </tr>
-                  </thead>
-                  <tbody class="divide-y divide-ink-border dark:divide-dark-border text-ink dark:text-dark-ink">
-                    <tr>
-                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">System · Macro</td>
-                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">The underlying engine, network, and data policies connecting multiple tools, institutions, and infrastructure into a cohesive ecosystem.</td>
-                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Global payment networks (Visa/Stripe), municipal transit APIs, interconnected health records.</td>
-                    </tr>
-                    <tr>
-                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Service · Meso</td>
-                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">The complete temporal journey: accomplishing an objective across physical and digital touchpoints, people, and time.</td>
-                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Hailing, riding, and splitting a fare in Uber; booking, checking into, and reviewing a hotel stay.</td>
-                    </tr>
-                    <tr>
-                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Product · Micro</td>
-                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">The direct sensory object in front of the human being: the screen, hardware controls, button affordances, and immediate feedback loop.</td>
-                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">A smartphone screen, an ATM touch panel, an electric kettle thermostat switch.</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <!-- The Three Levels - Architectural Continuum -->
+              <div class="my-8 border border-ink-border rounded-xs bg-paper-50 dark:bg-dark-card overflow-hidden not-prose dark:border-dark-border">
+                <div class="px-6 py-4 border-b border-ink-border bg-white dark:bg-dark-bg flex items-center justify-between dark:border-dark-border">
+                  <span class="text-xs font-mono font-bold uppercase tracking-widest text-ink-muted dark:text-dark-muted">Architectural Continuum &mdash; The Three Levels of Experience</span>
+                  <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Micro to Macro Scope</span>
+                </div>
+                <div class="divide-y divide-ink-border dark:divide-dark-border">
+                  <!-- Level 3: System (The Foundation) -->
+                  <div class="p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-start bg-paper-100/50 dark:bg-dark-card/50">
+                    <div class="md:col-span-3">
+                      <span class="text-xs font-mono font-bold uppercase text-teal-700 dark:text-teal-400 block">Level 3 &bull; Macro</span>
+                      <h4 class="font-sans font-semibold text-lg text-ink dark:text-dark-ink mt-0.5">The System</h4>
+                    </div>
+                    <div class="md:col-span-5 text-sm text-ink dark:text-dark-ink leading-relaxed">
+                      The underlying engine, network, and data policies connecting multiple tools, institutions, and infrastructure together into a cohesive ecosystem.
+                    </div>
+                    <div class="md:col-span-4 text-xs font-mono text-ink-muted dark:text-dark-muted bg-white dark:bg-dark-bg p-3 border border-ink-border rounded-xs dark:border-dark-border">
+                      <strong class="text-ink dark:text-dark-ink block mb-1">Ecosystem Manifestation:</strong>
+                      Global payment networks (Visa/Stripe), municipal transit APIs, interconnected health records.
+                    </div>
+                  </div>
+
+                  <!-- Level 2: Service (The Journey) -->
+                  <div class="p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-start bg-paper-50 dark:bg-dark-bg/60">
+                    <div class="md:col-span-3">
+                      <span class="text-xs font-mono font-bold uppercase text-teal-700 dark:text-teal-400 block">Level 2 &bull; Meso</span>
+                      <h4 class="font-sans font-semibold text-lg text-ink dark:text-dark-ink mt-0.5">The Service</h4>
+                    </div>
+                    <div class="md:col-span-5 text-sm text-ink dark:text-dark-ink leading-relaxed">
+                      The complete temporal journey: accomplishing an objective across physical and digital touchpoints, people, and time.
+                    </div>
+                    <div class="md:col-span-4 text-xs font-mono text-ink-muted dark:text-dark-muted bg-white dark:bg-dark-bg p-3 border border-ink-border rounded-xs dark:border-dark-border">
+                      <strong class="text-ink dark:text-dark-ink block mb-1">Ecosystem Manifestation:</strong>
+                      Hailing, riding, and splitting a fare in Uber; booking, checking into, and reviewing a hotel stay.
+                    </div>
+                  </div>
+
+                  <!-- Level 1: Product (The Interface) -->
+                  <div class="p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-start bg-white dark:bg-dark-surface">
+                    <div class="md:col-span-3">
+                      <span class="text-xs font-mono font-bold uppercase text-teal-700 dark:text-teal-400 block">Level 1 &bull; Micro</span>
+                      <h4 class="font-sans font-semibold text-lg text-ink dark:text-dark-ink mt-0.5">The Product</h4>
+                    </div>
+                    <div class="md:col-span-5 text-sm text-ink dark:text-dark-ink leading-relaxed">
+                      The direct sensory object in front of the human being: the screen, hardware controls, button affordances, and immediate feedback loop.
+                    </div>
+                    <div class="md:col-span-4 text-xs font-mono text-ink-muted dark:text-dark-muted bg-paper-50 dark:bg-dark-card p-3 border border-ink-border rounded-xs dark:border-dark-border">
+                      <strong class="text-ink dark:text-dark-ink block mb-1">Ecosystem Manifestation:</strong>
+                      A smartphone screen, an ATM touch panel, an electric kettle thermostat switch.
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <p>
-                ربط المحرر: تمر المراحل الخمس التالية بالترتيب: بحث المستخدم (User Research)، وهيكلة المعلومات (Information Architecture)، وتصميم التفاعل (Interaction Design)، واختبار قابلية الاستخدام (Usability Testing)، ثم التصميم البصري (Visual Design).
+                To create great experiences across these three levels, professional product teams follow a clear five-stage design process: <strong>User Research</strong>, <strong>Information Architecture</strong>, <strong>Interaction Design</strong>, <strong>Usability Testing</strong>, and <strong>Visual & UI Design</strong>. Let us walk through each phase step-by-step.
               </p>
 
               <h2 id="sec-research">3. Phase 1: User Research (Asking the Right Questions)</h2>
@@ -233,12 +254,56 @@ export const COURSES: Course[] = [
                 User research helps you discover solutions that match how people actually think and act. Researchers talk to real people and focus on four essential questions:
               </p>
 
-              <ol class="my-6 space-y-4">
-                <li><strong>What concrete difficulties do people face?</strong> The exact friction points, delays, errors, or anxieties that disrupt their daily routine. Product implication: identifies the core job-to-be-done.</li>
-                <li><strong>Who, specifically, encounters this friction?</strong> The distinct demographic, role, context, or cognitive profile. Designing for "everyone" creates bloated products that satisfy no one. Product implication: defines target personas and boundary constraints.</li>
-                <li><strong>What workarounds are they using right now?</strong> People rarely wait idle; they invent improvised solutions using spreadsheets, scrap paper, sticky notes, or WhatsApp groups. Product implication: reveals existing behavioral habits and mental models.</li>
-                <li><strong>Where do those workarounds break down?</strong> The exact points where improvised habits become brittle, error-prone, insecure, or costly. Product implication: pinpoints the commercial product opportunity.</li>
-              </ol>
+              <!-- 4 Research Questions - High Contrast Clear Reading Cards -->
+              <!-- 4 Research Questions - Field Diagnostic Matrix -->
+              <div class="my-8 border-y border-ink-border dark:border-dark-border not-prose overflow-x-auto">
+                <table class="w-full text-left text-sm font-sans border-collapse">
+                  <thead>
+                    <tr class="border-b border-ink dark:border-dark-border text-xs font-mono uppercase tracking-widest text-ink dark:text-dark-ink font-bold bg-paper-100 dark:bg-dark-card">
+">
+++½+→
+
+ was
+/
+
+
+.
+
+.</.</
+  <tr>                      <th class="py-3 px-4 w-12 text-center">#</th>
+                      <th class="py-3 px-4 w-1/3">The Diagnostic Question</th>
+                      <th class="py-3 px-4">What It Uncovers in User Reality</th>
+                      <th class="py-3 px-4 w-1/4">Product Implication</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-ink-border dark:divide-dark-border text-ink dark:text-dark-ink">
+                    <tr>
+                      <td class="py-3.5 px-4 font-mono font-bold text-teal-700 dark:text-teal-400 text-center">01</td>
+                      <td class="py-3.5 px-4 font-semibold">What concrete difficulties do people face?</td>
+                      <td class="py-3.5 px-4 text-sm leading-relaxed">The exact friction points, delays, errors, or anxieties that disrupt their daily routine.</td>
+                      <td class="py-3.5 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Identifies the core job-to-be-done.</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3.5 px-4 font-mono font-bold text-teal-700 dark:text-teal-400 text-center">02</td>
+                      <td class="py-3.5 px-4 font-semibold">Who, specifically, encounters this friction?</td>
+                      <td class="py-3.5 px-4 text-sm leading-relaxed">The distinct demographic, role, context, or cognitive profile. Designing for "everyone" creates bloated products that satisfy no one.</td>
+                      <td class="py-3.5 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Defines target personas and boundary constraints.</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3.5 px-4 font-mono font-bold text-teal-700 dark:text-teal-400 text-center">03</td>
+                      <td class="py-3.5 px-4 font-semibold">What workarounds are they using right now?</td>
+                      <td class="py-3.5 px-4 text-sm leading-relaxed">People rarely wait idle; they invent improvised solutions using spreadsheets, scrap paper, sticky notes, or WhatsApp groups.</td>
+                      <td class="py-3.5 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Reveals existing behavioral habits and mental models.</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3.5 px-4 font-mono font-bold text-teal-700 dark:text-teal-400 text-center">04</td>
+                      <td class="py-3.5 px-4 font-semibold">Where do those workarounds break down?</td>
+                      <td class="py-3.5 px-4 text-sm leading-relaxed">The exact points where improvised habits become brittle, error-prone, insecure, or costly.</td>
+                      <td class="py-3.5 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Pinpoints the commercial product opportunity.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
               <h2 id="sec-ia">4. Phase 2: Information Architecture (Organizing the App)</h2>
               <p>
@@ -248,60 +313,97 @@ export const COURSES: Course[] = [
                 Without clear architecture, an application turns into a confusing maze of buttons. Good IA groups related information together logically, creating intuitive pathways that match how users naturally think about their goals.
               </p>
 
+              <!-- Case Study: Instagram Navigation Breakdown -->
               <h2 id="sec-case-study">5. Case Study: Instagram Navigation Breakdown</h2>
               <p>
                 Let us look at a real-world example from the original course material: the navigation structure of the Instagram iOS app.
               </p>
 
-              <figure class="my-8 not-prose" data-provenance="curated">
-                <img
-                  src="${path('/images/lessons/sb-1-0/page_3_img_2.png')}"
-                  alt="Historical Instagram iOS interface screenshot demonstrating information architecture"
-                  class="max-w-[270px] mx-auto rounded-xl border border-ink-border dark:border-dark-border"
-                />
-                <p class="text-xs sm:text-sm font-sans font-medium text-ink-muted dark:text-dark-muted mt-2.5 text-center">
-                  Figure 01: The historical Instagram iOS home view, illustrating four distinct structural zones. (Source: Springboard course material)
-                </p>
-              </figure>
+              <div class="my-10 p-6 sm:p-8 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose shadow-xs">
+                <div class="flex items-center justify-between pb-4 mb-6 border-b border-ink-border dark:border-dark-border">
+                  <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-teal-700 dark:text-teal-400 font-bold">
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    <span>Case Study &mdash; Structural Breakdown</span>
+                  </div>
+                  <span class="text-xs sm:text-sm font-mono font-semibold text-ink dark:text-dark-ink">Instagram iOS App</span>
+                </div>
 
-              <div class="my-8 overflow-x-auto not-prose" data-provenance="generated">
-                <table class="w-full text-left text-sm font-sans border-t border-b border-ink-border dark:border-dark-border">
-                  <thead>
-                    <tr class="border-b border-ink-border dark:border-dark-border">
-                      <th class="py-3 pr-4 font-semibold">المنطقة</th>
-                      <th class="py-3 px-4 font-semibold">الدور</th>
-                      <th class="py-3 pl-4 font-semibold">الوصف</th>
-                    </tr>
-                  </thead>
-                  <tbody class="divide-y divide-ink-border dark:divide-dark-border text-ink dark:text-dark-ink">
-                    <tr>
-                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Header Utility Bar</td>
-                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Top Navigation</td>
-                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Quick actions: camera capture on the left, brand logo in the center, private direct messages on the right.</td>
-                    </tr>
-                    <tr>
-                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Stories Carousel</td>
-                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Horizontal Rail</td>
-                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">24-hour casual media in a horizontal scroll rail, separated so it does not interrupt the permanent vertical feed.</td>
-                    </tr>
-                    <tr>
-                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Consumption Feed</td>
-                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Vertical Canvas</td>
-                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">The core reason users open the app: an infinite vertical stream of photos, videos, and comments from followed creators.</td>
-                    </tr>
-                    <tr>
-                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Bottom Navigation</td>
-                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Persistent Dock</td>
-                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Five destinations (Home, Search, Create, Activity, Profile) anchored within thumb reach: 4.1 Home • 4.2 Explore • 4.3 Post • 4.4 Activity • 4.5 Profile.</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                  <!-- Screenshot Figure -->
+                  <div class="lg:col-span-5 text-center">
+                    <img 
+                      src="${path('/images/lessons/sb-1-0/page_3_img_2.png')}" 
+                      alt="Historical Instagram iOS interface screenshot demonstrating information architecture" 
+                      class="max-w-xs mx-auto rounded-xs shadow-md border border-ink-border dark:border-dark-border"
+                    />
+                    <p class="text-xs sm:text-sm font-sans font-medium text-ink dark:text-dark-ink mt-3">
+                      Figure 1: The historical Instagram iOS home view, illustrating four distinct structural zones.
+                    </p>
+                  </div>
+
+                  <!-- 4 Color-Coordinated Zones & Hierarchy -->
+                  <div class="lg:col-span-7 space-y-4">
+                    <!-- Zone 1 -->
+                    <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
+                      <div class="flex items-center justify-between mb-1.5">
+                        <h4 class="font-sans font-semibold text-base text-teal-700 dark:text-teal-400">1. Header Utility Bar</h4>
+                        <span class="text-xs font-mono font-bold text-teal-700 dark:text-teal-400">Top Navigation</span>
+                      </div>
+                      <p class="text-sm sm:text-base text-ink dark:text-dark-ink leading-relaxed">
+                        Dedicated to quick actions: camera capture on the left, brand logo in the center, and private direct messages on the right.
+                      </p>
+                    </div>
+
+                    <!-- Zone 2 -->
+                    <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
+                      <div class="flex items-center justify-between mb-1.5">
+                        <h4 class="font-sans font-semibold text-base text-teal-700 dark:text-teal-400">2. Ephemeral Stories Carousel</h4>
+                        <span class="text-xs font-mono font-bold text-teal-700 dark:text-teal-400">Horizontal Rail</span>
+                      </div>
+                      <p class="text-sm sm:text-base text-ink dark:text-dark-ink leading-relaxed">
+                        Houses 24-hour casual media in a horizontal scroll rail, intentionally separated so it does not interrupt the permanent vertical feed below.
+                      </p>
+                    </div>
+
+                    <!-- Zone 3 -->
+                    <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
+                      <div class="flex items-center justify-between mb-1.5">
+                        <h4 class="font-sans font-semibold text-base text-teal-700 dark:text-teal-400">3. Primary Consumption Feed</h4>
+                        <span class="text-xs font-mono font-bold text-teal-700 dark:text-teal-400">Vertical Canvas</span>
+                      </div>
+                      <p class="text-sm sm:text-base text-ink dark:text-dark-ink leading-relaxed">
+                        The core reason users open the app: an infinite vertical stream of photos, videos, and comments from followed creators.
+                      </p>
+                    </div>
+
+                    <!-- Zone 4 -->
+                    <div class="p-4 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
+                      <div class="flex items-center justify-between mb-1.5">
+                        <h4 class="font-sans font-semibold text-base text-teal-700 dark:text-teal-400">4. Bottom Navigation Bar</h4>
+                        <span class="text-xs font-mono font-bold text-teal-700 dark:text-teal-400">Persistent Dock</span>
+                      </div>
+                      <p class="text-sm sm:text-base text-ink dark:text-dark-ink leading-relaxed">
+                        The five core product destinations (Home, Search, Create, Activity, and Profile), permanently anchored within comfortable thumb reach.
+                      </p>
+                    </div>
+
+                    <!-- Architectural Tree View -->
+                    <div class="pt-4 border-t border-ink-border dark:border-dark-border">
+                      <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-ink dark:text-dark-ink font-bold mb-2.5">
+                        <svg class="w-3.5 h-3.5 text-teal-600 dark:text-teal-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
+                        <span>Hierarchical Tree Representation</span>
+                      </div>
+                      <div class="p-3.5 rounded-xs bg-paper-100 dark:bg-dark-surface border border-ink-border dark:border-dark-border font-mono text-sm space-y-1.5 text-ink dark:text-dark-ink">
+                        <div class="text-teal-700 dark:text-teal-400 font-bold">1. Header (Camera, IGTV, Direct Messages)</div>
+                        <div class="text-teal-700 dark:text-teal-400 font-bold">2. Stories Carousel (Your Story, Following)</div>
+                        <div class="text-teal-700 dark:text-teal-400 font-bold">3. Main Stream (Media Card, Social Actions)</div>
+                        <div class="text-teal-700 dark:text-teal-400 font-bold">4. Global Tab Dock</div>
+                        <div class="pl-4 font-sans text-xs sm:text-sm font-medium text-ink dark:text-dark-ink">4.1 Home &bull; 4.2 Explore &bull; 4.3 Post &bull; 4.4 Activity (Following / You) &bull; 4.5 Profile</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              <aside class="my-8 p-5 sm:p-6 rounded-xs bg-paper-100 dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose space-y-2">
-                <div class="font-mono text-xs font-bold uppercase tracking-wider text-teal-800 dark:text-teal-400">Inquiry for Reflection</div>
-                <p class="font-serif text-sm sm:text-base">سؤال المحرر: لو أعدت ترتيب الشريط السفلي بحيث يبقى زر الإنشاء في المنتصف دائمًا، من المستفيد ومن المتضرر — وكيف تتحقق من قرارك قبل الشحن؟</p>
-              </aside>
 
               <h2 id="sec-ixd">6. Phase 3: Interaction Design (Sketches & Wireframes)</h2>
               <p>
@@ -314,27 +416,30 @@ export const COURSES: Course[] = [
                 <strong>Important Tip:</strong> Keep things fast and flexible in this phase. Do not spend hours picking colors, drop shadows, or brand logos yet. Start with <strong>rough whiteboard sketches and wireframes</strong>. If an idea does not work, you can erase a whiteboard or toss out a sketch in five seconds without wasting effort.
               </p>
 
-              <figure class="my-8 not-prose" data-provenance="curated">
-                <img
-                  src="${path('/images/lessons/sb-1-0/whiteboard_wireframe_sketch.jpg')}"
-                  alt="High-fidelity whiteboard sketch showing early web layout ideation and divergent thinking"
-                  class="w-full mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
-                />
-                <p class="text-xs sm:text-sm font-sans font-medium text-ink-muted dark:text-dark-muted mt-2.5 text-center">
-                  Figure 02: Rapid whiteboard sketching for exploring layout options quickly. (Source: Springboard course material)
-                </p>
-              </figure>
+              <!-- Side-by-Side Exhibits: Sketches & Wireframes -->
+              <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
+                <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center shadow-2xs">
+                  <img 
+                    src="${path('/images/lessons/sb-1-0/whiteboard_wireframe_sketch.jpg')}" 
+                    alt="High-fidelity whiteboard sketch showing early web layout ideation and divergent thinking" 
+                    class="w-full h-56 object-contain mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
+                  />
+                  <p class="text-xs sm:text-sm font-sans font-medium text-ink dark:text-dark-ink mt-3">
+                    Figure 2: Rapid whiteboard sketching for exploring layout options quickly.
+                  </p>
+                </div>
 
-              <figure class="my-8 not-prose" data-provenance="curated">
-                <img
-                  src="${path('/images/lessons/sb-1-0/mobile_wireframe_screens.jpg')}"
-                  alt="Structured mobile wireframe flow illustrating content hierarchy and touch targets"
-                  class="w-full mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
-                />
-                <p class="text-xs sm:text-sm font-sans font-medium text-ink-muted dark:text-dark-muted mt-2.5 text-center">
-                  Figure 03: Structured digital wireframe outlining hierarchy before applying visual styling. (Source: Springboard course material)
-                </p>
-              </figure>
+                <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center shadow-2xs">
+                  <img 
+                    src="${path('/images/lessons/sb-1-0/mobile_wireframe_screens.jpg')}" 
+                    alt="Structured mobile wireframe flow illustrating content hierarchy and touch targets" 
+                    class="w-full h-56 object-contain mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
+                  />
+                  <p class="text-xs sm:text-sm font-sans font-medium text-ink dark:text-dark-ink mt-3">
+                    Figure 3: Structured digital wireframe outlining hierarchy before applying visual styling.
+                  </p>
+                </div>
+              </div>
 
               <h2 id="sec-testing">7. Phase 4: Usability Testing (Catching Mistakes Early)</h2>
               <p>
@@ -344,16 +449,62 @@ export const COURSES: Course[] = [
                 <strong>The golden rule of product design: test as early as possible.</strong> Catching a structural flaw on paper takes ten seconds to erase with a pencil. Catching the same flaw after engineering has written the database and frontend code requires weeks of painful rework and thousands of dollars.
               </p>
 
-              <ol class="my-6 space-y-4">
-                <li><strong>Stage 1 — Sketches & Paper.</strong> Rough pen-and-paper diagrams testing basic structural concepts. Cost to revise: minutes.</li>
-                <li><strong>Stage 2 — Clickable Prototypes.</strong> Interactive wireframes evaluated directly with real end-users. The ideal window to catch flaws.</li>
-                <li><strong>Stage 3 — Production Code.</strong> Fully engineered software on live servers. Cost to revise: weeks and high budget.</li>
-              </ol>
+              <!-- Cost of Change Comparison Matrix -->
+              <div class="my-8 p-6 sm:p-8 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose shadow-xs">
+                <div class="flex items-center justify-between pb-4 mb-5 border-b border-ink-border dark:border-dark-border">
+                  <div class="flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-teal-700 dark:text-teal-400 font-bold">
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    <span>The Law of Iteration Economics</span>
+                  </div>
+                  <span class="text-xs sm:text-sm font-mono font-bold text-ink dark:text-dark-ink">Why Early Testing Wins</span>
+                </div>
 
-              <div class="my-8 p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose">
-                <div class="font-mono text-xs font-bold uppercase tracking-wider text-teal-800 dark:text-teal-400">Key Principle 02</div>
-                <h4 class="font-sans font-semibold text-base mt-1">خلاصة المحرر: اقتصاديات التكرار</h4>
-                <p class="font-serif text-sm leading-relaxed mt-2">تكلفة إصلاح الخطأ دقائق على الورق وأسابيع بعد الشحن. القاعدة العملية: اختبر على أرخص نموذج ممكن وفي أبكر لحظة ممكنة.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                  <!-- Stage 1 -->
+                  <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-xs font-sans text-teal-700 dark:text-teal-400 font-bold uppercase">Stage 1</span>
+                      <svg class="w-3.5 h-3.5 text-teal-600 dark:text-teal-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                    </div>
+                    <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1.5">Sketches & Paper</h4>
+                    <p class="text-sm text-ink dark:text-dark-ink mb-3 leading-relaxed">
+                      Rough pen-and-paper diagrams testing basic structural concepts.
+                    </p>
+                    <div class="text-sm font-mono font-bold text-teal-700 dark:text-teal-400 pt-2.5 border-t border-ink-border dark:border-dark-border">
+                      Cost to revise: Minutes
+                    </div>
+                  </div>
+
+                  <!-- Stage 2 -->
+                  <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-xs font-sans text-teal-700 dark:text-teal-400 font-bold uppercase">Stage 2</span>
+                      <svg class="w-3.5 h-3.5 text-teal-600 dark:text-teal-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="m13 13 6 6"/></svg>
+                    </div>
+                    <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1.5">Clickable Prototypes</h4>
+                    <p class="text-sm text-ink dark:text-dark-ink mb-3 leading-relaxed">
+                      Interactive wireframes evaluated directly with real end-users.
+                    </p>
+                    <div class="text-sm font-mono font-bold text-teal-700 dark:text-teal-400 pt-2.5 border-t border-ink-border dark:border-dark-border">
+                      Ideal Window to Catch Flaws
+                    </div>
+                  </div>
+
+                  <!-- Stage 3 -->
+                  <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-surface border border-ink-border dark:border-dark-border shadow-2xs">
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-xs font-sans text-teal-700 dark:text-teal-400 font-bold uppercase">Stage 3</span>
+                      <svg class="w-3.5 h-3.5 text-teal-600 dark:text-teal-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1.5">Production Code</h4>
+                    <p class="text-sm text-ink dark:text-dark-ink mb-3 leading-relaxed">
+                      Fully engineered software running on live production servers.
+                    </p>
+                    <div class="text-sm font-mono font-bold text-teal-700 dark:text-teal-400 pt-2.5 border-t border-ink-border dark:border-dark-border">
+                      Cost to revise: Weeks & High Budget
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <h2 id="sec-visual">8. Phase 5: Visual & UI Design (Design Systems & Voice UI)</h2>
@@ -364,66 +515,101 @@ export const COURSES: Course[] = [
                 Modern teams collect their styles into a shared <strong>Design System</strong>: a centralized library of reusable components (like buttons, modal sheets, and text inputs) that ensures engineers build cohesive, unified interfaces across mobile and web.
               </p>
 
-              <figure class="my-8 not-prose" data-provenance="curated">
-                <img
-                  src="${path('/images/lessons/sb-1-0/design_system_spec.jpg')}"
-                  alt="Design system specification illustrating component states, color tokens, and typography"
-                  class="max-w-md mx-auto rounded-xs border border-ink-border dark:border-dark-border"
+              <!-- Design System Exhibit -->
+              <div class="my-8 p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center not-prose shadow-2xs">
+                <img 
+                  src="${path('/images/lessons/sb-1-0/design_system_spec.jpg')}" 
+                  alt="Design system specification illustrating component states, color tokens, and typography" 
+                  class="max-w-md mx-auto rounded-xs border border-ink-border dark:border-dark-border shadow-xs"
                 />
-                <p class="text-xs sm:text-sm font-sans font-medium text-ink-muted dark:text-dark-muted mt-2.5 text-center">
-                  Figure 04: A foundational design system component sheet ensuring visual consistency across products. (Source: Springboard course material)
+                <p class="text-xs sm:text-sm font-sans font-medium text-ink dark:text-dark-ink mt-3">
+                  Figure 4: A foundational design system component sheet ensuring visual consistency across products.
                 </p>
-              </figure>
+              </div>
 
               <p>
                 Interfaces are also expanding beyond glass touchscreens. With smart speakers like Google Home and Amazon Echo, the interface is a microphone and speaker. <strong>Voice User Interface (VUI)</strong> designers craft clear, engaging, and natural spoken dialogue instead of arranging visual buttons.
               </p>
 
-              <div class="my-8 p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose">
-                <div class="font-mono text-xs font-bold uppercase tracking-wider text-teal-800 dark:text-teal-400">Key Principle 03</div>
-                <h4 class="font-sans font-semibold text-base mt-1">خلاصة المحرر: النظام قبل الزخرفة</h4>
-                <p class="font-serif text-sm leading-relaxed mt-2">نظام التصميم (Design System) مكتبة مكونات مشتركة تضمن الاتساق عبر المنتجات. والواجهة لم تعد شاشة فقط: واجهة الصوت (VUI) تصمم حوارًا منطوقًا لا أزرارًا مرئية.</p>
-              </div>
-
+              <!-- Career Directions -->
               <h2 id="sec-careers">9. Career Paths: Generalist, Specialist, T-Shaped, or M-Shaped?</h2>
               <p>
                 Having seen the entire UX journey from discovery interviews to polished pixels, which role matches your personal strengths? In the tech industry, design careers generally follow four models:
               </p>
 
-              <div class="my-8 overflow-x-auto not-prose" data-provenance="generated">
-                <table class="w-full text-left text-sm font-sans border-t border-b border-ink-border dark:border-dark-border">
+              <!-- Career Paths Comparative Matrix - Clear Black High Contrast -->
+              <div class="my-8 overflow-x-auto not-prose">
+                <table class="w-full text-left text-sm sm:text-base font-sans border-collapse border-y border-ink-border dark:border-dark-border">
                   <thead>
-                    <tr class="border-b border-ink-border dark:border-dark-border">
-                      <th class="py-3 pr-4 font-semibold">النموذج</th>
-                      <th class="py-3 px-4 font-semibold">المسؤولية الأساسية</th>
-                      <th class="py-3 pl-4 font-semibold">المقايضة</th>
+                    <tr class="border-b border-ink-border dark:border-dark-border text-xs sm:text-sm font-mono uppercase tracking-widest text-ink dark:text-dark-ink font-bold">
+                      <th class="py-3.5 pr-4">Career Archetype</th>
+                      <th class="py-3.5 px-4">Core Responsibility</th>
+                      <th class="py-3.5 px-4">Ideal Environment</th>
+                      <th class="py-3.5 pl-4">Primary Tradeoff</th>
                     </tr>
                   </thead>
                   <tbody class="divide-y divide-ink-border dark:divide-dark-border text-ink dark:text-dark-ink">
                     <tr>
-                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Generalist</td>
-                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Handles the complete lifecycle from discovery interviews to wireframes and UI polish. Fits early-stage startups and small teams needing one versatile person.</td>
-                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Hard to reach world-class depth in every sub-discipline.</td>
+                      <td class="py-4 pr-4 font-mono font-bold text-teal-700 dark:text-teal-400">
+                        Generalist
+                      </td>
+                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
+                        Handles the complete lifecycle from early discovery interviews to wireframes and UI polish.
+                      </td>
+                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-medium">
+                        Early-stage startups and small teams needing one versatile person to do everything.
+                      </td>
+                      <td class="py-4 pl-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
+                        Challenging to achieve deep world-class expertise in every single sub-discipline.
+                      </td>
                     </tr>
                     <tr>
-                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">Specialist</td>
-                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Focuses entirely on one area (dedicated User Researcher, pure Motion Designer). Fits large tech companies with deep teams.</td>
-                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Risk of losing cross-functional product context outside the specialty.</td>
+                      <td class="py-4 pr-4 font-mono font-bold text-teal-700 dark:text-teal-400">
+                        Specialist
+                      </td>
+                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
+                        Focuses entirely on one specialized area (such as a dedicated User Researcher or pure Motion Designer).
+                      </td>
+                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-medium">
+                        Large tech companies and mature design departments with deep organizational teams.
+                      </td>
+                      <td class="py-4 pl-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
+                        Risk of losing sight of cross-functional product context outside their specialty.
+                      </td>
                     </tr>
                     <tr>
-                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">T-Shaped</td>
-                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Broad fluency across all UX phases plus deep expertise in one superpower. Fits high-growth companies and senior leadership tracks.</td>
-                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Requires ongoing effort to keep secondary skills updated.</td>
+                      <td class="py-4 pr-4 font-mono font-bold text-teal-700 dark:text-teal-400">
+                        T-Shaped
+                      </td>
+                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
+                        Has broad fluency across all UX phases, paired with deep expertise in one primary superpower.
+                      </td>
+                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-medium">
+                        High-growth tech companies, modern product squads, and senior leadership tracks.
+                      </td>
+                      <td class="py-4 pl-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
+                        Requires ongoing effort to keep secondary skills updated alongside the main specialty.
+                      </td>
                     </tr>
                     <tr>
-                      <td class="py-3.5 pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted">M-Shaped</td>
-                      <td class="py-3.5 px-4 font-serif text-ink/85 dark:text-dark-ink/85">Multiple deep proficiencies across adjacent fields (UX plus frontend code or writing). Fits founding designer roles and prototyping labs.</td>
-                      <td class="py-3.5 pl-4 font-serif text-ink/85 dark:text-dark-ink/85">Context-switching between code logic and design empathy causes fatigue.</td>
+                      <td class="py-4 pr-4 font-mono font-bold text-teal-700 dark:text-teal-400">
+                        M-Shaped
+                      </td>
+                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
+                        Combines multiple deep proficiencies across adjacent fields (like UX design plus frontend code or technical writing).
+                      </td>
+                      <td class="py-4 px-4 text-ink dark:text-dark-ink leading-relaxed font-medium">
+                        Autonomous product squads, founding designer roles, and rapid prototyping labs.
+                      </td>
+                      <td class="py-4 pl-4 text-ink dark:text-dark-ink leading-relaxed font-normal">
+                        Frequent context-switching between code logic and design empathy can cause fatigue.
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
 
+              <!-- Looking Ahead: AI & UX -->
               <h2 id="sec-outlook">10. The Future: Designing in the Age of AI</h2>
               <p>
                 Product design is always evolving to keep up with technology. As machine learning and generative artificial intelligence become part of everyday apps, the way people find information, make decisions, and interact with software is shifting fast.
@@ -432,36 +618,31 @@ export const COURSES: Course[] = [
                 In this new era, UX designers do not just arrange buttons on a grid. We help shape how intelligent tools interact with human beings, making sure that technology remains transparent, respectful, and genuinely helpful. There has never been a more exciting or critical moment to champion human-centered design.
               </p>
 
-              <div class="my-8 p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose">
-                <div class="font-mono text-xs font-bold uppercase tracking-wider text-ink-muted dark:text-dark-muted">Self-Test 01 · تذكر</div>
-                <p class="font-sans font-medium text-sm sm:text-base mt-2">سؤال المحرر: عرّف تجربة المستخدم بعناصرها الثلاثة كما وردت في هذا الدرس.</p>
-                <details class="mt-3">
-                  <summary class="font-mono text-xs underline underline-offset-4 cursor-pointer">Show answer</summary>
-                  <div class="font-serif text-sm mt-2">تجربة المستخدم هي ما يشعر به الإنسان وما يفعله وما يفهمه عند التعامل مع المنتج. إجابتك سليمة لو ذكرت العناصر الثلاثة: الشعور والفعل والفهم.</div>
-                </details>
-              </div>
-
-              <div class="my-8 p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose">
-                <div class="font-mono text-xs font-bold uppercase tracking-wider text-ink-muted dark:text-dark-muted">Self-Test 02 · فهم</div>
-                <p class="font-sans font-medium text-sm sm:text-base mt-2">سؤال المحرر: ما الفرق بين مستوى المنتج (Product) ومستوى الخدمة (Service)؟ واذكر مثالًا لكل منهما من الدرس.</p>
-                <details class="mt-3">
-                  <summary class="font-mono text-xs underline underline-offset-4 cursor-pointer">Show answer</summary>
-                  <div class="font-serif text-sm mt-2">المنتج هو الشيء المباشر أمام الإنسان (شاشة أو زر)، مثل شاشة الهاتف. الخدمة هي الرحلة الكاملة عبر الزمن ونقاط التماس (مثل طلب الرحلة وركوبها وتقسيم الأجرة في Uber). إجابتك سليمة لو فرقت بين الشيء المباشر والرحلة الزمنية مع مثال صحيح لكل منهما.</div>
-                </details>
-              </div>
-
-              <div class="my-8 p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose">
-                <div class="font-mono text-xs font-bold uppercase tracking-wider text-ink-muted dark:text-dark-muted">Self-Test 03 · تطبيق</div>
-                <p class="font-sans font-medium text-sm sm:text-base mt-2">سؤال المحرر: تطبيق توصيل طعام واجهته سهلة لكن تقييمه منخفض بسبب تأخر السائقين وضياع الطلبات. في أي مستوى تكمن المشكلة؟ وما أول خطوة تفعلها وفق منهج هذا الدرس؟</p>
-                <details class="mt-3">
-                  <summary class="font-mono text-xs underline underline-offset-4 cursor-pointer">Show answer</summary>
-                  <div class="font-serif text-sm mt-2">المشكلة في مستوى الخدمة (الرحلة الكاملة) لا مستوى المنتج (الواجهة). أول خطوة هي بحث المستخدم: مقابلة العملاء والسائقين لاكتشاف أين تنكسر الرحلة. إجابتك سليمة لو حددت مستوى الخدمة وبدأت بالبحث قبل إعادة التصميم.</div>
-                </details>
-              </div>
-
-              <div class="mt-16 pt-8 border-t border-ink-border/80 dark:border-dark-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted">
-                <span>Source: Laurel Hechanova (Springboard Foundations, Introduction to UX Design)</span>
-                <a href="https://readwise.io/reader/document_raw_content/490658744" target="_blank" rel="noopener noreferrer">Read original source</a>
+              <!-- Derivative Attribution Footer (ADR-009) -->
+              <div class="mt-14 pt-6 border-t border-ink-border dark:border-dark-border flex flex-col sm:flex-row items-start sm:items-center justify-between text-sm font-sans text-ink dark:text-dark-ink gap-4 not-prose">
+                <div class="flex items-center gap-3.5">
+                  <img 
+                    src="${path('/images/lessons/sb-1-0/page_8_img_2.png')}" 
+                    alt="Laurel Hechanova" 
+                    class="w-12 h-12 rounded-full object-cover border border-ink-border dark:border-dark-border shrink-0" 
+                  />
+                  <div>
+                    <div class="flex items-center gap-1.5 font-sans text-xs uppercase tracking-widest text-teal-700 dark:text-teal-400 font-bold mb-0.5">
+                      <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+                      <span>Curriculum Citation</span>
+                    </div>
+                    <span class="text-ink dark:text-dark-ink font-medium">Adapted for sovereign study inspired by <em>Introduction to UX Design</em> by <strong>Laurel Hechanova</strong> (Co-founder of Goodmaker, Springboard UX Track).</span>
+                  </div>
+                </div>
+                <a 
+                  href="https://readwise.io/reader/document_raw_content/490658744" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="font-mono font-medium text-xs text-ink dark:text-dark-ink hover:underline underline-offset-4 shrink-0 flex items-center gap-1 border border-ink-border dark:border-dark-border px-3 py-1.5 rounded-xs bg-paper-50 dark:bg-dark-card hover:bg-paper-100 dark:hover:bg-dark-surface"
+                >
+                  <span>Original Source</span>
+                  <span>↗</span>
+                </a>
               </div>
 
             `,
@@ -563,7 +744,7 @@ export const COURSES: Course[] = [
 
     <!-- Industry Metrics Card -->
     <div class="my-10 p-6 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-4">
-      <div class="flex items-center gap-2 font-mono text-xs text-amber-800 dark:text-amber-400 font-bold uppercase tracking-widest">
+      <div class="flex items-center gap-2 font-mono text-xs text-teal-700 dark:text-teal-400 font-bold uppercase tracking-widest">
         <span>Industry Benchmarks & Economic Value</span>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
@@ -597,7 +778,7 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"UX design goes far beyond cosmetic styling; it anchors technical decisions in observable human behavior, ensuring that human goals and business objectives converge effortlessly."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-widest uppercase">
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-ink-muted dark:text-dark-muted font-bold tracking-widest uppercase">
         Core Philosophy &mdash; Sakshi Gupta
       </footer>
     </blockquote>
@@ -621,8 +802,8 @@ export const COURSES: Course[] = [
         <thead>
           <tr class="border-b border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-card">
             <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-ink dark:text-dark-ink">Dimension</th>
-            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-400">UX Design (Experience)</th>
-            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-indigo-800 dark:text-indigo-400">UI Design (Interface)</th>
+            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-700 dark:text-teal-400">UX Design (Experience)</th>
+            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-700 dark:text-teal-400">UI Design (Interface)</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-ink-border/60 dark:divide-dark-border/60">
@@ -658,7 +839,7 @@ export const COURSES: Course[] = [
     <div class="my-8 space-y-4 not-prose">
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <div class="flex items-center justify-between mb-1.5">
-          <span class="font-mono text-xs font-bold text-amber-800 dark:text-amber-400 uppercase">Stage 01 Define</span>
+          <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase">Stage 01 Define</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Alignment & Scope</span>
         </div>
         <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Define the Core Challenge</h4>
@@ -669,7 +850,7 @@ export const COURSES: Course[] = [
 
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <div class="flex items-center justify-between mb-1.5">
-          <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase">Stage 02 Research</span>
+          <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase">Stage 02 Research</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Contextual Inquiry</span>
         </div>
         <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Discover User Realities</h4>
@@ -680,7 +861,7 @@ export const COURSES: Course[] = [
 
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <div class="flex items-center justify-between mb-1.5">
-          <span class="font-mono text-xs font-bold text-sky-800 dark:text-sky-400 uppercase">Stage 03 Analyze</span>
+          <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase">Stage 03 Analyze</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Synthesis & Scenarios</span>
         </div>
         <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Map Personas and Journeys</h4>
@@ -691,7 +872,7 @@ export const COURSES: Course[] = [
 
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <div class="flex items-center justify-between mb-1.5">
-          <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase">Stage 04 Design</span>
+          <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase">Stage 04 Design</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Architecture & Prototypes</span>
         </div>
         <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Construct Wireframes & Interactive Prototypes</h4>
@@ -702,7 +883,7 @@ export const COURSES: Course[] = [
 
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
         <div class="flex items-center justify-between mb-1.5">
-          <span class="font-mono text-xs font-bold text-rose-800 dark:text-rose-400 uppercase">Stage 05 Validate</span>
+          <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase">Stage 05 Validate</span>
           <span class="text-xs font-mono text-ink-muted dark:text-dark-muted">Empirical Testing</span>
         </div>
         <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Test with Real Participants</h4>
@@ -774,7 +955,7 @@ export const COURSES: Course[] = [
 
     <!-- Socratic Callout -->
     <aside class="my-10 p-5 rounded-xs bg-paper-100 dark:bg-dark-card border border-ink-border dark:border-dark-border text-ink dark:text-dark-ink space-y-2 not-prose">
-      <p class="font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-400 tracking-widest">Reflection Inquiry</p>
+      <p class="font-mono text-xs uppercase font-bold text-teal-700 dark:text-teal-400 tracking-widest">Reflection Inquiry</p>
       <p class="font-serif text-sm sm:text-base leading-relaxed">
         Why is it dangerous to treat the UX design process as a strict linear conveyor belt? How does circling back between prototyping and user research actually save engineering capital?
       </p>
@@ -902,7 +1083,7 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"UI is the saddle, the stirrups, and the reins; UX is the feeling you have being able to ride the horse with mastery, comfort, and confidence."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-widest uppercase">
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-ink-muted dark:text-dark-muted font-bold tracking-widest uppercase">
         Classic Design Axiom &mdash; Dain Miller
       </footer>
     </blockquote>
@@ -945,31 +1126,31 @@ export const COURSES: Course[] = [
         </thead>
         <tbody class="divide-y divide-ink-border text-ink dark:text-dark-ink dark:divide-dark-border">
           <tr>
-            <td class="py-3 px-4 font-mono font-bold text-teal-800 text-center dark:text-teal-400">01</td>
+            <td class="py-3 px-4 font-mono font-bold text-teal-700 text-center dark:text-teal-400">01</td>
             <td class="py-3 px-4 font-semibold">Strategy Plane</td>
             <td class="py-3 px-4 text-sm leading-relaxed">User research insights, business goals, success metrics, stakeholder alignment.</td>
             <td class="py-3 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Why are we building this, and for whom?</td>
           </tr>
           <tr>
-            <td class="py-3 px-4 font-mono font-bold text-blue-800 text-center dark:text-blue-400">02</td>
+            <td class="py-3 px-4 font-mono font-bold text-teal-700 text-center dark:text-teal-400">02</td>
             <td class="py-3 px-4 font-semibold">Scope Plane</td>
             <td class="py-3 px-4 text-sm leading-relaxed">Functional specifications, content inventory, feature prioritization matrices.</td>
             <td class="py-3 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">What exact features and content are required?</td>
           </tr>
           <tr>
-            <td class="py-3 px-4 font-mono font-bold text-amber-800 text-center dark:text-amber-400">03</td>
+            <td class="py-3 px-4 font-mono font-bold text-teal-700 text-center dark:text-teal-400">03</td>
             <td class="py-3 px-4 font-semibold">Structure Plane</td>
             <td class="py-3 px-4 text-sm leading-relaxed">Information architecture taxonomies, tree diagrams, interaction flowcharts.</td>
             <td class="py-3 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">How does the user navigate between tasks?</td>
           </tr>
           <tr>
-            <td class="py-3 px-4 font-mono font-bold text-indigo-800 text-center dark:text-indigo-400">04</td>
+            <td class="py-3 px-4 font-mono font-bold text-teal-700 text-center dark:text-teal-400">04</td>
             <td class="py-3 px-4 font-semibold">Skeleton Plane</td>
             <td class="py-3 px-4 text-sm leading-relaxed">Interface wireframes, navigation mechanisms, information design layouts.</td>
             <td class="py-3 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">Where do buttons, lists, and controls sit?</td>
           </tr>
           <tr>
-            <td class="py-3 px-4 font-mono font-bold text-rose-800 text-center dark:text-rose-400">05</td>
+            <td class="py-3 px-4 font-mono font-bold text-teal-700 text-center dark:text-teal-400">05</td>
             <td class="py-3 px-4 font-semibold">Surface Plane</td>
             <td class="py-3 px-4 text-sm leading-relaxed">Visual design tokens, typographic hierarchy, color systems, tactile micro-animations.</td>
             <td class="py-3 px-4 text-xs font-mono text-ink-muted dark:text-dark-muted">How does the final interface look and feel?</td>
@@ -1018,8 +1199,8 @@ export const COURSES: Course[] = [
         <thead>
           <tr class="border-b border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-card">
             <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-ink dark:text-dark-ink">Category</th>
-            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-400">UX Designer</th>
-            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-indigo-800 dark:text-indigo-400">UI Designer</th>
+            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-700 dark:text-teal-400">UX Designer</th>
+            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-700 dark:text-teal-400">UI Designer</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-ink-border/60 dark:divide-dark-border/60">
@@ -1195,10 +1376,10 @@ export const COURSES: Course[] = [
       Design Thinking is not a rigid formula; it is an empathetic, non-linear problem-solving philosophy pioneered at Stanford d.school and codified by global design leaders to tackle complex, ambiguous human challenges.
     </p>
 
-    <div data-timestamp="0" class="my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all">
+    <div data-timestamp="0" class="my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-colors">
       <div class="flex items-center justify-between gap-2 mb-2">
-        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase">Video Timestamp Section</span>
-        <button class="timestamp-btn font-mono text-xs px-2.5 py-1 rounded bg-paper-200 dark:bg-dark-border text-ink dark:text-dark-ink font-bold cursor-pointer hover:bg-paper-300 dark:hover:bg-dark-border/80 transition-colors" data-seek-time="0">
+        <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase">Video Timestamp Section</span>
+        <button class="timestamp-btn font-mono text-xs px-2.5 py-1 rounded-xs bg-paper-200 dark:bg-dark-border text-ink dark:text-dark-ink font-bold cursor-pointer hover:bg-paper-300 dark:hover:bg-dark-border/80 transition-colors" data-seek-time="0">
           00:00 &mdash; Play Lecture Intro
         </button>
       </div>
@@ -1211,37 +1392,37 @@ export const COURSES: Course[] = [
     <!-- The 5 Stages Visual Grid -->
     <div class="my-10 grid grid-cols-1 sm:grid-cols-5 gap-3 not-prose text-center">
       <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <div class="font-mono text-xs text-teal-800 dark:text-teal-400 font-bold mb-1">01</div>
+        <div class="font-mono text-xs text-teal-700 dark:text-teal-400 font-bold mb-1">01</div>
         <div class="font-bold text-sm text-ink dark:text-dark-ink">Empathize</div>
         <div class="text-xs text-ink-muted dark:text-dark-muted mt-1">Listen & observe</div>
       </div>
       <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <div class="font-mono text-xs text-blue-800 dark:text-blue-400 font-bold mb-1">02</div>
+        <div class="font-mono text-xs text-teal-700 dark:text-teal-400 font-bold mb-1">02</div>
         <div class="font-bold text-sm text-ink dark:text-dark-ink">Define</div>
         <div class="text-xs text-ink-muted dark:text-dark-muted mt-1">Frame the friction</div>
       </div>
       <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <div class="font-mono text-xs text-amber-800 dark:text-amber-400 font-bold mb-1">03</div>
+        <div class="font-mono text-xs text-teal-700 dark:text-teal-400 font-bold mb-1">03</div>
         <div class="font-bold text-sm text-ink dark:text-dark-ink">Ideate</div>
         <div class="text-xs text-ink-muted dark:text-dark-muted mt-1">Brainstorm widely</div>
       </div>
       <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <div class="font-mono text-xs text-indigo-800 dark:text-indigo-400 font-bold mb-1">04</div>
+        <div class="font-mono text-xs text-teal-700 dark:text-teal-400 font-bold mb-1">04</div>
         <div class="font-bold text-sm text-ink dark:text-dark-ink">Prototype</div>
         <div class="text-xs text-ink-muted dark:text-dark-muted mt-1">Build test models</div>
       </div>
       <div class="p-4 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <div class="font-mono text-xs text-rose-800 dark:text-rose-400 font-bold mb-1">05</div>
+        <div class="font-mono text-xs text-teal-700 dark:text-teal-400 font-bold mb-1">05</div>
         <div class="font-bold text-sm text-ink dark:text-dark-ink">Test</div>
         <div class="text-xs text-ink-muted dark:text-dark-muted mt-1">Validate with users</div>
       </div>
     </div>
 
     <!-- Stage 1 -->
-    <div data-timestamp="90" class="my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all">
+    <div data-timestamp="90" class="my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-colors">
       <div class="flex items-center justify-between gap-2 mb-2">
-        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase">Video Timestamp Section</span>
-        <button class="timestamp-btn font-mono text-xs px-2.5 py-1 rounded bg-paper-200 dark:bg-dark-border text-ink dark:text-dark-ink font-bold cursor-pointer hover:bg-paper-300 dark:hover:bg-dark-border/80 transition-colors" data-seek-time="90">
+        <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase">Video Timestamp Section</span>
+        <button class="timestamp-btn font-mono text-xs px-2.5 py-1 rounded-xs bg-paper-200 dark:bg-dark-border text-ink dark:text-dark-ink font-bold cursor-pointer hover:bg-paper-300 dark:hover:bg-dark-border/80 transition-colors" data-seek-time="90">
           01:30 &mdash; Jump to Empathy Phase
         </button>
       </div>
@@ -1255,10 +1436,10 @@ export const COURSES: Course[] = [
     </div>
 
     <!-- Stage 2 -->
-    <div data-timestamp="210" class="my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all">
+    <div data-timestamp="210" class="my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-colors">
       <div class="flex items-center justify-between gap-2 mb-2">
-        <span class="font-mono text-xs font-bold text-blue-800 dark:text-blue-400 uppercase">Video Timestamp Section</span>
-        <button class="timestamp-btn font-mono text-xs px-2.5 py-1 rounded bg-paper-200 dark:bg-dark-border text-ink dark:text-dark-ink font-bold cursor-pointer hover:bg-paper-300 dark:hover:bg-dark-border/80 transition-colors" data-seek-time="210">
+        <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase">Video Timestamp Section</span>
+        <button class="timestamp-btn font-mono text-xs px-2.5 py-1 rounded-xs bg-paper-200 dark:bg-dark-border text-ink dark:text-dark-ink font-bold cursor-pointer hover:bg-paper-300 dark:hover:bg-dark-border/80 transition-colors" data-seek-time="210">
           03:30 &mdash; Jump to Define Phase
         </button>
       </div>
@@ -1267,7 +1448,7 @@ export const COURSES: Course[] = [
         In the Define phase, you synthesize messy field observations into a tight, actionable problem statement known as a <strong>Point-of-View (POV)</strong>.
       </p>
       <div class="my-4 p-4 rounded-xs bg-white dark:bg-dark-surface border border-ink-border/60 dark:border-dark-border font-serif text-sm">
-        <strong class="font-sans text-xs uppercase font-bold text-blue-800 dark:text-blue-400 block mb-1">Standard POV Formula</strong>
+        <strong class="font-sans text-xs uppercase font-bold text-teal-700 dark:text-teal-400 block mb-1">Standard POV Formula</strong>
         <p class="italic text-ink dark:text-dark-ink">"[User description] needs a way to [user need] because surprisingly, [unexpected insight uncovered in research]."</p>
       </div>
       <p class="font-serif text-base text-ink dark:text-dark-ink leading-relaxed">
@@ -1276,10 +1457,10 @@ export const COURSES: Course[] = [
     </div>
 
     <!-- Stage 3 -->
-    <div data-timestamp="330" class="my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all">
+    <div data-timestamp="330" class="my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-colors">
       <div class="flex items-center justify-between gap-2 mb-2">
-        <span class="font-mono text-xs font-bold text-amber-800 dark:text-amber-400 uppercase">Video Timestamp Section</span>
-        <button class="timestamp-btn font-mono text-xs px-2.5 py-1 rounded bg-paper-200 dark:bg-dark-border text-ink dark:text-dark-ink font-bold cursor-pointer hover:bg-paper-300 dark:hover:bg-dark-border/80 transition-colors" data-seek-time="330">
+        <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase">Video Timestamp Section</span>
+        <button class="timestamp-btn font-mono text-xs px-2.5 py-1 rounded-xs bg-paper-200 dark:bg-dark-border text-ink dark:text-dark-ink font-bold cursor-pointer hover:bg-paper-300 dark:hover:bg-dark-border/80 transition-colors" data-seek-time="330">
           05:30 &mdash; Jump to Ideation Phase
         </button>
       </div>
@@ -1293,10 +1474,10 @@ export const COURSES: Course[] = [
     </div>
 
     <!-- Stage 4 & 5 -->
-    <div data-timestamp="450" class="my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-all">
+    <div data-timestamp="450" class="my-6 p-4 rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50 dark:bg-dark-card transition-colors">
       <div class="flex items-center justify-between gap-2 mb-2">
-        <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase">Video Timestamp Section</span>
-        <button class="timestamp-btn font-mono text-xs px-2.5 py-1 rounded bg-paper-200 dark:bg-dark-border text-ink dark:text-dark-ink font-bold cursor-pointer hover:bg-paper-300 dark:hover:bg-dark-border/80 transition-colors" data-seek-time="450">
+        <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase">Video Timestamp Section</span>
+        <button class="timestamp-btn font-mono text-xs px-2.5 py-1 rounded-xs bg-paper-200 dark:bg-dark-border text-ink dark:text-dark-ink font-bold cursor-pointer hover:bg-paper-300 dark:hover:bg-dark-border/80 transition-colors" data-seek-time="450">
           07:30 &mdash; Jump to Prototype & Test
         </button>
       </div>
@@ -1312,7 +1493,7 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"Fail early, fail cheaply, and fail in a mockup rather than in production code. A prototype is a conversation piece with the user's subconscious mind."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-widest uppercase">
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-ink-muted dark:text-dark-muted font-bold tracking-widest uppercase">
         Sarah Gibbons &mdash; Nielsen Norman Group
       </footer>
     </blockquote>
@@ -1334,7 +1515,7 @@ export const COURSES: Course[] = [
 
     <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase block mb-1">Diamond 01 Problem Space</span>
+        <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase block mb-1">Diamond 01 Problem Space</span>
         <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-2">Discover & Define</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           You first expand outward (diverge) to explore all possible facets of user pain, then focus inward (converge) onto the single high-impact problem to solve.
@@ -1342,7 +1523,7 @@ export const COURSES: Course[] = [
       </div>
 
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase block mb-1">Diamond 02 Solution Space</span>
+        <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase block mb-1">Diamond 02 Solution Space</span>
         <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-2">Develop & Deliver</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           You expand outward again (diverge) to generate dozens of radical solution prototypes, then converge onto the validated design that will be handed off to engineering.
@@ -1444,17 +1625,17 @@ export const COURSES: Course[] = [
   </p>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-5 my-6 not-prose">
     <div class="p-5 border border-ink-border bg-paper-50 rounded-xs dark:bg-dark-card dark:border-dark-border">
-      <span class="font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-400 block mb-1">Human Desirability</span>
+      <span class="font-mono text-xs uppercase font-bold text-teal-700 dark:text-teal-400 block mb-1">Human Desirability</span>
       <h4 class="font-bold text-base text-ink mb-2 dark:text-dark-ink">Do People Want This?</h4>
       <p class="text-sm text-ink-muted dark:text-dark-muted">Does the product solve a real human pain point, match mental models, and provide genuine emotional relief?</p>
     </div>
     <div class="p-5 border border-ink-border bg-paper-50 rounded-xs dark:bg-dark-card dark:border-dark-border">
-      <span class="font-mono text-xs uppercase font-bold text-sky-800 dark:text-sky-400 block mb-1">Technical Feasibility</span>
+      <span class="font-mono text-xs uppercase font-bold text-teal-700 dark:text-teal-400 block mb-1">Technical Feasibility</span>
       <h4 class="font-bold text-base text-ink mb-2 dark:text-dark-ink">Can We Build This?</h4>
       <p class="text-sm text-ink-muted dark:text-dark-muted">Can current technology, APIs, infrastructure, and engineering resources build this reliably within operational limits?</p>
     </div>
     <div class="p-5 border border-ink-border bg-paper-50 rounded-xs dark:bg-dark-card dark:border-dark-border">
-      <span class="font-mono text-xs uppercase font-bold text-amber-800 dark:text-amber-400 block mb-1">Business Viability</span>
+      <span class="font-mono text-xs uppercase font-bold text-teal-700 dark:text-teal-400 block mb-1">Business Viability</span>
       <h4 class="font-bold text-base text-ink mb-2 dark:text-dark-ink">Should We Build This?</h4>
       <p class="text-sm text-ink-muted dark:text-dark-muted">Does the unit economics work? Does this align with strategic company goals and generate sustainable value?</p>
     </div>
@@ -1477,7 +1658,7 @@ export const COURSES: Course[] = [
     <div class="text-xs font-mono uppercase tracking-widest text-ink font-bold mb-4 dark:text-dark-ink">Programmatic Architecture Model: Divergent vs Convergent Thinking</div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
       <div class="p-4 bg-white border border-ink-border dark:bg-dark-card dark:border-dark-border">
-        <span class="font-bold text-teal-800 block mb-2 dark:text-teal-400">Divergent Phase (Opening the Funnel)</span>
+        <span class="font-bold text-teal-700 block mb-2 dark:text-teal-400">Divergent Phase (Opening the Funnel)</span>
         <ul class="space-y-1 text-ink-muted dark:text-dark-muted">
           <li>&bull; Questioning orthodoxies</li>
           <li>&bull; "Yes, and..." thinking</li>
@@ -1486,7 +1667,7 @@ export const COURSES: Course[] = [
         </ul>
       </div>
       <div class="p-4 bg-white border border-ink-border dark:bg-dark-card dark:border-dark-border">
-        <span class="font-bold text-indigo-800 block mb-2 dark:text-indigo-400">Convergent Phase (Closing the Funnel)</span>
+        <span class="font-bold text-teal-700 block mb-2 dark:text-teal-400">Convergent Phase (Closing the Funnel)</span>
         <ul class="space-y-1 text-ink-muted dark:text-dark-muted">
           <li>&bull; Dot voting and prioritization</li>
           <li>&bull; Filtering by feasibility</li>
@@ -1507,10 +1688,10 @@ export const COURSES: Course[] = [
 
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>What is Design Thinking?</em> by <strong>The Strategy Group</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=TtgegZfk5ZU" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
+    <a href="https://www.youtube.com/watch?v=TtgegZfk5ZU" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
       Original Lecture ↗
     </a>
   </div>
@@ -1587,17 +1768,17 @@ export const COURSES: Course[] = [
 
   <div class="space-y-4 my-6 not-prose">
     <div class="p-5 bg-white border border-ink-border rounded-xs dark:bg-dark-card dark:border-dark-border">
-      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1 dark:text-teal-400">Bucket 1: Understand</span>
+      <span class="font-mono text-xs uppercase font-bold text-teal-700 block mb-1 dark:text-teal-400">Bucket 1: Understand</span>
       <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Phase 1: Empathize &bull; Phase 2: Define</h4>
       <p class="text-sm text-ink-muted dark:text-dark-muted">Conduct field studies and user interviews to uncover what users need, feel, and say. Synthesize these inputs into actionable problem statements that do not dictate solutions.</p>
     </div>
     <div class="p-5 bg-white border border-ink-border rounded-xs dark:bg-dark-card dark:border-dark-border">
-      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1 dark:text-indigo-400">Bucket 2: Explore</span>
+      <span class="font-mono text-xs uppercase font-bold text-teal-700 block mb-1 dark:text-teal-400">Bucket 2: Explore</span>
       <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Phase 3: Ideate &bull; Phase 4: Prototype</h4>
       <p class="text-sm text-ink-muted dark:text-dark-muted">Brainstorm unconstrained approaches. Select the most promising ideas and convert them immediately into tangible paper or digital wireframes to reveal trade-offs.</p>
     </div>
     <div class="p-5 bg-white border border-ink-border rounded-xs dark:bg-dark-card dark:border-dark-border">
-      <span class="font-mono text-xs uppercase font-bold text-amber-800 block mb-1 dark:text-amber-400">Bucket 3: Materialize</span>
+      <span class="font-mono text-xs uppercase font-bold text-teal-700 block mb-1 dark:text-teal-400">Bucket 3: Materialize</span>
       <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Phase 5: Test &bull; Phase 6: Implement</h4>
       <p class="text-sm text-ink-muted dark:text-dark-muted">Observe representative end-users interacting with the prototype. Feed learnings back into the cycle, and hand off validated specifications to engineering.</p>
     </div>
@@ -1681,10 +1862,10 @@ export const COURSES: Course[] = [
 
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Design Thinking 101</em> by <strong>Sarah Gibbons</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://www.nngroup.com/articles/design-thinking/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
+    <a href="https://www.nngroup.com/articles/design-thinking/" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
       Original Guide ↗
     </a>
   </div>
@@ -1771,7 +1952,7 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"User research is not about validating your existing opinions; it is about systematically dismantling your assumptions before engineers write a single line of code."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-widest uppercase">
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-ink-muted dark:text-dark-muted font-bold tracking-widest uppercase">
         Mona Yang &mdash; UX Planet
       </footer>
     </blockquote>
@@ -1782,7 +1963,7 @@ export const COURSES: Course[] = [
     </p>
     <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase block mb-1">Phase A Discovery</span>
+        <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase block mb-1">Phase A Discovery</span>
         <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-2">Generative (Exploratory) Research</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed mb-3">
           Conducted <em>before</em> any solution is imagined. Its goal is to uncover unmet human needs, emotional pain points, and current broken habits.
@@ -1793,7 +1974,7 @@ export const COURSES: Course[] = [
       </div>
 
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase block mb-1">Phase B Validation</span>
+        <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase block mb-1">Phase B Validation</span>
         <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-2">Evaluative (Testing) Research</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed mb-3">
           Conducted <em>during and after</em> designs are produced. Its goal is to test whether the proposed interface functions intuitively in real hands.
@@ -1810,9 +1991,9 @@ export const COURSES: Course[] = [
         <thead>
           <tr class="border-b border-ink-border dark:border-dark-border bg-paper-100 dark:bg-dark-card">
             <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-ink dark:text-dark-ink">Methodology</th>
-            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-800 dark:text-teal-400">Data Type</th>
-            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-amber-800 dark:text-amber-400">Best Used For</th>
-            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-indigo-800 dark:text-indigo-400">Sample Size</th>
+            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-700 dark:text-teal-400">Data Type</th>
+            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-700 dark:text-teal-400">Best Used For</th>
+            <th class="py-3 px-4 font-mono text-xs uppercase font-bold text-teal-700 dark:text-teal-400">Sample Size</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-ink-border/60 dark:divide-dark-border/60">
@@ -1851,8 +2032,8 @@ export const COURSES: Course[] = [
 
     <!-- Good vs Bad Interviewing Matrix -->
     <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
-      <div class="p-5 rounded-xs bg-rose-50/50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900/40">
-        <h4 class="font-sans font-semibold text-rose-800 dark:text-rose-400 text-sm mb-2 flex items-center gap-1.5">
+      <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border">
+        <h4 class="font-sans font-semibold text-teal-700 dark:text-teal-400 text-sm mb-2 flex items-center gap-1.5">
           <span>&times;</span> Leading Questions (Biased & Useless)
         </h4>
         <ul class="space-y-2 text-xs font-serif text-ink dark:text-dark-ink">
@@ -1862,8 +2043,8 @@ export const COURSES: Course[] = [
         </ul>
       </div>
 
-      <div class="p-5 rounded-xs bg-teal-50/50 dark:bg-teal-950/20 border border-teal-200 dark:border-teal-900/40">
-        <h4 class="font-sans font-semibold text-teal-800 dark:text-teal-400 text-sm mb-2 flex items-center gap-1.5">
+      <div class="p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border">
+        <h4 class="font-sans font-semibold text-teal-700 dark:text-teal-400 text-sm mb-2 flex items-center gap-1.5">
           <span>&check;</span> Non-Leading Questions (Behavioral & Reliable)
         </h4>
         <ul class="space-y-2 text-xs font-serif text-ink dark:text-dark-ink">
@@ -1996,7 +2177,7 @@ export const COURSES: Course[] = [
   <h2 id="p-jtbd-definitions" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">2. Defining the Tools: Archetypes vs Functional Jobs</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-6 not-prose">
     <div class="p-5 border border-ink-border bg-paper-50 rounded-xs dark:bg-dark-card dark:border-dark-border">
-      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1 dark:text-teal-400">Human-Centered Archetype</span>
+      <span class="font-mono text-xs uppercase font-bold text-teal-700 block mb-1 dark:text-teal-400">Human-Centered Archetype</span>
       <h4 class="font-bold text-base text-ink mb-2 dark:text-dark-ink">The Behavioral Persona</h4>
       <p class="text-sm text-ink-muted mb-3 dark:text-dark-muted">A composite archetype representing a distinct user group characterized by similar goals, mental models, frustrations, and digital literacy.</p>
       <div class="text-xs font-mono bg-white p-3 border border-ink-border dark:bg-dark-card dark:border-dark-border">
@@ -2004,7 +2185,7 @@ export const COURSES: Course[] = [
       </div>
     </div>
     <div class="p-5 border border-ink-border bg-paper-50 rounded-xs dark:bg-dark-card dark:border-dark-border">
-      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1 dark:text-indigo-400">Outcome-Driven Statement</span>
+      <span class="font-mono text-xs uppercase font-bold text-teal-700 block mb-1 dark:text-teal-400">Outcome-Driven Statement</span>
       <h4 class="font-bold text-base text-ink mb-2 dark:text-dark-ink">The Job-to-Be-Done</h4>
       <p class="text-sm text-ink-muted mb-3 dark:text-dark-muted">A structured sentence describing the core functional progress someone wants to make under specific situational constraints.</p>
       <div class="text-xs font-mono bg-white p-3 border border-ink-border dark:bg-dark-card dark:border-dark-border">
@@ -2057,7 +2238,7 @@ export const COURSES: Course[] = [
   <div class="my-8 max-w-lg mx-auto p-6 bg-white border border-ink-border rounded-xs shadow-sm not-prose font-sans dark:bg-dark-card dark:border-dark-border">
     <div class="flex items-center justify-between pb-3 border-b border-ink-border dark:border-dark-border">
       <div>
-        <span class="text-xs font-mono font-bold uppercase tracking-widest text-teal-800 dark:text-teal-400">Archetype #01 Enterprise Ops</span>
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-teal-700 dark:text-teal-400">Archetype #01 Enterprise Ops</span>
         <h4 class="text-lg font-serif font-bold text-ink dark:text-dark-ink">The High-Frequency Dispatcher</h4>
       </div>
       <span class="px-2.5 py-1 bg-paper-100 border border-ink-border font-mono text-[10px] text-ink font-bold dark:bg-dark-surface dark:text-dark-ink dark:border-dark-border">DESKTOP_HEAVY</span>
@@ -2070,7 +2251,7 @@ export const COURSES: Course[] = [
       </div>
 
       <div class="p-3 bg-paper-50 border border-ink-border rounded-xs dark:bg-dark-card dark:border-dark-border">
-        <strong class="font-mono text-indigo-800 block mb-1 uppercase tracking-widest dark:text-indigo-400">Primary Job-to-Be-Done</strong>
+        <strong class="font-mono text-teal-700 block mb-1 uppercase tracking-widest dark:text-teal-400">Primary Job-to-Be-Done</strong>
         <p class="text-ink italic dark:text-dark-ink">
           "When an urgent delivery route is blocked by weather, I want to reroute 40 drivers in bulk with one confirmation step, so that customer shipments are not delayed and our SLA penalty is avoided."
         </p>
@@ -2097,10 +2278,10 @@ export const COURSES: Course[] = [
 
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Personas vs. Jobs-to-Be-Done</em> by <strong>Page Laubheimer</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://www.nngroup.com/articles/personas-jobs-be-done/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
+    <a href="https://www.nngroup.com/articles/personas-jobs-be-done/" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
       Original Article ↗
     </a>
   </div>
@@ -2205,17 +2386,17 @@ export const COURSES: Course[] = [
       <!-- Cluster 1 -->
       <div class="p-4 bg-white border border-ink-border rounded-xs dark:bg-dark-card dark:border-dark-border">
         <div class="pb-2 mb-3 border-b border-ink-border dark:border-dark-border">
-          <span class="text-[10px] font-mono text-teal-800 font-bold uppercase block dark:text-teal-400">Cluster 01 Trust & Transparency</span>
+          <span class="text-[10px] font-mono text-teal-700 font-bold uppercase block dark:text-teal-400">Cluster 01 Trust & Transparency</span>
           <h5 class="text-xs font-bold text-ink dark:text-dark-ink">"Where is my money going?"</h5>
         </div>
         <div class="space-y-2 text-[11px] font-mono">
-          <div class="p-2.5 bg-amber-50 border border-amber-200 text-ink shadow-2xs dark:text-dark-ink">
+          <div data-allow-fill class="p-2.5 bg-amber-50 border border-amber-200 text-ink shadow-2xs dark:text-dark-ink">
             "I hesitated when the final total changed after adding shipping; felt deceptive."
           </div>
-          <div class="p-2.5 bg-amber-50 border border-amber-200 text-ink shadow-2xs dark:text-dark-ink">
+          <div data-allow-fill class="p-2.5 bg-amber-50 border border-amber-200 text-ink shadow-2xs dark:text-dark-ink">
             "Didn't see any cancellation policy before giving credit card."
           </div>
-          <div class="p-2.5 bg-amber-50 border border-amber-200 text-ink shadow-2xs dark:text-dark-ink">
+          <div data-allow-fill class="p-2.5 bg-amber-50 border border-amber-200 text-ink shadow-2xs dark:text-dark-ink">
             "Why is the service fee hidden until step 4?"
           </div>
         </div>
@@ -2224,17 +2405,17 @@ export const COURSES: Course[] = [
       <!-- Cluster 2 -->
       <div class="p-4 bg-white border border-ink-border rounded-xs dark:bg-dark-card dark:border-dark-border">
         <div class="pb-2 mb-3 border-b border-ink-border dark:border-dark-border">
-          <span class="text-[10px] font-mono text-indigo-800 font-bold uppercase block dark:text-indigo-400">Cluster 02 Cognitive Friction</span>
+          <span class="text-[10px] font-mono text-teal-700 font-bold uppercase block dark:text-teal-400">Cluster 02 Cognitive Friction</span>
           <h5 class="text-xs font-bold text-ink dark:text-dark-ink">"Too much jargon on the home screen"</h5>
         </div>
         <div class="space-y-2 text-[11px] font-mono">
-          <div class="p-2.5 bg-blue-50 border border-blue-200 text-ink shadow-2xs dark:text-dark-ink">
+          <div data-allow-fill class="p-2.5 bg-blue-50 border border-blue-200 text-ink shadow-2xs dark:text-dark-ink">
             "What does 'Portfolio Rebalancing' mean? I just want to invest $50."
           </div>
-          <div class="p-2.5 bg-blue-50 border border-blue-200 text-ink shadow-2xs dark:text-dark-ink">
+          <div data-allow-fill class="p-2.5 bg-blue-50 border border-blue-200 text-ink shadow-2xs dark:text-dark-ink">
             "The filter terms don't match how I think about my budget."
           </div>
-          <div class="p-2.5 bg-blue-50 border border-blue-200 text-ink shadow-2xs dark:text-dark-ink">
+          <div data-allow-fill class="p-2.5 bg-blue-50 border border-blue-200 text-ink shadow-2xs dark:text-dark-ink">
             "Icons without text labels confused 4 out of 5 users."
           </div>
         </div>
@@ -2243,17 +2424,17 @@ export const COURSES: Course[] = [
       <!-- Cluster 3 -->
       <div class="p-4 bg-white border border-ink-border rounded-xs dark:bg-dark-card dark:border-dark-border">
         <div class="pb-2 mb-3 border-b border-ink-border dark:border-dark-border">
-          <span class="text-[10px] font-mono text-rose-800 font-bold uppercase block dark:text-rose-400">Cluster 03 System Latency</span>
+          <span class="text-[10px] font-mono text-teal-700 font-bold uppercase block dark:text-teal-400">Cluster 03 System Latency</span>
           <h5 class="text-xs font-bold text-ink dark:text-dark-ink">"Waiting with no feedback"</h5>
         </div>
         <div class="space-y-2 text-[11px] font-mono">
-          <div class="p-2.5 bg-rose-50 border border-rose-200 text-ink shadow-2xs dark:text-dark-ink">
+          <div data-allow-fill class="p-2.5 bg-rose-50 border border-rose-200 text-ink shadow-2xs dark:text-dark-ink">
             "Tapped 'Submit' twice because button didn't show a spinner."
           </div>
-          <div class="p-2.5 bg-rose-50 border border-rose-200 text-ink shadow-2xs dark:text-dark-ink">
+          <div data-allow-fill class="p-2.5 bg-rose-50 border border-rose-200 text-ink shadow-2xs dark:text-dark-ink">
             "Screen went blank for 3 seconds; user thought app crashed."
           </div>
-          <div class="p-2.5 bg-rose-50 border border-rose-200 text-ink shadow-2xs dark:text-dark-ink">
+          <div data-allow-fill class="p-2.5 bg-rose-50 border border-rose-200 text-ink shadow-2xs dark:text-dark-ink">
             "No receipt email sent immediately after payment."
           </div>
         </div>
@@ -2263,8 +2444,8 @@ export const COURSES: Course[] = [
 
   <h2 id="aff-dos-donts" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">5. Critical Facilitation Dos and Don'ts</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 text-xs font-mono not-prose">
-    <div class="p-4 bg-emerald-50 border border-emerald-200 text-ink dark:text-dark-ink">
-      <span class="font-bold text-emerald-800 block mb-2 dark:text-emerald-400">DO</span>
+    <div data-allow-fill class="p-4 bg-emerald-50 border border-emerald-200 text-ink dark:text-dark-ink">
+      <span class="font-bold text-teal-700 block mb-2 dark:text-teal-400">DO</span>
       <ul class="space-y-1">
         <li>&bull; Keep individual notes concise and specific.</li>
         <li>&bull; Encourage split clusters if a group exceeds 10 notes.</li>
@@ -2272,8 +2453,8 @@ export const COURSES: Course[] = [
         <li>&bull; Involve developers and PMs directly in the clustering.</li>
       </ul>
     </div>
-    <div class="p-4 bg-rose-50 border border-rose-200 text-ink dark:text-dark-ink">
-      <span class="font-bold text-rose-800 block mb-2 dark:text-rose-400">DON'T</span>
+    <div data-allow-fill class="p-4 bg-rose-50 border border-rose-200 text-ink dark:text-dark-ink">
+      <span class="font-bold text-teal-700 block mb-2 dark:text-teal-400">DON'T</span>
       <ul class="space-y-1">
         <li>&bull; Pre-label cluster boxes before reading the notes.</li>
         <li>&bull; Allow loud verbal debate during the sorting phase.</li>
@@ -2285,10 +2466,10 @@ export const COURSES: Course[] = [
 
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Affinity Diagramming for Sorting UX Findings</em> by <strong>Rachel Krause</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://www.nngroup.com/articles/affinity-diagram/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
+    <a href="https://www.nngroup.com/articles/affinity-diagram/" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
       Original Guide ↗
     </a>
   </div>
@@ -2392,7 +2573,7 @@ export const COURSES: Course[] = [
       <em>The design should always keep users informed about what is going on, through appropriate feedback within a reasonable time.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-teal-800 dark:text-teal-400 block mb-1">Concrete Implementation</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-teal-700 dark:text-teal-400 block mb-1">Concrete Implementation</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         When an application is performing a background process (like uploading a 200MB video), never present a frozen screen. Provide a determinable progress bar with estimated time remaining (<em>"45 seconds left..."</em>). When users tap a submit button, immediately transition the button into a spinner state so they know their click registered and do not double-click, charging their credit card twice.
       </p>
@@ -2404,7 +2585,7 @@ export const COURSES: Course[] = [
       <em>The design should speak the users' language, using words, phrases, and concepts familiar to the user, rather than internal system-oriented terms. Follow real-world conventions, making information appear in a natural and logical order.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-blue-800 dark:text-blue-400 block mb-1">Concrete Implementation</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-teal-700 dark:text-teal-400 block mb-1">Concrete Implementation</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         A desktop trash can icon maps to the physical wastebasket beside an office desk. An e-commerce site uses a "Shopping Cart" rather than an "Entity Array Buffer." Avoid exposing internal server database jargon (like <em>"Error: NullPointerException at record 0x4F"</em>); speak in natural human consequences (<em>"We could not save your address because the postal code was missing a digit."</em>).
       </p>
@@ -2416,7 +2597,7 @@ export const COURSES: Course[] = [
       <em>Users often perform actions by mistake. They need a clearly marked "emergency exit" to leave the unwanted action without having to go through an extended process. Support undo and redo.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-amber-800 dark:text-amber-400 block mb-1">Concrete Implementation</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-teal-700 dark:text-teal-400 block mb-1">Concrete Implementation</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         When users accidentally delete an email in Gmail, they do not face a blocking, anxiety-inducing confirmation modal. Instead, the action happens instantly, paired with an unobtrusive "Undo" toast floating at the bottom. Knowing they can reverse any mistake gives users the psychological safety to explore software confidently.
       </p>
@@ -2428,7 +2609,7 @@ export const COURSES: Course[] = [
       <em>Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-indigo-800 dark:text-indigo-400 block mb-1">Jakob's Law of the Web</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-teal-700 dark:text-teal-400 block mb-1">Jakob's Law of the Web</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         Jakob's Law states: <em>"Users spend most of their time on other sites."</em> That means users expect your site to work just like all the other sites they already know. If you invent an unconventional navigation model where clicking the logo does not return home, or where the shopping cart lives at the bottom left instead of the top right, users become confused and frustrated.
       </p>
@@ -2440,7 +2621,7 @@ export const COURSES: Course[] = [
       <em>Even better than good error messages is a careful design which prevents a problem from occurring in the first place. Either eliminate error-prone conditions or check for them and present users with a confirmation option before they commit to the action.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-rose-800 dark:text-rose-400 block mb-1">Slips vs. Mistakes</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-teal-700 dark:text-teal-400 block mb-1">Slips vs. Mistakes</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         A <strong>slip</strong> occurs through inattention (e.g., mistyping an email address). Prevent slips with sensible constraints, such as auto-suggesting "@gmail.com" or disabling date-picker selection for dates in the past. A <strong>mistake</strong> occurs when users have the wrong mental model. Prevent mistakes by clarifying destructive actions before execution.
       </p>
@@ -2452,7 +2633,7 @@ export const COURSES: Course[] = [
       <em>Minimize the user's memory load by making elements, actions, and options visible. The user should not have to remember information from one part of the interface to another.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-teal-800 dark:text-teal-400 block mb-1">Cognitive Principle</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-teal-700 dark:text-teal-400 block mb-1">Cognitive Principle</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         Human short-term memory can only hold 4 to 7 items at once. Never force users to write down an order number from Screen A to type it into Screen B. Instead of making users remember an item's exact SKU number to search for it, provide an autocomplete menu with visual thumbnails as they type.
       </p>
@@ -2464,7 +2645,7 @@ export const COURSES: Course[] = [
       <em>Shortcuts &mdash; hidden from novice users &mdash; may speed up the interaction for the expert user such that the design can cater to both inexperienced and experienced users. Allow users to tailor frequent actions.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-blue-800 dark:text-blue-400 block mb-1">Dual-Paced Interfaces</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-teal-700 dark:text-teal-400 block mb-1">Dual-Paced Interfaces</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         A novice user clicks <em>File &rarr; Save</em> with their mouse; an expert presses <em>Ctrl + S</em>. Excellent software serves beginners with clear visible buttons while delighting power users with keyboard accelerators, command palettes (<em>Cmd + K</em>), and customizable workspace macros.
       </p>
@@ -2476,7 +2657,7 @@ export const COURSES: Course[] = [
       <em>Interfaces should not contain information that is irrelevant or rarely needed. Every extra unit of information in an interface competes with the relevant units of information and diminishes their relative visibility.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-amber-800 dark:text-amber-400 block mb-1">Signal-to-Noise Ratio</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-teal-700 dark:text-teal-400 block mb-1">Signal-to-Noise Ratio</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         Minimalism is not about sterile white screens; it is about maximizing the signal-to-noise ratio. Practice <strong>progressive disclosure</strong>: show only the essential primary controls needed for the immediate task, tucking secondary configurations into advanced disclosure drawers.
       </p>
@@ -2488,7 +2669,7 @@ export const COURSES: Course[] = [
       <em>Error messages should be expressed in plain language (no error codes), precisely indicate the problem, and constructively suggest a solution.</em>
     </p>
     <div class="my-6 p-5 rounded-xs bg-paper-50 dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs space-y-2 font-serif text-sm">
-      <strong class="font-sans text-xs uppercase font-bold text-rose-800 dark:text-rose-400 block mb-1">Anatomy of a Great Error State</strong>
+      <strong class="font-sans text-xs uppercase font-bold text-teal-700 dark:text-teal-400 block mb-1">Anatomy of a Great Error State</strong>
       <p class="text-ink dark:text-dark-ink leading-relaxed">
         Bad error message: <em>"System Error 403: Invalid Request."</em><br>
         Exceptional error message: <em>"Your password needs at least 8 characters and one number. Try adding a digit to the end."</em> Always tell the user what went wrong, why it happened, and the exact physical step they should take right now to fix it.
@@ -2517,27 +2698,27 @@ export const COURSES: Course[] = [
         </thead>
         <tbody class="divide-y divide-ink-border/60 dark:divide-dark-border/60">
           <tr>
-            <td class="py-3 px-4 font-mono font-bold text-teal-800 dark:text-teal-400">0</td>
+            <td class="py-3 px-4 font-mono font-bold text-teal-700 dark:text-teal-400">0</td>
             <td class="py-3 px-4 text-ink dark:text-dark-ink">Not a usability problem at all.</td>
             <td class="py-3 px-4 text-ink-muted dark:text-dark-muted">No action required.</td>
           </tr>
           <tr>
-            <td class="py-3 px-4 font-mono font-bold text-blue-800 dark:text-blue-400">1</td>
+            <td class="py-3 px-4 font-mono font-bold text-teal-700 dark:text-teal-400">1</td>
             <td class="py-3 px-4 text-ink dark:text-dark-ink">Cosmetic problem only.</td>
             <td class="py-3 px-4 text-ink-muted dark:text-dark-muted">Fix only if extra design sprint capacity exists.</td>
           </tr>
           <tr>
-            <td class="py-3 px-4 font-mono font-bold text-amber-800 dark:text-amber-400">2</td>
+            <td class="py-3 px-4 font-mono font-bold text-teal-700 dark:text-teal-400">2</td>
             <td class="py-3 px-4 text-ink dark:text-dark-ink">Minor usability problem.</td>
             <td class="py-3 px-4 text-ink-muted dark:text-dark-muted">Low priority fix; causes slight user friction.</td>
           </tr>
           <tr>
-            <td class="py-3 px-4 font-mono font-bold text-orange-800 dark:text-orange-300">3</td>
+            <td class="py-3 px-4 font-mono font-bold text-teal-700 dark:text-teal-400">3</td>
             <td class="py-3 px-4 text-ink dark:text-dark-ink">Major usability problem.</td>
             <td class="py-3 px-4 text-ink-muted dark:text-dark-muted">High priority fix; frequently blocks users from task completion.</td>
           </tr>
           <tr>
-            <td class="py-3 px-4 font-mono font-bold text-rose-800 dark:text-rose-400">4</td>
+            <td class="py-3 px-4 font-mono font-bold text-teal-700 dark:text-teal-400">4</td>
             <td class="py-3 px-4 text-ink dark:text-dark-ink font-bold">Usability catastrophe!</td>
             <td class="py-3 px-4 text-rose-700 dark:text-rose-400 font-bold">Emergency stop-ship; must be resolved before release.</td>
           </tr>
@@ -2633,10 +2814,10 @@ export const COURSES: Course[] = [
   </p>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Visibility of System Status</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=cTtc90jCULU" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=cTtc90jCULU" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -2704,10 +2885,10 @@ export const COURSES: Course[] = [
   </p>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Match Between System & Real World</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=0TAt9Pln51g" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=0TAt9Pln51g" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -2766,10 +2947,10 @@ export const COURSES: Course[] = [
   </p>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>User Control & Freedom</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=MXuk-fdbr0A" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=MXuk-fdbr0A" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -2829,10 +3010,10 @@ export const COURSES: Course[] = [
   </ul>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Consistency & Standards</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=Ibndy9KLOSQ" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=Ibndy9KLOSQ" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -2892,10 +3073,10 @@ export const COURSES: Course[] = [
   </p>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Error Prevention</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=imS9s1DUY-I" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=imS9s1DUY-I" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -2954,10 +3135,10 @@ export const COURSES: Course[] = [
   </p>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Recognition Rather Than Recall</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=6glQPp6q4Jc" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=6glQPp6q4Jc" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3016,10 +3197,10 @@ export const COURSES: Course[] = [
   </p>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Flexibility & Efficiency of Use</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=LoTdRTBB8BQ" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=LoTdRTBB8BQ" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3078,10 +3259,10 @@ export const COURSES: Course[] = [
   </p>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Nielsen Norman Group Heuristic Masterclass: <strong>Aesthetic & Minimalist Design</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=ZgbRmeWDgd0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=ZgbRmeWDgd0" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3163,22 +3344,22 @@ export const COURSES: Course[] = [
   </p>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-6 not-prose">
     <div class="p-5 border border-ink-border bg-white rounded-xs dark:bg-dark-card dark:border-dark-border">
-      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1 dark:text-teal-400">System 01</span>
+      <span class="font-mono text-xs uppercase font-bold text-teal-700 block mb-1 dark:text-teal-400">System 01</span>
       <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Organization Systems</h4>
       <p class="text-xs text-ink-muted leading-relaxed dark:text-dark-muted">How content is categorized and grouped: chronological, alphabetical, geographical, topic-based, or task-oriented.</p>
     </div>
     <div class="p-5 border border-ink-border bg-white rounded-xs dark:bg-dark-card dark:border-dark-border">
-      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1 dark:text-indigo-400">System 02</span>
+      <span class="font-mono text-xs uppercase font-bold text-teal-700 block mb-1 dark:text-teal-400">System 02</span>
       <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Labeling Systems</h4>
       <p class="text-xs text-ink-muted leading-relaxed dark:text-dark-muted">The terminology and language used to represent data chunks (e.g. "Contact Us" vs "Get Help", "Settings" vs "Preferences").</p>
     </div>
     <div class="p-5 border border-ink-border bg-white rounded-xs dark:bg-dark-card dark:border-dark-border">
-      <span class="font-mono text-xs uppercase font-bold text-amber-800 block mb-1 dark:text-amber-400">System 03</span>
+      <span class="font-mono text-xs uppercase font-bold text-teal-700 block mb-1 dark:text-teal-400">System 03</span>
       <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Navigation Systems</h4>
       <p class="text-xs text-ink-muted leading-relaxed dark:text-dark-muted">How users physically move through content: global top headers, local sidebars, breadcrumb rails, and contextual inline links.</p>
     </div>
     <div class="p-5 border border-ink-border bg-white rounded-xs dark:bg-dark-card dark:border-dark-border">
-      <span class="font-mono text-xs uppercase font-bold text-rose-800 block mb-1 dark:text-rose-400">System 04</span>
+      <span class="font-mono text-xs uppercase font-bold text-teal-700 block mb-1 dark:text-teal-400">System 04</span>
       <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Search Systems</h4>
       <p class="text-xs text-ink-muted leading-relaxed dark:text-dark-muted">How users query data directly: search syntax, autocomplete suggestions, faceted filters, and zero-state recommendations.</p>
     </div>
@@ -3202,7 +3383,7 @@ export const COURSES: Course[] = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <!-- Tier 1 -->
       <div class="p-3 bg-white border border-ink-border rounded-xs space-y-2 dark:bg-dark-card dark:border-dark-border">
-        <div class="font-bold text-teal-800 border-b border-ink-border pb-1 dark:border-dark-border dark:text-teal-400">[1.0] EXPLORE / DISCOVER</div>
+        <div class="font-bold text-teal-700 border-b border-ink-border pb-1 dark:border-dark-border dark:text-teal-400">[1.0] EXPLORE / DISCOVER</div>
         <div class="pl-2 space-y-1 text-[11px] text-ink-muted dark:text-dark-muted">
           <div>&bull; 1.1 Category Directory</div>
           <div>&bull; 1.2 Featured Collections</div>
@@ -3212,7 +3393,7 @@ export const COURSES: Course[] = [
 
       <!-- Tier 2 -->
       <div class="p-3 bg-white border border-ink-border rounded-xs space-y-2 dark:bg-dark-card dark:border-dark-border">
-        <div class="font-bold text-indigo-800 border-b border-ink-border pb-1 dark:border-dark-border dark:text-indigo-400">[2.0] WORKSPACE / STUDIO</div>
+        <div class="font-bold text-teal-700 border-b border-ink-border pb-1 dark:border-dark-border dark:text-teal-400">[2.0] WORKSPACE / STUDIO</div>
         <div class="pl-2 space-y-1 text-[11px] text-ink-muted dark:text-dark-muted">
           <div>&bull; 2.1 Active Projects</div>
           <div>&bull; 2.2 Shared Assets Library</div>
@@ -3222,7 +3403,7 @@ export const COURSES: Course[] = [
 
       <!-- Tier 3 -->
       <div class="p-3 bg-white border border-ink-border rounded-xs space-y-2 dark:bg-dark-card dark:border-dark-border">
-        <div class="font-bold text-amber-800 border-b border-ink-border pb-1 dark:border-dark-border dark:text-amber-400">[3.0] ACCOUNT & SYSTEM</div>
+        <div class="font-bold text-teal-700 border-b border-ink-border pb-1 dark:border-dark-border dark:text-teal-400">[3.0] ACCOUNT & SYSTEM</div>
         <div class="pl-2 space-y-1 text-[11px] text-ink-muted dark:text-dark-muted">
           <div>&bull; 3.1 Organization Profile</div>
           <div>&bull; 3.2 Role-Based Permissions</div>
@@ -3252,10 +3433,10 @@ export const COURSES: Course[] = [
 
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Information Architecture Study Guide</em> by <strong>Page Laubheimer</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://www.nngroup.com/articles/ia-study-guide/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
+    <a href="https://www.nngroup.com/articles/ia-study-guide/" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">
       Original Guide ↗
     </a>
   </div>
@@ -3337,7 +3518,7 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"The primary value of a sketch is not the artifact on the page; it is the mental clarity gained by the designer while making the marks."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-widest uppercase">
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-ink-muted dark:text-dark-muted font-bold tracking-widest uppercase">
         Peiter Buick &mdash; Smashing Magazine
       </footer>
     </blockquote>
@@ -3348,7 +3529,7 @@ export const COURSES: Course[] = [
     </p>
     <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-rose-800 dark:text-rose-400 uppercase block mb-1">High-Fidelity Mockup</span>
+        <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase block mb-1">High-Fidelity Mockup</span>
         <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-2">Triggers Superficial Feedback</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           When stakeholders see a polished screen with photos and colors, they assume the architectural decisions are finished. They debate button colors, font sizes, and hero image models while ignoring broken task flows.
@@ -3356,7 +3537,7 @@ export const COURSES: Course[] = [
       </div>
 
       <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase block mb-1">Rough Pen Sketch</span>
+        <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase block mb-1">Rough Pen Sketch</span>
         <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-2">Triggers Structural Feedback</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           When stakeholders see hand-drawn boxes and squiggly lines, they immediately recognize the work is in-progress. They feel invited to grab a marker, point out missing steps, and debate the core business logic.
@@ -3569,8 +3750,8 @@ export const COURSES: Course[] = [
       </div>
       <!-- Box 8 -->
       <div class="p-3 bg-white border-2 border-teal-600 rounded-xs space-y-1.5 text-center dark:bg-dark-card">
-        <span class="text-[10px] font-bold text-teal-800 dark:text-teal-400">Box 08 Winner *</span>
-        <div class="h-10 bg-teal-50 border border-teal-300 flex items-center justify-center text-[10px] text-teal-900 font-bold">Hybrid Grid + Tab</div>
+        <span class="text-[10px] font-bold text-teal-700 dark:text-teal-400">Box 08 Winner *</span>
+        <div data-allow-fill class="h-10 bg-teal-50 border border-teal-300 flex items-center justify-center text-[10px] text-teal-700 font-bold">Hybrid Grid + Tab</div>
       </div>
     </div>
   </div>
@@ -3585,10 +3766,10 @@ export const COURSES: Course[] = [
 
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Design Sprint Crazy 8s</em> by <strong>AJ&Smart</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=yz4g87XapQ0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=yz4g87XapQ0" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3651,12 +3832,12 @@ export const COURSES: Course[] = [
   <h2 id="pat-building-blocks" class="text-2xl font-serif font-semibold text-ink mt-8 mb-4 dark:text-dark-ink">3. Building Blocks vs Compound Patterns</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-6 not-prose">
     <div class="p-5 border border-ink-border bg-white rounded-xs dark:bg-dark-card dark:border-dark-border">
-      <span class="font-mono text-xs uppercase font-bold text-teal-800 block mb-1 dark:text-teal-400">Atomic Tier</span>
+      <span class="font-mono text-xs uppercase font-bold text-teal-700 block mb-1 dark:text-teal-400">Atomic Tier</span>
       <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Building Blocks (Atoms)</h4>
       <p class="text-xs text-ink-muted dark:text-dark-muted">Basic primitives: text inputs, primary buttons, checkboxes, icons, toggle switches, and badges.</p>
     </div>
     <div class="p-5 border border-ink-border bg-white rounded-xs dark:bg-dark-card dark:border-dark-border">
-      <span class="font-mono text-xs uppercase font-bold text-indigo-800 block mb-1 dark:text-indigo-400">Organismic Tier</span>
+      <span class="font-mono text-xs uppercase font-bold text-teal-700 block mb-1 dark:text-teal-400">Organismic Tier</span>
       <h4 class="font-bold text-base text-ink mb-1 dark:text-dark-ink">Compound Patterns (Molecules)</h4>
       <p class="text-xs text-ink-muted dark:text-dark-muted">Combinations of building blocks solving specific user goals: credit card entry widgets, search bars with autocomplete, and comment threads.</p>
     </div>
@@ -3664,10 +3845,10 @@ export const COURSES: Course[] = [
 
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Great Artists Reuse</em> by <strong>Marcin Treder</strong> (UXPin).</span>
     </div>
-    <a href="https://www.uxpin.com/studio/blog/great-artists-reuse-reusable-patterns-product-design/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Article ↗</a>
+    <a href="https://www.uxpin.com/studio/blog/great-artists-reuse-reusable-patterns-product-design/" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Article ↗</a>
   </div>
 </section>
 
@@ -3717,10 +3898,10 @@ export const COURSES: Course[] = [
   </p>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Springboard Masterclass: <strong>Sketching a Screen with Existing Patterns</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=RGajFMYZ0mM" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=RGajFMYZ0mM" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -3773,10 +3954,10 @@ export const COURSES: Course[] = [
   </p>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Wireframes at Daylight</em> by <strong>Daylight Studio</strong>.</span>
     </div>
-    <a href="https://thedaylightstudio.com/wireframes-at-daylight/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
+    <a href="https://thedaylightstudio.com/wireframes-at-daylight/" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -3859,7 +4040,7 @@ export const COURSES: Course[] = [
     <!-- Pullout Axiom -->
     <blockquote class="my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4">
       <p>"If a picture is worth a thousand words, an interactive prototype is worth a thousand meetings."</p>
-      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-amber-800 dark:text-amber-400 font-bold tracking-widest uppercase">
+      <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-ink-muted dark:text-dark-muted font-bold tracking-widest uppercase">
         IDEO Prototyping Canon
       </footer>
     </blockquote>
@@ -3870,7 +4051,7 @@ export const COURSES: Course[] = [
     </p>
     <div class="my-8 grid grid-cols-1 md:grid-cols-3 gap-5 not-prose">
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-teal-800 dark:text-teal-400 uppercase block mb-1">Part 01</span>
+        <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase block mb-1">Part 01</span>
         <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Trigger</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           The physical user gesture that initiates the event: <em>On Click, While Hovering, While Pressing, On Drag, or After Delay</em>.
@@ -3878,7 +4059,7 @@ export const COURSES: Course[] = [
       </div>
 
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-blue-800 dark:text-blue-400 uppercase block mb-1">Part 02</span>
+        <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase block mb-1">Part 02</span>
         <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Action</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           What the system does in response: <em>Navigate to screen, Open overlay, Swap variant, Scroll to anchor, or Set variable</em>.
@@ -3886,7 +4067,7 @@ export const COURSES: Course[] = [
       </div>
 
       <div class="p-5 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs">
-        <span class="font-mono text-xs font-bold text-indigo-800 dark:text-indigo-400 uppercase block mb-1">Part 03</span>
+        <span class="font-mono text-xs font-bold text-teal-700 dark:text-teal-400 uppercase block mb-1">Part 03</span>
         <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-1">Transition & Easing</h4>
         <p class="text-sm font-serif text-ink dark:text-dark-ink leading-relaxed">
           The temporal physics of the movement: <em>Instant, Dissolve, Smart Animate, Slide In, or Push</em>, tuned with cubic-bezier curves (e.g., 300ms ease-out).
@@ -4005,10 +4186,10 @@ export const COURSES: Course[] = [
   </p>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Prototyping in Sketch</em> by <strong>Sketch Docs</strong>.</span>
     </div>
-    <a href="https://www.sketch.com/docs/prototyping/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
+    <a href="https://www.sketch.com/docs/prototyping/" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -4155,7 +4336,7 @@ export const COURSES: Course[] = [
           <td class="p-3 text-ink-muted dark:text-dark-muted">Section headers (H2), major modal headings</td>
         </tr>
         <tr>
-          <td class="p-3 font-mono font-bold text-xs">text-4xl</td>
+          <td class="p-3 font-mono font-bold text-xs">text-3xl</td>
           <td class="p-3 font-mono text-xs">36px (2.250rem)</td>
           <td class="p-3 font-mono text-xs">40px (1.11)</td>
           <td class="p-3 text-ink-muted dark:text-dark-muted">Page titles (H1), hero headline displays</td>
@@ -4296,10 +4477,10 @@ export const COURSES: Course[] = [
 
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Typography in Mobile Web Design</em> by <strong>Suzanne Scacca</strong> (Smashing Magazine).</span>
     </div>
-    <a href="https://www.smashingmagazine.com/2018/06/reference-guide-typography-mobile-web-design/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
+    <a href="https://www.smashingmagazine.com/2018/06/reference-guide-typography-mobile-web-design/" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -4352,10 +4533,10 @@ export const COURSES: Course[] = [
   </p>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Visual Design in UX Study Guide</em> by <strong>Kelley Gordon</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://www.nngroup.com/articles/visual-design-in-ux-study-guide/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
+    <a href="https://www.nngroup.com/articles/visual-design-in-ux-study-guide/" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -4460,7 +4641,7 @@ export const COURSES: Course[] = [
   </div>
 
   <!-- ACT 1 -->
-  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-200 dark:bg-dark-card dark:border-dark-border" data-timestamp="0">
+  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-150 dark:bg-dark-card dark:border-dark-border" data-timestamp="0">
     <div class="flex items-center justify-between mb-3">
       <h3 class="text-lg font-serif font-semibold text-ink dark:text-dark-ink">Act 1: The Friendly Welcome & Psychological Safety</h3>
       <button class="timestamp-btn font-mono text-xs px-2.5 py-1 border border-ink-border hover:bg-paper-100 text-ink transition-colors dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface" data-seek-time="0">
@@ -4482,7 +4663,7 @@ export const COURSES: Course[] = [
   </div>
 
   <!-- ACT 2 -->
-  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-200 dark:bg-dark-card dark:border-dark-border" data-timestamp="75">
+  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-150 dark:bg-dark-card dark:border-dark-border" data-timestamp="75">
     <div class="flex items-center justify-between mb-3">
       <h3 class="text-lg font-serif font-semibold text-ink dark:text-dark-ink">Act 2: Context Questions & Background Warm-up</h3>
       <button class="timestamp-btn font-mono text-xs px-2.5 py-1 border border-ink-border hover:bg-paper-100 text-ink transition-colors dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface" data-seek-time="75">
@@ -4500,7 +4681,7 @@ export const COURSES: Course[] = [
   </div>
 
   <!-- ACT 3 -->
-  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-200 dark:bg-dark-card dark:border-dark-border" data-timestamp="210">
+  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-150 dark:bg-dark-card dark:border-dark-border" data-timestamp="210">
     <div class="flex items-center justify-between mb-3">
       <h3 class="text-lg font-serif font-semibold text-ink dark:text-dark-ink">Act 3: Introducing the Prototype</h3>
       <button class="timestamp-btn font-mono text-xs px-2.5 py-1 border border-ink-border hover:bg-paper-100 text-ink transition-colors dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface" data-seek-time="210">
@@ -4518,7 +4699,7 @@ export const COURSES: Course[] = [
   </div>
 
   <!-- ACT 4 -->
-  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-200 dark:bg-dark-card dark:border-dark-border" data-timestamp="315">
+  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-150 dark:bg-dark-card dark:border-dark-border" data-timestamp="315">
     <div class="flex items-center justify-between mb-3">
       <h3 class="text-lg font-serif font-semibold text-ink dark:text-dark-ink">Act 4: Tasks, Scenarios & The Art of Non-Directive Nudging</h3>
       <button class="timestamp-btn font-mono text-xs px-2.5 py-1 border border-ink-border hover:bg-paper-100 text-ink transition-colors dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface" data-seek-time="315">
@@ -4529,12 +4710,12 @@ export const COURSES: Course[] = [
       Give the participant an authentic goal, not a button-by-button instruction checklist:
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 text-xs font-mono">
-      <div class="p-4 bg-red-50/40 border border-red-200 text-ink dark:text-dark-ink">
-        <span class="font-bold text-red-700 block mb-1">BAD: Leading Instruction</span>
+      <div data-allow-fill class="p-4 bg-rose-50/40 border border-rose-200 text-ink dark:text-dark-ink">
+        <span class="font-bold text-rose-700 block mb-1">BAD: Leading Instruction</span>
         "Please click the blue 'Export' button in the top right and save this file as a CSV."
         <p class="mt-2 text-ink-muted font-sans dark:text-dark-muted">This tests reading comprehension, not interface usability.</p>
       </div>
-      <div class="p-4 bg-emerald-50/40 border border-emerald-200 text-ink dark:text-dark-ink">
+      <div data-allow-fill class="p-4 bg-emerald-50/40 border border-emerald-200 text-ink dark:text-dark-ink">
         <span class="font-bold text-emerald-700 block mb-1 dark:text-emerald-400">GOOD: Scenario-Based Goal</span>
         "Imagine you need to share last month's financial numbers with your accountant. How would you accomplish that here?"
         <p class="mt-2 text-ink-muted font-sans dark:text-dark-muted">Allows the user to search, interpret labels, and reveal their natural mental model.</p>
@@ -4552,7 +4733,7 @@ export const COURSES: Course[] = [
   </div>
 
   <!-- ACT 5 -->
-  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-200 dark:bg-dark-card dark:border-dark-border" data-timestamp="525">
+  <div class="video-transcript-block p-6 my-6 border border-ink-border bg-white transition-colors duration-150 dark:bg-dark-card dark:border-dark-border" data-timestamp="525">
     <div class="flex items-center justify-between mb-3">
       <h3 class="text-lg font-serif font-semibold text-ink dark:text-dark-ink">Act 5: Quick Debrief & The Magic Wand Question</h3>
       <button class="timestamp-btn font-mono text-xs px-2.5 py-1 border border-ink-border hover:bg-paper-100 text-ink transition-colors dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface" data-seek-time="525">
@@ -4595,16 +4776,16 @@ export const COURSES: Course[] = [
       While the interviewer conducts sessions in the testing room, the rest of the sprint team watches the live feed in an observation room. Team members write raw observations on sticky notes using color coding:
     </p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-mono">
-      <div class="p-3 bg-emerald-50 border border-emerald-200">
-        <span class="font-bold block text-emerald-900">Green Sticky Notes</span>
+      <div data-allow-fill class="p-3 bg-emerald-50 border border-emerald-200">
+        <span class="font-bold block text-emerald-700">Green Sticky Notes</span>
         User completed task smoothly; positive feedback; validated assumption.
       </div>
-      <div class="p-3 bg-red-50 border border-red-200">
-        <span class="font-bold block text-red-900">Red Sticky Notes</span>
+      <div data-allow-fill class="p-3 bg-rose-50 border border-rose-200">
+        <span class="font-bold block text-rose-700">Red Sticky Notes</span>
         User failed task; confusion; incorrect interpretation of UI pattern.
       </div>
-      <div class="p-3 bg-amber-50 border border-amber-200">
-        <span class="font-bold block text-amber-900">Yellow Sticky Notes</span>
+      <div data-allow-fill class="p-3 bg-amber-50 border border-amber-200">
+        <span class="font-bold block text-amber-700">Yellow Sticky Notes</span>
         Neutral observation; interesting quote; unexpected workflow habit.
       </div>
     </div>
@@ -4666,10 +4847,10 @@ export const COURSES: Course[] = [
   </p>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Usability Testing 101</em> by <strong>Kate Moran</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://www.nngroup.com/articles/usability-testing-101/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
+    <a href="https://www.nngroup.com/articles/usability-testing-101/" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -4713,10 +4894,10 @@ export const COURSES: Course[] = [
   </p>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>User Testing: Why & How</em> by <strong>Jakob Nielsen</strong> (Nielsen Norman Group).</span>
     </div>
-    <a href="https://www.nngroup.com/videos/user-testing-jakob-nielsen/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Article ↗</a>
+    <a href="https://www.nngroup.com/videos/user-testing-jakob-nielsen/" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Article ↗</a>
   </div>
 </section>
 
@@ -4769,10 +4950,10 @@ export const COURSES: Course[] = [
   </ol>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Adapted for sovereign study from <em>Moderated Usability Testing Guide</em> by <strong>Contentsquare</strong>.</span>
     </div>
-    <a href="https://contentsquare.com/guides/usability-testing/moderated/" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
+    <a href="https://contentsquare.com/guides/usability-testing/moderated/" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Guide ↗</a>
   </div>
 </section>
 
@@ -5018,10 +5199,10 @@ export const COURSES: Course[] = [
   </p>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Springboard Career Series: <strong>A Day in the Life of a Designer</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=Hq7ohURsQN8" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=Hq7ohURsQN8" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -5080,10 +5261,10 @@ export const COURSES: Course[] = [
   </p>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Springboard Career Series: <strong>The Good and Bad of Working as a Designer</strong>.</span>
     </div>
-    <a href="https://www.youtube.com/watch?v=qwCEZ1lRkHo" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=qwCEZ1lRkHo" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 
@@ -5141,10 +5322,10 @@ export const COURSES: Course[] = [
   </ul>
   <div class="mt-16 pt-8 border-t border-ink-border/80 not-prose flex items-start justify-between text-xs font-sans text-ink-muted dark:text-dark-muted dark:border-dark-border">
     <div>
-      <span class="font-mono uppercase font-bold text-teal-800 block mb-0.5 dark:text-teal-400">Source Citation</span>
+      <span class="font-mono uppercase font-bold text-teal-700 block mb-0.5 dark:text-teal-400">Source Citation</span>
       <span>Springboard Career Series: <strong>How Do You Get into Design?</strong></span>
     </div>
-    <a href="https://www.youtube.com/watch?v=ebzQXHIMZu0" target="_blank" rel="noopener noreferrer" class="font-ui text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
+    <a href="https://www.youtube.com/watch?v=ebzQXHIMZu0" target="_blank" rel="noopener noreferrer" class="font-mono text-xs border border-ink-border px-3 py-1.5 rounded-xs bg-paper-50 hover:bg-paper-100 text-ink dark:bg-dark-card dark:text-dark-ink dark:border-dark-border dark:hover:bg-dark-surface">Original Video ↗</a>
   </div>
 </section>
 

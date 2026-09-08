@@ -50,6 +50,16 @@ function formatDate(iso: string | null): string {
 >
   <HubHeader activeTab="downloads" />
 
+  <script is:inline>
+    // The desktop app updates itself in place, so its own downloads page
+    // would be circular. Send Tauri visitors back to the library instead.
+    try {
+      if (document.documentElement.dataset.ahkhHost === 'tauri') {
+        window.location.replace('../');
+      }
+    } catch (e) {}
+  </script>
+
   <main class="flex-1 max-w-reading w-full mx-auto px-6 py-12">
     <header class="mb-10 pb-6 border-b border-ink-border dark:border-dark-border">
       <h1 class="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-ink dark:text-dark-ink mb-3">

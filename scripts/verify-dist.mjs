@@ -21,6 +21,8 @@ let slashSlashErrors = 0;
 let contrastErrors = 0;
 let motionErrors = 0;
 let fontErrors = 0;
+let colorErrors = 0;
+let tokenErrors = 0;
 
 // Emoji regex range
 const emojiRegex = /[\u{1F300}-\u{1FAFF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
@@ -126,6 +128,57 @@ for (const file of files) {
       fontErrors++;
     }
   }
+
+  // Check 8: Seven Signal Hues (ADR-030). Banned grades, banned hues, banned fills.
+  // Scoped to class attributes so prose words and element IDs can never trip the check.
+  // Depiction exception (§7.8): elements explicitly marked data-allow-fill
+  // (literal artifact depictions) are exempt from the fill ban — nothing else is.
+  const allowedFills = new Set(
+    [...content.matchAll(/<[^>]*data-allow-fill[^>]*class="([^"]*)"[^>]*>/g)].map((m) => m[1])
+  );
+  const classSoup = [...content.matchAll(/class="([^"]*)"/g)]
+    .map((m) => m[1])
+    .filter((c) => !allowedFills.has(c))
+    .join(' ');
+  // Sanctioned hover-only destructive fills (remove actions, window close): strip before testing.
+  const classTest = classSoup.replace(/(dark:)?hover:bg-rose-(50|950)\S*/g, '');
+  const forbiddenColorPatterns = [
+    /(dark:)?text-(blue|purple|amber|emerald|rose|sky|teal|fuchsia|cyan|violet)-(800|900|950)\b/,
+    /(dark:)?text-(indigo|orange)-[0-9]+\b/,
+    /(dark:)?text-red-[0-9]+\b/,
+    /(dark:)?(bg|border)-red-[0-9]+\b/,
+    /(dark:)?bg-(indigo|orange)-[0-9]+\b/,
+    /(dark:)?bg-(blue|purple|amber|emerald|rose|sky|teal|fuchsia|cyan|violet)-(50|100|200|900|950)\b/,
+  ];
+  for (const pattern of forbiddenColorPatterns) {
+    const m = classTest.match(pattern);
+    if (m) {
+      console.error(`[SEVEN HUES VIOLATION (ADR-030)] in ${relPath}: "${m[0]}"`);
+      colorErrors++;
+    }
+  }
+
+  // Check 9: Token & Motion Locks (ADR-031). Phantom classes, banned motion, rogue layers.
+  const forbiddenTokenPatterns = [
+    /\btransition-all\b/,
+    /\b(animate-in|animate-out|fade-in|fade-out|zoom-in)\b/,
+    /\bduration-(200|500|1000)\b/,
+    /\bease-(in|in-out|linear)\b/,
+    /\brounded-(xl|lg|md)\b/,
+    /\brounded(?![-\w])/,
+    /\bbg-paper-400\b/,
+    /\bz-(10|20|60|70|80|90|100|[0-9]{4,})\b/,
+    /\b[mp][xytrbl]?-\[[^\]]+\]/,
+    /\bgap-\[[^\]]+\]/,
+    /\bmax-w-\[[^\]]+\]/,
+  ];
+  for (const pattern of forbiddenTokenPatterns) {
+    const m = classSoup.match(pattern);
+    if (m) {
+      console.error(`[TOKEN LOCK VIOLATION (ADR-031)] in ${relPath}: "${m[0]}"`);
+      tokenErrors++;
+    }
+  }
 }
 
 console.log(`--- Summary ---`);
@@ -136,8 +189,53 @@ console.log(`Double slash violations: ${slashSlashErrors}`);
 console.log(`High-contrast violations: ${contrastErrors}`);
 console.log(`Hover motion violations: ${motionErrors}`);
 console.log(`Type system violations: ${fontErrors}`);
+console.log(`Seven-hues violations: ${colorErrors}`);
+console.log(`Token-lock violations: ${tokenErrors}`);
 
-if (linkErrors === 0 && emojiErrors === 0 && slashSlashErrors === 0 && contrastErrors === 0 && motionErrors === 0 && fontErrors === 0) {
+// Check 10: Phantom-token aliveness (ADR-031) — locked tokens must exist in built CSS.
+let cssErrors = 0;
+try {
+  const astroDir = path.join(distDir, '_astro');
+  const cssFiles = fs.existsSync(astroDir) ? fs.readdirSync(astroDir).filter((f) => f.endsWith('.css')) : [];
+  const css = cssFiles.map((f) => fs.readFileSync(path.join(astroDir, f), 'utf8')).join('\n');
+  for (const token of ['.rounded-xs', '.shadow-2xs']) {
+    if (!css.includes(token)) {
+      console.error(`[PHANTOM TOKEN (ADR-031)] built CSS is missing "${token}" — tailwind.config.mjs tokens not wired`);
+      cssErrors++;
+    }
+  }
+} catch (e) {
+  console.error(`[CSS AUDIT FAILURE] ${e.message}`);
+  cssErrors++;
+}
+
+// Check 11: Reader library externalized (ADR-027) — no lesson page may inline the library.
+let readerErrors = 0;
+const distReader = path.join(distDir, 'scripts', 'reader.js');
+if (!fs.existsSync(distReader)) {
+  console.error('[READER LIBRARY MISSING (ADR-027)] dist/scripts/reader.js not found');
+  readerErrors++;
+}
+for (const file of files) {
+  const relPath = path.relative(distDir, file);
+  const content = fs.readFileSync(file, 'utf8');
+  if (content.includes('window.__ahkhBootReader = function')) {
+    console.error(`[READER INLINED (ADR-027)] in ${relPath}: library body must live in /scripts/reader.js`);
+    readerErrors++;
+  }
+  if (relPath.startsWith(`courses${path.sep}`)) {
+    const depth = relPath.split(path.sep).length;
+    // dist/courses/<course>/index.html is the journey page (no reader); lessons sit one level deeper.
+    if (depth > 3 && !content.includes('scripts/reader.js')) {
+      console.error(`[READER NOT LOADED (ADR-027)] in ${relPath}: missing /scripts/reader.js reference`);
+      readerErrors++;
+    }
+  }
+}
+console.log(`CSS token errors: ${cssErrors}`);
+console.log(`Reader library errors: ${readerErrors}`);
+
+if (linkErrors === 0 && emojiErrors === 0 && slashSlashErrors === 0 && contrastErrors === 0 && motionErrors === 0 && fontErrors === 0 && colorErrors === 0 && tokenErrors === 0 && cssErrors === 0 && readerErrors === 0) {
   console.log('SUCCESS: All generated pages comply 100% with constitutional standards!');
   process.exit(0);
 } else {

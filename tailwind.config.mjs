@@ -46,7 +46,14 @@ export default {
       maxWidth: {
         'reading': '68ch',
         'hub': '960px',
-      }
+      },
+      borderRadius: {
+        '2xs': '1px',
+        'xs': '2px',
+      },
+      boxShadow: {
+        '2xs': '0 1px 2px rgb(0 0 0 / 0.05)',
+      },
     },
   },
   plugins: [

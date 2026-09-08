@@ -85,7 +85,7 @@ const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
               <path d="M18 6 6 18M6 6l12 12"/>
             </svg>
           </button>
-          <kbd class="hidden sm:inline font-mono text-[10px] px-1.5 py-0.5 rounded border border-ink-border/80 dark:border-dark-border/80 text-ink-muted dark:text-dark-muted bg-paper-100 dark:bg-dark-bg select-none" aria-hidden="true">
+          <kbd class="hidden sm:inline font-mono text-[10px] px-1.5 py-0.5 rounded-xs border border-ink-border/80 dark:border-dark-border/80 text-ink-muted dark:text-dark-muted bg-paper-100 dark:bg-dark-bg select-none" aria-hidden="true">
             /
           </kbd>
         </div>
@@ -115,7 +115,7 @@ const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
         <!-- Dropdown Menu Panel -->
         <div 
           id="filter-menu-panel" 
-          class="hidden absolute right-0 mt-1.5 w-64 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card shadow-lg z-30 py-1 text-xs font-ui divide-y divide-ink-border/50 dark:divide-dark-border/50 transition-all"
+          class="hidden absolute right-0 mt-1.5 w-64 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card shadow-lg z-40 py-1 text-xs font-ui divide-y divide-ink-border/60 dark:divide-dark-border/60 transition-colors duration-150"
           role="menu"
         >
           <!-- Primary General Scopes -->
@@ -167,7 +167,7 @@ const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
     </div>
 
     <!-- State 1: Global Empty State (Pristine Notebook) -->
-    <div id="empty-state" class="hidden text-center py-20 px-6 border border-ink-border/60 dark:border-dark-border/60 rounded-xs bg-paper-100/40 dark:bg-dark-card/40 transition-colors shadow-2xs animate-in fade-in duration-300">
+    <div id="empty-state" class="hidden text-center py-20 px-6 border border-ink-border/60 dark:border-dark-border/60 rounded-xs bg-paper-100/40 dark:bg-dark-card/40 transition-colors shadow-2xs">
       <div class="w-10 h-10 mx-auto mb-4 rounded-full bg-paper-200 dark:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center shadow-2xs">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/>
@@ -198,7 +198,7 @@ const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
     </div>
 
     <!-- State 2: No Search/Filter Results Found -->
-    <div id="no-results-state" class="hidden text-center py-16 px-6 border border-ink-border/60 dark:border-dark-border/60 rounded-xs bg-paper-50 dark:bg-dark-card transition-colors shadow-2xs animate-in fade-in duration-300">
+    <div id="no-results-state" class="hidden text-center py-16 px-6 border border-ink-border/60 dark:border-dark-border/60 rounded-xs bg-paper-50 dark:bg-dark-card transition-colors shadow-2xs">
       <div class="font-serif text-lg font-medium text-ink dark:text-dark-ink mb-1.5">
         No Passages Match Your Query
       </div>
@@ -222,7 +222,7 @@ const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
   <!-- Floating Undo Toast (6-Second Grace Period) -->
   <div 
     id="undo-toast" 
-    class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-white dark:bg-dark-card text-ink dark:text-dark-ink px-4 py-3 rounded-xs shadow-lg shadow-black/5 dark:shadow-black/40 border border-ink-border dark:border-dark-border flex items-center gap-3 text-xs font-sans transition-all pointer-events-auto"
+    class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-white dark:bg-dark-card text-ink dark:text-dark-ink px-4 py-3 rounded-xs shadow-lg shadow-black/5 dark:shadow-black/40 border border-ink-border dark:border-dark-border flex items-center gap-3 text-xs font-sans transition-transform duration-300 ease-out pointer-events-auto"
     role="status"
     aria-live="polite"
   >

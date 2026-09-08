@@ -62,8 +62,9 @@ export function getCategoryColor(category: string): string {
 export const FORMAT_COLORS: Record<string, ColorDefinition> = {
   video: { text: 'text-rose-600 dark:text-rose-400' },
   article: { text: 'text-sky-600 dark:text-sky-400' },
-  pdf: { text: 'text-amber-700 dark:text-amber-400' },
-  audio: { text: 'text-violet-600 dark:text-violet-400' },
+  // pdf / audio are quiet formats: neutral muted per the Seven Hues law (ADR-030).
+  pdf: { text: 'text-ink-muted dark:text-dark-muted' },
+  audio: { text: 'text-ink-muted dark:text-dark-muted' },
 };
 
 export function getFormatColor(type: string): string {

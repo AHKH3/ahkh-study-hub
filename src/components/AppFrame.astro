@@ -1,0 +1,118 @@
+---
+import { path } from '../utils/paths';
+/*
+ * Bespoke desktop window frame (ADR-022, Tauri only).
+ * Rendered on every page but revealed exclusively inside the desktop app via
+ * the host CSS rules. Quiet paper bar with sovereign window controls wired
+ * to the Tauri window API; the web keeps native browser chrome.
+ */
+---
+
+<div
+  id="app-frame"
+  data-tauri-drag-region
+  class="w-full h-10 shrink-0 items-center justify-between gap-3 pl-4 pr-1.5 border-b border-ink-border/60 dark:border-dark-border bg-paper-100 dark:bg-dark-surface sticky top-0 z-50 select-none"
+>
+  <div data-tauri-drag-region class="flex items-center gap-2 min-w-0 flex-1">
+    <img
+      src={path('/logo.png')}
+      alt=""
+      aria-hidden="true"
+      class="h-4 w-auto object-contain shrink-0 dark:hidden"
+      draggable="false"
+    />
+    <img
+      src={path('/logo-white.png')}
+      alt=""
+      aria-hidden="true"
+      class="h-4 w-auto object-contain shrink-0 hidden dark:block"
+      draggable="false"
+    />
+    <span class="font-ui text-xs font-medium tracking-tight text-ink-muted dark:text-dark-muted truncate">
+      AHKH Study Hub
+    </span>
+  </div>
+
+  <div class="flex items-center gap-0.5 shrink-0">
+    <button
+      type="button"
+      id="frame-min"
+      aria-label="Minimize"
+      title="Minimize"
+      class="w-9 h-7 rounded-xs text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200 dark:hover:bg-dark-border/60 transition-colors cursor-pointer flex items-center justify-center"
+    >
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M5 12h14"/>
+      </svg>
+    </button>
+    <button
+      type="button"
+      id="frame-max"
+      aria-label="Maximize or restore"
+      title="Maximize or restore"
+      class="w-9 h-7 rounded-xs text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200 dark:hover:bg-dark-border/60 transition-colors cursor-pointer items-center justify-center flex"
+    >
+      <svg id="frame-max-icon" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="5" y="5" width="14" height="14" rx="1.5"/>
+      </svg>
+      <svg id="frame-restore-icon" class="w-3 h-3 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="8" y="8" width="11" height="11" rx="1.5"/><path d="M5 15V6a1 1 0 0 1 1-1h9"/>
+      </svg>
+    </button>
+    <button
+      type="button"
+      id="frame-close"
+      aria-label="Close"
+      title="Close"
+      class="w-9 h-7 rounded-xs text-ink-muted dark:text-dark-muted hover:text-rose-700 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer flex items-center justify-center"
+    >
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var api = window.__TAURI__ && window.__TAURI__.core ? window.__TAURI__.core : null;
+    if (!api) return;
+    var LABEL = 'main';
+
+    function invoke(cmd) {
+      try {
+        return api.invoke(cmd, { label: LABEL }).catch(function () {});
+      } catch (e) {}
+      return Promise.resolve();
+    }
+
+    function refreshMaxIcon() {
+      var maxIcon = document.getElementById('frame-max-icon');
+      var restoreIcon = document.getElementById('frame-restore-icon');
+      if (!maxIcon || !restoreIcon) return;
+      try {
+        api.invoke('plugin:window|isMaximized', { label: LABEL }).then(function (m) {
+          maxIcon.classList.toggle('hidden', !!m);
+          restoreIcon.classList.toggle('hidden', !m);
+        }).catch(function () {});
+      } catch (e) {}
+    }
+
+    var minBtn = document.getElementById('frame-min');
+    var maxBtn = document.getElementById('frame-max');
+    var closeBtn = document.getElementById('frame-close');
+    if (minBtn) minBtn.addEventListener('click', function () { invoke('plugin:window|minimize'); });
+    if (maxBtn) maxBtn.addEventListener('click', function () {
+      try {
+        api.invoke('plugin:window|isMaximized', { label: LABEL }).then(function (m) {
+          invoke(m ? 'plugin:window|unmaximize' : 'plugin:window|maximize').then(refreshMaxIcon);
+        }).catch(function () {
+          invoke('plugin:window|maximize').then(refreshMaxIcon);
+        });
+      } catch (e) {}
+    });
+    if (closeBtn) closeBtn.addEventListener('click', function () { invoke('plugin:window|close'); });
+    refreshMaxIcon();
+    document.addEventListener('astro:page-load', refreshMaxIcon);
+  })();
+</script>

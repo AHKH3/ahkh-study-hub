@@ -9,8 +9,8 @@ import { countLessons } from '../utils/courseStats';
 const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; textClass: string }> = {
   active: {
     label: 'Active',
-    dotClass: 'bg-emerald-600 dark:bg-emerald-400',
-    textClass: 'text-emerald-700 dark:text-emerald-400',
+    dotClass: 'bg-amber-600 dark:bg-amber-400',
+    textClass: 'text-amber-700 dark:text-amber-400',
   },
   new: {
     label: 'New',
@@ -24,8 +24,8 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
   },
   completed: {
     label: 'Completed',
-    dotClass: 'bg-slate-500 dark:bg-slate-400',
-    textClass: 'text-slate-600 dark:text-slate-400',
+    dotClass: 'bg-emerald-600 dark:bg-emerald-400',
+    textClass: 'text-emerald-700 dark:text-emerald-400',
   },
 };
 ---
@@ -45,12 +45,12 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
     </div>
 
     <!-- The Editorial Monograph List -->
-    <div class="divide-y divide-ink-border/80 dark:divide-dark-border border-t border-b border-ink-border dark:border-dark-border mb-16">
+    <div class="divide-y divide-ink-border/60 dark:divide-dark-border border-t border-b border-ink-border dark:border-dark-border mb-16">
       {COURSES.map((course, index) => {
         const num = String(index + 1).padStart(2, '0');
         const statusMeta = STATUS_CONFIG[course.status];
         return (
-          <article class="group py-5 sm:py-6 transition-colors duration-200 hover:bg-paper-50 dark:hover:bg-dark-card/40 px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-xs" data-course-id={course.id} data-lessons={course.modules.flatMap((m) => m.lessons.map((l) => l.slug)).join(',')}>
+          <article class="group py-5 sm:py-6 transition-colors duration-150 hover:bg-paper-50 dark:hover:bg-dark-card/40 px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-xs" data-course-id={course.id} data-lessons={course.modules.flatMap((m) => m.lessons.map((l) => l.slug)).join(',')}>
             <a href={path(`/courses/${course.slug}`)} class="block focus:outline-hidden">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 
@@ -96,7 +96,7 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
                   <div class="flex items-center gap-2 font-mono text-xs text-ink dark:text-dark-ink">
                     <div class="w-24 sm:w-28 h-[3px] bg-paper-300 dark:bg-dark-border rounded-none overflow-hidden">
                       <div 
-                        class="h-full bg-ink dark:bg-dark-ink transition-all duration-700 ease-out progress-fill"
+                        class="h-full bg-ink dark:bg-dark-ink transition-[width] duration-700 ease-out progress-fill"
                         data-role="progress-fill"
                         style={`width: ${course.progressPercent}%`}
                       ></div>
@@ -124,10 +124,10 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
 
   <script is:inline>
     const STATUS_META = {
-      active: { label: 'Active', dot: 'bg-emerald-600 dark:bg-emerald-400', text: 'text-emerald-700 dark:text-emerald-400' },
+      active: { label: 'Active', dot: 'bg-amber-600 dark:bg-amber-400', text: 'text-amber-700 dark:text-amber-400' },
       new: { label: 'New', dot: 'bg-blue-600 dark:bg-blue-400', text: 'text-blue-700 dark:text-blue-400' },
       explored: { label: 'Exploring', dot: 'bg-purple-600 dark:bg-purple-400', text: 'text-purple-700 dark:text-purple-400' },
-      completed: { label: 'Completed', dot: 'bg-slate-500 dark:bg-slate-400', text: 'text-slate-600 dark:text-slate-400' }
+      completed: { label: 'Completed', dot: 'bg-emerald-600 dark:bg-emerald-400', text: 'text-emerald-700 dark:text-emerald-400' }
     };
     function refreshLibraryProgress() {
       try {
@@ -173,7 +173,7 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
             if (badge && meta) {
               const dot = badge.querySelector('[data-statusdot]');
               if (dot) dot.className = `w-1.5 h-1.5 rounded-full ${meta.dot}`;
-              ['text-emerald-700', 'dark:text-emerald-400', 'text-blue-700', 'dark:text-blue-400', 'text-purple-700', 'dark:text-purple-400', 'text-slate-600', 'dark:text-slate-400', 'text-pink-700', 'dark:text-pink-400'].forEach((c) => badge.classList.remove(c));
+              ['text-emerald-700', 'dark:text-emerald-400', 'text-blue-700', 'dark:text-blue-400', 'text-purple-700', 'dark:text-purple-400', 'text-amber-700', 'dark:text-amber-400', 'text-slate-600', 'dark:text-slate-400', 'text-pink-700', 'dark:text-pink-400'].forEach((c) => badge.classList.remove(c));
               meta.text.split(' ').forEach((c) => badge.classList.add(c));
               const textNode = Array.from(badge.childNodes).find((n) => n.nodeType === 3 && n.textContent.trim() !== '');
               if (textNode) textNode.textContent = ` ${meta.label}`;

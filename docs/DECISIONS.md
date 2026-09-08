@@ -2,7 +2,6 @@
 
 This file records the key architectural and design decisions made in the development of **AHKH Study Hub**.
 
----
 
 ## ADR-001: Selection of Astro Static Site Generation (SSG)
 - **Date**: 2026-09-03
@@ -339,9 +338,128 @@ This file records the key architectural and design decisions made in the develop
 
 ---
 
-## ADR-024: Lesson Production Framework (docs/FRAMEWORK.md)
-- **Date**: 2026-09-06
+## ADR-024: Content/Code Isolation — One File Per Lesson, Monolith Deprecation
+- **Date**: 2026-09-08
 - **Status**: Accepted
-- **Context**: Lesson authoring moves to message-driven agent production (owner sends source, agent delivers). Two specialist drafts (writing/pedagogy, visual/UX) needed unification into one binding contract.
-- **Decision**: `docs/FRAMEWORK.md` is the single authoring contract: fixed lesson spine (Lead → Axiom 0–2 → faithful body → synthesis 1–3 → matrix 0–2 → socratic 0–1 → one Self-Test section 2–4 Qs → footer), faithful/synthesized text labeling, doodle illustration style (rough black marker + single warm orange ≤15%, lesson canvas only), locked image-gen preset + negatives, photo treatment, provenance registry, and an 18-point validator (one FAIL = reject). Conflict resolutions: single end Self-Test (not scattered blocks), Socratic 0–1, synthesis mandatory 1–3.
-- **Consequences**: Any authoring agent (Katib, Musammim, Noir, external CLIs) validates against FRAMEWORK.md before delivery; AGENTS.md invariants keep precedence on conflict.
+- **Context**: All course content lives in a single `src/data/courses.ts` (342KB, 5338 lines for one course of ~38 lessons), with lesson HTML embedded as TypeScript string literals. One unescaped backtick breaks the entire site build; diffs are unreviewable; parallel agent work guarantees merge conflicts; scaling to many courses multiplies a multi-MB single file.
+- **Decision**:
+  1. Every lesson becomes its own content file under `src/content/courses/<course>/<module>/` (Astro Content Collections), with a small `course.json` carrying course-level metadata only.
+  2. `src/data/courses.ts` is deprecated as a content store and becomes (during migration) a read bridge at most; agents never author content inside code files again.
+  3. Agents may write under `src/content/**` only; `src/pages`, `src/layouts`, `src/components`, and data schemas are off-limits to content-production work.
+- **Consequences**:
+  1. One lesson edit = one file diff; parallel agent ingestion without conflicts.
+  2. No TypeScript escaping hazards in prose; content failures are per-file, not site-wide.
+  3. A pre-build validation script becomes the acceptance gate (frontmatter completeness, unique slugs, slop bans) before `npm run build`.
+
+---
+
+## ADR-025: No Database Layer — Git Is the Source of Truth, Direct Static Publish
+- **Date**: 2026-09-08
+- **Status**: Accepted
+- **Context**: The output is static (`output: 'static'` on GitHub Pages): no server, no dynamic queries, no user accounts. The sole editor is an AI agent with repo access. A local database (SQLite or otherwise) plus an export/sync step was evaluated.
+- **Decision**:
+  1. No runtime or authoring database. Content collections (Markdown/MDX files) are the local data store; git history is the change log.
+  2. Content is added directly to the repo and published to GitHub Pages by the standard static build. No intermediate publish/export pipeline.
+  3. A database-backed CMS UI is explicitly out of scope unless a non-technical human editor role appears in the future.
+- **Consequences**:
+  1. Zero sync/export machinery to break; every lesson addition is a reviewable pull-request-sized diff.
+  2. The real scaling lever is page weight and build minutes, not storage (addressed in ADR-027).
+
+---
+
+## ADR-026: MDX Lessons + Editorial Component Library + Per-Lesson Folder With Co-Located Images
+- **Date**: 2026-09-08
+- **Status**: Accepted
+- **Context**: Raw-Markdown lessons force the agent to paste Tailwind class strings per lesson to reach the `DESIGN.md` editorial look. The live audit (2026-09-08) proved the drift: 147 light-mode `text-*-800` tone violations, unmapped hues (`indigo`, `orange`, `red`), and banned `bg-*-50` fills inside lessons — all shipping silently. Lessons also need per-lesson images with mandatory caption attribution, lazy loading, responsive sizing, and base-aware paths.
+- **Decision**:
+  1. Lessons are MDX (`.mdx`) using a single editorial component library (`Axiom`, `SynthesisCard`, `SocraticCallout`, `DataMatrix`, `SourceFooter`, `LessonImage`, …) defined once; the agent writes meaning and props, never class strings.
+  2. Each lesson is a folder (`<slug>/index.mdx`) with its images co-located (`./fig-1.png`); moving or deleting a lesson moves or deletes its assets with it — no orphans.
+  3. `LessonImage` enforces the image contract centrally: optimized formats (webp), max width cap, `loading="lazy"` below the fold, and mandatory caption/attribution.
+  4. Requires adding the Astro MDX integration; JSX errors fail the build loudly instead of shipping silent visual drift.
+- **Consequences**:
+  1. Global redesign = editing one component file, not hundreds of lessons.
+  2. Image weight budget and attribution become structurally enforced, not agent-disciplined.
+
+---
+
+## ADR-027: Reader Weight Extraction — Shared Script, Per-Page Data Attributes, Immediate Lane
+- **Date**: 2026-09-08
+- **Status**: Accepted
+- **Context**: Measured 2026-09-08: `[slug].astro` is 2963 lines / 141KB containing one `is:inline` script of ~2050 lines (~86KB) duplicated verbatim into every lesson HTML (only 7 `define:vars` differ per page). Result: 38 lessons produce a 13.44MB `dist` at ~200–275KB per page; 1000 lessons at the same weight would approach ~350MB of deploy payload against GitHub Pages soft limits.
+- **Decision**:
+  1. Extract the reader script to one shared built file (`src/scripts/reader.*`); per-lesson variables pass via `data-*` attributes on the page (~300 bytes per page instead of 86KB).
+  2. Shared JS loads once and caches across lesson navigations; set a per-page weight budget as part of the framework.
+  3. This is **immediate-lane work** (no framework dependency): it touches code only, not content or the production pipeline.
+- **Consequences**:
+  1. Expected page weight drops from ~250KB toward sub-100KB; 1000-lesson deploy projection drops from ~350MB toward ~100MB.
+  2. Visitor runtime is unaffected in kind (one page loads at a time); build minutes still grow linearly with page count and need watching.
+
+---
+
+## ADR-028: Content Production Framework — Scope and Prerequisites
+- **Date**: 2026-09-08
+- **Status**: Accepted (scope); framework design itself pending
+- **Context**: The owner will task an agent with "add this source to my library," and everything the agent does from that moment on must be governed by one designed framework — not ad-hoc instructions per lesson.
+- **Decision**: The framework MUST specify:
+  1. Source reproduction policy (verbatim vs. minimum-necessary paraphrase per ADR-009, title architecture, attribution footer).
+  2. Writing and display formats (MDX usage, which editorial component for which content shape, frontmatter schema).
+  3. Image policy per lesson: reuse original assets vs. regenerate (proprietary/low-fidelity rule), illustrative additions, and one unified image-design style derived from owner-supplied reference images.
+  4. Color usage rules and icon rules for content surfaces (prerequisite: resolve the audit findings — tone invariant enforcement, mapped-hue discipline, background-fill ban, status-badge exception).
+- **Consequences**:
+  1. No bulk ingestion work starts until the framework is designed; see execution lanes below.
+
+---
+
+## ADR-029: Migrate vs. Regenerate Existing Lessons From Scratch- **Date**: 2026-09-08
+- **Status**: Proposed (deferred to owner, after framework design)
+- **Context**: The owner raised the option of deleting all current lessons and re-producing them under the new framework instead of migrating `courses.ts` content.
+- **Decision**: Undecided. Migration preserves finished study state (Springboard course in progress until 2026-09-19); regeneration guarantees framework purity at the cost of redoing ~38 lessons.
+- **Consequences**: No deletion or regeneration happens without an explicit owner order.
+
+---
+
+## Execution Lanes (2026-09-08): Do Now vs. Framework-Gated
+- **Do now (no framework dependency)**:
+  1. ADR-027 reader script extraction + `data-*` vars + weight measurement.
+  2. Add tone-calibration and mapped-hue checks to `scripts/verify-dist.mjs` (close the audit gap; no new content involved).
+- **Framework-gated (design first, then execute)**:
+  1. One-off splitter: `courses.ts` → per-lesson MDX folders (or regeneration per ADR-029).
+  2. `[slug].astro` / `[course]/index.astro` migration to Content Collections.
+  3. Editorial component library + `LessonImage` + image style and weight budget.
+  4. Color and icon usage rules for content; pre-build validation gate.
+
+---
+
+## ADR-030: Seven Signal Hues, Icon Law & Badge Discipline (Design-System Scope)
+- **Date**: 2026-09-08
+- **Status**: Accepted
+- **Context**: Live audit proved hue reuse across three semantic axes (amber = typography domain + PDF format + reading state; rose = philosophy + video; purple = cognition + explored), 147 light-mode `text-*-800` tone violations, banned `bg-*-50` fills in lessons, 44 ad-hoc `indigo` uses, colored icons with no governing rule (amber book on Start Reading, 10 rainbow icons in manifesto), and a self-contradicting spec (`DESIGN.md` Socratic example uses banned `text-teal-800`). This ADR belongs to the design system (broader than, and binding on, the content framework per ADR-028).
+- **Decision**:
+  1. **Seven hues, one meaning each** (text-only, 600–700 light / 400 dark): Blue = NEW badge; Purple = EXPLORED badge; Amber = READING badge + reading progress; Emerald = COMPLETED + success confirmations; Rose = VIDEO keyword + video chrome + destructive; Sky = ARTICLE keyword + info; Teal = Socratic inquiry header.
+  2. **Banned outright**: `indigo`, `orange`, `red` (remap to zinc or the owning hue), and light grades `800/900/950` everywhere.
+  3. **Domain quarantine**: domain hues live in exactly one position — the category kicker line. Never in badges, titles, icons, or callouts.
+  4. **Icon law**: icons inherit text color; colored only when sitting on an already-colored signal, matching it exactly. Start Reading button becomes text-only (no icon); manifesto section icons go monochrome; copy-check keeps emerald with a fixed missing `dark:` variant.
+  5. **Badge discipline**: dot + mono text only (ADR-010 over the `AGENTS.md` pill wording); `bg-*-*` banned entirely and verified in CI.
+  6. **Spec repair**: `DESIGN.md` Socratic example corrected to `text-teal-700`; `categoryColors.ts` remains the single source of truth.
+- **Consequences**:
+  1. No lesson or page can invent a color meaning; violations fail the build (new `verify-dist` color checks, immediate lane).
+  2. Existing lesson drift (147 tone breaks, indigo system, fills) is cleaned during the ADR-026 migration.
+
+---
+
+## ADR-031: Design-Token Locks — Radius, Shadow, Motion, Borders, Layers, Spacing (Design-System Scope)
+- **Date**: 2026-09-08
+- **Status**: Accepted (owner-delegated lock-in)
+- **Context**: Audit 2026-09-08 proved phantom tokens: `rounded-xs` (~188 uses), `rounded-2xs`, and `shadow-2xs` (×23) do not exist in Tailwind v3, so the built CSS contains none of them — the whole site renders sharp corners and shadowless buttons while the code requests otherwise. Plus unregulated durations (150/200/300/700), `transition-all` overreach, dead `ahkh-shimmer`/`ahkh-rule-reveal` keyframes, four border opacities, undeclared z-layers, ad-hoc paddings, one `text-4xl` orphan, and `font-ui` leaking into lesson content (×27).
+- **Decision**:
+  1. **Radius (real tokens)**: `2xs: 1px`, `xs: 2px` defined in `tailwind.config.mjs`; `full` for dots only. Bare `rounded` and `rounded-xl/sm/md/lg` banned in content (→ `rounded-xs`); `max-w-[270px]` → `max-w-xs`. No other radii.
+  2. **Shadow**: `2xs: 0 1px 2px rgb(0 0 0 / 0.05)` for tactile buttons; `lg` exclusively for floating overlays (ADR-014). No other shadows.
+  3. **Motion**: `150` micro-interactions, `300` spatial (drawer/header), `700` progress-fill exception only; `ease-out` only; `transition-all` banned (→ `transition-colors`/`transform` as appropriate); dead keyframes deleted.
+  4. **Borders**: cards solid `border-ink-border`; section dividers `/60`; chrome/header rules `/80`; `/70` normalized to `/60`.
+  5. **Layers**: `z-30` sticky headers, `z-40` menus/dropdowns, `z-50` progress bar + popover + toast. Nothing else.
+  6. **Spacing**: canonical card `p-6` (`p-5 sm:p-6` responsive pair allowed), section rhythm `my-8`, page `py-12`; spacing from the Tailwind scale only, arbitrary brackets banned.
+  7. **Type clean-up**: `text-4xl` orphan → `3xl`; lesson micro-labels `font-ui` → `font-mono` (data voice per role rule).
+  8. **Enforcement**: every lock above gets a `verify-dist.mjs` check; phantom-token regression is caught by asserting the tokens exist in built CSS.
+- **Consequences**:
+  1. The `rounded-xs`/`shadow-2xs` classes already written across ~200 sites come alive with zero markup churn (token definition, not class migration).
+  2. Motion, borders, layers, and spacing stop drifting per-file; new violations fail the build.

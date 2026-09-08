@@ -81,7 +81,7 @@
   font-size: var(--reader-font-size, 1.125rem);
   line-height: var(--reader-line-height, 1.8);
   color: #18181B;
-  transition: font-size 0.18s ease, line-height 0.18s ease;
+  transition: font-size 150ms ease-out, line-height 150ms ease-out;
 }
 
 .dark .prose-editorial {
@@ -450,7 +450,7 @@
   background-color: #FAFAFA !important;
   border-color: #E11D48 !important;
   box-shadow: 0 0 0 1px #E11D48, 0 4px 14px -3px rgba(225, 29, 72, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.05) !important;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 150ms ease-out, border-color 150ms ease-out, box-shadow 150ms ease-out;
 }
 
 .dark .yt-active-paragraph {
@@ -548,52 +548,33 @@ body[data-header-hidden="true"] .video-sticky-wrapper.is-stuck {
 
 /* ==========================================================================
    Quiet Editorial Page Transitions (Astro ClientRouter)
-   Restrained, subtle crossfade with micro-settle. No blur or curtain drops.
+   Sharp Rule Reveal: frame stays anchored, old page rests underneath,
+   new page is uncovered by a single hard vertical edge sweeping
+   horizontally. Zero vertical motion, zero blur, zero scale, zero rotation.
    ========================================================================== */
 
-::view-transition-group(hub-header) {
+::view-transition-group(hub-header),
+::view-transition-old(hub-header),
+::view-transition-new(hub-header) {
   animation: none;
 }
 
-::view-transition-old(hub-header) {
-  animation: 80ms ease-out both ahkh-header-fade;
-}
-
-::view-transition-new(hub-header) {
-  animation: 120ms ease-out both ahkh-header-fade-in;
-}
-
-@keyframes ahkh-header-fade {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-@keyframes ahkh-header-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 ::view-transition-group(root) {
-  animation-duration: 150ms;
-  animation-timing-function: ease-out;
+  animation: none;
 }
 
 ::view-transition-old(root) {
-  animation: 70ms ease-out both ahkh-fade-out;
+  animation: none;
 }
 
 ::view-transition-new(root) {
-  animation: 140ms ease-out both ahkh-fade-in;
+  animation: 280ms cubic-bezier(0.22, 1, 0.36, 1) both ahkh-rule-reveal;
+  box-shadow: inset 1px 0 0 0 rgba(113, 113, 122, 0.45);
 }
 
-@keyframes ahkh-fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-@keyframes ahkh-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes ahkh-rule-reveal {
+  from { clip-path: inset(0 0 0 100%); }
+  to { clip-path: inset(0 0 0 0); }
 }
 
 /* Accessibility: Respect prefers-reduced-motion unconditionally */
@@ -653,71 +634,6 @@ html.dark[data-theme-setting="system"] .theme-dropdown-menu .theme-btn[data-them
 }
 
 /* ==========================================================================
-   Editorial Skeleton & Shimmer System (Swiss Modernist Discipline)
-   ========================================================================== */
-
-@keyframes ahkh-shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.skeleton-box {
-  position: relative;
-  overflow: hidden;
-  background-color: #F4F4F5;
-  border-radius: 2px;
-}
-
-.dark .skeleton-box {
-  background-color: #1F1F24;
-}
-
-.skeleton-shimmer {
-  position: relative;
-  overflow: hidden;
-}
-
-.skeleton-shimmer::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  transform: translateX(-100%);
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.65) 50%,
-    transparent 100%
-  );
-  animation: ahkh-shimmer 1.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-}
-
-.dark .skeleton-shimmer::after {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.08) 50%,
-    transparent 100%
-  );
-}
-
-.skeleton-line {
-  position: relative;
-  overflow: hidden;
-  height: 0.85rem;
-  background-color: #F4F4F5;
-  border-radius: 2px;
-}
-
-.dark .skeleton-line {
-  background-color: #1F1F24;
-}
-
-/* ==========================================================================
    Global Route Transition Progress Bar (Astro ClientRouter)
    ========================================================================== */
 
@@ -728,10 +644,10 @@ html.dark[data-theme-setting="system"] .theme-dropdown-menu .theme-btn[data-them
   width: 0%;
   height: 2px;
   background-color: #18181B;
-  z-index: 9999;
+  z-index: 50;
   opacity: 0;
   pointer-events: none;
-  transition: width 200ms cubic-bezier(0.16, 1, 0.3, 1), opacity 150ms ease;
+  transition: width 150ms ease-out, opacity 150ms ease-out;
 }
 
 .dark #route-loading-bar {
@@ -792,6 +708,24 @@ html.dark[data-theme-setting="system"] .theme-dropdown-menu .theme-btn[data-them
   #route-loading-bar {
     transition: none !important;
   }
+}
+
+/* Sovereign host surfaces (ADR-022): the web keeps the full sanctuary while
+   the desktop app hides Manifesto and Downloads in favor of an update check,
+   and shows its bespoke window frame instead of the OS chrome. */
+#app-frame,
+#update-check-btn {
+  display: none;
+}
+html[data-ahkh-host="tauri"] #app-frame {
+  display: flex;
+}
+html[data-ahkh-host="tauri"] #update-check-btn {
+  display: inline-flex;
+}
+html[data-ahkh-host="tauri"] .nav-manifesto,
+html[data-ahkh-host="tauri"] .nav-downloads {
+  display: none;
 }
 
 

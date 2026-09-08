@@ -4,15 +4,18 @@ import { ClientRouter } from 'astro:transitions';
 import { path } from '../utils/paths';
 import AhkhStorage from '../components/AhkhStorage.astro';
 import AhkhSyncBridge from '../components/AhkhSyncBridge.astro';
+import AppFrame from '../components/AppFrame.astro';
 
 interface Props {
   title: string;
   description?: string;
+  readerLib?: boolean;
 }
 
-const { 
-  title, 
-  description = "A sovereign, local-first library and companion for deep course study, reading, and highlighting." 
+const {
+  title,
+  description = "A sovereign, local-first library and companion for deep course study, reading, and highlighting.",
+  readerLib = false,
 } = Astro.props;
 ---
 
@@ -35,6 +38,9 @@ const {
 
     <AhkhStorage />
     <AhkhSyncBridge />
+
+    <!-- Shared reader library (ADR-027): loaded once per session on reader pages, booted per lesson -->
+    {readerLib && <script src={path('/scripts/reader.js')}></script>}
 
     <!-- Anti-FOUC & Global Theme/Font Initialization -->
     <script is:inline>
@@ -232,6 +238,7 @@ const {
   </head>
   <body class="bg-white dark:bg-dark-bg text-ink dark:text-dark-ink min-h-screen flex flex-col selection:bg-paper-200 dark:selection:bg-dark-border selection:text-ink dark:selection:text-dark-ink transition-colors duration-150">
     <div id="route-loading-bar" aria-hidden="true"></div>
+    <AppFrame />
     <slot />
   </body>
 </html>

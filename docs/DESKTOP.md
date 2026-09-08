@@ -14,6 +14,10 @@ How the Windows application ships, updates itself, and where its secrets live.
    `TAURI_SIGNING_PRIVATE_KEY` gets the full content of the private key file,
    `TAURI_SIGNING_PRIVATE_KEY_PASSWORD` gets the content of the password file.
    Without both secrets the CI build still runs but updater signatures fail.
+4. One more repository secret for transcript ingestion:
+   `YOUTUBE_INNERTUBE_KEY` holds the public Innertube client key (the same
+   value kept locally in `.env`). Without it, CI builds reuse the cached
+   transcripts and skip fetching.
 
 ## Shipping a new desktop version
 

@@ -9,6 +9,10 @@
 
 <script is:inline>
   (function () {
+    try {
+      var host = window.__TAURI_INTERNALS__ ? 'tauri' : 'web';
+      document.documentElement.dataset.ahkhHost = host;
+    } catch (e) {}
     if (window.AhkhStorage) return;
 
     var memory = {};
