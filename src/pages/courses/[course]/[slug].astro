@@ -370,7 +370,7 @@ const transcriptSegments =
     </aside>
 
     <!-- CENTER: Reading Sanctuary Canvas -->
-    <main id="center-reading-column" class="flex-1 px-6 sm:px-12 py-10 max-w-reading mx-auto relative">
+    <main id="main-content" tabindex="-1" class="flex-1 px-6 sm:px-12 py-10 max-w-reading mx-auto relative focus:outline-none">
       
       <!-- Article Heading Block -->
       <div class="mb-10 pb-6 border-b border-ink-border/80 dark:border-dark-border">
@@ -1224,7 +1224,7 @@ const transcriptSegments =
   }
 
   function applyReadingMeasure(measure, persist = true) {
-    const centerCol = document.getElementById('center-reading-column');
+    const centerCol = document.getElementById('main-content');
     const isWide = measure === 'wide';
     const label = document.getElementById('measure-label');
     const standardBtn = document.getElementById('measure-standard-btn');
