@@ -1848,7 +1848,7 @@ window.__ahkhBootReader = function (vars) {
         </svg>
       `;
       label.textContent = 'Completed';
-      btn.classList.add('border-emerald-200/80', 'dark:border-emerald-800/40');
+      btn.classList.add('border-emerald-200/80', 'dark:border-emerald-800/40', 'bg-emerald-50/40', 'dark:bg-emerald-950/20');
       btn.classList.remove('border-ink-border', 'dark:border-dark-border', 'bg-paper-50', 'dark:bg-dark-card');
     } else {
       icon.className = 'flex items-center text-ink-muted dark:text-dark-muted';
@@ -1858,7 +1858,7 @@ window.__ahkhBootReader = function (vars) {
         </svg>
       `;
       label.textContent = 'Mark as complete';
-      btn.classList.remove('border-emerald-200/80', 'dark:border-emerald-800/40');
+      btn.classList.remove('border-emerald-200/80', 'dark:border-emerald-800/40', 'bg-emerald-50/40', 'dark:bg-emerald-950/20');
       btn.classList.add('border-ink-border', 'dark:border-dark-border', 'bg-paper-50', 'dark:bg-dark-card');
     }
   }
