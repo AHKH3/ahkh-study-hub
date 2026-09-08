@@ -194,7 +194,7 @@
 }
 
 /* Center reading column: silky glide and layout containment for 60fps */
-#center-reading-column {
+#main-content {
   contain: layout;
   will-change: max-width;
   transition: max-width 350ms cubic-bezier(0.16, 1, 0.3, 1),

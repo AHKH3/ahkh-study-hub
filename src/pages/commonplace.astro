@@ -12,7 +12,7 @@ const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 >
   <HubHeader activeTab="commonplace" />
 
-  <main class="flex-1 max-w-reading w-full mx-auto px-6 py-12">
+  <main id="main-content" tabindex="-1" class="flex-1 max-w-reading w-full mx-auto px-6 py-12 focus:outline-none">
     <!-- Header with Action Buttons & Canonical Rubric -->
     <header class="mb-10 pb-6 border-b border-ink-border dark:border-dark-border flex flex-col sm:flex-row sm:items-end justify-between gap-6 transition-colors">
       <div>
