@@ -40,7 +40,7 @@ const {
     <AhkhSyncBridge />
 
     <!-- Shared reader library (ADR-027): loaded once per session on reader pages, booted per lesson -->
-    {readerLib && <script src={path('/scripts/reader.js')}></script>}
+    {readerLib && <script is:inline src={path('/scripts/reader.js')}></script>}
 
     <!-- Anti-FOUC & Global Theme/Font Initialization -->
     <script is:inline>
