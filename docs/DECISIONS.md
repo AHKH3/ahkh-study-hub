@@ -463,3 +463,18 @@ This file records the key architectural and design decisions made in the develop
 - **Consequences**:
   1. The `rounded-xs`/`shadow-2xs` classes already written across ~200 sites come alive with zero markup churn (token definition, not class migration).
   2. Motion, borders, layers, and spacing stop drifting per-file; new violations fail the build.
+
+---
+
+## ADR-032: No Stack Migration — Local Agent as a Harness Over the Current Stack
+- **Date**: 2026-09-09
+- **Status**: Accepted (owner decision, settles the local-app debate)
+- **Context**: The owner asked whether to migrate the stack (Next or React plus Vite, local database, built-in agent) to reach frictionless ingestion: paste a link or clip a page, the in-house agent converts it per the framework and adds it. The owner noted correctly that ready libraries (Vercel AI SDK, Gemini API) make agent plumbing cheap, so no agent is built from scratch.
+- **Decision**:
+  1. No stack migration. Astro static SSG plus GitHub Pages plus the Tauri shell stay. ADR-001, ADR-005, ADR-008, ADR-024, ADR-025, ADR-026 remain in force.
+  2. The local agent is a thin harness, not a platform: framework files as grounding plus golden samples plus the validation gate, calling a ready model SDK with the user's own key (BYOK, optional, never required for core reading). It writes per-lesson MDX folders and every addition passes the existing review-and-verify loop.
+  3. The harness is portable by design: the same grounding assets serve a coding agent today, a Tauri command tomorrow, and any future shell. No work is thrown away by later housing choices.
+  4. Cost honesty: model tokens are paid per ingestion by whoever runs it (cents per source on Flash-class models); errors remain possible so human review of the diff stays mandatory; maintenance covers prompts and samples, not servers or databases.
+- **Consequences**:
+  1. Frictionless ingestion arrives as a feature measured in days after the framework (ADR-028) is designed, not as a rewrite measured in weeks.
+  2. The product vision (`docs/VISION.md`) becomes the tribunal for every later stack proposal.
