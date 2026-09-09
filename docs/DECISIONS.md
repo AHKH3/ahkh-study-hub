@@ -468,7 +468,7 @@ This file records the key architectural and design decisions made in the develop
 
 ## ADR-032: No Stack Migration — Local Agent as a Harness Over the Current Stack
 - **Date**: 2026-09-09
-- **Status**: Accepted (owner decision, settles the local-app debate)
+- **Status**: Superseded by ADR-033 (owner overruled: a local general app with database and agent is decided; only the stack choice remains open)
 - **Context**: The owner asked whether to migrate the stack (Next or React plus Vite, local database, built-in agent) to reach frictionless ingestion: paste a link or clip a page, the in-house agent converts it per the framework and adds it. The owner noted correctly that ready libraries (Vercel AI SDK, Gemini API) make agent plumbing cheap, so no agent is built from scratch.
 - **Decision**:
   1. No stack migration. Astro static SSG plus GitHub Pages plus the Tauri shell stay. ADR-001, ADR-005, ADR-008, ADR-024, ADR-025, ADR-026 remain in force.
@@ -478,3 +478,17 @@ This file records the key architectural and design decisions made in the develop
 - **Consequences**:
   1. Frictionless ingestion arrives as a feature measured in days after the framework (ADR-028) is designed, not as a rewrite measured in weeks.
   2. The product vision (`docs/VISION.md`) becomes the tribunal for every later stack proposal.
+
+---
+
+## ADR-033: Local General App — Per-Install Database Plus Built-In Agent (Stack Choice Pending)
+- **Date**: 2026-09-09
+- **Status**: Accepted (owner decision, overrules the no-database and static-only scope for content operations)
+- **Context**: The owner decided the product is a general local-first open-source app, not a single-user static site: each installation carries its own local database and a built-in ingestion agent (grounded harness over ready model SDKs with the user's own key). The only open question is the stack: migrate to React or Next, or stay on Astro plus Tauri.
+- **Decision**:
+  1. Shape is settled: local app, per-install SQLite, built-in agent, open-source, free core. Like the Obsidian model: local-first, shareable output, zero mandatory cost.
+  2. Scope change is explicit: content operations (ingestion queue, drafts, review state, user library index) may live in the local database. Git remains the publish path for shared output; localStorage remains valid for the web surface until the app shell replaces it.
+  3. Stack choice is NOT settled here and is decided on engineering merit below: the agent libraries (Vercel AI SDK, Gemini API) are stack-agnostic and favor no candidate.
+- **Consequences**:
+  1. ADR-025 no-database rule now covers only the published static web output, not the local app.
+  2. Next work is identical under either stack: the content framework (ADR-028) first, because agent quality depends on it everywhere.
