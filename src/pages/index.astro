@@ -51,7 +51,7 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
         const statusMeta = STATUS_CONFIG[course.status];
         return (
           <article class="group py-5 sm:py-6 transition-colors duration-200 hover:bg-paper-50 dark:hover:bg-dark-card/40 px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-xs" data-course-id={course.id} data-lessons={course.modules.flatMap((m) => m.lessons.map((l) => l.slug)).join(',')}>
-            <a href={path(`/courses/${course.slug}`)} class="block focus:outline-hidden">
+            <a href={path(`/courses/${course.slug}`)} class="block focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 dark:focus-visible:ring-dark-ink/40 rounded-xs">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 
                 <!-- Left: Number & Course Info -->

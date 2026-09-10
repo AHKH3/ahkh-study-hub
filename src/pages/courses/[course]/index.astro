@@ -114,7 +114,7 @@ const statusMeta = STATUS_CONFIG[course.status];
             </span>
             <button 
               id="toggle-all-modules-btn" 
-              class="hover:text-ink dark:hover:text-dark-ink transition-colors cursor-pointer flex items-center gap-1.5 focus:outline-hidden"
+              class="hover:text-ink dark:hover:text-dark-ink transition-colors cursor-pointer flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 dark:focus-visible:ring-dark-ink/40 rounded-xs"
               data-action="collapse"
               title="Toggle all units"
             >
@@ -129,7 +129,7 @@ const statusMeta = STATUS_CONFIG[course.status];
                 <!-- Module Milestone Header (Interactive Accordion Trigger) -->
                 <button
                   type="button"
-                  class="module-toggle-btn w-full flex items-start justify-between gap-5 p-5 hover:bg-transparent transition-colors text-left group cursor-pointer focus:outline-hidden"
+                  class="module-toggle-btn w-full flex items-start justify-between gap-5 p-5 hover:bg-transparent transition-colors text-left group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 dark:focus-visible:ring-dark-ink/40"
                   data-module-id={mod.id}
                   aria-expanded="true"
                 >
@@ -221,7 +221,7 @@ const statusMeta = STATUS_CONFIG[course.status];
 
                             <!-- Editorial Lesson Row Surface -->
                             <article data-lesson-slug={lesson.slug} class="relative overflow-hidden rounded-xs border border-ink-border/80 dark:border-dark-border bg-paper-50/70 dark:bg-dark-bg/60 hover:bg-white dark:hover:bg-dark-card hover:border-ink-border dark:hover:border-dark-border transition-colors duration-200 p-3 sm:p-3.5 shadow-2xs">
-                              <a href={path(`/courses/${course.slug}/${lesson.slug}`)} class="block focus:outline-hidden">
+                              <a href={path(`/courses/${course.slug}/${lesson.slug}`)} class="block focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 dark:focus-visible:ring-dark-ink/40 rounded-xs">
                                 <div class="flex items-center justify-between gap-4">
                                   
                                   <div class="flex items-start sm:items-center gap-3 sm:gap-4 min-w-0">
