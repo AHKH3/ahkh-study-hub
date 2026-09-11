@@ -12,7 +12,7 @@
 
   [![Deploy to GitHub Pages](https://github.com/AHKH3/ahkh-study-hub/actions/workflows/deploy.yml/badge.svg)](https://github.com/AHKH3/ahkh-study-hub/actions/workflows/deploy.yml)
   [![Automated Release](https://github.com/AHKH3/ahkh-study-hub/actions/workflows/release.yml/badge.svg)](https://github.com/AHKH3/ahkh-study-hub/actions/workflows/release.yml)
-  [![Static Site](https://img.shields.io/badge/Astro-5.x-BC52EE.svg?logo=astro&logoColor=white)](https://astro.build)
+  [![Static Site](https://img.shields.io/badge/Astro-7.x-BC52EE.svg?logo=astro&logoColor=white)](https://astro.build)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-38B2AC.svg?logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
   [![GitHub Pages](https://img.shields.io/badge/Hosted%20On-GitHub%20Pages-222222.svg?logo=github&logoColor=white)](https://ahkh3.github.io/ahkh-study-hub/)
 
@@ -78,7 +78,7 @@ The core mission of the project is to **rescue intellectual thought from the dro
 
 ## Technology Stack
 
-- **Core Engine:** [Astro 5.x](https://astro.build) (Static Site Generation — SSG)
+- **Core Engine:** [Astro 7.x](https://astro.build) (Static Site Generation — SSG)
 - **Styling:** [Tailwind CSS 3.x](https://tailwindcss.com) with `@tailwindcss/typography`
 - **Typography:** Newsreader (Serif), Inter (Sans-serif), JetBrains Mono (Monospace)
 - **Icons:** Pure accessible inline SVG (Zero font dependencies, zero emojis)

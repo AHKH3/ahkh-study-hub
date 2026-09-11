@@ -21,7 +21,7 @@ AHKH Study Hub is a **sovereign, local-first editorial study sanctuary**. It rep
 
 | Layer | Technology | Purpose |
 |-------|------------|---------|
-| **Core Framework** | [Astro 5.x](https://astro.build/) | Static Site Generation (SSG), zero runtime JS by default, high performance |
+| **Core Framework** | [Astro 7.x](https://astro.build/) | Static Site Generation (SSG), zero runtime JS by default, high performance |
 | **Styling** | [Tailwind CSS 3.x](https://tailwindcss.com/) | Design tokens, responsive grid, typography plugin |
 | **Typography** | Newsreader (Serif), Inter (Sans), JetBrains Mono (Mono) | High-legibility editorial rhythm and hierarchy |
 | **Icons** | Custom Inline SVG | Accessible, themeable, zero external icon font bloat |

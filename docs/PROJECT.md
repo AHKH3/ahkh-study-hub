@@ -47,7 +47,7 @@ AHKH Study Hub is a sovereign, local-first static study platform and reader comp
   - **Media Player & Transcript Sync:** Embedded video lessons with interactive timestamps synchronized to article transcript blocks.
 
 ### 3. Technology Stack
-- Astro 5.x + Tailwind CSS 3.x (Static SSG, zero runtime JS bloat, high performance).
+- Astro 7.x + Tailwind CSS 3.x (Static SSG, zero runtime JS bloat, high performance).
 
 ### 4. Course Creation & Unified Design System Standard
 All courses, learning roadmaps, and study readers adhere strictly to the **Unified Global Design System** documented in [`DESIGN.md`](../DESIGN.md).
