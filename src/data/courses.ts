@@ -260,17 +260,7 @@ export const COURSES: Course[] = [
                 <table class="w-full text-left text-sm font-sans border-collapse">
                   <thead>
                     <tr class="border-b border-ink dark:border-dark-border text-xs font-mono uppercase tracking-widest text-ink dark:text-dark-ink font-bold bg-paper-100 dark:bg-dark-card">
-">
-++½+→
-
- was
-/
-
-
-.
-
-.</.</
-  <tr>                      <th class="py-3 px-4 w-12 text-center">#</th>
+                      <th class="py-3 px-4 w-12 text-center">#</th>
                       <th class="py-3 px-4 w-1/3">The Diagnostic Question</th>
                       <th class="py-3 px-4">What It Uncovers in User Reality</th>
                       <th class="py-3 px-4 w-1/4">Product Implication</th>

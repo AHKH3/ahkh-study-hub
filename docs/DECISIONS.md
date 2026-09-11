@@ -492,3 +492,18 @@ This file records the key architectural and design decisions made in the develop
 - **Consequences**:
   1. ADR-025 no-database rule now covers only the published static web output, not the local app.
   2. Next work is identical under either stack: the content framework (ADR-028) first, because agent quality depends on it everywhere.
+
+---
+
+## ADR-034: Minimal Framework v0 — Original First, Plus PDF and Highlights Rulings
+- **Date**: 2026-09-09
+- **Status**: Accepted (owner order: simplest shippable study loop for the current course)
+- **Context**: The owner ordered a radical simplification: the hub serves the current course now, original text in everything including articles, framework as enhancement only (strip page junk, improve formatting), image generation and replacement dropped, and adding a source must become mechanical checklist work instead of an agent conversation.
+- **Decision**:
+  1. `docs/FRAMEWORK.md` v0 is the whole framework: verbatim-first, strip list, keep list, closed format set with copy-paste snippets, v0 bans, six-step adding checklist.
+  2. Lesson 1 (`the-anatomy-of-product-experience`) is the exemplar after removing an 11-line markup corruption in its research-questions table; its formats are the reference, not a redesign.
+  3. PDF two-track rule: selectable PDFs are extracted into the study layer with the original attached; scanned or locked PDFs are embedded as is with page-number notes. Screenshot-region highlight capture is recorded as a later feature, not v0.
+  4. Highlights and notes stay in browser localStorage; file-based persistence moves with the local app shell later. Images stay original-only; no generation in v0.
+- **Consequences**:
+  1. Source ingestion needs no agent conversation: strip, wrap in the closed set, fill metadata, build plus verify, read once.
+  2. Open questions intentionally left for later: site polish items (owner to list), region-capture highlights, file-based storage.
