@@ -1,0 +1,108 @@
+{
+  "videoId": "ZgbRmeWDgd0",
+  "fetchedAt": "2026-09-04T17:08:34.300Z",
+  "lang": "en",
+  "kind": "manual",
+  "segments": [
+    {
+      "time": 0,
+      "text": "One of Jakob's ten heuristics for interfaces is to use an aesthetic and minimalist design.",
+      "label": "00:00"
+    },
+    {
+      "time": 6,
+      "text": "That heuristic doesn't mean that you have to use a flat design or a monochromatic color palette.",
+      "label": "00:06"
+    },
+    {
+      "time": 11,
+      "text": "It's more about making sure that you're keeping the content",
+      "label": "00:11"
+    },
+    {
+      "time": 14,
+      "text": "and the visual design of your UI focused on the essentials",
+      "label": "00:14"
+    },
+    {
+      "time": 18,
+      "text": "This is closely related to the human-computer interaction concept of a signal-to-noise ratio.",
+      "label": "00:18"
+    },
+    {
+      "time": 24,
+      "text": "The signal-to-noise ratio represents the ratio of relevant to irrelevant information.",
+      "label": "00:24"
+    },
+    {
+      "time": 31,
+      "text": "In a user interface, the information involved in this ratio could be anything:",
+      "label": "00:31"
+    },
+    {
+      "time": 35,
+      "text": "text content, visual elements, or animation.",
+      "label": "00:35"
+    },
+    {
+      "time": 39,
+      "text": "Essentially anything that users have to process could count as signal or noise.",
+      "label": "00:39"
+    },
+    {
+      "time": 45,
+      "text": "To improve the efficiency of communicating information through your designs",
+      "label": "00:45"
+    },
+    {
+      "time": 51,
+      "text": "and to help users complete their tasks, aim for a high signal-to-noise ratio.",
+      "label": "00:51"
+    },
+    {
+      "time": 56,
+      "text": "Every extra unit of information in a UI competes with the relevant units of information",
+      "label": "00:56"
+    },
+    {
+      "time": 62,
+      "text": "and diminishes their relative visibility.",
+      "label": "01:02"
+    },
+    {
+      "time": 65,
+      "text": "As a consequence, it's important to prioritize your content and features.",
+      "label": "01:05"
+    },
+    {
+      "time": 70,
+      "text": "If something would be used infrequently or by a small number of users who don't contribute much to your company's goals,",
+      "label": "01:10"
+    },
+    {
+      "time": 77,
+      "text": "it might be a candidate for removal. It's also important to make sure that the visuals, particularly graphics or photos,",
+      "label": "01:17"
+    },
+    {
+      "time": 84,
+      "text": "support the primary goals of users or your company.",
+      "label": "01:24"
+    },
+    {
+      "time": 87,
+      "text": "In other words, you shouldn't have many visual elements that aren't there for any other reason",
+      "label": "01:27"
+    },
+    {
+      "time": 92,
+      "text": "than to look pretty or to take up space.",
+      "label": "01:32"
+    },
+    {
+      "time": 95,
+      "text": "Communicate, don't decorate.",
+      "label": "01:35"
+    }
+  ]
+}

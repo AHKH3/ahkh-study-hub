@@ -1,30 +1,36 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { COURSES } from '../../../data/courses';
-import TRANSCRIPTS from '../../../data/transcripts.json';
+import { getAllSyllabi, getLesson, getTranscript } from '../../../data/loader';
+import type { CourseShellToken, LessonNavLink } from '../../../data/types';
 import { path } from '../../../utils/paths';
 import { getFormatColor } from '../../../utils/categoryColors';
 import { PanelLeft, PanelRight, ChevronLeft, Sun, Moon, RotateCcw } from '@lucide/astro';
 
 export function getStaticPaths() {
+  const syllabi = getAllSyllabi();
   const paths: any[] = [];
-  COURSES.forEach((course) => {
-    const allLessons: any[] = [];
-    course.modules.forEach((mod) => {
-      mod.lessons.forEach((lesson) => {
-        allLessons.push(lesson);
-      });
-    });
+  syllabi.forEach((course) => {
+    const courseShell: CourseShellToken = {
+      id: course.id,
+      slug: course.slug,
+      title: course.title,
+      theme: {
+        accent: course.theme?.accent || '#18181B',
+        highlight: course.theme?.highlight || 'rgba(0, 0, 0, 0.08)',
+      },
+    };
 
-    allLessons.forEach((lesson, index) => {
-      const prevLesson = index > 0 ? {
+    const allLessons = course.modules.flatMap((mod) => mod.lessons);
+
+    allLessons.forEach((summary, index) => {
+      const prevLesson: LessonNavLink | null = index > 0 ? {
         slug: allLessons[index - 1].slug,
         title: allLessons[index - 1].title,
         lessonNumber: allLessons[index - 1].lessonNumber,
         type: allLessons[index - 1].type,
         readTime: allLessons[index - 1].readTime,
       } : null;
-      const nextLesson = index < allLessons.length - 1 ? {
+      const nextLesson: LessonNavLink | null = index < allLessons.length - 1 ? {
         slug: allLessons[index + 1].slug,
         title: allLessons[index + 1].title,
         lessonNumber: allLessons[index + 1].lessonNumber,
@@ -33,20 +39,24 @@ export function getStaticPaths() {
       } : null;
 
       paths.push({
-        params: { course: course.slug, slug: lesson.slug },
-        props: { course, lesson, prevLesson, nextLesson },
+        params: { course: course.slug, slug: summary.slug },
+        props: { course: courseShell, prevLesson, nextLesson },
       });
     });
   });
   return paths;
 }
 
-const { course, lesson, prevLesson, nextLesson } = Astro.props;
-// Auto-ingested verbatim cues for this video (if any), baked at build time by scripts/fetch-transcripts.mjs
-const transcriptSegments =
-  lesson.youtubeId && TRANSCRIPTS[lesson.youtubeId]?.segments?.length
-    ? TRANSCRIPTS[lesson.youtubeId].segments
-    : null;
+const { course, prevLesson, nextLesson } = Astro.props;
+const { course: courseSlug, slug: lessonSlug } = Astro.params;
+
+const lesson = await getLesson(courseSlug!, lessonSlug!);
+if (!lesson) {
+  return Astro.redirect(path('/404'));
+}
+
+// Auto-ingested verbatim cues for this video (if any), loaded on demand from individual JSON files
+const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtubeId) : null;
 ---
 
 <BaseLayout title={`${lesson.title} — ${course.title}`} description={lesson.summaryQuote} readerLib>

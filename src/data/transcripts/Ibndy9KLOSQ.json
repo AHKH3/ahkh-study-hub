@@ -1,0 +1,138 @@
+{
+  "videoId": "Ibndy9KLOSQ",
+  "fetchedAt": "2026-09-04T17:08:22.842Z",
+  "lang": "en",
+  "kind": "manual",
+  "segments": [
+    {
+      "time": 0,
+      "text": "One of Jakob's ten heuristics for UI design is to maintain consistency and adhere to standards.",
+      "label": "00:00"
+    },
+    {
+      "time": 6,
+      "text": "This heuristic is crucial for ensuring that your UI is predictable and learnable.",
+      "label": "00:06"
+    },
+    {
+      "time": 12,
+      "text": "People shouldn't have to wonder whether different words, symbols, situations, or actions",
+      "label": "00:12"
+    },
+    {
+      "time": 17,
+      "text": "mean the same thing. We can think about two types of consistency as it applies to UX design:",
+      "label": "00:17"
+    },
+    {
+      "time": 24,
+      "text": "internal consistency and external consistency.",
+      "label": "00:24"
+    },
+    {
+      "time": 27,
+      "text": "Internal consistency refers to maintaining consistency within a product or family of products.",
+      "label": "00:27"
+    },
+    {
+      "time": 34,
+      "text": "For example, maybe your visual designers decide to use a specific shade of orange to",
+      "label": "00:34"
+    },
+    {
+      "time": 40,
+      "text": "highlight actionable elements: things like call-to-action buttons.",
+      "label": "00:40"
+    },
+    {
+      "time": 43,
+      "text": "If you decided to then use that orange to highlight a static heading, you'd be breaking internal consistency.",
+      "label": "00:43"
+    },
+    {
+      "time": 51,
+      "text": "That might be a problem because it violates the established meaning of that visual treatment.",
+      "label": "00:51"
+    },
+    {
+      "time": 57,
+      "text": "Users may no longer be able to rely on it to help them determine which elements in your UI are actionable.",
+      "label": "00:57"
+    },
+    {
+      "time": 64,
+      "text": "External consistency refers to maintaining consistency outside of products.",
+      "label": "01:04"
+    },
+    {
+      "time": 70,
+      "text": "You might have established conventions for UIs in your industry,",
+      "label": "01:10"
+    },
+    {
+      "time": 73,
+      "text": "or even established conventions for UIs in general.",
+      "label": "01:13"
+    },
+    {
+      "time": 76,
+      "text": "For example most ecommerce sites have a shopping cart feature.",
+      "label": "01:16"
+    },
+    {
+      "time": 80,
+      "text": "People are familiar with this feature because they see it anytime they use an e-commerce site.",
+      "label": "01:20"
+    },
+    {
+      "time": 86,
+      "text": "They have existing expectations for how that feature should work, and where it should be placed:",
+      "label": "01:26"
+    },
+    {
+      "time": 92,
+      "text": "in the upper right corner of the screen usually. Jakob's Law can help us to understand why external standards are so important.",
+      "label": "01:32"
+    },
+    {
+      "time": 99,
+      "text": "Jakob's Law states that, \"People spend most of their time on sites other than yours.\"",
+      "label": "01:39"
+    },
+    {
+      "time": 105,
+      "text": "If all of those other sites follow a consistent convention, but your site breaks that convention,",
+      "label": "01:45"
+    },
+    {
+      "time": 112,
+      "text": "You're forcing people to learn something new. There are times when breaking conventions can be worthwhile.",
+      "label": "01:52"
+    },
+    {
+      "time": 117,
+      "text": "Maybe you just figured out a new and better pattern.",
+      "label": "01:57"
+    },
+    {
+      "time": 120,
+      "text": "Just remember you're adding to your users cognitive load every time",
+      "label": "02:00"
+    },
+    {
+      "time": 124,
+      "text": "you make them learn something new. So, you should only do it when it's absolutely necessary.",
+      "label": "02:04"
+    },
+    {
+      "time": 129,
+      "text": "In most cases, it's best to maintain consistency, both internal and external,",
+      "label": "02:09"
+    },
+    {
+      "time": 134,
+      "text": "to improve your products learnability.",
+      "label": "02:14"
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HubHeader from '../components/HubHeader.astro';
-import { COURSES, type CourseStatus } from '../data/courses';
+import { CATALOG_COURSES } from '../data/catalog';
+import type { CourseStatus } from '../data/types';
 import { path } from '../utils/paths';
 import { getCategoryColor } from '../utils/categoryColors';
-import { countLessons } from '../utils/courseStats';
 
 const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; textClass: string }> = {
   active: {
@@ -40,17 +40,17 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
         Index of Curricula
       </h1>
       <span class="font-mono text-xs text-ink-muted dark:text-dark-muted shrink-0">
-        0{COURSES.length} tracks
+        0{CATALOG_COURSES.length} tracks
       </span>
     </div>
 
     <!-- The Editorial Monograph List -->
     <div class="divide-y divide-ink-border/60 dark:divide-dark-border border-t border-b border-ink-border dark:border-dark-border mb-16">
-      {COURSES.map((course, index) => {
+      {CATALOG_COURSES.map((course, index) => {
         const num = String(index + 1).padStart(2, '0');
         const statusMeta = STATUS_CONFIG[course.status];
         return (
-          <article class="group py-5 sm:py-6 transition-colors duration-150 hover:bg-paper-50 dark:hover:bg-dark-card/40 px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-xs" data-course-id={course.id} data-lessons={course.modules.flatMap((m) => m.lessons.map((l) => l.slug)).join(',')}>
+          <article class="group py-5 sm:py-6 transition-colors duration-150 hover:bg-paper-50 dark:hover:bg-dark-card/40 px-2 sm:px-4 -mx-2 sm:-mx-4 rounded-xs" data-course-id={course.id} data-lessons={course.lessonSlugs.join(',')}>
             <a href={path(`/courses/${course.slug}`)} class="block focus:outline-hidden">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 
@@ -78,9 +78,9 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
                     </div>
                     <!-- Metadata metrics: Module count, Source count, Duration -->
                     <div class="flex items-center gap-2.5 text-xs font-mono text-ink-muted dark:text-dark-muted mt-1.5">
-                      <span><span class="font-medium text-ink dark:text-dark-ink">{course.modules.length}</span> Modules</span>
+                      <span><span class="font-medium text-ink dark:text-dark-ink">{course.totalModules}</span> Modules</span>
                       <span>·</span>
-                      <span><span class="font-medium text-ink dark:text-dark-ink">{countLessons(course)}</span> Sources</span>
+                      <span><span class="font-medium text-ink dark:text-dark-ink">{course.totalSources}</span> Sources</span>
                       {course.duration && (
                         <>
                           <span>·</span>

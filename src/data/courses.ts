@@ -1,69 +1,24 @@
 import { path } from '../utils/paths';
 
-export interface Lesson {
-  id: string;
-  slug: string;
-  title: string;
-  module: string;
-  unitNumber: number;
-  lessonNumber: string;
-  type: 'article' | 'video' | 'pdf';
-  readTime: string;
-  originalSourceUrl?: string;
-  originalSourceLabel?: string;
-  youtubeId?: string;
-  summaryQuote: string;
-  outline: { id: string; title: string; level: number }[];
-  contentHtml: string;
-  videoTimestamps?: { time: number; label: string; text: string }[];
-}
-
-export type CourseStatus = 'active' | 'new' | 'explored' | 'completed';
-
-export interface CourseDesignSystem {
-  accent: string;
-  highlight: string;
-  paperBg?: string;
-  secondary?: string;
-  sidenoteBorder?: string;
-  cardBg?: string;
-  border?: string;
-  typography?: {
-    headingFont?: string;
-    bodyFont?: string;
-    fontImportUrl?: string;
-    fontSizeScale?: 'compact' | 'classic' | 'spacious';
-    lineHeight?: string;
-  };
-  motifs?: {
-    borderRadius?: string;
-    dividerStyle?: string;
-    quoteStyle?: 'bordered-left' | 'callout-box' | 'centered-large' | 'bracketed';
-  };
-}
-
-export interface Course {
-  id: string;
-  slug: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  category: string;
-  updatedAt: string;
-  duration: string;
-  progressPercent: number;
-  totalModules: number;
-  totalSources: number;
-  status: CourseStatus;
-  theme: CourseDesignSystem;
-  modules: {
-    id: string;
-    number: number;
-    title: string;
-    description: string;
-    lessons: Lesson[];
-  }[];
-}
+export type {
+  CourseStatus,
+  LessonType,
+  CourseDesignSystem,
+  CourseCatalogSummary,
+  LessonSummary,
+  Module,
+  ModuleSummary,
+  CourseSyllabus,
+  LessonDetail,
+  Lesson,
+  Course,
+  CourseShellToken,
+  CourseShellContext,
+  LessonNavLink,
+  TranscriptCue,
+  VideoTranscript,
+} from './types';
+import type { Course } from './types';
 
 export const COURSES: Course[] = [
   {

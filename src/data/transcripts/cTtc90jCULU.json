@@ -1,0 +1,143 @@
+{
+  "videoId": "cTtc90jCULU",
+  "fetchedAt": "2026-09-04T17:08:20.988Z",
+  "lang": "en",
+  "kind": "manual",
+  "segments": [
+    {
+      "time": 0,
+      "text": "The first of Jakob Nielsen’s ten usability heuristics is Visibility of System Status.",
+      "label": "00:00"
+    },
+    {
+      "time": 6,
+      "text": "This heuristic refers to how well the state of a system is conveyed to its users.",
+      "label": "00:06"
+    },
+    {
+      "time": 11,
+      "text": "Systems should always keep users informed about what is going on, through appropriate",
+      "label": "00:11"
+    },
+    {
+      "time": 15,
+      "text": "feedback within a reasonable time.",
+      "label": "00:15"
+    },
+    {
+      "time": 18,
+      "text": "Imagine waiting for an elevator: you press the call button, and expect it to light up",
+      "label": "00:18"
+    },
+    {
+      "time": 23,
+      "text": "to reflect that the system knows you’re waiting and will send an elevator soon.",
+      "label": "00:23"
+    },
+    {
+      "time": 28,
+      "text": "You might even be able to see what floor that elevator is currently at, so you can gauge",
+      "label": "00:28"
+    },
+    {
+      "time": 32,
+      "text": "how long you’ll need to wait. That knowledge is power: open communication between the system and the user not only allows you",
+      "label": "00:32"
+    },
+    {
+      "time": 41,
+      "text": "to understand what is happening, but also empowers you to make decisions based on that information.",
+      "label": "00:41"
+    },
+    {
+      "time": 47,
+      "text": "Consider what information about a system the user needs to know,",
+      "label": "00:47"
+    },
+    {
+      "time": 51,
+      "text": "and present that to them in a timely manner.",
+      "label": "00:51"
+    },
+    {
+      "time": 53,
+      "text": "This system status could be persistent — or always visible — like a battery life or",
+      "label": "00:53"
+    },
+    {
+      "time": 59,
+      "text": "Wi-Fi connection indicator; or it can be feedback that is only shown after the user has done something.",
+      "label": "00:59"
+    },
+    {
+      "time": 66,
+      "text": "Just like when pressing that elevator button, feedback is critical to let people know their",
+      "label": "01:06"
+    },
+    {
+      "time": 71,
+      "text": "interactions with a system were acknowledged and successful.",
+      "label": "01:11"
+    },
+    {
+      "time": 74,
+      "text": "On a website or app, we expect visual feedback when we click an element — which can be",
+      "label": "01:14"
+    },
+    {
+      "time": 78,
+      "text": "as simple as changing the button color and, where appropriate, displaying a progress indicator.",
+      "label": "01:18"
+    },
+    {
+      "time": 84,
+      "text": "People should feel confident that their click was recognized, and that the system is now",
+      "label": "01:24"
+    },
+    {
+      "time": 88,
+      "text": "working on the request.",
+      "label": "01:28"
+    },
+    {
+      "time": 91,
+      "text": "Understanding a system’s current state is all about allowing users to feel in control.",
+      "label": "01:31"
+    },
+    {
+      "time": 96,
+      "text": "That said, providing visibility into the system does NOT mean you need to tell the user absolutely",
+      "label": "01:36"
+    },
+    {
+      "time": 101,
+      "text": "everything the system is doing! Don’t provide system status updates if the user can’t do anything with that feedback anyway.",
+      "label": "01:41"
+    },
+    {
+      "time": 108,
+      "text": "Too much information is distracting, so focus on only those key pieces of information that",
+      "label": "01:48"
+    },
+    {
+      "time": 113,
+      "text": "will truly be helpful or provide reassurance to the user.",
+      "label": "01:53"
+    },
+    {
+      "time": 117,
+      "text": "The Visibility of System Status heuristic highlights the importance of open and continuous",
+      "label": "01:57"
+    },
+    {
+      "time": 122,
+      "text": "communication, which is fundamental to ALL relationships, whether with people or with our devices.",
+      "label": "02:02"
+    },
+    {
+      "time": 128,
+      "text": "It’s the key to making a system feel reliable and predictable, which in turn creates trust.",
+      "label": "02:08"
+    }
+  ]
+}

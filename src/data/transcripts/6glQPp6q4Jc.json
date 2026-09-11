@@ -1,0 +1,123 @@
+{
+  "videoId": "6glQPp6q4Jc",
+  "fetchedAt": "2026-09-04T17:08:23.556Z",
+  "lang": "en",
+  "kind": "manual",
+  "segments": [
+    {
+      "time": 0,
+      "text": "One of the top 10 usability heuristics advises to promote recognition over recall in user-interfaces.",
+      "label": "00:00"
+    },
+    {
+      "time": 10,
+      "text": "So what are recognition and recall and why is recognition easier than recall?",
+      "label": "00:10"
+    },
+    {
+      "time": 15,
+      "text": "Let’s take an example. If I ask you a question such as: Is Lisbon the capital of Portugal?",
+      "label": "00:15"
+    },
+    {
+      "time": 23,
+      "text": "answering it involves recognition:",
+      "label": "00:23"
+    },
+    {
+      "time": 26,
+      "text": "You simply have to recognize whether the information provided is correct.",
+      "label": "00:26"
+    },
+    {
+      "time": 31,
+      "text": "If instead I asked you: What is the capital of Portugal?",
+      "label": "00:31"
+    },
+    {
+      "time": 36,
+      "text": "You would use a process of recall to retrieve the right answer from your memory.",
+      "label": "00:36"
+    },
+    {
+      "time": 43,
+      "text": "Memory retrieval is made easier by the cues that we receive from the context.",
+      "label": "00:43"
+    },
+    {
+      "time": 49,
+      "text": "All those cues send signals to related information that is stored in our memory.",
+      "label": "00:49"
+    },
+    {
+      "time": 56,
+      "text": "The more cues we have, the easier it is to retrieve the right concept from memory.",
+      "label": "00:56"
+    },
+    {
+      "time": 62,
+      "text": "The big difference between recognition and recall is the number of cues provided by the",
+      "label": "01:02"
+    },
+    {
+      "time": 69,
+      "text": "context that can help the memory retrieval; recall involves fewer cues than recognition.",
+      "label": "01:09"
+    },
+    {
+      "time": 77,
+      "text": "A menu system is the most classic example of a recognition-based user interface: the",
+      "label": "01:17"
+    },
+    {
+      "time": 83,
+      "text": "computer shows you the available commands, and you recognize the one you want.",
+      "label": "01:23"
+    },
+    {
+      "time": 88,
+      "text": "Say, for example, that you’re working with a word processor and you want to cross a sentence",
+      "label": "01:28"
+    },
+    {
+      "time": 95,
+      "text": "out to indicate that it's no longer valid.",
+      "label": "01:35"
+    },
+    {
+      "time": 99,
+      "text": "Before the graphical user interfaces, if you used a command-line editor, you would have",
+      "label": "01:39"
+    },
+    {
+      "time": 105,
+      "text": "to recall the name of this rarely used formatting feature; the recall is difficult and error-prone.",
+      "label": "01:45"
+    },
+    {
+      "time": 114,
+      "text": "With a graphical user interface, however, you look at the menu of formatting options",
+      "label": "01:54"
+    },
+    {
+      "time": 119,
+      "text": "and easily recognize the term strikethrough or an icon for that function.",
+      "label": "01:59"
+    },
+    {
+      "time": 126,
+      "text": "Interfaces that promote recognition give users extra help in remembering information.",
+      "label": "02:06"
+    },
+    {
+      "time": 134,
+      "text": "Minimizing user work is essential for a good user experience, so that’s why we recommend",
+      "label": "02:14"
+    },
+    {
+      "time": 142,
+      "text": "that you strive to promote recognition over recall in your UIs.",
+      "label": "02:22"
+    }
+  ]
+}

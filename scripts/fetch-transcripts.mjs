@@ -1,34 +1,23 @@
 // Build-time YouTube transcript ingestion for AHKH Study Hub.
 //
-// Discovers every youtubeId embedded in src/data/courses.ts, downloads the
-// video's PUBLIC caption track through YouTube's Innertube player endpoint
-// (plain Node fetch — no CORS, no OAuth, no third-party service), and bakes
-// the cues into src/data/transcripts.json, which the study reader renders
-// statically under the "Original script" tab with timestamp sync +
-// click-to-seek.
-//
-// Design constraints honored:
-// - 100% static output: zero runtime network calls, zero servers, zero keys.
-// - Never breaks the build: network/caption failures only warn (exit code
-//   always 0); affected videos keep the dignified "pending" fallback.
-// - Incremental: cached videos are skipped unless --refresh or --ids= is used.
-//
-// Usage:
-//   npm run transcripts                        # fetch only missing videos
-//   npm run transcripts -- --refresh           # refetch every embedded video
-//   npm run transcripts -- --ids=AAA,BBB       # (re)fetch specific videos
-// Runs automatically before every build via the `prebuild` npm hook.
+// Discovers every youtubeId across all modular course files in src/data/,
+// downloads public captions via YouTube Innertube API, and bakes cues into
+// individual JSON files under src/data/transcripts/<youtubeId>.json,
+// maintaining dual-write compatibility with src/data/transcripts.json.
 
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const COURSES_PATH = join(ROOT, 'src', 'data', 'courses.ts');
-const OUT_PATH = join(ROOT, 'src', 'data', 'transcripts.json');
+const DATA_DIR = join(ROOT, 'src', 'data');
+const TRANSCRIPTS_DIR = join(DATA_DIR, 'transcripts');
+const MONOLITH_PATH = join(DATA_DIR, 'transcripts.json');
 
-// Minimal .env loader (no dependencies): local builds read YOUTUBE_INNERTUBE_KEY
-// from .env, CI provides it as a real environment variable instead.
+// Ensure output directory exists
+mkdirSync(TRANSCRIPTS_DIR, { recursive: true });
+
+// Minimal .env loader (no dependencies)
 try {
   const envPath = join(ROOT, '.env');
   if (!process.env.YOUTUBE_INNERTUBE_KEY && existsSync(envPath)) {
@@ -38,12 +27,9 @@ try {
     }
   }
 } catch {}
+
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
-// Public YouTube web API key shipped inside YouTube's own clients (the same
-// key bundled in every YouTube app and used by tools like yt-dlp). It only
-// reads public caption tracks, belongs to no account, and bills nobody.
-// It arrives via environment so no key literal ever sits in the repo.
 const INNERTUBE_KEY = process.env.YOUTUBE_INNERTUBE_KEY || '';
 const INNERTUBE_CLIENT = {
   clientName: 'ANDROID',
@@ -63,12 +49,26 @@ const IDS_ARG = args
   .map((s) => s.trim())
   .filter(Boolean);
 
+// Scans all .ts files in src/data/ recursively to discover all embedded youtubeIds
 function discoverIds() {
-  const src = readFileSync(COURSES_PATH, 'utf8');
   const ids = new Set();
-  for (const m of src.matchAll(/youtubeId\s*:\s*['"]([A-Za-z0-9_-]{11})['"]/g)) {
-    ids.add(m[1]);
+  function scan(dir) {
+    if (!existsSync(dir)) return;
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      const full = join(dir, entry.name);
+      if (entry.isDirectory()) {
+        if (entry.name !== 'transcripts' && entry.name !== 'node_modules') {
+          scan(full);
+        }
+      } else if (entry.name.endsWith('.ts')) {
+        const src = readFileSync(full, 'utf8');
+        for (const m of src.matchAll(/youtubeId\s*:\s*['"]([A-Za-z0-9_-]{11})['"]/g)) {
+          ids.add(m[1]);
+        }
+      }
+    }
   }
+  scan(DATA_DIR);
   return [...ids];
 }
 
@@ -111,14 +111,13 @@ function decodeEntities(s) {
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
-    .replace(/ /g, ' ');
+    .replace(/\u00a0/g, ' ');
 }
 
 function stripTags(s) {
   return decodeEntities(s.replace(/<[^>]+>/g, '')).replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
-// Merge raw cues into paragraph-sized chunks: cut on gaps > 2.5s or > 320 chars.
 function chunkify(cues) {
   const chunks = [];
   let cur = null;
@@ -139,12 +138,10 @@ async function fetchSegments(track) {
   if (!res.ok) throw new Error(`timedtext HTTP ${res.status}`);
   const xml = await res.text();
   if (!xml.includes('<timedtext')) throw new Error('timedtext rejected the session (empty response)');
-  // Paragraph-level cues (manual captions)…
   let cues = [...xml.matchAll(/<p\s+t="(\d+)"[^>]*>(.*?)<\/p>/gs)]
     .map((m) => ({ t: +m[1] / 1000, text: stripTags(m[2]) }))
     .filter((c) => c.text);
   if (!cues.length) {
-    // …otherwise group word-level cues (auto captions) into readable chunks.
     cues = [...xml.matchAll(/<w\s+t="(\d+)"[^>]*>([^<]*)<\/w>/g)]
       .map((m) => ({ t: +m[1] / 1000, text: decodeEntities(m[2]).trim() }))
       .filter((w) => w.text);
@@ -163,30 +160,53 @@ function fmtClock(sec) {
 async function main() {
   const wanted = IDS_ARG && IDS_ARG.length ? IDS_ARG : discoverIds();
   console.log(`[transcripts] embedded video(s): ${wanted.join(', ') || '(none)'}`);
-  let store = {};
-  if (existsSync(OUT_PATH)) {
+
+  // Load existing monolith store if present (for self-migration & dual-write)
+  let monolithStore = {};
+  if (existsSync(MONOLITH_PATH)) {
     try {
-      store = JSON.parse(readFileSync(OUT_PATH, 'utf8'));
+      monolithStore = JSON.parse(readFileSync(MONOLITH_PATH, 'utf8'));
     } catch {
-      store = {};
+      monolithStore = {};
     }
   }
+
+  // Self-migration: ensure individual files exist from monolith
+  for (const [id, val] of Object.entries(monolithStore)) {
+    const singleFile = join(TRANSCRIPTS_DIR, `${id}.json`);
+    if (!existsSync(singleFile) && val?.segments?.length) {
+      writeFileSync(singleFile, `${JSON.stringify(val, null, 2)}\n`);
+    }
+  }
+
   if (!INNERTUBE_KEY) {
     console.warn('[transcripts] YOUTUBE_INNERTUBE_KEY is unset — keeping cached transcripts only');
-    if (!existsSync(OUT_PATH)) {
-      writeFileSync(OUT_PATH, '{}\n');
-    }
     return;
   }
+
   let ok = 0;
   let skipped = 0;
   let failed = 0;
+
   for (const id of wanted) {
+    const singleFile = join(TRANSCRIPTS_DIR, `${id}.json`);
     const force = REFRESH || (IDS_ARG && IDS_ARG.length > 0);
-    if (store[id]?.segments?.length && !force) {
+
+    // Check cache in individual file first
+    let cached = null;
+    if (existsSync(singleFile)) {
+      try {
+        cached = JSON.parse(readFileSync(singleFile, 'utf8'));
+      } catch {}
+    } else if (monolithStore[id]?.segments?.length) {
+      cached = monolithStore[id];
+    }
+
+    if (cached?.segments?.length && !force) {
       skipped++;
       continue;
     }
+
     try {
       const tracks = await getCaptionTracks(id);
       if (!tracks.length) {
@@ -201,13 +221,19 @@ async function main() {
         continue;
       }
       const segments = await fetchSegments(picked.track);
-      store[id] = {
+      const record = {
         videoId: id,
         fetchedAt: new Date().toISOString(),
         lang: picked.track.languageCode,
         kind: picked.kind,
         segments: segments.map((s) => ({ ...s, label: fmtClock(s.time) })),
       };
+
+      // Write granular file
+      writeFileSync(singleFile, `${JSON.stringify(record, null, 2)}\n`);
+      // Update in-memory monolith
+      monolithStore[id] = record;
+
       ok++;
       console.log(
         `[transcripts] ${id}: ${segments.length} cue(s) [${picked.kind}/${picked.track.languageCode}]`,
@@ -217,9 +243,11 @@ async function main() {
       failed++;
     }
   }
-  writeFileSync(OUT_PATH, `${JSON.stringify(store, null, 2)}\n`);
+
+  // Dual-write to monolithic transcripts.json for backward compatibility
+  writeFileSync(MONOLITH_PATH, `${JSON.stringify(monolithStore, null, 2)}\n`);
   console.log(
-    `[transcripts] done: ${ok} fetched, ${skipped} cached, ${failed} pending → src/data/transcripts.json`,
+    `[transcripts] done: ${ok} fetched, ${skipped} cached, ${failed} pending → src/data/transcripts/ & transcripts.json`,
   );
 }
 

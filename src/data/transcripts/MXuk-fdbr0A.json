@@ -1,0 +1,118 @@
+{
+  "videoId": "MXuk-fdbr0A",
+  "fetchedAt": "2026-09-04T17:08:21.936Z",
+  "lang": "en",
+  "kind": "manual",
+  "segments": [
+    {
+      "time": 0,
+      "text": "Have you ever said a friendly hello to someone and then got caught in a long, drawn-out conversation?",
+      "label": "00:00"
+    },
+    {
+      "time": 6,
+      "text": "You might’ve wanted out of it, but couldn’t think of a polite exit.",
+      "label": "00:06"
+    },
+    {
+      "time": 10,
+      "text": "Because there’s no way undo that hello, you might begin to avoid such niceties in the future.",
+      "label": "00:10"
+    },
+    {
+      "time": 16,
+      "text": "User Control and Freedom is one of Jakob Nielsen’s ten usability heuristics.",
+      "label": "00:16"
+    },
+    {
+      "time": 21,
+      "text": "It states that users often choose system functions by mistake, and need a clearly marked",
+      "label": "00:21"
+    },
+    {
+      "time": 26,
+      "text": "“emergency exit” to leave that unwanted state. Basically: support undo and redo.",
+      "label": "00:26"
+    },
+    {
+      "time": 32,
+      "text": "A common example would be the back and forward buttons on every web browser.",
+      "label": "00:32"
+    },
+    {
+      "time": 36,
+      "text": "Imagine if that didn’t exist! You’d have to be really confident in every single click as you navigate around the web,",
+      "label": "00:36"
+    },
+    {
+      "time": 43,
+      "text": "because there’d be no easy way to get back to where you were if you clicked to visit",
+      "label": "00:43"
+    },
+    {
+      "time": 47,
+      "text": "a page and realized it wasn’t what you needed.",
+      "label": "00:47"
+    },
+    {
+      "time": 51,
+      "text": "Similarly, any process or mode in any digital system should include a way for users to back",
+      "label": "00:51"
+    },
+    {
+      "time": 55,
+      "text": "out when needed. And websites can’t only rely on those browser buttons, but should provide users a clear",
+      "label": "00:55"
+    },
+    {
+      "time": 61,
+      "text": "way to leave a stepped process or cancel whatever it was they started on that web page itself.",
+      "label": "01:01"
+    },
+    {
+      "time": 67,
+      "text": "Undo or cancel is particularly important for mobile devices and other touchscreens, where",
+      "label": "01:07"
+    },
+    {
+      "time": 72,
+      "text": "accidental taps are common. And again, these “emergency exits” should be clearly marked.",
+      "label": "01:12"
+    },
+    {
+      "time": 78,
+      "text": "For instance, many people have no clue that some mobile apps allow undo by shaking the",
+      "label": "01:18"
+    },
+    {
+      "time": 84,
+      "text": "device just like you could shake-to-erase the classic Etch A Sketch toy!",
+      "label": "01:24"
+    },
+    {
+      "time": 88,
+      "text": "If users never discover a feature, does it even exist?",
+      "label": "01:28"
+    },
+    {
+      "time": 92,
+      "text": "When it’s easy for people to back out of unwanted processes or undo an action, it fosters",
+      "label": "01:32"
+    },
+    {
+      "time": 98,
+      "text": "a sense of freedom because realize they don’t need to be afraid to click on that link or",
+      "label": "01:38"
+    },
+    {
+      "time": 102,
+      "text": "test out that photo filter — they know that if it turns out to not be what they wanted,",
+      "label": "01:42"
+    },
+    {
+      "time": 107,
+      "text": "they can easily undo that action. They’re always in control of the system, and aren’t going to get stuck somewhere they didn’t intend.",
+      "label": "01:47"
+    }
+  ]
+}

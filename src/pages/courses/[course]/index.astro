@@ -1,16 +1,22 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ThemeSwitcher from '../../../components/ThemeSwitcher.astro';
-import { COURSES } from '../../../data/courses';
+import { getAllSyllabi } from '../../../data/loader';
+import type { CourseSyllabus } from '../../../data/types';
 import { path } from '../../../utils/paths';
 import { getCategoryColor, getFormatColor } from '../../../utils/categoryColors';
 import { countLessons } from '../../../utils/courseStats';
 
 export function getStaticPaths() {
-  return COURSES.map((course) => ({
+  const syllabi = getAllSyllabi();
+  return syllabi.map((course) => ({
     params: { course: course.slug },
     props: { course },
   }));
+}
+
+interface Props {
+  course: CourseSyllabus;
 }
 
 const { course } = Astro.props;

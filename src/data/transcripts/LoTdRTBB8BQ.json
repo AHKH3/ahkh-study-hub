@@ -1,0 +1,188 @@
+{
+  "videoId": "LoTdRTBB8BQ",
+  "fetchedAt": "2026-09-04T17:08:23.864Z",
+  "lang": "en",
+  "kind": "manual",
+  "segments": [
+    {
+      "time": 0,
+      "text": "Imagine that you're writing an email to a large group of people.",
+      "label": "00:00"
+    },
+    {
+      "time": 4,
+      "text": "You need to send roughly the same email with a few small changes.",
+      "label": "00:04"
+    },
+    {
+      "time": 8,
+      "text": "You could write a brand new message for each person",
+      "label": "00:08"
+    },
+    {
+      "time": 11,
+      "text": "or you could reuse most of the same message.",
+      "label": "00:11"
+    },
+    {
+      "time": 15,
+      "text": "To do that, you could highlight the similar text, click Edit in the top menu",
+      "label": "00:15"
+    },
+    {
+      "time": 20,
+      "text": "and then copy. Maybe you could highlight the passage, right click and choose copy",
+      "label": "00:20"
+    },
+    {
+      "time": 26,
+      "text": "Or, for maximum quickness, just select and command C.",
+      "label": "00:26"
+    },
+    {
+      "time": 31,
+      "text": "That simple copy action can be successfully carried out in a number of different ways.",
+      "label": "00:31"
+    },
+    {
+      "time": 35,
+      "text": "It's a flexible and efficient process.",
+      "label": "00:35"
+    },
+    {
+      "time": 38,
+      "text": "Heuristic number seven of the ten usability heuristics deals with this idea.",
+      "label": "00:38"
+    },
+    {
+      "time": 43,
+      "text": "Flexible processes can be carried out in different ways",
+      "label": "00:43"
+    },
+    {
+      "time": 47,
+      "text": "so that people can pick whichever method fits them.",
+      "label": "00:47"
+    },
+    {
+      "time": 50,
+      "text": "That flexibility helps people be more efficient.",
+      "label": "00:50"
+    },
+    {
+      "time": 54,
+      "text": "If a system lets me choose my method of interaction,",
+      "label": "00:54"
+    },
+    {
+      "time": 57,
+      "text": "I can get things done in a way that's quick and comfortable for me.",
+      "label": "00:57"
+    },
+    {
+      "time": 61,
+      "text": "That keyboard shortcut, the handy command C is an accelerator.",
+      "label": "01:01"
+    },
+    {
+      "time": 65,
+      "text": "An accelerator is any option or action that speeds up an interaction.",
+      "label": "01:05"
+    },
+    {
+      "time": 70,
+      "text": "Accelerators are there for more experienced users who know a system well",
+      "label": "01:10"
+    },
+    {
+      "time": 75,
+      "text": "and want to make routine tasks go by more quickly.",
+      "label": "01:15"
+    },
+    {
+      "time": 78,
+      "text": "Highly usable systems are flexible enough to be efficient for experts",
+      "label": "01:18"
+    },
+    {
+      "time": 82,
+      "text": "and friendly to newbies. It's important not to overwhelm first-time users with too much information.",
+      "label": "01:22"
+    },
+    {
+      "time": 88,
+      "text": "Don't try to teach them every action on the system in the very first session of use.",
+      "label": "01:28"
+    },
+    {
+      "time": 93,
+      "text": "That's too much to learn all at once.",
+      "label": "01:33"
+    },
+    {
+      "time": 96,
+      "text": "Accelerators are often seen in the wild in work and productivity related applications.",
+      "label": "01:36"
+    },
+    {
+      "time": 101,
+      "text": "If you work in design, you're likely familiar with the many keyboard shortcuts",
+      "label": "01:41"
+    },
+    {
+      "time": 106,
+      "text": "that help you work in your interface design program of choice more quickly.",
+      "label": "01:46"
+    },
+    {
+      "time": 110,
+      "text": "If you work extensively with data analysis you're likely very familiar with macros",
+      "label": "01:50"
+    },
+    {
+      "time": 115,
+      "text": "in Excel or Google sheets.",
+      "label": "01:55"
+    },
+    {
+      "time": 118,
+      "text": "But accelerators can show up just about anywhere.",
+      "label": "01:58"
+    },
+    {
+      "time": 122,
+      "text": "For most of us, Instagram isn't a work-related product,",
+      "label": "02:02"
+    },
+    {
+      "time": 125,
+      "text": "but there's still a hidden accelerator there. If you're a frequent user of the social media app, you may know",
+      "label": "02:05"
+    },
+    {
+      "time": 131,
+      "text": "that you can quickly like a photo by tapping twice on a photo.",
+      "label": "02:11"
+    },
+    {
+      "time": 135,
+      "text": "That's quicker and slightly more efficient than finding and tapping the heart icon.",
+      "label": "02:15"
+    },
+    {
+      "time": 140,
+      "text": "When the 7th heuristic is done well, expert users won't be slowed down",
+      "label": "02:20"
+    },
+    {
+      "time": 145,
+      "text": "by a system that's only built with basic use in mind.",
+      "label": "02:25"
+    },
+    {
+      "time": 149,
+      "text": "New users won't be overwhelmed by an information overload of actions to learn.",
+      "label": "02:29"
+    }
+  ]
+}

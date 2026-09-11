@@ -1,0 +1,228 @@
+{
+  "videoId": "0TAt9Pln51g",
+  "fetchedAt": "2026-09-04T17:08:21.439Z",
+  "lang": "en",
+  "kind": "manual",
+  "segments": [
+    {
+      "time": 0,
+      "text": "Jakob Nielsen's second usability heuristic",
+      "label": "00:00"
+    },
+    {
+      "time": 3,
+      "text": "says to match between the system and the real world.",
+      "label": "00:03"
+    },
+    {
+      "time": 7,
+      "text": "That means the system should speak the user's language",
+      "label": "00:07"
+    },
+    {
+      "time": 11,
+      "text": "with words, phrases, and concepts familiar to the user",
+      "label": "00:11"
+    },
+    {
+      "time": 16,
+      "text": "rather than system-oriented terms.",
+      "label": "00:16"
+    },
+    {
+      "time": 18,
+      "text": "Additionally, the system should follow real world conventions,",
+      "label": "00:18"
+    },
+    {
+      "time": 23,
+      "text": "making sure that information appears in a logical order.",
+      "label": "00:23"
+    },
+    {
+      "time": 28,
+      "text": "Let's discuss each of those components a bit more.",
+      "label": "00:28"
+    },
+    {
+      "time": 31,
+      "text": "The system should speak the user's language. Too often I see the use of marketing jargon",
+      "label": "00:31"
+    },
+    {
+      "time": 36,
+      "text": "instead of direct, plain language",
+      "label": "00:36"
+    },
+    {
+      "time": 39,
+      "text": "to describe features or web components.",
+      "label": "00:39"
+    },
+    {
+      "time": 42,
+      "text": "So let's say we're redesigning an intranet",
+      "label": "00:42"
+    },
+    {
+      "time": 45,
+      "text": "and need to name a section that houses contact information for employees.",
+      "label": "00:45"
+    },
+    {
+      "time": 50,
+      "text": "Maybe we're looking at two proposed names:",
+      "label": "00:50"
+    },
+    {
+      "time": 53,
+      "text": "meet-and-greet or staff directory.",
+      "label": "00:53"
+    },
+    {
+      "time": 56,
+      "text": "Well meet-and-greet might sound trendy,",
+      "label": "00:56"
+    },
+    {
+      "time": 59,
+      "text": "but it requires the user to make a lot of inferences.",
+      "label": "00:59"
+    },
+    {
+      "time": 63,
+      "text": "You might think, 'is that work events? maybe calendar invites?'",
+      "label": "01:03"
+    },
+    {
+      "time": 67,
+      "text": "Using the more direct label of staff directory",
+      "label": "01:07"
+    },
+    {
+      "time": 71,
+      "text": "results in a stronger information scent, because many users will recognize the term directory",
+      "label": "01:11"
+    },
+    {
+      "time": 77,
+      "text": "as a place to find contact information.",
+      "label": "01:17"
+    },
+    {
+      "time": 81,
+      "text": "In addition to speaking the user's language, We should also follow real-world conventions.",
+      "label": "01:21"
+    },
+    {
+      "time": 87,
+      "text": "Here, it's important to point out that people's mental models of technology",
+      "label": "01:27"
+    },
+    {
+      "time": 91,
+      "text": "are based on their previous digital experiences,",
+      "label": "01:31"
+    },
+    {
+      "time": 95,
+      "text": "in addition to their prior experiences in the physical realm.",
+      "label": "01:35"
+    },
+    {
+      "time": 99,
+      "text": "Now, we can't talk about the second usability heuristic",
+      "label": "01:39"
+    },
+    {
+      "time": 102,
+      "text": "without mentioning skeuomorphic design. Skeuomorphic web design entails designing digital experiences",
+      "label": "01:42"
+    },
+    {
+      "time": 108,
+      "text": "to match a physical experience both in visual and interaction.",
+      "label": "01:48"
+    },
+    {
+      "time": 113,
+      "text": "For example, books. In physical books, we can turn pages,",
+      "label": "01:53"
+    },
+    {
+      "time": 118,
+      "text": "highlight text, or use a bookmark.",
+      "label": "01:58"
+    },
+    {
+      "time": 121,
+      "text": "Looking at a digital book in the Kindle app",
+      "label": "02:01"
+    },
+    {
+      "time": 123,
+      "text": "we can highlight text by pressing and holding a word,",
+      "label": "02:03"
+    },
+    {
+      "time": 127,
+      "text": "turn pages with a swipe gesture,",
+      "label": "02:07"
+    },
+    {
+      "time": 130,
+      "text": "or place a bookmark by tapping the page,",
+      "label": "02:10"
+    },
+    {
+      "time": 133,
+      "text": "clicking the bookmark icon in the top right.",
+      "label": "02:13"
+    },
+    {
+      "time": 136,
+      "text": "The digital experience of reading a book",
+      "label": "02:16"
+    },
+    {
+      "time": 139,
+      "text": "is closely aligned to the physical experience.",
+      "label": "02:19"
+    },
+    {
+      "time": 142,
+      "text": "Effectively following the second usability heuristic",
+      "label": "02:22"
+    },
+    {
+      "time": 145,
+      "text": "means speaking the user's language",
+      "label": "02:25"
+    },
+    {
+      "time": 148,
+      "text": "and following real-world conventions.",
+      "label": "02:28"
+    },
+    {
+      "time": 151,
+      "text": "If you're not doing both, users might portray your interface in a negative light",
+      "label": "02:31"
+    },
+    {
+      "time": 155,
+      "text": "as if you don't really know them or you just don't care.",
+      "label": "02:35"
+    },
+    {
+      "time": 159,
+      "text": "At the end of the day, get out and observe real users.",
+      "label": "02:39"
+    },
+    {
+      "time": 162,
+      "text": "Test your prototypes. And remember to design for them and not for you.",
+      "label": "02:42"
+    }
+  ]
+}

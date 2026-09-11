@@ -1,0 +1,158 @@
+{
+  "videoId": "imS9s1DUY-I",
+  "fetchedAt": "2026-09-04T17:08:23.254Z",
+  "lang": "en",
+  "kind": "manual",
+  "segments": [
+    {
+      "time": 0,
+      "text": "It's happened to all of us. You go to your inbox. You open an email, and you see it.",
+      "label": "00:00"
+    },
+    {
+      "time": 5,
+      "text": "It's something that has been sent -- not just to the recipient -- but \"reply all\"",
+      "label": "00:05"
+    },
+    {
+      "time": 10,
+      "text": "... to everyone ... ... including lots of people it wasn't supposed to go to.",
+      "label": "00:10"
+    },
+    {
+      "time": 14,
+      "text": "Sometimes we've been on the receiving end, and it's cringeworthy; but of course it's",
+      "label": "00:14"
+    },
+    {
+      "time": 17,
+      "text": "even more mortifying if you were actually the sender, and you've sent something out",
+      "label": "00:17"
+    },
+    {
+      "time": 21,
+      "text": "to your entire workplace of 200,000 people or your campus or your community.",
+      "label": "00:21"
+    },
+    {
+      "time": 27,
+      "text": "That is not user error. In fact, it's the design error.",
+      "label": "00:27"
+    },
+    {
+      "time": 32,
+      "text": "The design failed to prevent the user from accidentally clicking that reply-all button.",
+      "label": "00:32"
+    },
+    {
+      "time": 37,
+      "text": "Now, this concept of error prevention is one of Jakob Nielsen's heuristics.",
+      "label": "00:37"
+    },
+    {
+      "time": 42,
+      "text": "It's one of these most important concepts to have good usability in a design.",
+      "label": "00:42"
+    },
+    {
+      "time": 47,
+      "text": "Let me show you something I found the other day that was actually wonderful.",
+      "label": "00:47"
+    },
+    {
+      "time": 50,
+      "text": "This is my electric toothbrush, which does a great job at cleaning my teeth, but it also",
+      "label": "00:50"
+    },
+    {
+      "time": 56,
+      "text": "has a nice feature designed to prevent me from forgetting to charge it.",
+      "label": "00:56"
+    },
+    {
+      "time": 61,
+      "text": "When I finish brushing my teeth and its battery is running low, it vibrates three times.",
+      "label": "01:01"
+    },
+    {
+      "time": 65,
+      "text": "It makes a little sound. It goes \"Brrrm brrrm brrm!\" Something like that. And that tells me that I need to plug it in. Now what's the worst that could happen if I forget to charge this toothbrush?",
+      "label": "01:05"
+    },
+    {
+      "time": 76,
+      "text": "I can still brush my teeth just fine. But there are plenty of designs where the stakes are actually really high.",
+      "label": "01:16"
+    },
+    {
+      "time": 82,
+      "text": "Those of you who might be designing things for use in medical scenarios, in transportation,",
+      "label": "01:22"
+    },
+    {
+      "time": 88,
+      "text": "in security, or finance -- where, if someone accidentally starts to reach for the wrong button,",
+      "label": "01:28"
+    },
+    {
+      "time": 94,
+      "text": "it could have really serious and damaging consequences.",
+      "label": "01:34"
+    },
+    {
+      "time": 97,
+      "text": "So, error prevention is critical. If you're looking at your designs, I want you to start with the issues that might cause severe damage.",
+      "label": "01:37"
+    },
+    {
+      "time": 103,
+      "text": "Then, go down and look at things that you can do to prevent simple annoyances and frustrations,",
+      "label": "01:43"
+    },
+    {
+      "time": 108,
+      "text": "and prevent people from having to redo their work.",
+      "label": "01:48"
+    },
+    {
+      "time": 111,
+      "text": "Sometimes these are simple fixes like changing size, the color, or placement, location of a button;",
+      "label": "01:51"
+    },
+    {
+      "time": 117,
+      "text": "sometimes changing the texture of a button if you're in the physical world.",
+      "label": "01:57"
+    },
+    {
+      "time": 120,
+      "text": "Other times, it's offering a confirmation dialog that says, \"Are you sure you want to",
+      "label": "02:00"
+    },
+    {
+      "time": 124,
+      "text": "transfer all of your money to this other account?\" It's worth the interruption because you want to prevent an accidental transfer.",
+      "label": "02:04"
+    },
+    {
+      "time": 131,
+      "text": "And last, having an undo button is a great way to at least prevent errors from becoming permanent.",
+      "label": "02:11"
+    },
+    {
+      "time": 137,
+      "text": "If someone goes down that path of making a mistake, they can still catch it and hopefully undo.",
+      "label": "02:17"
+    },
+    {
+      "time": 142,
+      "text": "So, when you're looking through your designs take the time to find out ways that you can",
+      "label": "02:22"
+    },
+    {
+      "time": 147,
+      "text": "stop errors before they happen. And in the meantime, stay clear of that reply-all button.",
+      "label": "02:27"
+    }
+  ]
+}

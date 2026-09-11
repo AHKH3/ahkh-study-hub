@@ -1,11 +1,11 @@
-import type { Course } from '../data/courses';
+import type { CourseSyllabus } from '../data/types';
 import { storageHas } from './storage';
 
-export function countLessons(course: Course): number {
+export function countLessons(course: CourseSyllabus): number {
   return course.modules.reduce((sum, mod) => sum + mod.lessons.length, 0);
 }
 
-export function studyMinutes(course: Course): number {
+export function studyMinutes(course: CourseSyllabus): number {
   return course.modules.reduce(
     (sum, mod) =>
       sum +
@@ -91,7 +91,7 @@ export function getLessonState(courseId: string, lessonSlug: string): LessonStat
   return 'new';
 }
 
-export function courseProgress(course: Course): { read: number; total: number; percent: number } {
+export function courseProgress(course: CourseSyllabus): { read: number; total: number; percent: number } {
   const total = countLessons(course);
   let read = 0;
   try {
