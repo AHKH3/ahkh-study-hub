@@ -321,8 +321,8 @@ export const COURSES: Course[] = [
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                   <!-- Screenshot Figure -->
                   <div class="lg:col-span-5 text-center">
-                    <img 
-                      src="${path('/images/lessons/sb-1-0/page_3_img_2.png')}" 
+                    <img loading="lazy" decoding="async" 
+                      src="${path('/images/lessons/sb-1-0/page_3_img_2.webp')}" 
                       alt="Historical Instagram iOS interface screenshot demonstrating information architecture" 
                       class="max-w-xs mx-auto rounded-xs shadow-md border border-ink-border dark:border-dark-border"
                     />
@@ -409,8 +409,8 @@ export const COURSES: Course[] = [
               <!-- Side-by-Side Exhibits: Sketches & Wireframes -->
               <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
                 <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center shadow-2xs">
-                  <img 
-                    src="${path('/images/lessons/sb-1-0/whiteboard_wireframe_sketch.jpg')}" 
+                  <img loading="lazy" decoding="async" 
+                    src="${path('/images/lessons/sb-1-0/whiteboard_wireframe_sketch.webp')}" 
                     alt="High-fidelity whiteboard sketch showing early web layout ideation and divergent thinking" 
                     class="w-full h-56 object-contain mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
                   />
@@ -420,8 +420,8 @@ export const COURSES: Course[] = [
                 </div>
 
                 <div class="p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center shadow-2xs">
-                  <img 
-                    src="${path('/images/lessons/sb-1-0/mobile_wireframe_screens.jpg')}" 
+                  <img loading="lazy" decoding="async" 
+                    src="${path('/images/lessons/sb-1-0/mobile_wireframe_screens.webp')}" 
                     alt="Structured mobile wireframe flow illustrating content hierarchy and touch targets" 
                     class="w-full h-56 object-contain mx-auto rounded-xs bg-paper-50 dark:bg-dark-bg p-2 border border-ink-border dark:border-dark-border"
                   />
@@ -507,8 +507,8 @@ export const COURSES: Course[] = [
 
               <!-- Design System Exhibit -->
               <div class="my-8 p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border text-center not-prose shadow-2xs">
-                <img 
-                  src="${path('/images/lessons/sb-1-0/design_system_spec.jpg')}" 
+                <img loading="lazy" decoding="async" 
+                  src="${path('/images/lessons/sb-1-0/design_system_spec.webp')}" 
                   alt="Design system specification illustrating component states, color tokens, and typography" 
                   class="max-w-md mx-auto rounded-xs border border-ink-border dark:border-dark-border shadow-xs"
                 />
@@ -611,8 +611,8 @@ export const COURSES: Course[] = [
               <!-- Derivative Attribution Footer (ADR-009) -->
               <div class="mt-14 pt-6 border-t border-ink-border dark:border-dark-border flex flex-col sm:flex-row items-start sm:items-center justify-between text-sm font-sans text-ink dark:text-dark-ink gap-4 not-prose">
                 <div class="flex items-center gap-3.5">
-                  <img 
-                    src="${path('/images/lessons/sb-1-0/page_8_img_2.png')}" 
+                  <img loading="lazy" decoding="async" 
+                    src="${path('/images/lessons/sb-1-0/page_8_img_2.webp')}" 
                     alt="Laurel Hechanova" 
                     class="w-12 h-12 rounded-full object-cover border border-ink-border dark:border-dark-border shrink-0" 
                   />
@@ -1094,8 +1094,8 @@ export const COURSES: Course[] = [
       Jesse James Garrett famously defined user experience as five interdependent planes built from bottom to top:
     </p>
     <figure class="my-10 text-center not-prose">
-      <img 
-        src="${path('/images/lessons/sb-1-2/garrett_5_planes.jpg')}" 
+      <img loading="lazy" decoding="async" 
+        src="${path('/images/lessons/sb-1-2/garrett_5_planes.webp')}" 
         alt="Jesse James Garrett's Five Planes of User Experience: Strategy, Scope, Structure, Skeleton, and Surface" 
         class="w-full max-w-2xl mx-auto rounded-xs border border-ink-border shadow-xs dark:border-dark-border"
       />
@@ -1493,8 +1493,8 @@ export const COURSES: Course[] = [
       The British Design Council visualized Design Thinking as two interconnected diamonds:
     </p>
     <figure class="my-10 text-center not-prose">
-      <img 
-        src="${path('/images/lessons/sb-1-3/double_diamond_framework.jpg')}" 
+      <img loading="lazy" decoding="async" 
+        src="${path('/images/lessons/sb-1-3/double_diamond_framework.webp')}" 
         alt="The Double Diamond Design Model illustrating alternating divergent and convergent phases across problem and solution spaces" 
         class="w-full max-w-2xl mx-auto rounded-xs border border-ink-border shadow-xs dark:border-dark-border"
       />

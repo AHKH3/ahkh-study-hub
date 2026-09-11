@@ -42,7 +42,7 @@ Comparison table for contrasts the source already makes:
 
 Original figure, unchanged image plus its caption:
 
-<div class="my-8 text-center not-prose"><img src="ORIGINAL_PATH" alt="Plain description of what the image shows" class="mx-auto rounded-xs border border-ink-border dark:border-dark-border" loading="lazy"><p class="text-xs sm:text-sm font-sans text-ink dark:text-dark-ink mt-3">Figure N: Original caption as written.</p></div>
+<div class="my-8 text-center not-prose"><img src="ORIGINAL_PATH" alt="Plain description of what the image shows" loading="lazy" decoding="async" class="mx-auto rounded-xs border border-ink-border dark:border-dark-border"><p class="text-xs sm:text-sm font-sans text-ink dark:text-dark-ink mt-3">Figure N: Original caption as written.</p></div>
 
 Video lesson keeps its player plus transcript blocks with timestamps (existing media sync, unchanged).
 

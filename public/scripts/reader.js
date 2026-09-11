@@ -2,14 +2,24 @@
    Loaded once per session; booted per lesson page with per-page vars via #study-desk data-* attributes. */
 window.__ahkhBootReader = function (vars) {
   const { courseId, courseTitle, lessonId, lessonSlug, lessonTitle, courseAccent, courseHighlight } = vars;
-  // ClientRouter-safe boot: Astro re-executes this script on every navigation
-  // while `document`/`window` persist. Release the previous page's player,
-  // timers, and global listeners first; every document/window binding below
-  // carries the run signal so stale runs can never touch the new document.
+  // ClientRouter-safe boot: the per-page inline snippet calls this at parse time,
+  // and a session-persistent astro:page-load listener below re-calls it after
+  // every ClientRouter navigation (Astro does not re-execute identical inline
+  // scripts, so navigation boot cannot rely on the snippet). Each call fully
+  // re-initializes: the previous run's controller is aborted first, and every
+  // document/window binding below carries the run signal so stale runs can
+  // never touch the new document. A same-document re-fire (inline snippet
+  // followed by the page-load event on cold load) is a harmless no-op via the
+  // desk boot stamp.
+  var bootDeskEl = document.getElementById('study-desk');
+  if (bootDeskEl && bootDeskEl.dataset.ahkhBooted) return;
+  if (bootDeskEl) bootDeskEl.dataset.ahkhBooted = 'true';
   try { window.__ahkhYtPlayer?.destroy?.(); } catch (e) {}
   window.__ahkhYtPlayer = null;
   if (window.__ahkhYtTimer) { clearInterval(window.__ahkhYtTimer); window.__ahkhYtTimer = null; }
-  if (window.__ahkhReaderAbort) { window.__ahkhReaderAbort.abort(); }
+  if (window.__ahkhReaderAbort) { try { window.__ahkhReaderAbort.abort(); } catch (e) {} }
+  window.__ahkhOutlineSpyBound = false;
+  window.__ahkhHashChangeBound = false;
   const __ahkhSignal = (window.__ahkhReaderAbort = new AbortController()).signal;
   // A. SMART AUTO-HIDING HEADER & TOP PROGRESS BAR
   let lastScrollY = window.scrollY;
@@ -2037,18 +2047,16 @@ window.__ahkhBootReader = function (vars) {
     initImageLightbox();
   }
 
-  // Single boot path: ClientRouter (always enabled in BaseLayout) fires
-  // astro:page-load on initial load and on every navigation.
-  let __ahkhLessonBooted = false;
-  function safeBootLesson() {
-    if (__ahkhLessonBooted) return;
-    __ahkhLessonBooted = true;
-    initLesson();
-  }
-  document.addEventListener('astro:page-load', safeBootLesson, { signal: __ahkhSignal });
-
-  // Fallback in case script executed after astro:page-load has already completed
-  if (document.readyState === 'complete') {
-    safeBootLesson();
-  }
+  initLesson();
 };
+
+// Session-persistent navigation boot (module scope: the library file loads
+// once per session, so this listener is registered exactly once and is never
+// aborted). Fires on cold load and after every ClientRouter navigation;
+// same-document re-fires are absorbed by the desk boot stamp inside boot.
+document.addEventListener('astro:page-load', () => {
+  try {
+    var desk = document.getElementById('study-desk');
+    if (desk && window.__ahkhBootReader) window.__ahkhBootReader(Object.assign({}, desk.dataset));
+  } catch (e) {}
+});

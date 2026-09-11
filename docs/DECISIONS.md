@@ -507,3 +507,16 @@ This file records the key architectural and design decisions made in the develop
 - **Consequences**:
   1. Source ingestion needs no agent conversation: strip, wrap in the closed set, fill metadata, build plus verify, read once.
   2. Open questions intentionally left for later: site polish items (owner to list), region-capture highlights, file-based storage.
+
+---
+
+## ADR-035: Reader Boot on ClientRouter Navigation Plus Lesson Image Weight
+- **Date**: 2026-09-09
+- **Status**: Accepted (critical defect repair, owner-ordered triage)
+- **Context**: Triage proved two real defects behind slow and broken reading. First, the reader library booted only on cold load: Astro ClientRouter does not re-execute identical per-page inline scripts, and the library's own page-load listener was spent by a once-flag, so after any lesson-to-lesson navigation every feature (lightbox, highlights popover, completion toggle, scrollspy, sidebars) was silently dead until full reload. Second, lesson images weighed 6.4MB (single PNGs over 1MB, zero lazy loading), which is the slow lesson open.
+- **Decision**:
+  1. Boot orchestration moved to a session-persistent `astro:page-load` listener in module scope that re-boots from the fresh desk dataset on every navigation; a desk boot stamp absorbs cold-load double fires; window once-flags reset per page.
+  2. Images over 150KB converted to capped-width WebP (5.2MB saved), three orphan images deleted, every lesson figure carries loading lazy plus async decoding.
+- **Consequences**:
+  1. Full client-side journey verified in Chromium with zero errors: video cold boot, course page, lesson page, working toggle, visible highlight popover, active scrollspy, working lightbox after navigation.
+  2. Distribution payload dropped from 10.55MB to 4.91MB; above-fold text renders before any image byte.
