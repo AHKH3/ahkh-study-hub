@@ -3,7 +3,7 @@ import { path } from '../utils/paths';
 import ThemeSwitcher from './ThemeSwitcher.astro';
 
 interface Props {
-  activeTab?: 'library' | 'manifesto' | 'commonplace' | 'downloads';
+  activeTab?: 'library' | 'manifesto' | 'commonplace';
 }
 
 const { activeTab = 'library' } = Astro.props;
@@ -68,30 +68,7 @@ const { activeTab = 'library' } = Astro.props;
             0
           </span>
         </a>
-        <a 
-          href={path('/downloads')} 
-          class:list={[
-            "nav-downloads px-3 py-1.5 rounded-sm transition-colors border",
-            activeTab === 'downloads' 
-              ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border-ink-border/60 dark:border-dark-border" 
-              : "border-transparent text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
-          ]}
-        >
-          Downloads
-        </a>
       </nav>
-
-      <button
-        type="button"
-        id="update-check-btn"
-        title="Check for application updates"
-        class="items-center gap-1.5 px-3 py-1.5 rounded-sm border border-ink-border/60 dark:border-dark-border bg-paper-200/50 dark:bg-dark-card/50 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/80 dark:hover:bg-dark-card transition-colors text-sm font-ui cursor-pointer"
-      >
-        <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 12a9 9 0 1 1-2.64-6.36M21 3v6h-6"/>
-        </svg>
-        <span id="update-check-label">Update</span>
-      </button>
 
       <div class="h-4 w-px bg-ink-border/60 dark:bg-dark-border" aria-hidden="true"></div>
 
@@ -135,42 +112,4 @@ const { activeTab = 'library' } = Astro.props;
     window.__ahkhBadgeBoot = true;
     document.addEventListener('astro:page-load', window.updateGlobalBadge);
   }
-
-  // Desktop-only update check (ADR-022): the Downloads page stays on the web,
-  // while the installed app verifies and installs releases in place.
-  (function initUpdateCheck() {
-    var btn = document.getElementById('update-check-btn');
-    var label = document.getElementById('update-check-label');
-    var api = window.__TAURI__ && window.__TAURI__.core ? window.__TAURI__.core : null;
-    if (!btn || !api) return;
-    if (btn.dataset.ahkhWired) return;
-    btn.dataset.ahkhWired = 'true';
-    var busy = false;
-    function setLabel(text) {
-      if (label) label.textContent = text;
-    }
-    btn.addEventListener('click', function () {
-      if (busy) return;
-      busy = true;
-      setLabel('Checking');
-      try {
-        api.invoke('plugin:updater|check', { target: null }).then(function (update) {
-          busy = false;
-          if (update && update.version) {
-            setLabel('Updating');
-          } else {
-            setLabel('Up to date');
-            setTimeout(function () { setLabel('Update'); }, 3000);
-          }
-        }).catch(function () {
-          busy = false;
-          setLabel('Unavailable');
-          setTimeout(function () { setLabel('Update'); }, 3000);
-        });
-      } catch (e) {
-        busy = false;
-        setLabel('Update');
-      }
-    });
-  })();
 </script>

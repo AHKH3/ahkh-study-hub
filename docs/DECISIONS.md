@@ -520,3 +520,17 @@ This file records the key architectural and design decisions made in the develop
 - **Consequences**:
   1. Full client-side journey verified in Chromium with zero errors: video cold boot, course page, lesson page, working toggle, visible highlight popover, active scrollspy, working lightbox after navigation.
   2. Distribution payload dropped from 10.55MB to 4.91MB; above-fold text renders before any image byte.
+
+---
+
+## ADR-036: Desktop Shell Cancelled — Web-Only Product
+- **Date**: 2026-09-09
+- **Status**: Accepted (explicit owner order: delete Tauri entirely, web app only)
+- **Context**: The owner ordered an end to the split-surface burden: no desktop shell, no local database, no per-host branches. Every diagnosis so far (reader boot, image weight, dev log) concerned the Astro web app; the shell added weight without serving the study loop.
+- **Decision**:
+  1. Deleted: `src-tauri/`, the desktop CI workflow, `docs/DESKTOP.md`, desktop npm scripts plus the Tauri CLI dependency, desktop build and release scripts, the downloads page plus its release feed, the bespoke window frame, the in-app update check, and all per-host DOM branches.
+  2. Kept and simplified: localStorage sovereignty plus the OPFS and designated-file durability mirror (Tauri branches removed from the sync bridge, not the bridge itself).
+  3. Supersedes ADR-008, ADR-019, ADR-020, ADR-022, ADR-023, and the desktop halves of ADR-032 and ADR-033, which stay in this file as history and are not rewritten.
+- **Consequences**:
+  1. One surface, one build, one deploy: GitHub Pages from this repo.
+  2. Restoration remains possible from git history, but only by a new explicit owner decision with its own ADR.

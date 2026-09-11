@@ -1,11 +1,10 @@
 /*
- * AHKH sovereign storage adapter (ADR-008, Phase 0).
+ * AHKH sovereign storage adapter.
  *
- * Single source of truth for all client-side persistence. Today the primary
+ * Single source of truth for all client-side persistence. The primary
  * backend is browser localStorage, preserving existing behavior exactly.
- * Future backends (Tauri SQLite at ~/.ahkh/study.db, Web File System Access
- * with OPFS fallback) plug in behind this same interface, so reader code
- * never touches a backend directly.
+ * A future web file-system mirror plugs in behind this same interface,
+ * so reader code never touches a backend directly.
  *
  * SSR-safe: outside the browser every operation degrades to an in-memory
  * map or a neutral default, never throwing during static builds.
@@ -131,7 +130,7 @@ function activeBackend(): AhkhStorageBackend {
 }
 
 /*
- * Register a future backend (Tauri SQLite, file-system mirror). The override
+ * Register a future backend (file-system mirror). The override
  * receives every write first; reads fall through to it exclusively once set.
  * Phase 0 ships no override: behavior stays identical to raw localStorage.
  */
@@ -190,7 +189,7 @@ export function storageSetJson(key: string, value: unknown): void {
   }
 }
 
-/* Canonical key builders shared by every surface (web, desktop, file). */
+/* Canonical key builders shared by every surface (web, file). */
 export function highlightKey(courseId: string, lessonId: string): string {
   return `ahkh_hl_${courseId}_${lessonId}`;
 }

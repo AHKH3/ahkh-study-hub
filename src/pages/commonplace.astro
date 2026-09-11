@@ -884,7 +884,7 @@ const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
       const studyFileBtn = document.getElementById('study-file-btn');
       if (studyFileBtn) {
         const sync = window.AhkhSync || null;
-        const canDesignate = !!window.showSaveFilePicker && (!sync || !sync.isTauri());
+        const canDesignate = !!window.showSaveFilePicker;
         if (canDesignate) {
           studyFileBtn.classList.remove('hidden');
           studyFileBtn.classList.add('inline-flex');

@@ -49,12 +49,11 @@ When given a source (URL or file) for a suitable course, the agent MUST:
 - Vision: the app ships a copy-ready prompt so any user can hand a source +
   the prompt to any local agent and receive a lesson in house style; possible
   integrations with external AI apps follow the same contract above.
-- Explicitly deferred until the core reading/learning experience is polished
-  and the Tauri local app lands. No implementation work before then.
+- Explicitly deferred until the core reading/learning experience is polished.
+  No implementation work before then.
 
 ## 6. Current priority order (binding)
 
 1. Reader + reading-experience polish (no new features).
 2. Highlighting experience polish.
-3. Tauri local app.
-4. Course content completion comes only after 1–2.
+3. Course content completion comes only after 1–2.

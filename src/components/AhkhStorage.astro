@@ -1,18 +1,14 @@
 ---
 /*
- * AhkhStorage browser global (ADR-008, Phase 0).
+ * AhkhStorage browser global.
  * Rendered once in BaseLayout head so every inline reader script shares one
- * persistence entry point. Backed by localStorage today; Tauri SQLite and
- * the web file-system mirror register behind the same interface later.
+ * persistence entry point. Backed by localStorage; the web file-system
+ * mirror registers behind the same interface.
  */
 ---
 
 <script is:inline>
   (function () {
-    try {
-      var host = window.__TAURI_INTERNALS__ ? 'tauri' : 'web';
-      document.documentElement.dataset.ahkhHost = host;
-    } catch (e) {}
     if (window.AhkhStorage) return;
 
     var memory = {};

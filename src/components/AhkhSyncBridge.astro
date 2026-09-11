@@ -1,9 +1,8 @@
 ---
 /*
- * AhkhSyncBridge (ADR-008, hybrid persistence).
+ * AhkhSyncBridge (web durability).
  * Continuous last-write-wins sync between the live store (AhkhStorage) and
- * durable mirrors: Tauri SQLite (~/.ahkh/study.db) inside the desktop app,
- * OPFS snapshot plus an optional user-designated file in web browsers.
+ * durable mirrors: OPFS snapshot plus an optional user-designated file.
  * The live store stays synchronous; mirrors sync debounced in background.
  */
 ---
@@ -21,7 +20,6 @@
     var pushTimer = null;
     var lastSyncAt = null;
     var fileHandle = null;
-    var tauriAvailable = false;
 
     function store() {
       return window.AhkhStorage || null;
@@ -109,40 +107,6 @@
       return { v: 1, exportedAt: nowIso(), keys: keys };
     }
 
-    function detectTauri() {
-      try {
-        tauriAvailable = !!(window.__TAURI_INTERNALS__ && window.__TAURI_INTERNALS__.invoke);
-      } catch (e) {
-        tauriAvailable = false;
-      }
-      return tauriAvailable;
-    }
-
-    function tauriInvoke(cmd, args) {
-      try {
-        return window.__TAURI_INTERNALS__.invoke(cmd, args || {});
-      } catch (e) {
-        return Promise.reject(e);
-      }
-    }
-
-    function tauriLoad() {
-      return tauriInvoke('ahkh_load_snapshot').then(function (raw) {
-        if (!raw) return null;
-        try {
-          return JSON.parse(raw);
-        } catch (e) {
-          return null;
-        }
-      });
-    }
-
-    function tauriStore(snapshot) {
-      return tauriInvoke('ahkh_store_snapshot', { snapshot: JSON.stringify(snapshot) }).then(function () {
-        return true;
-      });
-    }
-
     function opfsFile(mode) {
       if (!navigator.storage || !navigator.storage.getDirectory) {
         return Promise.reject(new Error('opfs-unavailable'));
@@ -213,17 +177,7 @@
 
     function pushNow() {
       var snapshot = buildSnapshot();
-      var jobs = [];
-      if (tauriAvailable) {
-        jobs.push(
-          tauriStore(snapshot).catch(function () {
-            return false;
-          })
-        );
-      } else {
-        jobs.push(opfsStore(snapshot));
-        jobs.push(designatedStore(snapshot));
-      }
+      var jobs = [opfsStore(snapshot), designatedStore(snapshot)];
       return Promise.all(jobs).then(function () {
         lastSyncAt = nowIso();
         return true;
@@ -239,8 +193,7 @@
     }
 
     function pullNow() {
-      var loader = tauriAvailable ? tauriLoad() : opfsLoad();
-      return loader.then(function (snapshot) {
+      return opfsLoad().then(function (snapshot) {
         var adopted = applySnapshot(snapshot);
         if (adopted > 0) {
           try {
@@ -256,7 +209,6 @@
       var s = store();
       if (!s) return;
       loadStamps();
-      detectTauri();
       if (typeof s.addWriteHook === 'function') {
         s.addWriteHook(function () {
           schedulePush();
@@ -278,12 +230,8 @@
       boot: boot,
       pull: pullNow,
       push: pushNow,
-      isTauri: function () {
-        return detectTauri();
-      },
       status: function () {
         return {
-          tauri: tauriAvailable,
           designatedFile: !!fileHandle,
           lastSyncAt: lastSyncAt,
           backend: store() ? store().backendName() : 'none'
@@ -318,7 +266,6 @@
     document.addEventListener('astro:page-load', function () {
       if (store()) {
         loadStamps();
-        detectTauri();
       }
     });
   })();

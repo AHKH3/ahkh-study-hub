@@ -710,23 +710,7 @@ html.dark[data-theme-setting="system"] .theme-dropdown-menu .theme-btn[data-them
   }
 }
 
-/* Sovereign host surfaces (ADR-022): the web keeps the full sanctuary while
-   the desktop app hides Manifesto and Downloads in favor of an update check,
-   and shows its bespoke window frame instead of the OS chrome. */
-#app-frame,
-#update-check-btn {
-  display: none;
-}
-html[data-ahkh-host="tauri"] #app-frame {
-  display: flex;
-}
-html[data-ahkh-host="tauri"] #update-check-btn {
-  display: inline-flex;
-}
-html[data-ahkh-host="tauri"] .nav-manifesto,
-html[data-ahkh-host="tauri"] .nav-downloads {
-  display: none;
-}
+/* Sovereign host surface: the web keeps the full sanctuary. */
 
 
 

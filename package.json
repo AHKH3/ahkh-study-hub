@@ -9,21 +9,15 @@
   "scripts": {
     "dev": "astro dev",
     "transcripts": "node scripts/fetch-transcripts.mjs",
-    "releases": "node scripts/fetch-releases.mjs",
-    "desktop:sync-version": "node scripts/sync-desktop-version.mjs",
-    "desktop:release": "node scripts/desktop-release.mjs",
-    "release:patch": "npm version patch -m \"chore(release): v%s\" && npm run desktop:sync-version",
-    "release:minor": "npm version minor -m \"chore(release): v%s\" && npm run desktop:sync-version",
-    "release:major": "npm version major -m \"chore(release): v%s\" && npm run desktop:sync-version",
+    "release:patch": "npm version patch -m \"chore(release): v%s\"",
+    "release:minor": "npm version minor -m \"chore(release): v%s\"",
+    "release:major": "npm version major -m \"chore(release): v%s\"",
     "verify:scripts": "node scripts/check-inline-scripts.mjs",
     "verify:dist": "node scripts/verify-dist.mjs",
     "verify": "npm run verify:scripts && npm run verify:dist",
-    "prebuild": "node scripts/fetch-transcripts.mjs && node scripts/fetch-releases.mjs && node scripts/sync-desktop-version.mjs",
+    "prebuild": "node scripts/fetch-transcripts.mjs",
     "build": "astro build",
-    "build:desktop": "node scripts/build-desktop.mjs",
-    "preview": "astro preview",
-    "tauri:dev": "tauri dev",
-    "tauri:build": "tauri build"
+    "preview": "astro preview"
   },
   "type": "module",
   "dependencies": {
@@ -33,7 +27,5 @@
     "astro": "^7.3.1",
     "tailwindcss": "^3.4.19"
   },
-  "devDependencies": {
-    "@tauri-apps/cli": "^2.11.4"
-  }
+  "devDependencies": {}
 }

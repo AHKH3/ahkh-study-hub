@@ -15,10 +15,6 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Tauri desktop shell (ADR-008)
-src-tauri/target/
-src-tauri/gen/
-
 # Impeccable temporary session files
 .impeccable/live/
 kurenai-nami/
