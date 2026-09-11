@@ -15,7 +15,10 @@ const { activeTab = 'library' } = Astro.props;
 >
   <div class="max-w-hub mx-auto px-6 h-16 flex items-center justify-between gap-4">
     <!-- Brand -->
-    <a href={path('/')} class="group flex items-center gap-2.5 py-1">
+    <a
+      href={path('/')}
+      class="group flex items-center gap-2.5 py-1 rounded-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 dark:focus-visible:ring-dark-ink/40 focus-visible:ring-offset-1 dark:focus-visible:ring-offset-dark-bg"
+    >
       <img 
         src={path('/logo.png')} 
         alt="AHKH" 
@@ -31,11 +34,12 @@ const { activeTab = 'library' } = Astro.props;
 
     <!-- Navigation Links & Theme Controls -->
     <div class="flex items-center gap-2 sm:gap-3">
-      <nav class="flex items-center gap-1 sm:gap-2 text-sm font-ui">
+      <nav class="flex items-center gap-1 sm:gap-2 text-sm font-ui" aria-label="Main navigation">
         <a 
           href={path('/')} 
+          aria-current={activeTab === 'library' ? 'page' : undefined}
           class:list={[
-            "px-3 py-1.5 rounded-sm transition-colors border",
+            "px-3 py-1.5 rounded-sm transition-colors border focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 dark:focus-visible:ring-dark-ink/40 focus-visible:ring-offset-1 dark:focus-visible:ring-offset-dark-bg",
             activeTab === 'library' 
               ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border-ink-border/60 dark:border-dark-border" 
               : "border-transparent text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
@@ -45,8 +49,9 @@ const { activeTab = 'library' } = Astro.props;
         </a>
         <a 
           href={path('/manifesto')} 
+          aria-current={activeTab === 'manifesto' ? 'page' : undefined}
           class:list={[
-            "px-3 py-1.5 rounded-sm transition-colors border",
+            "px-3 py-1.5 rounded-sm transition-colors border focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 dark:focus-visible:ring-dark-ink/40 focus-visible:ring-offset-1 dark:focus-visible:ring-offset-dark-bg",
             activeTab === 'manifesto' 
               ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border-ink-border/60 dark:border-dark-border" 
               : "border-transparent text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
@@ -56,8 +61,9 @@ const { activeTab = 'library' } = Astro.props;
         </a>
         <a 
           href={path('/commonplace')} 
+          aria-current={activeTab === 'commonplace' ? 'page' : undefined}
           class:list={[
-            "px-3 py-1.5 rounded-sm transition-colors border flex items-center gap-1.5",
+            "px-3 py-1.5 rounded-sm transition-colors border flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 dark:focus-visible:ring-dark-ink/40 focus-visible:ring-offset-1 dark:focus-visible:ring-offset-dark-bg",
             activeTab === 'commonplace' 
               ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border-ink-border/60 dark:border-dark-border" 
               : "border-transparent text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
