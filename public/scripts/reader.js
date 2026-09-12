@@ -55,6 +55,27 @@ window.__ahkhBootReader = function (vars) {
   const progressFill = document.getElementById('top-progress-fill');
   const displayMenu = document.getElementById('display-settings-menu');
   const displayBtn = document.getElementById('toggle-display-settings');
+
+  /* A2. HEADER TITLE REVEAL: the sticky header repeats the hero lesson title.
+     Keep it hidden while the hero title is on screen; reveal once the hero
+     scrolls fully out of view. Scroll-driven (not IntersectionObserver) so it
+     also settles correctly on restored deep positions and background tabs. */
+  const headerTitle = document.getElementById('smart-header-title');
+  const heroTitle = document.getElementById('lesson-hero-title');
+  function updateHeaderTitleVisibility() {
+    if (!headerTitle) return;
+    const show = heroTitle
+      ? heroTitle.getBoundingClientRect().bottom < 70
+      : true;
+    headerTitle.classList.toggle('opacity-100', show);
+    headerTitle.setAttribute('aria-hidden', show ? 'false' : 'true');
+  }
+  if (headerTitle) {
+    window.addEventListener('scroll', () => {
+      updateHeaderTitleVisibility();
+    }, { passive: true, signal: __ahkhSignal });
+    updateHeaderTitleVisibility();
+  }
   /* Helper for scroll depth tracking & persistence */
   let scrollSaveTimer = null;
   function saveScrollDepth(currentY, maxScroll) {

@@ -98,8 +98,8 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
         </button>
       </div>
 
-      <!-- Center Title -->
-      <div class="flex-1 text-center min-w-0 px-2">
+      <!-- Center Title (revealed only after the hero title scrolls out of view) -->
+      <div id="smart-header-title" class="flex-1 text-center min-w-0 px-2 opacity-0 transition-opacity duration-150 ease-out" aria-hidden="true">
         <div class="flex items-center justify-center gap-2">
           <span class="font-mono text-xs text-ink-muted dark:text-dark-muted shrink-0">{lesson.lessonNumber}</span>
           <h1 class="font-serif text-sm sm:text-base font-semibold text-ink dark:text-dark-ink truncate">
@@ -382,7 +382,7 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
           <span>{lesson.readTime} read</span>
         </div>
 
-        <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-ink dark:text-dark-ink mb-5">
+<h1 id="lesson-hero-title" class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-ink dark:text-dark-ink mb-5">
           {lesson.title}
         </h1>
 
