@@ -411,6 +411,103 @@
   border-bottom: none !important;
 }
 
+/* 5th Style: Solid Inverted Marker */
+.ahkh-highlight.ahkh-style-solid {
+  background-color: var(--hl-rule, #18181B) !important;
+  color: #FFFFFF !important;
+  border-bottom: none !important;
+  border-radius: 2px;
+  padding: 0.12em 0.28em;
+}
+.dark .ahkh-highlight.ahkh-style-solid {
+  background-color: var(--hl-rule, #F4F4F5) !important;
+  color: #09090B !important;
+  border-bottom: none !important;
+}
+.ahkh-hl-midnight.ahkh-style-solid {
+  background-color: #18181B !important;
+  color: #FAFAFA !important;
+}
+.dark .ahkh-hl-midnight.ahkh-style-solid {
+  background-color: #F4F4F5 !important;
+  color: #09090B !important;
+}
+
+/* Popover Remove Action (Dignified Soft-Destructive, Dark-Mode Safe) */
+.popover-btn-remove {
+  color: #BE123C;
+  background-color: rgba(225, 29, 72, 0.08);
+  border: 1px solid rgba(225, 29, 72, 0.25);
+}
+.dark .popover-btn-remove {
+  color: #FB7185;
+  background-color: rgba(225, 29, 72, 0.18);
+  border-color: rgba(225, 29, 72, 0.35);
+}
+.popover-btn-remove:hover {
+  background-color: rgba(225, 29, 72, 0.14);
+}
+.dark .popover-btn-remove:hover {
+  background-color: rgba(225, 29, 72, 0.26);
+}
+
+/* Right Sidebar Empty State Box (Never White-on-White) */
+.sidebar-empty-box {
+  text-align: center;
+  padding: 1.5rem 0.75rem;
+  border: 1px dashed rgba(228, 228, 231, 0.8);
+  border-radius: 2px;
+  background-color: rgba(250, 250, 250, 0.6);
+}
+.dark .sidebar-empty-box {
+  border-color: rgba(39, 39, 42, 0.8);
+  background-color: rgba(24, 24, 27, 0.5);
+}
+
+/* Custom Typography Scale Step Slider */
+.font-size-range {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #E4E4E7;
+  height: 4px;
+  border-radius: 9999px;
+  outline: none;
+  transition: background 150ms ease-out;
+}
+.dark .font-size-range {
+  background: #27272A;
+}
+.font-size-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2px solid #18181B;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 150ms ease-out, border-color 150ms ease-out;
+}
+.dark .font-size-range::-webkit-slider-thumb {
+  background: #18181B;
+  border-color: #F4F4F5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+.font-size-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2px solid #18181B;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.dark .font-size-range::-moz-range-thumb {
+  background: #18181B;
+  border-color: #F4F4F5;
+}
+
 /* Crisp native text selection */
 ::selection { background-color: #18181B; color: #FAFAFA; }
 .dark ::selection { background-color: #F4F4F5; color: #09090B; }

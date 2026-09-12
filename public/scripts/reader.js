@@ -535,12 +535,44 @@ window.__ahkhBootReader = function (vars) {
     return document.getElementById('formatted-view');
   }
 
-  const fontSizes = {
-    sm: { size: '1rem', lh: '1.75', label: 'Small (16px)' },
-    base: { size: '1.125rem', lh: '1.8', label: 'Standard (18px)' },
-    lg: { size: '1.3rem', lh: '1.85', label: 'Large (21px)' },
-    xl: { size: '1.5rem', lh: '1.9', label: 'Expanded (24px)' }
+  // User-selected highlight colors (persisted last choice; stored per highlight)
+  const HL_COLORS = ['graphite', 'amber', 'emerald', 'sky', 'rose', 'violet', 'midnight'];
+  const COLOR_HEX = {
+    graphite: 'rgba(0,0,0,0.45)',
+    amber: '#D97706',
+    emerald: '#059669',
+    sky: '#0284C7',
+    rose: '#E11D48',
+    violet: '#7C3AED',
+    midnight: '#18181B',
   };
+  const COLOR_TINT = {
+    graphite: 'rgba(0, 0, 0, 0.12)',
+    amber: 'rgba(217, 119, 6, 0.22)',
+    emerald: 'rgba(5, 150, 105, 0.22)',
+    sky: 'rgba(2, 132, 199, 0.22)',
+    rose: 'rgba(225, 29, 72, 0.20)',
+    violet: 'rgba(124, 58, 237, 0.20)',
+    midnight: 'rgba(24, 24, 27, 0.25)',
+  };
+  const HL_COLOR_KEY = 'ahkh_hl_color';
+
+  function getHlColor() {
+    try {
+      const c = AhkhStorage.get(HL_COLOR_KEY);
+      return HL_COLORS.includes(c) ? c : 'amber';
+    } catch (e) { return 'amber'; }
+  }
+
+  function hlClass(color) { return `ahkh-hl-${HL_COLORS.includes(color) ? color : 'amber'}`; }
+
+  const fontSizes = {
+    sm: { size: '1rem', lh: '1.75' },
+    base: { size: '1.125rem', lh: '1.8' },
+    lg: { size: '1.3rem', lh: '1.85' },
+    xl: { size: '1.5rem', lh: '1.9' }
+  };
+  const SIZE_KEYS = ['sm', 'base', 'lg', 'xl'];
 
   function applyFontSize(sz, persist = true) {
     if (!fontSizes[sz]) sz = 'base';
@@ -548,20 +580,36 @@ window.__ahkhBootReader = function (vars) {
     document.documentElement.style.setProperty('--reader-font-size', conf.size);
     document.documentElement.style.setProperty('--reader-line-height', conf.lh);
     
-    const label = document.getElementById('font-size-label');
-    if (label) label.textContent = conf.label;
+    const slider = document.getElementById('font-size-slider');
+    const idx = SIZE_KEYS.indexOf(sz);
+    if (slider && Number(slider.value) !== idx) {
+      slider.value = String(idx >= 0 ? idx : 1);
+    }
 
-    document.querySelectorAll('.size-btn').forEach(btn => {
-      const isCur = btn.getAttribute('data-size') === sz;
-      if (isCur) {
-        btn.className = 'size-btn py-1.5 px-2 rounded-xs text-center font-serif transition-colors duration-150 cursor-pointer bg-white dark:bg-dark-card text-ink dark:text-dark-ink font-medium border border-ink-border dark:border-dark-border shadow-2xs';
-      } else {
-        btn.className = 'size-btn py-1.5 px-2 rounded-xs text-center font-serif transition-colors duration-150 cursor-pointer text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink border border-transparent';
+    SIZE_KEYS.forEach((key, i) => {
+      const stop = document.getElementById(`font-size-stop-${i}`);
+      if (stop) {
+        if (i === idx) {
+          stop.className = 'transition-colors font-semibold text-ink dark:text-dark-ink';
+        } else {
+          stop.className = 'transition-colors text-ink-muted/70 dark:text-dark-muted/70';
+        }
       }
     });
 
     if (persist) AhkhStorage.set('ahkh_reader_font_size', sz);
     requestAnimationFrame(() => repositionAllGutterNotes());
+  }
+
+  function initFontSizeSlider() {
+    const slider = document.getElementById('font-size-slider');
+    if (!slider || slider.dataset.bound) return;
+    slider.dataset.bound = 'true';
+    slider.addEventListener('input', () => {
+      const idx = Math.max(0, Math.min(SIZE_KEYS.length - 1, parseInt(slider.value, 10) || 1));
+      const sz = SIZE_KEYS[idx] || 'base';
+      applyFontSize(sz, true);
+    }, { signal: __ahkhSignal });
   }
 
   const FONT_MAP = {
@@ -611,6 +659,7 @@ window.__ahkhBootReader = function (vars) {
     'underline': { label: 'Minimal Underline', badge: 'Underline' },
     'bracket': { label: 'Margin Bracket', badge: 'Bracket' },
     'wash': { label: 'Soft Wash', badge: 'Wash' },
+    'solid': { label: 'Solid Marker', badge: 'Solid' },
   };
   const HL_STYLE_KEY = 'ahkh_hl_style';
 
@@ -625,23 +674,66 @@ window.__ahkhBootReader = function (vars) {
     return `ahkh-style-${HL_STYLES[style] ? style : 'tint'}`;
   }
 
+  function updateHlStylePreviews(activeColor, activeStyle) {
+    const color = HL_COLORS.includes(activeColor) ? activeColor : 'amber';
+    const style = HL_STYLES[activeStyle] ? activeStyle : 'tint';
+    const colorHex = COLOR_HEX[color] || '#D97706';
+    const tintBg = COLOR_TINT[color] || COLOR_TINT.amber;
+
+    // 1. Update dropdown option preview icons
+    const tintPreview = document.querySelector('.hl-preview-tint');
+    if (tintPreview) {
+      tintPreview.style.background = tintBg;
+      tintPreview.style.borderBottom = `2px solid ${colorHex}`;
+    }
+    const underlinePreview = document.querySelector('.hl-preview-underline');
+    if (underlinePreview) {
+      underlinePreview.style.background = 'transparent';
+      underlinePreview.style.borderBottom = `2px solid ${colorHex}`;
+    }
+    const bracketPreview = document.querySelector('.hl-preview-bracket');
+    if (bracketPreview) {
+      bracketPreview.style.background = 'transparent';
+      bracketPreview.style.borderLeft = `2.5px solid ${colorHex}`;
+    }
+    const washPreview = document.querySelector('.hl-preview-wash');
+    if (washPreview) {
+      washPreview.style.background = tintBg;
+      washPreview.style.border = 'none';
+    }
+    const solidPreview = document.querySelector('.hl-preview-solid');
+    if (solidPreview) {
+      solidPreview.style.background = colorHex;
+      solidPreview.style.border = 'none';
+    }
+
+    // 2. Update button preview icon
+    const iconPreview = document.getElementById('hl-style-icon-preview');
+    if (iconPreview) {
+      iconPreview.style.border = 'none';
+      iconPreview.style.background = 'transparent';
+      if (style === 'underline') {
+        iconPreview.style.borderBottom = `2px solid ${colorHex}`;
+      } else if (style === 'bracket') {
+        iconPreview.style.borderLeft = `2.5px solid ${colorHex}`;
+      } else if (style === 'wash') {
+        iconPreview.style.background = tintBg;
+      } else if (style === 'solid') {
+        iconPreview.style.background = colorHex;
+      } else { // tint
+        iconPreview.style.background = tintBg;
+        iconPreview.style.borderBottom = `2px solid ${colorHex}`;
+      }
+    }
+  }
+
   function applyHlStyle(style, persist = true) {
     const s = HL_STYLES[style] ? style : 'tint';
     const info = HL_STYLES[s];
     const label = document.getElementById('hl-style-label');
-    const badge = document.getElementById('hl-style-badge');
-    const iconPreview = document.getElementById('hl-style-icon-preview');
-
     if (label) label.textContent = info.label;
-    if (badge) badge.textContent = info.badge;
-    if (iconPreview) {
-      iconPreview.className = `w-3 h-3 rounded-2xs border border-ink-border dark:border-dark-border ${
-        s === 'underline' ? 'border-b-2 border-amber-600 bg-transparent' :
-        s === 'bracket' ? 'border-l-2 border-amber-600 bg-transparent' :
-        s === 'wash' ? 'bg-amber-200/60 dark:bg-amber-400/30' :
-        'border-b-2 border-amber-600 bg-amber-200/50 dark:bg-amber-400/30'
-      }`;
-    }
+
+    updateHlStylePreviews(getHlColor(), s);
 
     document.querySelectorAll('.hl-style-opt-btn').forEach(btn => {
       const isCur = btn.getAttribute('data-hl-style') === s;
@@ -725,6 +817,8 @@ window.__ahkhBootReader = function (vars) {
         closeAllSettingsDropdowns();
       }, { signal: __ahkhSignal });
     });
+
+    initFontSizeSlider();
   }
 
   function applyReadingMeasure(measure, persist = true) {
@@ -945,7 +1039,7 @@ window.__ahkhBootReader = function (vars) {
 
     if (mode === 'remove') {
       if (popoverHlBtn) {
-        popoverHlBtn.className = 'h-8 px-2 rounded-xs text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border border-rose-200/80 dark:border-rose-900/50 hover:bg-rose-100 dark:hover:bg-rose-900/60 flex items-center gap-1.5 transition-colors cursor-pointer';
+        popoverHlBtn.className = 'popover-btn-remove h-8 px-2 rounded-xs flex items-center gap-1.5 transition-colors cursor-pointer';
         popoverHlBtn.setAttribute('title', 'Remove highlight');
         popoverHlBtn.setAttribute('aria-label', 'Remove highlight');
       }
@@ -984,28 +1078,6 @@ window.__ahkhBootReader = function (vars) {
     }
   }
 
-  // User-selected highlight colors (persisted last choice; stored per highlight)
-  const HL_COLORS = ['graphite', 'amber', 'emerald', 'sky', 'rose', 'violet', 'midnight'];
-  const COLOR_HEX = {
-    graphite: 'rgba(0,0,0,0.35)',
-    amber: '#D97706',
-    emerald: '#059669',
-    sky: '#0284C7',
-    rose: '#E11D48',
-    violet: '#7C3AED',
-    midnight: '#18181B',
-  };
-  const HL_COLOR_KEY = 'ahkh_hl_color';
-
-  function getHlColor() {
-    try {
-      const c = AhkhStorage.get(HL_COLOR_KEY);
-      return HL_COLORS.includes(c) ? c : 'amber';
-    } catch (e) { return 'amber'; }
-  }
-
-  function hlClass(color) { return `ahkh-hl-${HL_COLORS.includes(color) ? color : 'amber'}`; }
-
   function paintHlSwatches() {
     const cur = getHlColor();
     const popDot = document.getElementById('popover-hl-dot');
@@ -1014,14 +1086,30 @@ window.__ahkhBootReader = function (vars) {
     const nameBadge = document.getElementById('hl-color-name-badge');
     if (nameBadge) nameBadge.textContent = cur;
 
+    updateHlStylePreviews(cur, getHlStyle());
+
     document.querySelectorAll('.hl-swatch, .hl-settings-swatch').forEach((b) => {
       const on = b.getAttribute('data-hl-color') === cur;
       b.setAttribute('aria-checked', on ? 'true' : 'false');
       b.classList.toggle('ring-2', on);
-      b.classList.toggle('ring-offset-1', on);
-      b.classList.toggle('ring-ink/60', on);
-      b.classList.toggle('dark:ring-white/70', on);
+      b.classList.toggle('ring-offset-2', on);
+      b.classList.toggle('ring-ink', on);
+      b.classList.toggle('dark:ring-white', on);
+      b.classList.toggle('ring-offset-paper-100', on);
+      b.classList.toggle('dark:ring-offset-dark-card', on);
       b.classList.toggle('scale-110', on);
+
+      if (b.classList.contains('hl-settings-swatch')) {
+        if (on) {
+          b.innerHTML = `
+            <svg class="w-3 h-3 ${cur === 'midnight' ? 'text-white dark:text-ink' : 'text-white'} pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          `;
+        } else {
+          b.innerHTML = '';
+        }
+      }
     });
   }
 
@@ -1686,8 +1774,8 @@ window.__ahkhBootReader = function (vars) {
     if (itemsToDisplay.length === 0) {
       const isFiltered = sidebarFilter === 'notes' && highlights.length > 0;
       listEl.innerHTML = `
-        <div class="text-center py-6 px-3 border border-dashed border-ink-border/60 dark:border-dark-border/60 rounded-xs bg-paper-50/50 dark:bg-dark-card/30">
-          <p class="font-serif text-xs font-medium text-ink dark:text-dark-ink mb-0.5">
+        <div class="sidebar-empty-box">
+          <p class="font-serif text-xs font-medium text-ink dark:text-dark-ink mb-1">
             ${isFiltered ? 'No Sidenotes Recorded' : 'No Highlights Recorded'}
           </p>
           <p class="text-[11px] font-sans text-ink-muted dark:text-dark-muted leading-relaxed">

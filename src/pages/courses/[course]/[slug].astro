@@ -260,30 +260,36 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
     <!-- 2. Font Size & Reading Measure (Unified Typography Metrics) -->
     <div class="space-y-3 pt-2 border-t border-ink-border/60 dark:border-dark-border/60">
       <div>
-        <div class="flex items-center justify-between text-ink-muted dark:text-dark-muted mb-1.5">
-          <span class="font-medium text-[11px]">Type Size</span>
-          <span id="font-size-label" class="font-mono text-[10px] text-ink dark:text-dark-ink">Standard (18px)</span>
+        <div class="mb-1.5">
+          <span class="font-medium text-[11px] text-ink dark:text-dark-ink">Type Size</span>
         </div>
-        <div class="grid grid-cols-4 gap-1 p-0.5 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60">
-          <button data-size="sm" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-colors duration-150 cursor-pointer" title="Small (16px)">
-            <span class="text-xs">A</span>
-          </button>
-          <button data-size="base" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-colors duration-150 cursor-pointer" title="Standard (18px)">
-            <span class="text-sm">A</span>
-          </button>
-          <button data-size="lg" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-colors duration-150 cursor-pointer" title="Large (21px)">
-            <span class="text-base font-medium">A</span>
-          </button>
-          <button data-size="xl" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-colors duration-150 cursor-pointer" title="Expanded (24px)">
-            <span class="text-lg font-bold">A</span>
-          </button>
+        <div class="p-2 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60">
+          <div class="flex items-center gap-2.5 px-1">
+            <span class="text-xs font-serif font-normal text-ink-muted dark:text-dark-muted shrink-0 select-none">A</span>
+            <input
+              type="range"
+              id="font-size-slider"
+              min="0"
+              max="3"
+              step="1"
+              value="1"
+              aria-label="Adjust font size"
+              class="font-size-range w-full cursor-pointer"
+            />
+            <span class="text-base font-serif font-bold text-ink dark:text-dark-ink shrink-0 select-none">A</span>
+          </div>
+          <div class="flex justify-between items-center text-[10px] font-mono text-ink-muted dark:text-dark-muted mt-2 px-1 select-none">
+            <span id="font-size-stop-0" class="transition-colors">16</span>
+            <span id="font-size-stop-1" class="transition-colors font-semibold text-ink dark:text-dark-ink">18</span>
+            <span id="font-size-stop-2" class="transition-colors">21</span>
+            <span id="font-size-stop-3" class="transition-colors">24</span>
+          </div>
         </div>
       </div>
 
       <div>
-        <div class="flex items-center justify-between text-ink dark:text-dark-ink mb-1.5">
-          <span class="font-medium text-[11px]">Reading Measure</span>
-          <span id="measure-label" class="font-mono text-[10px] font-semibold text-ink dark:text-dark-ink">Standard (68ch)</span>
+        <div class="mb-1.5">
+          <span class="font-medium text-[11px] text-ink dark:text-dark-ink">Reading Measure</span>
         </div>
         <div class="grid grid-cols-2 gap-1.5 p-0.5 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60">
           <button id="measure-standard-btn" class="measure-btn py-1.5 px-2 rounded-xs text-center font-ui text-xs transition-colors duration-150 cursor-pointer">
@@ -299,9 +305,8 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
     <!-- 3. Highlight Style & Default Color (Annotations Mastery) -->
     <div class="space-y-3 pt-2 border-t border-ink-border/60 dark:border-dark-border/60">
       <div class="relative">
-        <div class="flex items-center justify-between text-ink dark:text-dark-ink mb-1.5">
-          <span class="font-medium text-[11px]">Highlight Style</span>
-          <span id="hl-style-badge" class="font-mono text-[10px] text-ink-muted dark:text-dark-muted">Tint</span>
+        <div class="mb-1.5">
+          <span class="font-medium text-[11px] text-ink dark:text-dark-ink">Highlight Style</span>
         </div>
         <button
           type="button"
@@ -311,7 +316,7 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
           class="w-full py-2 px-3 rounded-xs border border-ink-border dark:border-dark-border bg-white dark:bg-dark-bg text-ink dark:text-dark-ink hover:bg-paper-100 dark:hover:bg-dark-card transition-colors duration-150 cursor-pointer flex items-center justify-between shadow-2xs text-left"
         >
           <div class="flex items-center gap-2 truncate">
-            <span id="hl-style-icon-preview" class="w-3 h-3 rounded-2xs border border-ink-border dark:border-dark-border bg-amber-200/50 dark:bg-amber-400/30"></span>
+            <span id="hl-style-icon-preview" class="w-3.5 h-3.5 rounded-2xs border border-ink-border dark:border-dark-border shrink-0" style="background: rgba(217, 119, 6, 0.22); border-bottom: 2px solid #D97706;"></span>
             <span id="hl-style-label" class="font-ui text-xs font-medium truncate">Classic Tint</span>
           </div>
           <svg class="w-3.5 h-3.5 text-ink-muted dark:text-dark-muted dropdown-chevron shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -331,7 +336,7 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
             class="hl-style-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
           >
             <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-2xs border-b-2 border-amber-600 bg-amber-200/50 dark:bg-amber-400/30"></span>
+              <span class="hl-preview-tint w-3.5 h-3.5 rounded-2xs shrink-0" style="background: rgba(217, 119, 6, 0.22); border-bottom: 2px solid #D97706;"></span>
               <span class="text-xs font-medium text-ink dark:text-dark-ink">Classic Tint</span>
             </div>
             <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Wash + Border</span>
@@ -342,7 +347,7 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
             class="hl-style-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
           >
             <div class="flex items-center gap-2">
-              <span class="w-3 h-3 border-b-2 border-amber-600"></span>
+              <span class="hl-preview-underline w-3.5 h-3.5 shrink-0" style="background: transparent; border-bottom: 2px solid #D97706;"></span>
               <span class="text-xs font-medium text-ink dark:text-dark-ink">Minimal Underline</span>
             </div>
             <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Pure Underline</span>
@@ -353,7 +358,7 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
             class="hl-style-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
           >
             <div class="flex items-center gap-2">
-              <span class="w-3 h-3 border-l-2 border-amber-600"></span>
+              <span class="hl-preview-bracket w-3.5 h-3.5 shrink-0" style="background: transparent; border-left: 2.5px solid #D97706;"></span>
               <span class="text-xs font-medium text-ink dark:text-dark-ink">Margin Bracket</span>
             </div>
             <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Side Accent</span>
@@ -364,37 +369,46 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
             class="hl-style-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
           >
             <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-2xs bg-amber-200/60 dark:bg-amber-400/30"></span>
+              <span class="hl-preview-wash w-3.5 h-3.5 rounded-2xs shrink-0" style="background: rgba(217, 119, 6, 0.22); border: none;"></span>
               <span class="text-xs font-medium text-ink dark:text-dark-ink">Soft Wash</span>
             </div>
             <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Wash Only</span>
+          </button>
+          <button 
+            data-hl-style="solid" 
+            role="option"
+            class="hl-style-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-preview-solid w-3.5 h-3.5 rounded-2xs shrink-0" style="background: #D97706; border: none;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Solid Marker</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Contrast Text</span>
           </button>
         </div>
       </div>
 
       <!-- Default Color Palette -->
       <div>
-        <div class="flex items-center justify-between text-ink-muted dark:text-dark-muted mb-1.5">
-          <span class="font-medium text-[11px]">Default Pen Color</span>
-          <span id="hl-color-name-badge" class="font-mono text-[10px] text-ink dark:text-dark-ink capitalize">Amber</span>
+        <div class="mb-1.5">
+          <span class="font-medium text-[11px] text-ink dark:text-dark-ink">Default Color</span>
         </div>
-        <div class="flex items-center justify-between p-1 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60" role="radiogroup" aria-label="Default highlight color">
-          <button data-hl-color="graphite" title="Graphite" aria-label="Graphite" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:rgba(0,0,0,0.35)"></button>
-          <button data-hl-color="amber" title="Amber" aria-label="Amber" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#D97706"></button>
-          <button data-hl-color="emerald" title="Emerald" aria-label="Emerald" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#059669"></button>
-          <button data-hl-color="sky" title="Sky" aria-label="Sky" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#0284C7"></button>
-          <button data-hl-color="rose" title="Rose" aria-label="Rose" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#E11D48"></button>
-          <button data-hl-color="violet" title="Violet" aria-label="Violet" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#7C3AED"></button>
-          <button data-hl-color="midnight" title="Midnight" aria-label="Midnight" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#18181B"></button>
+        <div class="flex items-center justify-between p-1.5 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60" role="radiogroup" aria-label="Default highlight color">
+          <button data-hl-color="graphite" title="Graphite" aria-label="Graphite" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center" style="background:rgba(0,0,0,0.35)"></button>
+          <button data-hl-color="amber" title="Amber" aria-label="Amber" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center" style="background:#D97706"></button>
+          <button data-hl-color="emerald" title="Emerald" aria-label="Emerald" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center" style="background:#059669"></button>
+          <button data-hl-color="sky" title="Sky" aria-label="Sky" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center" style="background:#0284C7"></button>
+          <button data-hl-color="rose" title="Rose" aria-label="Rose" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center" style="background:#E11D48"></button>
+          <button data-hl-color="violet" title="Violet" aria-label="Violet" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center" style="background:#7C3AED"></button>
+          <button data-hl-color="midnight" title="Midnight" aria-label="Midnight" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center" style="background:#18181B"></button>
         </div>
       </div>
     </div>
 
     <!-- 4. Reading Surface Palette -->
     <div class="pt-2 border-t border-ink-border/60 dark:border-dark-border/60">
-      <div class="flex items-center justify-between mb-1.5">
-        <span class="font-medium text-[11px] text-ink-muted dark:text-dark-muted">Surface Palette</span>
-        <span id="theme-status-label" class="font-mono text-[10px] text-ink dark:text-dark-ink">Light</span>
+      <div class="mb-1.5">
+        <span class="font-medium text-[11px] text-ink dark:text-dark-ink">Surface Theme</span>
       </div>
       <div class="grid grid-cols-2 gap-1.5 p-0.5 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60">
         <button id="theme-light-btn" class="theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-ui text-xs transition-colors duration-150 cursor-pointer flex items-center justify-center gap-1.5">
