@@ -19,11 +19,19 @@ const { activeTab = 'library' } = Astro.props;
       <img 
         src={path('/logo.png')} 
         alt="AHKH" 
+        width="480"
+        height="159"
+        fetchpriority="high"
+        decoding="async"
         class="h-6 sm:h-7 w-auto object-contain shrink-0 dark:hidden" 
       />
       <img 
         src={path('/logo-white.png')} 
         alt="AHKH" 
+        width="480"
+        height="159"
+        fetchpriority="high"
+        decoding="async"
         class="h-6 sm:h-7 w-auto object-contain shrink-0 hidden dark:block" 
       />
       <span class="font-ui text-lg sm:text-xl font-medium tracking-tight text-ink dark:text-dark-ink">study hub</span>
@@ -35,7 +43,7 @@ const { activeTab = 'library' } = Astro.props;
         <a 
           href={path('/')} 
           class:list={[
-            "px-3 py-1.5 rounded-sm transition-colors border",
+            "px-3 py-1.5 rounded-xs transition-colors border",
             activeTab === 'library' 
               ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border-ink-border/60 dark:border-dark-border" 
               : "border-transparent text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
@@ -46,7 +54,7 @@ const { activeTab = 'library' } = Astro.props;
         <a 
           href={path('/manifesto')} 
           class:list={[
-            "nav-manifesto px-3 py-1.5 rounded-sm transition-colors border",
+            "nav-manifesto px-3 py-1.5 rounded-xs transition-colors border",
             activeTab === 'manifesto' 
               ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border-ink-border/60 dark:border-dark-border" 
               : "border-transparent text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
@@ -57,7 +65,7 @@ const { activeTab = 'library' } = Astro.props;
         <a 
           href={path('/commonplace')} 
           class:list={[
-            "px-3 py-1.5 rounded-sm transition-colors border flex items-center gap-1.5",
+            "px-3 py-1.5 rounded-xs transition-colors border flex items-center gap-1.5",
             activeTab === 'commonplace' 
               ? "text-ink dark:text-dark-ink font-medium bg-paper-200/80 dark:bg-dark-card border-ink-border/60 dark:border-dark-border" 
               : "border-transparent text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink hover:bg-paper-200/50 dark:hover:bg-dark-card/50"
