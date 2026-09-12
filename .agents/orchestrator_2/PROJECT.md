@@ -46,7 +46,7 @@ Every feature from the Survey phase appears here with its assigned milestone:
 | 2 | M2: Navigation & Prefetching | Enable prefetch, link prefetching, and lifecycle listener guards | M1 | DONE |
 | 3 | M3: Reader DOM & LocalStorage Tuning | Teardown hooks, batch gutter notes, fix scroll restore & mobile touch | M1 | DONE |
 | 4 | M4: Standardized Editorial Framework | 5 Astro editorial components, fix footers, author documentation | M1 | DONE |
-| 5 | M5: Web-Only Streamlining & Final Verification | Prune scratch files, E2E test verification, full build & verification suite, git commit | M2, M3, M4, E2E | IN_PROGRESS |
+| 5 | M5: Web-Only Streamlining & Final Verification | Prune scratch files, E2E test verification, full build & verification suite, git commit | M2, M3, M4, E2E | DONE |
 
 ## Interface Contracts
 ### Data Tier ↔ Page Routes
