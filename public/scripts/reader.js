@@ -588,20 +588,143 @@ window.__ahkhBootReader = function (vars) {
 
     const label = document.getElementById('font-family-label');
     if (label) label.textContent = fontInfo.name;
+    const badge = document.getElementById('font-family-badge');
+    if (badge) {
+      badge.textContent = resolvedFam === 'geist' ? 'Sans' : (resolvedFam === 'newsreader' || resolvedFam === 'source-serif' ? 'Book' : 'Serif');
+    }
 
     document.querySelectorAll('.font-family-btn').forEach(btn => {
       const btnFontId = btn.getAttribute('data-font-id');
       const isActive = btnFontId === resolvedFam;
-      
-      if (isActive) {
-        btn.className = 'font-family-btn w-full py-2 px-3 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between bg-white dark:bg-dark-card text-ink dark:text-dark-ink font-medium border border-ink-border dark:border-dark-border shadow-2xs';
-      } else {
-        btn.className = 'font-family-btn w-full py-2 px-3 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between text-ink/75 dark:text-dark-ink/75 hover:text-ink dark:hover:text-dark-ink border border-transparent hover:bg-paper-200/50 dark:hover:bg-dark-border/40';
-      }
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      btn.classList.toggle('bg-paper-200/60', isActive);
+      btn.classList.toggle('dark:bg-dark-border/60', isActive);
     });
 
     if (persist) AhkhStorage.set('ahkh_reader_font_family', resolvedFam);
     requestAnimationFrame(() => repositionAllGutterNotes());
+  }
+
+  // Highlight Styles System (ADR-030 & User Choice)
+  const HL_STYLES = {
+    'tint': { label: 'Classic Tint', badge: 'Tint' },
+    'underline': { label: 'Minimal Underline', badge: 'Underline' },
+    'bracket': { label: 'Margin Bracket', badge: 'Bracket' },
+    'wash': { label: 'Soft Wash', badge: 'Wash' },
+  };
+  const HL_STYLE_KEY = 'ahkh_hl_style';
+
+  function getHlStyle() {
+    try {
+      const s = AhkhStorage.get(HL_STYLE_KEY);
+      return HL_STYLES[s] ? s : 'tint';
+    } catch (e) { return 'tint'; }
+  }
+
+  function hlStyleClass(style) {
+    return `ahkh-style-${HL_STYLES[style] ? style : 'tint'}`;
+  }
+
+  function applyHlStyle(style, persist = true) {
+    const s = HL_STYLES[style] ? style : 'tint';
+    const info = HL_STYLES[s];
+    const label = document.getElementById('hl-style-label');
+    const badge = document.getElementById('hl-style-badge');
+    const iconPreview = document.getElementById('hl-style-icon-preview');
+
+    if (label) label.textContent = info.label;
+    if (badge) badge.textContent = info.badge;
+    if (iconPreview) {
+      iconPreview.className = `w-3 h-3 rounded-2xs border border-ink-border dark:border-dark-border ${
+        s === 'underline' ? 'border-b-2 border-amber-600 bg-transparent' :
+        s === 'bracket' ? 'border-l-2 border-amber-600 bg-transparent' :
+        s === 'wash' ? 'bg-amber-200/60 dark:bg-amber-400/30' :
+        'border-b-2 border-amber-600 bg-amber-200/50 dark:bg-amber-400/30'
+      }`;
+    }
+
+    document.querySelectorAll('.hl-style-opt-btn').forEach(btn => {
+      const isCur = btn.getAttribute('data-hl-style') === s;
+      btn.setAttribute('aria-selected', isCur ? 'true' : 'false');
+      btn.classList.toggle('bg-paper-200/60', isCur);
+      btn.classList.toggle('dark:bg-dark-border/60', isCur);
+    });
+
+    if (persist) AhkhStorage.set(HL_STYLE_KEY, s);
+    if (activeExistingHighlight) {
+      activeExistingHighlight.style = s;
+      const span = document.getElementById(activeExistingHighlight.id);
+      if (span) {
+        span.className = `ahkh-highlight ${hlClass(activeExistingHighlight.color)} ${hlStyleClass(s)}`;
+      }
+      saveHighlights();
+    }
+  }
+
+  function closeAllSettingsDropdowns() {
+    const fMenu = document.getElementById('font-family-dropdown-menu');
+    const fBtn = document.getElementById('font-family-dropdown-btn');
+    const sMenu = document.getElementById('hl-style-dropdown-menu');
+    const sBtn = document.getElementById('hl-style-dropdown-btn');
+    if (fMenu) fMenu.classList.add('hidden');
+    if (fBtn) fBtn.setAttribute('aria-expanded', 'false');
+    if (sMenu) sMenu.classList.add('hidden');
+    if (sBtn) sBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  function initSettingsDropdowns() {
+    const fBtn = document.getElementById('font-family-dropdown-btn');
+    const fMenu = document.getElementById('font-family-dropdown-menu');
+    const sBtn = document.getElementById('hl-style-dropdown-btn');
+    const sMenu = document.getElementById('hl-style-dropdown-menu');
+
+    if (fBtn && !fBtn.dataset.bound) {
+      fBtn.dataset.bound = 'true';
+      fBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isClosed = fMenu?.classList.contains('hidden');
+        closeAllSettingsDropdowns();
+        if (isClosed && fMenu) {
+          fMenu.classList.remove('hidden');
+          fBtn.setAttribute('aria-expanded', 'true');
+        }
+      }, { signal: __ahkhSignal });
+    }
+
+    if (sBtn && !sBtn.dataset.bound) {
+      sBtn.dataset.bound = 'true';
+      sBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isClosed = sMenu?.classList.contains('hidden');
+        closeAllSettingsDropdowns();
+        if (isClosed && sMenu) {
+          sMenu.classList.remove('hidden');
+          sBtn.setAttribute('aria-expanded', 'true');
+        }
+      }, { signal: __ahkhSignal });
+    }
+
+    document.querySelectorAll('.font-family-btn').forEach(btn => {
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = 'true';
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const fontId = btn.getAttribute('data-font-id');
+        if (fontId) applyFontFamily(fontId, true);
+        closeAllSettingsDropdowns();
+      }, { signal: __ahkhSignal });
+    });
+
+    document.querySelectorAll('.hl-style-opt-btn').forEach(btn => {
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = 'true';
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const styleId = btn.getAttribute('data-hl-style');
+        if (styleId) applyHlStyle(styleId, true);
+        closeAllSettingsDropdowns();
+      }, { signal: __ahkhSignal });
+    });
   }
 
   function applyReadingMeasure(measure, persist = true) {
@@ -664,12 +787,13 @@ window.__ahkhBootReader = function (vars) {
     }
   }
 
-
-
   function resetDisplaySettings() {
     applyFontSize('base', true);
     applyFontFamily('merriweather', true);
     applyReadingMeasure('standard', true);
+    applyHlStyle('tint', true);
+    applyHlColor('amber', true);
+    closeAllSettingsDropdowns();
   }
 
   // Popover toggle
@@ -816,10 +940,12 @@ window.__ahkhBootReader = function (vars) {
   function setPopoverMode(mode, highlightItem = null) {
     const hlIcon = document.getElementById('popover-hl-icon');
     const hlLabel = document.getElementById('popover-hl-label');
+    const hlDot = document.getElementById('popover-hl-dot');
+    const paletteBtn = document.getElementById('popover-palette-btn');
 
     if (mode === 'remove') {
       if (popoverHlBtn) {
-        popoverHlBtn.className = 'w-8 h-8 rounded-xs text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border border-rose-200/80 dark:border-rose-900/50 hover:bg-rose-100 dark:hover:bg-rose-900/60 flex items-center justify-center transition-colors cursor-pointer';
+        popoverHlBtn.className = 'h-8 px-2 rounded-xs text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border border-rose-200/80 dark:border-rose-900/50 hover:bg-rose-100 dark:hover:bg-rose-900/60 flex items-center gap-1.5 transition-colors cursor-pointer';
         popoverHlBtn.setAttribute('title', 'Remove highlight');
         popoverHlBtn.setAttribute('aria-label', 'Remove highlight');
       }
@@ -831,10 +957,12 @@ window.__ahkhBootReader = function (vars) {
         `;
       }
       if (hlLabel) hlLabel.textContent = 'Remove';
+      if (hlDot) hlDot.classList.add('hidden');
+      if (paletteBtn) paletteBtn.classList.remove('hidden');
       activeExistingHighlight = highlightItem;
     } else {
       if (popoverHlBtn) {
-        popoverHlBtn.className = 'w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer';
+        popoverHlBtn.className = 'h-8 px-2 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center gap-1.5 transition-colors cursor-pointer';
         popoverHlBtn.setAttribute('title', 'Highlight selection');
         popoverHlBtn.setAttribute('aria-label', 'Highlight selection');
       }
@@ -847,56 +975,110 @@ window.__ahkhBootReader = function (vars) {
         `;
       }
       if (hlLabel) hlLabel.textContent = 'Highlight';
+      if (hlDot) {
+        hlDot.classList.remove('hidden');
+        hlDot.style.background = COLOR_HEX[getHlColor()] || '#D97706';
+      }
+      if (paletteBtn) paletteBtn.classList.remove('hidden');
       activeExistingHighlight = null;
     }
   }
 
   // User-selected highlight colors (persisted last choice; stored per highlight)
   const HL_COLORS = ['graphite', 'amber', 'emerald', 'sky', 'rose', 'violet', 'midnight'];
+  const COLOR_HEX = {
+    graphite: 'rgba(0,0,0,0.35)',
+    amber: '#D97706',
+    emerald: '#059669',
+    sky: '#0284C7',
+    rose: '#E11D48',
+    violet: '#7C3AED',
+    midnight: '#18181B',
+  };
   const HL_COLOR_KEY = 'ahkh_hl_color';
+
   function getHlColor() {
     try {
       const c = AhkhStorage.get(HL_COLOR_KEY);
       return HL_COLORS.includes(c) ? c : 'amber';
     } catch (e) { return 'amber'; }
   }
+
   function hlClass(color) { return `ahkh-hl-${HL_COLORS.includes(color) ? color : 'amber'}`; }
+
   function paintHlSwatches() {
-    document.querySelectorAll('.hl-swatch').forEach((b) => {
-      const on = b.getAttribute('data-hl-color') === getHlColor();
+    const cur = getHlColor();
+    const popDot = document.getElementById('popover-hl-dot');
+    if (popDot) popDot.style.background = COLOR_HEX[cur] || '#D97706';
+
+    const nameBadge = document.getElementById('hl-color-name-badge');
+    if (nameBadge) nameBadge.textContent = cur;
+
+    document.querySelectorAll('.hl-swatch, .hl-settings-swatch').forEach((b) => {
+      const on = b.getAttribute('data-hl-color') === cur;
       b.setAttribute('aria-checked', on ? 'true' : 'false');
       b.classList.toggle('ring-2', on);
       b.classList.toggle('ring-offset-1', on);
-      b.classList.toggle('ring-ink/50', on);
-      b.classList.toggle('dark:ring-white/60', on);
+      b.classList.toggle('ring-ink/60', on);
+      b.classList.toggle('dark:ring-white/70', on);
+      b.classList.toggle('scale-110', on);
     });
   }
+
+  function applyHlColor(c, persist = true) {
+    const color = HL_COLORS.includes(c) ? c : 'amber';
+    if (persist) {
+      try { AhkhStorage.set(HL_COLOR_KEY, color); } catch (err) {}
+    }
+    paintHlSwatches();
+    if (activeExistingHighlight) {
+      activeExistingHighlight.color = color;
+      const span = document.getElementById(activeExistingHighlight.id);
+      if (span) {
+        span.className = `ahkh-highlight ${hlClass(color)} ${hlStyleClass(activeExistingHighlight.style || getHlStyle())}`;
+      }
+      saveHighlights();
+    }
+  }
+
+  const paletteFlyout = document.getElementById('popover-palette-flyout');
+  const paletteBtn = document.getElementById('popover-palette-btn');
+
+  function togglePaletteFlyout(force) {
+    if (!paletteFlyout) return;
+    const show = typeof force === 'boolean' ? force : paletteFlyout.classList.contains('hidden');
+    paletteFlyout.classList.toggle('hidden', !show);
+    paletteBtn?.setAttribute('aria-expanded', show ? 'true' : 'false');
+  }
+
   function initHlSwatches() {
     paintHlSwatches();
-    document.querySelectorAll('.hl-swatch').forEach((b) => {
+    document.querySelectorAll('.hl-swatch, .hl-settings-swatch').forEach((b) => {
       if (b.dataset.bound) return;
       b.dataset.bound = 'true';
       b.addEventListener('click', (e) => {
         e.stopPropagation();
-        const c = b.getAttribute('data-hl-color') || 'graphite';
-        try { AhkhStorage.set(HL_COLOR_KEY, c); } catch (err) {}
-        paintHlSwatches();
-        if (activeExistingHighlight) {
-          activeExistingHighlight.color = c;
-          const span = document.getElementById(activeExistingHighlight.id);
-          if (span) span.className = `ahkh-highlight ${hlClass(c)}`;
-          saveHighlights();
-        }
+        const c = b.getAttribute('data-hl-color') || 'amber';
+        applyHlColor(c, true);
+        togglePaletteFlyout(false);
       }, { signal: __ahkhSignal });
     });
+
+    if (paletteBtn && !paletteBtn.dataset.bound) {
+      paletteBtn.dataset.bound = 'true';
+      paletteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        togglePaletteFlyout();
+      }, { signal: __ahkhSignal });
+    }
   }
 
   function positionPopover(rect) {
     if (!popover) return;
     // The popover is position:fixed: use viewport coordinates only, never scroll offsets.
     popover.classList.remove('hidden');
-    const popW = popover.offsetWidth || 264;
-    const popH = popover.offsetHeight || 44;
+    const popW = popover.offsetWidth || 180;
+    const popH = popover.offsetHeight || 40;
     const vw = window.innerWidth;
     const vh = window.innerHeight;
     let left = rect.left + rect.width / 2 - popW / 2;
@@ -910,6 +1092,7 @@ window.__ahkhBootReader = function (vars) {
 
   function hidePopover() {
     popover?.classList.add('hidden');
+    togglePaletteFlyout(false);
     currentSelectionRange = null;
     activeExistingHighlight = null;
   }
@@ -1009,8 +1192,11 @@ window.__ahkhBootReader = function (vars) {
     if (!selectedText) return null;
 
     const hlId = 'hl_' + Date.now();
+    const currentColor = getHlColor();
+    const currentStyle = getHlStyle();
+
     const span = document.createElement('span');
-    span.className = 'ahkh-highlight ' + hlClass(getHlColor());
+    span.className = `ahkh-highlight ${hlClass(currentColor)} ${hlStyleClass(currentStyle)}`;
     span.id = hlId;
     span.style.setProperty('--course-accent', courseAccent);
     span.style.setProperty('--course-highlight', courseHighlight);
@@ -1027,7 +1213,8 @@ window.__ahkhBootReader = function (vars) {
       id: hlId,
       text: selectedText,
       note: '',
-      color: getHlColor(),
+      color: currentColor,
+      style: currentStyle,
       courseId,
       courseTitle,
       lessonSlug,
@@ -1411,6 +1598,7 @@ window.__ahkhBootReader = function (vars) {
       .filter(Boolean);
 
     highlights.forEach(item => {
+      const itemStyle = item.style || 'tint';
       if (document.getElementById(item.id)) {
         if (item.note) ensureGutterNoteElement(item);
         return;
@@ -1421,7 +1609,7 @@ window.__ahkhBootReader = function (vars) {
         const range = findRangeForTextInElement(block, item.text);
         if (range) {
           const span = document.createElement('span');
-          span.className = 'ahkh-highlight ' + hlClass(item.color);
+          span.className = `ahkh-highlight ${hlClass(item.color)} ${hlStyleClass(itemStyle)}`;
           span.id = item.id;
           span.style.setProperty('--course-accent', courseAccent);
           span.style.setProperty('--course-highlight', courseHighlight);
@@ -1450,73 +1638,146 @@ window.__ahkhBootReader = function (vars) {
     scheduleCascadeGutterNotes();
   }
 
-  // Render Highlights in Right Sidebar
+  // Right Sidebar Filter State & Tab Controller
+  let sidebarFilter = 'all';
+
+  function initSidebarFilter() {
+    const allBtn = document.getElementById('sidebar-filter-all');
+    const notesBtn = document.getElementById('sidebar-filter-notes');
+    if (!allBtn || !notesBtn) return;
+
+    function applyFilter(mode) {
+      sidebarFilter = mode;
+      const isAll = mode === 'all';
+      if (isAll) {
+        allBtn.className = 'sidebar-filter-btn py-1 px-2 rounded-xs text-center font-ui text-[11px] transition-colors duration-150 cursor-pointer bg-white dark:bg-dark-card text-ink dark:text-dark-ink font-medium border border-ink-border/80 dark:border-dark-border shadow-2xs';
+        allBtn.setAttribute('aria-selected', 'true');
+        notesBtn.className = 'sidebar-filter-btn py-1 px-2 rounded-xs text-center font-ui text-[11px] transition-colors duration-150 cursor-pointer text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink border border-transparent';
+        notesBtn.setAttribute('aria-selected', 'false');
+      } else {
+        notesBtn.className = 'sidebar-filter-btn py-1 px-2 rounded-xs text-center font-ui text-[11px] transition-colors duration-150 cursor-pointer bg-white dark:bg-dark-card text-ink dark:text-dark-ink font-medium border border-ink-border/80 dark:border-dark-border shadow-2xs';
+        notesBtn.setAttribute('aria-selected', 'true');
+        allBtn.className = 'sidebar-filter-btn py-1 px-2 rounded-xs text-center font-ui text-[11px] transition-colors duration-150 cursor-pointer text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink border border-transparent';
+        allBtn.setAttribute('aria-selected', 'false');
+      }
+      renderSidebarHighlights();
+    }
+
+    if (!allBtn.dataset.bound) {
+      allBtn.dataset.bound = 'true';
+      allBtn.addEventListener('click', () => applyFilter('all'), { signal: __ahkhSignal });
+    }
+    if (!notesBtn.dataset.bound) {
+      notesBtn.dataset.bound = 'true';
+      notesBtn.addEventListener('click', () => applyFilter('notes'), { signal: __ahkhSignal });
+    }
+  }
+
+  // Render Highlights in Right Sidebar (Extreme Minimalism & High Density)
   function renderSidebarHighlights() {
     const listEl = document.getElementById('sidebar-highlights-list');
     if (!listEl) return;
 
-    if (highlights.length === 0) {
+    let itemsToDisplay = highlights;
+    if (sidebarFilter === 'notes') {
+      itemsToDisplay = highlights.filter(h => h.note && h.note.trim().length > 0);
+    }
+
+    if (itemsToDisplay.length === 0) {
+      const isFiltered = sidebarFilter === 'notes' && highlights.length > 0;
       listEl.innerHTML = `
-        <div class="text-center py-8 px-3 border border-dashed border-ink-border/60 dark:border-dark-border/60 rounded-xs bg-paper-50/50 dark:bg-dark-card/30">
-          <div class="w-7 h-7 mx-auto mb-2 rounded-full bg-paper-200/70 dark:bg-dark-border/50 text-ink-muted dark:text-dark-muted flex items-center justify-center">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-            </svg>
-          </div>
-          <p class="font-serif text-xs font-medium text-ink dark:text-dark-ink mb-1">No Highlights Yet</p>
+        <div class="text-center py-6 px-3 border border-dashed border-ink-border/60 dark:border-dark-border/60 rounded-xs bg-paper-50/50 dark:bg-dark-card/30">
+          <p class="font-serif text-xs font-medium text-ink dark:text-dark-ink mb-0.5">
+            ${isFiltered ? 'No Sidenotes Recorded' : 'No Highlights Recorded'}
+          </p>
           <p class="text-[11px] font-sans text-ink-muted dark:text-dark-muted leading-relaxed">
-            Select any text passage to highlight and record marginal thoughts.
+            ${isFiltered ? 'Add marginal notes to your saved passages to see them here.' : 'Select text in the passage to record highlights and marginalia.'}
           </p>
         </div>
       `;
       return;
     }
 
-    listEl.innerHTML = highlights.map(item => `
+    listEl.innerHTML = itemsToDisplay.map((item, idx) => `
       <article 
-        class="p-3.5 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-100 dark:hover:bg-dark-border/40 transition-colors duration-150 cursor-pointer group shadow-2xs"
+        class="sidebar-hl-card relative p-2.5 sm:p-3 rounded-xs border border-ink-border/80 dark:border-dark-border bg-white dark:bg-dark-card hover:bg-paper-50 dark:hover:bg-dark-surface transition-colors duration-150 cursor-pointer group shadow-2xs ${hlClass(item.color)} ${hlStyleClass(item.style || 'tint')}"
         onclick="jumpToHighlight('${item.id}')"
       >
-        <div class="flex items-center justify-between mb-2 text-xs font-mono text-ink/80 dark:text-dark-ink/80">
-          <span class="font-medium">${item.timestamp ? new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}</span>
-          <div class="flex items-center gap-2.5">
-            <span class="group-hover:text-ink dark:group-hover:text-dark-ink text-ink-muted dark:text-dark-muted flex items-center gap-1 font-ui text-xs">
-              Jump
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="flex items-center justify-between gap-2 mb-1.5 text-[10px] font-mono text-ink-muted dark:text-dark-muted">
+          <span class="font-medium flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full" style="background:${COLOR_HEX[item.color] || '#D97706'}"></span>
+            <span>${item.timestamp ? new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : `#${idx + 1}`}</span>
+          </span>
+          
+          <!-- Hover Floating Micro-actions -->
+          <div class="hl-card-actions flex items-center gap-0.5 bg-paper-100/95 dark:bg-dark-bg/95 backdrop-blur-xs px-1 py-0.5 rounded-xs border border-ink-border/60 dark:border-dark-border/60 shadow-2xs">
+            <button
+              onclick="event.stopPropagation(); window.jumpToHighlight('${item.id}')"
+              class="p-1 rounded-2xs text-ink-muted hover:text-ink dark:text-dark-muted dark:hover:text-dark-ink transition-colors cursor-pointer"
+              title="Jump to passage"
+              aria-label="Jump to passage"
+            >
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M7 17 17 7M7 7h10v10"/>
               </svg>
-            </span>
-            <button 
-              onclick="event.stopPropagation(); window.deleteSidebarHighlight('${item.id}')"
-              class="text-ink-muted dark:text-dark-muted hover:text-rose-700 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 p-0.5 rounded-xs transition-colors cursor-pointer"
-              title="Delete Highlight"
-              aria-label="Delete Highlight"
+            </button>
+            <button
+              onclick="event.stopPropagation(); window.copySidebarHighlight('${item.id}')"
+              class="p-1 rounded-2xs text-ink-muted hover:text-ink dark:text-dark-muted dark:hover:text-dark-ink transition-colors cursor-pointer"
+              title="Copy quote with citation"
+              aria-label="Copy quote"
             >
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+              </svg>
+            </button>
+            <button
+              onclick="event.stopPropagation(); window.openNoteModalExternal('${item.id}')"
+              class="p-1 rounded-2xs text-ink-muted hover:text-ink dark:text-dark-muted dark:hover:text-dark-ink transition-colors cursor-pointer"
+              title="Add or edit note"
+              aria-label="Add or edit note"
+            >
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+              </svg>
+            </button>
+            <button
+              onclick="event.stopPropagation(); window.deleteSidebarHighlight('${item.id}')"
+              class="p-1 rounded-2xs text-ink-muted hover:text-rose-700 dark:text-dark-muted dark:hover:text-rose-400 transition-colors cursor-pointer"
+              title="Delete highlight"
+              aria-label="Delete highlight"
+            >
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M18 6 6 18M6 6l12 12"/>
               </svg>
             </button>
           </div>
         </div>
-        <blockquote class="font-serif text-sm italic text-ink dark:text-dark-ink border-l-2 pl-2.5 mb-2.5 leading-relaxed line-clamp-3 ${hlClass(item.color)}">
+
+        <!-- Excerpt Text -->
+        <blockquote class="font-serif text-xs italic text-ink dark:text-dark-ink leading-relaxed line-clamp-3 mb-1">
           "${escapeHtml(item.text)}"
         </blockquote>
+
+        <!-- Marginalia Note Attachment -->
         ${item.note ? `
-          <div class="text-xs font-sans text-ink dark:text-dark-ink bg-paper-100 dark:bg-dark-card p-2.5 rounded-xs border border-ink-border dark:border-dark-border leading-relaxed space-y-1">
-            <div class="font-mono text-[10px] uppercase tracking-widest text-ink-muted dark:text-dark-muted font-medium">Marginalia</div>
-            <p>${escapeHtml(item.note)}</p>
+          <div class="mt-2 pt-1.5 border-t border-ink-border/50 dark:border-dark-border/50 text-[11px] font-sans text-ink/90 dark:text-dark-ink/90 leading-normal flex items-start gap-1.5">
+            <span class="font-mono text-[9px] uppercase tracking-wider text-ink-muted dark:text-dark-muted shrink-0 mt-0.5">Note:</span>
+            <p class="line-clamp-2">${escapeHtml(item.note)}</p>
           </div>
-        ` : `
-          <button 
-            onclick="event.stopPropagation(); window.openNoteModalExternal('${item.id}')"
-            class="text-xs font-ui text-ink dark:text-dark-ink underline font-medium cursor-pointer hover:opacity-80"
-          >
-            + Add Sidenote
-          </button>
-        `}
+        ` : ''}
       </article>
     `).join('');
   }
+
+  window.copySidebarHighlight = function(id) {
+    const item = highlights.find(h => h.id === id);
+    if (!item) return;
+    const citation = `"${item.text}"\n— ${lessonTitle} (${courseTitle})\n${window.location.href}`;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(citation);
+    }
+  };
 
   window.openNoteModalExternal = function(id) {
     const item = highlights.find(h => h.id === id);
@@ -2278,6 +2539,8 @@ window.__ahkhBootReader = function (vars) {
     applyFontFamily(savedFamily, false);
     applyReadingMeasure(savedMeasure, false);
     applyTheme(null, false);
+    applyHlStyle(getHlStyle(), false);
+    applyHlColor(getHlColor(), false);
 
     // Prevent animation flicker on initial mount or page transition
     const studyDesk = document.getElementById('study-desk');
@@ -2318,6 +2581,8 @@ window.__ahkhBootReader = function (vars) {
     });
 
     updateHeaderCount();
+    initSettingsDropdowns();
+    initSidebarFilter();
     renderSidebarHighlights();
     restoreHighlightsInDOM();
     initCompletionToggle();

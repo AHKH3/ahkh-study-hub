@@ -155,130 +155,244 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
   </header>
 
   <!-- DISPLAY SETTINGS POPOVER (Swiss Editorial Comfort) -->
+  <!-- DISPLAY SETTINGS POPOVER (Swiss Editorial Precision & Annotation Controls) -->
   <div 
     id="display-settings-menu"
     role="dialog"
     aria-label="Reading Typography and Comfort Settings"
-    class="hidden fixed top-16 right-4 sm:right-6 w-80 sm:w-84 max-h-[88vh] overflow-y-auto p-4 sm:p-5 rounded-xs border border-ink-border dark:border-dark-border/80 bg-paper-50/98 dark:bg-dark-card/98 backdrop-blur-xl shadow-2xl shadow-ink/5 dark:shadow-black/80 ring-1 ring-ink/5 dark:ring-white/5 z-50 text-xs font-sans space-y-5 text-ink dark:text-dark-ink"
+    class="hidden fixed top-16 right-4 sm:right-6 w-80 sm:w-84 max-h-[88vh] overflow-y-auto p-4 sm:p-5 rounded-xs border border-ink-border dark:border-dark-border/80 bg-paper-50/98 dark:bg-dark-card/98 backdrop-blur-xl shadow-2xl shadow-ink/5 dark:shadow-black/80 ring-1 ring-ink/5 dark:ring-white/5 z-50 text-xs font-sans space-y-4 text-ink dark:text-dark-ink"
   >
     <!-- Header: Title + Reset -->
     <div class="flex items-center justify-between pb-2 border-b border-ink-border/60 dark:border-dark-border/60">
-      <span class="font-mono uppercase tracking-widest text-[10px] text-ink-muted dark:text-dark-muted font-medium">Display & Comfort</span>
+      <span class="font-mono uppercase tracking-widest text-[10px] text-ink-muted dark:text-dark-muted font-medium">Display & Annotations</span>
       <button 
         id="reset-display-btn" 
         class="text-[11px] font-ui text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink flex items-center gap-1 transition-colors cursor-pointer"
-        title="Reset typography settings to default"
+        title="Reset reading & annotation settings to default"
       >
         <RotateCcw class="w-3 h-3" />
         <span>Reset</span>
       </button>
     </div>
-    
-    <!-- 1. Font Size Control -->
-    <div>
-      <div class="flex items-center justify-between text-ink-muted dark:text-dark-muted mb-2">
-        <span class="font-medium text-[11px]">Type Size</span>
-        <span id="font-size-label" class="font-mono text-[10px] text-ink dark:text-dark-ink">Standard (18px)</span>
-      </div>
-      <div class="grid grid-cols-4 gap-1 p-0.5 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60">
-        <button data-size="sm" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-colors duration-150 cursor-pointer" title="Small (16px)">
-          <span class="text-xs">A</span>
-        </button>
-        <button data-size="base" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-colors duration-150 cursor-pointer" title="Standard (18px)">
-          <span class="text-sm">A</span>
-        </button>
-        <button data-size="lg" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-colors duration-150 cursor-pointer" title="Large (21px)">
-          <span class="text-base font-medium">A</span>
-        </button>
-        <button data-size="xl" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-colors duration-150 cursor-pointer" title="Expanded (24px)">
-          <span class="text-lg font-bold">A</span>
-        </button>
-      </div>
-    </div>
 
-    <!-- 2. Typeface Family (Unified 7-Typeface Selector) -->
-    <div>
-      <div class="flex items-center justify-between text-ink dark:text-dark-ink mb-2">
+    <!-- 1. Typeface Selector (Custom Dropdown) -->
+    <div class="relative">
+      <div class="flex items-center justify-between text-ink dark:text-dark-ink mb-1.5">
         <span class="font-medium text-[11px]">Reading Typeface</span>
-        <span id="font-family-label" class="font-mono text-[10px] font-semibold text-ink dark:text-dark-ink">Merriweather</span>
+        <span id="font-family-badge" class="font-mono text-[10px] text-ink-muted dark:text-dark-muted">Serif</span>
       </div>
-      
-      <div class="space-y-1 p-1 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60 max-h-56 overflow-y-auto">
+      <button
+        type="button"
+        id="font-family-dropdown-btn"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+        class="w-full py-2 px-3 rounded-xs border border-ink-border dark:border-dark-border bg-white dark:bg-dark-bg text-ink dark:text-dark-ink hover:bg-paper-100 dark:hover:bg-dark-card transition-colors duration-150 cursor-pointer flex items-center justify-between shadow-2xs text-left"
+      >
+        <span id="font-family-label" class="font-serif text-sm font-medium truncate">Merriweather</span>
+        <svg class="w-3.5 h-3.5 text-ink-muted dark:text-dark-muted dropdown-chevron shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m6 9 6 6 6-6"/>
+        </svg>
+      </button>
+
+      <!-- Dropdown Menu -->
+      <div
+        id="font-family-dropdown-menu"
+        role="listbox"
+        class="hidden absolute top-full left-0 right-0 mt-1 z-30 p-1 rounded-xs border border-ink-border dark:border-dark-border bg-white dark:bg-dark-card shadow-lg space-y-0.5"
+      >
         <button 
           data-font-id="merriweather" 
-          class="font-family-btn w-full py-2 px-3 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          role="option"
+          class="font-family-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
           style="font-family: 'Merriweather', Georgia, serif;"
         >
-          <span class="text-sm font-medium text-ink dark:text-dark-ink">Merriweather</span>
-          <span class="text-[10px] font-mono font-medium text-ink/75 dark:text-dark-ink/75">Serif (Default)</span>
+          <span class="text-xs font-medium text-ink dark:text-dark-ink">Merriweather</span>
+          <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Serif (Default)</span>
         </button>
-
         <button 
           data-font-id="source-serif" 
-          class="font-family-btn w-full py-2 px-3 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          role="option"
+          class="font-family-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
           style="font-family: 'Source Serif 4', Georgia, serif;"
         >
-          <span class="text-sm font-medium text-ink dark:text-dark-ink">Source Serif 4</span>
-          <span class="text-[10px] font-mono font-medium text-ink/75 dark:text-dark-ink/75">Book Serif</span>
+          <span class="text-xs font-medium text-ink dark:text-dark-ink">Source Serif 4</span>
+          <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Book Serif</span>
         </button>
-        
         <button 
           data-font-id="literata" 
-          class="font-family-btn w-full py-2 px-3 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          role="option"
+          class="font-family-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
           style="font-family: 'Literata', Georgia, serif;"
         >
-          <span class="text-sm font-medium text-ink dark:text-dark-ink">Literata</span>
-          <span class="text-[10px] font-mono font-medium text-ink/75 dark:text-dark-ink/75">Digital Reading</span>
+          <span class="text-xs font-medium text-ink dark:text-dark-ink">Literata</span>
+          <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Digital Reading</span>
         </button>
-        
         <button 
           data-font-id="lora" 
-          class="font-family-btn w-full py-2 px-3 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          role="option"
+          class="font-family-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
           style="font-family: 'Lora', Georgia, serif;"
         >
-          <span class="text-sm font-medium text-ink dark:text-dark-ink">Lora</span>
-          <span class="text-[10px] font-mono font-medium text-ink/75 dark:text-dark-ink/75">Contemporary</span>
+          <span class="text-xs font-medium text-ink dark:text-dark-ink">Lora</span>
+          <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Contemporary</span>
         </button>
-        
         <button 
           data-font-id="newsreader" 
-          class="font-family-btn w-full py-2 px-3 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          role="option"
+          class="font-family-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
           style="font-family: 'Newsreader', Georgia, serif;"
         >
-          <span class="text-sm font-medium text-ink dark:text-dark-ink">Newsreader</span>
-          <span class="text-[10px] font-mono font-medium text-ink/75 dark:text-dark-ink/75">Classic Literary</span>
+          <span class="text-xs font-medium text-ink dark:text-dark-ink">Newsreader</span>
+          <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Classic Literary</span>
         </button>
-
         <button 
           data-font-id="geist" 
-          class="font-family-btn w-full py-2 px-3 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          role="option"
+          class="font-family-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
           style="font-family: 'Geist', sans-serif; /* impeccable-disable-line overused-font -- preview option */"
         >
-          <span class="text-sm font-medium text-ink dark:text-dark-ink">Geist Sans</span>
-          <span class="text-[10px] font-mono font-medium text-ink/75 dark:text-dark-ink/75">Clean Minimalist</span>
+          <span class="text-xs font-medium text-ink dark:text-dark-ink">Geist Sans</span>
+          <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Clean Minimalist</span>
         </button>
       </div>
     </div>
-
-    <!-- 3. Reading Measure -->
-    <div>
-      <div class="flex items-center justify-between text-ink dark:text-dark-ink mb-2">
-        <span class="font-medium text-[11px]">Reading Measure</span>
-        <span id="measure-label" class="font-mono text-[10px] font-semibold text-ink dark:text-dark-ink">Standard (68ch)</span>
+    
+    <!-- 2. Font Size & Reading Measure (Unified Typography Metrics) -->
+    <div class="space-y-3 pt-2 border-t border-ink-border/60 dark:border-dark-border/60">
+      <div>
+        <div class="flex items-center justify-between text-ink-muted dark:text-dark-muted mb-1.5">
+          <span class="font-medium text-[11px]">Type Size</span>
+          <span id="font-size-label" class="font-mono text-[10px] text-ink dark:text-dark-ink">Standard (18px)</span>
+        </div>
+        <div class="grid grid-cols-4 gap-1 p-0.5 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60">
+          <button data-size="sm" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-colors duration-150 cursor-pointer" title="Small (16px)">
+            <span class="text-xs">A</span>
+          </button>
+          <button data-size="base" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-colors duration-150 cursor-pointer" title="Standard (18px)">
+            <span class="text-sm">A</span>
+          </button>
+          <button data-size="lg" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-colors duration-150 cursor-pointer" title="Large (21px)">
+            <span class="text-base font-medium">A</span>
+          </button>
+          <button data-size="xl" class="size-btn py-1.5 px-2 rounded-xs text-center font-ui transition-colors duration-150 cursor-pointer" title="Expanded (24px)">
+            <span class="text-lg font-bold">A</span>
+          </button>
+        </div>
       </div>
-      <div class="grid grid-cols-2 gap-1.5 p-0.5 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60">
-        <button id="measure-standard-btn" class="measure-btn py-1.5 px-2 rounded-xs text-center font-ui text-xs transition-colors duration-150 cursor-pointer">
-          Standard (68ch)
+
+      <div>
+        <div class="flex items-center justify-between text-ink dark:text-dark-ink mb-1.5">
+          <span class="font-medium text-[11px]">Reading Measure</span>
+          <span id="measure-label" class="font-mono text-[10px] font-semibold text-ink dark:text-dark-ink">Standard (68ch)</span>
+        </div>
+        <div class="grid grid-cols-2 gap-1.5 p-0.5 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60">
+          <button id="measure-standard-btn" class="measure-btn py-1.5 px-2 rounded-xs text-center font-ui text-xs transition-colors duration-150 cursor-pointer">
+            Standard (68ch)
+          </button>
+          <button id="measure-wide-btn" class="measure-btn py-1.5 px-2 rounded-xs text-center font-ui text-xs transition-colors duration-150 cursor-pointer">
+            Expanded (82ch)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Highlight Style & Default Color (Annotations Mastery) -->
+    <div class="space-y-3 pt-2 border-t border-ink-border/60 dark:border-dark-border/60">
+      <div class="relative">
+        <div class="flex items-center justify-between text-ink dark:text-dark-ink mb-1.5">
+          <span class="font-medium text-[11px]">Highlight Style</span>
+          <span id="hl-style-badge" class="font-mono text-[10px] text-ink-muted dark:text-dark-muted">Tint</span>
+        </div>
+        <button
+          type="button"
+          id="hl-style-dropdown-btn"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          class="w-full py-2 px-3 rounded-xs border border-ink-border dark:border-dark-border bg-white dark:bg-dark-bg text-ink dark:text-dark-ink hover:bg-paper-100 dark:hover:bg-dark-card transition-colors duration-150 cursor-pointer flex items-center justify-between shadow-2xs text-left"
+        >
+          <div class="flex items-center gap-2 truncate">
+            <span id="hl-style-icon-preview" class="w-3 h-3 rounded-2xs border border-ink-border dark:border-dark-border bg-amber-200/50 dark:bg-amber-400/30"></span>
+            <span id="hl-style-label" class="font-ui text-xs font-medium truncate">Classic Tint</span>
+          </div>
+          <svg class="w-3.5 h-3.5 text-ink-muted dark:text-dark-muted dropdown-chevron shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
         </button>
-        <button id="measure-wide-btn" class="measure-btn py-1.5 px-2 rounded-xs text-center font-ui text-xs transition-colors duration-150 cursor-pointer">
-          Expanded (82ch)
-        </button>
+
+        <!-- Style Dropdown Menu -->
+        <div
+          id="hl-style-dropdown-menu"
+          role="listbox"
+          class="hidden absolute top-full left-0 right-0 mt-1 z-30 p-1 rounded-xs border border-ink-border dark:border-dark-border bg-white dark:bg-dark-card shadow-lg space-y-0.5"
+        >
+          <button 
+            data-hl-style="tint" 
+            role="option"
+            class="hl-style-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-2xs border-b-2 border-amber-600 bg-amber-200/50 dark:bg-amber-400/30"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Classic Tint</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Wash + Border</span>
+          </button>
+          <button 
+            data-hl-style="underline" 
+            role="option"
+            class="hl-style-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 border-b-2 border-amber-600"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Minimal Underline</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Pure Underline</span>
+          </button>
+          <button 
+            data-hl-style="bracket" 
+            role="option"
+            class="hl-style-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 border-l-2 border-amber-600"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Margin Bracket</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Side Accent</span>
+          </button>
+          <button 
+            data-hl-style="wash" 
+            role="option"
+            class="hl-style-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-2xs bg-amber-200/60 dark:bg-amber-400/30"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Soft Wash</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Wash Only</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Default Color Palette -->
+      <div>
+        <div class="flex items-center justify-between text-ink-muted dark:text-dark-muted mb-1.5">
+          <span class="font-medium text-[11px]">Default Pen Color</span>
+          <span id="hl-color-name-badge" class="font-mono text-[10px] text-ink dark:text-dark-ink capitalize">Amber</span>
+        </div>
+        <div class="flex items-center justify-between p-1 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60" role="radiogroup" aria-label="Default highlight color">
+          <button data-hl-color="graphite" title="Graphite" aria-label="Graphite" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:rgba(0,0,0,0.35)"></button>
+          <button data-hl-color="amber" title="Amber" aria-label="Amber" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#D97706"></button>
+          <button data-hl-color="emerald" title="Emerald" aria-label="Emerald" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#059669"></button>
+          <button data-hl-color="sky" title="Sky" aria-label="Sky" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#0284C7"></button>
+          <button data-hl-color="rose" title="Rose" aria-label="Rose" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#E11D48"></button>
+          <button data-hl-color="violet" title="Violet" aria-label="Violet" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#7C3AED"></button>
+          <button data-hl-color="midnight" title="Midnight" aria-label="Midnight" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#18181B"></button>
+        </div>
       </div>
     </div>
 
     <!-- 4. Reading Surface Palette -->
-    <div class="pt-3 border-t border-ink-border/60 dark:border-dark-border/60">
-      <div class="flex items-center justify-between mb-2">
+    <div class="pt-2 border-t border-ink-border/60 dark:border-dark-border/60">
+      <div class="flex items-center justify-between mb-1.5">
         <span class="font-medium text-[11px] text-ink-muted dark:text-dark-muted">Surface Palette</span>
         <span id="theme-status-label" class="font-mono text-[10px] text-ink dark:text-dark-ink">Light</span>
       </div>
@@ -667,25 +781,46 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
 
     </main>
 
-    <!-- RIGHT SIDEBAR: Highlights & Notes Only -->
+    <!-- RIGHT SIDEBAR: High-Density Highlights & Notes Drawer -->
     <aside 
       id="right-sidebar"
-      class="sidebar-drawer shrink-0 border-l border-ink-border/80 dark:border-dark-border bg-paper-100/95 dark:bg-dark-bg/95 backdrop-blur-md sticky overflow-y-auto overflow-x-hidden p-6"
+      class="sidebar-drawer shrink-0 border-l border-ink-border/80 dark:border-dark-border bg-paper-100/95 dark:bg-dark-bg/95 backdrop-blur-md sticky overflow-y-auto overflow-x-hidden p-5 sm:p-6"
     >
       <div class="w-60 min-w-[15rem]">
-        <div class="flex items-center justify-between mb-4 pb-2 border-b border-ink-border/60 dark:border-dark-border/60">
-          <div class="font-mono text-[11px] uppercase tracking-widest text-ink-muted dark:text-dark-muted">
-            Highlights & Marginalia
+        <!-- Header: Title + Count Badge + Filter Tabs -->
+        <div class="mb-4 pb-2.5 border-b border-ink-border/60 dark:border-dark-border/60 space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[11px] uppercase tracking-widest text-ink dark:text-dark-ink font-semibold">
+              Highlights
+            </span>
+            <span id="sidebar-count" class="font-mono text-[11px] px-1.5 py-0.5 rounded-2xs bg-paper-200/60 dark:bg-dark-border/60 text-ink dark:text-dark-ink border border-ink-border/60 dark:border-dark-border/60">
+              0
+            </span>
           </div>
-          <span id="sidebar-count" class="font-mono text-xs text-ink-muted dark:text-dark-muted">0</span>
+
+          <!-- Filter Segmented Tabs (All vs With Notes) -->
+          <div class="grid grid-cols-2 gap-1 p-0.5 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60" role="tablist" aria-label="Highlight filters">
+            <button
+              id="sidebar-filter-all"
+              role="tab"
+              aria-selected="true"
+              class="sidebar-filter-btn py-1 px-2 rounded-xs text-center font-ui text-[11px] transition-colors duration-150 cursor-pointer bg-white dark:bg-dark-card text-ink dark:text-dark-ink font-medium border border-ink-border/80 dark:border-dark-border shadow-2xs"
+            >
+              All
+            </button>
+            <button
+              id="sidebar-filter-notes"
+              role="tab"
+              aria-selected="false"
+              class="sidebar-filter-btn py-1 px-2 rounded-xs text-center font-ui text-[11px] transition-colors duration-150 cursor-pointer text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink border border-transparent"
+            >
+              Notes
+            </button>
+          </div>
         </div>
 
-        <p class="text-xs font-sans text-ink-muted dark:text-dark-muted mb-4">
-          Select any passage in the article to highlight it instantly and record marginalia.
-        </p>
-
-        <!-- Highlights list populated by JS -->
-        <div id="sidebar-highlights-list" class="space-y-3">
+        <!-- Highlights list populated by JS (High Density) -->
+        <div id="sidebar-highlights-list" class="space-y-2.5">
           <!-- Populated dynamically -->
         </div>
       </div>
@@ -693,16 +828,17 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
 
   </div>
 
-  <!-- 4. FLOATING ACTION POPOVER (Appears over selected text or clicked highlight) -->
+  <!-- 4. FLOATING ACTION POPOVER (Compact, High-Speed Annotation Bar) -->
   <div 
     id="selection-popover"
     class="hidden fixed z-50 bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-lg shadow-black/5 dark:shadow-black/40 rounded-xs py-1 px-1.5 flex items-center gap-1 text-xs font-ui"
   >
+    <!-- Primary Instant Highlight Button -->
     <button 
       id="popover-hl-btn"
       title="Highlight selection"
       aria-label="Highlight selection"
-      class="w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer"
+      class="h-8 px-2 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center gap-1.5 transition-colors cursor-pointer"
     >
       <span id="popover-hl-icon" class="flex items-center">
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -710,8 +846,26 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
           <path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/>
         </svg>
       </span>
-      <span id="popover-hl-label" class="sr-only">Highlight</span>
+      <span id="popover-hl-dot" class="w-2 h-2 rounded-full border border-ink-border/80 dark:border-dark-border shrink-0" style="background:#D97706"></span>
+      <span id="popover-hl-label" class="text-xs font-medium">Highlight</span>
     </button>
+
+    <!-- Quick Palette Flyout Trigger -->
+    <button
+      id="popover-palette-btn"
+      title="Change highlight color or style"
+      aria-label="Change highlight color or style"
+      aria-expanded="false"
+      class="w-7 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink flex items-center justify-center transition-colors cursor-pointer"
+    >
+      <svg class="w-3.5 h-3.5 dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m6 9 6 6 6-6"/>
+      </svg>
+    </button>
+
+    <span class="w-px h-4 bg-ink-border/60 dark:bg-dark-border/60 mx-0.5" aria-hidden="true"></span>
+
+    <!-- Note & Copy Buttons -->
     <button 
       id="popover-note-btn"
       class="w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer"
@@ -737,15 +891,21 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
       </span>
       <span id="popover-copy-label" class="sr-only">Copy</span>
     </button>
-    <span class="w-px h-5 bg-ink-border/60 dark:bg-dark-border/60 mx-0.5" aria-hidden="true"></span>
-    <div class="flex items-center gap-1 px-0.5" role="radiogroup" aria-label="Highlight color">
-      <button data-hl-color="graphite" title="Graphite" aria-label="Graphite" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:rgba(0,0,0,0.35)"></button>
-      <button data-hl-color="amber" title="Amber" aria-label="Amber" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:#D97706"></button>
-      <button data-hl-color="emerald" title="Emerald" aria-label="Emerald" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:#059669"></button>
-      <button data-hl-color="sky" title="Sky" aria-label="Sky" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:#0284C7"></button>
-      <button data-hl-color="rose" title="Rose" aria-label="Rose" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:#E11D48"></button>
-      <button data-hl-color="violet" title="Violet" aria-label="Violet" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:#7C3AED"></button>
-      <button data-hl-color="midnight" title="Midnight" aria-label="Midnight" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer" style="background:#18181B"></button>
+
+    <!-- Color Palette Flyout (Appears above the popover on demand) -->
+    <div 
+      id="popover-palette-flyout" 
+      class="hidden absolute bottom-full left-0 mb-1.5 p-1 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-lg flex items-center gap-1 z-50"
+      role="radiogroup" 
+      aria-label="Highlight color options"
+    >
+      <button data-hl-color="graphite" title="Graphite" aria-label="Graphite" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:rgba(0,0,0,0.35)"></button>
+      <button data-hl-color="amber" title="Amber" aria-label="Amber" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#D97706"></button>
+      <button data-hl-color="emerald" title="Emerald" aria-label="Emerald" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#059669"></button>
+      <button data-hl-color="sky" title="Sky" aria-label="Sky" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#0284C7"></button>
+      <button data-hl-color="rose" title="Rose" aria-label="Rose" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#E11D48"></button>
+      <button data-hl-color="violet" title="Violet" aria-label="Violet" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#7C3AED"></button>
+      <button data-hl-color="midnight" title="Midnight" aria-label="Midnight" class="hl-swatch w-4 h-4 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150" style="background:#18181B"></button>
     </div>
   </div>
 

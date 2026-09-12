@@ -341,14 +341,14 @@
   }
 }
 
-/* User Highlight Marks */
+/* User Highlight Marks & Distinct Presentation Styles */
 .ahkh-highlight {
   background-color: var(--hl-bg, var(--course-highlight, rgba(0, 0, 0, 0.08)));
   border-bottom: 2px solid var(--hl-rule, var(--course-accent, #1C1B19));
   padding: 0.1em 0.2em;
   border-radius: 2px;
   cursor: pointer;
-  transition: background-color 0.15s ease, outline 0.15s ease;
+  transition: background-color 150ms ease-out, outline 150ms ease-out;
 }
 
 .ahkh-highlight:hover {
@@ -367,6 +367,48 @@
 
 .dark .ahkh-highlight.active {
   outline-color: var(--course-accent, #F4F4F5);
+}
+
+/* 4 Distinct Highlight Styles (ADR-030 & User Choice) */
+.ahkh-highlight.ahkh-style-tint {
+  background-color: var(--hl-bg, rgba(0, 0, 0, 0.08));
+  border-bottom: 2px solid var(--hl-rule, #1C1B19);
+}
+.dark .ahkh-highlight.ahkh-style-tint {
+  background-color: var(--hl-bg, rgba(255, 255, 255, 0.12));
+  border-bottom-color: var(--hl-rule, #F4F4F5);
+}
+
+.ahkh-highlight.ahkh-style-underline {
+  background-color: transparent !important;
+  border-bottom: 2px solid var(--hl-rule, #1C1B19) !important;
+  border-radius: 0;
+}
+.dark .ahkh-highlight.ahkh-style-underline {
+  background-color: transparent !important;
+  border-bottom-color: var(--hl-rule, #F4F4F5) !important;
+}
+
+.ahkh-highlight.ahkh-style-bracket {
+  background-color: transparent !important;
+  border-bottom: none !important;
+  border-left: 2.5px solid var(--hl-rule, #1C1B19) !important;
+  padding-left: 0.3em;
+  padding-right: 0.1em;
+  border-radius: 0;
+}
+.dark .ahkh-highlight.ahkh-style-bracket {
+  background-color: transparent !important;
+  border-left-color: var(--hl-rule, #F4F4F5) !important;
+}
+
+.ahkh-highlight.ahkh-style-wash {
+  background-color: var(--hl-bg, rgba(0, 0, 0, 0.08));
+  border-bottom: none !important;
+}
+.dark .ahkh-highlight.ahkh-style-wash {
+  background-color: var(--hl-bg, rgba(255, 255, 255, 0.12));
+  border-bottom: none !important;
 }
 
 /* Crisp native text selection */
@@ -388,8 +430,33 @@
 .dark .ahkh-hl-violet { --hl-bg: rgba(167, 139, 250, 0.30); --hl-rule: #A78BFA; }
 .ahkh-hl-midnight { --hl-bg: #18181B; --hl-rule: #18181B; color: #FAFAFA; }
 .dark .ahkh-hl-midnight { --hl-bg: #F4F4F5; --hl-rule: #F4F4F5; color: #09090B; }
-#sidebar-highlights-list blockquote { border-left-color: var(--hl-rule, #E4E4E7); }
-.dark #sidebar-highlights-list blockquote { border-left-color: var(--hl-rule, #27272A); }
+
+/* Right Sidebar High-Density Highlight Cards */
+.sidebar-hl-card {
+  border-left: 3px solid var(--hl-rule, #E4E4E7);
+  transition: background-color 150ms ease-out, border-color 150ms ease-out;
+}
+.dark .sidebar-hl-card {
+  border-left-color: var(--hl-rule, #27272A);
+}
+.sidebar-hl-card .hl-card-actions {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease-out;
+}
+.sidebar-hl-card:hover .hl-card-actions,
+.sidebar-hl-card:focus-within .hl-card-actions {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Custom Dropdown Chevron Animation */
+.dropdown-chevron {
+  transition: transform 150ms ease-out;
+}
+[aria-expanded="true"] .dropdown-chevron {
+  transform: rotate(180deg);
+}
 
 /* Marginalia Sidenotes in Gutter */
 .marginalia-gutter-note {
@@ -399,13 +466,14 @@
   font-size: 0.88rem;
   line-height: 1.5;
   color: #18181B;
-  background-color: #FFFFFF;
+  background-color: #FAFAFA;
   border: 1px solid #E4E4E7;
-  padding: 0.6rem 0.85rem;
+  border-left: 3px solid var(--hl-rule, #E4E4E7);
+  padding: 0.55rem 0.75rem;
   border-radius: 2px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: color 0.15s ease, 
-              border-color 0.15s ease, 
+  transition: color 150ms ease-out, 
+              border-color 150ms ease-out, 
               opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), 
               transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 20;
@@ -416,6 +484,7 @@
   color: #F4F4F5;
   background-color: #121215;
   border: 1px solid #27272A;
+  border-left-color: var(--hl-rule, #27272A);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
