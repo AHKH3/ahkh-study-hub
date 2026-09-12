@@ -1,0 +1,613 @@
+﻿diff --git a/public/scripts/reader.js b/public/scripts/reader.js
+index bc960c7..f28a1e3 100644
+--- a/public/scripts/reader.js
++++ b/public/scripts/reader.js
+@@ -16,21 +16,49 @@ window.__ahkhBootReader = function (vars) {
+   if (bootDeskEl) bootDeskEl.dataset.ahkhBooted = 'true';
+   try { window.__ahkhYtPlayer?.destroy?.(); } catch (e) {}
+   window.__ahkhYtPlayer = null;
+-  if (window.__ahkhYtTimer) { clearInterval(window.__ahkhYtTimer); window.__ahkhYtTimer = null; }
++  if (window.__ahkhYtTimer) { clearInterval(window.__ahkhYtTimer); }
++  window.__ahkhYtTimer = null;
++  if (window.__ahkhVideoObserver) {
++    try { window.__ahkhVideoObserver.disconnect(); } catch (e) {}
++  }
++  window.__ahkhVideoObserver = null;
+   if (window.__ahkhReaderAbort) { try { window.__ahkhReaderAbort.abort(); } catch (e) {} }
+   window.__ahkhOutlineSpyBound = false;
+   window.__ahkhHashChangeBound = false;
+   const __ahkhSignal = (window.__ahkhReaderAbort = new AbortController()).signal;
+-  // A. SMART AUTO-HIDING HEADER & TOP PROGRESS BAR
++
++  /* Teardown cleanup hook for active reader run */
++  __ahkhSignal.addEventListener('abort', () => {
++    if (scrollSaveTimer) {
++      clearTimeout(scrollSaveTimer);
++      scrollSaveTimer = null;
++    }
++    if (reminderToastTimeout) {
++      clearTimeout(reminderToastTimeout);
++      reminderToastTimeout = null;
++    }
++    if (gutterLayoutRaf !== null) {
++      cancelAnimationFrame(gutterLayoutRaf);
++      gutterLayoutRaf = null;
++    }
++    if (selectionDebounceTimer !== null) {
++      clearTimeout(selectionDebounceTimer);
++      selectionDebounceTimer = null;
++    }
++    isRestoringScroll = false;
++  }, { once: true });
++
++  /* A. SMART AUTO-HIDING HEADER & TOP PROGRESS BAR */
+   let lastScrollY = window.scrollY;
++  let isRestoringScroll = false;
+   const smartHeader = document.getElementById('smart-header');
+   const progressFill = document.getElementById('top-progress-fill');
+   const displayMenu = document.getElementById('display-settings-menu');
+   const displayBtn = document.getElementById('toggle-display-settings');
+-  // Helper for scroll depth tracking & persistence
++  /* Helper for scroll depth tracking & persistence */
+   let scrollSaveTimer = null;
+   function saveScrollDepth(currentY, maxScroll) {
+-    if (maxScroll <= 0) return;
++    if (isRestoringScroll || maxScroll <= 0) return;
+     clearTimeout(scrollSaveTimer);
+     scrollSaveTimer = setTimeout(() => {
+       try {
+@@ -51,10 +79,12 @@ window.__ahkhBootReader = function (vars) {
+   }
+ 
+   window.addEventListener('scroll', () => {
++    if (isRestoringScroll) return;
++
+     const currentScrollY = window.scrollY;
+     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+     
+-    // Update progress percentage
++    /* Update progress percentage */
+     if (maxScroll > 0 && progressFill) {
+       const pct = Math.min(100, Math.max(0, (currentScrollY / maxScroll) * 100));
+       progressFill.style.width = pct + '%';
+@@ -62,20 +92,20 @@ window.__ahkhBootReader = function (vars) {
+       saveScrollDepth(currentScrollY, maxScroll);
+     }
+ 
+-    // Auto-hide header on scroll down, reveal on scroll up
++    /* Auto-hide header on scroll down, reveal on scroll up */
+     if (smartHeader) {
+       const delta = currentScrollY - lastScrollY;
+       if (currentScrollY <= 60) {
+         smartHeader.style.transform = 'translateY(0)';
+         document.body.removeAttribute('data-header-hidden');
+       } else if (delta > 4) {
+-        // Scrolling DOWN -> hide header & close popovers
++        /* Scrolling DOWN -> hide header & close popovers */
+         smartHeader.style.transform = 'translateY(-100%)';
+         document.body.setAttribute('data-header-hidden', 'true');
+         closeDisplayMenu();
+         hidePopover();
+       } else if (delta < -2) {
+-        // Scrolling UP -> reveal header immediately
++        /* Scrolling UP -> reveal header immediately */
+         smartHeader.style.transform = 'translateY(0)';
+         document.body.removeAttribute('data-header-hidden');
+       }
+@@ -187,19 +217,138 @@ window.__ahkhBootReader = function (vars) {
+       const savedStr = AhkhStorage.get(`ahkh_scroll_${courseId}_${lessonSlug}`);
+       if (!savedStr) return;
+       const saved = JSON.parse(savedStr);
+-      if (saved && typeof saved.scrollY === 'number' && saved.scrollY > 40) {
+-        if (window.location.hash && window.location.hash.startsWith('#')) return;
+-        requestAnimationFrame(() => {
+-          window.scrollTo({ top: saved.scrollY, behavior: 'instant' });
+-          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+-          if (maxScroll > 0 && progressFill) {
+-            const pct = Math.min(100, Math.max(0, (saved.scrollY / maxScroll) * 100));
+-            progressFill.style.width = pct + '%';
+-            updateScrollDepthLabel(pct);
++      if (!saved || typeof saved.scrollY !== 'number' || saved.scrollY <= 40) return;
++      if (window.location.hash && window.location.hash.startsWith('#')) return;
++
++      const targetY = saved.scrollY;
++      const rootEl = document.documentElement;
++      const hadSmoothClass = rootEl.classList.contains('scroll-smooth');
++      const originalScrollBehavior = rootEl.style.scrollBehavior;
++
++      /* Phase 0: Acquire lock & suppress smooth-scroll globally on root */
++      isRestoringScroll = true;
++      rootEl.classList.remove('scroll-smooth');
++      rootEl.style.scrollBehavior = 'auto';
++
++      function applyScrollCoordinate(y) {
++        window.scrollTo({ top: y, behavior: 'instant' });
++        lastScrollY = y;
++        const maxScroll = rootEl.scrollHeight - window.innerHeight;
++        if (progressFill) {
++          const pct = (maxScroll >= y && maxScroll > 0)
++            ? Math.min(100, Math.max(0, (y / maxScroll) * 100))
++            : (typeof saved.percent === 'number' ? saved.percent : 0);
++          progressFill.style.width = pct + '%';
++          updateScrollDepthLabel(pct);
++        }
++      }
++
++      function releaseRestorationLock() {
++        if (!isRestoringScroll) return;
++        const finalMax = rootEl.scrollHeight - window.innerHeight;
++        const finalY = window.scrollY;
++        if (progressFill) {
++          const pct = (finalMax >= finalY && finalMax > 0)
++            ? Math.min(100, Math.max(0, (finalY / finalMax) * 100))
++            : (typeof saved.percent === 'number' ? saved.percent : 0);
++          progressFill.style.width = pct + '%';
++          updateScrollDepthLabel(pct);
++        }
++        rootEl.style.scrollBehavior = originalScrollBehavior || '';
++        if (hadSmoothClass) {
++          rootEl.classList.add('scroll-smooth');
++        }
++        isRestoringScroll = false;
++        lastScrollY = window.scrollY;
++      }
++
++      /* User Preemption: If user explicitly interacts, respect user agency immediately */
++      let preemptionAborted = false;
++      const onUserInteraction = () => {
++        preemptionAborted = true;
++        releaseRestorationLock();
++      };
++
++      window.addEventListener('wheel', onUserInteraction, { once: true, passive: true, signal: __ahkhSignal });
++      window.addEventListener('touchstart', onUserInteraction, { once: true, passive: true, signal: __ahkhSignal });
++      window.addEventListener('keydown', onUserInteraction, { once: true, passive: true, signal: __ahkhSignal });
++
++      /* Phase 1: Immediate provisional jump */
++      requestAnimationFrame(() => {
++        if (__ahkhSignal.aborted || preemptionAborted) return;
++        applyScrollCoordinate(targetY);
++
++        /* Phase 2: Asynchronous Asset Stabilization */
++        function waitForGeometryStabilization() {
++          const promises = [];
++          if (document.fonts && document.fonts.ready) {
++            promises.push(
++              Promise.race([
++                document.fonts.ready,
++                new Promise((res) => setTimeout(res, 250))
++              ])
++            );
+           }
++          const readingCol = document.getElementById('center-reading-column');
++          if (readingCol) {
++            const pendingImgs = Array.from(readingCol.querySelectorAll('img')).filter((img) => !img.complete);
++            if (pendingImgs.length > 0) {
++              const imgPromises = pendingImgs.map((img) => {
++                if (typeof img.decode === 'function') return img.decode().catch(() => {});
++                return new Promise((res) => {
++                  img.addEventListener('load', res, { once: true });
++                  img.addEventListener('error', res, { once: true });
++                });
++              });
++              promises.push(
++                Promise.race([
++                  Promise.allSettled(imgPromises),
++                  new Promise((res) => setTimeout(res, 300))
++                ])
++              );
++            }
++          }
++          if (promises.length === 0) {
++            return Promise.resolve();
++          }
++          return Promise.allSettled(promises);
++        }
++
++        waitForGeometryStabilization().then(() => {
++          if (__ahkhSignal.aborted || preemptionAborted) return;
++
++          /* Phase 3: Secondary Adjustment Pass */
++          applyScrollCoordinate(targetY);
++
++          /* Phase 4: Multi-frame layout settlement verification loop */
++          let stableFrames = 0;
++          const startTime = Date.now();
++
++          function verifyLayoutSettled() {
++            if (__ahkhSignal.aborted || preemptionAborted) return;
++            const currentMax = rootEl.scrollHeight - window.innerHeight;
++            const effectiveTarget = Math.min(targetY, Math.max(0, currentMax));
++
++            if (Math.abs(window.scrollY - effectiveTarget) > 4 && currentMax >= targetY) {
++              applyScrollCoordinate(targetY);
++              stableFrames = 0;
++            } else {
++              stableFrames++;
++            }
++
++            if (stableFrames >= 2 || Date.now() - startTime > 400) {
++              releaseRestorationLock();
++            } else {
++              requestAnimationFrame(verifyLayoutSettled);
++            }
++          }
++
++          requestAnimationFrame(verifyLayoutSettled);
+         });
+-      }
+-    } catch (e) {}
++      });
++    } catch (e) {
++      isRestoringScroll = false;
++    }
+   }
+ 
+   // B. SIDEBAR TOGGLES & ANIMATED DRAWERS
+@@ -740,10 +889,35 @@ window.__ahkhBootReader = function (vars) {
+     activeExistingHighlight = null;
+   }
+ 
+-  // Handle Text Selection
++  /* Handle Text Selection (Desktop + Mobile Unified) */
++  let selectionDebounceTimer = null;
++
++  /* 1. Desktop mouseup & keyboard selection */
+   document.addEventListener('mouseup', handleTextSelection, { signal: __ahkhSignal });
+   document.addEventListener('keyup', handleTextSelection, { signal: __ahkhSignal });
+ 
++  /* 2. Mobile touch completion */
++  document.addEventListener('touchend', () => {
++    setTimeout(handleTextSelection, 60);
++  }, { passive: true, signal: __ahkhSignal });
++
++  /* 3. Selection change listener with debounce for active grabber adjustment */
++  document.addEventListener('selectionchange', () => {
++    const selection = window.getSelection();
++    if (!selection || selection.isCollapsed) {
++      if (currentSelectionRange && !activeExistingHighlight) {
++        hidePopover();
++      }
++      clearTimeout(selectionDebounceTimer);
++      return;
++    }
++
++    clearTimeout(selectionDebounceTimer);
++    selectionDebounceTimer = setTimeout(() => {
++      handleTextSelection();
++    }, 200);
++  }, { signal: __ahkhSignal });
++
+   function handleTextSelection() {
+     const selection = window.getSelection();
+     if (!selection || selection.isCollapsed) {
+@@ -768,11 +942,24 @@ window.__ahkhBootReader = function (vars) {
+     popover?.classList.remove('hidden');
+   }
+ 
+-  document.addEventListener('mousedown', (e) => {
+-    if (popover && !popover.contains(e.target) && !e.target.closest('.ahkh-highlight')) {
+-      hidePopover();
++  /* 4. Dismiss popover on outside tap/click (desktop & touch) */
++  const dismissPopoverOutside = (e) => {
++    if (popover && !popover.classList.contains('hidden')) {
++      if (!popover.contains(e.target) && !e.target.closest('.ahkh-highlight')) {
++        const selection = window.getSelection();
++        if (selection && !selection.isCollapsed && selection.rangeCount > 0) {
++          const range = selection.getRangeAt(0);
++          if (range && range.commonAncestorContainer && range.commonAncestorContainer.contains(e.target)) {
++            return;
++          }
++        }
++        hidePopover();
++      }
+     }
+-  }, { signal: __ahkhSignal });
++  };
++
++  document.addEventListener('mousedown', dismissPopoverOutside, { signal: __ahkhSignal });
++  document.addEventListener('touchstart', dismissPopoverOutside, { passive: true, signal: __ahkhSignal });
+ 
+   // Create highlight from current text selection
+   function createHighlightFromSelection() {
+@@ -811,7 +998,7 @@ window.__ahkhBootReader = function (vars) {
+     span.addEventListener('click', (ev) => {
+       ev.stopPropagation();
+       openHighlightOptions(newItem, span);
+-    });
++    }, { signal: __ahkhSignal });
+ 
+     highlights.push(newItem);
+     saveHighlights();
+@@ -952,40 +1139,31 @@ window.__ahkhBootReader = function (vars) {
+     }
+   }, { signal: __ahkhSignal });
+ 
+-  // Gutter Marginalia Sidenote Rendering
+-  function renderGutterNote(item) {
+-    if (!getReadingContent()) return;
++  /* Gutter Marginalia Sidenote Rendering - Phase 1: Pure DOM Hydration (No layout reads/writes) */
++  function ensureGutterNoteElement(item) {
++    const readingEl = getReadingContent();
++    if (!readingEl) return null;
+ 
+     let gutterEl = document.getElementById(`gutter-note-${item.id}`);
+-    if (gutterEl) gutterEl.className = 'marginalia-gutter-note ' + hlClass(item.color);
+ 
+     if (!item.note || !item.note.trim()) {
+       if (gutterEl) gutterEl.remove();
+-      return;
++      return null;
+     }
+ 
+     const span = document.getElementById(item.id);
+-    if (!span) return;
++    if (!span) return null;
+ 
+     if (!gutterEl) {
+       gutterEl = document.createElement('div');
+-      gutterEl.className = 'marginalia-gutter-note';
++      gutterEl.className = 'marginalia-gutter-note ' + hlClass(item.color);
+       gutterEl.id = `gutter-note-${item.id}`;
++      gutterEl.dataset.hlId = item.id;
+       gutterEl.style.setProperty('--course-accent', courseAccent);
+-      getReadingContent().appendChild(gutterEl);
+-    }
+-
+-    if (span.closest('.hidden') || span.offsetParent === null) {
+-      gutterEl.style.display = 'none';
+-      return;
++      readingEl.appendChild(gutterEl);
++    } else {
++      gutterEl.className = 'marginalia-gutter-note ' + hlClass(item.color);
+     }
+-    gutterEl.style.display = '';
+-
+-    const readingBox = getReadingContent().getBoundingClientRect();
+-    const spanBox = span.getBoundingClientRect();
+-    const topPos = Math.max(0, spanBox.top - readingBox.top);
+-    gutterEl.style.top = `${topPos}px`;
+-    cascadeGutterNotes();
+ 
+     gutterEl.innerHTML = `
+       <div class="flex items-center justify-between gap-1 text-xs font-mono text-ink/80 dark:text-dark-ink/80 mb-1.5 pb-1 border-b border-ink-border/60 dark:border-dark-border/60">
+@@ -1009,43 +1187,94 @@ window.__ahkhBootReader = function (vars) {
+       openNoteModal(item.id, item.text, item.note);
+       jumpToHighlight(item.id);
+     };
++
++    return gutterEl;
+   }
+ 
+-  // Stack overlapping gutter sidenotes so close highlights stay legible
+-  function cascadeGutterNotes() {
+-    const notes = Array.from(document.querySelectorAll('.marginalia-gutter-note'))
+-      .filter((n) => n.isConnected && n.style.display !== 'none')
+-      .sort((a, b) => parseFloat(a.style.top || '0') - parseFloat(b.style.top || '0'));
+-    let floor = 0;
+-    notes.forEach((n) => {
+-      const top = Math.max(parseFloat(n.style.top || '0'), floor);
+-      n.style.top = `${top}px`;
+-      floor = top + (n.offsetHeight || 0) + 8;
++  function renderGutterNote(item) {
++    const el = ensureGutterNoteElement(item);
++    if (el) scheduleCascadeGutterNotes();
++    return el;
++  }
++
++  /* Coalesced RAF Scheduler */
++  let gutterLayoutRaf = null;
++
++  function scheduleCascadeGutterNotes() {
++    if (gutterLayoutRaf !== null) return;
++    gutterLayoutRaf = requestAnimationFrame(() => {
++      gutterLayoutRaf = null;
++      batchLayoutGutterNotes();
+     });
+   }
+ 
+-  function repositionAllGutterNotes() {
+-    if (!getReadingContent()) return;
+-    const readingBox = getReadingContent().getBoundingClientRect();
+-    highlights.forEach(item => {
+-      if (item.note) {
+-        const span = document.getElementById(item.id);
+-        const gutterEl = document.getElementById(`gutter-note-${item.id}`);
+-        if (span && gutterEl) {
+-          if (span.closest('.hidden') || span.offsetParent === null) {
+-            gutterEl.style.display = 'none';
+-          } else {
+-            gutterEl.style.display = '';
+-            const spanBox = span.getBoundingClientRect();
+-            gutterEl.style.top = `${Math.max(0, spanBox.top - readingBox.top)}px`;
+-          }
+-        }
++  /* 3-Stage Batch Layout & Cascade Pass */
++  function batchLayoutGutterNotes() {
++    const readingEl = getReadingContent();
++    if (!readingEl) return;
++
++    /* Stage 1: Batch Reads (single layout pass) */
++    const readingBox = readingEl.getBoundingClientRect();
++    const noteElements = Array.from(document.querySelectorAll('.marginalia-gutter-note'));
++
++    const notesToPosition = [];
++    const notesToHide = [];
++
++    for (let i = 0; i < noteElements.length; i++) {
++      const noteEl = noteElements[i];
++      if (!noteEl.isConnected) continue;
++
++      const hlId = noteEl.dataset.hlId || noteEl.id.replace('gutter-note-', '');
++      const span = document.getElementById(hlId);
++
++      if (!span || span.closest('.hidden') || span.offsetParent === null) {
++        notesToHide.push(noteEl);
++        continue;
+       }
+-    });
+-    cascadeGutterNotes();
++
++      const spanBox = span.getBoundingClientRect();
++      const noteHeight = noteEl.offsetHeight || 0;
++      const targetTop = Math.max(0, spanBox.top - readingBox.top);
++
++      notesToPosition.push({
++        el: noteEl,
++        targetTop: targetTop,
++        height: noteHeight,
++        finalTop: 0,
++      });
++    }
++
++    /* Stage 2: In-Memory Math (pure calculation, zero DOM interaction) */
++    notesToPosition.sort((a, b) => a.targetTop - b.targetTop);
++
++    let floor = 0;
++    for (let i = 0; i < notesToPosition.length; i++) {
++      const item = notesToPosition[i];
++      item.finalTop = Math.max(item.targetTop, floor);
++      floor = item.finalTop + item.height + 8;
++    }
++
++    /* Stage 3: Batch Writes (zero DOM reads) */
++    for (let i = 0; i < notesToHide.length; i++) {
++      notesToHide[i].style.display = 'none';
++    }
++
++    for (let i = 0; i < notesToPosition.length; i++) {
++      const item = notesToPosition[i];
++      item.el.style.display = '';
++      item.el.style.top = `${item.finalTop}px`;
++    }
+   }
+ 
+-  window.addEventListener('resize', repositionAllGutterNotes, { passive: true, signal: __ahkhSignal });
++  function cascadeGutterNotes() {
++    batchLayoutGutterNotes();
++  }
++
++  function repositionAllGutterNotes() {
++    scheduleCascadeGutterNotes();
++  }
++
++  window.addEventListener('resize', scheduleCascadeGutterNotes, { passive: true, signal: __ahkhSignal });
+ 
+   // DOM Text Range Search for Highlighting Restoration (Multi-occurrence & Overlap-Safe)
+   function findRangeForTextInElement(element, searchText) {
+@@ -1121,7 +1350,7 @@ window.__ahkhBootReader = function (vars) {
+ 
+     highlights.forEach(item => {
+       if (document.getElementById(item.id)) {
+-        if (item.note) renderGutterNote(item);
++        if (item.note) ensureGutterNoteElement(item);
+         return;
+       }
+ 
+@@ -1146,15 +1375,17 @@ window.__ahkhBootReader = function (vars) {
+           span.addEventListener('click', (ev) => {
+             ev.stopPropagation();
+             openHighlightOptions(item, span);
+-          });
++          }, { signal: __ahkhSignal });
+ 
+           if (item.note && (span.closest('#formatted-view') || span.closest('#transcript-view'))) {
+-            renderGutterNote(item);
++            ensureGutterNoteElement(item);
+           }
+           break;
+         }
+       }
+     });
++
++    scheduleCascadeGutterNotes();
+   }
+ 
+   // Render Highlights in Right Sidebar
+@@ -1538,6 +1769,10 @@ window.__ahkhBootReader = function (vars) {
+     applyCompactState();
+ 
+     if ('IntersectionObserver' in window) {
++      if (window.__ahkhVideoObserver) {
++        try { window.__ahkhVideoObserver.disconnect(); } catch (e) {}
++        window.__ahkhVideoObserver = null;
++      }
+       const observer = new IntersectionObserver((entries) => {
+         entries.forEach((entry) => {
+           isPastSentinel = !entry.isIntersecting && entry.boundingClientRect.top <= 75;
+@@ -1548,6 +1783,14 @@ window.__ahkhBootReader = function (vars) {
+         threshold: [0, 1]
+       });
+       observer.observe(sentinel);
++      window.__ahkhVideoObserver = observer;
++
++      __ahkhSignal.addEventListener('abort', () => {
++        try { observer.disconnect(); } catch (e) {}
++        if (window.__ahkhVideoObserver === observer) {
++          window.__ahkhVideoObserver = null;
++        }
++      }, { once: true });
+     }
+ 
+     window.addEventListener('scroll', () => {
+@@ -2050,6 +2293,47 @@ window.__ahkhBootReader = function (vars) {
+   initLesson();
+ };
+ 
++/* Session-persistent navigation teardown (ADR-027 / Milestone M3) */
++if (!window.__ahkhReaderSwapBound) {
++  window.__ahkhReaderSwapBound = true;
++  document.addEventListener('astro:before-swap', () => {
++    try {
++      if (window.__ahkhReaderAbort) {
++        window.__ahkhReaderAbort.abort();
++        window.__ahkhReaderAbort = null;
++      }
++    } catch (e) {}
++
++    try {
++      if (window.__ahkhYtPlayer && typeof window.__ahkhYtPlayer.destroy === 'function') {
++        window.__ahkhYtPlayer.destroy();
++      }
++    } catch (e) {}
++    window.__ahkhYtPlayer = null;
++
++    if (window.__ahkhYtTimer) {
++      try { clearInterval(window.__ahkhYtTimer); } catch (e) {}
++    }
++    window.__ahkhYtTimer = null;
++
++    if (window.__ahkhVideoObserver) {
++      try { window.__ahkhVideoObserver.disconnect(); } catch (e) {}
++    }
++    window.__ahkhVideoObserver = null;
++
++    window.__ahkhOutlineSpyBound = false;
++    window.__ahkhHashChangeBound = false;
++
++    var desk = document.getElementById('study-desk');
++    if (desk) {
++      delete desk.dataset.ahkhBooted;
++      if (typeof desk.removeAttribute === 'function') {
++        desk.removeAttribute('data-ahkh-booted');
++      }
++    }
++  });
++}
++
+ // Session-persistent navigation boot (module scope: the library file loads
+ // once per session, so this listener is registered exactly once and is never
+ // aborted). Fires on cold load and after every ClientRouter navigation;
+@@ -2060,3 +2344,12 @@ document.addEventListener('astro:page-load', () => {
+     if (desk && window.__ahkhBootReader) window.__ahkhBootReader(Object.assign({}, desk.dataset));
+   } catch (e) {}
+ });
++
++// Fallback self-boot check: if #study-desk is present in DOM upon script evaluation
++// and not yet booted, immediately boot the reader. Eliminates dynamic script load race condition.
++try {
++  var desk = document.getElementById('study-desk');
++  if (desk && !desk.dataset.ahkhBooted && typeof window.__ahkhBootReader === 'function') {
++    window.__ahkhBootReader(Object.assign({}, desk.dataset));
++  }
++} catch (e) {}
