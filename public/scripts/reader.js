@@ -535,54 +535,54 @@ window.__ahkhBootReader = function (vars) {
     return document.getElementById('formatted-view');
   }
 
-  // User-selected highlight colors (persisted last choice; stored per highlight)
-  const HL_COLORS = ['amber', 'emerald', 'teal', 'sky', 'violet', 'rose', 'graphite'];
-  const COLOR_HEX = {
-    amber: '#D97706',
-    emerald: '#059669',
-    teal: '#0D9488',
-    sky: '#0284C7',
-    violet: '#7C3AED',
-    rose: '#E11D48',
-    graphite: '#52525B',
+  // User-selected highlight colors (18 editorial tones, sovereign per-lesson preferences)
+  const HL_COLOR_META = {
+    amber: { name: 'Amber', subtitle: 'Warm Ochre', hex: '#D97706', hexDark: '#FBBF24', tint: 'rgba(217, 119, 6, 0.22)', tintDark: 'rgba(245, 158, 11, 0.28)' },
+    gold: { name: 'Gold', subtitle: 'Muted Brass', hex: '#CA8A04', hexDark: '#FACC15', tint: 'rgba(202, 138, 4, 0.22)', tintDark: 'rgba(250, 204, 21, 0.26)' },
+    copper: { name: 'Copper', subtitle: 'Rustic Clay', hex: '#C2410C', hexDark: '#FB923C', tint: 'rgba(194, 65, 12, 0.20)', tintDark: 'rgba(251, 146, 60, 0.26)' },
+    coral: { name: 'Coral', subtitle: 'Warm Sienna', hex: '#EA580C', hexDark: '#F97316', tint: 'rgba(234, 88, 12, 0.20)', tintDark: 'rgba(249, 115, 22, 0.26)' },
+    rose: { name: 'Rose', subtitle: 'Editorial Crimson', hex: '#E11D48', hexDark: '#FB7185', tint: 'rgba(225, 29, 72, 0.20)', tintDark: 'rgba(251, 113, 133, 0.28)' },
+    magenta: { name: 'Magenta', subtitle: 'Deep Orchid', hex: '#C026D3', hexDark: '#E879F9', tint: 'rgba(192, 38, 211, 0.20)', tintDark: 'rgba(232, 121, 249, 0.26)' },
+    violet: { name: 'Violet', subtitle: 'Royal Iris', hex: '#7C3AED', hexDark: '#A78BFA', tint: 'rgba(124, 58, 237, 0.20)', tintDark: 'rgba(167, 139, 250, 0.28)' },
+    purple: { name: 'Purple', subtitle: 'Classic Tyrian', hex: '#9333EA', hexDark: '#C084FC', tint: 'rgba(147, 51, 234, 0.20)', tintDark: 'rgba(192, 132, 252, 0.26)' },
+    cobalt: { name: 'Cobalt', subtitle: 'Signal Blue', hex: '#2563EB', hexDark: '#60A5FA', tint: 'rgba(37, 99, 235, 0.20)', tintDark: 'rgba(96, 165, 250, 0.26)' },
+    sky: { name: 'Sky', subtitle: 'Clear Cerulean', hex: '#0284C7', hexDark: '#38BDF8', tint: 'rgba(2, 132, 199, 0.20)', tintDark: 'rgba(56, 189, 248, 0.26)' },
+    cyan: { name: 'Cyan', subtitle: 'Nordic Aegean', hex: '#0891B2', hexDark: '#22D3EE', tint: 'rgba(8, 145, 178, 0.20)', tintDark: 'rgba(34, 211, 238, 0.26)' },
+    teal: { name: 'Teal', subtitle: 'Calm Mineral', hex: '#0D9488', hexDark: '#2DD4BF', tint: 'rgba(13, 148, 136, 0.20)', tintDark: 'rgba(45, 212, 191, 0.26)' },
+    emerald: { name: 'Emerald', subtitle: 'Deep Pine', hex: '#059669', hexDark: '#34D399', tint: 'rgba(5, 150, 105, 0.20)', tintDark: 'rgba(52, 211, 153, 0.26)' },
+    forest: { name: 'Forest', subtitle: 'Rich Viridian', hex: '#15803D', hexDark: '#4ADE80', tint: 'rgba(21, 128, 61, 0.20)', tintDark: 'rgba(74, 222, 128, 0.26)' },
+    olive: { name: 'Olive', subtitle: 'Vintage Moss', hex: '#65A30D', hexDark: '#A3E635', tint: 'rgba(101, 163, 13, 0.20)', tintDark: 'rgba(163, 230, 53, 0.26)' },
+    lime: { name: 'Lime', subtitle: 'Crisp Chartreuse', hex: '#84CC16', hexDark: '#BEF264', tint: 'rgba(132, 204, 22, 0.22)', tintDark: 'rgba(190, 242, 100, 0.26)' },
+    graphite: { name: 'Graphite', subtitle: 'Neutral Carbon', hex: '#52525B', hexDark: '#94A3B8', tint: 'rgba(82, 82, 91, 0.16)', tintDark: 'rgba(148, 163, 184, 0.22)' },
+    slate: { name: 'Slate', subtitle: 'Cool Basalt', hex: '#475569', hexDark: '#94A3B8', tint: 'rgba(71, 85, 105, 0.16)', tintDark: 'rgba(148, 163, 184, 0.22)' },
   };
-  const COLOR_HEX_DARK = {
-    amber: '#FBBF24',
-    emerald: '#34D399',
-    teal: '#2DD4BF',
-    sky: '#38BDF8',
-    violet: '#A78BFA',
-    rose: '#FB7185',
-    graphite: '#94A3B8',
-  };
-  const COLOR_TINT = {
-    amber: 'rgba(217, 119, 6, 0.22)',
-    emerald: 'rgba(5, 150, 105, 0.22)',
-    teal: 'rgba(13, 148, 136, 0.22)',
-    sky: 'rgba(2, 132, 199, 0.22)',
-    violet: 'rgba(124, 58, 237, 0.20)',
-    rose: 'rgba(225, 29, 72, 0.20)',
-    graphite: 'rgba(82, 82, 91, 0.16)',
-  };
-  const COLOR_TINT_DARK = {
-    amber: 'rgba(245, 158, 11, 0.28)',
-    emerald: 'rgba(52, 211, 153, 0.26)',
-    teal: 'rgba(45, 212, 191, 0.26)',
-    sky: 'rgba(56, 189, 248, 0.26)',
-    violet: 'rgba(167, 139, 250, 0.28)',
-    rose: 'rgba(251, 113, 133, 0.28)',
-    graphite: 'rgba(148, 163, 184, 0.22)',
-  };
-  const HL_COLOR_KEY = 'ahkh_hl_color';
+  const HL_COLORS = Object.keys(HL_COLOR_META);
+  const COLOR_HEX = {};
+  const COLOR_HEX_DARK = {};
+  const COLOR_TINT = {};
+  const COLOR_TINT_DARK = {};
+  for (const [k, v] of Object.entries(HL_COLOR_META)) {
+    COLOR_HEX[k] = v.hex;
+    COLOR_HEX_DARK[k] = v.hexDark;
+    COLOR_TINT[k] = v.tint;
+    COLOR_TINT_DARK[k] = v.tintDark;
+  }
+  const HL_COLOR_GLOBAL_KEY = 'ahkh_hl_color';
+  const HL_STYLE_GLOBAL_KEY = 'ahkh_hl_style';
+  const lessonColorKey = `ahkh_lesson_hl_color_${courseId}_${lessonId}`;
+  const lessonStyleKey = `ahkh_lesson_hl_style_${courseId}_${lessonId}`;
 
   function getHlColor() {
     try {
-      const c = AhkhStorage.get(HL_COLOR_KEY);
-      return HL_COLORS.includes(c) ? c : 'amber';
+      const lessonColor = AhkhStorage.get(lessonColorKey);
+      if (lessonColor && HL_COLOR_META[lessonColor]) return lessonColor;
+      const globalColor = AhkhStorage.get(HL_COLOR_GLOBAL_KEY);
+      if (globalColor && HL_COLOR_META[globalColor]) return globalColor;
+      return 'amber';
     } catch (e) { return 'amber'; }
   }
 
-  function hlClass(color) { return `ahkh-hl-${HL_COLORS.includes(color) ? color : 'amber'}`; }
+  function hlClass(color) { return `ahkh-hl-${HL_COLOR_META[color] ? color : 'amber'}`; }
 
   const fontSizes = {
     xs: { size: '0.92rem', lh: '1.7' },
@@ -681,12 +681,13 @@ window.__ahkhBootReader = function (vars) {
     'wash': { label: 'Soft Wash', badge: 'Wash' },
     'solid': { label: 'Solid Marker', badge: 'Solid' },
   };
-  const HL_STYLE_KEY = 'ahkh_hl_style';
-
   function getHlStyle() {
     try {
-      const s = AhkhStorage.get(HL_STYLE_KEY);
-      return HL_STYLES[s] ? s : 'tint';
+      const lessonStyle = AhkhStorage.get(lessonStyleKey);
+      if (lessonStyle && HL_STYLES[lessonStyle]) return lessonStyle;
+      const globalStyle = AhkhStorage.get(HL_STYLE_GLOBAL_KEY);
+      if (globalStyle && HL_STYLES[globalStyle]) return globalStyle;
+      return 'tint';
     } catch (e) { return 'tint'; }
   }
 
@@ -764,13 +765,30 @@ window.__ahkhBootReader = function (vars) {
       btn.classList.toggle('dark:bg-dark-border/60', isCur);
     });
 
-    if (persist) AhkhStorage.set(HL_STYLE_KEY, s);
-    if (activeExistingHighlight) {
-      activeExistingHighlight.style = s;
-      const span = document.getElementById(activeExistingHighlight.id);
-      if (span) {
-        span.className = `ahkh-highlight ${hlClass(activeExistingHighlight.color)} ${hlStyleClass(s)}`;
+    if (persist) {
+      try {
+        AhkhStorage.set(lessonStyleKey, s);
+        AhkhStorage.set(HL_STYLE_GLOBAL_KEY, s);
+      } catch (err) {}
+    }
+
+    // Unify all highlights in this lesson to the selected style
+    let changed = false;
+    highlights.forEach(h => {
+      if (h.style !== s) {
+        h.style = s;
+        changed = true;
       }
+    });
+
+    // Update all existing highlight spans in DOM
+    const allStyles = Object.keys(HL_STYLES);
+    document.querySelectorAll('.ahkh-highlight').forEach(span => {
+      allStyles.forEach(oldStyle => span.classList.remove(`ahkh-style-${oldStyle}`));
+      span.classList.add(hlStyleClass(s));
+    });
+
+    if (changed || persist) {
       saveHighlights();
     }
   }
@@ -780,10 +798,14 @@ window.__ahkhBootReader = function (vars) {
     const fBtn = document.getElementById('font-family-dropdown-btn');
     const sMenu = document.getElementById('hl-style-dropdown-menu');
     const sBtn = document.getElementById('hl-style-dropdown-btn');
+    const cMenu = document.getElementById('hl-color-dropdown-menu');
+    const cBtn = document.getElementById('hl-color-dropdown-btn');
     if (fMenu) fMenu.classList.add('hidden');
     if (fBtn) fBtn.setAttribute('aria-expanded', 'false');
     if (sMenu) sMenu.classList.add('hidden');
     if (sBtn) sBtn.setAttribute('aria-expanded', 'false');
+    if (cMenu) cMenu.classList.add('hidden');
+    if (cBtn) cBtn.setAttribute('aria-expanded', 'false');
   }
 
   function initSettingsDropdowns() {
@@ -791,6 +813,8 @@ window.__ahkhBootReader = function (vars) {
     const fMenu = document.getElementById('font-family-dropdown-menu');
     const sBtn = document.getElementById('hl-style-dropdown-btn');
     const sMenu = document.getElementById('hl-style-dropdown-menu');
+    const cBtn = document.getElementById('hl-color-dropdown-btn');
+    const cMenu = document.getElementById('hl-color-dropdown-menu');
 
     if (fBtn && !fBtn.dataset.bound) {
       fBtn.dataset.bound = 'true';
@@ -818,6 +842,19 @@ window.__ahkhBootReader = function (vars) {
       }, { signal: __ahkhSignal });
     }
 
+    if (cBtn && !cBtn.dataset.bound) {
+      cBtn.dataset.bound = 'true';
+      cBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isClosed = cMenu?.classList.contains('hidden');
+        closeAllSettingsDropdowns();
+        if (isClosed && cMenu) {
+          cMenu.classList.remove('hidden');
+          cBtn.setAttribute('aria-expanded', 'true');
+        }
+      }, { signal: __ahkhSignal });
+    }
+
     document.querySelectorAll('.font-family-btn').forEach(btn => {
       if (btn.dataset.bound) return;
       btn.dataset.bound = 'true';
@@ -840,12 +877,24 @@ window.__ahkhBootReader = function (vars) {
       }, { signal: __ahkhSignal });
     });
 
+    document.querySelectorAll('.hl-color-opt-btn').forEach(btn => {
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = 'true';
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const colorId = btn.getAttribute('data-hl-color');
+        if (colorId) applyHlColor(colorId, true);
+        closeAllSettingsDropdowns();
+      }, { signal: __ahkhSignal });
+    });
+
     // Close settings dropdowns when clicking anywhere outside them
     document.addEventListener('click', (e) => {
       const target = e.target;
       const isInsideFont = (fMenu && fMenu.contains(target)) || (fBtn && fBtn.contains(target));
       const isInsideStyle = (sMenu && sMenu.contains(target)) || (sBtn && sBtn.contains(target));
-      if (!isInsideFont && !isInsideStyle) {
+      const isInsideColor = (cMenu && cMenu.contains(target)) || (cBtn && cBtn.contains(target));
+      if (!isInsideFont && !isInsideStyle && !isInsideColor) {
         closeAllSettingsDropdowns();
       }
     }, { signal: __ahkhSignal });
@@ -1112,7 +1161,8 @@ window.__ahkhBootReader = function (vars) {
   function paintHlSwatches() {
     const isDark = document.documentElement.classList.contains('dark');
     const cur = getHlColor();
-    const activeColorHex = (isDark ? COLOR_HEX_DARK[cur] : COLOR_HEX[cur]) || '#D97706';
+    const meta = HL_COLOR_META[cur] || HL_COLOR_META.amber;
+    const activeColorHex = (isDark ? meta.hexDark : meta.hex) || '#D97706';
 
     const popIcon = document.getElementById('popover-hl-icon');
     if (popIcon && !activeExistingHighlight) {
@@ -1125,12 +1175,33 @@ window.__ahkhBootReader = function (vars) {
     const nameBadge = document.getElementById('hl-color-name-badge');
     if (nameBadge) nameBadge.textContent = cur;
 
+    const colorLabel = document.getElementById('hl-color-label');
+    if (colorLabel) colorLabel.textContent = meta.name;
+
+    const colorIcon = document.getElementById('hl-color-icon-preview');
+    if (colorIcon) colorIcon.style.background = activeColorHex;
+
     updateHlStylePreviews(cur, getHlStyle());
+
+    // Update active state in color dropdown options
+    document.querySelectorAll('.hl-color-opt-btn').forEach((b) => {
+      const colorKey = b.getAttribute('data-hl-color');
+      const on = colorKey === cur;
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.classList.toggle('bg-paper-200/60', on);
+      b.classList.toggle('dark:bg-dark-border/60', on);
+
+      const swatch = b.querySelector('.hl-color-menu-dot');
+      if (swatch && colorKey && HL_COLOR_META[colorKey]) {
+        const itemHex = isDark ? HL_COLOR_META[colorKey].hexDark : HL_COLOR_META[colorKey].hex;
+        swatch.style.background = itemHex;
+      }
+    });
 
     document.querySelectorAll('.hl-swatch, .hl-settings-swatch').forEach((b) => {
       const colorKey = b.getAttribute('data-hl-color');
-      if (colorKey) {
-        const hex = (isDark ? COLOR_HEX_DARK[colorKey] : COLOR_HEX[colorKey]) || COLOR_HEX[colorKey];
+      if (colorKey && HL_COLOR_META[colorKey]) {
+        const hex = (isDark ? HL_COLOR_META[colorKey].hexDark : HL_COLOR_META[colorKey].hex) || HL_COLOR_META[colorKey].hex;
         if (hex) b.style.background = hex;
       }
 
@@ -1159,26 +1230,37 @@ window.__ahkhBootReader = function (vars) {
   }
 
   function applyHlColor(c, persist = true) {
-    const color = HL_COLORS.includes(c) ? c : 'amber';
+    const color = HL_COLOR_META[c] ? c : 'amber';
     if (persist) {
       try {
-        const store = window.AhkhStorage || AhkhStorage;
-        store.set(HL_COLOR_KEY, color);
+        AhkhStorage.set(lessonColorKey, color);
+        AhkhStorage.set(HL_COLOR_GLOBAL_KEY, color);
       } catch (err) {}
     }
     paintHlSwatches();
     const isDark = document.documentElement.classList.contains('dark');
-    const activeColorHex = (isDark ? COLOR_HEX_DARK[color] : COLOR_HEX[color]) || '#D97706';
+    const activeColorHex = (isDark ? HL_COLOR_META[color].hexDark : HL_COLOR_META[color].hex) || '#D97706';
     const popIcon = document.getElementById('popover-hl-icon');
     if (popIcon && !activeExistingHighlight) {
       popIcon.style.color = activeColorHex;
     }
-    if (activeExistingHighlight) {
-      activeExistingHighlight.color = color;
-      const span = document.getElementById(activeExistingHighlight.id);
-      if (span) {
-        span.className = `ahkh-highlight ${hlClass(color)} ${hlStyleClass(activeExistingHighlight.style || getHlStyle())}`;
+
+    // Unify all highlights in this lesson to the selected color
+    let changed = false;
+    highlights.forEach(h => {
+      if (h.color !== color) {
+        h.color = color;
+        changed = true;
       }
+    });
+
+    // Update all existing highlight spans in DOM
+    document.querySelectorAll('.ahkh-highlight').forEach(span => {
+      HL_COLORS.forEach(oldCol => span.classList.remove(`ahkh-hl-${oldCol}`));
+      span.classList.add(hlClass(color));
+    });
+
+    if (changed || persist) {
       saveHighlights();
     }
   }
@@ -1909,6 +1991,7 @@ window.__ahkhBootReader = function (vars) {
   function renderSidebarHighlights() {
     const listEl = document.getElementById('sidebar-highlights-list');
     if (!listEl) return;
+    const isDark = document.documentElement.classList.contains('dark');
 
     let itemsToDisplay = highlights;
     if (sidebarFilter === 'notes') {
@@ -1930,14 +2013,16 @@ window.__ahkhBootReader = function (vars) {
       return;
     }
 
-    listEl.innerHTML = itemsToDisplay.map((item, idx) => `
+    listEl.innerHTML = itemsToDisplay.map((item, idx) => {
+      const itemHex = (isDark ? COLOR_HEX_DARK[item.color] : COLOR_HEX[item.color]) || COLOR_HEX[item.color] || '#D97706';
+      return `
       <article 
         class="sidebar-hl-card relative p-2.5 sm:p-3 rounded-xs border border-ink-border/80 dark:border-dark-border bg-white dark:bg-dark-card hover:bg-paper-50 dark:hover:bg-dark-surface transition-colors duration-150 cursor-pointer group shadow-2xs ${hlClass(item.color)} ${hlStyleClass(item.style || 'tint')}"
         onclick="jumpToHighlight('${item.id}')"
       >
         <div class="flex items-center justify-between gap-2 mb-1.5 text-[10px] font-mono text-ink-muted dark:text-dark-muted">
           <span class="font-medium flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full" style="background:${COLOR_HEX[item.color] || '#D97706'}"></span>
+            <span class="w-1.5 h-1.5 rounded-full" style="background:${itemHex}"></span>
             <span>${item.timestamp ? new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : `#${idx + 1}`}</span>
           </span>
           
@@ -1999,7 +2084,8 @@ window.__ahkhBootReader = function (vars) {
           </div>
         ` : ''}
       </article>
-    `).join('');
+      `;
+    }).join('');
   }
 
   window.copySidebarHighlight = function(id) {
@@ -2815,6 +2901,28 @@ window.__ahkhBootReader = function (vars) {
     updateHeaderCount();
     initSettingsDropdowns();
     initSidebarFilter();
+
+    // Reconcile and unify all highlights for this lesson to active sovereign color and style
+    const initialColor = getHlColor();
+    const initialStyle = getHlStyle();
+    applyHlColor(initialColor, false);
+    applyHlStyle(initialStyle, false);
+
+    let reconciled = false;
+    highlights.forEach(h => {
+      if (h.color !== initialColor) {
+        h.color = initialColor;
+        reconciled = true;
+      }
+      if ((h.style || 'tint') !== initialStyle) {
+        h.style = initialStyle;
+        reconciled = true;
+      }
+    });
+    if (reconciled) {
+      AhkhStorage.set(storageKey, JSON.stringify(highlights));
+    }
+
     renderSidebarHighlights();
     restoreHighlightsInDOM();
     initCompletionToggle();

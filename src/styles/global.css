@@ -548,21 +548,43 @@
 ::selection { background-color: #18181B !important; color: #FFFFFF !important; }
 .dark ::selection { background-color: #F4F4F5 !important; color: #09090B !important; }
 
-/* User-selected highlight colors (tone-calibrated per theme, 7 signal hues) */
+/* User-selected highlight colors (tone-calibrated per theme, expanded 18 editorial tones) */
 .ahkh-hl-amber { --hl-bg: rgba(245, 158, 11, 0.30); --hl-rule: #D97706; }
 .dark .ahkh-hl-amber { --hl-bg: rgba(245, 158, 11, 0.28); --hl-rule: #FBBF24; }
-.ahkh-hl-emerald { --hl-bg: rgba(5, 150, 105, 0.22); --hl-rule: #059669; }
-.dark .ahkh-hl-emerald { --hl-bg: rgba(52, 211, 153, 0.26); --hl-rule: #34D399; }
-.ahkh-hl-teal { --hl-bg: rgba(13, 148, 136, 0.22); --hl-rule: #0D9488; }
-.dark .ahkh-hl-teal { --hl-bg: rgba(45, 212, 191, 0.26); --hl-rule: #2DD4BF; }
-.ahkh-hl-sky { --hl-bg: rgba(2, 132, 199, 0.22); --hl-rule: #0284C7; }
-.dark .ahkh-hl-sky { --hl-bg: rgba(56, 189, 248, 0.26); --hl-rule: #38BDF8; }
-.ahkh-hl-violet { --hl-bg: rgba(124, 58, 237, 0.20); --hl-rule: #7C3AED; }
-.dark .ahkh-hl-violet { --hl-bg: rgba(167, 139, 250, 0.28); --hl-rule: #A78BFA; }
+.ahkh-hl-gold { --hl-bg: rgba(202, 138, 4, 0.26); --hl-rule: #CA8A04; }
+.dark .ahkh-hl-gold { --hl-bg: rgba(250, 204, 21, 0.26); --hl-rule: #FACC15; }
+.ahkh-hl-copper { --hl-bg: rgba(194, 65, 12, 0.22); --hl-rule: #C2410C; }
+.dark .ahkh-hl-copper { --hl-bg: rgba(251, 146, 60, 0.26); --hl-rule: #FB923C; }
+.ahkh-hl-coral { --hl-bg: rgba(234, 88, 12, 0.22); --hl-rule: #EA580C; }
+.dark .ahkh-hl-coral { --hl-bg: rgba(249, 115, 22, 0.26); --hl-rule: #F97316; }
 .ahkh-hl-rose { --hl-bg: rgba(225, 29, 72, 0.20); --hl-rule: #E11D48; }
 .dark .ahkh-hl-rose { --hl-bg: rgba(251, 113, 133, 0.28); --hl-rule: #FB7185; }
+.ahkh-hl-magenta { --hl-bg: rgba(192, 38, 211, 0.20); --hl-rule: #C026D3; }
+.dark .ahkh-hl-magenta { --hl-bg: rgba(232, 121, 249, 0.26); --hl-rule: #E879F9; }
+.ahkh-hl-violet { --hl-bg: rgba(124, 58, 237, 0.20); --hl-rule: #7C3AED; }
+.dark .ahkh-hl-violet { --hl-bg: rgba(167, 139, 250, 0.28); --hl-rule: #A78BFA; }
+.ahkh-hl-purple { --hl-bg: rgba(147, 51, 234, 0.20); --hl-rule: #9333EA; }
+.dark .ahkh-hl-purple { --hl-bg: rgba(192, 132, 252, 0.26); --hl-rule: #C084FC; }
+.ahkh-hl-cobalt { --hl-bg: rgba(37, 99, 235, 0.22); --hl-rule: #2563EB; }
+.dark .ahkh-hl-cobalt { --hl-bg: rgba(96, 165, 250, 0.26); --hl-rule: #60A5FA; }
+.ahkh-hl-sky { --hl-bg: rgba(2, 132, 199, 0.22); --hl-rule: #0284C7; }
+.dark .ahkh-hl-sky { --hl-bg: rgba(56, 189, 248, 0.26); --hl-rule: #38BDF8; }
+.ahkh-hl-cyan { --hl-bg: rgba(8, 145, 178, 0.22); --hl-rule: #0891B2; }
+.dark .ahkh-hl-cyan { --hl-bg: rgba(34, 211, 238, 0.26); --hl-rule: #22D3EE; }
+.ahkh-hl-teal { --hl-bg: rgba(13, 148, 136, 0.22); --hl-rule: #0D9488; }
+.dark .ahkh-hl-teal { --hl-bg: rgba(45, 212, 191, 0.26); --hl-rule: #2DD4BF; }
+.ahkh-hl-emerald { --hl-bg: rgba(5, 150, 105, 0.22); --hl-rule: #059669; }
+.dark .ahkh-hl-emerald { --hl-bg: rgba(52, 211, 153, 0.26); --hl-rule: #34D399; }
+.ahkh-hl-forest { --hl-bg: rgba(21, 128, 61, 0.22); --hl-rule: #15803D; }
+.dark .ahkh-hl-forest { --hl-bg: rgba(74, 222, 128, 0.26); --hl-rule: #4ADE80; }
+.ahkh-hl-olive { --hl-bg: rgba(101, 163, 13, 0.22); --hl-rule: #65A30D; }
+.dark .ahkh-hl-olive { --hl-bg: rgba(163, 230, 53, 0.26); --hl-rule: #A3E635; }
+.ahkh-hl-lime { --hl-bg: rgba(132, 204, 22, 0.24); --hl-rule: #84CC16; }
+.dark .ahkh-hl-lime { --hl-bg: rgba(190, 242, 100, 0.26); --hl-rule: #BEF264; }
 .ahkh-hl-graphite { --hl-bg: rgba(82, 82, 91, 0.16); --hl-rule: #52525B; }
 .dark .ahkh-hl-graphite { --hl-bg: rgba(148, 163, 184, 0.22); --hl-rule: #94A3B8; }
+.ahkh-hl-slate { --hl-bg: rgba(71, 85, 105, 0.16); --hl-rule: #475569; }
+.dark .ahkh-hl-slate { --hl-bg: rgba(148, 163, 184, 0.22); --hl-rule: #94A3B8; }
 
 /* Right Sidebar High-Density Highlight Cards */
 .sidebar-hl-card {

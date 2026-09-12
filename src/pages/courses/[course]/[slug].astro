@@ -408,19 +408,231 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
         </button>
       </div>
 
-      <!-- Default Color Palette -->
-      <div>
+      <!-- Highlight Color Dropdown -->
+      <div class="relative">
         <div class="mb-1.5">
-          <span class="font-medium text-[11px] text-ink dark:text-dark-ink">Default Color</span>
+          <span class="font-medium text-[11px] text-ink dark:text-dark-ink">Highlight Color</span>
         </div>
-        <div class="flex items-center justify-between p-1.5 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60" role="radiogroup" aria-label="Default highlight color">
-          <button type="button" data-hl-color="amber" title="Amber" aria-label="Amber" class="hl-settings-swatch w-6 h-6 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center shrink-0" style="background:#D97706"></button>
-          <button type="button" data-hl-color="emerald" title="Emerald" aria-label="Emerald" class="hl-settings-swatch w-6 h-6 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center shrink-0" style="background:#059669"></button>
-          <button type="button" data-hl-color="teal" title="Teal" aria-label="Teal" class="hl-settings-swatch w-6 h-6 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center shrink-0" style="background:#0D9488"></button>
-          <button type="button" data-hl-color="sky" title="Sky" aria-label="Sky" class="hl-settings-swatch w-6 h-6 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center shrink-0" style="background:#0284C7"></button>
-          <button type="button" data-hl-color="violet" title="Violet" aria-label="Violet" class="hl-settings-swatch w-6 h-6 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center shrink-0" style="background:#7C3AED"></button>
-          <button type="button" data-hl-color="rose" title="Rose" aria-label="Rose" class="hl-settings-swatch w-6 h-6 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center shrink-0" style="background:#E11D48"></button>
-          <button type="button" data-hl-color="graphite" title="Graphite" aria-label="Graphite" class="hl-settings-swatch w-6 h-6 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center shrink-0" style="background:#52525B"></button>
+        <button
+          type="button"
+          id="hl-color-dropdown-btn"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          class="w-full py-2 px-3 rounded-xs border border-ink-border dark:border-dark-border bg-white dark:bg-dark-bg text-ink dark:text-dark-ink hover:bg-paper-100 dark:hover:bg-dark-card transition-colors duration-150 cursor-pointer flex items-center justify-between shadow-2xs text-left"
+        >
+          <div class="flex items-center gap-2 truncate">
+            <span id="hl-color-icon-preview" class="w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #D97706;"></span>
+            <span id="hl-color-label" class="font-ui text-xs font-medium truncate">Amber</span>
+          </div>
+          <svg class="w-3.5 h-3.5 text-ink-muted dark:text-dark-muted dropdown-chevron shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+
+        <!-- Color Dropdown Menu -->
+        <div
+          id="hl-color-dropdown-menu"
+          role="listbox"
+          class="hidden absolute top-full left-0 right-0 mt-1 z-30 p-1 rounded-xs border border-ink-border dark:border-dark-border bg-white dark:bg-dark-card shadow-lg max-h-60 overflow-y-auto space-y-0.5"
+        >
+          <button
+            data-hl-color="amber"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #D97706;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Amber</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Warm Ochre</span>
+          </button>
+          <button
+            data-hl-color="gold"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #CA8A04;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Gold</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Muted Brass</span>
+          </button>
+          <button
+            data-hl-color="copper"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #C2410C;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Copper</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Rustic Clay</span>
+          </button>
+          <button
+            data-hl-color="coral"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #EA580C;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Coral</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Warm Sienna</span>
+          </button>
+          <button
+            data-hl-color="rose"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #E11D48;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Rose</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Editorial Crimson</span>
+          </button>
+          <button
+            data-hl-color="magenta"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #C026D3;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Magenta</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Deep Orchid</span>
+          </button>
+          <button
+            data-hl-color="violet"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #7C3AED;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Violet</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Royal Iris</span>
+          </button>
+          <button
+            data-hl-color="purple"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #9333EA;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Purple</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Classic Tyrian</span>
+          </button>
+          <button
+            data-hl-color="cobalt"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #2563EB;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Cobalt</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Signal Blue</span>
+          </button>
+          <button
+            data-hl-color="sky"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #0284C7;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Sky</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Clear Cerulean</span>
+          </button>
+          <button
+            data-hl-color="cyan"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #0891B2;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Cyan</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Nordic Aegean</span>
+          </button>
+          <button
+            data-hl-color="teal"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #0D9488;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Teal</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Calm Mineral</span>
+          </button>
+          <button
+            data-hl-color="emerald"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #059669;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Emerald</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Deep Pine</span>
+          </button>
+          <button
+            data-hl-color="forest"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #15803D;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Forest</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Rich Viridian</span>
+          </button>
+          <button
+            data-hl-color="olive"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #65A30D;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Olive</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Vintage Moss</span>
+          </button>
+          <button
+            data-hl-color="lime"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #84CC16;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Lime</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Crisp Chartreuse</span>
+          </button>
+          <button
+            data-hl-color="graphite"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #52525B;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Graphite</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Neutral Carbon</span>
+          </button>
+          <button
+            data-hl-color="slate"
+            role="option"
+            class="hl-color-opt-btn w-full py-2 px-2.5 rounded-xs text-left transition-colors duration-150 cursor-pointer flex items-center justify-between"
+          >
+            <div class="flex items-center gap-2">
+              <span class="hl-color-menu-dot w-3.5 h-3.5 rounded-full border border-ink-border dark:border-dark-border shrink-0" style="background: #475569;"></span>
+              <span class="text-xs font-medium text-ink dark:text-dark-ink">Slate</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted dark:text-dark-muted">Cool Basalt</span>
+          </button>
         </div>
       </div>
     </div>
