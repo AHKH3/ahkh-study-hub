@@ -417,13 +417,13 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
           <span class="font-medium text-[11px] text-ink dark:text-dark-ink">Default Color</span>
         </div>
         <div class="flex items-center justify-between p-1.5 rounded-xs bg-paper-200/50 dark:bg-dark-bg/80 border border-ink-border/60 dark:border-dark-border/60" role="radiogroup" aria-label="Default highlight color">
-          <button data-hl-color="amber" title="Amber" aria-label="Amber" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center" style="background:#D97706"></button>
-          <button data-hl-color="emerald" title="Emerald" aria-label="Emerald" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center" style="background:#059669"></button>
-          <button data-hl-color="teal" title="Teal" aria-label="Teal" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center" style="background:#0D9488"></button>
-          <button data-hl-color="sky" title="Sky" aria-label="Sky" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center" style="background:#0284C7"></button>
-          <button data-hl-color="violet" title="Violet" aria-label="Violet" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center" style="background:#7C3AED"></button>
-          <button data-hl-color="rose" title="Rose" aria-label="Rose" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center" style="background:#E11D48"></button>
-          <button data-hl-color="graphite" title="Graphite" aria-label="Graphite" class="hl-settings-swatch w-5 h-5 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center" style="background:#52525B"></button>
+          <button type="button" data-hl-color="amber" title="Amber" aria-label="Amber" class="hl-settings-swatch w-6 h-6 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center shrink-0" style="background:#D97706"></button>
+          <button type="button" data-hl-color="emerald" title="Emerald" aria-label="Emerald" class="hl-settings-swatch w-6 h-6 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center shrink-0" style="background:#059669"></button>
+          <button type="button" data-hl-color="teal" title="Teal" aria-label="Teal" class="hl-settings-swatch w-6 h-6 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center shrink-0" style="background:#0D9488"></button>
+          <button type="button" data-hl-color="sky" title="Sky" aria-label="Sky" class="hl-settings-swatch w-6 h-6 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center shrink-0" style="background:#0284C7"></button>
+          <button type="button" data-hl-color="violet" title="Violet" aria-label="Violet" class="hl-settings-swatch w-6 h-6 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center shrink-0" style="background:#7C3AED"></button>
+          <button type="button" data-hl-color="rose" title="Rose" aria-label="Rose" class="hl-settings-swatch w-6 h-6 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center shrink-0" style="background:#E11D48"></button>
+          <button type="button" data-hl-color="graphite" title="Graphite" aria-label="Graphite" class="hl-settings-swatch w-6 h-6 rounded-full border border-ink-border dark:border-dark-border cursor-pointer transition-transform duration-150 flex items-center justify-center shrink-0" style="background:#52525B"></button>
         </div>
       </div>
     </div>
@@ -872,13 +872,14 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
   >
     <!-- Primary Instant Highlight Button -->
     <button 
+      type="button"
       id="popover-hl-btn"
       title="Highlight selection"
       aria-label="Highlight selection"
-      class="w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer"
+      class="w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer select-none"
     >
-      <span id="popover-hl-icon" class="flex items-center" style="color: #D97706;">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <span id="popover-hl-icon" class="flex items-center pointer-events-none">
+        <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="m9 11-6 6v3h9l3-3"/>
           <path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/>
         </svg>
@@ -890,24 +891,26 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
 
     <!-- Note & Copy Buttons -->
     <button 
+      type="button"
       id="popover-note-btn"
-      class="w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer"
+      class="w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer select-none"
       title="Add or Edit Sidenote"
       aria-label="Add or edit sidenote"
     >
-      <svg class="w-4 h-4 text-ink-muted dark:text-dark-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <svg class="w-4 h-4 text-ink-muted dark:text-dark-muted pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M12 20h9"/>
         <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
       </svg>
     </button>
     <button 
+      type="button"
       id="popover-copy-btn"
-      class="w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer"
+      class="w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer select-none"
       title="Copy Quote with Citation"
       aria-label="Copy quote with citation"
     >
-      <span id="popover-copy-icon" class="flex items-center">
-        <svg class="w-4 h-4 text-ink-muted dark:text-dark-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <span id="popover-copy-icon" class="flex items-center pointer-events-none">
+        <svg class="w-4 h-4 text-ink-muted dark:text-dark-muted pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
           <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
         </svg>

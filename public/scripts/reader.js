@@ -840,6 +840,16 @@ window.__ahkhBootReader = function (vars) {
       }, { signal: __ahkhSignal });
     });
 
+    // Close settings dropdowns when clicking anywhere outside them
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      const isInsideFont = (fMenu && fMenu.contains(target)) || (fBtn && fBtn.contains(target));
+      const isInsideStyle = (sMenu && sMenu.contains(target)) || (sBtn && sBtn.contains(target));
+      if (!isInsideFont && !isInsideStyle) {
+        closeAllSettingsDropdowns();
+      }
+    }, { signal: __ahkhSignal });
+
     initFontSizeSlider();
   }
 
@@ -917,6 +927,7 @@ window.__ahkhBootReader = function (vars) {
   // Popover toggle
   function closeDisplayMenu() {
     if (!displayMenu || displayMenu.classList.contains('hidden')) return;
+    closeAllSettingsDropdowns();
     displayMenu.classList.add('hidden');
     displayBtn?.setAttribute('aria-expanded', 'false');
     displayBtn?.classList.remove('bg-paper-200/90', 'dark:bg-dark-border/80', 'text-ink', 'dark:text-dark-ink');
@@ -1064,14 +1075,14 @@ window.__ahkhBootReader = function (vars) {
 
     if (mode === 'remove') {
       if (popoverHlBtn) {
-        popoverHlBtn.className = 'popover-btn-remove w-8 h-8 rounded-xs flex items-center justify-center transition-colors cursor-pointer';
+        popoverHlBtn.className = 'popover-btn-remove w-8 h-8 rounded-xs flex items-center justify-center transition-colors cursor-pointer select-none';
         popoverHlBtn.setAttribute('title', 'Remove highlight');
         popoverHlBtn.setAttribute('aria-label', 'Remove highlight');
       }
       if (hlIcon) {
         hlIcon.style.color = '';
         hlIcon.innerHTML = `
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 6 6 18M6 6l12 12"/>
           </svg>
         `;
@@ -1080,14 +1091,14 @@ window.__ahkhBootReader = function (vars) {
       activeExistingHighlight = highlightItem;
     } else {
       if (popoverHlBtn) {
-        popoverHlBtn.className = 'w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer';
+        popoverHlBtn.className = 'w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer select-none';
         popoverHlBtn.setAttribute('title', 'Highlight selection');
         popoverHlBtn.setAttribute('aria-label', 'Highlight selection');
       }
       if (hlIcon) {
         hlIcon.style.color = activeColorHex;
         hlIcon.innerHTML = `
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m9 11-6 6v3h9l3-3"/>
             <path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/>
           </svg>
@@ -1150,9 +1161,18 @@ window.__ahkhBootReader = function (vars) {
   function applyHlColor(c, persist = true) {
     const color = HL_COLORS.includes(c) ? c : 'amber';
     if (persist) {
-      try { AhkhStorage.set(HL_COLOR_KEY, color); } catch (err) {}
+      try {
+        const store = window.AhkhStorage || AhkhStorage;
+        store.set(HL_COLOR_KEY, color);
+      } catch (err) {}
     }
     paintHlSwatches();
+    const isDark = document.documentElement.classList.contains('dark');
+    const activeColorHex = (isDark ? COLOR_HEX_DARK[color] : COLOR_HEX[color]) || '#D97706';
+    const popIcon = document.getElementById('popover-hl-icon');
+    if (popIcon && !activeExistingHighlight) {
+      popIcon.style.color = activeColorHex;
+    }
     if (activeExistingHighlight) {
       activeExistingHighlight.color = color;
       const span = document.getElementById(activeExistingHighlight.id);
@@ -1170,7 +1190,9 @@ window.__ahkhBootReader = function (vars) {
       b.dataset.bound = 'true';
       b.addEventListener('click', (e) => {
         e.stopPropagation();
-        const c = b.getAttribute('data-hl-color') || 'amber';
+        closeAllSettingsDropdowns();
+        const target = e.target.closest('[data-hl-color]') || b;
+        const c = target.getAttribute('data-hl-color') || 'amber';
         applyHlColor(c, true);
       }, { signal: __ahkhSignal });
     });
@@ -1351,6 +1373,12 @@ window.__ahkhBootReader = function (vars) {
 
   // Create highlight from current text selection
   function createHighlightFromSelection() {
+    if (!currentSelectionRange) {
+      const sel = window.getSelection();
+      if (sel && !sel.isCollapsed && sel.rangeCount > 0) {
+        currentSelectionRange = sel.getRangeAt(0).cloneRange();
+      }
+    }
     if (!currentSelectionRange) return null;
     const selectedText = currentSelectionRange.toString().trim();
     if (!selectedText) return null;
@@ -1420,30 +1448,63 @@ window.__ahkhBootReader = function (vars) {
     popover?.classList.remove('hidden');
   }
 
+  // Prevent clicks inside popover from collapsing selection before click fires
+  popover?.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+  }, { signal: __ahkhSignal });
+
   // Popover buttons
-  popoverHlBtn?.addEventListener('click', () => {
+  popoverHlBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (activeExistingHighlight) {
       removeHighlight(activeExistingHighlight.id);
       hidePopover();
-    } else if (currentSelectionRange) {
-      createHighlightFromSelection();
-    }
-  }, { signal: __ahkhSignal });
-
-  popoverNoteBtn?.addEventListener('click', () => {
-    if (activeExistingHighlight) {
-      const h = activeExistingHighlight;
-      hidePopover();
-      openNoteModal(h.id, h.text, h.note || '');
-    } else if (currentSelectionRange) {
-      const created = createHighlightFromSelection();
-      if (created) {
-        openNoteModal(created.id, created.text, '');
+    } else {
+      if (!currentSelectionRange) {
+        const sel = window.getSelection();
+        if (sel && !sel.isCollapsed && sel.rangeCount > 0) {
+          currentSelectionRange = sel.getRangeAt(0).cloneRange();
+        }
+      }
+      if (currentSelectionRange) {
+        createHighlightFromSelection();
       }
     }
   }, { signal: __ahkhSignal });
 
-  popoverCopyBtn?.addEventListener('click', () => {
+  popoverNoteBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (activeExistingHighlight) {
+      const h = activeExistingHighlight;
+      hidePopover();
+      openNoteModal(h.id, h.text, h.note || '');
+    } else {
+      if (!currentSelectionRange) {
+        const sel = window.getSelection();
+        if (sel && !sel.isCollapsed && sel.rangeCount > 0) {
+          currentSelectionRange = sel.getRangeAt(0).cloneRange();
+        }
+      }
+      if (currentSelectionRange) {
+        const created = createHighlightFromSelection();
+        if (created) {
+          openNoteModal(created.id, created.text, '');
+        }
+      }
+    }
+  }, { signal: __ahkhSignal });
+
+  popoverCopyBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!currentSelectionRange) {
+      const sel = window.getSelection();
+      if (sel && !sel.isCollapsed && sel.rangeCount > 0) {
+        currentSelectionRange = sel.getRangeAt(0).cloneRange();
+      }
+    }
     const textToCopy = activeExistingHighlight 
       ? activeExistingHighlight.text 
       : (currentSelectionRange ? currentSelectionRange.toString().trim() : '');
