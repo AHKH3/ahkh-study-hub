@@ -235,7 +235,43 @@ for (const file of files) {
 console.log(`CSS token errors: ${cssErrors}`);
 console.log(`Reader library errors: ${readerErrors}`);
 
-if (linkErrors === 0 && emojiErrors === 0 && slashSlashErrors === 0 && contrastErrors === 0 && motionErrors === 0 && fontErrors === 0 && colorErrors === 0 && tokenErrors === 0 && cssErrors === 0 && readerErrors === 0) {
+// Check 12: Page & asset weight budgets — fail before the next 6MB-image
+// catastrophe ships silently. Budgets (measured 2026-09-12: heaviest lesson
+// 188KB, journey index 179KB, heaviest image 120KB):
+//   lesson pages  <= 250KB, index pages <= 300KB, images <= 200KB.
+let weightErrors = 0;
+const LESSON_BUDGET = 250 * 1024;
+const INDEX_BUDGET = 300 * 1024;
+const IMAGE_BUDGET = 200 * 1024;
+for (const file of files) {
+  const relPath = path.relative(distDir, file);
+  const size = fs.statSync(file).size;
+  const depth = relPath.split(path.sep).length;
+  const isLesson = relPath.startsWith(`courses${path.sep}`) && depth > 3;
+  const budget = isLesson ? LESSON_BUDGET : INDEX_BUDGET;
+  if (size > budget) {
+    console.error(`[WEIGHT BUDGET] ${relPath} is ${Math.round(size / 1024)}KB (budget ${Math.round(budget / 1024)}KB) — split content or compress assets`);
+    weightErrors++;
+  }
+}
+function walkAssets(dir) {
+  if (!fs.existsSync(dir)) return;
+  for (const item of fs.readdirSync(dir)) {
+    const full = path.join(dir, item);
+    if (fs.statSync(full).isDirectory()) { walkAssets(full); continue; }
+    if (/\.(png|jpe?g|webp|gif|avif|svg|ico)$/i.test(item)) {
+      const size = fs.statSync(full).size;
+      if (size > IMAGE_BUDGET) {
+        console.error(`[WEIGHT BUDGET] ${path.relative(distDir, full)} is ${Math.round(size / 1024)}KB (budget ${Math.round(IMAGE_BUDGET / 1024)}KB) — convert to capped-width WebP with loading="lazy"`);
+        weightErrors++;
+      }
+    }
+  }
+}
+walkAssets(distDir);
+console.log(`Weight budget errors: ${weightErrors}`);
+
+if (linkErrors === 0 && emojiErrors === 0 && slashSlashErrors === 0 && contrastErrors === 0 && motionErrors === 0 && fontErrors === 0 && colorErrors === 0 && tokenErrors === 0 && cssErrors === 0 && readerErrors === 0 && weightErrors === 0) {
   console.log('SUCCESS: All generated pages comply 100% with constitutional standards!');
   process.exit(0);
 } else {
