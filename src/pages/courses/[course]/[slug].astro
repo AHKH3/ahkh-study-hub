@@ -875,16 +875,15 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
       id="popover-hl-btn"
       title="Highlight selection"
       aria-label="Highlight selection"
-      class="h-8 px-2 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center gap-1.5 transition-colors cursor-pointer"
+      class="w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer"
     >
-      <span id="popover-hl-icon" class="flex items-center">
+      <span id="popover-hl-icon" class="flex items-center" style="color: #D97706;">
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="m9 11-6 6v3h9l3-3"/>
           <path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/>
         </svg>
       </span>
-      <span id="popover-hl-dot" class="w-2 h-2 rounded-full border border-ink-border/80 dark:border-dark-border shrink-0" style="background:#D97706"></span>
-      <span id="popover-hl-label" class="text-xs font-medium">Highlight</span>
+      <span id="popover-hl-label" class="sr-only">Highlight</span>
     </button>
 
     <span class="w-px h-4 bg-ink-border/60 dark:bg-dark-border/60 mx-0.5" aria-hidden="true"></span>

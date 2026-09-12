@@ -1058,15 +1058,18 @@ window.__ahkhBootReader = function (vars) {
   function setPopoverMode(mode, highlightItem = null) {
     const hlIcon = document.getElementById('popover-hl-icon');
     const hlLabel = document.getElementById('popover-hl-label');
-    const hlDot = document.getElementById('popover-hl-dot');
+    const isDark = document.documentElement.classList.contains('dark');
+    const cur = getHlColor();
+    const activeColorHex = (isDark ? COLOR_HEX_DARK[cur] : COLOR_HEX[cur]) || '#D97706';
 
     if (mode === 'remove') {
       if (popoverHlBtn) {
-        popoverHlBtn.className = 'popover-btn-remove h-8 px-2 rounded-xs flex items-center gap-1.5 transition-colors cursor-pointer';
+        popoverHlBtn.className = 'popover-btn-remove w-8 h-8 rounded-xs flex items-center justify-center transition-colors cursor-pointer';
         popoverHlBtn.setAttribute('title', 'Remove highlight');
         popoverHlBtn.setAttribute('aria-label', 'Remove highlight');
       }
       if (hlIcon) {
+        hlIcon.style.color = '';
         hlIcon.innerHTML = `
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 6 6 18M6 6l12 12"/>
@@ -1074,15 +1077,15 @@ window.__ahkhBootReader = function (vars) {
         `;
       }
       if (hlLabel) hlLabel.textContent = 'Remove';
-      if (hlDot) hlDot.classList.add('hidden');
       activeExistingHighlight = highlightItem;
     } else {
       if (popoverHlBtn) {
-        popoverHlBtn.className = 'h-8 px-2 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center gap-1.5 transition-colors cursor-pointer';
+        popoverHlBtn.className = 'w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer';
         popoverHlBtn.setAttribute('title', 'Highlight selection');
         popoverHlBtn.setAttribute('aria-label', 'Highlight selection');
       }
       if (hlIcon) {
+        hlIcon.style.color = activeColorHex;
         hlIcon.innerHTML = `
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m9 11-6 6v3h9l3-3"/>
@@ -1091,12 +1094,6 @@ window.__ahkhBootReader = function (vars) {
         `;
       }
       if (hlLabel) hlLabel.textContent = 'Highlight';
-      if (hlDot) {
-        hlDot.classList.remove('hidden');
-        const isDark = document.documentElement.classList.contains('dark');
-        const cur = getHlColor();
-        hlDot.style.background = (isDark ? COLOR_HEX_DARK[cur] : COLOR_HEX[cur]) || '#D97706';
-      }
       activeExistingHighlight = null;
     }
   }
@@ -1105,6 +1102,11 @@ window.__ahkhBootReader = function (vars) {
     const isDark = document.documentElement.classList.contains('dark');
     const cur = getHlColor();
     const activeColorHex = (isDark ? COLOR_HEX_DARK[cur] : COLOR_HEX[cur]) || '#D97706';
+
+    const popIcon = document.getElementById('popover-hl-icon');
+    if (popIcon && !activeExistingHighlight) {
+      popIcon.style.color = activeColorHex;
+    }
 
     const popDot = document.getElementById('popover-hl-dot');
     if (popDot) popDot.style.background = activeColorHex;
@@ -1358,7 +1360,7 @@ window.__ahkhBootReader = function (vars) {
     const currentStyle = getHlStyle();
 
     const span = document.createElement('span');
-    span.className = `ahkh-highlight ${hlClass(currentColor)} ${hlStyleClass(currentStyle)}`;
+    span.className = `ahkh-highlight ${hlClass(currentColor)} ${hlStyleClass(currentStyle)} ahkh-highlight-morph`;
     span.id = hlId;
     span.style.setProperty('--course-accent', courseAccent);
     span.style.setProperty('--course-highlight', courseHighlight);
@@ -1395,6 +1397,13 @@ window.__ahkhBootReader = function (vars) {
     hidePopover();
     window.getSelection()?.removeAllRanges();
     currentSelectionRange = null;
+
+    // Trigger seamless morph from native selection into permanent highlight
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        span.classList.remove('ahkh-highlight-morph');
+      });
+    });
 
     if (getStoredLessonState() === 'explored') {
       showExploredReminderToast();
