@@ -834,7 +834,7 @@ window.__ahkhBootReader = function (vars) {
       activeExistingHighlight = highlightItem;
     } else {
       if (popoverHlBtn) {
-        popoverHlBtn.className = 'w-8 h-8 rounded-xs bg-paper-200/90 dark:bg-dark-border/80 hover:bg-paper-200 dark:hover:bg-dark-border text-ink dark:text-dark-ink border border-ink-border/80 dark:border-dark-border flex items-center justify-center transition-colors cursor-pointer';
+        popoverHlBtn.className = 'w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer';
         popoverHlBtn.setAttribute('title', 'Highlight selection');
         popoverHlBtn.setAttribute('aria-label', 'Highlight selection');
       }
@@ -930,7 +930,16 @@ window.__ahkhBootReader = function (vars) {
   document.addEventListener('selectionchange', () => {
     const selection = window.getSelection();
     if (!selection || selection.isCollapsed) {
-      if (currentSelectionRange && !activeExistingHighlight) {
+      // A caret collapsing INSIDE the last confirmed range is a near-miss
+      // press on the selected text, not a dismissal: keep the menu so the
+      // marker still highlights the saved range.
+      let caretInside = false;
+      try {
+        const anchor = selection && selection.anchorNode;
+        const anchorEl = anchor ? (anchor.nodeType === 3 ? anchor.parentNode : anchor) : null;
+        caretInside = !!(currentSelectionRange && anchorEl && rangeHitsTarget(currentSelectionRange, anchorEl));
+      } catch (err) {}
+      if (currentSelectionRange && !activeExistingHighlight && !caretInside) {
         hidePopover();
       }
       clearTimeout(selectionDebounceTimer);
@@ -968,15 +977,22 @@ window.__ahkhBootReader = function (vars) {
   }
 
   /* 4. Dismiss popover on outside tap/click (desktop & touch) */
+  const rangeHitsTarget = (range, target) => {
+    try {
+      return !!(range && target && typeof range.intersectsNode === 'function' && range.intersectsNode(target));
+    } catch (err) { return false; }
+  };
   const dismissPopoverOutside = (e) => {
     if (popover && !popover.classList.contains('hidden')) {
       if (!popover.contains(e.target) && !e.target.closest('.ahkh-highlight')) {
+        // Prefer the last confirmed range: the live selection may already have
+        // collapsed under a near-miss press, which must not dismiss the menu.
+        // intersectsNode (not contains): the press target is usually the
+        // container element AROUND the ranged text, not inside it.
+        if (rangeHitsTarget(currentSelectionRange, e.target)) return;
         const selection = window.getSelection();
         if (selection && !selection.isCollapsed && selection.rangeCount > 0) {
-          const range = selection.getRangeAt(0);
-          if (range && range.commonAncestorContainer && range.commonAncestorContainer.contains(e.target)) {
-            return;
-          }
+          if (rangeHitsTarget(selection.getRangeAt(0), e.target)) return;
         }
         hidePopover();
       }
@@ -1076,7 +1092,7 @@ window.__ahkhBootReader = function (vars) {
     if (!textToCopy) return;
 
     const citation = `"${textToCopy}"\n— ${lessonTitle} (${courseTitle})\n${window.location.href}`;
-    navigator.clipboard.writeText(citation).then(() => {
+    const showCopied = () => {
       const copyIcon = document.getElementById('popover-copy-icon');
       const copyLabel = document.getElementById('popover-copy-label');
       if (copyIcon) {
@@ -1099,7 +1115,28 @@ window.__ahkhBootReader = function (vars) {
         if (copyLabel) copyLabel.textContent = 'Copy';
         hidePopover();
       }, 900);
-    });
+    };
+    const legacyCopy = () => {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = citation;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand('copy');
+        ta.remove();
+        return ok;
+      } catch (err) { return false; }
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(citation).then(showCopied).catch(() => {
+        if (legacyCopy()) showCopied();
+      });
+    } else if (legacyCopy()) {
+      showCopied();
+    }
   }, { signal: __ahkhSignal });
 
   // Remove highlight
