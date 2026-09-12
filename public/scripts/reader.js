@@ -793,6 +793,23 @@ window.__ahkhBootReader = function (vars) {
     }
   }
 
+  function positionSettingsDropdown(btn, menu) {
+    if (!btn || !menu) return;
+    const btnRect = btn.getBoundingClientRect();
+    const spaceBelow = window.innerHeight - btnRect.bottom - 16;
+    const spaceAbove = btnRect.top - 16;
+
+    if (spaceBelow < 220 && spaceAbove > spaceBelow) {
+      menu.classList.remove('top-full', 'mt-1');
+      menu.classList.add('bottom-full', 'mb-1');
+      menu.style.maxHeight = Math.min(240, Math.max(140, spaceAbove)) + 'px';
+    } else {
+      menu.classList.remove('bottom-full', 'mb-1');
+      menu.classList.add('top-full', 'mt-1');
+      menu.style.maxHeight = Math.min(240, Math.max(140, spaceBelow)) + 'px';
+    }
+  }
+
   function closeAllSettingsDropdowns() {
     const fMenu = document.getElementById('font-family-dropdown-menu');
     const fBtn = document.getElementById('font-family-dropdown-btn');
@@ -800,11 +817,23 @@ window.__ahkhBootReader = function (vars) {
     const sBtn = document.getElementById('hl-style-dropdown-btn');
     const cMenu = document.getElementById('hl-color-dropdown-menu');
     const cBtn = document.getElementById('hl-color-dropdown-btn');
-    if (fMenu) fMenu.classList.add('hidden');
+    if (fMenu) {
+      fMenu.classList.add('hidden');
+      fMenu.classList.remove('bottom-full', 'mb-1');
+      fMenu.classList.add('top-full', 'mt-1');
+    }
     if (fBtn) fBtn.setAttribute('aria-expanded', 'false');
-    if (sMenu) sMenu.classList.add('hidden');
+    if (sMenu) {
+      sMenu.classList.add('hidden');
+      sMenu.classList.remove('bottom-full', 'mb-1');
+      sMenu.classList.add('top-full', 'mt-1');
+    }
     if (sBtn) sBtn.setAttribute('aria-expanded', 'false');
-    if (cMenu) cMenu.classList.add('hidden');
+    if (cMenu) {
+      cMenu.classList.add('hidden');
+      cMenu.classList.remove('bottom-full', 'mb-1');
+      cMenu.classList.add('top-full', 'mt-1');
+    }
     if (cBtn) cBtn.setAttribute('aria-expanded', 'false');
   }
 
@@ -823,6 +852,7 @@ window.__ahkhBootReader = function (vars) {
         const isClosed = fMenu?.classList.contains('hidden');
         closeAllSettingsDropdowns();
         if (isClosed && fMenu) {
+          positionSettingsDropdown(fBtn, fMenu);
           fMenu.classList.remove('hidden');
           fBtn.setAttribute('aria-expanded', 'true');
         }
@@ -836,6 +866,7 @@ window.__ahkhBootReader = function (vars) {
         const isClosed = sMenu?.classList.contains('hidden');
         closeAllSettingsDropdowns();
         if (isClosed && sMenu) {
+          positionSettingsDropdown(sBtn, sMenu);
           sMenu.classList.remove('hidden');
           sBtn.setAttribute('aria-expanded', 'true');
         }
@@ -849,6 +880,7 @@ window.__ahkhBootReader = function (vars) {
         const isClosed = cMenu?.classList.contains('hidden');
         closeAllSettingsDropdowns();
         if (isClosed && cMenu) {
+          positionSettingsDropdown(cBtn, cMenu);
           cMenu.classList.remove('hidden');
           cBtn.setAttribute('aria-expanded', 'true');
         }
