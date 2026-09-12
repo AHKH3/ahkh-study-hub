@@ -536,24 +536,42 @@ window.__ahkhBootReader = function (vars) {
   }
 
   // User-selected highlight colors (persisted last choice; stored per highlight)
-  const HL_COLORS = ['graphite', 'amber', 'emerald', 'sky', 'rose', 'violet', 'midnight'];
+  const HL_COLORS = ['amber', 'emerald', 'teal', 'sky', 'violet', 'rose', 'graphite'];
   const COLOR_HEX = {
-    graphite: 'rgba(0,0,0,0.45)',
     amber: '#D97706',
     emerald: '#059669',
+    teal: '#0D9488',
     sky: '#0284C7',
-    rose: '#E11D48',
     violet: '#7C3AED',
-    midnight: '#18181B',
+    rose: '#E11D48',
+    graphite: '#52525B',
+  };
+  const COLOR_HEX_DARK = {
+    amber: '#FBBF24',
+    emerald: '#34D399',
+    teal: '#2DD4BF',
+    sky: '#38BDF8',
+    violet: '#A78BFA',
+    rose: '#FB7185',
+    graphite: '#94A3B8',
   };
   const COLOR_TINT = {
-    graphite: 'rgba(0, 0, 0, 0.12)',
     amber: 'rgba(217, 119, 6, 0.22)',
     emerald: 'rgba(5, 150, 105, 0.22)',
+    teal: 'rgba(13, 148, 136, 0.22)',
     sky: 'rgba(2, 132, 199, 0.22)',
-    rose: 'rgba(225, 29, 72, 0.20)',
     violet: 'rgba(124, 58, 237, 0.20)',
-    midnight: 'rgba(24, 24, 27, 0.25)',
+    rose: 'rgba(225, 29, 72, 0.20)',
+    graphite: 'rgba(82, 82, 91, 0.16)',
+  };
+  const COLOR_TINT_DARK = {
+    amber: 'rgba(245, 158, 11, 0.28)',
+    emerald: 'rgba(52, 211, 153, 0.26)',
+    teal: 'rgba(45, 212, 191, 0.26)',
+    sky: 'rgba(56, 189, 248, 0.26)',
+    violet: 'rgba(167, 139, 250, 0.28)',
+    rose: 'rgba(251, 113, 133, 0.28)',
+    graphite: 'rgba(148, 163, 184, 0.22)',
   };
   const HL_COLOR_KEY = 'ahkh_hl_color';
 
@@ -567,12 +585,14 @@ window.__ahkhBootReader = function (vars) {
   function hlClass(color) { return `ahkh-hl-${HL_COLORS.includes(color) ? color : 'amber'}`; }
 
   const fontSizes = {
+    xs: { size: '0.92rem', lh: '1.7' },
     sm: { size: '1rem', lh: '1.75' },
     base: { size: '1.125rem', lh: '1.8' },
-    lg: { size: '1.3rem', lh: '1.85' },
-    xl: { size: '1.5rem', lh: '1.9' }
+    md: { size: '1.25rem', lh: '1.82' },
+    lg: { size: '1.38rem', lh: '1.85' },
+    xl: { size: '1.55rem', lh: '1.9' }
   };
-  const SIZE_KEYS = ['sm', 'base', 'lg', 'xl'];
+  const SIZE_KEYS = ['xs', 'sm', 'base', 'md', 'lg', 'xl'];
 
   function applyFontSize(sz, persist = true) {
     if (!fontSizes[sz]) sz = 'base';
@@ -583,16 +603,16 @@ window.__ahkhBootReader = function (vars) {
     const slider = document.getElementById('font-size-slider');
     const idx = SIZE_KEYS.indexOf(sz);
     if (slider && Number(slider.value) !== idx) {
-      slider.value = String(idx >= 0 ? idx : 1);
+      slider.value = String(idx >= 0 ? idx : 2);
     }
 
     SIZE_KEYS.forEach((key, i) => {
-      const stop = document.getElementById(`font-size-stop-${i}`);
-      if (stop) {
+      const tick = document.getElementById(`font-size-tick-${i}`);
+      if (tick) {
         if (i === idx) {
-          stop.className = 'transition-colors font-semibold text-ink dark:text-dark-ink';
+          tick.className = 'w-1 bg-ink dark:bg-dark-ink rounded-2xs transition-colors duration-150';
         } else {
-          stop.className = 'transition-colors text-ink-muted/70 dark:text-dark-muted/70';
+          tick.className = 'w-1 bg-ink-border dark:bg-dark-border rounded-2xs transition-colors duration-150';
         }
       }
     });
@@ -606,7 +626,7 @@ window.__ahkhBootReader = function (vars) {
     if (!slider || slider.dataset.bound) return;
     slider.dataset.bound = 'true';
     slider.addEventListener('input', () => {
-      const idx = Math.max(0, Math.min(SIZE_KEYS.length - 1, parseInt(slider.value, 10) || 1));
+      const idx = Math.max(0, Math.min(SIZE_KEYS.length - 1, parseInt(slider.value, 10) || 2));
       const sz = SIZE_KEYS[idx] || 'base';
       applyFontSize(sz, true);
     }, { signal: __ahkhSignal });
@@ -675,10 +695,11 @@ window.__ahkhBootReader = function (vars) {
   }
 
   function updateHlStylePreviews(activeColor, activeStyle) {
+    const isDark = document.documentElement.classList.contains('dark');
     const color = HL_COLORS.includes(activeColor) ? activeColor : 'amber';
     const style = HL_STYLES[activeStyle] ? activeStyle : 'tint';
-    const colorHex = COLOR_HEX[color] || '#D97706';
-    const tintBg = COLOR_TINT[color] || COLOR_TINT.amber;
+    const colorHex = (isDark ? COLOR_HEX_DARK[color] : COLOR_HEX[color]) || '#D97706';
+    const tintBg = (isDark ? COLOR_TINT_DARK[color] : COLOR_TINT[color]) || COLOR_TINT.amber;
 
     // 1. Update dropdown option preview icons
     const tintPreview = document.querySelector('.hl-preview-tint');
@@ -693,7 +714,7 @@ window.__ahkhBootReader = function (vars) {
     }
     const bracketPreview = document.querySelector('.hl-preview-bracket');
     if (bracketPreview) {
-      bracketPreview.style.background = 'transparent';
+      bracketPreview.style.background = tintBg;
       bracketPreview.style.borderLeft = `2.5px solid ${colorHex}`;
     }
     const washPreview = document.querySelector('.hl-preview-wash');
@@ -715,6 +736,7 @@ window.__ahkhBootReader = function (vars) {
       if (style === 'underline') {
         iconPreview.style.borderBottom = `2px solid ${colorHex}`;
       } else if (style === 'bracket') {
+        iconPreview.style.background = tintBg;
         iconPreview.style.borderLeft = `2.5px solid ${colorHex}`;
       } else if (style === 'wash') {
         iconPreview.style.background = tintBg;
@@ -838,7 +860,7 @@ window.__ahkhBootReader = function (vars) {
       }
     }
 
-    if (label) label.textContent = isWide ? 'Expanded (82ch)' : 'Standard (68ch)';
+    if (label) label.textContent = isWide ? 'Expanded' : 'Standard';
 
     if (standardBtn && wideBtn) {
       if (isWide) {
@@ -879,6 +901,8 @@ window.__ahkhBootReader = function (vars) {
       if (lightBtn) lightBtn.className = 'theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-colors duration-150 cursor-pointer flex items-center justify-center gap-1.5 bg-white dark:bg-dark-card text-ink dark:text-dark-ink font-medium border border-ink-border dark:border-dark-border shadow-2xs';
       if (darkBtn) darkBtn.className = 'theme-switch-btn py-1.5 px-2.5 rounded-xs text-center font-sans text-xs transition-colors duration-150 cursor-pointer flex items-center justify-center gap-1.5 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink border border-transparent';
     }
+
+    paintHlSwatches();
   }
 
   function resetDisplaySettings() {
@@ -1035,7 +1059,6 @@ window.__ahkhBootReader = function (vars) {
     const hlIcon = document.getElementById('popover-hl-icon');
     const hlLabel = document.getElementById('popover-hl-label');
     const hlDot = document.getElementById('popover-hl-dot');
-    const paletteBtn = document.getElementById('popover-palette-btn');
 
     if (mode === 'remove') {
       if (popoverHlBtn) {
@@ -1052,7 +1075,6 @@ window.__ahkhBootReader = function (vars) {
       }
       if (hlLabel) hlLabel.textContent = 'Remove';
       if (hlDot) hlDot.classList.add('hidden');
-      if (paletteBtn) paletteBtn.classList.remove('hidden');
       activeExistingHighlight = highlightItem;
     } else {
       if (popoverHlBtn) {
@@ -1071,17 +1093,21 @@ window.__ahkhBootReader = function (vars) {
       if (hlLabel) hlLabel.textContent = 'Highlight';
       if (hlDot) {
         hlDot.classList.remove('hidden');
-        hlDot.style.background = COLOR_HEX[getHlColor()] || '#D97706';
+        const isDark = document.documentElement.classList.contains('dark');
+        const cur = getHlColor();
+        hlDot.style.background = (isDark ? COLOR_HEX_DARK[cur] : COLOR_HEX[cur]) || '#D97706';
       }
-      if (paletteBtn) paletteBtn.classList.remove('hidden');
       activeExistingHighlight = null;
     }
   }
 
   function paintHlSwatches() {
+    const isDark = document.documentElement.classList.contains('dark');
     const cur = getHlColor();
+    const activeColorHex = (isDark ? COLOR_HEX_DARK[cur] : COLOR_HEX[cur]) || '#D97706';
+
     const popDot = document.getElementById('popover-hl-dot');
-    if (popDot) popDot.style.background = COLOR_HEX[cur] || '#D97706';
+    if (popDot) popDot.style.background = activeColorHex;
 
     const nameBadge = document.getElementById('hl-color-name-badge');
     if (nameBadge) nameBadge.textContent = cur;
@@ -1089,7 +1115,13 @@ window.__ahkhBootReader = function (vars) {
     updateHlStylePreviews(cur, getHlStyle());
 
     document.querySelectorAll('.hl-swatch, .hl-settings-swatch').forEach((b) => {
-      const on = b.getAttribute('data-hl-color') === cur;
+      const colorKey = b.getAttribute('data-hl-color');
+      if (colorKey) {
+        const hex = (isDark ? COLOR_HEX_DARK[colorKey] : COLOR_HEX[colorKey]) || COLOR_HEX[colorKey];
+        if (hex) b.style.background = hex;
+      }
+
+      const on = colorKey === cur;
       b.setAttribute('aria-checked', on ? 'true' : 'false');
       b.classList.toggle('ring-2', on);
       b.classList.toggle('ring-offset-2', on);
@@ -1102,7 +1134,7 @@ window.__ahkhBootReader = function (vars) {
       if (b.classList.contains('hl-settings-swatch')) {
         if (on) {
           b.innerHTML = `
-            <svg class="w-3 h-3 ${cur === 'midnight' ? 'text-white dark:text-ink' : 'text-white'} pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="w-3 h-3 ${isDark && colorKey === 'graphite' ? 'text-ink' : 'text-white'} pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="20 6 9 17 4 12"/>
             </svg>
           `;
@@ -1129,16 +1161,6 @@ window.__ahkhBootReader = function (vars) {
     }
   }
 
-  const paletteFlyout = document.getElementById('popover-palette-flyout');
-  const paletteBtn = document.getElementById('popover-palette-btn');
-
-  function togglePaletteFlyout(force) {
-    if (!paletteFlyout) return;
-    const show = typeof force === 'boolean' ? force : paletteFlyout.classList.contains('hidden');
-    paletteFlyout.classList.toggle('hidden', !show);
-    paletteBtn?.setAttribute('aria-expanded', show ? 'true' : 'false');
-  }
-
   function initHlSwatches() {
     paintHlSwatches();
     document.querySelectorAll('.hl-swatch, .hl-settings-swatch').forEach((b) => {
@@ -1148,17 +1170,62 @@ window.__ahkhBootReader = function (vars) {
         e.stopPropagation();
         const c = b.getAttribute('data-hl-color') || 'amber';
         applyHlColor(c, true);
-        togglePaletteFlyout(false);
       }, { signal: __ahkhSignal });
     });
+  }
 
-    if (paletteBtn && !paletteBtn.dataset.bound) {
-      paletteBtn.dataset.bound = 'true';
-      paletteBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        togglePaletteFlyout();
-      }, { signal: __ahkhSignal });
+  // Auto-Highlight Instant Mode
+  const AUTO_HL_KEY = 'ahkh_auto_highlight';
+
+  function getAutoHighlight() {
+    try {
+      return AhkhStorage.get(AUTO_HL_KEY) === 'true';
+    } catch (e) {
+      return false;
     }
+  }
+
+  function applyAutoHighlight(enabled, persist = true) {
+    const btn = document.getElementById('toggle-auto-highlight-btn');
+    const dot = document.getElementById('auto-highlight-toggle-dot');
+    if (btn) {
+      btn.setAttribute('aria-checked', enabled ? 'true' : 'false');
+      if (enabled) {
+        btn.classList.remove('bg-paper-300', 'dark:bg-dark-border');
+        btn.classList.add('bg-ink', 'dark:bg-dark-ink');
+      } else {
+        btn.classList.remove('bg-ink', 'dark:bg-dark-ink');
+        btn.classList.add('bg-paper-300', 'dark:bg-dark-border');
+      }
+    }
+    if (dot) {
+      if (enabled) {
+        dot.classList.remove('translate-x-0');
+        dot.classList.add('translate-x-4');
+        dot.classList.remove('bg-white', 'dark:bg-dark-card');
+        dot.classList.add('bg-paper-50', 'dark:bg-dark-bg');
+      } else {
+        dot.classList.remove('translate-x-4');
+        dot.classList.add('translate-x-0');
+        dot.classList.remove('bg-paper-50', 'dark:bg-dark-bg');
+        dot.classList.add('bg-white', 'dark:bg-dark-card');
+      }
+    }
+    if (persist) {
+      try { AhkhStorage.set(AUTO_HL_KEY, enabled ? 'true' : 'false'); } catch (e) {}
+    }
+  }
+
+  function initAutoHighlight() {
+    const btn = document.getElementById('toggle-auto-highlight-btn');
+    if (!btn || btn.dataset.bound) return;
+    btn.dataset.bound = 'true';
+    applyAutoHighlight(getAutoHighlight(), false);
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const current = getAutoHighlight();
+      applyAutoHighlight(!current, true);
+    }, { signal: __ahkhSignal });
   }
 
   function positionPopover(rect) {
@@ -1180,7 +1247,6 @@ window.__ahkhBootReader = function (vars) {
 
   function hidePopover() {
     popover?.classList.add('hidden');
-    togglePaletteFlyout(false);
     currentSelectionRange = null;
     activeExistingHighlight = null;
   }
@@ -1218,9 +1284,11 @@ window.__ahkhBootReader = function (vars) {
     }
 
     clearTimeout(selectionDebounceTimer);
-    selectionDebounceTimer = setTimeout(() => {
-      handleTextSelection();
-    }, 200);
+    if (!getAutoHighlight()) {
+      selectionDebounceTimer = setTimeout(() => {
+        handleTextSelection();
+      }, 200);
+    }
   }, { signal: __ahkhSignal });
 
   function handleTextSelection() {
@@ -1242,6 +1310,12 @@ window.__ahkhBootReader = function (vars) {
     }
 
     currentSelectionRange = range.cloneRange();
+
+    if (getAutoHighlight()) {
+      createHighlightFromSelection();
+      return;
+    }
+
     setPopoverMode('highlight');
     positionPopover(range.getBoundingClientRect());
     popover?.classList.remove('hidden');
@@ -2702,6 +2776,7 @@ window.__ahkhBootReader = function (vars) {
     initStickyVideo();
     initTranscriptToggle();
     initHlSwatches();
+    initAutoHighlight();
     initImageLightbox();
   }
 
