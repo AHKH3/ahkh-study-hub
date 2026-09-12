@@ -33,8 +33,6 @@ jobs:
 
       - name: Build with Astro
         run: npm run build
-        env:
-          YOUTUBE_INNERTUBE_KEY: ${{ secrets.YOUTUBE_INNERTUBE_KEY }}
 
       - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v3
