@@ -237,7 +237,7 @@ const statusMeta = STATUS_CONFIG[course.status];
                                     </span>
 
                                     <div class="min-w-0">
-                                      <h3 class="font-serif text-base sm:text-lg font-semibold text-ink dark:text-dark-ink transition-colors truncate">
+                                      <h3 class="font-serif text-base sm:text-lg font-semibold text-ink dark:text-dark-ink transition-colors line-clamp-2 leading-snug">
                                         {lesson.title}
                                       </h3>
 
@@ -417,6 +417,19 @@ const statusMeta = STATUS_CONFIG[course.status];
       document.addEventListener('astro:page-load', initModuleAccordions, { signal: __signal });
       if (document.readyState === 'complete') {
         initModuleAccordions();
+      }
+
+      // Session-persistent refresh (stale-state repair): inline scripts do not
+      // re-execute when returning via ClientRouter, and the per-run listener
+      // above is aborted on before-swap. This once-per-session binding keeps
+      // accordion state correct on every course page without reload.
+      window.__ahkhInitAccordions = initModuleAccordions;
+      if (!window.__ahkhCoursePersistBound) {
+        window.__ahkhCoursePersistBound = true;
+        document.addEventListener('astro:page-load', () => {
+          try { window.__ahkhRefreshJourney && window.__ahkhRefreshJourney(); } catch (e) {}
+          try { window.__ahkhInitAccordions && window.__ahkhInitAccordions(); } catch (e) {}
+        });
       }
     })();
   </script>
@@ -624,6 +637,18 @@ const statusMeta = STATUS_CONFIG[course.status];
     document.addEventListener('astro:page-load', refreshJourneyProgress, { signal: __signal });
     if (document.readyState === 'complete') {
       refreshJourneyProgress();
+    }
+
+    // Session-persistent refresh (stale-state repair): see accordion block
+    // above. Lesson ticks, module bars, journey progress and the status badge
+    // re-render from localStorage on every navigation, no reload required.
+    window.__ahkhRefreshJourney = refreshJourneyProgress;
+    if (!window.__ahkhCoursePersistBound) {
+      window.__ahkhCoursePersistBound = true;
+      document.addEventListener('astro:page-load', () => {
+        try { window.__ahkhRefreshJourney && window.__ahkhRefreshJourney(); } catch (e) {}
+        try { window.__ahkhInitAccordions && window.__ahkhInitAccordions(); } catch (e) {}
+      });
     }
   })();
 </script>

@@ -40,7 +40,7 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
         Index of Curricula
       </h1>
       <span class="font-mono text-xs text-ink-muted dark:text-dark-muted shrink-0">
-        0{CATALOG_COURSES.length} tracks
+        0{CATALOG_COURSES.length} {CATALOG_COURSES.length === 1 ? 'track' : 'tracks'}
       </span>
     </div>
 
@@ -200,6 +200,18 @@ const STATUS_CONFIG: Record<CourseStatus, { label: string; dotClass: string; tex
       document.addEventListener('astro:page-load', refreshLibraryProgress, { signal: __ahkhSignal });
       if (document.readyState === 'complete') {
         refreshLibraryProgress();
+      }
+
+      // Session-persistent refresh (stale-state repair): inline scripts do not
+      // re-execute when returning via ClientRouter, and the per-run listener
+      // above is aborted on before-swap. This once-per-session binding keeps
+      // library progress and status badges correct without reload.
+      window.__ahkhRefreshLibrary = refreshLibraryProgress;
+      if (!window.__ahkhLibPersistBound) {
+        window.__ahkhLibPersistBound = true;
+        document.addEventListener('astro:page-load', () => {
+          try { window.__ahkhRefreshLibrary && window.__ahkhRefreshLibrary(); } catch (e) {}
+        });
       }
     })();
   </script>

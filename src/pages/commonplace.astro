@@ -512,7 +512,7 @@ const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
               </div>
 
               <div class="flex items-center gap-2 self-end sm:self-auto">
-                <time class="text-[11px] font-mono text-ink-muted dark:text-dark-muted" datetime="${escapeAttr(rawDate || '')}">
+                <time class="text-[11px] font-mono text-ink-muted dark:text-dark-muted whitespace-nowrap" datetime="${escapeAttr(rawDate || '')}">
                   ${escapeHtml(dateStr)}
                 </time>
 
