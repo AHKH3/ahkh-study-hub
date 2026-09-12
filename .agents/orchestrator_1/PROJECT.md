@@ -42,8 +42,8 @@ Every feature from the Survey phase appears here with its assigned milestone:
 ## Milestones
 | # | Name | Scope | Dependencies | Status |
 |---|------|-------|-------------|--------|
-| 1 | M1: Data Splitting & Lazy Bundles | Split `courses.ts` & `transcripts.json`, update page loaders and props | none | PLANNED |
-| 2 | M2: Navigation & Prefetching | Enable prefetch, link prefetching, and lifecycle listener guards | M1 | PLANNED |
+| 1 | M1: Data Splitting & Lazy Bundles | Split `courses.ts` & `transcripts.json`, update page loaders and props | none | DONE |
+| 2 | M2: Navigation & Prefetching | Enable prefetch, link prefetching, and lifecycle listener guards | M1 | DONE |
 | 3 | M3: Reader DOM & LocalStorage Tuning | Teardown hooks, batch gutter notes, fix scroll restore & mobile touch | M1 | PLANNED |
 | 4 | M4: Standardized Editorial Framework | 5 Astro editorial components, fix footers, author documentation | M1 | PLANNED |
 | 5 | M5: Web-Only Streamlining & Final Verification | Prune scratch files, E2E test verification, full build & verification suite, git commit | M2, M3, M4, E2E | PLANNED |

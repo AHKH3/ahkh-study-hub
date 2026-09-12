@@ -80,6 +80,7 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
       <div class="flex items-center gap-2 shrink-0">
         <a 
           href={path(`/courses/${course.slug}`)} 
+          data-astro-prefetch="hover"
           class="w-8 h-8 rounded-xs border border-ink-border dark:border-dark-border bg-paper-50 dark:bg-dark-card hover:bg-paper-200 dark:hover:bg-dark-border/60 flex items-center justify-center text-ink dark:text-dark-ink transition-colors cursor-pointer"
           title="Return to Course Journey"
           aria-label="Return to Course Journey"
@@ -534,6 +535,7 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
           <!-- Left: Return to Curriculum Roadmap -->
           <a 
             href={path(`/courses/${course.slug}`)}
+            data-astro-prefetch="hover"
             class="inline-flex items-center gap-2 text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink transition-colors group"
             title="Return to Course Journey"
           >
@@ -580,6 +582,7 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
             <a 
               id="prev-lesson-card-btn"
               href={path(`/courses/${course.slug}/${prevLesson.slug}`)}
+              data-astro-prefetch="hover"
               class="group block p-4 sm:p-5 rounded-xs border border-ink-border dark:border-dark-border bg-transparent hover:bg-paper-50/60 dark:hover:bg-dark-card/30 transition-colors duration-150"
               title={`Previous: ${prevLesson.title}`}
             >
@@ -617,6 +620,7 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
             <a 
               id="next-lesson-card-btn"
               href={path(`/courses/${course.slug}/${nextLesson.slug}`)}
+              data-astro-prefetch="hover"
               class="group block p-4 sm:p-5 rounded-xs border border-ink-border dark:border-dark-border bg-transparent hover:bg-paper-50/60 dark:hover:bg-dark-card/30 transition-colors duration-150 sm:text-right"
               title={`Next: ${nextLesson.title}`}
             >
@@ -650,6 +654,7 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
               <div>
                 <a 
                   href={path('/commonplace')} 
+                  data-astro-prefetch="hover"
                   class="inline-flex items-center gap-1 text-xs font-ui font-medium text-ink-muted hover:text-ink dark:text-dark-muted dark:hover:text-dark-ink underline underline-offset-4 transition-colors"
                 >
                   Review The Commonplace Book &rarr;

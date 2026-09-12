@@ -6,4 +6,8 @@ export default defineConfig({
   base: process.env.AHKH_BASE || '/ahkh-study-hub',
   integrations: [tailwind()],
   output: 'static',
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'hover',
+  },
 });

@@ -54,7 +54,7 @@ const statusMeta = STATUS_CONFIG[course.status];
     class="hub-header w-full border-b border-ink-border/80 dark:border-dark-border bg-paper-100/90 dark:bg-dark-bg/90 backdrop-blur-sm sticky top-0 z-30 transition-colors"
   >
     <div class="max-w-hub mx-auto px-6 h-16 flex items-center justify-between gap-4">
-      <a href={path('/')} class="flex items-center gap-2 text-xs font-ui font-medium text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink transition-colors group">
+      <a href={path('/')} data-astro-prefetch="hover" class="flex items-center gap-2 text-xs font-ui font-medium text-ink-muted dark:text-dark-muted hover:text-ink dark:hover:text-dark-ink transition-colors group">
         <svg class="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m15 18-6-6 6-6"/>
         </svg>
@@ -227,7 +227,7 @@ const statusMeta = STATUS_CONFIG[course.status];
 
                             <!-- Editorial Lesson Row Surface -->
                             <article data-lesson-slug={lesson.slug} class="relative overflow-hidden rounded-xs border border-ink-border dark:border-dark-border bg-paper-50/70 dark:bg-dark-bg/60 hover:bg-white dark:hover:bg-dark-card hover:border-ink-border dark:hover:border-dark-border transition-colors duration-150 p-3 sm:p-3.5 shadow-2xs">
-                              <a href={path(`/courses/${course.slug}/${lesson.slug}`)} class="block focus:outline-hidden">
+                              <a href={path(`/courses/${course.slug}/${lesson.slug}`)} data-astro-prefetch="hover" class="block focus:outline-hidden">
                                 <div class="flex items-center justify-between gap-4">
                                   
                                   <div class="flex items-start sm:items-center gap-3 sm:gap-4 min-w-0">
@@ -295,7 +295,7 @@ const statusMeta = STATUS_CONFIG[course.status];
     <!-- Editorial Colophon Footer -->
     <footer class="mt-16 pt-8 border-t border-ink-border/60 dark:border-dark-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-sans text-ink-muted dark:text-dark-muted">
       <p>A sovereign, local-first reading sanctuary for rigorous study curricula.</p>
-      <a href={path('/')} class="hover:text-ink dark:hover:text-dark-ink transition-colors underline underline-offset-4">
+      <a href={path('/')} data-astro-prefetch="hover" class="hover:text-ink dark:hover:text-dark-ink transition-colors underline underline-offset-4">
         &larr; Return to Library
       </a>
     </footer>
@@ -303,114 +303,136 @@ const statusMeta = STATUS_CONFIG[course.status];
 
   <!-- Client-side script for Collapsible Module Accordion -->
   <script is:inline>
-    function initModuleAccordions() {
-      const toggleAllBtn = document.getElementById('toggle-all-modules-btn');
-      const toggleAllText = document.getElementById('toggle-all-text');
-      const moduleToggles = document.querySelectorAll('.module-toggle-btn');
-      
-      const courseSlug = window.location.pathname.split('/').filter(Boolean).pop() || 'default';
-      const storageKey = `ahkh_course_collapsed_${courseSlug}`;
-      let collapsedModules = new Set();
-      try {
-        const stored = AhkhStorage.get(storageKey);
-        if (stored) {
-          collapsedModules = new Set(JSON.parse(stored));
-        }
-      } catch (e) {
-        collapsedModules = new Set();
+    (function () {
+      if (window.__ahkhAccordionAbort) {
+        try { window.__ahkhAccordionAbort.abort(); } catch (e) {}
       }
+      const __signal = (window.__ahkhAccordionAbort = new AbortController()).signal;
 
-      function setModuleState(moduleId, isCollapsed) {
-        const content = document.getElementById(`module-content-${moduleId}`);
-        const btn = document.querySelector(`.module-toggle-btn[data-module-id="${moduleId}"]`);
-        const chevron = btn ? btn.querySelector('.chevron-icon') : null;
+      document.addEventListener('astro:before-swap', function () {
+        try { window.__ahkhAccordionAbort?.abort(); } catch (e) {}
+      }, { once: true });
 
-        if (isCollapsed) {
-          if (content) {
-            content.style.gridTemplateRows = '0fr';
-            content.style.opacity = '0';
-          }
-          btn?.setAttribute('aria-expanded', 'false');
-          chevron?.classList.remove('rotate-180');
-          collapsedModules.add(moduleId);
-        } else {
-          if (content) {
-            content.style.gridTemplateRows = '1fr';
-            content.style.opacity = '1';
-          }
-          btn?.setAttribute('aria-expanded', 'true');
-          chevron?.classList.add('rotate-180');
-          collapsedModules.delete(moduleId);
-        }
-        try {
-          AhkhStorage.set(storageKey, JSON.stringify([...collapsedModules]));
-        } catch (e) {}
-        updateToggleAllButtonState();
-      }
-
-      function updateToggleAllButtonState() {
-        if (!toggleAllBtn || !toggleAllText) return;
-        const total = moduleToggles.length;
-        if (total === 0) return;
+      function initModuleAccordions() {
+        const toggleAllBtn = document.getElementById('toggle-all-modules-btn');
+        const toggleAllText = document.getElementById('toggle-all-text');
+        const moduleToggles = document.querySelectorAll('.module-toggle-btn');
+        if (!moduleToggles || !moduleToggles.length) return;
         
-        const allCollapsed = collapsedModules.size === total;
-        if (allCollapsed) {
-          toggleAllBtn.setAttribute('data-action', 'expand');
-          toggleAllText.textContent = 'Expand all';
-        } else {
-          toggleAllBtn.setAttribute('data-action', 'collapse');
-          toggleAllText.textContent = 'Collapse all';
+        const courseSlug = window.location.pathname.split('/').filter(Boolean).pop() || 'default';
+        const storageKey = `ahkh_course_collapsed_${courseSlug}`;
+        let collapsedModules = new Set();
+        try {
+          const stored = AhkhStorage.get(storageKey);
+          if (stored) {
+            collapsedModules = new Set(JSON.parse(stored));
+          }
+        } catch (e) {
+          collapsedModules = new Set();
         }
-      }
 
-      // Apply initial state
-      moduleToggles.forEach((btn) => {
-        const moduleId = btn.getAttribute('data-module-id');
-        if (moduleId && collapsedModules.has(moduleId)) {
-          setModuleState(moduleId, true);
-        } else if (moduleId) {
-          setModuleState(moduleId, false);
-        }
-      });
+        function setModuleState(moduleId, isCollapsed) {
+          const content = document.getElementById(`module-content-${moduleId}`);
+          const btn = document.querySelector(`.module-toggle-btn[data-module-id="${moduleId}"]`);
+          const chevron = btn ? btn.querySelector('.chevron-icon') : null;
 
-      // Handle individual accordion clicks
-      moduleToggles.forEach((btn) => {
-        if (btn.dataset.bound) return;
-        btn.dataset.bound = 'true';
-        btn.addEventListener('click', () => {
-          const moduleId = btn.getAttribute('data-module-id');
-          if (!moduleId) return;
-          const isCurrentlyCollapsed = collapsedModules.has(moduleId);
-          setModuleState(moduleId, !isCurrentlyCollapsed);
-        });
-      });
-
-      // Handle Toggle-All button
-      if (toggleAllBtn && !toggleAllBtn.dataset.bound) {
-        toggleAllBtn.dataset.bound = 'true';
-        toggleAllBtn.addEventListener('click', () => {
-          const currentAction = toggleAllBtn.getAttribute('data-action');
-          const shouldCollapse = currentAction === 'collapse';
-          moduleToggles.forEach((btn) => {
-            const moduleId = btn.getAttribute('data-module-id');
-            if (moduleId) {
-              setModuleState(moduleId, shouldCollapse);
+          if (isCollapsed) {
+            if (content) {
+              content.style.gridTemplateRows = '0fr';
+              content.style.opacity = '0';
             }
+            btn?.setAttribute('aria-expanded', 'false');
+            chevron?.classList.remove('rotate-180');
+            collapsedModules.add(moduleId);
+          } else {
+            if (content) {
+              content.style.gridTemplateRows = '1fr';
+              content.style.opacity = '1';
+            }
+            btn?.setAttribute('aria-expanded', 'true');
+            chevron?.classList.add('rotate-180');
+            collapsedModules.delete(moduleId);
+          }
+          try {
+            AhkhStorage.set(storageKey, JSON.stringify([...collapsedModules]));
+          } catch (e) {}
+          updateToggleAllButtonState();
+        }
+
+        function updateToggleAllButtonState() {
+          if (!toggleAllBtn || !toggleAllText) return;
+          const total = moduleToggles.length;
+          if (total === 0) return;
+          
+          const allCollapsed = collapsedModules.size === total;
+          if (allCollapsed) {
+            toggleAllBtn.setAttribute('data-action', 'expand');
+            toggleAllText.textContent = 'Expand all';
+          } else {
+            toggleAllBtn.setAttribute('data-action', 'collapse');
+            toggleAllText.textContent = 'Collapse all';
+          }
+        }
+
+        // Apply initial state
+        moduleToggles.forEach((btn) => {
+          const moduleId = btn.getAttribute('data-module-id');
+          if (moduleId && collapsedModules.has(moduleId)) {
+            setModuleState(moduleId, true);
+          } else if (moduleId) {
+            setModuleState(moduleId, false);
+          }
+        });
+
+        // Handle individual accordion clicks
+        moduleToggles.forEach((btn) => {
+          if (btn.dataset.bound) return;
+          btn.dataset.bound = 'true';
+          btn.addEventListener('click', () => {
+            const moduleId = btn.getAttribute('data-module-id');
+            if (!moduleId) return;
+            const isCurrentlyCollapsed = collapsedModules.has(moduleId);
+            setModuleState(moduleId, !isCurrentlyCollapsed);
           });
         });
-      }
-    }
 
-    // Single boot path: ClientRouter (always enabled in BaseLayout) fires
-    // astro:page-load on initial load and on every navigation.
-    document.addEventListener('astro:page-load', initModuleAccordions);
-    if (document.readyState === 'complete') {
-      initModuleAccordions();
-    }
+        // Handle Toggle-All button
+        if (toggleAllBtn && !toggleAllBtn.dataset.bound) {
+          toggleAllBtn.dataset.bound = 'true';
+          toggleAllBtn.addEventListener('click', () => {
+            const currentAction = toggleAllBtn.getAttribute('data-action');
+            const shouldCollapse = currentAction === 'collapse';
+            moduleToggles.forEach((btn) => {
+              const moduleId = btn.getAttribute('data-module-id');
+              if (moduleId) {
+                setModuleState(moduleId, shouldCollapse);
+              }
+            });
+          });
+        }
+      }
+
+      // Single boot path: ClientRouter (always enabled in BaseLayout) fires
+      // astro:page-load on initial load and on every navigation.
+      document.addEventListener('astro:page-load', initModuleAccordions, { signal: __signal });
+      if (document.readyState === 'complete') {
+        initModuleAccordions();
+      }
+    })();
   </script>
 
   <script is:inline>
-    const STATUS_META = {
+    (function () {
+      if (window.__ahkhJourneyAbort) {
+        try { window.__ahkhJourneyAbort.abort(); } catch (e) {}
+      }
+      const __signal = (window.__ahkhJourneyAbort = new AbortController()).signal;
+
+      document.addEventListener('astro:before-swap', function () {
+        try { window.__ahkhJourneyAbort?.abort(); } catch (e) {}
+      }, { once: true });
+
+      const STATUS_META = {
       active: { label: 'Active', dot: 'bg-amber-600 dark:bg-amber-400', text: 'text-amber-700 dark:text-amber-400' },
       new: { label: 'New', dot: 'bg-blue-600 dark:bg-blue-400', text: 'text-blue-700 dark:text-blue-400' },
       explored: { label: 'Exploring', dot: 'bg-purple-600 dark:bg-purple-400', text: 'text-purple-700 dark:text-purple-400' },
@@ -598,12 +620,11 @@ const statusMeta = STATUS_CONFIG[course.status];
       } catch (e) {}
     }
 
-    if (!window.__ahkhJourneyBoot) {
-      window.__ahkhJourneyBoot = true;
-      document.addEventListener('astro:page-load', refreshJourneyProgress);
-    }
+    window.__ahkhJourneyBoot = true;
+    document.addEventListener('astro:page-load', refreshJourneyProgress, { signal: __signal });
     if (document.readyState === 'complete') {
       refreshJourneyProgress();
     }
-  </script>
+  })();
+</script>
 </BaseLayout>

@@ -84,6 +84,15 @@ describe('Tier 3: Cross-Feature — Lifecycle Teardown on Route Navigation', ({ 
     assert.strictEqual(activeAbort.signal.aborted, true, 'Old abort signal must be aborted');
     assert.notStrictEqual(window.__ahkhReaderAbort, activeAbort, 'New run must assign fresh controller');
     assert.strictEqual(window.__ahkhReaderAbort.signal.aborted, false, 'New controller must be active');
+
+    /* Simulate route navigation to non-reader page via astro:before-swap */
+    document.body.removeChild(desk);
+    document.dispatchEvent(new window.CustomEvent('astro:before-swap'));
+
+    assert.strictEqual(window.__ahkhReaderAbort, null, 'window.__ahkhReaderAbort must be reset to null after before-swap');
+    assert.strictEqual(window.__ahkhYtPlayer, null, 'window.__ahkhYtPlayer must be reset to null after before-swap');
+    assert.strictEqual(window.__ahkhYtTimer, null, 'window.__ahkhYtTimer must be reset to null after before-swap');
+    assert.strictEqual(window.__ahkhVideoObserver, null, 'window.__ahkhVideoObserver must be reset to null after before-swap');
   });
 });
 
