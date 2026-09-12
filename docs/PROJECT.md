@@ -18,11 +18,11 @@ AHKH Study Hub is a sovereign, local-first static study platform and reader comp
   - Standard clean top header with brand and navigation (`Library`, `Manifesto`, `Commonplace`).
   - **Layout:** The Editorial Monograph Index (clean horizontal rows showing course number, title, progress indicator, duration, and status).
   - **Strict Rule (Course Listing Purity):** In the Library course listing, all course descriptions and subtitles are strictly removed. The course title is expressive enough along with structural metadata: module count, source count, duration, and status badge. For textual summaries and descriptions, the learner clicks into the dedicated course page.
-  - **Course Status Taxonomy & Color Standards:**
-    - `Active`: Green / Emerald (`text-emerald-700 bg-emerald-50 border-emerald-200`)
-    - `New`: Blue (`text-blue-700 bg-blue-50 border-blue-200`)
-    - `Explored`: Purple (`text-purple-700 bg-purple-50 border-purple-200`)
-    - `Completed`: Pink (`text-pink-700 bg-pink-50 border-pink-200`)
+  - **Course Status Taxonomy & Color Standards (dot + mono text only, zero background fills):**
+    - `Active`: Amber (`text-amber-700 dark:text-amber-400`, dot `bg-amber-600 dark:bg-amber-400`)
+    - `New`: Blue (`text-blue-700 dark:text-blue-400`, dot `bg-blue-600 dark:bg-blue-400`)
+    - `Explored`: Purple (`text-purple-700 dark:text-purple-400`, dot `bg-purple-600 dark:bg-purple-400`)
+    - `Completed`: Emerald (`text-emerald-700 dark:text-emerald-400`, dot `bg-emerald-600 dark:bg-emerald-400`)
   - **Absolute Ban on Emojis:** Zero emojis across the entire project. Clean inline SVG icons and dignified typography exclusively.
 
 - **`/manifesto` (The Architecture of Literature):**

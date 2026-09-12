@@ -7,7 +7,7 @@ export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
   prefetch: {
-    prefetchAll: true,
+    prefetchAll: false,
     defaultStrategy: 'hover',
   },
 });

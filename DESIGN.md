@@ -70,10 +70,10 @@ The platform avoids loud colored accents by default. Highlights and marginalia f
 
 ### 3.3. Distilled Status Indicators (Library Index Only)
 Status is indicated with minimal typographic indicator dots (`• Label`), never full-width noisy banners:
-- **Active:** Emerald dot (`#059669` light / `#34D399` dark)
+- **Active:** Amber dot (`#D97706` light / `#FBBF24` dark)
 - **New:** Blue dot (`#2563EB` light / `#60A5FA` dark)
 - **Explored:** Purple dot (`#7C3AED` light / `#A78BFA` dark)
-- **Completed:** Slate dot (`#64748B` light / `#94A3B8` dark)
+- **Completed:** Emerald dot (`#059669` light / `#34D399` dark)
 
 ### 3.4. The Seven Signal Hues (ADR-030) — One Hue, One Meaning
 To eliminate "monochrome blindness" while strictly protecting the quiet paper/carbon canvas, exactly seven hues exist. Each hue has ONE locked meaning, applied as pure text color only (600–700 light / 400 dark). Zero background fills anywhere (sole exception: the ADR-014 soft-destructive pattern).

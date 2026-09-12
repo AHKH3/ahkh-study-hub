@@ -1,4 +1,4 @@
-import type { CourseCatalogSummary } from './types';
+﻿import type { CourseCatalogSummary } from './types';
 
 export const CATALOG_COURSES: CourseCatalogSummary[] = [
   {
@@ -7,7 +7,7 @@ export const CATALOG_COURSES: CourseCatalogSummary[] = [
     title: 'Springboard UX Career Track',
     category: 'Product Design',
     duration: '40 hrs',
-    progressPercent: 34,
+    progressPercent: 0,
     totalModules: 8,
     totalSources: 37,
     status: 'active',
