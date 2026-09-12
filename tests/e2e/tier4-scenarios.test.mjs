@@ -29,7 +29,7 @@ describe('Tier 4: Real-World Scenarios — Scenario 1: Onboarding & Discovery Jo
     const courseFiles = inspector.getCourseIndexHtmlFiles();
     assert.greaterThan(courseFiles.length, 0);
     const syllabusHtml = fs.readFileSync(courseFiles[0], 'utf8');
-    assert.match(syllabusHtml, /Unit 1:|Module 1:/i, 'Syllabus must outline units/modules');
+    assert.match(syllabusHtml, />U1</, 'Syllabus must outline units via badges (U1, U2, ...)');
     assert.match(syllabusHtml, /the-anatomy-of-product-experience/, 'Syllabus must link to first lesson');
 
     // 3. Mount First Lesson in Virtual Browser

@@ -146,9 +146,9 @@ const statusMeta = STATUS_CONFIG[course.status];
                     </span>
 
                     <div class="min-w-0 pt-px">
-                      <!-- Module Title - Clean and direct without redundant copy or underlines -->
+                      <!-- Module Title: bare name, the U-badge carries the number -->
                       <h2 class="font-serif text-lg sm:text-xl font-medium text-ink dark:text-dark-ink group-hover:text-ink-muted dark:group-hover:text-dark-muted transition-colors leading-snug">
-                        {mod.title}
+                        {mod.title.replace(/^Unit\s+\d+:\s*/, '')}
                       </h2>
                     </div>
                   </div>
@@ -157,7 +157,7 @@ const statusMeta = STATUS_CONFIG[course.status];
                     <span class="font-mono text-[11px]" data-module-stats={mod.id}>
                       {mod.lessons.length} {mod.lessons.length === 1 ? 'lesson' : 'lessons'}
                     </span>
-                    <!-- Module progress bar -->
+                    <!-- Module progress bar (count carries the numbers) -->
                     <div class="hidden sm:flex items-center gap-2 font-mono text-[11px]">
                       <div class="w-16 sm:w-20 h-[3px] bg-paper-300 dark:bg-dark-border rounded-none overflow-hidden">
                         <div 
@@ -166,7 +166,6 @@ const statusMeta = STATUS_CONFIG[course.status];
                           style="width: 0%"
                         ></div>
                       </div>
-                      <span class="w-8 text-right font-medium text-ink-muted dark:text-dark-muted" data-module-pct={mod.id}>0%</span>
                     </div>
                     <svg 
                       class="w-4 h-4 transition-transform duration-150 chevron-icon rotate-180" 
@@ -292,12 +291,9 @@ const statusMeta = STATUS_CONFIG[course.status];
       )}
     </div>
 
-    <!-- Editorial Colophon Footer -->
-    <footer class="mt-16 pt-8 border-t border-ink-border/60 dark:border-dark-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-sans text-ink-muted dark:text-dark-muted">
+    <!-- Editorial Colophon Footer (single signature line; return lives in the header) -->
+    <footer class="mt-16 pt-8 border-t border-ink-border/60 dark:border-dark-border text-xs font-sans text-ink-muted dark:text-dark-muted">
       <p>A sovereign, local-first reading sanctuary for rigorous study curricula.</p>
-      <a href={path('/')} data-astro-prefetch="hover" class="hover:text-ink dark:hover:text-dark-ink transition-colors underline underline-offset-4">
-        &larr; Return to Library
-      </a>
     </footer>
   </main>
 
@@ -539,9 +535,14 @@ const statusMeta = STATUS_CONFIG[course.status];
               LESSON_COLOR_CLASSES[state].text.split(' ').forEach((c) => tick.classList.add(c));
             }
 
-            // Update scroll label
+            // Update scroll label (hidden while zero to avoid "0% • New" noise)
             if (scrollLabel) {
-              scrollLabel.textContent = `${scrollPct}%`;
+              if (scrollPct === 0 && state !== 'completed') {
+                scrollLabel.style.display = 'none';
+              } else {
+                scrollLabel.style.display = '';
+                scrollLabel.textContent = `${scrollPct}%`;
+              }
             }
 
             // Update bottom progress line
@@ -575,14 +576,10 @@ const statusMeta = STATUS_CONFIG[course.status];
 
             const modPercent = Math.round((modCompleted / modTotal) * 100);
             const statsEl = section.querySelector(`[data-module-stats="${modId}"]`);
-            const pctEl = section.querySelector(`[data-module-pct="${modId}"]`);
             const fillEl = section.querySelector(`[data-module-fill="${modId}"]`);
 
             if (statsEl) {
               statsEl.textContent = `${modCompleted}/${modTotal} completed`;
-            }
-            if (pctEl) {
-              pctEl.textContent = `${modPercent}%`;
             }
             if (fillEl) {
               fillEl.style.width = `${modPercent}%`;

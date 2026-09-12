@@ -98,8 +98,10 @@ describe('Tier 1: Feature Coverage — R2: Data Splitting & Lazy Course Bundles'
     assert.greaterThan(courseIndexFiles.length, 0, 'Course index pages must exist in dist');
     const courseHtml = fs.readFileSync(courseIndexFiles[0], 'utf8');
 
-    // Syllabus must list units/modules and lessons
-    assert.match(courseHtml, /Unit 1:|Module 1:/i, 'Syllabus must render unit or module titles');
+    // Syllabus must list units/modules and lessons (U-badge carries the
+    // number; titles render bare without a duplicated "Unit N:" prefix)
+    assert.match(courseHtml, />U1</, 'Syllabus must render unit badges (U1, U2, ...)');
+    assert.doesNotMatch(courseHtml, /<h2[^>]*>Unit \d+:/, 'Unit titles must not duplicate the badge number');
     assert.match(courseHtml, /lessons|Sources/i, 'Syllabus must render lesson items');
     // Syllabus should NOT render the actual full lesson reading article
     assert.doesNotMatch(courseHtml, /id=["']formatted-view["']/, 'Syllabus must not render full lesson article body');
