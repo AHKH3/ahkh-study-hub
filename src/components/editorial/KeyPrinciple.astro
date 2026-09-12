@@ -1,0 +1,43 @@
+---
+interface Props {
+  kicker?: string;
+  title: string;
+  body?: string;
+  items?: string[];
+  class?: string;
+}
+
+const {
+  kicker = 'Key Principle',
+  title,
+  body,
+  items,
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`my-8 p-5 sm:p-6 rounded-xs bg-white dark:bg-dark-card border border-ink-border dark:border-dark-border shadow-2xs not-prose ${className}`.trim()}>
+  <div class="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 mb-2">
+    <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" />
+      <path d="m9 12 2 2 4-4" />
+    </svg>
+    <span>{kicker}</span>
+  </div>
+  <h4 class="font-sans font-semibold text-base text-ink dark:text-dark-ink mb-2">
+    {title}
+  </h4>
+  {body && (
+    <p class="font-serif text-sm leading-relaxed text-ink/85 dark:text-dark-ink/85">
+      {body}
+    </p>
+  )}
+  {items && items.length > 0 && (
+    <ul class="list-disc pl-5 space-y-1 font-serif text-sm leading-relaxed text-ink/85 dark:text-dark-ink/85 mt-2">
+      {items.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  )}
+  <slot />
+</div>

@@ -1,0 +1,50 @@
+---
+interface Props {
+  headers?: string[];
+  rows?: (string | number)[][];
+  caption?: string;
+  class?: string;
+}
+
+const {
+  headers = [],
+  rows = [],
+  caption,
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`my-8 overflow-x-auto not-prose ${className}`.trim()}>
+  <table class="w-full text-left text-sm font-sans border-collapse border-t border-b border-ink-border dark:border-dark-border">
+    {caption && (
+      <caption class="font-mono text-xs text-ink-muted dark:text-dark-muted mb-2 text-left uppercase tracking-wider">
+        {caption}
+      </caption>
+    )}
+    {headers && headers.length > 0 && (
+      <thead>
+        <tr class="border-b border-ink-border dark:border-dark-border text-xs sm:text-sm font-mono uppercase tracking-widest font-bold text-ink dark:text-dark-ink">
+          {headers.map((h, i) => (
+            <th class={`py-3.5 ${i === 0 ? 'pr-4' : i === headers.length - 1 ? 'pl-4' : 'px-4'}`}>
+              {h}
+            </th>
+          ))}
+        </tr>
+      </thead>
+    )}
+    {rows && rows.length > 0 && (
+      <tbody class="divide-y divide-ink-border/60 dark:divide-dark-border/60 text-ink/85 dark:text-dark-ink/85 font-serif">
+        {rows.map((row) => (
+          <tr>
+            {row.map((cell, i) => (
+              <td class={`py-3.5 ${i === 0 ? 'pr-4 font-mono text-xs text-ink-muted dark:text-dark-muted font-sans' : i === row.length - 1 ? 'pl-4' : 'px-4'}`}>
+                {cell}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    )}
+    <slot />
+  </table>
+</div>

@@ -207,6 +207,22 @@ export const LESSON: LessonDetail = {
       </label>
     </div>
   </div>
+
+  <div class="mt-16 pt-8 border-t border-ink-border/80 dark:border-dark-border not-prose flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-sans text-ink-muted dark:text-dark-muted gap-4">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-700 dark:text-teal-400 block mb-0.5">Source Citation</span>
+      <span>Adapted for sovereign study from <em>Choosing Colors for Web Design: A Practical UI Color Application Guide</em> by <strong>Stefano Peschiera</strong> (Dribbble).</span>
+    </div>
+    <a 
+      href="https://dribbble.com/stories/2018/12/19/choosing-colors-for-web-design-a-practical-ui-color-application-guide" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="font-mono text-xs border border-ink-border/80 dark:border-dark-border px-3 py-1.5 rounded-xs bg-paper-50 dark:bg-dark-card text-ink dark:text-dark-ink hover:bg-paper-100 dark:hover:bg-dark-surface shrink-0 flex items-center gap-1 transition-colors"
+    >
+      <span>Read original source</span>
+      <span>↗</span>
+    </a>
+  </div>
 </section>
 
             `,

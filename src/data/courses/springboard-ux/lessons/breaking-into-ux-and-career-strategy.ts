@@ -176,6 +176,22 @@ export const LESSON: LessonDetail = {
       — Design Leadership Manifesto, 2026
     </cite>
   </div>
+
+  <div class="mt-16 pt-8 border-t border-ink-border/80 dark:border-dark-border not-prose flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-sans text-ink-muted dark:text-dark-muted gap-4">
+    <div>
+      <span class="font-mono uppercase font-bold text-teal-700 dark:text-teal-400 block mb-0.5">Source Citation</span>
+      <span>Adapted for sovereign study from <em>UX Design Portfolio Guide &amp; Career Strategy</em> by <strong>Springboard Design Mentorship Board</strong>.</span>
+    </div>
+    <a 
+      href="https://www.springboard.com/blog/design/ux-design-portfolio-guide/" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="font-mono text-xs border border-ink-border/80 dark:border-dark-border px-3 py-1.5 rounded-xs bg-paper-50 dark:bg-dark-card text-ink dark:text-dark-ink hover:bg-paper-100 dark:hover:bg-dark-surface shrink-0 flex items-center gap-1 transition-colors"
+    >
+      <span>Read original source</span>
+      <span>↗</span>
+    </a>
+  </div>
 </section>
 
             `,

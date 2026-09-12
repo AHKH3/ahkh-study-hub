@@ -1,0 +1,29 @@
+---
+interface Props {
+  kicker?: string;
+  prompt?: string;
+  inquiry?: string;
+  class?: string;
+}
+
+const {
+  kicker = 'Inquiry for Reflection',
+  prompt,
+  inquiry,
+  class: className = '',
+} = Astro.props;
+
+const text = prompt || inquiry;
+---
+
+<aside class={`my-8 p-5 sm:p-6 rounded-xs bg-paper-100 dark:bg-dark-card border border-ink-border dark:border-dark-border not-prose space-y-2 ${className}`.trim()}>
+  <div class="text-xs font-mono font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 flex items-center gap-2">
+    {kicker}
+  </div>
+  {text && (
+    <p class="font-serif text-sm sm:text-base leading-relaxed text-ink dark:text-dark-ink">
+      {text}
+    </p>
+  )}
+  <slot />
+</aside>

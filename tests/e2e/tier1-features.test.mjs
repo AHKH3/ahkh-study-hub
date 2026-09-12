@@ -325,6 +325,83 @@ describe('Tier 1: Feature Coverage — R4: Standardized Editorial Framework', ({
       assert.doesNotMatch(clean, />\s*\/\/\s*[A-Za-z]/, `No // fake code comments allowed in lesson ${path.basename(path.dirname(f))}`);
     }
   });
+
+  it('R4-F7: Canonical Astro Editorial Components exist under src/components/editorial/', (assert) => {
+    const compDir = path.join(ROOT, 'src', 'components', 'editorial');
+    assert.ok(fs.existsSync(compDir), 'Editorial components directory must exist');
+    const required = [
+      'Axiom.astro',
+      'KeyPrinciple.astro',
+      'SocraticCallout.astro',
+      'DataMatrix.astro',
+      'SourceAttribution.astro',
+      'index.ts',
+    ];
+    for (const comp of required) {
+      const p = path.join(compDir, comp);
+      assert.ok(fs.existsSync(p), `Component ${comp} must exist in src/components/editorial/`);
+      const src = fs.readFileSync(p, 'utf8');
+      assert.ok(src.length > 50, `Component ${comp} must contain valid content`);
+    }
+
+    const axiomSrc = fs.readFileSync(path.join(compDir, 'Axiom.astro'), 'utf8');
+    assert.match(axiomSrc, /border-l-2 border-ink dark:border-dark-ink/, 'Axiom must use canonical ink border');
+    assert.match(axiomSrc, /font-mono[^>]*uppercase/, 'Axiom footer must use monospace uppercase');
+
+    const keyPrincipleSrc = fs.readFileSync(path.join(compDir, 'KeyPrinciple.astro'), 'utf8');
+    assert.match(keyPrincipleSrc, /text-teal-700 dark:text-teal-400/, 'KeyPrinciple must use teal kicker');
+    assert.match(keyPrincipleSrc, /rounded-xs/, 'KeyPrinciple must use rounded-xs');
+    assert.match(keyPrincipleSrc, /shadow-2xs/, 'KeyPrinciple must use shadow-2xs');
+
+    const socraticSrc = fs.readFileSync(path.join(compDir, 'SocraticCallout.astro'), 'utf8');
+    assert.match(socraticSrc, /<aside/, 'SocraticCallout must use semantic aside tag');
+    assert.match(socraticSrc, /text-teal-700 dark:text-teal-400/, 'SocraticCallout must use teal kicker');
+
+    const dataMatrixSrc = fs.readFileSync(path.join(compDir, 'DataMatrix.astro'), 'utf8');
+    assert.match(dataMatrixSrc, /overflow-x-auto not-prose/, 'DataMatrix must include overflow-x-auto not-prose');
+    assert.match(dataMatrixSrc, /border-collapse/, 'DataMatrix must use border-collapse');
+
+    const attributionSrc = fs.readFileSync(path.join(compDir, 'SourceAttribution.astro'), 'utf8');
+    assert.match(attributionSrc, /text-teal-700 dark:text-teal-400/, 'SourceAttribution must use teal kicker');
+    assert.match(attributionSrc, /border-t border-ink-border/, 'SourceAttribution must have top divider');
+  });
+
+  it('R4-F8: All 37 lessons contain standardized Source Attribution Footers with zero omissions', (assert) => {
+    const lessonFiles = inspector.getLessonHtmlFiles();
+    assert.strictEqual(lessonFiles.length, 37, 'Exactly 37 lessons must be audited');
+    for (const f of lessonFiles) {
+      const html = fs.readFileSync(f, 'utf8');
+      const hasFooter = html.includes('border-t') && (html.includes('Source') || html.includes('Original') || html.includes('↗'));
+      assert.ok(hasFooter, `Lesson ${path.basename(path.dirname(f))} must contain a Source Attribution Footer`);
+    }
+
+    const lessonsSrcDir = path.join(ROOT, 'src', 'data', 'courses', 'springboard-ux', 'lessons');
+    const sb61 = fs.readFileSync(path.join(lessonsSrcDir, 'ui-design-fundamentals-and-color.ts'), 'utf8');
+    assert.match(sb61, /Source Citation/, 'sb-6-1 must have Source Citation');
+    assert.match(sb61, /Stefano Peschiera/, 'sb-6-1 must cite Stefano Peschiera');
+
+    const sb71 = fs.readFileSync(path.join(lessonsSrcDir, 'moderated-usability-testing-and-the-five-act-interview.ts'), 'utf8');
+    assert.match(sb71, /Source Citation/, 'sb-7-1 must have Source Citation');
+    assert.match(sb71, /Michael Margolis/, 'sb-7-1 must cite Michael Margolis');
+
+    const sb81 = fs.readFileSync(path.join(lessonsSrcDir, 'breaking-into-ux-and-career-strategy.ts'), 'utf8');
+    assert.match(sb81, /Source Citation/, 'sb-8-1 must have Source Citation');
+    assert.match(sb81, /Springboard Design Mentorship Board/, 'sb-8-1 must cite Springboard Design Mentorship Board');
+  });
+
+  it('R4-F9: Architectural documentation docs/EDITORIAL_FRAMEWORK.md exists and covers all invariants', (assert) => {
+    const docPath = path.join(ROOT, 'docs', 'EDITORIAL_FRAMEWORK.md');
+    assert.ok(fs.existsSync(docPath), 'docs/EDITORIAL_FRAMEWORK.md must exist');
+    const doc = fs.readFileSync(docPath, 'utf8');
+    assert.match(doc, /Axiom\.astro/, 'Doc must cover Axiom.astro');
+    assert.match(doc, /KeyPrinciple\.astro/, 'Doc must cover KeyPrinciple.astro');
+    assert.match(doc, /SocraticCallout\.astro/, 'Doc must cover SocraticCallout.astro');
+    assert.match(doc, /DataMatrix\.astro/, 'Doc must cover DataMatrix.astro');
+    assert.match(doc, /SourceAttribution\.astro/, 'Doc must cover SourceAttribution.astro');
+    assert.match(doc, /ADR-030/, 'Doc must cover Seven Signal Hues (ADR-030)');
+    assert.match(doc, /ADR-017/, 'Doc must cover hover movement ban (ADR-017)');
+    assert.match(doc, /#FFFFFF/, 'Doc must cover pure white canvas');
+  });
 });
 
 describe('Tier 1: Feature Coverage — R5: Web-Only Streamlining & Build Verification', ({ it }) => {

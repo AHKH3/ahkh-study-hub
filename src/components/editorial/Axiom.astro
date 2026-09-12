@@ -1,0 +1,19 @@
+---
+interface Props {
+  quote?: string;
+  author: string;
+  source?: string;
+  role?: string;
+  class?: string;
+}
+
+const { quote, author, source, role, class: className = '' } = Astro.props;
+const citationDetails = [role, source].filter(Boolean).join(', ');
+---
+
+<blockquote class={`my-8 sm:my-10 pl-6 border-l-2 border-ink dark:border-dark-ink font-serif italic text-lg sm:text-xl text-ink dark:text-dark-ink leading-relaxed py-2 pr-4 ${className}`.trim()}>
+  {quote ? <p>"{quote.replace(/^["\u201C]+|["\u201D]+$/g, '')}"</p> : <slot />}
+  <footer class="mt-2 text-xs sm:text-sm font-mono not-italic text-ink-muted dark:text-dark-muted font-bold tracking-widest uppercase">
+    &mdash; {author}{citationDetails ? `, ${citationDetails}` : ''}
+  </footer>
+</blockquote>
