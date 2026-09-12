@@ -700,39 +700,42 @@ const transcriptSegments = lesson.youtubeId ? await getTranscript(lesson.youtube
   >
     <button 
       id="popover-hl-btn"
-      class="px-2.5 py-1 rounded-xs bg-paper-200/90 dark:bg-dark-border/80 hover:bg-paper-200 dark:hover:bg-dark-border text-ink dark:text-dark-ink border border-ink-border/80 dark:border-dark-border font-medium flex items-center gap-1.5 transition-colors cursor-pointer font-ui"
+      title="Highlight selection"
+      aria-label="Highlight selection"
+      class="w-8 h-8 rounded-xs bg-paper-200/90 dark:bg-dark-border/80 hover:bg-paper-200 dark:hover:bg-dark-border text-ink dark:text-dark-ink border border-ink-border/80 dark:border-dark-border flex items-center justify-center transition-colors cursor-pointer"
     >
       <span id="popover-hl-icon" class="flex items-center">
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m9 11-6 6v3h3l6-6"/>
-          <path d="m22 7-4.5-4.5a2.12 2.12 0 0 0-3 0l-2.5 2.5 7.5 7.5 2.5-2.5a2.12 2.12 0 0 0 0-3Z"/>
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m9 11-6 6v3h9l3-3"/>
+          <path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/>
         </svg>
       </span>
-      <span id="popover-hl-label">Highlight</span>
+      <span id="popover-hl-label" class="sr-only">Highlight</span>
     </button>
     <button 
       id="popover-note-btn"
-      class="px-2 py-1 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center gap-1.5 transition-colors cursor-pointer font-ui"
+      class="w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer"
       title="Add or Edit Sidenote"
+      aria-label="Add or edit sidenote"
     >
-      <svg class="w-3.5 h-3.5 text-ink-muted dark:text-dark-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg class="w-4 h-4 text-ink-muted dark:text-dark-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M12 20h9"/>
         <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
       </svg>
-      <span>Note</span>
     </button>
     <button 
       id="popover-copy-btn"
-      class="px-2 py-1 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center gap-1.5 transition-colors cursor-pointer font-ui"
+      class="w-8 h-8 rounded-xs hover:bg-paper-200 dark:hover:bg-dark-border/60 text-ink dark:text-dark-ink flex items-center justify-center transition-colors cursor-pointer"
       title="Copy Quote with Citation"
+      aria-label="Copy quote with citation"
     >
       <span id="popover-copy-icon" class="flex items-center">
-        <svg class="w-3.5 h-3.5 text-ink-muted dark:text-dark-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="w-4 h-4 text-ink-muted dark:text-dark-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
           <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
         </svg>
       </span>
-      <span id="popover-copy-label">Copy</span>
+      <span id="popover-copy-label" class="sr-only">Copy</span>
     </button>
     <span class="w-px h-5 bg-ink-border/60 dark:bg-dark-border/60 mx-0.5" aria-hidden="true"></span>
     <div class="flex items-center gap-1 px-0.5" role="radiogroup" aria-label="Highlight color">

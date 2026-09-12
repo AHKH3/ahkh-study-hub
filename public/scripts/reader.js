@@ -819,11 +819,13 @@ window.__ahkhBootReader = function (vars) {
 
     if (mode === 'remove') {
       if (popoverHlBtn) {
-        popoverHlBtn.className = 'px-2.5 py-1 rounded-xs text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border border-rose-200/80 dark:border-rose-900/50 hover:bg-rose-100 dark:hover:bg-rose-900/60 font-medium flex items-center gap-1.5 transition-colors cursor-pointer';
+        popoverHlBtn.className = 'w-8 h-8 rounded-xs text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border border-rose-200/80 dark:border-rose-900/50 hover:bg-rose-100 dark:hover:bg-rose-900/60 flex items-center justify-center transition-colors cursor-pointer';
+        popoverHlBtn.setAttribute('title', 'Remove highlight');
+        popoverHlBtn.setAttribute('aria-label', 'Remove highlight');
       }
       if (hlIcon) {
         hlIcon.innerHTML = `
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 6 6 18M6 6l12 12"/>
           </svg>
         `;
@@ -832,13 +834,15 @@ window.__ahkhBootReader = function (vars) {
       activeExistingHighlight = highlightItem;
     } else {
       if (popoverHlBtn) {
-        popoverHlBtn.className = 'px-2.5 py-1 rounded-xs bg-paper-200/90 dark:bg-dark-border/80 hover:bg-paper-200 dark:hover:bg-dark-border text-ink dark:text-dark-ink border border-ink-border/80 dark:border-dark-border font-medium flex items-center gap-1.5 transition-colors cursor-pointer';
+        popoverHlBtn.className = 'w-8 h-8 rounded-xs bg-paper-200/90 dark:bg-dark-border/80 hover:bg-paper-200 dark:hover:bg-dark-border text-ink dark:text-dark-ink border border-ink-border/80 dark:border-dark-border flex items-center justify-center transition-colors cursor-pointer';
+        popoverHlBtn.setAttribute('title', 'Highlight selection');
+        popoverHlBtn.setAttribute('aria-label', 'Highlight selection');
       }
       if (hlIcon) {
         hlIcon.innerHTML = `
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m9 11-6 6v3h3l6-6"/>
-            <path d="m22 7-4.5-4.5a2.12 2.12 0 0 0-3 0l-2.5 2.5 7.5 7.5 2.5-2.5a2.12 2.12 0 0 0 0-3Z"/>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 11-6 6v3h9l3-3"/>
+            <path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/>
           </svg>
         `;
       }
@@ -1077,7 +1081,7 @@ window.__ahkhBootReader = function (vars) {
       const copyLabel = document.getElementById('popover-copy-label');
       if (copyIcon) {
         copyIcon.innerHTML = `
-          <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 6 9 17l-5-5"/>
           </svg>
         `;
@@ -1086,7 +1090,7 @@ window.__ahkhBootReader = function (vars) {
       setTimeout(() => {
         if (copyIcon) {
           copyIcon.innerHTML = `
-            <svg class="w-3.5 h-3.5 text-ink-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="w-4 h-4 text-ink-muted dark:text-dark-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
               <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
             </svg>
