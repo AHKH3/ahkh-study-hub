@@ -55,7 +55,10 @@ All courses in AHKH Study Hub adhere strictly to the **Unified Global Design Sys
   - `active`: Amber (`text-amber-700 dark:text-amber-400`, dot `bg-amber-600 dark:bg-amber-400`)
   - `new`: Blue (`text-blue-700 dark:text-blue-400`, dot `bg-blue-600 dark:bg-blue-400`)
   - `explored`: Purple (`text-purple-700 dark:text-purple-400`, dot `bg-purple-600 dark:bg-purple-400`)
-  - `completed`: Emerald (`text-emerald-700 dark:text-emerald-400`, dot `bg-emerald-600 dark:bg-emerald-400`)
+- **Dark Mode Typography Contrast & Mono Legibility Guardrail (حظر الرمادي الداكن للخطوط في الوضع الداكن)**:
+  - يُمنع منعاً باتاً استخدام الرمادي الداكن (`#52525B` / `zinc-600` وما شابهها) كنصوص أو أرقام أو شارات أو اختصارات في الوضع الداكن (`dark mode`).
+  - الحد الأدنى للوضوح اللوني لأي نص أو رقم أو اختصار مونو في الوضع الداكن هو `zinc-400` (`#A1A1AA`) أو `zinc-300` (`#D4D4D8`) لضمان نسبة تباين كافية ومريحة لا تقل عن 6:1 ضد الخلفيات الداكنة.
+  - حقول الإدخال في نوافذ البحث والأوامر (`SearchDialog / Command Palette`) يجب أن تكون **مجرّدة تماماً من أي حلقة تركيز أو حدود (Zero Focus Rings & Zero Input Borders)**؛ التركيز ضمني بفتح النافذة ومؤشر الكتابة.
 - **Absolute Ban on AI Slop & Synthetic Crutches (Zero Slashes `//` & Zero Emojis)**:
   - Strictly ZERO emojis and ZERO double-slashes (`//`) in the codebase, UI, lesson text, badges, cards, or markdown files.
   - Never use `//` or programming syntax as a fake "technical" or "editorial" costume.
